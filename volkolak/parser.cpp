@@ -42,6 +42,32 @@ std::string_view Parser::GetTag(std::string_view source_name) const {
   return (tag_iterator != extension_tags_.end()) ? *tag_iterator : std::string_view();
 }
 
+StructuresSorter::StructuresSorter(std::span<const StructureData> structures) : structures_(structures) {
+  for (const auto &[index, structure] : std::views::enumerate(structures_)) {
+    name_indices_[structure.name.substr(VULKAN_PREFIX_SIZE)] = index;
+  }
+}
+
+void StructuresSorter::Sort() {
+  for (const auto &[name, index] : name_indices_) DepthFirstSearch(name);
+}
+
+void StructuresSorter::DepthFirstSearch(std::string_view name) {
+  if (visited_.contains(name)) return;
+
+  visited_.insert(name);
+
+  auto index = name_indices_.at(name);
+
+  for (const auto &member : structures_[index].members) {
+    if (name_indices_.contains(member.type)) {
+      DepthFirstSearch(member.type);
+    }
+  }
+
+  result_.emplace_back(name_indices_.at(name));
+}
+
 // STRUCTURES PARSING
 
 std::string Parser::GetGeneratedMemberType(std::string_view source_type) const {
@@ -230,8 +256,13 @@ auto GenerateInitializer(const StructureMemberData &member) {
 
 void Parser::GenerateStructureFile() {
   std::string result;
-  for (const auto &structure : parsed_structures_) {
+
+  StructuresSorter sorter(parsed_structures_);
+  sorter.Sort();
+
+  for (const auto &structure_index : sorter.GetIndices()) {
     std::string members, arguments, initializer;
+    const auto &structure = parsed_structures_[structure_index];
     auto name = structure.name.substr(VULKAN_PREFIX_SIZE);
     for (const auto &[index, member] : std::views::enumerate(structure.members)) {
       auto separator = (index != structure.members.size() - 1) ? "," : " ";

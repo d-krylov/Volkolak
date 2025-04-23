@@ -53,8 +53,26 @@ struct StructureData {
 };
 
 struct Options {
-  bool contructor_returned = false;
-  bool protected_structure = false;
+  bool generate_contructor_returned = false;
+  bool generate_protected_structure = false;
+};
+
+class StructuresSorter {
+public:
+  StructuresSorter(std::span<const StructureData> structures);
+
+  void Sort();
+
+  std::span<const uint32_t> GetIndices() { return result_; }
+
+private:
+  void DepthFirstSearch(std::string_view name);
+
+private:
+  std::vector<uint32_t> result_;
+  std::span<const StructureData> structures_;
+  std::unordered_set<std::string_view> visited_;
+  std::unordered_map<std::string_view, uint32_t> name_indices_;
 };
 
 class Parser {
@@ -111,6 +129,8 @@ private:
   std::unordered_map<std::string_view, EnumData> parsed_enums_;           // After ParseEnums
   std::unordered_map<std::string_view, FeatureData> parsed_features_;     // After ParseFeatures
   std::unordered_map<std::string_view, ExtensionData> parsed_extensions_; // After ParseExtensions
+
+  Options options_;
 };
 
 } // namespace Volkolak

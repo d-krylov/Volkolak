@@ -15,8 +15,8 @@ int main(int argc, char **argv) {
   Parser parser(specification_path);
 
   // parser.PrintInformation();
-  // parser.GenerateStructureFile();
-  parser.GenerateEnumFile();
+  parser.GenerateStructureFile();
+  // parser.GenerateEnumFile();
 
   return 0;
 }
