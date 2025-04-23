@@ -16,6 +16,7 @@ auto Protect = [](const pugi::xml_node &node) -> std::string_view { return node.
 auto Platform = [](const pugi::xml_node &node) -> std::string_view { return node.attribute("platform").as_string(); };
 auto Requires = [](const pugi::xml_node &node) -> std::string_view { return node.attribute("requires").as_string(); };
 auto Bitvalues = [](const pugi::xml_node &node) -> std::string_view { return node.attribute("bitvalues").as_string(); };
+auto Supported = [](const pugi::xml_node &node) -> std::string_view { return node.attribute("supported").as_string(); };
 
 auto NAME = [](const pugi::xml_node &node) -> std::string_view { return node.child("name").child_value(); };
 auto TYPE = [](const pugi::xml_node &node) -> std::string_view { return node.child("type").child_value(); };
@@ -125,7 +126,9 @@ void Parser::ParseFeatures() {
 void Parser::ParseExtensions() {
   auto extensions = document_.child("registry").child("extensions");
   for (const auto &extension_node : extensions.children("extension")) {
+    auto supported = Supported(extension_node);
     auto extension_name = Name(extension_node);
+    if (supported == "vulkansc" || supported == "disabled") continue;
     auto &extension = parsed_extensions_[extension_name];
     for (const auto &require_node : extension_node.children("require")) {
       for (const auto &enum_node : require_node.children("enum")) {
@@ -190,6 +193,8 @@ void Parser::ParseBegin() {
 
 // GENERATE STRUCTURES
 
+void Parser::SortStructures() {}
+
 std::string GetStructureType(std::string_view source_type) {
   constexpr std::string_view prefix = "VK_STRUCTURE_TYPE_";
   constexpr std::string_view format = "StructureType::{}";
@@ -251,31 +256,31 @@ void Parser::GenerateStructureFile() {
 
 // GENERATE ENUMS
 
-constexpr std::string_view COMMA = ",\n";
+constexpr std::string_view ENTER = "\n";
 
 auto get_enum_record = [](const EnumRecordData &record) {
-  return std::isdigit(record.class_name.front()) ? std::format("E_{} = {}", record.class_name, record.source_name)
-                                                 : std::format("  {} = {}", record.class_name, record.source_name);
+  return std::isdigit(record.class_name.front()) ? std::format("E_{} = {},", record.class_name, record.source_name)
+                                                 : std::format("  {} = {},", record.class_name, record.source_name);
 };
 
-// clang-foramt off
+// clang-format off
 std::string GetEnumRecords(std::span<const EnumRecordData> records, std::string_view enum_name) {
   auto is_good_enum = [&](const EnumRecordData &enum_record) { return enum_record.extend_enum == enum_name; };
-  auto records_view = records 
+  auto records_view = records
     | std::views::filter(is_good_enum)
     | std::views::transform(get_enum_record)
-    | std::views::join_with(COMMA);
+    | std::views::join_with(ENTER);
   return std::ranges::to<std::string>(records_view);
 }
-// clang-foramt on
+// clang-format on
 
 void Parser::GenerateEnumRecordsFromExtensions(std::string &records_result, std::string_view enum_name) {
   for (const auto &[extension_name, extension_data] : parsed_extensions_) {
     auto records_string = GetEnumRecords(extension_data.enum_records, enum_name);
     if (records_string.empty()) continue;
-    if (records_result.empty() == false) records_result += COMMA;
-    if (auto it = protected_extensions_.find(extension_name); it != protected_extensions_.end()) {
-      records_result += std::format(ifdef_template, it->second, records_string);
+    if (records_result.empty() == false) records_result += ENTER;
+    if (auto enum_protected = protected_extensions_.find(extension_name); enum_protected != protected_extensions_.end()) {
+      records_result += std::format(ifdef_template, enum_protected->second, records_string);
     } else {
       records_result += records_string;
     }
@@ -286,7 +291,7 @@ void Parser::GenerateEnumRecordsFromFeatures(std::string &records_result, std::s
   for (const auto &[feature_name, feature_data] : parsed_features_) {
     auto records_string = GetEnumRecords(feature_data.enum_records, enum_name);
     if (records_string.empty()) continue;
-    if (records_result.empty() == false) records_result += COMMA;
+    if (records_result.empty() == false) records_result += ENTER;
     records_result += records_string;
   }
 }
@@ -295,12 +300,14 @@ void Parser::GenerateEnumFile() {
   namespace views = std::views;
   std::string result;
   for (auto &[enum_name, enum_data] : parsed_enums_) {
-    auto enum_records_view = views::join_with(enum_data.records | views::transform(get_enum_record), COMMA);
+    auto enum_records_view = enum_data.records | views::transform(get_enum_record) | views::join_with(ENTER);
     auto enum_records_string = std::ranges::to<std::string>(enum_records_view);
     GenerateEnumRecordsFromFeatures(enum_records_string, enum_name);
     GenerateEnumRecordsFromExtensions(enum_records_string, enum_name);
+    if (auto comma = enum_records_string.find_last_of(','); comma != std::string::npos) enum_records_string.erase(comma, 1);
     result += std::format(enum_template, type_enums_[enum_name].GetName(), enum_records_string);
   }
+
   std::cout << result << std::endl;
 }
 

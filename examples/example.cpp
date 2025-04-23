@@ -1,6 +1,3 @@
-//#include "vulkan_structures.h"
-#include "vulkan_enums.h"
+#include "vulkan_structures.h"
 
-int main() {
-  return 0;
-}
+int main() { return 0; }

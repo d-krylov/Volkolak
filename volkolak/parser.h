@@ -93,6 +93,8 @@ private:
   void GenerateEnumRecordsFromFeatures(std::string &enum_return, std::string_view enum_name);
   void GenerateEnumRecordsFromExtensions(std::string &enum_return, std::string_view enum_name);
 
+  void SortStructures();
+
 private:
   pugi::xml_document document_;
   // After ParseBegin

@@ -22,7 +22,7 @@ struct {0} {{
 inline constexpr auto enum_template = "enum class {0}       {{ \n {1} \n }}; \n";
 inline constexpr auto mask_template = "enum class {0} : {2} {{ \n {1} \n }}; \n";
 
-inline constexpr auto ifdef_template = "#ifdef {0} \n {1} \n #endif";
+inline constexpr auto ifdef_template = "#ifdef {0} \n {1} \n #endif \n";
 
 inline constexpr auto enum_query = "types/type[@category = 'enum' and not(@alias)]";
 inline constexpr auto empty_mask_query_32 = "types/type[@category = 'bitmask' and not(@alias) and not(@requires) and type='VkFlags']";
