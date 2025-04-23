@@ -13,6 +13,8 @@ FetchContent_MakeAvailable(pugixml)
 
 add_clang_format_target(format "build")
 
+set(CMAKE_BUILD_TYPE Debug)
+
 set(VOLKOLAK_SOURCES 
   ${PROJECT_SOURCE_DIR}/volkolak/volkolak.cpp
   ${PROJECT_SOURCE_DIR}/volkolak/tools.cpp

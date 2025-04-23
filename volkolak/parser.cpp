@@ -1,249 +1,330 @@
 #include "parser.h"
-#include "pugixml.hpp"
-#include "tools.h"
-#include <algorithm>
-#include <format>
+#include "templates.h"
 #include <iostream>
+#include <print>
 #include <ranges>
-#include <set>
-#include <unordered_map>
-#include <unordered_set>
 
 namespace Volkolak {
 
-pugi::xml_document document;
-std::vector<std::string> tags;
-std::unordered_map<std::string, std::unordered_set<std::string>> source_enums;
-std::unordered_map<std::string, std::string> platforms;
-std::unordered_map<std::string, EnumData> enums;
-std::unordered_map<std::string, ExtensionData> extensions;
-std::unordered_map<std::string, StructureData> structures;
+// ATTRIBUTE GETTERS
+auto Api = [](const pugi::xml_node &node) -> std::string_view { return node.attribute("api").as_string(); };
+auto Name = [](const pugi::xml_node &node) -> std::string_view { return node.attribute("name").as_string(); };
+auto Type = [](const pugi::xml_node &node) -> std::string_view { return node.attribute("type").as_string(); };
+auto Values = [](const pugi::xml_node &node) -> std::string_view { return node.attribute("values").as_string(); };
+auto Extends = [](const pugi::xml_node &node) -> std::string_view { return node.attribute("extends").as_string(); };
+auto Protect = [](const pugi::xml_node &node) -> std::string_view { return node.attribute("protect").as_string(); };
+auto Platform = [](const pugi::xml_node &node) -> std::string_view { return node.attribute("platform").as_string(); };
+auto Requires = [](const pugi::xml_node &node) -> std::string_view { return node.attribute("requires").as_string(); };
+auto Bitvalues = [](const pugi::xml_node &node) -> std::string_view { return node.attribute("bitvalues").as_string(); };
 
-// VkDebugReportFlagBitsEXT -> VkDebugReport
-std::string GetPureEnumName(std::string_view enum_name) {
-  std::string_view mask = "FlagBits";
-  auto suffix_name = std::ranges::find_if(tags, [&](const auto &suffix) { return enum_name.ends_with(suffix); });
-  enum_name.remove_suffix(suffix_name != tags.end() ? suffix_name->size() : 0);
-  auto back = enum_name.back();
-  auto is_digit = std::isdigit(back);
-  enum_name.remove_suffix(is_digit ? 1 : 0);
-  enum_name.remove_suffix(enum_name.ends_with(mask) ? mask.size() : 0);
-  return std::string(enum_name) + (is_digit ? std::string(1, back) : "");
+auto NAME = [](const pugi::xml_node &node) -> std::string_view { return node.child("name").child_value(); };
+auto TYPE = [](const pugi::xml_node &node) -> std::string_view { return node.child("type").child_value(); };
+auto ENUM = [](const pugi::xml_node &node) -> std::string_view { return node.child("enum").child_value(); };
+
+// TOOLS
+std::string Parser::GetEnumRecordPrefix(std::string_view source_enum) const {
+  if (source_enum == "VkResult") return std::string(VULKAN_PREFIX).append("_");
+  const auto &enum_name = type_enums_.at(source_enum);
+  auto screaming = ToScreamingSnakeCase(enum_name.GetPrefix());
+  return screaming.append("_");
 }
 
-EnumRecordData GetEnumRecordData(std::string_view record_name, const EnumData &enum_data) {
-  EnumRecordData record_data;
-  record_data.vulkan_name = std::string(record_name);
-  record_name.remove_prefix(enum_data.prefix.size() + 1);
-  auto starts_with_digit = std::isdigit(record_name.front());
-  record_data.class_name = starts_with_digit ? std::format("E_{}", record_name) : std::string(record_name);
-  return record_data;
+std::size_t Parser::GetEnumRecordPrefixSize(std::string_view source_enum) const {
+  if (source_enum == "VkResult") return 1 + VULKAN_PREFIX_SIZE;
+  const auto &enum_name = type_enums_.at(source_enum);
+  return 1 + GetPrefixSize(enum_name.GetPrefix());
 }
 
-void ParseEnums() {
-  for (const auto &enum_node : document.child("registry").children("enums")) {
-    std::string_view enum_name = enum_node.attribute("name").as_string();
-    std::string_view enum_type = enum_node.attribute("type").as_string();
-    if (enum_type != "constants") {
-      auto &enum_data = enums[enum_name.data()];
-      auto pure_name_v = GetPureEnumName(enum_name);
-      enum_data.prefix = ToScreamingSnakeCase(pure_name_v);
-      auto pure_name = pure_name_v.substr(2);
-      enum_data.name = pure_name + ((enum_type == "bitmask") ? "MaskBit" : "");
-      for (const auto &enum_record : enum_node.children("enum")) {
-        std::string record_name = enum_record.attribute("name").as_string();
-        if (record_name.starts_with(enum_data.prefix)) {
-          enum_data.records.emplace_back(GetEnumRecordData(record_name, enum_data));
-          source_enums[enum_name.data()].emplace(record_name);
-        }
-      }
-    }
-  }
+std::string_view Parser::GetTag(std::string_view source_name) const {
+  auto tag_function = [&](std::string_view tag) { return source_name.ends_with(tag); };
+  auto tag_iterator = std::ranges::find_if(extension_tags_, tag_function);
+  return (tag_iterator != extension_tags_.end()) ? *tag_iterator : std::string_view();
 }
 
-void ParseExtensions() {
-  for (const auto &extension_node : document.child("registry").child("extensions")) {
-    std::string_view extension_supported = extension_node.attribute("supported").as_string();
-    if (extension_supported == "disabled") {
-      continue;
-    }
+// STRUCTURES PARSING
 
-    auto extension_name = extension_node.attribute("name");
-    auto &extension = extensions[extension_name.as_string()];
-    extension.platform = extension_node.attribute("platform").as_string();
-
-    for (const auto &require_node : extension_node.children("require")) {
-      for (const auto &enum_record : require_node.children("enum")) {
-        std::string record_name = enum_record.attribute("name").as_string();
-        std::string extend_enum = enum_record.attribute("extends").as_string();
-        if (extend_enum.empty() == false) {
-          auto &enum_data = enums[extend_enum];
-          if (record_name.starts_with(enum_data.prefix) && source_enums[extend_enum].contains(record_name) == false) {
-            auto &record = extension.records.emplace_back(GetEnumRecordData(record_name, enum_data));
-            record.extends = extend_enum;
-            source_enums[extend_enum].emplace(record_name);
-          }
-        }
-      }
-    }
-  }
+std::string Parser::GetGeneratedMemberType(std::string_view source_type) const {
+  if (type_structures_.contains(source_type)) return std::string(source_type.substr(VULKAN_PREFIX_SIZE));
+  if (type_enums_.contains(source_type)) return type_enums_.at(source_type).GetName();
+  return std::string(source_type);
 }
 
-StructureMemberData GetStructureMemberData(const pugi::xml_node &member) {
-  StructureMemberData result;
+std::string Parser::GetGeneratedMemberName(std::string_view source_name) const { return HungarianToSnakeCase(source_name).append("_"); }
+
+std::string Parser::GetGeneratedMemberSignature(const pugi::xml_node &member) const {
+  auto signature = std::string();
+  auto enum_value = std::string(ENUM(member));
+  auto type_value = GetGeneratedMemberType(TYPE(member));
+  auto name_value = GetGeneratedMemberName(NAME(member));
   for (const auto &node : member.children()) {
     std::string_view name = node.name();
-    if (node.type() == pugi::node_pcdata) {
-      result.signature += node.value();
-    } else if (name == "name") {
-      result.name = HungarianToSnakeCase(node.child_value());
-      result.signature += std::format(" {}", result.name);
-    } else if (name == "type") {
-      auto type = node.child_value();
-      result.type = enums.contains(type) ? enums[type].name : type;
-      result.signature += std::format(" {}", result.type);
-    } else if (name != "comment") {
-      result.signature += std::format(" {}", node.child_value());
+    if (name == "comment") continue;
+    if (name == "name") signature += " " + name_value;
+    if (name == "type") signature += " " + type_value;
+    if (name == "enum") signature += " " + enum_value;
+    if (node.type() == pugi::node_pcdata) signature += node.value();
+  }
+  return signature;
+}
+
+void Parser::ParseStructures() {
+  auto registry = document_.child("registry");
+  for (const auto &structure_xpath_node : registry.select_nodes(structure_query)) {
+    auto structure_node = structure_xpath_node.node();
+    auto &structure = parsed_structures_.emplace_back();
+    structure.name = Name(structure_node);
+    structure.returned = structure_node.attribute("returnedonly").as_bool();
+    for (const auto &member_node : structure_node.children("member")) {
+      if (member_node.attribute("api").empty() || Api(member_node) == "vulkan") {
+        auto &member = structure.members.emplace_back();
+        member.signature = GetGeneratedMemberSignature(member_node);
+        member.name = GetGeneratedMemberName(NAME(member_node));
+        member.type = GetGeneratedMemberType(TYPE(member_node));
+        member.value = Values(member_node);
+        member.SetArray(member.signature.contains("["));
+        member.SetField(member.signature.contains(":"));
+      }
     }
+  }
+}
+
+void Parser::ParseEnums() {
+  auto registry = document_.child("registry");
+  for (const auto &enum_node : registry.children("enums")) {
+    if (Type(enum_node) == "constants") continue;
+    auto enum_name = Name(enum_node);
+    auto &enum_data = parsed_enums_[enum_name];
+    auto size = GetEnumRecordPrefixSize(enum_name);
+    for (const auto &enum_record_node : enum_node.children("enum")) {
+      if (enum_record_node.attribute("deprecated").empty()) {
+        auto name = Name(enum_record_node);
+        enum_data.records.emplace_back(name.substr(size), name);
+      }
+    }
+  }
+}
+
+void Parser::ParseFeatures() {
+  auto registry = document_.child("registry");
+  for (const auto &feature_node : registry.children("feature")) {
+    if (Api(feature_node) == "vulkansc") continue;
+    auto feature_name = Name(feature_node);
+    auto &feature = parsed_features_[feature_name];
+    for (const auto &require_node : feature_node.children("require")) {
+      for (const auto &enum_node : require_node.children("enum")) {
+        auto extend_name = Extends(enum_node);
+        auto record_name = Name(enum_node);
+        if (extend_name.empty()) continue;
+        auto size = GetEnumRecordPrefixSize(extend_name);
+        feature.enum_records.emplace_back(record_name.substr(size), record_name, extend_name);
+      }
+    }
+  }
+}
+
+void Parser::ParseExtensions() {
+  auto extensions = document_.child("registry").child("extensions");
+  for (const auto &extension_node : extensions.children("extension")) {
+    auto extension_name = Name(extension_node);
+    auto &extension = parsed_extensions_[extension_name];
+    for (const auto &require_node : extension_node.children("require")) {
+      for (const auto &enum_node : require_node.children("enum")) {
+        auto extend_name = Extends(enum_node);
+        auto record_name = Name(enum_node);
+        if ((extend_name.empty() == false) && (Api(enum_node).empty() || Api(enum_node) == "vulkan")) {
+          auto size = GetEnumRecordPrefixSize(extend_name);
+          extension.enum_records.emplace_back(record_name.substr(size), record_name, extend_name);
+        }
+      }
+    }
+  }
+}
+
+// START PARSING
+
+String Parser::GetNameString(std::string_view source_name) const {
+  String result;
+  result.tag = GetTag(source_name);
+  source_name.remove_suffix(result.tag.size());
+  if (auto position = source_name.find(FLAG_SUFFIX); position != std::string::npos) {
+    result.prefix = source_name.substr(0, position);
+    result.center = source_name.substr(position, FLAG_SUFFIX_SIZE);
+    result.suffix = source_name.substr(position + FLAG_SUFFIX_SIZE);
+  } else {
+    result.prefix = source_name;
   }
   return result;
 }
 
-void ParseStructures() {
-  for (const auto &type : document.child("registry").child("types")) {
-    auto category = type.attribute("category");
-    if (category) {
-      std::string_view category_name = category.as_string();
-      if (category_name == "struct") {
-        auto structure_name = type.attribute("name");
-        auto alias_name = type.attribute("alias");
-        if (alias_name) {
-        } else {
-          auto &structure = structures[structure_name.as_string()];
-          for (const auto &member : type.children("member")) {
-            auto structure_member = GetStructureMemberData(member);
-            structure.members_.emplace_back(structure_member);
-          }
-        }
+void Parser::ParseBeginExtensions() {
+  auto registry = document_.child("registry");
+  auto platforms_data = std::unordered_map<std::string_view, std::string_view>();
+
+  for (const auto &p : registry.child("platforms")) platforms_data.emplace(Name(p), Protect(p));
+
+  for (const auto &xpath_extension_node : registry.select_nodes(protected_extension_query)) {
+    auto extension_node = xpath_extension_node.node();
+    auto platforms_name = Platform(extension_node);
+
+    for (const auto &require_node : extension_node.children("require")) {
+      for (const auto &structure_node : require_node.children("type")) {
+        protected_structures_.emplace(Name(structure_node), platforms_data[platforms_name]);
+        protected_extensions_.emplace(Name(extension_node), platforms_data[platforms_name]);
       }
     }
   }
 }
 
-void ParseHeader() {
-  auto name_to_string = [](const pugi::xml_node &node) { return std::string(node.attribute("name").as_string()); };
-  tags = document.child("registry").child("tags") | std::views::transform(name_to_string) | std::ranges::to<std::vector>();
-  for (const auto &platform : document.child("registry").child("platforms")) {
-    auto name = platform.attribute("name").as_string();
-    auto protect = platform.attribute("protect").as_string();
-    platforms[name] = protect;
-  }
+void Parser::ParseBegin() {
+  auto registry = document_.child("registry");
+
+  for (const auto &t : registry.child("tags")) extension_tags_.emplace_back(Name(t));
+  for (const auto &b : registry.select_nodes(mask_query_32)) type_masks_32_.emplace(Requires(b.node()), NAME(b.node()));
+  for (const auto &b : registry.select_nodes(mask_query_64)) type_masks_64_.emplace(Bitvalues(b.node()), NAME(b.node()));
+  for (const auto &m : registry.select_nodes(empty_mask_query_32)) type_empty_masks_.emplace(NAME(m.node()));
+  for (const auto &b : registry.select_nodes(structure_query)) type_structures_.emplace(Name(b.node()));
+  for (const auto &e : registry.select_nodes(enum_query)) type_enums_.emplace(Name(e.node()), GetNameString(Name(e.node())));
+
+  ParseBeginExtensions();
 }
 
-void ParseDocument(const std::filesystem::path &specification_path) {
-  auto status = document.load_file(specification_path.c_str());
+// GENERATE STRUCTURES
 
-  if (status) {
-    ParseHeader();
-    ParseEnums();
-    ParseExtensions();
-    ParseStructures();
-  }
+std::string GetStructureType(std::string_view source_type) {
+  constexpr std::string_view prefix = "VK_STRUCTURE_TYPE_";
+  constexpr std::string_view format = "StructureType::{}";
+  source_type.remove_prefix(prefix.size());
+  return std::format(format, source_type);
 }
 
-constexpr auto begin_definition = R"(
-#ifndef {0}
-#define {0}(N)
-#endif
-)";
+auto GenerateSignature(const StructureMemberData &member) {
+  constexpr auto simple = "{0} {1}";
+  constexpr auto valued = "{0} = {1}";
+  auto type = member.IsArray() ? GetRandomTypeAsArray(member.signature, member.type) : member.type;
+  auto signature = member.value.empty() ? member.signature : std::format(valued, member.signature, GetStructureType(member.value));
+  return member.IsArray() ? std::format(simple, type, member.name) : signature;
+}
 
-constexpr auto enum_definition_template = R"(
-enum class {0} {{
-#define {1}(X) X = {2}##X,
-#include "{3}"
-}};
-)";
+auto GenerateArgument(const StructureMemberData &member) {
+  std::string_view signature = member.signature;
+  std::string_view name = member.name;
+  constexpr auto basic_format = "      {0}      = {{}}";
+  constexpr auto const_format = "const {0} &{1} = {{}}";
+  auto prune = signature.substr(0, signature.find(":"));
+  prune.remove_suffix(1), name.remove_suffix(1);
+  auto type = member.IsArray() ? GetRandomTypeAsArray(member.signature, member.type) : member.type;
+  return member.IsArray() ? std::format(const_format, type, name) : std::format(basic_format, prune);
+}
 
-void GenerateEnumDefinitionFile() {
+auto GenerateInitializer(const StructureMemberData &member) {
+  constexpr auto initializer_format = "{0}({1})";
+  std::string_view argument = member.name;
+  argument.remove_suffix(1);
+  return std::format(initializer_format, member.name, argument);
+}
+
+void Parser::GenerateStructureFile() {
   std::string result;
+  for (const auto &structure : parsed_structures_) {
+    std::string members, arguments, initializer;
+    auto name = structure.name.substr(VULKAN_PREFIX_SIZE);
+    for (const auto &[index, member] : std::views::enumerate(structure.members)) {
+      auto separator = (index != structure.members.size() - 1) ? "," : " ";
+      members += GenerateSignature(member) + ";\n";
+      if (member.value.empty()) arguments += GenerateArgument(member) + separator;
+      if (member.value.empty()) initializer += GenerateInitializer(member) + separator;
+    }
 
-  for (auto &[enum_name, enum_data] : enums) {
+    constexpr auto constructor_template = "{0}({1}): {2} {{}}";
+    auto constuctor = (structure.returned == false) ? std::format(constructor_template, name, arguments, initializer) : "";
+    auto structure_definition = std::format(structure_template, name, members, constuctor);
 
-    for (const auto &record : enum_data.records) {
+    if (protected_structures_.contains(structure.name)) {
+      result += std::format(ifdef_template, protected_structures_[structure.name], structure_definition);
+    } else {
+      result += structure_definition;
     }
   }
 
   std::cout << result << std::endl;
 }
 
-constexpr auto enum_template = R"(
-enum class {0} {{
-  {1}
-}};
-)";
+// GENERATE ENUMS
 
-void GenerateEnumFile() {
-  std::string result;
-  for (auto &[enum_name, enum_data] : enums) {
-    std::string enum_records;
+constexpr std::string_view COMMA = ",\n";
 
-    for (const auto &record : enum_data.records) {
-      enum_records += record.class_name + " = " + record.vulkan_name + "," + "\n";
+auto get_enum_record = [](const EnumRecordData &record) {
+  return std::isdigit(record.class_name.front()) ? std::format("E_{} = {}", record.class_name, record.source_name)
+                                                 : std::format("  {} = {}", record.class_name, record.source_name);
+};
+
+// clang-foramt off
+std::string GetEnumRecords(std::span<const EnumRecordData> records, std::string_view enum_name) {
+  auto is_good_enum = [&](const EnumRecordData &enum_record) { return enum_record.extend_enum == enum_name; };
+  auto records_view = records 
+    | std::views::filter(is_good_enum)
+    | std::views::transform(get_enum_record)
+    | std::views::join_with(COMMA);
+  return std::ranges::to<std::string>(records_view);
+}
+// clang-foramt on
+
+void Parser::GenerateEnumRecordsFromExtensions(std::string &records_result, std::string_view enum_name) {
+  for (const auto &[extension_name, extension_data] : parsed_extensions_) {
+    auto records_string = GetEnumRecords(extension_data.enum_records, enum_name);
+    if (records_string.empty()) continue;
+    if (records_result.empty() == false) records_result += COMMA;
+    if (auto it = protected_extensions_.find(extension_name); it != protected_extensions_.end()) {
+      records_result += std::format(ifdef_template, it->second, records_string);
+    } else {
+      records_result += records_string;
     }
-
-    auto good_extension = [&](const EnumRecordData &a) { return a.extends == enum_name; };
-
-    for (auto &[extesion_name, extension_data] : extensions) {
-      std::string collected_enums;
-
-      for (const auto &record : std::views::filter(extension_data.records, good_extension)) {
-        collected_enums += record.class_name + " = " + record.vulkan_name + "," + "\n";
-      }
-
-      if (platforms.contains(extension_data.platform) && collected_enums.empty() == false) {
-        enum_records += "#ifdef " + platforms[extension_data.platform] + "\n";
-        enum_records += collected_enums;
-        enum_records += "#endif\n";
-      } else if (collected_enums.empty() == false) {
-        enum_records += collected_enums;
-      }
-    }
-
-    result += std::format(enum_template, enum_data.name, enum_records);
   }
-
-  // std::cout << result << std::endl;
 }
 
-constexpr auto structure_template = R"(
-struct {0} {{
-
-  using native_type = Vk{0};
-
-  {0}({2}): {3} {{}}
-
-  auto *get() {{ return reinterpret_cast<native_type *>(this); }}
-
-  {1}
-}};
-)";
-
-void GenerateStructuresFile() {
-  std::string result;
-  auto concate = [](const auto &a, const auto &b) { return a + "," + b; };
-  for (auto &[name, value] : structures) {
-    auto signatures = std::views::transform(value.members_, &StructureMemberData::signature);
-    auto names = std::views::transform(value.members_, &StructureMemberData::name);
-    auto is_structure_type = names.front() == "s_type";
-    auto signatures_for_arguments = signatures | std::views::drop(is_structure_type ? 1 : 0);
-    auto initializer = std::views::transform(names, [](const auto &a) { return std::format("{0}_({0})", a); });
-    auto initializers = std::ranges::fold_left_first(initializer, concate);
-    auto arguments = std::ranges::fold_left_first(signatures_for_arguments, concate);
-    auto fields = std::ranges::fold_left(signatures, std::string(""), [](const auto &a, const auto &b) { return a + b + "_;\n"; });
-    result += std::format(structure_template, name.substr(2), fields, *arguments, *initializers);
+void Parser::GenerateEnumRecordsFromFeatures(std::string &records_result, std::string_view enum_name) {
+  for (const auto &[feature_name, feature_data] : parsed_features_) {
+    auto records_string = GetEnumRecords(feature_data.enum_records, enum_name);
+    if (records_string.empty()) continue;
+    if (records_result.empty() == false) records_result += COMMA;
+    records_result += records_string;
   }
+}
 
+void Parser::GenerateEnumFile() {
+  namespace views = std::views;
+  std::string result;
+  for (auto &[enum_name, enum_data] : parsed_enums_) {
+    auto enum_records_view = views::join_with(enum_data.records | views::transform(get_enum_record), COMMA);
+    auto enum_records_string = std::ranges::to<std::string>(enum_records_view);
+    GenerateEnumRecordsFromFeatures(enum_records_string, enum_name);
+    GenerateEnumRecordsFromExtensions(enum_records_string, enum_name);
+    result += std::format(enum_template, type_enums_[enum_name].GetName(), enum_records_string);
+  }
   std::cout << result << std::endl;
+}
+
+void Parser::PrintInformation() {
+  for (const auto &tag : extension_tags_) std::println("Tag Name: {}", tag);
+  for (const auto &mask_32 : type_masks_32_) std::println("Mask 32 - Requires: {}, Name: {}", mask_32.first, mask_32.second);
+  for (const auto &mask_64 : type_masks_64_) std::println("Mask 64 - B Values: {}: Name: {}", mask_64.first, mask_64.second);
+  for (const auto &empty_mask : type_empty_masks_) std::println("Empty Mask 32 - Name: {}", empty_mask);
+  for (const auto &structure : type_structures_) std::println("Structure Name: {}", structure);
+  for (const auto &extension : protected_extensions_) std::println("Extension Name: {}, Protect: {}", extension.first, extension.second);
+  for (const auto &structure : protected_structures_) std::println("Structure Name: {}, Protect: {}", structure.first, structure.second);
+}
+
+Parser::Parser(const std::filesystem::path &specification_path) {
+
+  auto status = document_.load_file(specification_path.c_str());
+
+  if (!status) std::println("Loading error - {}", status.description());
+
+  ParseBegin();
+  ParseEnums();
+  ParseFeatures();
+  ParseExtensions();
+  ParseStructures();
 }
 
 } // namespace Volkolak

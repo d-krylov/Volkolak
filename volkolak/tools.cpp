@@ -1,6 +1,6 @@
 #include "tools.h"
-#include <algorithm>
 #include <fstream>
+#include <ranges>
 #include <vector>
 
 namespace Volkolak {
@@ -20,25 +20,49 @@ std::string ToScreamingSnakeCase(std::string_view name) {
   return converted_name;
 }
 
-std::string_view RemovePrefix(std::string_view name) {
-  std::vector<std::string> prefixes{"pp", "p"};
-  auto prefix_check = [&](const auto &prefix) { return name.starts_with(prefix) && std::isupper(name[prefix.size()]); };
-  auto prefix_name = std::ranges::find_if(prefixes, prefix_check);
-  name.remove_prefix(prefix_name != prefixes.end() ? prefix_name->size() : 0);
-  return name;
+std::size_t GetPrefixSize(std::string_view name) {
+  auto result = 0;
+  auto previous_is_lower = false;
+  auto previous_is_digit = false;
+  for (auto Char : name) {
+    result += std::isupper(Char) && (previous_is_lower || previous_is_digit);
+    result += std::isdigit(Char) && (previous_is_lower);
+    result += 1;
+    previous_is_lower = std::islower(Char);
+    previous_is_digit = std::isdigit(Char);
+  }
+  return result;
 }
 
 std::string HungarianToSnakeCase(std::string_view name) {
   std::string result;
-  auto name_without_prefix = RemovePrefix(name);
   auto previous_is_lower = false;
-  for (auto Char : name_without_prefix) {
-    if (std::isupper(Char) && previous_is_lower) {
-      result.push_back('_');
-    }
-    result.push_back(std::tolower(Char));
-    previous_is_lower = std::islower(Char);
+  for (auto symbol : name) {
+    if (std::isupper(symbol) && previous_is_lower) result.push_back('_');
+    result.push_back(std::tolower(symbol));
+    previous_is_lower = std::islower(symbol);
   }
+  return result;
+}
+
+std::string GetRandomTypeAsArray(std::string_view text, std::string_view base_type) {
+  constexpr auto array_template = "std::array<{}, {}>";
+  auto position = 0;
+  auto result = std::string(base_type);
+  auto dimensions = std::vector<std::string_view>();
+  while ((position = text.find('[', position)) != std::string::npos) {
+    if (auto end = text.find(']', position); end != std::string::npos) {
+      dimensions.emplace_back(text.substr(position + 1, end - position - 1));
+      position = end + 1;
+    } else {
+      break;
+    }
+  }
+
+  for (const auto &dimension : std::views::reverse(dimensions)) {
+    result = std::format(array_template, result, dimension);
+  }
+
   return result;
 }
 
@@ -46,6 +70,28 @@ void WriteToFile(const std::filesystem::path &output_path, const std::string &va
   std::ofstream output(output_path);
   output << value;
   output.close();
+}
+
+std::string String::Get() const {
+  std::string result;
+  result.reserve(prefix.size() + center.size() + suffix.size());
+  result.append(prefix);
+  result.append(center == FLAG_SUFFIX ? MASK_SUFFIX : center);
+  result.append(suffix);
+  return result;
+}
+
+std::string String::GetPrefix() const {
+  std::string data;
+  data.reserve(prefix.size() + suffix.size());
+  data.append(prefix);
+  data.append(suffix);
+  return data;
+}
+
+std::string String::GetName() const {
+  auto name = Get();
+  return name.substr(VULKAN_PREFIX_SIZE);
 }
 
 } // namespace Volkolak
