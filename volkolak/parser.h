@@ -124,6 +124,7 @@ private:
   std::unordered_map<std::string_view, String> type_enums_;                     // registry/types/type (enum)
   std::unordered_set<std::string_view> type_empty_masks_;                       // registry/types/type (bitmask, no requires, VkFlags)
   std::unordered_set<std::string_view> type_structures_;                        // registry/types/type (structure)
+  std::unordered_set<std::string_view> disabled_types_;
 
   std::vector<StructureData> parsed_structures_;                          // After ParseStructures
   std::unordered_map<std::string_view, EnumData> parsed_enums_;           // After ParseEnums

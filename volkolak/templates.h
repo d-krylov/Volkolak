@@ -19,10 +19,10 @@ struct {0} {{
 }};
 )";
 
-inline constexpr auto enum_template = "enum class {0}       {{ \n {1} \n }}; \n";
-inline constexpr auto mask_template = "enum class {0} : {2} {{ \n {1} \n }}; \n";
+inline constexpr auto enum_template = "enum class {0}       {{ \n {1} }}; \n";
+inline constexpr auto mask_template = "enum class {0} : {2} {{ \n {1} }}; \n";
 
-inline constexpr auto ifdef_template = "#ifdef {0} \n {1} \n #endif \n";
+inline constexpr auto ifdef_template = "#ifdef {0} \n {1} #endif \n";
 
 inline constexpr auto enum_query = "types/type[@category = 'enum' and not(@alias)]";
 inline constexpr auto empty_mask_query_32 = "types/type[@category = 'bitmask' and not(@alias) and not(@requires) and type='VkFlags']";
@@ -30,6 +30,8 @@ inline constexpr auto mask_query_32 = "types/type[@category = 'bitmask' and not(
 inline constexpr auto mask_query_64 = "types/type[@category = 'bitmask' and not(@alias) and type='VkFlags64']";
 inline constexpr auto structure_query = "types/type[@category = 'struct' and not(@alias)]";
 inline constexpr auto protected_extension_query = "extensions/extension[@platform and @supported != 'disabled']";
+inline constexpr auto vulkansc_types_query = "feature[@api='vulkansc']/require/type";
+inline constexpr auto disabled_types_query = "extensions/extension[@supported = 'disabled' or @supported = 'vulkansc']/require/type";
 
 } // namespace Volkolak
 

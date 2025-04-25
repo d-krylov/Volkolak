@@ -98,8 +98,10 @@ void Parser::ParseStructures() {
   auto registry = document_.child("registry");
   for (const auto &structure_xpath_node : registry.select_nodes(structure_query)) {
     auto structure_node = structure_xpath_node.node();
+    auto structure_name = Name(structure_node);
+    if (disabled_types_.contains(structure_name)) continue;
     auto &structure = parsed_structures_.emplace_back();
-    structure.name = Name(structure_node);
+    structure.name = structure_name;
     structure.returned = structure_node.attribute("returnedonly").as_bool();
     for (const auto &member_node : structure_node.children("member")) {
       if (member_node.attribute("api").empty() || Api(member_node) == "vulkan") {
@@ -213,13 +215,13 @@ void Parser::ParseBegin() {
   for (const auto &m : registry.select_nodes(empty_mask_query_32)) type_empty_masks_.emplace(NAME(m.node()));
   for (const auto &b : registry.select_nodes(structure_query)) type_structures_.emplace(Name(b.node()));
   for (const auto &e : registry.select_nodes(enum_query)) type_enums_.emplace(Name(e.node()), GetNameString(Name(e.node())));
+  for (const auto &s : registry.select_nodes(vulkansc_types_query)) disabled_types_.emplace(Name(s.node()));
+  for (const auto &s : registry.select_nodes(disabled_types_query)) disabled_types_.emplace(Name(s.node()));
 
   ParseBeginExtensions();
 }
 
 // GENERATE STRUCTURES
-
-void Parser::SortStructures() {}
 
 std::string GetStructureType(std::string_view source_type) {
   constexpr std::string_view prefix = "VK_STRUCTURE_TYPE_";
@@ -290,8 +292,8 @@ void Parser::GenerateStructureFile() {
 constexpr std::string_view ENTER = "\n";
 
 auto get_enum_record = [](const EnumRecordData &record) {
-  return std::isdigit(record.class_name.front()) ? std::format("E_{} = {},", record.class_name, record.source_name)
-                                                 : std::format("  {} = {},", record.class_name, record.source_name);
+  return std::isdigit(record.class_name.front()) ? std::format("E_{} = {},\n", record.class_name, record.source_name)
+                                                 : std::format("  {} = {},\n", record.class_name, record.source_name);
 };
 
 // clang-format off
@@ -300,7 +302,7 @@ std::string GetEnumRecords(std::span<const EnumRecordData> records, std::string_
   auto records_view = records
     | std::views::filter(is_good_enum)
     | std::views::transform(get_enum_record)
-    | std::views::join_with(ENTER);
+    | std::views::join;
   return std::ranges::to<std::string>(records_view);
 }
 // clang-format on
@@ -309,7 +311,6 @@ void Parser::GenerateEnumRecordsFromExtensions(std::string &records_result, std:
   for (const auto &[extension_name, extension_data] : parsed_extensions_) {
     auto records_string = GetEnumRecords(extension_data.enum_records, enum_name);
     if (records_string.empty()) continue;
-    if (records_result.empty() == false) records_result += ENTER;
     if (auto enum_protected = protected_extensions_.find(extension_name); enum_protected != protected_extensions_.end()) {
       records_result += std::format(ifdef_template, enum_protected->second, records_string);
     } else {
@@ -322,7 +323,6 @@ void Parser::GenerateEnumRecordsFromFeatures(std::string &records_result, std::s
   for (const auto &[feature_name, feature_data] : parsed_features_) {
     auto records_string = GetEnumRecords(feature_data.enum_records, enum_name);
     if (records_string.empty()) continue;
-    if (records_result.empty() == false) records_result += ENTER;
     records_result += records_string;
   }
 }
@@ -331,7 +331,7 @@ void Parser::GenerateEnumFile() {
   namespace views = std::views;
   std::string result;
   for (auto &[enum_name, enum_data] : parsed_enums_) {
-    auto enum_records_view = enum_data.records | views::transform(get_enum_record) | views::join_with(ENTER);
+    auto enum_records_view = enum_data.records | views::transform(get_enum_record) | views::join;
     auto enum_records_string = std::ranges::to<std::string>(enum_records_view);
     GenerateEnumRecordsFromFeatures(enum_records_string, enum_name);
     GenerateEnumRecordsFromExtensions(enum_records_string, enum_name);
