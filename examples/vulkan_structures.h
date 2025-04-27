@@ -1,7 +1,7 @@
 #ifndef MY_VULKAN_HPP
 #define MY_VULKAN_HPP
 
-#include "vulkan_enums.h"
+#include "using.h"
 #include <array>
 #include <cstdint>
 
@@ -9,8 +9,8 @@ struct PhysicalDeviceShaderReplicatedCompositesFeaturesEXT {
 
   using native_type = VkPhysicalDeviceShaderReplicatedCompositesFeaturesEXT;
 
-  PhysicalDeviceShaderReplicatedCompositesFeaturesEXT(void *p_next = {}, VkBool32 shader_replicated_composites = {})
-    : p_next_(p_next), shader_replicated_composites_(shader_replicated_composites) {}
+  PhysicalDeviceShaderReplicatedCompositesFeaturesEXT(VkBool32 shader_replicated_composites = {}, void *p_next = {})
+    : shader_replicated_composites_(shader_replicated_composites), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -23,8 +23,8 @@ struct PhysicalDeviceImageAlignmentControlFeaturesMESA {
 
   using native_type = VkPhysicalDeviceImageAlignmentControlFeaturesMESA;
 
-  PhysicalDeviceImageAlignmentControlFeaturesMESA(void *p_next = {}, VkBool32 image_alignment_control = {})
-    : p_next_(p_next), image_alignment_control_(image_alignment_control) {}
+  PhysicalDeviceImageAlignmentControlFeaturesMESA(VkBool32 image_alignment_control = {}, void *p_next = {})
+    : image_alignment_control_(image_alignment_control), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -37,7 +37,7 @@ struct MemoryMapPlacedInfoEXT {
 
   using native_type = VkMemoryMapPlacedInfoEXT;
 
-  MemoryMapPlacedInfoEXT(const void *p_next = {}, void *p_placed_address = {}) : p_next_(p_next), p_placed_address_(p_placed_address) {}
+  MemoryMapPlacedInfoEXT(void *p_placed_address = {}, const void *p_next = {}) : p_placed_address_(p_placed_address), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -50,8 +50,8 @@ struct PhysicalDeviceDynamicRenderingLocalReadFeaturesKHR {
 
   using native_type = VkPhysicalDeviceDynamicRenderingLocalReadFeaturesKHR;
 
-  PhysicalDeviceDynamicRenderingLocalReadFeaturesKHR(void *p_next = {}, VkBool32 dynamic_rendering_local_read = {})
-    : p_next_(p_next), dynamic_rendering_local_read_(dynamic_rendering_local_read) {}
+  PhysicalDeviceDynamicRenderingLocalReadFeaturesKHR(VkBool32 dynamic_rendering_local_read = {}, void *p_next = {})
+    : dynamic_rendering_local_read_(dynamic_rendering_local_read), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -64,9 +64,9 @@ struct SemaphoreSubmitInfo {
 
   using native_type = VkSemaphoreSubmitInfo;
 
-  SemaphoreSubmitInfo(const void *p_next = {}, VkSemaphore semaphore = {}, uint64_t value = {}, VkPipelineStageFlags2 stage_mask = {},
-                      uint32_t device_index = {})
-    : p_next_(p_next), semaphore_(semaphore), value_(value), stage_mask_(stage_mask), device_index_(device_index) {}
+  SemaphoreSubmitInfo(uint32_t device_index = {}, VkSemaphore semaphore = {}, uint64_t value = {}, PipelineStageMask2 stage_mask = {},
+                      const void *p_next = {})
+    : device_index_(device_index), semaphore_(semaphore), value_(value), stage_mask_(stage_mask), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -74,7 +74,7 @@ struct SemaphoreSubmitInfo {
   const void *p_next_;
   VkSemaphore semaphore_;
   uint64_t value_;
-  VkPipelineStageFlags2 stage_mask_;
+  PipelineStageMask2 stage_mask_;
   uint32_t device_index_;
 };
 
@@ -82,9 +82,9 @@ struct RenderPassStripeSubmitInfoARM {
 
   using native_type = VkRenderPassStripeSubmitInfoARM;
 
-  RenderPassStripeSubmitInfoARM(const void *p_next = {}, uint32_t stripe_semaphore_info_count = {},
-                                const SemaphoreSubmitInfo *p_stripe_semaphore_infos = {})
-    : p_next_(p_next), stripe_semaphore_info_count_(stripe_semaphore_info_count), p_stripe_semaphore_infos_(p_stripe_semaphore_infos) {}
+  RenderPassStripeSubmitInfoARM(const SemaphoreSubmitInfo *p_stripe_semaphore_infos = {}, uint32_t stripe_semaphore_info_count = {},
+                                const void *p_next = {})
+    : p_stripe_semaphore_infos_(p_stripe_semaphore_infos), stripe_semaphore_info_count_(stripe_semaphore_info_count), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -134,7 +134,7 @@ struct RenderPassStripeInfoARM {
 
   using native_type = VkRenderPassStripeInfoARM;
 
-  RenderPassStripeInfoARM(const void *p_next = {}, Rect2D stripe_area = {}) : p_next_(p_next), stripe_area_(stripe_area) {}
+  RenderPassStripeInfoARM(Rect2D stripe_area = {}, const void *p_next = {}) : stripe_area_(stripe_area), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -147,8 +147,8 @@ struct RenderPassStripeBeginInfoARM {
 
   using native_type = VkRenderPassStripeBeginInfoARM;
 
-  RenderPassStripeBeginInfoARM(const void *p_next = {}, uint32_t stripe_info_count = {}, const RenderPassStripeInfoARM *p_stripe_infos = {})
-    : p_next_(p_next), stripe_info_count_(stripe_info_count), p_stripe_infos_(p_stripe_infos) {}
+  RenderPassStripeBeginInfoARM(const RenderPassStripeInfoARM *p_stripe_infos = {}, uint32_t stripe_info_count = {}, const void *p_next = {})
+    : p_stripe_infos_(p_stripe_infos), stripe_info_count_(stripe_info_count), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -162,8 +162,8 @@ struct PhysicalDeviceRelaxedLineRasterizationFeaturesIMG {
 
   using native_type = VkPhysicalDeviceRelaxedLineRasterizationFeaturesIMG;
 
-  PhysicalDeviceRelaxedLineRasterizationFeaturesIMG(void *p_next = {}, VkBool32 relaxed_line_rasterization = {})
-    : p_next_(p_next), relaxed_line_rasterization_(relaxed_line_rasterization) {}
+  PhysicalDeviceRelaxedLineRasterizationFeaturesIMG(VkBool32 relaxed_line_rasterization = {}, void *p_next = {})
+    : relaxed_line_rasterization_(relaxed_line_rasterization), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -176,23 +176,22 @@ struct PhysicalDeviceSchedulingControlsPropertiesARM {
 
   using native_type = VkPhysicalDeviceSchedulingControlsPropertiesARM;
 
-  PhysicalDeviceSchedulingControlsPropertiesARM(void *p_next = {},
-                                                VkPhysicalDeviceSchedulingControlsFlagsARM scheduling_controls_flags = {})
-    : p_next_(p_next), scheduling_controls_flags_(scheduling_controls_flags) {}
+  PhysicalDeviceSchedulingControlsPropertiesARM(PhysicalDeviceSchedulingControlsMask scheduling_controls_flags = {}, void *p_next = {})
+    : scheduling_controls_flags_(scheduling_controls_flags), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PHYSICAL_DEVICE_SCHEDULING_CONTROLS_PROPERTIES_ARM;
   void *p_next_;
-  VkPhysicalDeviceSchedulingControlsFlagsARM scheduling_controls_flags_;
+  PhysicalDeviceSchedulingControlsMask scheduling_controls_flags_;
 };
 
 struct PhysicalDeviceSchedulingControlsFeaturesARM {
 
   using native_type = VkPhysicalDeviceSchedulingControlsFeaturesARM;
 
-  PhysicalDeviceSchedulingControlsFeaturesARM(void *p_next = {}, VkBool32 scheduling_controls = {})
-    : p_next_(p_next), scheduling_controls_(scheduling_controls) {}
+  PhysicalDeviceSchedulingControlsFeaturesARM(VkBool32 scheduling_controls = {}, void *p_next = {})
+    : scheduling_controls_(scheduling_controls), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -217,8 +216,8 @@ struct PhysicalDeviceCudaKernelLaunchFeaturesNV {
 
   using native_type = VkPhysicalDeviceCudaKernelLaunchFeaturesNV;
 
-  PhysicalDeviceCudaKernelLaunchFeaturesNV(void *p_next = {}, VkBool32 cuda_kernel_launch_features = {})
-    : p_next_(p_next), cuda_kernel_launch_features_(cuda_kernel_launch_features) {}
+  PhysicalDeviceCudaKernelLaunchFeaturesNV(VkBool32 cuda_kernel_launch_features = {}, void *p_next = {})
+    : cuda_kernel_launch_features_(cuda_kernel_launch_features), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -231,8 +230,8 @@ struct LatencySurfaceCapabilitiesNV {
 
   using native_type = VkLatencySurfaceCapabilitiesNV;
 
-  LatencySurfaceCapabilitiesNV(const void *p_next = {}, uint32_t present_mode_count = {}, PresentMode *p_present_modes = {})
-    : p_next_(p_next), present_mode_count_(present_mode_count), p_present_modes_(p_present_modes) {}
+  LatencySurfaceCapabilitiesNV(PresentMode *p_present_modes = {}, uint32_t present_mode_count = {}, const void *p_next = {})
+    : p_present_modes_(p_present_modes), present_mode_count_(present_mode_count), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -246,8 +245,8 @@ struct SwapchainLatencyCreateInfoNV {
 
   using native_type = VkSwapchainLatencyCreateInfoNV;
 
-  SwapchainLatencyCreateInfoNV(const void *p_next = {}, VkBool32 latency_mode_enable = {})
-    : p_next_(p_next), latency_mode_enable_(latency_mode_enable) {}
+  SwapchainLatencyCreateInfoNV(VkBool32 latency_mode_enable = {}, const void *p_next = {})
+    : latency_mode_enable_(latency_mode_enable), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -284,8 +283,8 @@ struct LatencySleepInfoNV {
 
   using native_type = VkLatencySleepInfoNV;
 
-  LatencySleepInfoNV(const void *p_next = {}, VkSemaphore signal_semaphore = {}, uint64_t value = {})
-    : p_next_(p_next), signal_semaphore_(signal_semaphore), value_(value) {}
+  LatencySleepInfoNV(uint64_t value = {}, VkSemaphore signal_semaphore = {}, const void *p_next = {})
+    : value_(value), signal_semaphore_(signal_semaphore), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -299,10 +298,10 @@ struct LatencySleepModeInfoNV {
 
   using native_type = VkLatencySleepModeInfoNV;
 
-  LatencySleepModeInfoNV(const void *p_next = {}, VkBool32 low_latency_mode = {}, VkBool32 low_latency_boost = {},
-                         uint32_t minimum_interval_us = {})
-    : p_next_(p_next), low_latency_mode_(low_latency_mode), low_latency_boost_(low_latency_boost),
-      minimum_interval_us_(minimum_interval_us) {}
+  LatencySleepModeInfoNV(uint32_t minimum_interval_us = {}, VkBool32 low_latency_mode = {}, VkBool32 low_latency_boost = {},
+                         const void *p_next = {})
+    : minimum_interval_us_(minimum_interval_us), low_latency_mode_(low_latency_mode), low_latency_boost_(low_latency_boost),
+      p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -312,29 +311,13 @@ struct LatencySleepModeInfoNV {
   VkBool32 low_latency_boost_;
   uint32_t minimum_interval_us_;
 };
-#ifdef VK_USE_PLATFORM_ANDROID_KHR
-
-struct PhysicalDeviceExternalFormatResolveFeaturesANDROID {
-
-  using native_type = VkPhysicalDeviceExternalFormatResolveFeaturesANDROID;
-
-  PhysicalDeviceExternalFormatResolveFeaturesANDROID(void *p_next = {}, VkBool32 external_format_resolve = {})
-    : p_next_(p_next), external_format_resolve_(external_format_resolve) {}
-
-  auto *get() { return reinterpret_cast<native_type *>(this); }
-
-  StructureType s_type_ = StructureType::PHYSICAL_DEVICE_EXTERNAL_FORMAT_RESOLVE_FEATURES_ANDROID;
-  void *p_next_;
-  VkBool32 external_format_resolve_;
-};
-#endif
 
 struct PhysicalDeviceCubicWeightsFeaturesQCOM {
 
   using native_type = VkPhysicalDeviceCubicWeightsFeaturesQCOM;
 
-  PhysicalDeviceCubicWeightsFeaturesQCOM(void *p_next = {}, VkBool32 selectable_cubic_weights = {})
-    : p_next_(p_next), selectable_cubic_weights_(selectable_cubic_weights) {}
+  PhysicalDeviceCubicWeightsFeaturesQCOM(VkBool32 selectable_cubic_weights = {}, void *p_next = {})
+    : selectable_cubic_weights_(selectable_cubic_weights), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -347,8 +330,8 @@ struct SamplerYcbcrConversionYcbcrDegammaCreateInfoQCOM {
 
   using native_type = VkSamplerYcbcrConversionYcbcrDegammaCreateInfoQCOM;
 
-  SamplerYcbcrConversionYcbcrDegammaCreateInfoQCOM(void *p_next = {}, VkBool32 enable_ydegamma = {}, VkBool32 enable_cb_cr_degamma = {})
-    : p_next_(p_next), enable_ydegamma_(enable_ydegamma), enable_cb_cr_degamma_(enable_cb_cr_degamma) {}
+  SamplerYcbcrConversionYcbcrDegammaCreateInfoQCOM(VkBool32 enable_cb_cr_degamma = {}, VkBool32 enable_ydegamma = {}, void *p_next = {})
+    : enable_cb_cr_degamma_(enable_cb_cr_degamma), enable_ydegamma_(enable_ydegamma), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -362,15 +345,15 @@ struct BindDescriptorBufferEmbeddedSamplersInfoEXT {
 
   using native_type = VkBindDescriptorBufferEmbeddedSamplersInfoEXT;
 
-  BindDescriptorBufferEmbeddedSamplersInfoEXT(const void *p_next = {}, VkShaderStageFlags stage_flags = {}, VkPipelineLayout layout = {},
-                                              uint32_t set = {})
-    : p_next_(p_next), stage_flags_(stage_flags), layout_(layout), set_(set) {}
+  BindDescriptorBufferEmbeddedSamplersInfoEXT(uint32_t set = {}, ShaderStageMask stage_flags = {}, VkPipelineLayout layout = {},
+                                              const void *p_next = {})
+    : set_(set), stage_flags_(stage_flags), layout_(layout), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::BIND_DESCRIPTOR_BUFFER_EMBEDDED_SAMPLERS_INFO_EXT;
   const void *p_next_;
-  VkShaderStageFlags stage_flags_;
+  ShaderStageMask stage_flags_;
   VkPipelineLayout layout_;
   uint32_t set_;
 };
@@ -379,16 +362,16 @@ struct PushConstantsInfoKHR {
 
   using native_type = VkPushConstantsInfoKHR;
 
-  PushConstantsInfoKHR(const void *p_next = {}, VkPipelineLayout layout = {}, VkShaderStageFlags stage_flags = {}, uint32_t offset = {},
-                       uint32_t size = {}, const void *p_values = {})
-    : p_next_(p_next), layout_(layout), stage_flags_(stage_flags), offset_(offset), size_(size), p_values_(p_values) {}
+  PushConstantsInfoKHR(const void *p_values = {}, VkPipelineLayout layout = {}, ShaderStageMask stage_flags = {}, uint32_t offset = {},
+                       uint32_t size = {}, const void *p_next = {})
+    : p_values_(p_values), layout_(layout), stage_flags_(stage_flags), offset_(offset), size_(size), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PUSH_CONSTANTS_INFO_KHR;
   const void *p_next_;
   VkPipelineLayout layout_;
-  VkShaderStageFlags stage_flags_;
+  ShaderStageMask stage_flags_;
   uint32_t offset_;
   uint32_t size_;
   const void *p_values_;
@@ -398,7 +381,7 @@ struct BindMemoryStatusKHR {
 
   using native_type = VkBindMemoryStatusKHR;
 
-  BindMemoryStatusKHR(const void *p_next = {}, Result *p_result = {}) : p_next_(p_next), p_result_(p_result) {}
+  BindMemoryStatusKHR(Result *p_result = {}, const void *p_next = {}) : p_result_(p_result), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -406,21 +389,6 @@ struct BindMemoryStatusKHR {
   const void *p_next_;
   Result *p_result_;
 };
-#ifdef VK_ENABLE_BETA_EXTENSIONS
-
-struct ExecutionGraphPipelineScratchSizeAMDX {
-
-  using native_type = VkExecutionGraphPipelineScratchSizeAMDX;
-
-  ExecutionGraphPipelineScratchSizeAMDX(void *p_next = {}, VkDeviceSize size = {}) : p_next_(p_next), size_(size) {}
-
-  auto *get() { return reinterpret_cast<native_type *>(this); }
-
-  StructureType s_type_ = StructureType::EXECUTION_GRAPH_PIPELINE_SCRATCH_SIZE_AMDX;
-  void *p_next_;
-  VkDeviceSize size_;
-};
-#endif
 
 struct SpecializationMapEntry {
 
@@ -456,15 +424,15 @@ struct PipelineShaderStageCreateInfo {
 
   using native_type = VkPipelineShaderStageCreateInfo;
 
-  PipelineShaderStageCreateInfo(const void *p_next = {}, VkPipelineShaderStageCreateFlags flags = {}, ShaderStageMaskBit stage = {},
-                                VkShaderModule module = {}, const char *p_name = {}, const SpecializationInfo *p_specialization_info = {})
-    : p_next_(p_next), flags_(flags), stage_(stage), module_(module), p_name_(p_name), p_specialization_info_(p_specialization_info) {}
+  PipelineShaderStageCreateInfo(const SpecializationInfo *p_specialization_info = {}, PipelineShaderStageCreateMask flags = {},
+                                ShaderStageMaskBit stage = {}, VkShaderModule module = {}, const char *p_name = {}, const void *p_next = {})
+    : p_specialization_info_(p_specialization_info), flags_(flags), stage_(stage), module_(module), p_name_(p_name), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PIPELINE_SHADER_STAGE_CREATE_INFO;
   const void *p_next_;
-  VkPipelineShaderStageCreateFlags flags_;
+  PipelineShaderStageCreateMask flags_;
   ShaderStageMaskBit stage_;
   VkShaderModule module_;
   const char *p_name_;
@@ -475,8 +443,8 @@ struct PipelineLibraryCreateInfoKHR {
 
   using native_type = VkPipelineLibraryCreateInfoKHR;
 
-  PipelineLibraryCreateInfoKHR(const void *p_next = {}, uint32_t library_count = {}, const VkPipeline *p_libraries = {})
-    : p_next_(p_next), library_count_(library_count), p_libraries_(p_libraries) {}
+  PipelineLibraryCreateInfoKHR(const VkPipeline *p_libraries = {}, uint32_t library_count = {}, const void *p_next = {})
+    : p_libraries_(p_libraries), library_count_(library_count), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -485,48 +453,23 @@ struct PipelineLibraryCreateInfoKHR {
   uint32_t library_count_;
   const VkPipeline *p_libraries_;
 };
-#ifdef VK_ENABLE_BETA_EXTENSIONS
-
-struct ExecutionGraphPipelineCreateInfoAMDX {
-
-  using native_type = VkExecutionGraphPipelineCreateInfoAMDX;
-
-  ExecutionGraphPipelineCreateInfoAMDX(const void *p_next = {}, VkPipelineCreateFlags flags = {}, uint32_t stage_count = {},
-                                       const PipelineShaderStageCreateInfo *p_stages = {},
-                                       const PipelineLibraryCreateInfoKHR *p_library_info = {}, VkPipelineLayout layout = {},
-                                       VkPipeline base_pipeline_handle = {}, int32_t base_pipeline_index = {})
-    : p_next_(p_next), flags_(flags), stage_count_(stage_count), p_stages_(p_stages), p_library_info_(p_library_info), layout_(layout),
-      base_pipeline_handle_(base_pipeline_handle), base_pipeline_index_(base_pipeline_index) {}
-
-  auto *get() { return reinterpret_cast<native_type *>(this); }
-
-  StructureType s_type_ = StructureType::EXECUTION_GRAPH_PIPELINE_CREATE_INFO_AMDX;
-  const void *p_next_;
-  VkPipelineCreateFlags flags_;
-  uint32_t stage_count_;
-  const PipelineShaderStageCreateInfo *p_stages_;
-  const PipelineLibraryCreateInfoKHR *p_library_info_;
-  VkPipelineLayout layout_;
-  VkPipeline base_pipeline_handle_;
-  int32_t base_pipeline_index_;
-};
-#endif
 
 struct BindDescriptorSetsInfoKHR {
 
   using native_type = VkBindDescriptorSetsInfoKHR;
 
-  BindDescriptorSetsInfoKHR(const void *p_next = {}, VkShaderStageFlags stage_flags = {}, VkPipelineLayout layout = {},
+  BindDescriptorSetsInfoKHR(const uint32_t *p_dynamic_offsets = {}, ShaderStageMask stage_flags = {}, VkPipelineLayout layout = {},
                             uint32_t first_set = {}, uint32_t descriptor_set_count = {}, const VkDescriptorSet *p_descriptor_sets = {},
-                            uint32_t dynamic_offset_count = {}, const uint32_t *p_dynamic_offsets = {})
-    : p_next_(p_next), stage_flags_(stage_flags), layout_(layout), first_set_(first_set), descriptor_set_count_(descriptor_set_count),
-      p_descriptor_sets_(p_descriptor_sets), dynamic_offset_count_(dynamic_offset_count), p_dynamic_offsets_(p_dynamic_offsets) {}
+                            uint32_t dynamic_offset_count = {}, const void *p_next = {})
+    : p_dynamic_offsets_(p_dynamic_offsets), stage_flags_(stage_flags), layout_(layout), first_set_(first_set),
+      descriptor_set_count_(descriptor_set_count), p_descriptor_sets_(p_descriptor_sets), dynamic_offset_count_(dynamic_offset_count),
+      p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::BIND_DESCRIPTOR_SETS_INFO_KHR;
   const void *p_next_;
-  VkShaderStageFlags stage_flags_;
+  ShaderStageMask stage_flags_;
   VkPipelineLayout layout_;
   uint32_t first_set_;
   uint32_t descriptor_set_count_;
@@ -534,46 +477,17 @@ struct BindDescriptorSetsInfoKHR {
   uint32_t dynamic_offset_count_;
   const uint32_t *p_dynamic_offsets_;
 };
-#ifdef VK_USE_PLATFORM_SCREEN_QNX
-
-struct ScreenBufferPropertiesQNX {
-
-  using native_type = VkScreenBufferPropertiesQNX;
-
-  auto *get() { return reinterpret_cast<native_type *>(this); }
-
-  StructureType s_type_ = StructureType::SCREEN_BUFFER_PROPERTIES_QNX;
-  void *p_next_;
-  VkDeviceSize allocation_size_;
-  uint32_t memory_type_bits_;
-};
-#endif
-#ifdef VK_USE_PLATFORM_SCREEN_QNX
-
-struct ImportScreenBufferInfoQNX {
-
-  using native_type = VkImportScreenBufferInfoQNX;
-
-  ImportScreenBufferInfoQNX(const void *p_next = {}, struct _screen_buffer *buffer = {}) : p_next_(p_next), buffer_(buffer) {}
-
-  auto *get() { return reinterpret_cast<native_type *>(this); }
-
-  StructureType s_type_ = StructureType::IMPORT_SCREEN_BUFFER_INFO_QNX;
-  const void *p_next_;
-  struct _screen_buffer *buffer_;
-};
-#endif
 
 struct PhysicalDeviceShaderTileImageFeaturesEXT {
 
   using native_type = VkPhysicalDeviceShaderTileImageFeaturesEXT;
 
-  PhysicalDeviceShaderTileImageFeaturesEXT(void *p_next = {}, VkBool32 shader_tile_image_color_read_access = {},
-                                           VkBool32 shader_tile_image_depth_read_access = {},
-                                           VkBool32 shader_tile_image_stencil_read_access = {})
-    : p_next_(p_next), shader_tile_image_color_read_access_(shader_tile_image_color_read_access),
-      shader_tile_image_depth_read_access_(shader_tile_image_depth_read_access),
-      shader_tile_image_stencil_read_access_(shader_tile_image_stencil_read_access) {}
+  PhysicalDeviceShaderTileImageFeaturesEXT(VkBool32 shader_tile_image_stencil_read_access = {},
+                                           VkBool32 shader_tile_image_color_read_access = {},
+                                           VkBool32 shader_tile_image_depth_read_access = {}, void *p_next = {})
+    : shader_tile_image_stencil_read_access_(shader_tile_image_stencil_read_access),
+      shader_tile_image_color_read_access_(shader_tile_image_color_read_access),
+      shader_tile_image_depth_read_access_(shader_tile_image_depth_read_access), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -588,12 +502,12 @@ struct PushConstantRange {
 
   using native_type = VkPushConstantRange;
 
-  PushConstantRange(VkShaderStageFlags stage_flags = {}, uint32_t offset = {}, uint32_t size = {})
+  PushConstantRange(ShaderStageMask stage_flags = {}, uint32_t offset = {}, uint32_t size = {})
     : stage_flags_(stage_flags), offset_(offset), size_(size) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
-  VkShaderStageFlags stage_flags_;
+  ShaderStageMask stage_flags_;
   uint32_t offset_;
   uint32_t size_;
 };
@@ -602,23 +516,22 @@ struct ShaderCreateInfoEXT {
 
   using native_type = VkShaderCreateInfoEXT;
 
-  ShaderCreateInfoEXT(const void *p_next = {}, VkShaderCreateFlagsEXT flags = {}, ShaderStageMaskBit stage = {},
-                      VkShaderStageFlags next_stage = {}, ShaderCodeType code_type = {}, size_t code_size = {}, const void *p_code = {},
+  ShaderCreateInfoEXT(const SpecializationInfo *p_specialization_info = {}, ShaderCreateMask flags = {}, ShaderStageMaskBit stage = {},
+                      ShaderStageMask next_stage = {}, ShaderCodeType code_type = {}, size_t code_size = {}, const void *p_code = {},
                       const char *p_name = {}, uint32_t set_layout_count = {}, const VkDescriptorSetLayout *p_set_layouts = {},
                       uint32_t push_constant_range_count = {}, const PushConstantRange *p_push_constant_ranges = {},
-                      const SpecializationInfo *p_specialization_info = {})
-    : p_next_(p_next), flags_(flags), stage_(stage), next_stage_(next_stage), code_type_(code_type), code_size_(code_size), p_code_(p_code),
-      p_name_(p_name), set_layout_count_(set_layout_count), p_set_layouts_(p_set_layouts),
-      push_constant_range_count_(push_constant_range_count), p_push_constant_ranges_(p_push_constant_ranges),
-      p_specialization_info_(p_specialization_info) {}
+                      const void *p_next = {})
+    : p_specialization_info_(p_specialization_info), flags_(flags), stage_(stage), next_stage_(next_stage), code_type_(code_type),
+      code_size_(code_size), p_code_(p_code), p_name_(p_name), set_layout_count_(set_layout_count), p_set_layouts_(p_set_layouts),
+      push_constant_range_count_(push_constant_range_count), p_push_constant_ranges_(p_push_constant_ranges), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::SHADER_CREATE_INFO_EXT;
   const void *p_next_;
-  VkShaderCreateFlagsEXT flags_;
+  ShaderCreateMask flags_;
   ShaderStageMaskBit stage_;
-  VkShaderStageFlags next_stage_;
+  ShaderStageMask next_stage_;
   ShaderCodeType code_type_;
   size_t code_size_;
   const void *p_code_;
@@ -634,7 +547,7 @@ struct PhysicalDeviceShaderObjectFeaturesEXT {
 
   using native_type = VkPhysicalDeviceShaderObjectFeaturesEXT;
 
-  PhysicalDeviceShaderObjectFeaturesEXT(void *p_next = {}, VkBool32 shader_object = {}) : p_next_(p_next), shader_object_(shader_object) {}
+  PhysicalDeviceShaderObjectFeaturesEXT(VkBool32 shader_object = {}, void *p_next = {}) : shader_object_(shader_object), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -647,15 +560,15 @@ struct MemoryMapInfoKHR {
 
   using native_type = VkMemoryMapInfoKHR;
 
-  MemoryMapInfoKHR(const void *p_next = {}, VkMemoryMapFlags flags = {}, VkDeviceMemory memory = {}, VkDeviceSize offset = {},
-                   VkDeviceSize size = {})
-    : p_next_(p_next), flags_(flags), memory_(memory), offset_(offset), size_(size) {}
+  MemoryMapInfoKHR(VkDeviceSize size = {}, MemoryMapMask flags = {}, VkDeviceMemory memory = {}, VkDeviceSize offset = {},
+                   const void *p_next = {})
+    : size_(size), flags_(flags), memory_(memory), offset_(offset), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::MEMORY_MAP_INFO_KHR;
   const void *p_next_;
-  VkMemoryMapFlags flags_;
+  MemoryMapMask flags_;
   VkDeviceMemory memory_;
   VkDeviceSize offset_;
   VkDeviceSize size_;
@@ -665,8 +578,8 @@ struct QueryLowLatencySupportNV {
 
   using native_type = VkQueryLowLatencySupportNV;
 
-  QueryLowLatencySupportNV(const void *p_next = {}, void *p_queried_low_latency_data = {})
-    : p_next_(p_next), p_queried_low_latency_data_(p_queried_low_latency_data) {}
+  QueryLowLatencySupportNV(void *p_queried_low_latency_data = {}, const void *p_next = {})
+    : p_queried_low_latency_data_(p_queried_low_latency_data), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -692,8 +605,8 @@ struct PhysicalDeviceRayTracingPositionFetchFeaturesKHR {
 
   using native_type = VkPhysicalDeviceRayTracingPositionFetchFeaturesKHR;
 
-  PhysicalDeviceRayTracingPositionFetchFeaturesKHR(void *p_next = {}, VkBool32 ray_tracing_position_fetch = {})
-    : p_next_(p_next), ray_tracing_position_fetch_(ray_tracing_position_fetch) {}
+  PhysicalDeviceRayTracingPositionFetchFeaturesKHR(VkBool32 ray_tracing_position_fetch = {}, void *p_next = {})
+    : ray_tracing_position_fetch_(ray_tracing_position_fetch), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -706,15 +619,15 @@ struct DirectDriverLoadingInfoLUNARG {
 
   using native_type = VkDirectDriverLoadingInfoLUNARG;
 
-  DirectDriverLoadingInfoLUNARG(void *p_next = {}, VkDirectDriverLoadingFlagsLUNARG flags = {},
-                                PFN_vkGetInstanceProcAddrLUNARG pfn_get_instance_proc_addr = {})
-    : p_next_(p_next), flags_(flags), pfn_get_instance_proc_addr_(pfn_get_instance_proc_addr) {}
+  DirectDriverLoadingInfoLUNARG(PFN_vkGetInstanceProcAddrLUNARG pfn_get_instance_proc_addr = {}, DirectDriverLoadingMask flags = {},
+                                void *p_next = {})
+    : pfn_get_instance_proc_addr_(pfn_get_instance_proc_addr), flags_(flags), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::DIRECT_DRIVER_LOADING_INFO_LUNARG;
   void *p_next_;
-  VkDirectDriverLoadingFlagsLUNARG flags_;
+  DirectDriverLoadingMask flags_;
   PFN_vkGetInstanceProcAddrLUNARG pfn_get_instance_proc_addr_;
 };
 
@@ -722,9 +635,9 @@ struct DirectDriverLoadingListLUNARG {
 
   using native_type = VkDirectDriverLoadingListLUNARG;
 
-  DirectDriverLoadingListLUNARG(const void *p_next = {}, DirectDriverLoadingMode mode = {}, uint32_t driver_count = {},
-                                const DirectDriverLoadingInfoLUNARG *p_drivers = {})
-    : p_next_(p_next), mode_(mode), driver_count_(driver_count), p_drivers_(p_drivers) {}
+  DirectDriverLoadingListLUNARG(const DirectDriverLoadingInfoLUNARG *p_drivers = {}, DirectDriverLoadingMode mode = {},
+                                uint32_t driver_count = {}, const void *p_next = {})
+    : p_drivers_(p_drivers), mode_(mode), driver_count_(driver_count), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -739,8 +652,8 @@ struct PhysicalDeviceExtendedSparseAddressSpaceFeaturesNV {
 
   using native_type = VkPhysicalDeviceExtendedSparseAddressSpaceFeaturesNV;
 
-  PhysicalDeviceExtendedSparseAddressSpaceFeaturesNV(void *p_next = {}, VkBool32 extended_sparse_address_space = {})
-    : p_next_(p_next), extended_sparse_address_space_(extended_sparse_address_space) {}
+  PhysicalDeviceExtendedSparseAddressSpaceFeaturesNV(VkBool32 extended_sparse_address_space = {}, void *p_next = {})
+    : extended_sparse_address_space_(extended_sparse_address_space), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -753,25 +666,25 @@ struct SwapchainPresentScalingCreateInfoEXT {
 
   using native_type = VkSwapchainPresentScalingCreateInfoEXT;
 
-  SwapchainPresentScalingCreateInfoEXT(const void *p_next = {}, VkPresentScalingFlagsEXT scaling_behavior = {},
-                                       VkPresentGravityFlagsEXT present_gravity_x = {}, VkPresentGravityFlagsEXT present_gravity_y = {})
-    : p_next_(p_next), scaling_behavior_(scaling_behavior), present_gravity_x_(present_gravity_x), present_gravity_y_(present_gravity_y) {}
+  SwapchainPresentScalingCreateInfoEXT(PresentGravityMask present_gravity_y = {}, PresentScalingMask scaling_behavior = {},
+                                       PresentGravityMask present_gravity_x = {}, const void *p_next = {})
+    : present_gravity_y_(present_gravity_y), scaling_behavior_(scaling_behavior), present_gravity_x_(present_gravity_x), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::SWAPCHAIN_PRESENT_SCALING_CREATE_INFO_EXT;
   const void *p_next_;
-  VkPresentScalingFlagsEXT scaling_behavior_;
-  VkPresentGravityFlagsEXT present_gravity_x_;
-  VkPresentGravityFlagsEXT present_gravity_y_;
+  PresentScalingMask scaling_behavior_;
+  PresentGravityMask present_gravity_x_;
+  PresentGravityMask present_gravity_y_;
 };
 
 struct SwapchainPresentModeInfoEXT {
 
   using native_type = VkSwapchainPresentModeInfoEXT;
 
-  SwapchainPresentModeInfoEXT(const void *p_next = {}, uint32_t swapchain_count = {}, const PresentMode *p_present_modes = {})
-    : p_next_(p_next), swapchain_count_(swapchain_count), p_present_modes_(p_present_modes) {}
+  SwapchainPresentModeInfoEXT(const PresentMode *p_present_modes = {}, uint32_t swapchain_count = {}, const void *p_next = {})
+    : p_present_modes_(p_present_modes), swapchain_count_(swapchain_count), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -796,8 +709,8 @@ struct SurfacePresentModeCompatibilityEXT {
 
   using native_type = VkSurfacePresentModeCompatibilityEXT;
 
-  SurfacePresentModeCompatibilityEXT(void *p_next = {}, uint32_t present_mode_count = {}, PresentMode *p_present_modes = {})
-    : p_next_(p_next), present_mode_count_(present_mode_count), p_present_modes_(p_present_modes) {}
+  SurfacePresentModeCompatibilityEXT(PresentMode *p_present_modes = {}, uint32_t present_mode_count = {}, void *p_next = {})
+    : p_present_modes_(p_present_modes), present_mode_count_(present_mode_count), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -815,9 +728,9 @@ struct SurfacePresentScalingCapabilitiesEXT {
 
   StructureType s_type_ = StructureType::SURFACE_PRESENT_SCALING_CAPABILITIES_EXT;
   void *p_next_;
-  VkPresentScalingFlagsEXT supported_present_scaling_;
-  VkPresentGravityFlagsEXT supported_present_gravity_x_;
-  VkPresentGravityFlagsEXT supported_present_gravity_y_;
+  PresentScalingMask supported_present_scaling_;
+  PresentGravityMask supported_present_gravity_x_;
+  PresentGravityMask supported_present_gravity_y_;
   Extent2D min_scaled_image_extent_;
   Extent2D max_scaled_image_extent_;
 };
@@ -826,7 +739,7 @@ struct SurfacePresentModeEXT {
 
   using native_type = VkSurfacePresentModeEXT;
 
-  SurfacePresentModeEXT(void *p_next = {}, PresentMode present_mode = {}) : p_next_(p_next), present_mode_(present_mode) {}
+  SurfacePresentModeEXT(PresentMode present_mode = {}, void *p_next = {}) : present_mode_(present_mode), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -839,8 +752,8 @@ struct PhysicalDeviceDynamicRenderingUnusedAttachmentsFeaturesEXT {
 
   using native_type = VkPhysicalDeviceDynamicRenderingUnusedAttachmentsFeaturesEXT;
 
-  PhysicalDeviceDynamicRenderingUnusedAttachmentsFeaturesEXT(void *p_next = {}, VkBool32 dynamic_rendering_unused_attachments = {})
-    : p_next_(p_next), dynamic_rendering_unused_attachments_(dynamic_rendering_unused_attachments) {}
+  PhysicalDeviceDynamicRenderingUnusedAttachmentsFeaturesEXT(VkBool32 dynamic_rendering_unused_attachments = {}, void *p_next = {})
+    : dynamic_rendering_unused_attachments_(dynamic_rendering_unused_attachments), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -853,8 +766,8 @@ struct PhysicalDeviceFrameBoundaryFeaturesEXT {
 
   using native_type = VkPhysicalDeviceFrameBoundaryFeaturesEXT;
 
-  PhysicalDeviceFrameBoundaryFeaturesEXT(void *p_next = {}, VkBool32 frame_boundary = {})
-    : p_next_(p_next), frame_boundary_(frame_boundary) {}
+  PhysicalDeviceFrameBoundaryFeaturesEXT(VkBool32 frame_boundary = {}, void *p_next = {})
+    : frame_boundary_(frame_boundary), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -867,8 +780,8 @@ struct PhysicalDeviceShaderCoreBuiltinsFeaturesARM {
 
   using native_type = VkPhysicalDeviceShaderCoreBuiltinsFeaturesARM;
 
-  PhysicalDeviceShaderCoreBuiltinsFeaturesARM(void *p_next = {}, VkBool32 shader_core_builtins = {})
-    : p_next_(p_next), shader_core_builtins_(shader_core_builtins) {}
+  PhysicalDeviceShaderCoreBuiltinsFeaturesARM(VkBool32 shader_core_builtins = {}, void *p_next = {})
+    : shader_core_builtins_(shader_core_builtins), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -895,7 +808,7 @@ struct DecompressMemoryRegionNV {
   using native_type = VkDecompressMemoryRegionNV;
 
   DecompressMemoryRegionNV(VkDeviceAddress src_address = {}, VkDeviceAddress dst_address = {}, VkDeviceSize compressed_size = {},
-                           VkDeviceSize decompressed_size = {}, VkMemoryDecompressionMethodFlagsNV decompression_method = {})
+                           VkDeviceSize decompressed_size = {}, MemoryDecompressionMethodMask decompression_method = {})
     : src_address_(src_address), dst_address_(dst_address), compressed_size_(compressed_size), decompressed_size_(decompressed_size),
       decompression_method_(decompression_method) {}
 
@@ -905,15 +818,15 @@ struct DecompressMemoryRegionNV {
   VkDeviceAddress dst_address_;
   VkDeviceSize compressed_size_;
   VkDeviceSize decompressed_size_;
-  VkMemoryDecompressionMethodFlagsNV decompression_method_;
+  MemoryDecompressionMethodMask decompression_method_;
 };
 
 struct PhysicalDevicePipelineLibraryGroupHandlesFeaturesEXT {
 
   using native_type = VkPhysicalDevicePipelineLibraryGroupHandlesFeaturesEXT;
 
-  PhysicalDevicePipelineLibraryGroupHandlesFeaturesEXT(void *p_next = {}, VkBool32 pipeline_library_group_handles = {})
-    : p_next_(p_next), pipeline_library_group_handles_(pipeline_library_group_handles) {}
+  PhysicalDevicePipelineLibraryGroupHandlesFeaturesEXT(VkBool32 pipeline_library_group_handles = {}, void *p_next = {})
+    : pipeline_library_group_handles_(pipeline_library_group_handles), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -985,13 +898,13 @@ struct OpticalFlowSessionCreateInfoNV {
 
   using native_type = VkOpticalFlowSessionCreateInfoNV;
 
-  OpticalFlowSessionCreateInfoNV(void *p_next = {}, uint32_t width = {}, uint32_t height = {}, Format image_format = {},
-                                 Format flow_vector_format = {}, Format cost_format = {},
-                                 VkOpticalFlowGridSizeFlagsNV output_grid_size = {}, VkOpticalFlowGridSizeFlagsNV hint_grid_size = {},
-                                 OpticalFlowPerformanceLevel performance_level = {}, VkOpticalFlowSessionCreateFlagsNV flags = {})
-    : p_next_(p_next), width_(width), height_(height), image_format_(image_format), flow_vector_format_(flow_vector_format),
+  OpticalFlowSessionCreateInfoNV(OpticalFlowSessionCreateMask flags = {}, uint32_t width = {}, uint32_t height = {},
+                                 Format image_format = {}, Format flow_vector_format = {}, Format cost_format = {},
+                                 OpticalFlowGridSizeMask output_grid_size = {}, OpticalFlowGridSizeMask hint_grid_size = {},
+                                 OpticalFlowPerformanceLevel performance_level = {}, void *p_next = {})
+    : flags_(flags), width_(width), height_(height), image_format_(image_format), flow_vector_format_(flow_vector_format),
       cost_format_(cost_format), output_grid_size_(output_grid_size), hint_grid_size_(hint_grid_size),
-      performance_level_(performance_level), flags_(flags) {}
+      performance_level_(performance_level), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -1002,10 +915,10 @@ struct OpticalFlowSessionCreateInfoNV {
   Format image_format_;
   Format flow_vector_format_;
   Format cost_format_;
-  VkOpticalFlowGridSizeFlagsNV output_grid_size_;
-  VkOpticalFlowGridSizeFlagsNV hint_grid_size_;
+  OpticalFlowGridSizeMask output_grid_size_;
+  OpticalFlowGridSizeMask hint_grid_size_;
   OpticalFlowPerformanceLevel performance_level_;
-  VkOpticalFlowSessionCreateFlagsNV flags_;
+  OpticalFlowSessionCreateMask flags_;
 };
 
 struct OpticalFlowImageFormatPropertiesNV {
@@ -1023,21 +936,21 @@ struct OpticalFlowImageFormatInfoNV {
 
   using native_type = VkOpticalFlowImageFormatInfoNV;
 
-  OpticalFlowImageFormatInfoNV(const void *p_next = {}, VkOpticalFlowUsageFlagsNV usage = {}) : p_next_(p_next), usage_(usage) {}
+  OpticalFlowImageFormatInfoNV(OpticalFlowUsageMask usage = {}, const void *p_next = {}) : usage_(usage), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::OPTICAL_FLOW_IMAGE_FORMAT_INFO_NV;
   const void *p_next_;
-  VkOpticalFlowUsageFlagsNV usage_;
+  OpticalFlowUsageMask usage_;
 };
 
 struct PhysicalDeviceAddressBindingReportFeaturesEXT {
 
   using native_type = VkPhysicalDeviceAddressBindingReportFeaturesEXT;
 
-  PhysicalDeviceAddressBindingReportFeaturesEXT(void *p_next = {}, VkBool32 report_address_binding = {})
-    : p_next_(p_next), report_address_binding_(report_address_binding) {}
+  PhysicalDeviceAddressBindingReportFeaturesEXT(VkBool32 report_address_binding = {}, void *p_next = {})
+    : report_address_binding_(report_address_binding), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -1050,8 +963,8 @@ struct PhysicalDeviceDepthClampZeroOneFeaturesEXT {
 
   using native_type = VkPhysicalDeviceDepthClampZeroOneFeaturesEXT;
 
-  PhysicalDeviceDepthClampZeroOneFeaturesEXT(void *p_next = {}, VkBool32 depth_clamp_zero_one = {})
-    : p_next_(p_next), depth_clamp_zero_one_(depth_clamp_zero_one) {}
+  PhysicalDeviceDepthClampZeroOneFeaturesEXT(VkBool32 depth_clamp_zero_one = {}, void *p_next = {})
+    : depth_clamp_zero_one_(depth_clamp_zero_one), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -1064,8 +977,8 @@ struct PhysicalDeviceAttachmentFeedbackLoopLayoutFeaturesEXT {
 
   using native_type = VkPhysicalDeviceAttachmentFeedbackLoopLayoutFeaturesEXT;
 
-  PhysicalDeviceAttachmentFeedbackLoopLayoutFeaturesEXT(void *p_next = {}, VkBool32 attachment_feedback_loop_layout = {})
-    : p_next_(p_next), attachment_feedback_loop_layout_(attachment_feedback_loop_layout) {}
+  PhysicalDeviceAttachmentFeedbackLoopLayoutFeaturesEXT(VkBool32 attachment_feedback_loop_layout = {}, void *p_next = {})
+    : attachment_feedback_loop_layout_(attachment_feedback_loop_layout), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -1078,8 +991,8 @@ struct PhysicalDeviceAmigoProfilingFeaturesSEC {
 
   using native_type = VkPhysicalDeviceAmigoProfilingFeaturesSEC;
 
-  PhysicalDeviceAmigoProfilingFeaturesSEC(void *p_next = {}, VkBool32 amigo_profiling = {})
-    : p_next_(p_next), amigo_profiling_(amigo_profiling) {}
+  PhysicalDeviceAmigoProfilingFeaturesSEC(VkBool32 amigo_profiling = {}, void *p_next = {})
+    : amigo_profiling_(amigo_profiling), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -1120,12 +1033,12 @@ struct WriteDescriptorSet {
 
   using native_type = VkWriteDescriptorSet;
 
-  WriteDescriptorSet(const void *p_next = {}, VkDescriptorSet dst_set = {}, uint32_t dst_binding = {}, uint32_t dst_array_element = {},
-                     uint32_t descriptor_count = {}, DescriptorType descriptor_type = {}, const DescriptorImageInfo *p_image_info = {},
-                     const DescriptorBufferInfo *p_buffer_info = {}, const VkBufferView *p_texel_buffer_view = {})
-    : p_next_(p_next), dst_set_(dst_set), dst_binding_(dst_binding), dst_array_element_(dst_array_element),
+  WriteDescriptorSet(const VkBufferView *p_texel_buffer_view = {}, VkDescriptorSet dst_set = {}, uint32_t dst_binding = {},
+                     uint32_t dst_array_element = {}, uint32_t descriptor_count = {}, DescriptorType descriptor_type = {},
+                     const DescriptorImageInfo *p_image_info = {}, const DescriptorBufferInfo *p_buffer_info = {}, const void *p_next = {})
+    : p_texel_buffer_view_(p_texel_buffer_view), dst_set_(dst_set), dst_binding_(dst_binding), dst_array_element_(dst_array_element),
       descriptor_count_(descriptor_count), descriptor_type_(descriptor_type), p_image_info_(p_image_info), p_buffer_info_(p_buffer_info),
-      p_texel_buffer_view_(p_texel_buffer_view) {}
+      p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -1145,16 +1058,16 @@ struct PushDescriptorSetInfoKHR {
 
   using native_type = VkPushDescriptorSetInfoKHR;
 
-  PushDescriptorSetInfoKHR(const void *p_next = {}, VkShaderStageFlags stage_flags = {}, VkPipelineLayout layout = {}, uint32_t set = {},
-                           uint32_t descriptor_write_count = {}, const WriteDescriptorSet *p_descriptor_writes = {})
-    : p_next_(p_next), stage_flags_(stage_flags), layout_(layout), set_(set), descriptor_write_count_(descriptor_write_count),
-      p_descriptor_writes_(p_descriptor_writes) {}
+  PushDescriptorSetInfoKHR(const WriteDescriptorSet *p_descriptor_writes = {}, ShaderStageMask stage_flags = {},
+                           VkPipelineLayout layout = {}, uint32_t set = {}, uint32_t descriptor_write_count = {}, const void *p_next = {})
+    : p_descriptor_writes_(p_descriptor_writes), stage_flags_(stage_flags), layout_(layout), set_(set),
+      descriptor_write_count_(descriptor_write_count), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PUSH_DESCRIPTOR_SET_INFO_KHR;
   const void *p_next_;
-  VkShaderStageFlags stage_flags_;
+  ShaderStageMask stage_flags_;
   VkPipelineLayout layout_;
   uint32_t set_;
   uint32_t descriptor_write_count_;
@@ -1178,8 +1091,8 @@ struct TilePropertiesQCOM {
 
   using native_type = VkTilePropertiesQCOM;
 
-  TilePropertiesQCOM(void *p_next = {}, Extent3D tile_size = {}, Extent2D apron_size = {}, Offset2D origin = {})
-    : p_next_(p_next), tile_size_(tile_size), apron_size_(apron_size), origin_(origin) {}
+  TilePropertiesQCOM(Offset2D origin = {}, Extent3D tile_size = {}, Extent2D apron_size = {}, void *p_next = {})
+    : origin_(origin), tile_size_(tile_size), apron_size_(apron_size), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -1194,10 +1107,10 @@ struct PhysicalDeviceImageProcessingFeaturesQCOM {
 
   using native_type = VkPhysicalDeviceImageProcessingFeaturesQCOM;
 
-  PhysicalDeviceImageProcessingFeaturesQCOM(void *p_next = {}, VkBool32 texture_sample_weighted = {}, VkBool32 texture_box_filter = {},
-                                            VkBool32 texture_block_match = {})
-    : p_next_(p_next), texture_sample_weighted_(texture_sample_weighted), texture_box_filter_(texture_box_filter),
-      texture_block_match_(texture_block_match) {}
+  PhysicalDeviceImageProcessingFeaturesQCOM(VkBool32 texture_block_match = {}, VkBool32 texture_sample_weighted = {},
+                                            VkBool32 texture_box_filter = {}, void *p_next = {})
+    : texture_block_match_(texture_block_match), texture_sample_weighted_(texture_sample_weighted), texture_box_filter_(texture_box_filter),
+      p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -1212,9 +1125,9 @@ struct ImageViewSampleWeightCreateInfoQCOM {
 
   using native_type = VkImageViewSampleWeightCreateInfoQCOM;
 
-  ImageViewSampleWeightCreateInfoQCOM(const void *p_next = {}, Offset2D filter_center = {}, Extent2D filter_size = {},
-                                      uint32_t num_phases = {})
-    : p_next_(p_next), filter_center_(filter_center), filter_size_(filter_size), num_phases_(num_phases) {}
+  ImageViewSampleWeightCreateInfoQCOM(uint32_t num_phases = {}, Offset2D filter_center = {}, Extent2D filter_size = {},
+                                      const void *p_next = {})
+    : num_phases_(num_phases), filter_center_(filter_center), filter_size_(filter_size), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -1243,11 +1156,11 @@ struct PipelineRobustnessCreateInfoEXT {
 
   using native_type = VkPipelineRobustnessCreateInfoEXT;
 
-  PipelineRobustnessCreateInfoEXT(const void *p_next = {}, PipelineRobustnessBufferBehavior storage_buffers = {},
+  PipelineRobustnessCreateInfoEXT(PipelineRobustnessImageBehavior images = {}, PipelineRobustnessBufferBehavior storage_buffers = {},
                                   PipelineRobustnessBufferBehavior uniform_buffers = {},
-                                  PipelineRobustnessBufferBehavior vertex_inputs = {}, PipelineRobustnessImageBehavior images = {})
-    : p_next_(p_next), storage_buffers_(storage_buffers), uniform_buffers_(uniform_buffers), vertex_inputs_(vertex_inputs),
-      images_(images) {}
+                                  PipelineRobustnessBufferBehavior vertex_inputs = {}, const void *p_next = {})
+    : images_(images), storage_buffers_(storage_buffers), uniform_buffers_(uniform_buffers), vertex_inputs_(vertex_inputs),
+      p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -1258,63 +1171,13 @@ struct PipelineRobustnessCreateInfoEXT {
   PipelineRobustnessBufferBehavior vertex_inputs_;
   PipelineRobustnessImageBehavior images_;
 };
-#ifdef VK_USE_PLATFORM_METAL_EXT
-
-struct ImportMetalSharedEventInfoEXT {
-
-  using native_type = VkImportMetalSharedEventInfoEXT;
-
-  ImportMetalSharedEventInfoEXT(const void *p_next = {}, MTLSharedEvent_id mtl_shared_event = {})
-    : p_next_(p_next), mtl_shared_event_(mtl_shared_event) {}
-
-  auto *get() { return reinterpret_cast<native_type *>(this); }
-
-  StructureType s_type_ = StructureType::IMPORT_METAL_SHARED_EVENT_INFO_EXT;
-  const void *p_next_;
-  MTLSharedEvent_id mtl_shared_event_;
-};
-#endif
-#ifdef VK_USE_PLATFORM_METAL_EXT
-
-struct ExportMetalSharedEventInfoEXT {
-
-  using native_type = VkExportMetalSharedEventInfoEXT;
-
-  ExportMetalSharedEventInfoEXT(const void *p_next = {}, VkSemaphore semaphore = {}, VkEvent event = {},
-                                MTLSharedEvent_id mtl_shared_event = {})
-    : p_next_(p_next), semaphore_(semaphore), event_(event), mtl_shared_event_(mtl_shared_event) {}
-
-  auto *get() { return reinterpret_cast<native_type *>(this); }
-
-  StructureType s_type_ = StructureType::EXPORT_METAL_SHARED_EVENT_INFO_EXT;
-  const void *p_next_;
-  VkSemaphore semaphore_;
-  VkEvent event_;
-  MTLSharedEvent_id mtl_shared_event_;
-};
-#endif
-#ifdef VK_USE_PLATFORM_METAL_EXT
-
-struct ImportMetalIOSurfaceInfoEXT {
-
-  using native_type = VkImportMetalIOSurfaceInfoEXT;
-
-  ImportMetalIOSurfaceInfoEXT(const void *p_next = {}, IOSurfaceRef io_surface = {}) : p_next_(p_next), io_surface_(io_surface) {}
-
-  auto *get() { return reinterpret_cast<native_type *>(this); }
-
-  StructureType s_type_ = StructureType::IMPORT_METAL_IO_SURFACE_INFO_EXT;
-  const void *p_next_;
-  IOSurfaceRef io_surface_;
-};
-#endif
 
 struct PhysicalDeviceMultiviewPerViewRenderAreasFeaturesQCOM {
 
   using native_type = VkPhysicalDeviceMultiviewPerViewRenderAreasFeaturesQCOM;
 
-  PhysicalDeviceMultiviewPerViewRenderAreasFeaturesQCOM(void *p_next = {}, VkBool32 multiview_per_view_render_areas = {})
-    : p_next_(p_next), multiview_per_view_render_areas_(multiview_per_view_render_areas) {}
+  PhysicalDeviceMultiviewPerViewRenderAreasFeaturesQCOM(VkBool32 multiview_per_view_render_areas = {}, void *p_next = {})
+    : multiview_per_view_render_areas_(multiview_per_view_render_areas), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -1322,60 +1185,13 @@ struct PhysicalDeviceMultiviewPerViewRenderAreasFeaturesQCOM {
   void *p_next_;
   VkBool32 multiview_per_view_render_areas_;
 };
-#ifdef VK_USE_PLATFORM_METAL_EXT
-
-struct ImportMetalBufferInfoEXT {
-
-  using native_type = VkImportMetalBufferInfoEXT;
-
-  ImportMetalBufferInfoEXT(const void *p_next = {}, MTLBuffer_id mtl_buffer = {}) : p_next_(p_next), mtl_buffer_(mtl_buffer) {}
-
-  auto *get() { return reinterpret_cast<native_type *>(this); }
-
-  StructureType s_type_ = StructureType::IMPORT_METAL_BUFFER_INFO_EXT;
-  const void *p_next_;
-  MTLBuffer_id mtl_buffer_;
-};
-#endif
-#ifdef VK_USE_PLATFORM_METAL_EXT
-
-struct ImportMetalTextureInfoEXT {
-
-  using native_type = VkImportMetalTextureInfoEXT;
-
-  ImportMetalTextureInfoEXT(const void *p_next = {}, ImageAspectMaskBit plane = {}, MTLTexture_id mtl_texture = {})
-    : p_next_(p_next), plane_(plane), mtl_texture_(mtl_texture) {}
-
-  auto *get() { return reinterpret_cast<native_type *>(this); }
-
-  StructureType s_type_ = StructureType::IMPORT_METAL_TEXTURE_INFO_EXT;
-  const void *p_next_;
-  ImageAspectMaskBit plane_;
-  MTLTexture_id mtl_texture_;
-};
-#endif
-#ifdef VK_USE_PLATFORM_METAL_EXT
-
-struct ExportMetalDeviceInfoEXT {
-
-  using native_type = VkExportMetalDeviceInfoEXT;
-
-  ExportMetalDeviceInfoEXT(const void *p_next = {}, MTLDevice_id mtl_device = {}) : p_next_(p_next), mtl_device_(mtl_device) {}
-
-  auto *get() { return reinterpret_cast<native_type *>(this); }
-
-  StructureType s_type_ = StructureType::EXPORT_METAL_DEVICE_INFO_EXT;
-  const void *p_next_;
-  MTLDevice_id mtl_device_;
-};
-#endif
 
 struct PhysicalDeviceShaderEarlyAndLateFragmentTestsFeaturesAMD {
 
   using native_type = VkPhysicalDeviceShaderEarlyAndLateFragmentTestsFeaturesAMD;
 
-  PhysicalDeviceShaderEarlyAndLateFragmentTestsFeaturesAMD(void *p_next = {}, VkBool32 shader_early_and_late_fragment_tests = {})
-    : p_next_(p_next), shader_early_and_late_fragment_tests_(shader_early_and_late_fragment_tests) {}
+  PhysicalDeviceShaderEarlyAndLateFragmentTestsFeaturesAMD(VkBool32 shader_early_and_late_fragment_tests = {}, void *p_next = {})
+    : shader_early_and_late_fragment_tests_(shader_early_and_late_fragment_tests), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -1388,8 +1204,8 @@ struct PhysicalDevicePipelinePropertiesFeaturesEXT {
 
   using native_type = VkPhysicalDevicePipelinePropertiesFeaturesEXT;
 
-  PhysicalDevicePipelinePropertiesFeaturesEXT(void *p_next = {}, VkBool32 pipeline_properties_identifier = {})
-    : p_next_(p_next), pipeline_properties_identifier_(pipeline_properties_identifier) {}
+  PhysicalDevicePipelinePropertiesFeaturesEXT(VkBool32 pipeline_properties_identifier = {}, void *p_next = {})
+    : pipeline_properties_identifier_(pipeline_properties_identifier), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -1435,62 +1251,18 @@ struct MicromapUsageEXT {
   uint32_t subdivision_level_;
   uint32_t format_;
 };
-#ifdef VK_ENABLE_BETA_EXTENSIONS
-
-struct AccelerationStructureTrianglesDisplacementMicromapNV {
-
-  using native_type = VkAccelerationStructureTrianglesDisplacementMicromapNV;
-
-  AccelerationStructureTrianglesDisplacementMicromapNV(
-    void *p_next = {}, Format displacement_bias_and_scale_format = {}, Format displacement_vector_format = {},
-    VkDeviceOrHostAddressConstKHR displacement_bias_and_scale_buffer = {}, VkDeviceSize displacement_bias_and_scale_stride = {},
-    VkDeviceOrHostAddressConstKHR displacement_vector_buffer = {}, VkDeviceSize displacement_vector_stride = {},
-    VkDeviceOrHostAddressConstKHR displaced_micromap_primitive_flags = {}, VkDeviceSize displaced_micromap_primitive_flags_stride = {},
-    IndexType index_type = {}, VkDeviceOrHostAddressConstKHR index_buffer = {}, VkDeviceSize index_stride = {}, uint32_t base_triangle = {},
-    uint32_t usage_counts_count = {}, const MicromapUsageEXT *p_usage_counts = {}, const MicromapUsageEXT *const *pp_usage_counts = {},
-    VkMicromapEXT micromap = {})
-    : p_next_(p_next), displacement_bias_and_scale_format_(displacement_bias_and_scale_format),
-      displacement_vector_format_(displacement_vector_format), displacement_bias_and_scale_buffer_(displacement_bias_and_scale_buffer),
-      displacement_bias_and_scale_stride_(displacement_bias_and_scale_stride), displacement_vector_buffer_(displacement_vector_buffer),
-      displacement_vector_stride_(displacement_vector_stride), displaced_micromap_primitive_flags_(displaced_micromap_primitive_flags),
-      displaced_micromap_primitive_flags_stride_(displaced_micromap_primitive_flags_stride), index_type_(index_type),
-      index_buffer_(index_buffer), index_stride_(index_stride), base_triangle_(base_triangle), usage_counts_count_(usage_counts_count),
-      p_usage_counts_(p_usage_counts), pp_usage_counts_(pp_usage_counts), micromap_(micromap) {}
-
-  auto *get() { return reinterpret_cast<native_type *>(this); }
-
-  StructureType s_type_ = StructureType::ACCELERATION_STRUCTURE_TRIANGLES_DISPLACEMENT_MICROMAP_NV;
-  void *p_next_;
-  Format displacement_bias_and_scale_format_;
-  Format displacement_vector_format_;
-  VkDeviceOrHostAddressConstKHR displacement_bias_and_scale_buffer_;
-  VkDeviceSize displacement_bias_and_scale_stride_;
-  VkDeviceOrHostAddressConstKHR displacement_vector_buffer_;
-  VkDeviceSize displacement_vector_stride_;
-  VkDeviceOrHostAddressConstKHR displaced_micromap_primitive_flags_;
-  VkDeviceSize displaced_micromap_primitive_flags_stride_;
-  IndexType index_type_;
-  VkDeviceOrHostAddressConstKHR index_buffer_;
-  VkDeviceSize index_stride_;
-  uint32_t base_triangle_;
-  uint32_t usage_counts_count_;
-  const MicromapUsageEXT *p_usage_counts_;
-  const MicromapUsageEXT *const *pp_usage_counts_;
-  VkMicromapEXT micromap_;
-};
-#endif
 
 struct AccelerationStructureTrianglesOpacityMicromapEXT {
 
   using native_type = VkAccelerationStructureTrianglesOpacityMicromapEXT;
 
-  AccelerationStructureTrianglesOpacityMicromapEXT(void *p_next = {}, IndexType index_type = {},
+  AccelerationStructureTrianglesOpacityMicromapEXT(VkMicromapEXT micromap = {}, IndexType index_type = {},
                                                    VkDeviceOrHostAddressConstKHR index_buffer = {}, VkDeviceSize index_stride = {},
                                                    uint32_t base_triangle = {}, uint32_t usage_counts_count = {},
                                                    const MicromapUsageEXT *p_usage_counts = {},
-                                                   const MicromapUsageEXT *const *pp_usage_counts = {}, VkMicromapEXT micromap = {})
-    : p_next_(p_next), index_type_(index_type), index_buffer_(index_buffer), index_stride_(index_stride), base_triangle_(base_triangle),
-      usage_counts_count_(usage_counts_count), p_usage_counts_(p_usage_counts), pp_usage_counts_(pp_usage_counts), micromap_(micromap) {}
+                                                   const MicromapUsageEXT *const *pp_usage_counts = {}, void *p_next = {})
+    : micromap_(micromap), index_type_(index_type), index_buffer_(index_buffer), index_stride_(index_stride), base_triangle_(base_triangle),
+      usage_counts_count_(usage_counts_count), p_usage_counts_(p_usage_counts), pp_usage_counts_(pp_usage_counts), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -1536,9 +1308,9 @@ struct MicromapBuildSizesInfoEXT {
 
   using native_type = VkMicromapBuildSizesInfoEXT;
 
-  MicromapBuildSizesInfoEXT(const void *p_next = {}, VkDeviceSize micromap_size = {}, VkDeviceSize build_scratch_size = {},
-                            VkBool32 discardable = {})
-    : p_next_(p_next), micromap_size_(micromap_size), build_scratch_size_(build_scratch_size), discardable_(discardable) {}
+  MicromapBuildSizesInfoEXT(VkBool32 discardable = {}, VkDeviceSize micromap_size = {}, VkDeviceSize build_scratch_size = {},
+                            const void *p_next = {})
+    : discardable_(discardable), micromap_size_(micromap_size), build_scratch_size_(build_scratch_size), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -1553,7 +1325,7 @@ struct MicromapVersionInfoEXT {
 
   using native_type = VkMicromapVersionInfoEXT;
 
-  MicromapVersionInfoEXT(const void *p_next = {}, const uint8_t *p_version_data = {}) : p_next_(p_next), p_version_data_(p_version_data) {}
+  MicromapVersionInfoEXT(const uint8_t *p_version_data = {}, const void *p_next = {}) : p_version_data_(p_version_data), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -1566,21 +1338,21 @@ struct MicromapBuildInfoEXT {
 
   using native_type = VkMicromapBuildInfoEXT;
 
-  MicromapBuildInfoEXT(const void *p_next = {}, MicromapType type = {}, VkBuildMicromapFlagsEXT flags = {}, BuildMicromapMode mode = {},
-                       VkMicromapEXT dst_micromap = {}, uint32_t usage_counts_count = {}, const MicromapUsageEXT *p_usage_counts = {},
-                       const MicromapUsageEXT *const *pp_usage_counts = {}, VkDeviceOrHostAddressConstKHR data = {},
-                       VkDeviceOrHostAddressKHR scratch_data = {}, VkDeviceOrHostAddressConstKHR triangle_array = {},
-                       VkDeviceSize triangle_array_stride = {})
-    : p_next_(p_next), type_(type), flags_(flags), mode_(mode), dst_micromap_(dst_micromap), usage_counts_count_(usage_counts_count),
-      p_usage_counts_(p_usage_counts), pp_usage_counts_(pp_usage_counts), data_(data), scratch_data_(scratch_data),
-      triangle_array_(triangle_array), triangle_array_stride_(triangle_array_stride) {}
+  MicromapBuildInfoEXT(VkDeviceSize triangle_array_stride = {}, MicromapType type = {}, BuildMicromapMask flags = {},
+                       BuildMicromapMode mode = {}, VkMicromapEXT dst_micromap = {}, uint32_t usage_counts_count = {},
+                       const MicromapUsageEXT *p_usage_counts = {}, const MicromapUsageEXT *const *pp_usage_counts = {},
+                       VkDeviceOrHostAddressConstKHR data = {}, VkDeviceOrHostAddressKHR scratch_data = {},
+                       VkDeviceOrHostAddressConstKHR triangle_array = {}, const void *p_next = {})
+    : triangle_array_stride_(triangle_array_stride), type_(type), flags_(flags), mode_(mode), dst_micromap_(dst_micromap),
+      usage_counts_count_(usage_counts_count), p_usage_counts_(p_usage_counts), pp_usage_counts_(pp_usage_counts), data_(data),
+      scratch_data_(scratch_data), triangle_array_(triangle_array), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::MICROMAP_BUILD_INFO_EXT;
   const void *p_next_;
   MicromapType type_;
-  VkBuildMicromapFlagsEXT flags_;
+  BuildMicromapMask flags_;
   BuildMicromapMode mode_;
   VkMicromapEXT dst_micromap_;
   uint32_t usage_counts_count_;
@@ -1596,8 +1368,8 @@ struct PhysicalDeviceSubpassMergeFeedbackFeaturesEXT {
 
   using native_type = VkPhysicalDeviceSubpassMergeFeedbackFeaturesEXT;
 
-  PhysicalDeviceSubpassMergeFeedbackFeaturesEXT(void *p_next = {}, VkBool32 subpass_merge_feedback = {})
-    : p_next_(p_next), subpass_merge_feedback_(subpass_merge_feedback) {}
+  PhysicalDeviceSubpassMergeFeedbackFeaturesEXT(VkBool32 subpass_merge_feedback = {}, void *p_next = {})
+    : subpass_merge_feedback_(subpass_merge_feedback), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -1619,8 +1391,8 @@ struct RenderPassCreationFeedbackCreateInfoEXT {
 
   using native_type = VkRenderPassCreationFeedbackCreateInfoEXT;
 
-  RenderPassCreationFeedbackCreateInfoEXT(const void *p_next = {}, RenderPassCreationFeedbackInfoEXT *p_render_pass_feedback = {})
-    : p_next_(p_next), p_render_pass_feedback_(p_render_pass_feedback) {}
+  RenderPassCreationFeedbackCreateInfoEXT(RenderPassCreationFeedbackInfoEXT *p_render_pass_feedback = {}, const void *p_next = {})
+    : p_render_pass_feedback_(p_render_pass_feedback), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -1661,12 +1433,12 @@ struct ImageSubresource {
 
   using native_type = VkImageSubresource;
 
-  ImageSubresource(VkImageAspectFlags aspect_mask = {}, uint32_t mip_level = {}, uint32_t array_layer = {})
+  ImageSubresource(ImageAspectMask aspect_mask = {}, uint32_t mip_level = {}, uint32_t array_layer = {})
     : aspect_mask_(aspect_mask), mip_level_(mip_level), array_layer_(array_layer) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
-  VkImageAspectFlags aspect_mask_;
+  ImageAspectMask aspect_mask_;
   uint32_t mip_level_;
   uint32_t array_layer_;
 };
@@ -1675,8 +1447,8 @@ struct ImageSubresource2KHR {
 
   using native_type = VkImageSubresource2KHR;
 
-  ImageSubresource2KHR(void *p_next = {}, ImageSubresource image_subresource = {})
-    : p_next_(p_next), image_subresource_(image_subresource) {}
+  ImageSubresource2KHR(ImageSubresource image_subresource = {}, void *p_next = {})
+    : image_subresource_(image_subresource), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -1689,8 +1461,8 @@ struct PhysicalDeviceImageCompressionControlSwapchainFeaturesEXT {
 
   using native_type = VkPhysicalDeviceImageCompressionControlSwapchainFeaturesEXT;
 
-  PhysicalDeviceImageCompressionControlSwapchainFeaturesEXT(void *p_next = {}, VkBool32 image_compression_control_swapchain = {})
-    : p_next_(p_next), image_compression_control_swapchain_(image_compression_control_swapchain) {}
+  PhysicalDeviceImageCompressionControlSwapchainFeaturesEXT(VkBool32 image_compression_control_swapchain = {}, void *p_next = {})
+    : image_compression_control_swapchain_(image_compression_control_swapchain), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -1707,8 +1479,8 @@ struct ImageCompressionPropertiesEXT {
 
   StructureType s_type_ = StructureType::IMAGE_COMPRESSION_PROPERTIES_EXT;
   void *p_next_;
-  VkImageCompressionFlagsEXT image_compression_flags_;
-  VkImageCompressionFixedRateFlagsEXT image_compression_fixed_rate_flags_;
+  ImageCompressionMask image_compression_flags_;
+  ImageCompressionFixedRateMask image_compression_fixed_rate_flags_;
 };
 
 struct PhysicalDeviceOpticalFlowPropertiesNV {
@@ -1719,8 +1491,8 @@ struct PhysicalDeviceOpticalFlowPropertiesNV {
 
   StructureType s_type_ = StructureType::PHYSICAL_DEVICE_OPTICAL_FLOW_PROPERTIES_NV;
   void *p_next_;
-  VkOpticalFlowGridSizeFlagsNV supported_output_grid_sizes_;
-  VkOpticalFlowGridSizeFlagsNV supported_hint_grid_sizes_;
+  OpticalFlowGridSizeMask supported_output_grid_sizes_;
+  OpticalFlowGridSizeMask supported_hint_grid_sizes_;
   VkBool32 hint_supported_;
   VkBool32 cost_supported_;
   VkBool32 bidirectional_flow_supported_;
@@ -1736,26 +1508,26 @@ struct ImageCompressionControlEXT {
 
   using native_type = VkImageCompressionControlEXT;
 
-  ImageCompressionControlEXT(const void *p_next = {}, VkImageCompressionFlagsEXT flags = {}, uint32_t compression_control_plane_count = {},
-                             VkImageCompressionFixedRateFlagsEXT *p_fixed_rate_flags = {})
-    : p_next_(p_next), flags_(flags), compression_control_plane_count_(compression_control_plane_count),
-      p_fixed_rate_flags_(p_fixed_rate_flags) {}
+  ImageCompressionControlEXT(ImageCompressionFixedRateMask *p_fixed_rate_flags = {}, ImageCompressionMask flags = {},
+                             uint32_t compression_control_plane_count = {}, const void *p_next = {})
+    : p_fixed_rate_flags_(p_fixed_rate_flags), flags_(flags), compression_control_plane_count_(compression_control_plane_count),
+      p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::IMAGE_COMPRESSION_CONTROL_EXT;
   const void *p_next_;
-  VkImageCompressionFlagsEXT flags_;
+  ImageCompressionMask flags_;
   uint32_t compression_control_plane_count_;
-  VkImageCompressionFixedRateFlagsEXT *p_fixed_rate_flags_;
+  ImageCompressionFixedRateMask *p_fixed_rate_flags_;
 };
 
 struct ImageAlignmentControlCreateInfoMESA {
 
   using native_type = VkImageAlignmentControlCreateInfoMESA;
 
-  ImageAlignmentControlCreateInfoMESA(const void *p_next = {}, uint32_t maximum_requested_alignment = {})
-    : p_next_(p_next), maximum_requested_alignment_(maximum_requested_alignment) {}
+  ImageAlignmentControlCreateInfoMESA(uint32_t maximum_requested_alignment = {}, const void *p_next = {})
+    : maximum_requested_alignment_(maximum_requested_alignment), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -1768,8 +1540,8 @@ struct PipelineShaderStageModuleIdentifierCreateInfoEXT {
 
   using native_type = VkPipelineShaderStageModuleIdentifierCreateInfoEXT;
 
-  PipelineShaderStageModuleIdentifierCreateInfoEXT(const void *p_next = {}, uint32_t identifier_size = {}, const uint8_t *p_identifier = {})
-    : p_next_(p_next), identifier_size_(identifier_size), p_identifier_(p_identifier) {}
+  PipelineShaderStageModuleIdentifierCreateInfoEXT(const uint8_t *p_identifier = {}, uint32_t identifier_size = {}, const void *p_next = {})
+    : p_identifier_(p_identifier), identifier_size_(identifier_size), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -1794,10 +1566,10 @@ struct PhysicalDeviceGraphicsPipelineLibraryPropertiesEXT {
 
   using native_type = VkPhysicalDeviceGraphicsPipelineLibraryPropertiesEXT;
 
-  PhysicalDeviceGraphicsPipelineLibraryPropertiesEXT(void *p_next = {}, VkBool32 graphics_pipeline_library_fast_linking = {},
-                                                     VkBool32 graphics_pipeline_library_independent_interpolation_decoration = {})
-    : p_next_(p_next), graphics_pipeline_library_fast_linking_(graphics_pipeline_library_fast_linking),
-      graphics_pipeline_library_independent_interpolation_decoration_(graphics_pipeline_library_independent_interpolation_decoration) {}
+  PhysicalDeviceGraphicsPipelineLibraryPropertiesEXT(VkBool32 graphics_pipeline_library_independent_interpolation_decoration = {},
+                                                     VkBool32 graphics_pipeline_library_fast_linking = {}, void *p_next = {})
+    : graphics_pipeline_library_independent_interpolation_decoration_(graphics_pipeline_library_independent_interpolation_decoration),
+      graphics_pipeline_library_fast_linking_(graphics_pipeline_library_fast_linking), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -1811,8 +1583,8 @@ struct PhysicalDeviceGraphicsPipelineLibraryFeaturesEXT {
 
   using native_type = VkPhysicalDeviceGraphicsPipelineLibraryFeaturesEXT;
 
-  PhysicalDeviceGraphicsPipelineLibraryFeaturesEXT(void *p_next = {}, VkBool32 graphics_pipeline_library = {})
-    : p_next_(p_next), graphics_pipeline_library_(graphics_pipeline_library) {}
+  PhysicalDeviceGraphicsPipelineLibraryFeaturesEXT(VkBool32 graphics_pipeline_library = {}, void *p_next = {})
+    : graphics_pipeline_library_(graphics_pipeline_library), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -1825,7 +1597,7 @@ struct ImageViewMinLodCreateInfoEXT {
 
   using native_type = VkImageViewMinLodCreateInfoEXT;
 
-  ImageViewMinLodCreateInfoEXT(const void *p_next = {}, float min_lod = {}) : p_next_(p_next), min_lod_(min_lod) {}
+  ImageViewMinLodCreateInfoEXT(float min_lod = {}, const void *p_next = {}) : min_lod_(min_lod), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -1838,11 +1610,10 @@ struct AttachmentSampleCountInfoAMD {
 
   using native_type = VkAttachmentSampleCountInfoAMD;
 
-  AttachmentSampleCountInfoAMD(const void *p_next = {}, uint32_t color_attachment_count = {},
-                               const SampleCountMaskBit *p_color_attachment_samples = {},
-                               SampleCountMaskBit depth_stencil_attachment_samples = {})
-    : p_next_(p_next), color_attachment_count_(color_attachment_count), p_color_attachment_samples_(p_color_attachment_samples),
-      depth_stencil_attachment_samples_(depth_stencil_attachment_samples) {}
+  AttachmentSampleCountInfoAMD(SampleCountMaskBit depth_stencil_attachment_samples = {}, uint32_t color_attachment_count = {},
+                               const SampleCountMaskBit *p_color_attachment_samples = {}, const void *p_next = {})
+    : depth_stencil_attachment_samples_(depth_stencil_attachment_samples), color_attachment_count_(color_attachment_count),
+      p_color_attachment_samples_(p_color_attachment_samples), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -1857,8 +1628,8 @@ struct RenderingFragmentDensityMapAttachmentInfoEXT {
 
   using native_type = VkRenderingFragmentDensityMapAttachmentInfoEXT;
 
-  RenderingFragmentDensityMapAttachmentInfoEXT(const void *p_next = {}, VkImageView image_view = {}, ImageLayout image_layout = {})
-    : p_next_(p_next), image_view_(image_view), image_layout_(image_layout) {}
+  RenderingFragmentDensityMapAttachmentInfoEXT(ImageLayout image_layout = {}, VkImageView image_view = {}, const void *p_next = {})
+    : image_layout_(image_layout), image_view_(image_view), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -1872,12 +1643,10 @@ struct PipelineRenderingCreateInfo {
 
   using native_type = VkPipelineRenderingCreateInfo;
 
-  PipelineRenderingCreateInfo(const void *p_next = {}, uint32_t view_mask = {}, uint32_t color_attachment_count = {},
-                              const Format *p_color_attachment_formats = {}, Format depth_attachment_format = {},
-                              Format stencil_attachment_format = {})
-    : p_next_(p_next), view_mask_(view_mask), color_attachment_count_(color_attachment_count),
-      p_color_attachment_formats_(p_color_attachment_formats), depth_attachment_format_(depth_attachment_format),
-      stencil_attachment_format_(stencil_attachment_format) {}
+  PipelineRenderingCreateInfo(Format stencil_attachment_format = {}, uint32_t view_mask = {}, uint32_t color_attachment_count = {},
+                              const Format *p_color_attachment_formats = {}, Format depth_attachment_format = {}, const void *p_next = {})
+    : stencil_attachment_format_(stencil_attachment_format), view_mask_(view_mask), color_attachment_count_(color_attachment_count),
+      p_color_attachment_formats_(p_color_attachment_formats), depth_attachment_format_(depth_attachment_format), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -1898,7 +1667,7 @@ struct DrmFormatModifierProperties2EXT {
 
   uint64_t drm_format_modifier_;
   uint32_t drm_format_modifier_plane_count_;
-  VkFormatFeatureFlags2 drm_format_modifier_tiling_features_;
+  FormatFeatureMask2 drm_format_modifier_tiling_features_;
 };
 
 struct DrmFormatModifierPropertiesList2EXT {
@@ -1917,12 +1686,12 @@ struct PhysicalDeviceRasterizationOrderAttachmentAccessFeaturesEXT {
 
   using native_type = VkPhysicalDeviceRasterizationOrderAttachmentAccessFeaturesEXT;
 
-  PhysicalDeviceRasterizationOrderAttachmentAccessFeaturesEXT(void *p_next = {}, VkBool32 rasterization_order_color_attachment_access = {},
-                                                              VkBool32 rasterization_order_depth_attachment_access = {},
-                                                              VkBool32 rasterization_order_stencil_attachment_access = {})
-    : p_next_(p_next), rasterization_order_color_attachment_access_(rasterization_order_color_attachment_access),
-      rasterization_order_depth_attachment_access_(rasterization_order_depth_attachment_access),
-      rasterization_order_stencil_attachment_access_(rasterization_order_stencil_attachment_access) {}
+  PhysicalDeviceRasterizationOrderAttachmentAccessFeaturesEXT(VkBool32 rasterization_order_stencil_attachment_access = {},
+                                                              VkBool32 rasterization_order_color_attachment_access = {},
+                                                              VkBool32 rasterization_order_depth_attachment_access = {}, void *p_next = {})
+    : rasterization_order_stencil_attachment_access_(rasterization_order_stencil_attachment_access),
+      rasterization_order_color_attachment_access_(rasterization_order_color_attachment_access),
+      rasterization_order_depth_attachment_access_(rasterization_order_depth_attachment_access), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -1941,17 +1710,17 @@ struct FormatProperties3 {
 
   StructureType s_type_ = StructureType::FORMAT_PROPERTIES_3;
   void *p_next_;
-  VkFormatFeatureFlags2 linear_tiling_features_;
-  VkFormatFeatureFlags2 optimal_tiling_features_;
-  VkFormatFeatureFlags2 buffer_features_;
+  FormatFeatureMask2 linear_tiling_features_;
+  FormatFeatureMask2 optimal_tiling_features_;
+  FormatFeatureMask2 buffer_features_;
 };
 
 struct PhysicalDeviceRGBA10X6FormatsFeaturesEXT {
 
   using native_type = VkPhysicalDeviceRGBA10X6FormatsFeaturesEXT;
 
-  PhysicalDeviceRGBA10X6FormatsFeaturesEXT(void *p_next = {}, VkBool32 format_rgba10x6without_ycb_cr_sampler = {})
-    : p_next_(p_next), format_rgba10x6without_ycb_cr_sampler_(format_rgba10x6without_ycb_cr_sampler) {}
+  PhysicalDeviceRGBA10X6FormatsFeaturesEXT(VkBool32 format_rgba10x6without_ycb_cr_sampler = {}, void *p_next = {})
+    : format_rgba10x6without_ycb_cr_sampler_(format_rgba10x6without_ycb_cr_sampler), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -1964,8 +1733,8 @@ struct CudaModuleCreateInfoNV {
 
   using native_type = VkCudaModuleCreateInfoNV;
 
-  CudaModuleCreateInfoNV(const void *p_next = {}, size_t data_size = {}, const void *p_data = {})
-    : p_next_(p_next), data_size_(data_size), p_data_(p_data) {}
+  CudaModuleCreateInfoNV(const void *p_data = {}, size_t data_size = {}, const void *p_next = {})
+    : p_data_(p_data), data_size_(data_size), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -1979,20 +1748,19 @@ struct ImageCreateInfo {
 
   using native_type = VkImageCreateInfo;
 
-  ImageCreateInfo(const void *p_next = {}, VkImageCreateFlags flags = {}, ImageType image_type = {}, Format format = {},
+  ImageCreateInfo(ImageLayout initial_layout = {}, ImageCreateMask flags = {}, ImageType image_type = {}, Format format = {},
                   Extent3D extent = {}, uint32_t mip_levels = {}, uint32_t array_layers = {}, SampleCountMaskBit samples = {},
-                  ImageTiling tiling = {}, VkImageUsageFlags usage = {}, SharingMode sharing_mode = {},
-                  uint32_t queue_family_index_count = {}, const uint32_t *p_queue_family_indices = {}, ImageLayout initial_layout = {})
-    : p_next_(p_next), flags_(flags), image_type_(image_type), format_(format), extent_(extent), mip_levels_(mip_levels),
+                  ImageTiling tiling = {}, ImageUsageMask usage = {}, SharingMode sharing_mode = {}, uint32_t queue_family_index_count = {},
+                  const uint32_t *p_queue_family_indices = {}, const void *p_next = {})
+    : initial_layout_(initial_layout), flags_(flags), image_type_(image_type), format_(format), extent_(extent), mip_levels_(mip_levels),
       array_layers_(array_layers), samples_(samples), tiling_(tiling), usage_(usage), sharing_mode_(sharing_mode),
-      queue_family_index_count_(queue_family_index_count), p_queue_family_indices_(p_queue_family_indices),
-      initial_layout_(initial_layout) {}
+      queue_family_index_count_(queue_family_index_count), p_queue_family_indices_(p_queue_family_indices), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::IMAGE_CREATE_INFO;
   const void *p_next_;
-  VkImageCreateFlags flags_;
+  ImageCreateMask flags_;
   ImageType image_type_;
   Format format_;
   Extent3D extent_;
@@ -2000,159 +1768,34 @@ struct ImageCreateInfo {
   uint32_t array_layers_;
   SampleCountMaskBit samples_;
   ImageTiling tiling_;
-  VkImageUsageFlags usage_;
+  ImageUsageMask usage_;
   SharingMode sharing_mode_;
   uint32_t queue_family_index_count_;
   const uint32_t *p_queue_family_indices_;
   ImageLayout initial_layout_;
 };
-#ifdef VK_USE_PLATFORM_FUCHSIA
-
-struct SysmemColorSpaceFUCHSIA {
-
-  using native_type = VkSysmemColorSpaceFUCHSIA;
-
-  SysmemColorSpaceFUCHSIA(const void *p_next = {}, uint32_t color_space = {}) : p_next_(p_next), color_space_(color_space) {}
-
-  auto *get() { return reinterpret_cast<native_type *>(this); }
-
-  StructureType s_type_ = StructureType::SYSMEM_COLOR_SPACE_FUCHSIA;
-  const void *p_next_;
-  uint32_t color_space_;
-};
-#endif
-#ifdef VK_USE_PLATFORM_FUCHSIA
-
-struct ImageFormatConstraintsInfoFUCHSIA {
-
-  using native_type = VkImageFormatConstraintsInfoFUCHSIA;
-
-  ImageFormatConstraintsInfoFUCHSIA(const void *p_next = {}, ImageCreateInfo image_create_info = {},
-                                    VkFormatFeatureFlags required_format_features = {}, VkImageFormatConstraintsFlagsFUCHSIA flags = {},
-                                    uint64_t sysmem_pixel_format = {}, uint32_t color_space_count = {},
-                                    const SysmemColorSpaceFUCHSIA *p_color_spaces = {})
-    : p_next_(p_next), image_create_info_(image_create_info), required_format_features_(required_format_features), flags_(flags),
-      sysmem_pixel_format_(sysmem_pixel_format), color_space_count_(color_space_count), p_color_spaces_(p_color_spaces) {}
-
-  auto *get() { return reinterpret_cast<native_type *>(this); }
-
-  StructureType s_type_ = StructureType::IMAGE_FORMAT_CONSTRAINTS_INFO_FUCHSIA;
-  const void *p_next_;
-  ImageCreateInfo image_create_info_;
-  VkFormatFeatureFlags required_format_features_;
-  VkImageFormatConstraintsFlagsFUCHSIA flags_;
-  uint64_t sysmem_pixel_format_;
-  uint32_t color_space_count_;
-  const SysmemColorSpaceFUCHSIA *p_color_spaces_;
-};
-#endif
-#ifdef VK_USE_PLATFORM_FUCHSIA
-
-struct BufferCollectionConstraintsInfoFUCHSIA {
-
-  using native_type = VkBufferCollectionConstraintsInfoFUCHSIA;
-
-  BufferCollectionConstraintsInfoFUCHSIA(const void *p_next = {}, uint32_t min_buffer_count = {}, uint32_t max_buffer_count = {},
-                                         uint32_t min_buffer_count_for_camping = {}, uint32_t min_buffer_count_for_dedicated_slack = {},
-                                         uint32_t min_buffer_count_for_shared_slack = {})
-    : p_next_(p_next), min_buffer_count_(min_buffer_count), max_buffer_count_(max_buffer_count),
-      min_buffer_count_for_camping_(min_buffer_count_for_camping),
-      min_buffer_count_for_dedicated_slack_(min_buffer_count_for_dedicated_slack),
-      min_buffer_count_for_shared_slack_(min_buffer_count_for_shared_slack) {}
-
-  auto *get() { return reinterpret_cast<native_type *>(this); }
-
-  StructureType s_type_ = StructureType::BUFFER_COLLECTION_CONSTRAINTS_INFO_FUCHSIA;
-  const void *p_next_;
-  uint32_t min_buffer_count_;
-  uint32_t max_buffer_count_;
-  uint32_t min_buffer_count_for_camping_;
-  uint32_t min_buffer_count_for_dedicated_slack_;
-  uint32_t min_buffer_count_for_shared_slack_;
-};
-#endif
-#ifdef VK_USE_PLATFORM_FUCHSIA
-
-struct ImageConstraintsInfoFUCHSIA {
-
-  using native_type = VkImageConstraintsInfoFUCHSIA;
-
-  ImageConstraintsInfoFUCHSIA(const void *p_next = {}, uint32_t format_constraints_count = {},
-                              const ImageFormatConstraintsInfoFUCHSIA *p_format_constraints = {},
-                              BufferCollectionConstraintsInfoFUCHSIA buffer_collection_constraints = {},
-                              VkImageConstraintsInfoFlagsFUCHSIA flags = {})
-    : p_next_(p_next), format_constraints_count_(format_constraints_count), p_format_constraints_(p_format_constraints),
-      buffer_collection_constraints_(buffer_collection_constraints), flags_(flags) {}
-
-  auto *get() { return reinterpret_cast<native_type *>(this); }
-
-  StructureType s_type_ = StructureType::IMAGE_CONSTRAINTS_INFO_FUCHSIA;
-  const void *p_next_;
-  uint32_t format_constraints_count_;
-  const ImageFormatConstraintsInfoFUCHSIA *p_format_constraints_;
-  BufferCollectionConstraintsInfoFUCHSIA buffer_collection_constraints_;
-  VkImageConstraintsInfoFlagsFUCHSIA flags_;
-};
-#endif
 
 struct BufferCreateInfo {
 
   using native_type = VkBufferCreateInfo;
 
-  BufferCreateInfo(const void *p_next = {}, VkBufferCreateFlags flags = {}, VkDeviceSize size = {}, VkBufferUsageFlags usage = {},
-                   SharingMode sharing_mode = {}, uint32_t queue_family_index_count = {}, const uint32_t *p_queue_family_indices = {})
-    : p_next_(p_next), flags_(flags), size_(size), usage_(usage), sharing_mode_(sharing_mode),
-      queue_family_index_count_(queue_family_index_count), p_queue_family_indices_(p_queue_family_indices) {}
+  BufferCreateInfo(const uint32_t *p_queue_family_indices = {}, BufferCreateMask flags = {}, VkDeviceSize size = {},
+                   BufferUsageMask usage = {}, SharingMode sharing_mode = {}, uint32_t queue_family_index_count = {},
+                   const void *p_next = {})
+    : p_queue_family_indices_(p_queue_family_indices), flags_(flags), size_(size), usage_(usage), sharing_mode_(sharing_mode),
+      queue_family_index_count_(queue_family_index_count), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::BUFFER_CREATE_INFO;
   const void *p_next_;
-  VkBufferCreateFlags flags_;
+  BufferCreateMask flags_;
   VkDeviceSize size_;
-  VkBufferUsageFlags usage_;
+  BufferUsageMask usage_;
   SharingMode sharing_mode_;
   uint32_t queue_family_index_count_;
   const uint32_t *p_queue_family_indices_;
 };
-#ifdef VK_USE_PLATFORM_FUCHSIA
-
-struct BufferConstraintsInfoFUCHSIA {
-
-  using native_type = VkBufferConstraintsInfoFUCHSIA;
-
-  BufferConstraintsInfoFUCHSIA(const void *p_next = {}, BufferCreateInfo create_info = {},
-                               VkFormatFeatureFlags required_format_features = {},
-                               BufferCollectionConstraintsInfoFUCHSIA buffer_collection_constraints = {})
-    : p_next_(p_next), create_info_(create_info), required_format_features_(required_format_features),
-      buffer_collection_constraints_(buffer_collection_constraints) {}
-
-  auto *get() { return reinterpret_cast<native_type *>(this); }
-
-  StructureType s_type_ = StructureType::BUFFER_CONSTRAINTS_INFO_FUCHSIA;
-  const void *p_next_;
-  BufferCreateInfo create_info_;
-  VkFormatFeatureFlags required_format_features_;
-  BufferCollectionConstraintsInfoFUCHSIA buffer_collection_constraints_;
-};
-#endif
-#ifdef VK_USE_PLATFORM_FUCHSIA
-
-struct ImportMemoryBufferCollectionFUCHSIA {
-
-  using native_type = VkImportMemoryBufferCollectionFUCHSIA;
-
-  ImportMemoryBufferCollectionFUCHSIA(const void *p_next = {}, VkBufferCollectionFUCHSIA collection = {}, uint32_t index = {})
-    : p_next_(p_next), collection_(collection), index_(index) {}
-
-  auto *get() { return reinterpret_cast<native_type *>(this); }
-
-  StructureType s_type_ = StructureType::IMPORT_MEMORY_BUFFER_COLLECTION_FUCHSIA;
-  const void *p_next_;
-  VkBufferCollectionFUCHSIA collection_;
-  uint32_t index_;
-};
-#endif
 
 struct SRTDataNV {
 
@@ -2187,16 +1830,15 @@ struct AccelerationStructureMotionInfoNV {
 
   using native_type = VkAccelerationStructureMotionInfoNV;
 
-  AccelerationStructureMotionInfoNV(const void *p_next = {}, uint32_t max_instances = {},
-                                    VkAccelerationStructureMotionInfoFlagsNV flags = {})
-    : p_next_(p_next), max_instances_(max_instances), flags_(flags) {}
+  AccelerationStructureMotionInfoNV(AccelerationStructureMotionInfoMask flags = {}, uint32_t max_instances = {}, const void *p_next = {})
+    : flags_(flags), max_instances_(max_instances), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::ACCELERATION_STRUCTURE_MOTION_INFO_NV;
   const void *p_next_;
   uint32_t max_instances_;
-  VkAccelerationStructureMotionInfoFlagsNV flags_;
+  AccelerationStructureMotionInfoMask flags_;
 };
 
 struct PhysicalDeviceImageProcessingPropertiesQCOM {
@@ -2228,8 +1870,8 @@ struct PhysicalDeviceFragmentShaderBarycentricFeaturesKHR {
 
   using native_type = VkPhysicalDeviceFragmentShaderBarycentricFeaturesKHR;
 
-  PhysicalDeviceFragmentShaderBarycentricFeaturesKHR(void *p_next = {}, VkBool32 fragment_shader_barycentric = {})
-    : p_next_(p_next), fragment_shader_barycentric_(fragment_shader_barycentric) {}
+  PhysicalDeviceFragmentShaderBarycentricFeaturesKHR(VkBool32 fragment_shader_barycentric = {}, void *p_next = {})
+    : fragment_shader_barycentric_(fragment_shader_barycentric), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -2242,8 +1884,8 @@ struct PhysicalDeviceShaderIntegerDotProductFeatures {
 
   using native_type = VkPhysicalDeviceShaderIntegerDotProductFeatures;
 
-  PhysicalDeviceShaderIntegerDotProductFeatures(void *p_next = {}, VkBool32 shader_integer_dot_product = {})
-    : p_next_(p_next), shader_integer_dot_product_(shader_integer_dot_product) {}
+  PhysicalDeviceShaderIntegerDotProductFeatures(VkBool32 shader_integer_dot_product = {}, void *p_next = {})
+    : shader_integer_dot_product_(shader_integer_dot_product), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -2256,9 +1898,9 @@ struct AccelerationStructureCaptureDescriptorDataInfoEXT {
 
   using native_type = VkAccelerationStructureCaptureDescriptorDataInfoEXT;
 
-  AccelerationStructureCaptureDescriptorDataInfoEXT(const void *p_next = {}, VkAccelerationStructureKHR acceleration_structure = {},
-                                                    VkAccelerationStructureNV acceleration_structure_nv = {})
-    : p_next_(p_next), acceleration_structure_(acceleration_structure), acceleration_structure_nv_(acceleration_structure_nv) {}
+  AccelerationStructureCaptureDescriptorDataInfoEXT(VkAccelerationStructureNV acceleration_structure_nv = {},
+                                                    VkAccelerationStructureKHR acceleration_structure = {}, const void *p_next = {})
+    : acceleration_structure_nv_(acceleration_structure_nv), acceleration_structure_(acceleration_structure), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -2272,7 +1914,7 @@ struct ImageCaptureDescriptorDataInfoEXT {
 
   using native_type = VkImageCaptureDescriptorDataInfoEXT;
 
-  ImageCaptureDescriptorDataInfoEXT(const void *p_next = {}, VkImage image = {}) : p_next_(p_next), image_(image) {}
+  ImageCaptureDescriptorDataInfoEXT(VkImage image = {}, const void *p_next = {}) : image_(image), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -2285,7 +1927,7 @@ struct BufferCaptureDescriptorDataInfoEXT {
 
   using native_type = VkBufferCaptureDescriptorDataInfoEXT;
 
-  BufferCaptureDescriptorDataInfoEXT(const void *p_next = {}, VkBuffer buffer = {}) : p_next_(p_next), buffer_(buffer) {}
+  BufferCaptureDescriptorDataInfoEXT(VkBuffer buffer = {}, const void *p_next = {}) : buffer_(buffer), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -2298,8 +1940,8 @@ struct DescriptorAddressInfoEXT {
 
   using native_type = VkDescriptorAddressInfoEXT;
 
-  DescriptorAddressInfoEXT(void *p_next = {}, VkDeviceAddress address = {}, VkDeviceSize range = {}, Format format = {})
-    : p_next_(p_next), address_(address), range_(range), format_(format) {}
+  DescriptorAddressInfoEXT(Format format = {}, VkDeviceAddress address = {}, VkDeviceSize range = {}, void *p_next = {})
+    : format_(format), address_(address), range_(range), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -2357,13 +1999,13 @@ struct CuLaunchInfoNVX {
 
   using native_type = VkCuLaunchInfoNVX;
 
-  CuLaunchInfoNVX(const void *p_next = {}, VkCuFunctionNVX function = {}, uint32_t grid_dim_x = {}, uint32_t grid_dim_y = {},
+  CuLaunchInfoNVX(const void *const *p_extras = {}, VkCuFunctionNVX function = {}, uint32_t grid_dim_x = {}, uint32_t grid_dim_y = {},
                   uint32_t grid_dim_z = {}, uint32_t block_dim_x = {}, uint32_t block_dim_y = {}, uint32_t block_dim_z = {},
                   uint32_t shared_mem_bytes = {}, size_t param_count = {}, const void *const *p_params = {}, size_t extra_count = {},
-                  const void *const *p_extras = {})
-    : p_next_(p_next), function_(function), grid_dim_x_(grid_dim_x), grid_dim_y_(grid_dim_y), grid_dim_z_(grid_dim_z),
+                  const void *p_next = {})
+    : p_extras_(p_extras), function_(function), grid_dim_x_(grid_dim_x), grid_dim_y_(grid_dim_y), grid_dim_z_(grid_dim_z),
       block_dim_x_(block_dim_x), block_dim_y_(block_dim_y), block_dim_z_(block_dim_z), shared_mem_bytes_(shared_mem_bytes),
-      param_count_(param_count), p_params_(p_params), extra_count_(extra_count), p_extras_(p_extras) {}
+      param_count_(param_count), p_params_(p_params), extra_count_(extra_count), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -2392,16 +2034,16 @@ struct PhysicalDeviceExtendedSparseAddressSpacePropertiesNV {
   StructureType s_type_ = StructureType::PHYSICAL_DEVICE_EXTENDED_SPARSE_ADDRESS_SPACE_PROPERTIES_NV;
   void *p_next_;
   VkDeviceSize extended_sparse_address_space_size_;
-  VkImageUsageFlags extended_sparse_image_usage_flags_;
-  VkBufferUsageFlags extended_sparse_buffer_usage_flags_;
+  ImageUsageMask extended_sparse_image_usage_flags_;
+  BufferUsageMask extended_sparse_buffer_usage_flags_;
 };
 
 struct PipelineRasterizationProvokingVertexStateCreateInfoEXT {
 
   using native_type = VkPipelineRasterizationProvokingVertexStateCreateInfoEXT;
 
-  PipelineRasterizationProvokingVertexStateCreateInfoEXT(const void *p_next = {}, ProvokingVertexMode provoking_vertex_mode = {})
-    : p_next_(p_next), provoking_vertex_mode_(provoking_vertex_mode) {}
+  PipelineRasterizationProvokingVertexStateCreateInfoEXT(ProvokingVertexMode provoking_vertex_mode = {}, const void *p_next = {})
+    : provoking_vertex_mode_(provoking_vertex_mode), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -2414,8 +2056,8 @@ struct PhysicalDeviceYcbcr2Plane444FormatsFeaturesEXT {
 
   using native_type = VkPhysicalDeviceYcbcr2Plane444FormatsFeaturesEXT;
 
-  PhysicalDeviceYcbcr2Plane444FormatsFeaturesEXT(void *p_next = {}, VkBool32 ycbcr2plane444formats = {})
-    : p_next_(p_next), ycbcr2plane444formats_(ycbcr2plane444formats) {}
+  PhysicalDeviceYcbcr2Plane444FormatsFeaturesEXT(VkBool32 ycbcr2plane444formats = {}, void *p_next = {})
+    : ycbcr2plane444formats_(ycbcr2plane444formats), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -2428,8 +2070,8 @@ struct PhysicalDeviceInheritedViewportScissorFeaturesNV {
 
   using native_type = VkPhysicalDeviceInheritedViewportScissorFeaturesNV;
 
-  PhysicalDeviceInheritedViewportScissorFeaturesNV(void *p_next = {}, VkBool32 inherited_viewport_scissor2d = {})
-    : p_next_(p_next), inherited_viewport_scissor2d_(inherited_viewport_scissor2d) {}
+  PhysicalDeviceInheritedViewportScissorFeaturesNV(VkBool32 inherited_viewport_scissor2d = {}, void *p_next = {})
+    : inherited_viewport_scissor2d_(inherited_viewport_scissor2d), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -2442,8 +2084,8 @@ struct VideoEncodeH265ProfileInfoKHR {
 
   using native_type = VkVideoEncodeH265ProfileInfoKHR;
 
-  VideoEncodeH265ProfileInfoKHR(const void *p_next = {}, StdVideoH265ProfileIdc std_profile_idc = {})
-    : p_next_(p_next), std_profile_idc_(std_profile_idc) {}
+  VideoEncodeH265ProfileInfoKHR(StdVideoH265ProfileIdc std_profile_idc = {}, const void *p_next = {})
+    : std_profile_idc_(std_profile_idc), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -2470,16 +2112,16 @@ struct VideoEncodeH265RateControlInfoKHR {
 
   using native_type = VkVideoEncodeH265RateControlInfoKHR;
 
-  VideoEncodeH265RateControlInfoKHR(const void *p_next = {}, VkVideoEncodeH265RateControlFlagsKHR flags = {}, uint32_t gop_frame_count = {},
-                                    uint32_t idr_period = {}, uint32_t consecutive_bframe_count = {}, uint32_t sub_layer_count = {})
-    : p_next_(p_next), flags_(flags), gop_frame_count_(gop_frame_count), idr_period_(idr_period),
-      consecutive_bframe_count_(consecutive_bframe_count), sub_layer_count_(sub_layer_count) {}
+  VideoEncodeH265RateControlInfoKHR(uint32_t sub_layer_count = {}, VideoEncodeH265RateControlMask flags = {}, uint32_t gop_frame_count = {},
+                                    uint32_t idr_period = {}, uint32_t consecutive_bframe_count = {}, const void *p_next = {})
+    : sub_layer_count_(sub_layer_count), flags_(flags), gop_frame_count_(gop_frame_count), idr_period_(idr_period),
+      consecutive_bframe_count_(consecutive_bframe_count), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::VIDEO_ENCODE_H265_RATE_CONTROL_INFO_KHR;
   const void *p_next_;
-  VkVideoEncodeH265RateControlFlagsKHR flags_;
+  VideoEncodeH265RateControlMask flags_;
   uint32_t gop_frame_count_;
   uint32_t idr_period_;
   uint32_t consecutive_bframe_count_;
@@ -2503,11 +2145,11 @@ struct VideoEncodeH265SessionParametersGetInfoKHR {
 
   using native_type = VkVideoEncodeH265SessionParametersGetInfoKHR;
 
-  VideoEncodeH265SessionParametersGetInfoKHR(const void *p_next = {}, VkBool32 write_std_vps = {}, VkBool32 write_std_sps = {},
+  VideoEncodeH265SessionParametersGetInfoKHR(uint32_t std_ppsid = {}, VkBool32 write_std_vps = {}, VkBool32 write_std_sps = {},
                                              VkBool32 write_std_pps = {}, uint32_t std_vpsid = {}, uint32_t std_spsid = {},
-                                             uint32_t std_ppsid = {})
-    : p_next_(p_next), write_std_vps_(write_std_vps), write_std_sps_(write_std_sps), write_std_pps_(write_std_pps), std_vpsid_(std_vpsid),
-      std_spsid_(std_spsid), std_ppsid_(std_ppsid) {}
+                                             const void *p_next = {})
+    : std_ppsid_(std_ppsid), write_std_vps_(write_std_vps), write_std_sps_(write_std_sps), write_std_pps_(write_std_pps),
+      std_vpsid_(std_vpsid), std_spsid_(std_spsid), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -2525,8 +2167,8 @@ struct PhysicalDeviceImageProcessing2FeaturesQCOM {
 
   using native_type = VkPhysicalDeviceImageProcessing2FeaturesQCOM;
 
-  PhysicalDeviceImageProcessing2FeaturesQCOM(void *p_next = {}, VkBool32 texture_block_match2 = {})
-    : p_next_(p_next), texture_block_match2_(texture_block_match2) {}
+  PhysicalDeviceImageProcessing2FeaturesQCOM(VkBool32 texture_block_match2 = {}, void *p_next = {})
+    : texture_block_match2_(texture_block_match2), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -2539,8 +2181,8 @@ struct VideoEncodeH265DpbSlotInfoKHR {
 
   using native_type = VkVideoEncodeH265DpbSlotInfoKHR;
 
-  VideoEncodeH265DpbSlotInfoKHR(const void *p_next = {}, const StdVideoEncodeH265ReferenceInfo *p_std_reference_info = {})
-    : p_next_(p_next), p_std_reference_info_(p_std_reference_info) {}
+  VideoEncodeH265DpbSlotInfoKHR(const StdVideoEncodeH265ReferenceInfo *p_std_reference_info = {}, const void *p_next = {})
+    : p_std_reference_info_(p_std_reference_info), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -2553,12 +2195,12 @@ struct VideoEncodeH265SessionParametersAddInfoKHR {
 
   using native_type = VkVideoEncodeH265SessionParametersAddInfoKHR;
 
-  VideoEncodeH265SessionParametersAddInfoKHR(const void *p_next = {}, uint32_t std_vpscount = {},
+  VideoEncodeH265SessionParametersAddInfoKHR(const StdVideoH265PictureParameterSet *p_std_ppss = {}, uint32_t std_vpscount = {},
                                              const StdVideoH265VideoParameterSet *p_std_vpss = {}, uint32_t std_spscount = {},
                                              const StdVideoH265SequenceParameterSet *p_std_spss = {}, uint32_t std_ppscount = {},
-                                             const StdVideoH265PictureParameterSet *p_std_ppss = {})
-    : p_next_(p_next), std_vpscount_(std_vpscount), p_std_vpss_(p_std_vpss), std_spscount_(std_spscount), p_std_spss_(p_std_spss),
-      std_ppscount_(std_ppscount), p_std_ppss_(p_std_ppss) {}
+                                             const void *p_next = {})
+    : p_std_ppss_(p_std_ppss), std_vpscount_(std_vpscount), p_std_vpss_(p_std_vpss), std_spscount_(std_spscount), p_std_spss_(p_std_spss),
+      std_ppscount_(std_ppscount), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -2576,11 +2218,11 @@ struct VideoEncodeH265SessionParametersCreateInfoKHR {
 
   using native_type = VkVideoEncodeH265SessionParametersCreateInfoKHR;
 
-  VideoEncodeH265SessionParametersCreateInfoKHR(const void *p_next = {}, uint32_t max_std_vpscount = {}, uint32_t max_std_spscount = {},
-                                                uint32_t max_std_ppscount = {},
-                                                const VideoEncodeH265SessionParametersAddInfoKHR *p_parameters_add_info = {})
-    : p_next_(p_next), max_std_vpscount_(max_std_vpscount), max_std_spscount_(max_std_spscount), max_std_ppscount_(max_std_ppscount),
-      p_parameters_add_info_(p_parameters_add_info) {}
+  VideoEncodeH265SessionParametersCreateInfoKHR(const VideoEncodeH265SessionParametersAddInfoKHR *p_parameters_add_info = {},
+                                                uint32_t max_std_vpscount = {}, uint32_t max_std_spscount = {},
+                                                uint32_t max_std_ppscount = {}, const void *p_next = {})
+    : p_parameters_add_info_(p_parameters_add_info), max_std_vpscount_(max_std_vpscount), max_std_spscount_(max_std_spscount),
+      max_std_ppscount_(max_std_ppscount), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -2596,8 +2238,8 @@ struct VideoEncodeH265SessionCreateInfoKHR {
 
   using native_type = VkVideoEncodeH265SessionCreateInfoKHR;
 
-  VideoEncodeH265SessionCreateInfoKHR(const void *p_next = {}, VkBool32 use_max_level_idc = {}, StdVideoH265LevelIdc max_level_idc = {})
-    : p_next_(p_next), use_max_level_idc_(use_max_level_idc), max_level_idc_(max_level_idc) {}
+  VideoEncodeH265SessionCreateInfoKHR(StdVideoH265LevelIdc max_level_idc = {}, VkBool32 use_max_level_idc = {}, const void *p_next = {})
+    : max_level_idc_(max_level_idc), use_max_level_idc_(use_max_level_idc), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -2628,7 +2270,7 @@ struct VideoEncodeH265QualityLevelPropertiesKHR {
 
   StructureType s_type_ = StructureType::VIDEO_ENCODE_H265_QUALITY_LEVEL_PROPERTIES_KHR;
   void *p_next_;
-  VkVideoEncodeH265RateControlFlagsKHR preferred_rate_control_flags_;
+  VideoEncodeH265RateControlMask preferred_rate_control_flags_;
   uint32_t preferred_gop_frame_count_;
   uint32_t preferred_idr_period_;
   uint32_t preferred_consecutive_bframe_count_;
@@ -2646,12 +2288,12 @@ struct VideoEncodeH265CapabilitiesKHR {
 
   StructureType s_type_ = StructureType::VIDEO_ENCODE_H265_CAPABILITIES_KHR;
   void *p_next_;
-  VkVideoEncodeH265CapabilityFlagsKHR flags_;
+  VideoEncodeH265CapabilityMask flags_;
   StdVideoH265LevelIdc max_level_idc_;
   uint32_t max_slice_segment_count_;
   Extent2D max_tiles_;
-  VkVideoEncodeH265CtbSizeFlagsKHR ctb_sizes_;
-  VkVideoEncodeH265TransformBlockSizeFlagsKHR transform_block_sizes_;
+  VideoEncodeH265CtbSizeMask ctb_sizes_;
+  VideoEncodeH265TransformBlockSizeMask transform_block_sizes_;
   uint32_t max_ppicture_l0reference_count_;
   uint32_t max_bpicture_l0reference_count_;
   uint32_t max_l1reference_count_;
@@ -2661,7 +2303,7 @@ struct VideoEncodeH265CapabilitiesKHR {
   int32_t max_qp_;
   VkBool32 prefers_gop_remaining_frames_;
   VkBool32 requires_gop_remaining_frames_;
-  VkVideoEncodeH265StdFlagsKHR std_syntax_flags_;
+  VideoEncodeH265StdMask std_syntax_flags_;
 };
 
 struct VideoEncodeH264QpKHR {
@@ -2695,11 +2337,11 @@ struct VideoEncodeH264RateControlLayerInfoKHR {
 
   using native_type = VkVideoEncodeH264RateControlLayerInfoKHR;
 
-  VideoEncodeH264RateControlLayerInfoKHR(const void *p_next = {}, VkBool32 use_min_qp = {}, VideoEncodeH264QpKHR min_qp = {},
-                                         VkBool32 use_max_qp = {}, VideoEncodeH264QpKHR max_qp = {}, VkBool32 use_max_frame_size = {},
-                                         VideoEncodeH264FrameSizeKHR max_frame_size = {})
-    : p_next_(p_next), use_min_qp_(use_min_qp), min_qp_(min_qp), use_max_qp_(use_max_qp), max_qp_(max_qp),
-      use_max_frame_size_(use_max_frame_size), max_frame_size_(max_frame_size) {}
+  VideoEncodeH264RateControlLayerInfoKHR(VideoEncodeH264FrameSizeKHR max_frame_size = {}, VkBool32 use_min_qp = {},
+                                         VideoEncodeH264QpKHR min_qp = {}, VkBool32 use_max_qp = {}, VideoEncodeH264QpKHR max_qp = {},
+                                         VkBool32 use_max_frame_size = {}, const void *p_next = {})
+    : max_frame_size_(max_frame_size), use_min_qp_(use_min_qp), min_qp_(min_qp), use_max_qp_(use_max_qp), max_qp_(max_qp),
+      use_max_frame_size_(use_max_frame_size), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -2717,16 +2359,17 @@ struct VideoEncodeH264RateControlInfoKHR {
 
   using native_type = VkVideoEncodeH264RateControlInfoKHR;
 
-  VideoEncodeH264RateControlInfoKHR(const void *p_next = {}, VkVideoEncodeH264RateControlFlagsKHR flags = {}, uint32_t gop_frame_count = {},
-                                    uint32_t idr_period = {}, uint32_t consecutive_bframe_count = {}, uint32_t temporal_layer_count = {})
-    : p_next_(p_next), flags_(flags), gop_frame_count_(gop_frame_count), idr_period_(idr_period),
-      consecutive_bframe_count_(consecutive_bframe_count), temporal_layer_count_(temporal_layer_count) {}
+  VideoEncodeH264RateControlInfoKHR(uint32_t temporal_layer_count = {}, VideoEncodeH264RateControlMask flags = {},
+                                    uint32_t gop_frame_count = {}, uint32_t idr_period = {}, uint32_t consecutive_bframe_count = {},
+                                    const void *p_next = {})
+    : temporal_layer_count_(temporal_layer_count), flags_(flags), gop_frame_count_(gop_frame_count), idr_period_(idr_period),
+      consecutive_bframe_count_(consecutive_bframe_count), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::VIDEO_ENCODE_H264_RATE_CONTROL_INFO_KHR;
   const void *p_next_;
-  VkVideoEncodeH264RateControlFlagsKHR flags_;
+  VideoEncodeH264RateControlMask flags_;
   uint32_t gop_frame_count_;
   uint32_t idr_period_;
   uint32_t consecutive_bframe_count_;
@@ -2737,9 +2380,9 @@ struct VideoEncodeH264NaluSliceInfoKHR {
 
   using native_type = VkVideoEncodeH264NaluSliceInfoKHR;
 
-  VideoEncodeH264NaluSliceInfoKHR(const void *p_next = {}, int32_t constant_qp = {},
-                                  const StdVideoEncodeH264SliceHeader *p_std_slice_header = {})
-    : p_next_(p_next), constant_qp_(constant_qp), p_std_slice_header_(p_std_slice_header) {}
+  VideoEncodeH264NaluSliceInfoKHR(const StdVideoEncodeH264SliceHeader *p_std_slice_header = {}, int32_t constant_qp = {},
+                                  const void *p_next = {})
+    : p_std_slice_header_(p_std_slice_header), constant_qp_(constant_qp), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -2753,8 +2396,8 @@ struct VideoEncodeH264ProfileInfoKHR {
 
   using native_type = VkVideoEncodeH264ProfileInfoKHR;
 
-  VideoEncodeH264ProfileInfoKHR(const void *p_next = {}, StdVideoH264ProfileIdc std_profile_idc = {})
-    : p_next_(p_next), std_profile_idc_(std_profile_idc) {}
+  VideoEncodeH264ProfileInfoKHR(StdVideoH264ProfileIdc std_profile_idc = {}, const void *p_next = {})
+    : std_profile_idc_(std_profile_idc), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -2767,11 +2410,11 @@ struct VideoEncodeH264PictureInfoKHR {
 
   using native_type = VkVideoEncodeH264PictureInfoKHR;
 
-  VideoEncodeH264PictureInfoKHR(const void *p_next = {}, uint32_t nalu_slice_entry_count = {},
+  VideoEncodeH264PictureInfoKHR(VkBool32 generate_prefix_nalu = {}, uint32_t nalu_slice_entry_count = {},
                                 const VideoEncodeH264NaluSliceInfoKHR *p_nalu_slice_entries = {},
-                                const StdVideoEncodeH264PictureInfo *p_std_picture_info = {}, VkBool32 generate_prefix_nalu = {})
-    : p_next_(p_next), nalu_slice_entry_count_(nalu_slice_entry_count), p_nalu_slice_entries_(p_nalu_slice_entries),
-      p_std_picture_info_(p_std_picture_info), generate_prefix_nalu_(generate_prefix_nalu) {}
+                                const StdVideoEncodeH264PictureInfo *p_std_picture_info = {}, const void *p_next = {})
+    : generate_prefix_nalu_(generate_prefix_nalu), nalu_slice_entry_count_(nalu_slice_entry_count),
+      p_nalu_slice_entries_(p_nalu_slice_entries), p_std_picture_info_(p_std_picture_info), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -2787,8 +2430,8 @@ struct VideoEncodeH264DpbSlotInfoKHR {
 
   using native_type = VkVideoEncodeH264DpbSlotInfoKHR;
 
-  VideoEncodeH264DpbSlotInfoKHR(const void *p_next = {}, const StdVideoEncodeH264ReferenceInfo *p_std_reference_info = {})
-    : p_next_(p_next), p_std_reference_info_(p_std_reference_info) {}
+  VideoEncodeH264DpbSlotInfoKHR(const StdVideoEncodeH264ReferenceInfo *p_std_reference_info = {}, const void *p_next = {})
+    : p_std_reference_info_(p_std_reference_info), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -2813,10 +2456,10 @@ struct VideoEncodeH264SessionParametersAddInfoKHR {
 
   using native_type = VkVideoEncodeH264SessionParametersAddInfoKHR;
 
-  VideoEncodeH264SessionParametersAddInfoKHR(const void *p_next = {}, uint32_t std_spscount = {},
+  VideoEncodeH264SessionParametersAddInfoKHR(const StdVideoH264PictureParameterSet *p_std_ppss = {}, uint32_t std_spscount = {},
                                              const StdVideoH264SequenceParameterSet *p_std_spss = {}, uint32_t std_ppscount = {},
-                                             const StdVideoH264PictureParameterSet *p_std_ppss = {})
-    : p_next_(p_next), std_spscount_(std_spscount), p_std_spss_(p_std_spss), std_ppscount_(std_ppscount), p_std_ppss_(p_std_ppss) {}
+                                             const void *p_next = {})
+    : p_std_ppss_(p_std_ppss), std_spscount_(std_spscount), p_std_spss_(p_std_spss), std_ppscount_(std_ppscount), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -2832,8 +2475,8 @@ struct VideoEncodeH264SessionCreateInfoKHR {
 
   using native_type = VkVideoEncodeH264SessionCreateInfoKHR;
 
-  VideoEncodeH264SessionCreateInfoKHR(const void *p_next = {}, VkBool32 use_max_level_idc = {}, StdVideoH264LevelIdc max_level_idc = {})
-    : p_next_(p_next), use_max_level_idc_(use_max_level_idc), max_level_idc_(max_level_idc) {}
+  VideoEncodeH264SessionCreateInfoKHR(StdVideoH264LevelIdc max_level_idc = {}, VkBool32 use_max_level_idc = {}, const void *p_next = {})
+    : max_level_idc_(max_level_idc), use_max_level_idc_(use_max_level_idc), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -2851,7 +2494,7 @@ struct VideoEncodeH264CapabilitiesKHR {
 
   StructureType s_type_ = StructureType::VIDEO_ENCODE_H264_CAPABILITIES_KHR;
   void *p_next_;
-  VkVideoEncodeH264CapabilityFlagsKHR flags_;
+  VideoEncodeH264CapabilityMask flags_;
   StdVideoH264LevelIdc max_level_idc_;
   uint32_t max_slice_count_;
   uint32_t max_ppicture_l0reference_count_;
@@ -2863,17 +2506,17 @@ struct VideoEncodeH264CapabilitiesKHR {
   int32_t max_qp_;
   VkBool32 prefers_gop_remaining_frames_;
   VkBool32 requires_gop_remaining_frames_;
-  VkVideoEncodeH264StdFlagsKHR std_syntax_flags_;
+  VideoEncodeH264StdMask std_syntax_flags_;
 };
 
 struct VideoEncodeRateControlLayerInfoKHR {
 
   using native_type = VkVideoEncodeRateControlLayerInfoKHR;
 
-  VideoEncodeRateControlLayerInfoKHR(const void *p_next = {}, uint64_t average_bitrate = {}, uint64_t max_bitrate = {},
-                                     uint32_t frame_rate_numerator = {}, uint32_t frame_rate_denominator = {})
-    : p_next_(p_next), average_bitrate_(average_bitrate), max_bitrate_(max_bitrate), frame_rate_numerator_(frame_rate_numerator),
-      frame_rate_denominator_(frame_rate_denominator) {}
+  VideoEncodeRateControlLayerInfoKHR(uint32_t frame_rate_denominator = {}, uint64_t average_bitrate = {}, uint64_t max_bitrate = {},
+                                     uint32_t frame_rate_numerator = {}, const void *p_next = {})
+    : frame_rate_denominator_(frame_rate_denominator), average_bitrate_(average_bitrate), max_bitrate_(max_bitrate),
+      frame_rate_numerator_(frame_rate_numerator), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -2889,18 +2532,18 @@ struct VideoEncodeRateControlInfoKHR {
 
   using native_type = VkVideoEncodeRateControlInfoKHR;
 
-  VideoEncodeRateControlInfoKHR(const void *p_next = {}, VkVideoEncodeRateControlFlagsKHR flags = {},
+  VideoEncodeRateControlInfoKHR(uint32_t initial_virtual_buffer_size_in_ms = {}, VideoEncodeRateControlMask flags = {},
                                 VideoEncodeRateControlModeMaskBit rate_control_mode = {}, uint32_t layer_count = {},
                                 const VideoEncodeRateControlLayerInfoKHR *p_layers = {}, uint32_t virtual_buffer_size_in_ms = {},
-                                uint32_t initial_virtual_buffer_size_in_ms = {})
-    : p_next_(p_next), flags_(flags), rate_control_mode_(rate_control_mode), layer_count_(layer_count), p_layers_(p_layers),
-      virtual_buffer_size_in_ms_(virtual_buffer_size_in_ms), initial_virtual_buffer_size_in_ms_(initial_virtual_buffer_size_in_ms) {}
+                                const void *p_next = {})
+    : initial_virtual_buffer_size_in_ms_(initial_virtual_buffer_size_in_ms), flags_(flags), rate_control_mode_(rate_control_mode),
+      layer_count_(layer_count), p_layers_(p_layers), virtual_buffer_size_in_ms_(virtual_buffer_size_in_ms), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::VIDEO_ENCODE_RATE_CONTROL_INFO_KHR;
   const void *p_next_;
-  VkVideoEncodeRateControlFlagsKHR flags_;
+  VideoEncodeRateControlMask flags_;
   VideoEncodeRateControlModeMaskBit rate_control_mode_;
   uint32_t layer_count_;
   const VideoEncodeRateControlLayerInfoKHR *p_layers_;
@@ -2924,9 +2567,9 @@ struct VideoEncodeH264SessionParametersGetInfoKHR {
 
   using native_type = VkVideoEncodeH264SessionParametersGetInfoKHR;
 
-  VideoEncodeH264SessionParametersGetInfoKHR(const void *p_next = {}, VkBool32 write_std_sps = {}, VkBool32 write_std_pps = {},
-                                             uint32_t std_spsid = {}, uint32_t std_ppsid = {})
-    : p_next_(p_next), write_std_sps_(write_std_sps), write_std_pps_(write_std_pps), std_spsid_(std_spsid), std_ppsid_(std_ppsid) {}
+  VideoEncodeH264SessionParametersGetInfoKHR(uint32_t std_ppsid = {}, VkBool32 write_std_sps = {}, VkBool32 write_std_pps = {},
+                                             uint32_t std_spsid = {}, const void *p_next = {})
+    : std_ppsid_(std_ppsid), write_std_sps_(write_std_sps), write_std_pps_(write_std_pps), std_spsid_(std_spsid), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -2942,29 +2585,29 @@ struct VideoProfileInfoKHR {
 
   using native_type = VkVideoProfileInfoKHR;
 
-  VideoProfileInfoKHR(const void *p_next = {}, VideoCodecOperationMaskBit video_codec_operation = {},
-                      VkVideoChromaSubsamplingFlagsKHR chroma_subsampling = {}, VkVideoComponentBitDepthFlagsKHR luma_bit_depth = {},
-                      VkVideoComponentBitDepthFlagsKHR chroma_bit_depth = {})
-    : p_next_(p_next), video_codec_operation_(video_codec_operation), chroma_subsampling_(chroma_subsampling),
-      luma_bit_depth_(luma_bit_depth), chroma_bit_depth_(chroma_bit_depth) {}
+  VideoProfileInfoKHR(VideoComponentBitDepthMask chroma_bit_depth = {}, VideoCodecOperationMaskBit video_codec_operation = {},
+                      VideoChromaSubsamplingMask chroma_subsampling = {}, VideoComponentBitDepthMask luma_bit_depth = {},
+                      const void *p_next = {})
+    : chroma_bit_depth_(chroma_bit_depth), video_codec_operation_(video_codec_operation), chroma_subsampling_(chroma_subsampling),
+      luma_bit_depth_(luma_bit_depth), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::VIDEO_PROFILE_INFO_KHR;
   const void *p_next_;
   VideoCodecOperationMaskBit video_codec_operation_;
-  VkVideoChromaSubsamplingFlagsKHR chroma_subsampling_;
-  VkVideoComponentBitDepthFlagsKHR luma_bit_depth_;
-  VkVideoComponentBitDepthFlagsKHR chroma_bit_depth_;
+  VideoChromaSubsamplingMask chroma_subsampling_;
+  VideoComponentBitDepthMask luma_bit_depth_;
+  VideoComponentBitDepthMask chroma_bit_depth_;
 };
 
 struct PhysicalDeviceVideoEncodeQualityLevelInfoKHR {
 
   using native_type = VkPhysicalDeviceVideoEncodeQualityLevelInfoKHR;
 
-  PhysicalDeviceVideoEncodeQualityLevelInfoKHR(const void *p_next = {}, const VideoProfileInfoKHR *p_video_profile = {},
-                                               uint32_t quality_level = {})
-    : p_next_(p_next), p_video_profile_(p_video_profile), quality_level_(quality_level) {}
+  PhysicalDeviceVideoEncodeQualityLevelInfoKHR(uint32_t quality_level = {}, const VideoProfileInfoKHR *p_video_profile = {},
+                                               const void *p_next = {})
+    : quality_level_(quality_level), p_video_profile_(p_video_profile), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -2990,24 +2633,24 @@ struct QueryPoolVideoEncodeFeedbackCreateInfoKHR {
 
   using native_type = VkQueryPoolVideoEncodeFeedbackCreateInfoKHR;
 
-  QueryPoolVideoEncodeFeedbackCreateInfoKHR(const void *p_next = {}, VkVideoEncodeFeedbackFlagsKHR encode_feedback_flags = {})
-    : p_next_(p_next), encode_feedback_flags_(encode_feedback_flags) {}
+  QueryPoolVideoEncodeFeedbackCreateInfoKHR(VideoEncodeFeedbackMask encode_feedback_flags = {}, const void *p_next = {})
+    : encode_feedback_flags_(encode_feedback_flags), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::QUERY_POOL_VIDEO_ENCODE_FEEDBACK_CREATE_INFO_KHR;
   const void *p_next_;
-  VkVideoEncodeFeedbackFlagsKHR encode_feedback_flags_;
+  VideoEncodeFeedbackMask encode_feedback_flags_;
 };
 
 struct VideoPictureResourceInfoKHR {
 
   using native_type = VkVideoPictureResourceInfoKHR;
 
-  VideoPictureResourceInfoKHR(const void *p_next = {}, Offset2D coded_offset = {}, Extent2D coded_extent = {},
-                              uint32_t base_array_layer = {}, VkImageView image_view_binding = {})
-    : p_next_(p_next), coded_offset_(coded_offset), coded_extent_(coded_extent), base_array_layer_(base_array_layer),
-      image_view_binding_(image_view_binding) {}
+  VideoPictureResourceInfoKHR(VkImageView image_view_binding = {}, Offset2D coded_offset = {}, Extent2D coded_extent = {},
+                              uint32_t base_array_layer = {}, const void *p_next = {})
+    : image_view_binding_(image_view_binding), coded_offset_(coded_offset), coded_extent_(coded_extent),
+      base_array_layer_(base_array_layer), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -3023,8 +2666,8 @@ struct VideoReferenceSlotInfoKHR {
 
   using native_type = VkVideoReferenceSlotInfoKHR;
 
-  VideoReferenceSlotInfoKHR(const void *p_next = {}, int32_t slot_index = {}, const VideoPictureResourceInfoKHR *p_picture_resource = {})
-    : p_next_(p_next), slot_index_(slot_index), p_picture_resource_(p_picture_resource) {}
+  VideoReferenceSlotInfoKHR(const VideoPictureResourceInfoKHR *p_picture_resource = {}, int32_t slot_index = {}, const void *p_next = {})
+    : p_picture_resource_(p_picture_resource), slot_index_(slot_index), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -3038,21 +2681,20 @@ struct VideoEncodeInfoKHR {
 
   using native_type = VkVideoEncodeInfoKHR;
 
-  VideoEncodeInfoKHR(const void *p_next = {}, VkVideoEncodeFlagsKHR flags = {}, VkBuffer dst_buffer = {},
+  VideoEncodeInfoKHR(uint32_t preceding_externally_encoded_bytes = {}, VideoEncodeMask flags = {}, VkBuffer dst_buffer = {},
                      VkDeviceSize dst_buffer_offset = {}, VkDeviceSize dst_buffer_range = {},
                      VideoPictureResourceInfoKHR src_picture_resource = {}, const VideoReferenceSlotInfoKHR *p_setup_reference_slot = {},
-                     uint32_t reference_slot_count = {}, const VideoReferenceSlotInfoKHR *p_reference_slots = {},
-                     uint32_t preceding_externally_encoded_bytes = {})
-    : p_next_(p_next), flags_(flags), dst_buffer_(dst_buffer), dst_buffer_offset_(dst_buffer_offset), dst_buffer_range_(dst_buffer_range),
-      src_picture_resource_(src_picture_resource), p_setup_reference_slot_(p_setup_reference_slot),
-      reference_slot_count_(reference_slot_count), p_reference_slots_(p_reference_slots),
-      preceding_externally_encoded_bytes_(preceding_externally_encoded_bytes) {}
+                     uint32_t reference_slot_count = {}, const VideoReferenceSlotInfoKHR *p_reference_slots = {}, const void *p_next = {})
+    : preceding_externally_encoded_bytes_(preceding_externally_encoded_bytes), flags_(flags), dst_buffer_(dst_buffer),
+      dst_buffer_offset_(dst_buffer_offset), dst_buffer_range_(dst_buffer_range), src_picture_resource_(src_picture_resource),
+      p_setup_reference_slot_(p_setup_reference_slot), reference_slot_count_(reference_slot_count), p_reference_slots_(p_reference_slots),
+      p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::VIDEO_ENCODE_INFO_KHR;
   const void *p_next_;
-  VkVideoEncodeFlagsKHR flags_;
+  VideoEncodeMask flags_;
   VkBuffer dst_buffer_;
   VkDeviceSize dst_buffer_offset_;
   VkDeviceSize dst_buffer_range_;
@@ -3077,41 +2719,20 @@ struct ComponentMapping {
   ComponentSwizzle b_;
   ComponentSwizzle a_;
 };
-#ifdef VK_USE_PLATFORM_SCREEN_QNX
-
-struct ScreenBufferFormatPropertiesQNX {
-
-  using native_type = VkScreenBufferFormatPropertiesQNX;
-
-  auto *get() { return reinterpret_cast<native_type *>(this); }
-
-  StructureType s_type_ = StructureType::SCREEN_BUFFER_FORMAT_PROPERTIES_QNX;
-  void *p_next_;
-  Format format_;
-  uint64_t external_format_;
-  uint64_t screen_usage_;
-  VkFormatFeatureFlags format_features_;
-  ComponentMapping sampler_ycbcr_conversion_components_;
-  SamplerYcbcrModelConversion suggested_ycbcr_model_;
-  SamplerYcbcrRange suggested_ycbcr_range_;
-  ChromaLocation suggested_xchroma_offset_;
-  ChromaLocation suggested_ychroma_offset_;
-};
-#endif
 
 struct DeviceAddressBindingCallbackDataEXT {
 
   using native_type = VkDeviceAddressBindingCallbackDataEXT;
 
-  DeviceAddressBindingCallbackDataEXT(void *p_next = {}, VkDeviceAddressBindingFlagsEXT flags = {}, VkDeviceAddress base_address = {},
-                                      VkDeviceSize size = {}, DeviceAddressBindingType binding_type = {})
-    : p_next_(p_next), flags_(flags), base_address_(base_address), size_(size), binding_type_(binding_type) {}
+  DeviceAddressBindingCallbackDataEXT(DeviceAddressBindingType binding_type = {}, DeviceAddressBindingMask flags = {},
+                                      VkDeviceAddress base_address = {}, VkDeviceSize size = {}, void *p_next = {})
+    : binding_type_(binding_type), flags_(flags), base_address_(base_address), size_(size), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::DEVICE_ADDRESS_BINDING_CALLBACK_DATA_EXT;
   void *p_next_;
-  VkDeviceAddressBindingFlagsEXT flags_;
+  DeviceAddressBindingMask flags_;
   VkDeviceAddress base_address_;
   VkDeviceSize size_;
   DeviceAddressBindingType binding_type_;
@@ -3121,23 +2742,23 @@ struct VideoEndCodingInfoKHR {
 
   using native_type = VkVideoEndCodingInfoKHR;
 
-  VideoEndCodingInfoKHR(const void *p_next = {}, VkVideoEndCodingFlagsKHR flags = {}) : p_next_(p_next), flags_(flags) {}
+  VideoEndCodingInfoKHR(VideoEndCodingMask flags = {}, const void *p_next = {}) : flags_(flags), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::VIDEO_END_CODING_INFO_KHR;
   const void *p_next_;
-  VkVideoEndCodingFlagsKHR flags_;
+  VideoEndCodingMask flags_;
 };
 
 struct PhysicalDeviceOpacityMicromapFeaturesEXT {
 
   using native_type = VkPhysicalDeviceOpacityMicromapFeaturesEXT;
 
-  PhysicalDeviceOpacityMicromapFeaturesEXT(void *p_next = {}, VkBool32 micromap = {}, VkBool32 micromap_capture_replay = {},
-                                           VkBool32 micromap_host_commands = {})
-    : p_next_(p_next), micromap_(micromap), micromap_capture_replay_(micromap_capture_replay),
-      micromap_host_commands_(micromap_host_commands) {}
+  PhysicalDeviceOpacityMicromapFeaturesEXT(VkBool32 micromap_host_commands = {}, VkBool32 micromap = {},
+                                           VkBool32 micromap_capture_replay = {}, void *p_next = {})
+    : micromap_host_commands_(micromap_host_commands), micromap_(micromap), micromap_capture_replay_(micromap_capture_replay),
+      p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -3152,17 +2773,17 @@ struct VideoBeginCodingInfoKHR {
 
   using native_type = VkVideoBeginCodingInfoKHR;
 
-  VideoBeginCodingInfoKHR(const void *p_next = {}, VkVideoBeginCodingFlagsKHR flags = {}, VkVideoSessionKHR video_session = {},
-                          VkVideoSessionParametersKHR video_session_parameters = {}, uint32_t reference_slot_count = {},
-                          const VideoReferenceSlotInfoKHR *p_reference_slots = {})
-    : p_next_(p_next), flags_(flags), video_session_(video_session), video_session_parameters_(video_session_parameters),
-      reference_slot_count_(reference_slot_count), p_reference_slots_(p_reference_slots) {}
+  VideoBeginCodingInfoKHR(const VideoReferenceSlotInfoKHR *p_reference_slots = {}, VideoBeginCodingMask flags = {},
+                          VkVideoSessionKHR video_session = {}, VkVideoSessionParametersKHR video_session_parameters = {},
+                          uint32_t reference_slot_count = {}, const void *p_next = {})
+    : p_reference_slots_(p_reference_slots), flags_(flags), video_session_(video_session),
+      video_session_parameters_(video_session_parameters), reference_slot_count_(reference_slot_count), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::VIDEO_BEGIN_CODING_INFO_KHR;
   const void *p_next_;
-  VkVideoBeginCodingFlagsKHR flags_;
+  VideoBeginCodingMask flags_;
   VkVideoSessionKHR video_session_;
   VkVideoSessionParametersKHR video_session_parameters_;
   uint32_t reference_slot_count_;
@@ -3173,10 +2794,10 @@ struct DeviceFaultCountsEXT {
 
   using native_type = VkDeviceFaultCountsEXT;
 
-  DeviceFaultCountsEXT(void *p_next = {}, uint32_t address_info_count = {}, uint32_t vendor_info_count = {},
-                       VkDeviceSize vendor_binary_size = {})
-    : p_next_(p_next), address_info_count_(address_info_count), vendor_info_count_(vendor_info_count),
-      vendor_binary_size_(vendor_binary_size) {}
+  DeviceFaultCountsEXT(VkDeviceSize vendor_binary_size = {}, uint32_t address_info_count = {}, uint32_t vendor_info_count = {},
+                       void *p_next = {})
+    : vendor_binary_size_(vendor_binary_size), address_info_count_(address_info_count), vendor_info_count_(vendor_info_count),
+      p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -3191,8 +2812,8 @@ struct VideoEncodeSessionParametersGetInfoKHR {
 
   using native_type = VkVideoEncodeSessionParametersGetInfoKHR;
 
-  VideoEncodeSessionParametersGetInfoKHR(const void *p_next = {}, VkVideoSessionParametersKHR video_session_parameters = {})
-    : p_next_(p_next), video_session_parameters_(video_session_parameters) {}
+  VideoEncodeSessionParametersGetInfoKHR(VkVideoSessionParametersKHR video_session_parameters = {}, const void *p_next = {})
+    : video_session_parameters_(video_session_parameters), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -3205,8 +2826,8 @@ struct VideoSessionParametersUpdateInfoKHR {
 
   using native_type = VkVideoSessionParametersUpdateInfoKHR;
 
-  VideoSessionParametersUpdateInfoKHR(const void *p_next = {}, uint32_t update_sequence_count = {})
-    : p_next_(p_next), update_sequence_count_(update_sequence_count) {}
+  VideoSessionParametersUpdateInfoKHR(uint32_t update_sequence_count = {}, const void *p_next = {})
+    : update_sequence_count_(update_sequence_count), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -3229,21 +2850,21 @@ struct VideoSessionCreateInfoKHR {
 
   using native_type = VkVideoSessionCreateInfoKHR;
 
-  VideoSessionCreateInfoKHR(const void *p_next = {}, uint32_t queue_family_index = {}, VkVideoSessionCreateFlagsKHR flags = {},
-                            const VideoProfileInfoKHR *p_video_profile = {}, Format picture_format = {}, Extent2D max_coded_extent = {},
-                            Format reference_picture_format = {}, uint32_t max_dpb_slots = {}, uint32_t max_active_reference_pictures = {},
-                            const ExtensionProperties *p_std_header_version = {})
-    : p_next_(p_next), queue_family_index_(queue_family_index), flags_(flags), p_video_profile_(p_video_profile),
-      picture_format_(picture_format), max_coded_extent_(max_coded_extent), reference_picture_format_(reference_picture_format),
-      max_dpb_slots_(max_dpb_slots), max_active_reference_pictures_(max_active_reference_pictures),
-      p_std_header_version_(p_std_header_version) {}
+  VideoSessionCreateInfoKHR(const ExtensionProperties *p_std_header_version = {}, uint32_t queue_family_index = {},
+                            VideoSessionCreateMask flags = {}, const VideoProfileInfoKHR *p_video_profile = {}, Format picture_format = {},
+                            Extent2D max_coded_extent = {}, Format reference_picture_format = {}, uint32_t max_dpb_slots = {},
+                            uint32_t max_active_reference_pictures = {}, const void *p_next = {})
+    : p_std_header_version_(p_std_header_version), queue_family_index_(queue_family_index), flags_(flags),
+      p_video_profile_(p_video_profile), picture_format_(picture_format), max_coded_extent_(max_coded_extent),
+      reference_picture_format_(reference_picture_format), max_dpb_slots_(max_dpb_slots),
+      max_active_reference_pictures_(max_active_reference_pictures), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::VIDEO_SESSION_CREATE_INFO_KHR;
   const void *p_next_;
   uint32_t queue_family_index_;
-  VkVideoSessionCreateFlagsKHR flags_;
+  VideoSessionCreateMask flags_;
   const VideoProfileInfoKHR *p_video_profile_;
   Format picture_format_;
   Extent2D max_coded_extent_;
@@ -3257,12 +2878,12 @@ struct VideoDecodeAV1PictureInfoKHR {
 
   using native_type = VkVideoDecodeAV1PictureInfoKHR;
 
-  VideoDecodeAV1PictureInfoKHR(const void *p_next = {}, const StdVideoDecodeAV1PictureInfo *p_std_picture_info = {},
+  VideoDecodeAV1PictureInfoKHR(const uint32_t *p_tile_sizes = {}, const StdVideoDecodeAV1PictureInfo *p_std_picture_info = {},
                                const std::array<int32_t, VK_MAX_VIDEO_AV1_REFERENCES_PER_FRAME_KHR> &reference_name_slot_indices = {},
                                uint32_t frame_header_offset = {}, uint32_t tile_count = {}, const uint32_t *p_tile_offsets = {},
-                               const uint32_t *p_tile_sizes = {})
-    : p_next_(p_next), p_std_picture_info_(p_std_picture_info), reference_name_slot_indices_(reference_name_slot_indices),
-      frame_header_offset_(frame_header_offset), tile_count_(tile_count), p_tile_offsets_(p_tile_offsets), p_tile_sizes_(p_tile_sizes) {}
+                               const void *p_next = {})
+    : p_tile_sizes_(p_tile_sizes), p_std_picture_info_(p_std_picture_info), reference_name_slot_indices_(reference_name_slot_indices),
+      frame_header_offset_(frame_header_offset), tile_count_(tile_count), p_tile_offsets_(p_tile_offsets), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -3280,8 +2901,8 @@ struct VideoDecodeAV1SessionParametersCreateInfoKHR {
 
   using native_type = VkVideoDecodeAV1SessionParametersCreateInfoKHR;
 
-  VideoDecodeAV1SessionParametersCreateInfoKHR(const void *p_next = {}, const StdVideoAV1SequenceHeader *p_std_sequence_header = {})
-    : p_next_(p_next), p_std_sequence_header_(p_std_sequence_header) {}
+  VideoDecodeAV1SessionParametersCreateInfoKHR(const StdVideoAV1SequenceHeader *p_std_sequence_header = {}, const void *p_next = {})
+    : p_std_sequence_header_(p_std_sequence_header), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -3305,8 +2926,8 @@ struct VideoDecodeH265DpbSlotInfoKHR {
 
   using native_type = VkVideoDecodeH265DpbSlotInfoKHR;
 
-  VideoDecodeH265DpbSlotInfoKHR(const void *p_next = {}, const StdVideoDecodeH265ReferenceInfo *p_std_reference_info = {})
-    : p_next_(p_next), p_std_reference_info_(p_std_reference_info) {}
+  VideoDecodeH265DpbSlotInfoKHR(const StdVideoDecodeH265ReferenceInfo *p_std_reference_info = {}, const void *p_next = {})
+    : p_std_reference_info_(p_std_reference_info), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -3319,8 +2940,8 @@ struct VideoDecodeH265ProfileInfoKHR {
 
   using native_type = VkVideoDecodeH265ProfileInfoKHR;
 
-  VideoDecodeH265ProfileInfoKHR(const void *p_next = {}, StdVideoH265ProfileIdc std_profile_idc = {})
-    : p_next_(p_next), std_profile_idc_(std_profile_idc) {}
+  VideoDecodeH265ProfileInfoKHR(StdVideoH265ProfileIdc std_profile_idc = {}, const void *p_next = {})
+    : std_profile_idc_(std_profile_idc), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -3333,9 +2954,9 @@ struct VideoDecodeH264PictureInfoKHR {
 
   using native_type = VkVideoDecodeH264PictureInfoKHR;
 
-  VideoDecodeH264PictureInfoKHR(const void *p_next = {}, const StdVideoDecodeH264PictureInfo *p_std_picture_info = {},
-                                uint32_t slice_count = {}, const uint32_t *p_slice_offsets = {})
-    : p_next_(p_next), p_std_picture_info_(p_std_picture_info), slice_count_(slice_count), p_slice_offsets_(p_slice_offsets) {}
+  VideoDecodeH264PictureInfoKHR(const uint32_t *p_slice_offsets = {}, const StdVideoDecodeH264PictureInfo *p_std_picture_info = {},
+                                uint32_t slice_count = {}, const void *p_next = {})
+    : p_slice_offsets_(p_slice_offsets), p_std_picture_info_(p_std_picture_info), slice_count_(slice_count), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -3350,13 +2971,12 @@ struct PhysicalDeviceDescriptorBufferFeaturesEXT {
 
   using native_type = VkPhysicalDeviceDescriptorBufferFeaturesEXT;
 
-  PhysicalDeviceDescriptorBufferFeaturesEXT(void *p_next = {}, VkBool32 descriptor_buffer = {},
+  PhysicalDeviceDescriptorBufferFeaturesEXT(VkBool32 descriptor_buffer_push_descriptors = {}, VkBool32 descriptor_buffer = {},
                                             VkBool32 descriptor_buffer_capture_replay = {},
-                                            VkBool32 descriptor_buffer_image_layout_ignored = {},
-                                            VkBool32 descriptor_buffer_push_descriptors = {})
-    : p_next_(p_next), descriptor_buffer_(descriptor_buffer), descriptor_buffer_capture_replay_(descriptor_buffer_capture_replay),
-      descriptor_buffer_image_layout_ignored_(descriptor_buffer_image_layout_ignored),
-      descriptor_buffer_push_descriptors_(descriptor_buffer_push_descriptors) {}
+                                            VkBool32 descriptor_buffer_image_layout_ignored = {}, void *p_next = {})
+    : descriptor_buffer_push_descriptors_(descriptor_buffer_push_descriptors), descriptor_buffer_(descriptor_buffer),
+      descriptor_buffer_capture_replay_(descriptor_buffer_capture_replay),
+      descriptor_buffer_image_layout_ignored_(descriptor_buffer_image_layout_ignored), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -3372,10 +2992,10 @@ struct VideoDecodeH264SessionParametersAddInfoKHR {
 
   using native_type = VkVideoDecodeH264SessionParametersAddInfoKHR;
 
-  VideoDecodeH264SessionParametersAddInfoKHR(const void *p_next = {}, uint32_t std_spscount = {},
+  VideoDecodeH264SessionParametersAddInfoKHR(const StdVideoH264PictureParameterSet *p_std_ppss = {}, uint32_t std_spscount = {},
                                              const StdVideoH264SequenceParameterSet *p_std_spss = {}, uint32_t std_ppscount = {},
-                                             const StdVideoH264PictureParameterSet *p_std_ppss = {})
-    : p_next_(p_next), std_spscount_(std_spscount), p_std_spss_(p_std_spss), std_ppscount_(std_ppscount), p_std_ppss_(p_std_ppss) {}
+                                             const void *p_next = {})
+    : p_std_ppss_(p_std_ppss), std_spscount_(std_spscount), p_std_spss_(p_std_spss), std_ppscount_(std_ppscount), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -3391,9 +3011,9 @@ struct VideoDecodeH264ProfileInfoKHR {
 
   using native_type = VkVideoDecodeH264ProfileInfoKHR;
 
-  VideoDecodeH264ProfileInfoKHR(const void *p_next = {}, StdVideoH264ProfileIdc std_profile_idc = {},
-                                VideoDecodeH264PictureLayoutMaskBit picture_layout = {})
-    : p_next_(p_next), std_profile_idc_(std_profile_idc), picture_layout_(picture_layout) {}
+  VideoDecodeH264ProfileInfoKHR(VideoDecodeH264PictureLayoutMaskBit picture_layout = {}, StdVideoH264ProfileIdc std_profile_idc = {},
+                                const void *p_next = {})
+    : picture_layout_(picture_layout), std_profile_idc_(std_profile_idc), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -3407,22 +3027,22 @@ struct VideoDecodeUsageInfoKHR {
 
   using native_type = VkVideoDecodeUsageInfoKHR;
 
-  VideoDecodeUsageInfoKHR(const void *p_next = {}, VkVideoDecodeUsageFlagsKHR video_usage_hints = {})
-    : p_next_(p_next), video_usage_hints_(video_usage_hints) {}
+  VideoDecodeUsageInfoKHR(VideoDecodeUsageMask video_usage_hints = {}, const void *p_next = {})
+    : video_usage_hints_(video_usage_hints), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::VIDEO_DECODE_USAGE_INFO_KHR;
   const void *p_next_;
-  VkVideoDecodeUsageFlagsKHR video_usage_hints_;
+  VideoDecodeUsageMask video_usage_hints_;
 };
 
 struct VideoInlineQueryInfoKHR {
 
   using native_type = VkVideoInlineQueryInfoKHR;
 
-  VideoInlineQueryInfoKHR(const void *p_next = {}, VkQueryPool query_pool = {}, uint32_t first_query = {}, uint32_t query_count = {})
-    : p_next_(p_next), query_pool_(query_pool), first_query_(first_query), query_count_(query_count) {}
+  VideoInlineQueryInfoKHR(uint32_t query_count = {}, VkQueryPool query_pool = {}, uint32_t first_query = {}, const void *p_next = {})
+    : query_count_(query_count), query_pool_(query_pool), first_query_(first_query), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -3441,7 +3061,7 @@ struct VideoCapabilitiesKHR {
 
   StructureType s_type_ = StructureType::VIDEO_CAPABILITIES_KHR;
   void *p_next_;
-  VkVideoCapabilityFlagsKHR flags_;
+  VideoCapabilityMask flags_;
   VkDeviceSize min_bitstream_buffer_offset_alignment_;
   VkDeviceSize min_bitstream_buffer_size_alignment_;
   Extent2D picture_access_granularity_;
@@ -3462,10 +3082,10 @@ struct VideoFormatPropertiesKHR {
   void *p_next_;
   Format format_;
   ComponentMapping component_mapping_;
-  VkImageCreateFlags image_create_flags_;
+  ImageCreateMask image_create_flags_;
   ImageType image_type_;
   ImageTiling image_tiling_;
-  VkImageUsageFlags image_usage_flags_;
+  ImageUsageMask image_usage_flags_;
 };
 
 struct QueueFamilyQueryResultStatusPropertiesKHR {
@@ -3487,15 +3107,15 @@ struct QueueFamilyVideoPropertiesKHR {
 
   StructureType s_type_ = StructureType::QUEUE_FAMILY_VIDEO_PROPERTIES_KHR;
   void *p_next_;
-  VkVideoCodecOperationFlagsKHR video_codec_operations_;
+  VideoCodecOperationMask video_codec_operations_;
 };
 
 struct PhysicalDevicePipelineProtectedAccessFeaturesEXT {
 
   using native_type = VkPhysicalDevicePipelineProtectedAccessFeaturesEXT;
 
-  PhysicalDevicePipelineProtectedAccessFeaturesEXT(void *p_next = {}, VkBool32 pipeline_protected_access = {})
-    : p_next_(p_next), pipeline_protected_access_(pipeline_protected_access) {}
+  PhysicalDevicePipelineProtectedAccessFeaturesEXT(VkBool32 pipeline_protected_access = {}, void *p_next = {})
+    : pipeline_protected_access_(pipeline_protected_access), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -3508,10 +3128,10 @@ struct MultisampledRenderToSingleSampledInfoEXT {
 
   using native_type = VkMultisampledRenderToSingleSampledInfoEXT;
 
-  MultisampledRenderToSingleSampledInfoEXT(const void *p_next = {}, VkBool32 multisampled_render_to_single_sampled_enable = {},
-                                           SampleCountMaskBit rasterization_samples = {})
-    : p_next_(p_next), multisampled_render_to_single_sampled_enable_(multisampled_render_to_single_sampled_enable),
-      rasterization_samples_(rasterization_samples) {}
+  MultisampledRenderToSingleSampledInfoEXT(SampleCountMaskBit rasterization_samples = {},
+                                           VkBool32 multisampled_render_to_single_sampled_enable = {}, const void *p_next = {})
+    : rasterization_samples_(rasterization_samples),
+      multisampled_render_to_single_sampled_enable_(multisampled_render_to_single_sampled_enable), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -3547,8 +3167,8 @@ struct PhysicalDeviceMultisampledRenderToSingleSampledFeaturesEXT {
 
   using native_type = VkPhysicalDeviceMultisampledRenderToSingleSampledFeaturesEXT;
 
-  PhysicalDeviceMultisampledRenderToSingleSampledFeaturesEXT(void *p_next = {}, VkBool32 multisampled_render_to_single_sampled = {})
-    : p_next_(p_next), multisampled_render_to_single_sampled_(multisampled_render_to_single_sampled) {}
+  PhysicalDeviceMultisampledRenderToSingleSampledFeaturesEXT(VkBool32 multisampled_render_to_single_sampled = {}, void *p_next = {})
+    : multisampled_render_to_single_sampled_(multisampled_render_to_single_sampled), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -3573,13 +3193,13 @@ struct ImageSubresourceLayers {
 
   using native_type = VkImageSubresourceLayers;
 
-  ImageSubresourceLayers(VkImageAspectFlags aspect_mask = {}, uint32_t mip_level = {}, uint32_t base_array_layer = {},
+  ImageSubresourceLayers(ImageAspectMask aspect_mask = {}, uint32_t mip_level = {}, uint32_t base_array_layer = {},
                          uint32_t layer_count = {})
     : aspect_mask_(aspect_mask), mip_level_(mip_level), base_array_layer_(base_array_layer), layer_count_(layer_count) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
-  VkImageAspectFlags aspect_mask_;
+  ImageAspectMask aspect_mask_;
   uint32_t mip_level_;
   uint32_t base_array_layer_;
   uint32_t layer_count_;
@@ -3602,11 +3222,11 @@ struct ImageToMemoryCopyEXT {
 
   using native_type = VkImageToMemoryCopyEXT;
 
-  ImageToMemoryCopyEXT(const void *p_next = {}, void *p_host_pointer = {}, uint32_t memory_row_length = {},
+  ImageToMemoryCopyEXT(Extent3D image_extent = {}, void *p_host_pointer = {}, uint32_t memory_row_length = {},
                        uint32_t memory_image_height = {}, ImageSubresourceLayers image_subresource = {}, Offset3D image_offset = {},
-                       Extent3D image_extent = {})
-    : p_next_(p_next), p_host_pointer_(p_host_pointer), memory_row_length_(memory_row_length), memory_image_height_(memory_image_height),
-      image_subresource_(image_subresource), image_offset_(image_offset), image_extent_(image_extent) {}
+                       const void *p_next = {})
+    : image_extent_(image_extent), p_host_pointer_(p_host_pointer), memory_row_length_(memory_row_length),
+      memory_image_height_(memory_image_height), image_subresource_(image_subresource), image_offset_(image_offset), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -3624,16 +3244,16 @@ struct CopyImageToMemoryInfoEXT {
 
   using native_type = VkCopyImageToMemoryInfoEXT;
 
-  CopyImageToMemoryInfoEXT(const void *p_next = {}, VkHostImageCopyFlagsEXT flags = {}, VkImage src_image = {},
-                           ImageLayout src_image_layout = {}, uint32_t region_count = {}, const ImageToMemoryCopyEXT *p_regions = {})
-    : p_next_(p_next), flags_(flags), src_image_(src_image), src_image_layout_(src_image_layout), region_count_(region_count),
-      p_regions_(p_regions) {}
+  CopyImageToMemoryInfoEXT(const ImageToMemoryCopyEXT *p_regions = {}, HostImageCopyMask flags = {}, VkImage src_image = {},
+                           ImageLayout src_image_layout = {}, uint32_t region_count = {}, const void *p_next = {})
+    : p_regions_(p_regions), flags_(flags), src_image_(src_image), src_image_layout_(src_image_layout), region_count_(region_count),
+      p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::COPY_IMAGE_TO_MEMORY_INFO_EXT;
   const void *p_next_;
-  VkHostImageCopyFlagsEXT flags_;
+  HostImageCopyMask flags_;
   VkImage src_image_;
   ImageLayout src_image_layout_;
   uint32_t region_count_;
@@ -3644,13 +3264,13 @@ struct PhysicalDeviceHostImageCopyPropertiesEXT {
 
   using native_type = VkPhysicalDeviceHostImageCopyPropertiesEXT;
 
-  PhysicalDeviceHostImageCopyPropertiesEXT(void *p_next = {}, uint32_t copy_src_layout_count = {}, ImageLayout *p_copy_src_layouts = {},
-                                           uint32_t copy_dst_layout_count = {}, ImageLayout *p_copy_dst_layouts = {},
-                                           const std::array<uint8_t, VK_UUID_SIZE> &optimal_tiling_layout_uuid = {},
-                                           VkBool32 identical_memory_type_requirements = {})
-    : p_next_(p_next), copy_src_layout_count_(copy_src_layout_count), p_copy_src_layouts_(p_copy_src_layouts),
-      copy_dst_layout_count_(copy_dst_layout_count), p_copy_dst_layouts_(p_copy_dst_layouts),
-      optimal_tiling_layout_uuid_(optimal_tiling_layout_uuid), identical_memory_type_requirements_(identical_memory_type_requirements) {}
+  PhysicalDeviceHostImageCopyPropertiesEXT(VkBool32 identical_memory_type_requirements = {}, uint32_t copy_src_layout_count = {},
+                                           ImageLayout *p_copy_src_layouts = {}, uint32_t copy_dst_layout_count = {},
+                                           ImageLayout *p_copy_dst_layouts = {},
+                                           const std::array<uint8_t, VK_UUID_SIZE> &optimal_tiling_layout_uuid = {}, void *p_next = {})
+    : identical_memory_type_requirements_(identical_memory_type_requirements), copy_src_layout_count_(copy_src_layout_count),
+      p_copy_src_layouts_(p_copy_src_layouts), copy_dst_layout_count_(copy_dst_layout_count), p_copy_dst_layouts_(p_copy_dst_layouts),
+      optimal_tiling_layout_uuid_(optimal_tiling_layout_uuid), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -3679,8 +3299,8 @@ struct PhysicalDeviceHostImageCopyFeaturesEXT {
 
   using native_type = VkPhysicalDeviceHostImageCopyFeaturesEXT;
 
-  PhysicalDeviceHostImageCopyFeaturesEXT(void *p_next = {}, VkBool32 host_image_copy = {})
-    : p_next_(p_next), host_image_copy_(host_image_copy) {}
+  PhysicalDeviceHostImageCopyFeaturesEXT(VkBool32 host_image_copy = {}, void *p_next = {})
+    : host_image_copy_(host_image_copy), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -3693,8 +3313,8 @@ struct PhysicalDeviceSynchronization2Features {
 
   using native_type = VkPhysicalDeviceSynchronization2Features;
 
-  PhysicalDeviceSynchronization2Features(void *p_next = {}, VkBool32 synchronization2 = {})
-    : p_next_(p_next), synchronization2_(synchronization2) {}
+  PhysicalDeviceSynchronization2Features(VkBool32 synchronization2 = {}, void *p_next = {})
+    : synchronization2_(synchronization2), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -3711,47 +3331,47 @@ struct QueueFamilyCheckpointProperties2NV {
 
   StructureType s_type_ = StructureType::QUEUE_FAMILY_CHECKPOINT_PROPERTIES_2_NV;
   void *p_next_;
-  VkPipelineStageFlags2 checkpoint_execution_stage_mask_;
+  PipelineStageMask2 checkpoint_execution_stage_mask_;
 };
 
 struct MemoryBarrier2 {
 
   using native_type = VkMemoryBarrier2;
 
-  MemoryBarrier2(const void *p_next = {}, VkPipelineStageFlags2 src_stage_mask = {}, VkAccessFlags2 src_access_mask = {},
-                 VkPipelineStageFlags2 dst_stage_mask = {}, VkAccessFlags2 dst_access_mask = {})
-    : p_next_(p_next), src_stage_mask_(src_stage_mask), src_access_mask_(src_access_mask), dst_stage_mask_(dst_stage_mask),
-      dst_access_mask_(dst_access_mask) {}
+  MemoryBarrier2(AccessMask2 dst_access_mask = {}, PipelineStageMask2 src_stage_mask = {}, AccessMask2 src_access_mask = {},
+                 PipelineStageMask2 dst_stage_mask = {}, const void *p_next = {})
+    : dst_access_mask_(dst_access_mask), src_stage_mask_(src_stage_mask), src_access_mask_(src_access_mask),
+      dst_stage_mask_(dst_stage_mask), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::MEMORY_BARRIER_2;
   const void *p_next_;
-  VkPipelineStageFlags2 src_stage_mask_;
-  VkAccessFlags2 src_access_mask_;
-  VkPipelineStageFlags2 dst_stage_mask_;
-  VkAccessFlags2 dst_access_mask_;
+  PipelineStageMask2 src_stage_mask_;
+  AccessMask2 src_access_mask_;
+  PipelineStageMask2 dst_stage_mask_;
+  AccessMask2 dst_access_mask_;
 };
 
 struct BufferMemoryBarrier2 {
 
   using native_type = VkBufferMemoryBarrier2;
 
-  BufferMemoryBarrier2(const void *p_next = {}, VkPipelineStageFlags2 src_stage_mask = {}, VkAccessFlags2 src_access_mask = {},
-                       VkPipelineStageFlags2 dst_stage_mask = {}, VkAccessFlags2 dst_access_mask = {}, uint32_t src_queue_family_index = {},
-                       uint32_t dst_queue_family_index = {}, VkBuffer buffer = {}, VkDeviceSize offset = {}, VkDeviceSize size = {})
-    : p_next_(p_next), src_stage_mask_(src_stage_mask), src_access_mask_(src_access_mask), dst_stage_mask_(dst_stage_mask),
+  BufferMemoryBarrier2(VkDeviceSize size = {}, PipelineStageMask2 src_stage_mask = {}, AccessMask2 src_access_mask = {},
+                       PipelineStageMask2 dst_stage_mask = {}, AccessMask2 dst_access_mask = {}, uint32_t src_queue_family_index = {},
+                       uint32_t dst_queue_family_index = {}, VkBuffer buffer = {}, VkDeviceSize offset = {}, const void *p_next = {})
+    : size_(size), src_stage_mask_(src_stage_mask), src_access_mask_(src_access_mask), dst_stage_mask_(dst_stage_mask),
       dst_access_mask_(dst_access_mask), src_queue_family_index_(src_queue_family_index), dst_queue_family_index_(dst_queue_family_index),
-      buffer_(buffer), offset_(offset), size_(size) {}
+      buffer_(buffer), offset_(offset), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::BUFFER_MEMORY_BARRIER_2;
   const void *p_next_;
-  VkPipelineStageFlags2 src_stage_mask_;
-  VkAccessFlags2 src_access_mask_;
-  VkPipelineStageFlags2 dst_stage_mask_;
-  VkAccessFlags2 dst_access_mask_;
+  PipelineStageMask2 src_stage_mask_;
+  AccessMask2 src_access_mask_;
+  PipelineStageMask2 dst_stage_mask_;
+  AccessMask2 dst_access_mask_;
   uint32_t src_queue_family_index_;
   uint32_t dst_queue_family_index_;
   VkBuffer buffer_;
@@ -3763,14 +3383,14 @@ struct ImageSubresourceRange {
 
   using native_type = VkImageSubresourceRange;
 
-  ImageSubresourceRange(VkImageAspectFlags aspect_mask = {}, uint32_t base_mip_level = {}, uint32_t level_count = {},
+  ImageSubresourceRange(ImageAspectMask aspect_mask = {}, uint32_t base_mip_level = {}, uint32_t level_count = {},
                         uint32_t base_array_layer = {}, uint32_t layer_count = {})
     : aspect_mask_(aspect_mask), base_mip_level_(base_mip_level), level_count_(level_count), base_array_layer_(base_array_layer),
       layer_count_(layer_count) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
-  VkImageAspectFlags aspect_mask_;
+  ImageAspectMask aspect_mask_;
   uint32_t base_mip_level_;
   uint32_t level_count_;
   uint32_t base_array_layer_;
@@ -3781,22 +3401,22 @@ struct ImageMemoryBarrier2 {
 
   using native_type = VkImageMemoryBarrier2;
 
-  ImageMemoryBarrier2(const void *p_next = {}, VkPipelineStageFlags2 src_stage_mask = {}, VkAccessFlags2 src_access_mask = {},
-                      VkPipelineStageFlags2 dst_stage_mask = {}, VkAccessFlags2 dst_access_mask = {}, ImageLayout old_layout = {},
-                      ImageLayout new_layout = {}, uint32_t src_queue_family_index = {}, uint32_t dst_queue_family_index = {},
-                      VkImage image = {}, ImageSubresourceRange subresource_range = {})
-    : p_next_(p_next), src_stage_mask_(src_stage_mask), src_access_mask_(src_access_mask), dst_stage_mask_(dst_stage_mask),
-      dst_access_mask_(dst_access_mask), old_layout_(old_layout), new_layout_(new_layout), src_queue_family_index_(src_queue_family_index),
-      dst_queue_family_index_(dst_queue_family_index), image_(image), subresource_range_(subresource_range) {}
+  ImageMemoryBarrier2(ImageSubresourceRange subresource_range = {}, PipelineStageMask2 src_stage_mask = {},
+                      AccessMask2 src_access_mask = {}, PipelineStageMask2 dst_stage_mask = {}, AccessMask2 dst_access_mask = {},
+                      ImageLayout old_layout = {}, ImageLayout new_layout = {}, uint32_t src_queue_family_index = {},
+                      uint32_t dst_queue_family_index = {}, VkImage image = {}, const void *p_next = {})
+    : subresource_range_(subresource_range), src_stage_mask_(src_stage_mask), src_access_mask_(src_access_mask),
+      dst_stage_mask_(dst_stage_mask), dst_access_mask_(dst_access_mask), old_layout_(old_layout), new_layout_(new_layout),
+      src_queue_family_index_(src_queue_family_index), dst_queue_family_index_(dst_queue_family_index), image_(image), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::IMAGE_MEMORY_BARRIER_2;
   const void *p_next_;
-  VkPipelineStageFlags2 src_stage_mask_;
-  VkAccessFlags2 src_access_mask_;
-  VkPipelineStageFlags2 dst_stage_mask_;
-  VkAccessFlags2 dst_access_mask_;
+  PipelineStageMask2 src_stage_mask_;
+  AccessMask2 src_access_mask_;
+  PipelineStageMask2 dst_stage_mask_;
+  AccessMask2 dst_access_mask_;
   ImageLayout old_layout_;
   ImageLayout new_layout_;
   uint32_t src_queue_family_index_;
@@ -3809,20 +3429,19 @@ struct DependencyInfo {
 
   using native_type = VkDependencyInfo;
 
-  DependencyInfo(const void *p_next = {}, VkDependencyFlags dependency_flags = {}, uint32_t memory_barrier_count = {},
-                 const MemoryBarrier2 *p_memory_barriers = {}, uint32_t buffer_memory_barrier_count = {},
-                 const BufferMemoryBarrier2 *p_buffer_memory_barriers = {}, uint32_t image_memory_barrier_count = {},
-                 const ImageMemoryBarrier2 *p_image_memory_barriers = {})
-    : p_next_(p_next), dependency_flags_(dependency_flags), memory_barrier_count_(memory_barrier_count),
+  DependencyInfo(const ImageMemoryBarrier2 *p_image_memory_barriers = {}, DependencyMask dependency_flags = {},
+                 uint32_t memory_barrier_count = {}, const MemoryBarrier2 *p_memory_barriers = {},
+                 uint32_t buffer_memory_barrier_count = {}, const BufferMemoryBarrier2 *p_buffer_memory_barriers = {},
+                 uint32_t image_memory_barrier_count = {}, const void *p_next = {})
+    : p_image_memory_barriers_(p_image_memory_barriers), dependency_flags_(dependency_flags), memory_barrier_count_(memory_barrier_count),
       p_memory_barriers_(p_memory_barriers), buffer_memory_barrier_count_(buffer_memory_barrier_count),
-      p_buffer_memory_barriers_(p_buffer_memory_barriers), image_memory_barrier_count_(image_memory_barrier_count),
-      p_image_memory_barriers_(p_image_memory_barriers) {}
+      p_buffer_memory_barriers_(p_buffer_memory_barriers), image_memory_barrier_count_(image_memory_barrier_count), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::DEPENDENCY_INFO;
   const void *p_next_;
-  VkDependencyFlags dependency_flags_;
+  DependencyMask dependency_flags_;
   uint32_t memory_barrier_count_;
   const MemoryBarrier2 *p_memory_barriers_;
   uint32_t buffer_memory_barrier_count_;
@@ -3830,32 +3449,14 @@ struct DependencyInfo {
   uint32_t image_memory_barrier_count_;
   const ImageMemoryBarrier2 *p_image_memory_barriers_;
 };
-#ifdef VK_ENABLE_BETA_EXTENSIONS
-
-struct DispatchGraphInfoAMDX {
-
-  using native_type = VkDispatchGraphInfoAMDX;
-
-  DispatchGraphInfoAMDX(uint32_t node_index = {}, uint32_t payload_count = {}, VkDeviceOrHostAddressConstAMDX payloads = {},
-                        uint64_t payload_stride = {})
-    : node_index_(node_index), payload_count_(payload_count), payloads_(payloads), payload_stride_(payload_stride) {}
-
-  auto *get() { return reinterpret_cast<native_type *>(this); }
-
-  uint32_t node_index_;
-  uint32_t payload_count_;
-  VkDeviceOrHostAddressConstAMDX payloads_;
-  uint64_t payload_stride_;
-};
-#endif
 
 struct VertexInputAttributeDescription2EXT {
 
   using native_type = VkVertexInputAttributeDescription2EXT;
 
-  VertexInputAttributeDescription2EXT(void *p_next = {}, uint32_t location = {}, uint32_t binding = {}, Format format = {},
-                                      uint32_t offset = {})
-    : p_next_(p_next), location_(location), binding_(binding), format_(format), offset_(offset) {}
+  VertexInputAttributeDescription2EXT(uint32_t offset = {}, uint32_t location = {}, uint32_t binding = {}, Format format = {},
+                                      void *p_next = {})
+    : offset_(offset), location_(location), binding_(binding), format_(format), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -3871,8 +3472,8 @@ struct PhysicalDeviceExternalMemoryRDMAFeaturesNV {
 
   using native_type = VkPhysicalDeviceExternalMemoryRDMAFeaturesNV;
 
-  PhysicalDeviceExternalMemoryRDMAFeaturesNV(void *p_next = {}, VkBool32 external_memory_rdma = {})
-    : p_next_(p_next), external_memory_rdma_(external_memory_rdma) {}
+  PhysicalDeviceExternalMemoryRDMAFeaturesNV(VkBool32 external_memory_rdma = {}, void *p_next = {})
+    : external_memory_rdma_(external_memory_rdma), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -3885,8 +3486,8 @@ struct PhysicalDeviceVertexInputDynamicStateFeaturesEXT {
 
   using native_type = VkPhysicalDeviceVertexInputDynamicStateFeaturesEXT;
 
-  PhysicalDeviceVertexInputDynamicStateFeaturesEXT(void *p_next = {}, VkBool32 vertex_input_dynamic_state = {})
-    : p_next_(p_next), vertex_input_dynamic_state_(vertex_input_dynamic_state) {}
+  PhysicalDeviceVertexInputDynamicStateFeaturesEXT(VkBool32 vertex_input_dynamic_state = {}, void *p_next = {})
+    : vertex_input_dynamic_state_(vertex_input_dynamic_state), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -3899,8 +3500,8 @@ struct PipelineViewportDepthClipControlCreateInfoEXT {
 
   using native_type = VkPipelineViewportDepthClipControlCreateInfoEXT;
 
-  PipelineViewportDepthClipControlCreateInfoEXT(const void *p_next = {}, VkBool32 negative_one_to_one = {})
-    : p_next_(p_next), negative_one_to_one_(negative_one_to_one) {}
+  PipelineViewportDepthClipControlCreateInfoEXT(VkBool32 negative_one_to_one = {}, const void *p_next = {})
+    : negative_one_to_one_(negative_one_to_one), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -3926,10 +3527,10 @@ struct MutableDescriptorTypeCreateInfoEXT {
 
   using native_type = VkMutableDescriptorTypeCreateInfoEXT;
 
-  MutableDescriptorTypeCreateInfoEXT(const void *p_next = {}, uint32_t mutable_descriptor_type_list_count = {},
-                                     const MutableDescriptorTypeListEXT *p_mutable_descriptor_type_lists = {})
-    : p_next_(p_next), mutable_descriptor_type_list_count_(mutable_descriptor_type_list_count),
-      p_mutable_descriptor_type_lists_(p_mutable_descriptor_type_lists) {}
+  MutableDescriptorTypeCreateInfoEXT(const MutableDescriptorTypeListEXT *p_mutable_descriptor_type_lists = {},
+                                     uint32_t mutable_descriptor_type_list_count = {}, const void *p_next = {})
+    : p_mutable_descriptor_type_lists_(p_mutable_descriptor_type_lists),
+      mutable_descriptor_type_list_count_(mutable_descriptor_type_list_count), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -3943,8 +3544,8 @@ struct PhysicalDeviceMutableDescriptorTypeFeaturesEXT {
 
   using native_type = VkPhysicalDeviceMutableDescriptorTypeFeaturesEXT;
 
-  PhysicalDeviceMutableDescriptorTypeFeaturesEXT(void *p_next = {}, VkBool32 mutable_descriptor_type = {})
-    : p_next_(p_next), mutable_descriptor_type_(mutable_descriptor_type) {}
+  PhysicalDeviceMutableDescriptorTypeFeaturesEXT(VkBool32 mutable_descriptor_type = {}, void *p_next = {})
+    : mutable_descriptor_type_(mutable_descriptor_type), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -3971,8 +3572,8 @@ struct PhysicalDeviceLegacyVertexAttributesPropertiesEXT {
 
   using native_type = VkPhysicalDeviceLegacyVertexAttributesPropertiesEXT;
 
-  PhysicalDeviceLegacyVertexAttributesPropertiesEXT(void *p_next = {}, VkBool32 native_unaligned_performance = {})
-    : p_next_(p_next), native_unaligned_performance_(native_unaligned_performance) {}
+  PhysicalDeviceLegacyVertexAttributesPropertiesEXT(VkBool32 native_unaligned_performance = {}, void *p_next = {})
+    : native_unaligned_performance_(native_unaligned_performance), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -3985,8 +3586,8 @@ struct PhysicalDeviceLegacyVertexAttributesFeaturesEXT {
 
   using native_type = VkPhysicalDeviceLegacyVertexAttributesFeaturesEXT;
 
-  PhysicalDeviceLegacyVertexAttributesFeaturesEXT(void *p_next = {}, VkBool32 legacy_vertex_attributes = {})
-    : p_next_(p_next), legacy_vertex_attributes_(legacy_vertex_attributes) {}
+  PhysicalDeviceLegacyVertexAttributesFeaturesEXT(VkBool32 legacy_vertex_attributes = {}, void *p_next = {})
+    : legacy_vertex_attributes_(legacy_vertex_attributes), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -3999,8 +3600,8 @@ struct PhysicalDeviceAttachmentFeedbackLoopDynamicStateFeaturesEXT {
 
   using native_type = VkPhysicalDeviceAttachmentFeedbackLoopDynamicStateFeaturesEXT;
 
-  PhysicalDeviceAttachmentFeedbackLoopDynamicStateFeaturesEXT(void *p_next = {}, VkBool32 attachment_feedback_loop_dynamic_state = {})
-    : p_next_(p_next), attachment_feedback_loop_dynamic_state_(attachment_feedback_loop_dynamic_state) {}
+  PhysicalDeviceAttachmentFeedbackLoopDynamicStateFeaturesEXT(VkBool32 attachment_feedback_loop_dynamic_state = {}, void *p_next = {})
+    : attachment_feedback_loop_dynamic_state_(attachment_feedback_loop_dynamic_state), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -4024,8 +3625,8 @@ struct PhysicalDeviceImageSlicedViewOf3DFeaturesEXT {
 
   using native_type = VkPhysicalDeviceImageSlicedViewOf3DFeaturesEXT;
 
-  PhysicalDeviceImageSlicedViewOf3DFeaturesEXT(void *p_next = {}, VkBool32 image_sliced_view_of3d = {})
-    : p_next_(p_next), image_sliced_view_of3d_(image_sliced_view_of3d) {}
+  PhysicalDeviceImageSlicedViewOf3DFeaturesEXT(VkBool32 image_sliced_view_of3d = {}, void *p_next = {})
+    : image_sliced_view_of3d_(image_sliced_view_of3d), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -4038,8 +3639,8 @@ struct PhysicalDeviceImage2DViewOf3DFeaturesEXT {
 
   using native_type = VkPhysicalDeviceImage2DViewOf3DFeaturesEXT;
 
-  PhysicalDeviceImage2DViewOf3DFeaturesEXT(void *p_next = {}, VkBool32 image2dview_of3d = {}, VkBool32 sampler2dview_of3d = {})
-    : p_next_(p_next), image2dview_of3d_(image2dview_of3d), sampler2dview_of3d_(sampler2dview_of3d) {}
+  PhysicalDeviceImage2DViewOf3DFeaturesEXT(VkBool32 sampler2dview_of3d = {}, VkBool32 image2dview_of3d = {}, void *p_next = {})
+    : sampler2dview_of3d_(sampler2dview_of3d), image2dview_of3d_(image2dview_of3d), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -4053,10 +3654,10 @@ struct PipelineFragmentShadingRateEnumStateCreateInfoNV {
 
   using native_type = VkPipelineFragmentShadingRateEnumStateCreateInfoNV;
 
-  PipelineFragmentShadingRateEnumStateCreateInfoNV(const void *p_next = {}, FragmentShadingRateType shading_rate_type = {},
-                                                   FragmentShadingRate shading_rate = {},
-                                                   const std::array<FragmentShadingRateCombinerOp, 2> &combiner_ops = {})
-    : p_next_(p_next), shading_rate_type_(shading_rate_type), shading_rate_(shading_rate), combiner_ops_(combiner_ops) {}
+  PipelineFragmentShadingRateEnumStateCreateInfoNV(const std::array<FragmentShadingRateCombinerOp, 2> &combiner_ops = {},
+                                                   FragmentShadingRateType shading_rate_type = {}, FragmentShadingRate shading_rate = {},
+                                                   const void *p_next = {})
+    : combiner_ops_(combiner_ops), shading_rate_type_(shading_rate_type), shading_rate_(shading_rate), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -4071,8 +3672,8 @@ struct PhysicalDeviceNestedCommandBufferPropertiesEXT {
 
   using native_type = VkPhysicalDeviceNestedCommandBufferPropertiesEXT;
 
-  PhysicalDeviceNestedCommandBufferPropertiesEXT(void *p_next = {}, uint32_t max_command_buffer_nesting_level = {})
-    : p_next_(p_next), max_command_buffer_nesting_level_(max_command_buffer_nesting_level) {}
+  PhysicalDeviceNestedCommandBufferPropertiesEXT(uint32_t max_command_buffer_nesting_level = {}, void *p_next = {})
+    : max_command_buffer_nesting_level_(max_command_buffer_nesting_level), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -4085,8 +3686,8 @@ struct PhysicalDeviceFragmentShadingRateEnumsPropertiesNV {
 
   using native_type = VkPhysicalDeviceFragmentShadingRateEnumsPropertiesNV;
 
-  PhysicalDeviceFragmentShadingRateEnumsPropertiesNV(void *p_next = {}, SampleCountMaskBit max_fragment_shading_rate_invocation_count = {})
-    : p_next_(p_next), max_fragment_shading_rate_invocation_count_(max_fragment_shading_rate_invocation_count) {}
+  PhysicalDeviceFragmentShadingRateEnumsPropertiesNV(SampleCountMaskBit max_fragment_shading_rate_invocation_count = {}, void *p_next = {})
+    : max_fragment_shading_rate_invocation_count_(max_fragment_shading_rate_invocation_count), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -4099,12 +3700,12 @@ struct PhysicalDeviceFragmentShadingRateEnumsFeaturesNV {
 
   using native_type = VkPhysicalDeviceFragmentShadingRateEnumsFeaturesNV;
 
-  PhysicalDeviceFragmentShadingRateEnumsFeaturesNV(void *p_next = {}, VkBool32 fragment_shading_rate_enums = {},
-                                                   VkBool32 supersample_fragment_shading_rates = {},
-                                                   VkBool32 no_invocation_fragment_shading_rates = {})
-    : p_next_(p_next), fragment_shading_rate_enums_(fragment_shading_rate_enums),
-      supersample_fragment_shading_rates_(supersample_fragment_shading_rates),
-      no_invocation_fragment_shading_rates_(no_invocation_fragment_shading_rates) {}
+  PhysicalDeviceFragmentShadingRateEnumsFeaturesNV(VkBool32 no_invocation_fragment_shading_rates = {},
+                                                   VkBool32 fragment_shading_rate_enums = {},
+                                                   VkBool32 supersample_fragment_shading_rates = {}, void *p_next = {})
+    : no_invocation_fragment_shading_rates_(no_invocation_fragment_shading_rates),
+      fragment_shading_rate_enums_(fragment_shading_rate_enums), supersample_fragment_shading_rates_(supersample_fragment_shading_rates),
+      p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -4119,8 +3720,8 @@ struct PhysicalDeviceShaderTerminateInvocationFeatures {
 
   using native_type = VkPhysicalDeviceShaderTerminateInvocationFeatures;
 
-  PhysicalDeviceShaderTerminateInvocationFeatures(void *p_next = {}, VkBool32 shader_terminate_invocation = {})
-    : p_next_(p_next), shader_terminate_invocation_(shader_terminate_invocation) {}
+  PhysicalDeviceShaderTerminateInvocationFeatures(VkBool32 shader_terminate_invocation = {}, void *p_next = {})
+    : shader_terminate_invocation_(shader_terminate_invocation), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -4133,12 +3734,10 @@ struct PhysicalDeviceFragmentShadingRateFeaturesKHR {
 
   using native_type = VkPhysicalDeviceFragmentShadingRateFeaturesKHR;
 
-  PhysicalDeviceFragmentShadingRateFeaturesKHR(void *p_next = {}, VkBool32 pipeline_fragment_shading_rate = {},
-                                               VkBool32 primitive_fragment_shading_rate = {},
-                                               VkBool32 attachment_fragment_shading_rate = {})
-    : p_next_(p_next), pipeline_fragment_shading_rate_(pipeline_fragment_shading_rate),
-      primitive_fragment_shading_rate_(primitive_fragment_shading_rate),
-      attachment_fragment_shading_rate_(attachment_fragment_shading_rate) {}
+  PhysicalDeviceFragmentShadingRateFeaturesKHR(VkBool32 attachment_fragment_shading_rate = {}, VkBool32 pipeline_fragment_shading_rate = {},
+                                               VkBool32 primitive_fragment_shading_rate = {}, void *p_next = {})
+    : attachment_fragment_shading_rate_(attachment_fragment_shading_rate), pipeline_fragment_shading_rate_(pipeline_fragment_shading_rate),
+      primitive_fragment_shading_rate_(primitive_fragment_shading_rate), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -4153,10 +3752,10 @@ struct ImageResolve2 {
 
   using native_type = VkImageResolve2;
 
-  ImageResolve2(const void *p_next = {}, ImageSubresourceLayers src_subresource = {}, Offset3D src_offset = {},
-                ImageSubresourceLayers dst_subresource = {}, Offset3D dst_offset = {}, Extent3D extent = {})
-    : p_next_(p_next), src_subresource_(src_subresource), src_offset_(src_offset), dst_subresource_(dst_subresource),
-      dst_offset_(dst_offset), extent_(extent) {}
+  ImageResolve2(Extent3D extent = {}, ImageSubresourceLayers src_subresource = {}, Offset3D src_offset = {},
+                ImageSubresourceLayers dst_subresource = {}, Offset3D dst_offset = {}, const void *p_next = {})
+    : extent_(extent), src_subresource_(src_subresource), src_offset_(src_offset), dst_subresource_(dst_subresource),
+      dst_offset_(dst_offset), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -4173,10 +3772,10 @@ struct ResolveImageInfo2 {
 
   using native_type = VkResolveImageInfo2;
 
-  ResolveImageInfo2(const void *p_next = {}, VkImage src_image = {}, ImageLayout src_image_layout = {}, VkImage dst_image = {},
-                    ImageLayout dst_image_layout = {}, uint32_t region_count = {}, const ImageResolve2 *p_regions = {})
-    : p_next_(p_next), src_image_(src_image), src_image_layout_(src_image_layout), dst_image_(dst_image),
-      dst_image_layout_(dst_image_layout), region_count_(region_count), p_regions_(p_regions) {}
+  ResolveImageInfo2(const ImageResolve2 *p_regions = {}, VkImage src_image = {}, ImageLayout src_image_layout = {}, VkImage dst_image = {},
+                    ImageLayout dst_image_layout = {}, uint32_t region_count = {}, const void *p_next = {})
+    : p_regions_(p_regions), src_image_(src_image), src_image_layout_(src_image_layout), dst_image_(dst_image),
+      dst_image_layout_(dst_image_layout), region_count_(region_count), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -4194,11 +3793,11 @@ struct BufferImageCopy2 {
 
   using native_type = VkBufferImageCopy2;
 
-  BufferImageCopy2(const void *p_next = {}, VkDeviceSize buffer_offset = {}, uint32_t buffer_row_length = {},
+  BufferImageCopy2(Extent3D image_extent = {}, VkDeviceSize buffer_offset = {}, uint32_t buffer_row_length = {},
                    uint32_t buffer_image_height = {}, ImageSubresourceLayers image_subresource = {}, Offset3D image_offset = {},
-                   Extent3D image_extent = {})
-    : p_next_(p_next), buffer_offset_(buffer_offset), buffer_row_length_(buffer_row_length), buffer_image_height_(buffer_image_height),
-      image_subresource_(image_subresource), image_offset_(image_offset), image_extent_(image_extent) {}
+                   const void *p_next = {})
+    : image_extent_(image_extent), buffer_offset_(buffer_offset), buffer_row_length_(buffer_row_length),
+      buffer_image_height_(buffer_image_height), image_subresource_(image_subresource), image_offset_(image_offset), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -4216,10 +3815,10 @@ struct CopyBufferToImageInfo2 {
 
   using native_type = VkCopyBufferToImageInfo2;
 
-  CopyBufferToImageInfo2(const void *p_next = {}, VkBuffer src_buffer = {}, VkImage dst_image = {}, ImageLayout dst_image_layout = {},
-                         uint32_t region_count = {}, const BufferImageCopy2 *p_regions = {})
-    : p_next_(p_next), src_buffer_(src_buffer), dst_image_(dst_image), dst_image_layout_(dst_image_layout), region_count_(region_count),
-      p_regions_(p_regions) {}
+  CopyBufferToImageInfo2(const BufferImageCopy2 *p_regions = {}, VkBuffer src_buffer = {}, VkImage dst_image = {},
+                         ImageLayout dst_image_layout = {}, uint32_t region_count = {}, const void *p_next = {})
+    : p_regions_(p_regions), src_buffer_(src_buffer), dst_image_(dst_image), dst_image_layout_(dst_image_layout),
+      region_count_(region_count), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -4236,8 +3835,8 @@ struct BufferCopy2 {
 
   using native_type = VkBufferCopy2;
 
-  BufferCopy2(const void *p_next = {}, VkDeviceSize src_offset = {}, VkDeviceSize dst_offset = {}, VkDeviceSize size = {})
-    : p_next_(p_next), src_offset_(src_offset), dst_offset_(dst_offset), size_(size) {}
+  BufferCopy2(VkDeviceSize size = {}, VkDeviceSize src_offset = {}, VkDeviceSize dst_offset = {}, const void *p_next = {})
+    : size_(size), src_offset_(src_offset), dst_offset_(dst_offset), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -4252,9 +3851,9 @@ struct CopyBufferInfo2 {
 
   using native_type = VkCopyBufferInfo2;
 
-  CopyBufferInfo2(const void *p_next = {}, VkBuffer src_buffer = {}, VkBuffer dst_buffer = {}, uint32_t region_count = {},
-                  const BufferCopy2 *p_regions = {})
-    : p_next_(p_next), src_buffer_(src_buffer), dst_buffer_(dst_buffer), region_count_(region_count), p_regions_(p_regions) {}
+  CopyBufferInfo2(const BufferCopy2 *p_regions = {}, VkBuffer src_buffer = {}, VkBuffer dst_buffer = {}, uint32_t region_count = {},
+                  const void *p_next = {})
+    : p_regions_(p_regions), src_buffer_(src_buffer), dst_buffer_(dst_buffer), region_count_(region_count), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -4265,28 +3864,14 @@ struct CopyBufferInfo2 {
   uint32_t region_count_;
   const BufferCopy2 *p_regions_;
 };
-#ifdef VK_USE_PLATFORM_METAL_EXT
-
-struct ExportMetalObjectsInfoEXT {
-
-  using native_type = VkExportMetalObjectsInfoEXT;
-
-  ExportMetalObjectsInfoEXT(const void *p_next = {}) : p_next_(p_next) {}
-
-  auto *get() { return reinterpret_cast<native_type *>(this); }
-
-  StructureType s_type_ = StructureType::EXPORT_METAL_OBJECTS_INFO_EXT;
-  const void *p_next_;
-};
-#endif
 
 struct PhysicalDeviceShaderImageAtomicInt64FeaturesEXT {
 
   using native_type = VkPhysicalDeviceShaderImageAtomicInt64FeaturesEXT;
 
-  PhysicalDeviceShaderImageAtomicInt64FeaturesEXT(void *p_next = {}, VkBool32 shader_image_int64atomics = {},
-                                                  VkBool32 sparse_image_int64atomics = {})
-    : p_next_(p_next), shader_image_int64atomics_(shader_image_int64atomics), sparse_image_int64atomics_(sparse_image_int64atomics) {}
+  PhysicalDeviceShaderImageAtomicInt64FeaturesEXT(VkBool32 sparse_image_int64atomics = {}, VkBool32 shader_image_int64atomics = {},
+                                                  void *p_next = {})
+    : sparse_image_int64atomics_(sparse_image_int64atomics), shader_image_int64atomics_(shader_image_int64atomics), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -4300,10 +3885,10 @@ struct ImageBlit2 {
 
   using native_type = VkImageBlit2;
 
-  ImageBlit2(const void *p_next = {}, ImageSubresourceLayers src_subresource = {}, const std::array<Offset3D, 2> &src_offsets = {},
-             ImageSubresourceLayers dst_subresource = {}, const std::array<Offset3D, 2> &dst_offsets = {})
-    : p_next_(p_next), src_subresource_(src_subresource), src_offsets_(src_offsets), dst_subresource_(dst_subresource),
-      dst_offsets_(dst_offsets) {}
+  ImageBlit2(const std::array<Offset3D, 2> &dst_offsets = {}, ImageSubresourceLayers src_subresource = {},
+             const std::array<Offset3D, 2> &src_offsets = {}, ImageSubresourceLayers dst_subresource = {}, const void *p_next = {})
+    : dst_offsets_(dst_offsets), src_subresource_(src_subresource), src_offsets_(src_offsets), dst_subresource_(dst_subresource),
+      p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -4319,10 +3904,10 @@ struct ImageCopy2 {
 
   using native_type = VkImageCopy2;
 
-  ImageCopy2(const void *p_next = {}, ImageSubresourceLayers src_subresource = {}, Offset3D src_offset = {},
-             ImageSubresourceLayers dst_subresource = {}, Offset3D dst_offset = {}, Extent3D extent = {})
-    : p_next_(p_next), src_subresource_(src_subresource), src_offset_(src_offset), dst_subresource_(dst_subresource),
-      dst_offset_(dst_offset), extent_(extent) {}
+  ImageCopy2(Extent3D extent = {}, ImageSubresourceLayers src_subresource = {}, Offset3D src_offset = {},
+             ImageSubresourceLayers dst_subresource = {}, Offset3D dst_offset = {}, const void *p_next = {})
+    : extent_(extent), src_subresource_(src_subresource), src_offset_(src_offset), dst_subresource_(dst_subresource),
+      dst_offset_(dst_offset), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -4339,9 +3924,9 @@ struct VideoEncodeH265NaluSliceSegmentInfoKHR {
 
   using native_type = VkVideoEncodeH265NaluSliceSegmentInfoKHR;
 
-  VideoEncodeH265NaluSliceSegmentInfoKHR(const void *p_next = {}, int32_t constant_qp = {},
-                                         const StdVideoEncodeH265SliceSegmentHeader *p_std_slice_segment_header = {})
-    : p_next_(p_next), constant_qp_(constant_qp), p_std_slice_segment_header_(p_std_slice_segment_header) {}
+  VideoEncodeH265NaluSliceSegmentInfoKHR(const StdVideoEncodeH265SliceSegmentHeader *p_std_slice_segment_header = {},
+                                         int32_t constant_qp = {}, const void *p_next = {})
+    : p_std_slice_segment_header_(p_std_slice_segment_header), constant_qp_(constant_qp), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -4355,8 +3940,8 @@ struct PhysicalDeviceClusterCullingShaderVrsFeaturesHUAWEI {
 
   using native_type = VkPhysicalDeviceClusterCullingShaderVrsFeaturesHUAWEI;
 
-  PhysicalDeviceClusterCullingShaderVrsFeaturesHUAWEI(void *p_next = {}, VkBool32 cluster_shading_rate = {})
-    : p_next_(p_next), cluster_shading_rate_(cluster_shading_rate) {}
+  PhysicalDeviceClusterCullingShaderVrsFeaturesHUAWEI(VkBool32 cluster_shading_rate = {}, void *p_next = {})
+    : cluster_shading_rate_(cluster_shading_rate), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -4369,7 +3954,7 @@ struct PhysicalDeviceImageViewMinLodFeaturesEXT {
 
   using native_type = VkPhysicalDeviceImageViewMinLodFeaturesEXT;
 
-  PhysicalDeviceImageViewMinLodFeaturesEXT(void *p_next = {}, VkBool32 min_lod = {}) : p_next_(p_next), min_lod_(min_lod) {}
+  PhysicalDeviceImageViewMinLodFeaturesEXT(VkBool32 min_lod = {}, void *p_next = {}) : min_lod_(min_lod), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -4382,9 +3967,9 @@ struct PhysicalDeviceClusterCullingShaderFeaturesHUAWEI {
 
   using native_type = VkPhysicalDeviceClusterCullingShaderFeaturesHUAWEI;
 
-  PhysicalDeviceClusterCullingShaderFeaturesHUAWEI(void *p_next = {}, VkBool32 clusterculling_shader = {},
-                                                   VkBool32 multiview_cluster_culling_shader = {})
-    : p_next_(p_next), clusterculling_shader_(clusterculling_shader), multiview_cluster_culling_shader_(multiview_cluster_culling_shader) {}
+  PhysicalDeviceClusterCullingShaderFeaturesHUAWEI(VkBool32 multiview_cluster_culling_shader = {}, VkBool32 clusterculling_shader = {},
+                                                   void *p_next = {})
+    : multiview_cluster_culling_shader_(multiview_cluster_culling_shader), clusterculling_shader_(clusterculling_shader), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -4398,8 +3983,8 @@ struct PhysicalDevice4444FormatsFeaturesEXT {
 
   using native_type = VkPhysicalDevice4444FormatsFeaturesEXT;
 
-  PhysicalDevice4444FormatsFeaturesEXT(void *p_next = {}, VkBool32 format_a4r4g4b4 = {}, VkBool32 format_a4b4g4r4 = {})
-    : p_next_(p_next), format_a4r4g4b4_(format_a4r4g4b4), format_a4b4g4r4_(format_a4b4g4r4) {}
+  PhysicalDevice4444FormatsFeaturesEXT(VkBool32 format_a4b4g4r4 = {}, VkBool32 format_a4r4g4b4 = {}, void *p_next = {})
+    : format_a4b4g4r4_(format_a4b4g4r4), format_a4r4g4b4_(format_a4r4g4b4), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -4408,29 +3993,13 @@ struct PhysicalDevice4444FormatsFeaturesEXT {
   VkBool32 format_a4r4g4b4_;
   VkBool32 format_a4b4g4r4_;
 };
-#ifdef VK_ENABLE_BETA_EXTENSIONS
-
-struct PhysicalDevicePortabilitySubsetPropertiesKHR {
-
-  using native_type = VkPhysicalDevicePortabilitySubsetPropertiesKHR;
-
-  PhysicalDevicePortabilitySubsetPropertiesKHR(void *p_next = {}, uint32_t min_vertex_input_binding_stride_alignment = {})
-    : p_next_(p_next), min_vertex_input_binding_stride_alignment_(min_vertex_input_binding_stride_alignment) {}
-
-  auto *get() { return reinterpret_cast<native_type *>(this); }
-
-  StructureType s_type_ = StructureType::PHYSICAL_DEVICE_PORTABILITY_SUBSET_PROPERTIES_KHR;
-  void *p_next_;
-  uint32_t min_vertex_input_binding_stride_alignment_;
-};
-#endif
 
 struct SamplerCubicWeightsCreateInfoQCOM {
 
   using native_type = VkSamplerCubicWeightsCreateInfoQCOM;
 
-  SamplerCubicWeightsCreateInfoQCOM(const void *p_next = {}, CubicFilterWeights cubic_weights = {})
-    : p_next_(p_next), cubic_weights_(cubic_weights) {}
+  SamplerCubicWeightsCreateInfoQCOM(CubicFilterWeights cubic_weights = {}, const void *p_next = {})
+    : cubic_weights_(cubic_weights), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -4443,8 +4012,8 @@ struct PhysicalDeviceLinearColorAttachmentFeaturesNV {
 
   using native_type = VkPhysicalDeviceLinearColorAttachmentFeaturesNV;
 
-  PhysicalDeviceLinearColorAttachmentFeaturesNV(void *p_next = {}, VkBool32 linear_color_attachment = {})
-    : p_next_(p_next), linear_color_attachment_(linear_color_attachment) {}
+  PhysicalDeviceLinearColorAttachmentFeaturesNV(VkBool32 linear_color_attachment = {}, void *p_next = {})
+    : linear_color_attachment_(linear_color_attachment), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -4457,14 +4026,14 @@ struct PhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR {
 
   using native_type = VkPhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR;
 
-  PhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR(void *p_next = {}, VkBool32 workgroup_memory_explicit_layout = {},
+  PhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR(VkBool32 workgroup_memory_explicit_layout16bit_access = {},
+                                                         VkBool32 workgroup_memory_explicit_layout = {},
                                                          VkBool32 workgroup_memory_explicit_layout_scalar_block_layout = {},
-                                                         VkBool32 workgroup_memory_explicit_layout8bit_access = {},
-                                                         VkBool32 workgroup_memory_explicit_layout16bit_access = {})
-    : p_next_(p_next), workgroup_memory_explicit_layout_(workgroup_memory_explicit_layout),
+                                                         VkBool32 workgroup_memory_explicit_layout8bit_access = {}, void *p_next = {})
+    : workgroup_memory_explicit_layout16bit_access_(workgroup_memory_explicit_layout16bit_access),
+      workgroup_memory_explicit_layout_(workgroup_memory_explicit_layout),
       workgroup_memory_explicit_layout_scalar_block_layout_(workgroup_memory_explicit_layout_scalar_block_layout),
-      workgroup_memory_explicit_layout8bit_access_(workgroup_memory_explicit_layout8bit_access),
-      workgroup_memory_explicit_layout16bit_access_(workgroup_memory_explicit_layout16bit_access) {}
+      workgroup_memory_explicit_layout8bit_access_(workgroup_memory_explicit_layout8bit_access), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -4492,16 +4061,16 @@ struct VideoEncodeUsageInfoKHR {
 
   using native_type = VkVideoEncodeUsageInfoKHR;
 
-  VideoEncodeUsageInfoKHR(const void *p_next = {}, VkVideoEncodeUsageFlagsKHR video_usage_hints = {},
-                          VkVideoEncodeContentFlagsKHR video_content_hints = {}, VideoEncodeTuningMode tuning_mode = {})
-    : p_next_(p_next), video_usage_hints_(video_usage_hints), video_content_hints_(video_content_hints), tuning_mode_(tuning_mode) {}
+  VideoEncodeUsageInfoKHR(VideoEncodeTuningMode tuning_mode = {}, VideoEncodeUsageMask video_usage_hints = {},
+                          VideoEncodeContentMask video_content_hints = {}, const void *p_next = {})
+    : tuning_mode_(tuning_mode), video_usage_hints_(video_usage_hints), video_content_hints_(video_content_hints), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::VIDEO_ENCODE_USAGE_INFO_KHR;
   const void *p_next_;
-  VkVideoEncodeUsageFlagsKHR video_usage_hints_;
-  VkVideoEncodeContentFlagsKHR video_content_hints_;
+  VideoEncodeUsageMask video_usage_hints_;
+  VideoEncodeContentMask video_content_hints_;
   VideoEncodeTuningMode tuning_mode_;
 };
 
@@ -4509,22 +4078,21 @@ struct DeviceDiagnosticsConfigCreateInfoNV {
 
   using native_type = VkDeviceDiagnosticsConfigCreateInfoNV;
 
-  DeviceDiagnosticsConfigCreateInfoNV(const void *p_next = {}, VkDeviceDiagnosticsConfigFlagsNV flags = {})
-    : p_next_(p_next), flags_(flags) {}
+  DeviceDiagnosticsConfigCreateInfoNV(DeviceDiagnosticsConfigMask flags = {}, const void *p_next = {}) : flags_(flags), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::DEVICE_DIAGNOSTICS_CONFIG_CREATE_INFO_NV;
   const void *p_next_;
-  VkDeviceDiagnosticsConfigFlagsNV flags_;
+  DeviceDiagnosticsConfigMask flags_;
 };
 
 struct CommandBufferInheritanceRenderPassTransformInfoQCOM {
 
   using native_type = VkCommandBufferInheritanceRenderPassTransformInfoQCOM;
 
-  CommandBufferInheritanceRenderPassTransformInfoQCOM(void *p_next = {}, SurfaceTransformMaskBit transform = {}, Rect2D render_area = {})
-    : p_next_(p_next), transform_(transform), render_area_(render_area) {}
+  CommandBufferInheritanceRenderPassTransformInfoQCOM(Rect2D render_area = {}, SurfaceTransformMaskBit transform = {}, void *p_next = {})
+    : render_area_(render_area), transform_(transform), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -4538,7 +4106,7 @@ struct CopyCommandTransformInfoQCOM {
 
   using native_type = VkCopyCommandTransformInfoQCOM;
 
-  CopyCommandTransformInfoQCOM(const void *p_next = {}, SurfaceTransformMaskBit transform = {}) : p_next_(p_next), transform_(transform) {}
+  CopyCommandTransformInfoQCOM(SurfaceTransformMaskBit transform = {}, const void *p_next = {}) : transform_(transform), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -4551,9 +4119,9 @@ struct CopyMemoryToMicromapInfoEXT {
 
   using native_type = VkCopyMemoryToMicromapInfoEXT;
 
-  CopyMemoryToMicromapInfoEXT(const void *p_next = {}, VkDeviceOrHostAddressConstKHR src = {}, VkMicromapEXT dst = {},
-                              CopyMicromapMode mode = {})
-    : p_next_(p_next), src_(src), dst_(dst), mode_(mode) {}
+  CopyMemoryToMicromapInfoEXT(CopyMicromapMode mode = {}, VkDeviceOrHostAddressConstKHR src = {}, VkMicromapEXT dst = {},
+                              const void *p_next = {})
+    : mode_(mode), src_(src), dst_(dst), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -4568,7 +4136,7 @@ struct RenderPassTransformBeginInfoQCOM {
 
   using native_type = VkRenderPassTransformBeginInfoQCOM;
 
-  RenderPassTransformBeginInfoQCOM(void *p_next = {}, SurfaceTransformMaskBit transform = {}) : p_next_(p_next), transform_(transform) {}
+  RenderPassTransformBeginInfoQCOM(SurfaceTransformMaskBit transform = {}, void *p_next = {}) : transform_(transform), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -4581,9 +4149,9 @@ struct DeviceImageSubresourceInfoKHR {
 
   using native_type = VkDeviceImageSubresourceInfoKHR;
 
-  DeviceImageSubresourceInfoKHR(const void *p_next = {}, const ImageCreateInfo *p_create_info = {},
-                                const ImageSubresource2KHR *p_subresource = {})
-    : p_next_(p_next), p_create_info_(p_create_info), p_subresource_(p_subresource) {}
+  DeviceImageSubresourceInfoKHR(const ImageSubresource2KHR *p_subresource = {}, const ImageCreateInfo *p_create_info = {},
+                                const void *p_next = {})
+    : p_subresource_(p_subresource), p_create_info_(p_create_info), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -4615,8 +4183,8 @@ struct PhysicalDeviceExtendedDynamicState3PropertiesEXT {
 
   using native_type = VkPhysicalDeviceExtendedDynamicState3PropertiesEXT;
 
-  PhysicalDeviceExtendedDynamicState3PropertiesEXT(void *p_next = {}, VkBool32 dynamic_primitive_topology_unrestricted = {})
-    : p_next_(p_next), dynamic_primitive_topology_unrestricted_(dynamic_primitive_topology_unrestricted) {}
+  PhysicalDeviceExtendedDynamicState3PropertiesEXT(VkBool32 dynamic_primitive_topology_unrestricted = {}, void *p_next = {})
+    : dynamic_primitive_topology_unrestricted_(dynamic_primitive_topology_unrestricted), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -4629,8 +4197,8 @@ struct PhysicalDeviceExtendedDynamicStateFeaturesEXT {
 
   using native_type = VkPhysicalDeviceExtendedDynamicStateFeaturesEXT;
 
-  PhysicalDeviceExtendedDynamicStateFeaturesEXT(void *p_next = {}, VkBool32 extended_dynamic_state = {})
-    : p_next_(p_next), extended_dynamic_state_(extended_dynamic_state) {}
+  PhysicalDeviceExtendedDynamicStateFeaturesEXT(VkBool32 extended_dynamic_state = {}, void *p_next = {})
+    : extended_dynamic_state_(extended_dynamic_state), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -4643,8 +4211,8 @@ struct PhysicalDeviceDepthClipControlFeaturesEXT {
 
   using native_type = VkPhysicalDeviceDepthClipControlFeaturesEXT;
 
-  PhysicalDeviceDepthClipControlFeaturesEXT(void *p_next = {}, VkBool32 depth_clip_control = {})
-    : p_next_(p_next), depth_clip_control_(depth_clip_control) {}
+  PhysicalDeviceDepthClipControlFeaturesEXT(VkBool32 depth_clip_control = {}, void *p_next = {})
+    : depth_clip_control_(depth_clip_control), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -4657,10 +4225,10 @@ struct RayTracingPipelineInterfaceCreateInfoKHR {
 
   using native_type = VkRayTracingPipelineInterfaceCreateInfoKHR;
 
-  RayTracingPipelineInterfaceCreateInfoKHR(const void *p_next = {}, uint32_t max_pipeline_ray_payload_size = {},
-                                           uint32_t max_pipeline_ray_hit_attribute_size = {})
-    : p_next_(p_next), max_pipeline_ray_payload_size_(max_pipeline_ray_payload_size),
-      max_pipeline_ray_hit_attribute_size_(max_pipeline_ray_hit_attribute_size) {}
+  RayTracingPipelineInterfaceCreateInfoKHR(uint32_t max_pipeline_ray_hit_attribute_size = {}, uint32_t max_pipeline_ray_payload_size = {},
+                                           const void *p_next = {})
+    : max_pipeline_ray_hit_attribute_size_(max_pipeline_ray_hit_attribute_size),
+      max_pipeline_ray_payload_size_(max_pipeline_ray_payload_size), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -4674,9 +4242,9 @@ struct CopyAccelerationStructureToMemoryInfoKHR {
 
   using native_type = VkCopyAccelerationStructureToMemoryInfoKHR;
 
-  CopyAccelerationStructureToMemoryInfoKHR(const void *p_next = {}, VkAccelerationStructureKHR src = {}, VkDeviceOrHostAddressKHR dst = {},
-                                           CopyAccelerationStructureMode mode = {})
-    : p_next_(p_next), src_(src), dst_(dst), mode_(mode) {}
+  CopyAccelerationStructureToMemoryInfoKHR(CopyAccelerationStructureMode mode = {}, VkAccelerationStructureKHR src = {},
+                                           VkDeviceOrHostAddressKHR dst = {}, const void *p_next = {})
+    : mode_(mode), src_(src), dst_(dst), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -4686,30 +4254,13 @@ struct CopyAccelerationStructureToMemoryInfoKHR {
   VkDeviceOrHostAddressKHR dst_;
   CopyAccelerationStructureMode mode_;
 };
-#ifdef VK_USE_PLATFORM_FUCHSIA
-
-struct BufferCollectionBufferCreateInfoFUCHSIA {
-
-  using native_type = VkBufferCollectionBufferCreateInfoFUCHSIA;
-
-  BufferCollectionBufferCreateInfoFUCHSIA(const void *p_next = {}, VkBufferCollectionFUCHSIA collection = {}, uint32_t index = {})
-    : p_next_(p_next), collection_(collection), index_(index) {}
-
-  auto *get() { return reinterpret_cast<native_type *>(this); }
-
-  StructureType s_type_ = StructureType::BUFFER_COLLECTION_BUFFER_CREATE_INFO_FUCHSIA;
-  const void *p_next_;
-  VkBufferCollectionFUCHSIA collection_;
-  uint32_t index_;
-};
-#endif
 
 struct AccelerationStructureVersionInfoKHR {
 
   using native_type = VkAccelerationStructureVersionInfoKHR;
 
-  AccelerationStructureVersionInfoKHR(const void *p_next = {}, const uint8_t *p_version_data = {})
-    : p_next_(p_next), p_version_data_(p_version_data) {}
+  AccelerationStructureVersionInfoKHR(const uint8_t *p_version_data = {}, const void *p_next = {})
+    : p_version_data_(p_version_data), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -4788,9 +4339,9 @@ struct AccelerationStructureGeometryKHR {
 
   using native_type = VkAccelerationStructureGeometryKHR;
 
-  AccelerationStructureGeometryKHR(const void *p_next = {}, GeometryType geometry_type = {},
-                                   VkAccelerationStructureGeometryDataKHR geometry = {}, VkGeometryFlagsKHR flags = {})
-    : p_next_(p_next), geometry_type_(geometry_type), geometry_(geometry), flags_(flags) {}
+  AccelerationStructureGeometryKHR(GeometryMask flags = {}, GeometryType geometry_type = {},
+                                   VkAccelerationStructureGeometryDataKHR geometry = {}, const void *p_next = {})
+    : flags_(flags), geometry_type_(geometry_type), geometry_(geometry), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -4798,15 +4349,15 @@ struct AccelerationStructureGeometryKHR {
   const void *p_next_;
   GeometryType geometry_type_;
   VkAccelerationStructureGeometryDataKHR geometry_;
-  VkGeometryFlagsKHR flags_;
+  GeometryMask flags_;
 };
 
 struct AccelerationStructureGeometryAabbsDataKHR {
 
   using native_type = VkAccelerationStructureGeometryAabbsDataKHR;
 
-  AccelerationStructureGeometryAabbsDataKHR(const void *p_next = {}, VkDeviceOrHostAddressConstKHR data = {}, VkDeviceSize stride = {})
-    : p_next_(p_next), data_(data), stride_(stride) {}
+  AccelerationStructureGeometryAabbsDataKHR(VkDeviceSize stride = {}, VkDeviceOrHostAddressConstKHR data = {}, const void *p_next = {})
+    : stride_(stride), data_(data), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -4820,9 +4371,9 @@ struct PhysicalDeviceBorderColorSwizzleFeaturesEXT {
 
   using native_type = VkPhysicalDeviceBorderColorSwizzleFeaturesEXT;
 
-  PhysicalDeviceBorderColorSwizzleFeaturesEXT(void *p_next = {}, VkBool32 border_color_swizzle = {},
-                                              VkBool32 border_color_swizzle_from_image = {})
-    : p_next_(p_next), border_color_swizzle_(border_color_swizzle), border_color_swizzle_from_image_(border_color_swizzle_from_image) {}
+  PhysicalDeviceBorderColorSwizzleFeaturesEXT(VkBool32 border_color_swizzle_from_image = {}, VkBool32 border_color_swizzle = {},
+                                              void *p_next = {})
+    : border_color_swizzle_from_image_(border_color_swizzle_from_image), border_color_swizzle_(border_color_swizzle), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -4836,10 +4387,10 @@ struct PhysicalDeviceCustomBorderColorFeaturesEXT {
 
   using native_type = VkPhysicalDeviceCustomBorderColorFeaturesEXT;
 
-  PhysicalDeviceCustomBorderColorFeaturesEXT(void *p_next = {}, VkBool32 custom_border_colors = {},
-                                             VkBool32 custom_border_color_without_format = {})
-    : p_next_(p_next), custom_border_colors_(custom_border_colors),
-      custom_border_color_without_format_(custom_border_color_without_format) {}
+  PhysicalDeviceCustomBorderColorFeaturesEXT(VkBool32 custom_border_color_without_format = {}, VkBool32 custom_border_colors = {},
+                                             void *p_next = {})
+    : custom_border_color_without_format_(custom_border_color_without_format), custom_border_colors_(custom_border_colors),
+      p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -4859,7 +4410,7 @@ struct PhysicalDeviceToolProperties {
   void *p_next_;
   std::array<char, VK_MAX_EXTENSION_NAME_SIZE> name_;
   std::array<char, VK_MAX_EXTENSION_NAME_SIZE> version_;
-  VkToolPurposeFlags purposes_;
+  ToolPurposeMask purposes_;
   std::array<char, VK_MAX_DESCRIPTION_SIZE> description_;
   std::array<char, VK_MAX_EXTENSION_NAME_SIZE> layer_;
 };
@@ -4868,14 +4419,14 @@ struct PipelineCompilerControlCreateInfoAMD {
 
   using native_type = VkPipelineCompilerControlCreateInfoAMD;
 
-  PipelineCompilerControlCreateInfoAMD(const void *p_next = {}, VkPipelineCompilerControlFlagsAMD compiler_control_flags = {})
-    : p_next_(p_next), compiler_control_flags_(compiler_control_flags) {}
+  PipelineCompilerControlCreateInfoAMD(PipelineCompilerControlMask compiler_control_flags = {}, const void *p_next = {})
+    : compiler_control_flags_(compiler_control_flags), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PIPELINE_COMPILER_CONTROL_CREATE_INFO_AMD;
   const void *p_next_;
-  VkPipelineCompilerControlFlagsAMD compiler_control_flags_;
+  PipelineCompilerControlMask compiler_control_flags_;
 };
 
 struct PhysicalDeviceVulkan13Properties {
@@ -4889,7 +4440,7 @@ struct PhysicalDeviceVulkan13Properties {
   uint32_t min_subgroup_size_;
   uint32_t max_subgroup_size_;
   uint32_t max_compute_workgroup_subgroups_;
-  VkShaderStageFlags required_subgroup_size_stages_;
+  ShaderStageMask required_subgroup_size_stages_;
   uint32_t max_inline_uniform_block_size_;
   uint32_t max_per_stage_descriptor_inline_uniform_blocks_;
   uint32_t max_per_stage_descriptor_update_after_bind_inline_uniform_blocks_;
@@ -4937,8 +4488,8 @@ struct DeviceQueueShaderCoreControlCreateInfoARM {
 
   using native_type = VkDeviceQueueShaderCoreControlCreateInfoARM;
 
-  DeviceQueueShaderCoreControlCreateInfoARM(void *p_next = {}, uint32_t shader_core_count = {})
-    : p_next_(p_next), shader_core_count_(shader_core_count) {}
+  DeviceQueueShaderCoreControlCreateInfoARM(uint32_t shader_core_count = {}, void *p_next = {})
+    : shader_core_count_(shader_core_count), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -4951,21 +4502,21 @@ struct PhysicalDeviceVulkan13Features {
 
   using native_type = VkPhysicalDeviceVulkan13Features;
 
-  PhysicalDeviceVulkan13Features(void *p_next = {}, VkBool32 robust_image_access = {}, VkBool32 inline_uniform_block = {},
+  PhysicalDeviceVulkan13Features(VkBool32 maintenance4 = {}, VkBool32 robust_image_access = {}, VkBool32 inline_uniform_block = {},
                                  VkBool32 descriptor_binding_inline_uniform_block_update_after_bind = {},
                                  VkBool32 pipeline_creation_cache_control = {}, VkBool32 private_data = {},
                                  VkBool32 shader_demote_to_helper_invocation = {}, VkBool32 shader_terminate_invocation = {},
                                  VkBool32 subgroup_size_control = {}, VkBool32 compute_full_subgroups = {}, VkBool32 synchronization2 = {},
                                  VkBool32 texture_compression_astc_hdr = {}, VkBool32 shader_zero_initialize_workgroup_memory = {},
-                                 VkBool32 dynamic_rendering = {}, VkBool32 shader_integer_dot_product = {}, VkBool32 maintenance4 = {})
-    : p_next_(p_next), robust_image_access_(robust_image_access), inline_uniform_block_(inline_uniform_block),
+                                 VkBool32 dynamic_rendering = {}, VkBool32 shader_integer_dot_product = {}, void *p_next = {})
+    : maintenance4_(maintenance4), robust_image_access_(robust_image_access), inline_uniform_block_(inline_uniform_block),
       descriptor_binding_inline_uniform_block_update_after_bind_(descriptor_binding_inline_uniform_block_update_after_bind),
       pipeline_creation_cache_control_(pipeline_creation_cache_control), private_data_(private_data),
       shader_demote_to_helper_invocation_(shader_demote_to_helper_invocation), shader_terminate_invocation_(shader_terminate_invocation),
       subgroup_size_control_(subgroup_size_control), compute_full_subgroups_(compute_full_subgroups), synchronization2_(synchronization2),
       texture_compression_astc_hdr_(texture_compression_astc_hdr),
       shader_zero_initialize_workgroup_memory_(shader_zero_initialize_workgroup_memory), dynamic_rendering_(dynamic_rendering),
-      shader_integer_dot_product_(shader_integer_dot_product), maintenance4_(maintenance4) {}
+      shader_integer_dot_product_(shader_integer_dot_product), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -4992,13 +4543,12 @@ struct AccelerationStructureGeometryTrianglesDataKHR {
 
   using native_type = VkAccelerationStructureGeometryTrianglesDataKHR;
 
-  AccelerationStructureGeometryTrianglesDataKHR(const void *p_next = {}, Format vertex_format = {},
+  AccelerationStructureGeometryTrianglesDataKHR(VkDeviceOrHostAddressConstKHR transform_data = {}, Format vertex_format = {},
                                                 VkDeviceOrHostAddressConstKHR vertex_data = {}, VkDeviceSize vertex_stride = {},
                                                 uint32_t max_vertex = {}, IndexType index_type = {},
-                                                VkDeviceOrHostAddressConstKHR index_data = {},
-                                                VkDeviceOrHostAddressConstKHR transform_data = {})
-    : p_next_(p_next), vertex_format_(vertex_format), vertex_data_(vertex_data), vertex_stride_(vertex_stride), max_vertex_(max_vertex),
-      index_type_(index_type), index_data_(index_data), transform_data_(transform_data) {}
+                                                VkDeviceOrHostAddressConstKHR index_data = {}, const void *p_next = {})
+    : transform_data_(transform_data), vertex_format_(vertex_format), vertex_data_(vertex_data), vertex_stride_(vertex_stride),
+      max_vertex_(max_vertex), index_type_(index_type), index_data_(index_data), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -5017,18 +4567,18 @@ struct PhysicalDeviceVulkan11Features {
 
   using native_type = VkPhysicalDeviceVulkan11Features;
 
-  PhysicalDeviceVulkan11Features(void *p_next = {}, VkBool32 storage_buffer16bit_access = {},
+  PhysicalDeviceVulkan11Features(VkBool32 shader_draw_parameters = {}, VkBool32 storage_buffer16bit_access = {},
                                  VkBool32 uniform_and_storage_buffer16bit_access = {}, VkBool32 storage_push_constant16 = {},
                                  VkBool32 storage_input_output16 = {}, VkBool32 multiview = {}, VkBool32 multiview_geometry_shader = {},
                                  VkBool32 multiview_tessellation_shader = {}, VkBool32 variable_pointers_storage_buffer = {},
                                  VkBool32 variable_pointers = {}, VkBool32 protected_memory = {}, VkBool32 sampler_ycbcr_conversion = {},
-                                 VkBool32 shader_draw_parameters = {})
-    : p_next_(p_next), storage_buffer16bit_access_(storage_buffer16bit_access),
+                                 void *p_next = {})
+    : shader_draw_parameters_(shader_draw_parameters), storage_buffer16bit_access_(storage_buffer16bit_access),
       uniform_and_storage_buffer16bit_access_(uniform_and_storage_buffer16bit_access), storage_push_constant16_(storage_push_constant16),
       storage_input_output16_(storage_input_output16), multiview_(multiview), multiview_geometry_shader_(multiview_geometry_shader),
       multiview_tessellation_shader_(multiview_tessellation_shader), variable_pointers_storage_buffer_(variable_pointers_storage_buffer),
       variable_pointers_(variable_pointers), protected_memory_(protected_memory), sampler_ycbcr_conversion_(sampler_ycbcr_conversion),
-      shader_draw_parameters_(shader_draw_parameters) {}
+      p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -5052,11 +4602,11 @@ struct PipelineRasterizationLineStateCreateInfoKHR {
 
   using native_type = VkPipelineRasterizationLineStateCreateInfoKHR;
 
-  PipelineRasterizationLineStateCreateInfoKHR(const void *p_next = {}, LineRasterizationMode line_rasterization_mode = {},
+  PipelineRasterizationLineStateCreateInfoKHR(uint16_t line_stipple_pattern = {}, LineRasterizationMode line_rasterization_mode = {},
                                               VkBool32 stippled_line_enable = {}, uint32_t line_stipple_factor = {},
-                                              uint16_t line_stipple_pattern = {})
-    : p_next_(p_next), line_rasterization_mode_(line_rasterization_mode), stippled_line_enable_(stippled_line_enable),
-      line_stipple_factor_(line_stipple_factor), line_stipple_pattern_(line_stipple_pattern) {}
+                                              const void *p_next = {})
+    : line_stipple_pattern_(line_stipple_pattern), line_rasterization_mode_(line_rasterization_mode),
+      stippled_line_enable_(stippled_line_enable), line_stipple_factor_(line_stipple_factor), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -5083,8 +4633,8 @@ struct MemoryOpaqueCaptureAddressAllocateInfo {
 
   using native_type = VkMemoryOpaqueCaptureAddressAllocateInfo;
 
-  MemoryOpaqueCaptureAddressAllocateInfo(const void *p_next = {}, uint64_t opaque_capture_address = {})
-    : p_next_(p_next), opaque_capture_address_(opaque_capture_address) {}
+  MemoryOpaqueCaptureAddressAllocateInfo(uint64_t opaque_capture_address = {}, const void *p_next = {})
+    : opaque_capture_address_(opaque_capture_address), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -5097,13 +4647,12 @@ struct RenderingInputAttachmentIndexInfoKHR {
 
   using native_type = VkRenderingInputAttachmentIndexInfoKHR;
 
-  RenderingInputAttachmentIndexInfoKHR(const void *p_next = {}, uint32_t color_attachment_count = {},
+  RenderingInputAttachmentIndexInfoKHR(const uint32_t *p_stencil_input_attachment_index = {}, uint32_t color_attachment_count = {},
                                        const uint32_t *p_color_attachment_input_indices = {},
-                                       const uint32_t *p_depth_input_attachment_index = {},
-                                       const uint32_t *p_stencil_input_attachment_index = {})
-    : p_next_(p_next), color_attachment_count_(color_attachment_count), p_color_attachment_input_indices_(p_color_attachment_input_indices),
-      p_depth_input_attachment_index_(p_depth_input_attachment_index), p_stencil_input_attachment_index_(p_stencil_input_attachment_index) {
-  }
+                                       const uint32_t *p_depth_input_attachment_index = {}, const void *p_next = {})
+    : p_stencil_input_attachment_index_(p_stencil_input_attachment_index), color_attachment_count_(color_attachment_count),
+      p_color_attachment_input_indices_(p_color_attachment_input_indices), p_depth_input_attachment_index_(p_depth_input_attachment_index),
+      p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -5133,8 +4682,8 @@ struct PhysicalDeviceShaderMaximalReconvergenceFeaturesKHR {
 
   using native_type = VkPhysicalDeviceShaderMaximalReconvergenceFeaturesKHR;
 
-  PhysicalDeviceShaderMaximalReconvergenceFeaturesKHR(void *p_next = {}, VkBool32 shader_maximal_reconvergence = {})
-    : p_next_(p_next), shader_maximal_reconvergence_(shader_maximal_reconvergence) {}
+  PhysicalDeviceShaderMaximalReconvergenceFeaturesKHR(VkBool32 shader_maximal_reconvergence = {}, void *p_next = {})
+    : shader_maximal_reconvergence_(shader_maximal_reconvergence), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -5147,9 +4696,9 @@ struct ReleaseSwapchainImagesInfoEXT {
 
   using native_type = VkReleaseSwapchainImagesInfoEXT;
 
-  ReleaseSwapchainImagesInfoEXT(const void *p_next = {}, VkSwapchainKHR swapchain = {}, uint32_t image_index_count = {},
-                                const uint32_t *p_image_indices = {})
-    : p_next_(p_next), swapchain_(swapchain), image_index_count_(image_index_count), p_image_indices_(p_image_indices) {}
+  ReleaseSwapchainImagesInfoEXT(const uint32_t *p_image_indices = {}, VkSwapchainKHR swapchain = {}, uint32_t image_index_count = {},
+                                const void *p_next = {})
+    : p_image_indices_(p_image_indices), swapchain_(swapchain), image_index_count_(image_index_count), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -5164,8 +4713,8 @@ struct SubpassShadingPipelineCreateInfoHUAWEI {
 
   using native_type = VkSubpassShadingPipelineCreateInfoHUAWEI;
 
-  SubpassShadingPipelineCreateInfoHUAWEI(void *p_next = {}, VkRenderPass render_pass = {}, uint32_t subpass = {})
-    : p_next_(p_next), render_pass_(render_pass), subpass_(subpass) {}
+  SubpassShadingPipelineCreateInfoHUAWEI(uint32_t subpass = {}, VkRenderPass render_pass = {}, void *p_next = {})
+    : subpass_(subpass), render_pass_(render_pass), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -5179,8 +4728,8 @@ struct PhysicalDeviceSubgroupSizeControlFeatures {
 
   using native_type = VkPhysicalDeviceSubgroupSizeControlFeatures;
 
-  PhysicalDeviceSubgroupSizeControlFeatures(void *p_next = {}, VkBool32 subgroup_size_control = {}, VkBool32 compute_full_subgroups = {})
-    : p_next_(p_next), subgroup_size_control_(subgroup_size_control), compute_full_subgroups_(compute_full_subgroups) {}
+  PhysicalDeviceSubgroupSizeControlFeatures(VkBool32 compute_full_subgroups = {}, VkBool32 subgroup_size_control = {}, void *p_next = {})
+    : compute_full_subgroups_(compute_full_subgroups), subgroup_size_control_(subgroup_size_control), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -5208,8 +4757,8 @@ struct PhysicalDeviceTexelBufferAlignmentFeaturesEXT {
 
   using native_type = VkPhysicalDeviceTexelBufferAlignmentFeaturesEXT;
 
-  PhysicalDeviceTexelBufferAlignmentFeaturesEXT(void *p_next = {}, VkBool32 texel_buffer_alignment = {})
-    : p_next_(p_next), texel_buffer_alignment_(texel_buffer_alignment) {}
+  PhysicalDeviceTexelBufferAlignmentFeaturesEXT(VkBool32 texel_buffer_alignment = {}, void *p_next = {})
+    : texel_buffer_alignment_(texel_buffer_alignment), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -5232,35 +4781,12 @@ struct PipelineExecutableInternalRepresentationKHR {
   size_t data_size_;
   void *p_data_;
 };
-#ifdef VK_USE_PLATFORM_FUCHSIA
-
-struct BufferCollectionPropertiesFUCHSIA {
-
-  using native_type = VkBufferCollectionPropertiesFUCHSIA;
-
-  auto *get() { return reinterpret_cast<native_type *>(this); }
-
-  StructureType s_type_ = StructureType::BUFFER_COLLECTION_PROPERTIES_FUCHSIA;
-  void *p_next_;
-  uint32_t memory_type_bits_;
-  uint32_t buffer_count_;
-  uint32_t create_info_index_;
-  uint64_t sysmem_pixel_format_;
-  VkFormatFeatureFlags format_features_;
-  SysmemColorSpaceFUCHSIA sysmem_color_space_index_;
-  ComponentMapping sampler_ycbcr_conversion_components_;
-  SamplerYcbcrModelConversion suggested_ycbcr_model_;
-  SamplerYcbcrRange suggested_ycbcr_range_;
-  ChromaLocation suggested_xchroma_offset_;
-  ChromaLocation suggested_ychroma_offset_;
-};
-#endif
 
 struct DeviceMemoryOpaqueCaptureAddressInfo {
 
   using native_type = VkDeviceMemoryOpaqueCaptureAddressInfo;
 
-  DeviceMemoryOpaqueCaptureAddressInfo(const void *p_next = {}, VkDeviceMemory memory = {}) : p_next_(p_next), memory_(memory) {}
+  DeviceMemoryOpaqueCaptureAddressInfo(VkDeviceMemory memory = {}, const void *p_next = {}) : memory_(memory), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -5291,7 +4817,7 @@ struct PipelineExecutablePropertiesKHR {
 
   StructureType s_type_ = StructureType::PIPELINE_EXECUTABLE_PROPERTIES_KHR;
   void *p_next_;
-  VkShaderStageFlags stages_;
+  ShaderStageMask stages_;
   std::array<char, VK_MAX_DESCRIPTION_SIZE> name_;
   std::array<char, VK_MAX_DESCRIPTION_SIZE> description_;
   uint32_t subgroup_size_;
@@ -5301,8 +4827,8 @@ struct PhysicalDeviceVideoMaintenance1FeaturesKHR {
 
   using native_type = VkPhysicalDeviceVideoMaintenance1FeaturesKHR;
 
-  PhysicalDeviceVideoMaintenance1FeaturesKHR(void *p_next = {}, VkBool32 video_maintenance1 = {})
-    : p_next_(p_next), video_maintenance1_(video_maintenance1) {}
+  PhysicalDeviceVideoMaintenance1FeaturesKHR(VkBool32 video_maintenance1 = {}, void *p_next = {})
+    : video_maintenance1_(video_maintenance1), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -5315,7 +4841,7 @@ struct PipelineInfoKHR {
 
   using native_type = VkPipelineInfoKHR;
 
-  PipelineInfoKHR(const void *p_next = {}, VkPipeline pipeline = {}) : p_next_(p_next), pipeline_(pipeline) {}
+  PipelineInfoKHR(VkPipeline pipeline = {}, const void *p_next = {}) : pipeline_(pipeline), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -5328,8 +4854,8 @@ struct PhysicalDevicePipelineExecutablePropertiesFeaturesKHR {
 
   using native_type = VkPhysicalDevicePipelineExecutablePropertiesFeaturesKHR;
 
-  PhysicalDevicePipelineExecutablePropertiesFeaturesKHR(void *p_next = {}, VkBool32 pipeline_executable_info = {})
-    : p_next_(p_next), pipeline_executable_info_(pipeline_executable_info) {}
+  PhysicalDevicePipelineExecutablePropertiesFeaturesKHR(VkBool32 pipeline_executable_info = {}, void *p_next = {})
+    : pipeline_executable_info_(pipeline_executable_info), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -5342,8 +4868,8 @@ struct AttachmentDescriptionStencilLayout {
 
   using native_type = VkAttachmentDescriptionStencilLayout;
 
-  AttachmentDescriptionStencilLayout(void *p_next = {}, ImageLayout stencil_initial_layout = {}, ImageLayout stencil_final_layout = {})
-    : p_next_(p_next), stencil_initial_layout_(stencil_initial_layout), stencil_final_layout_(stencil_final_layout) {}
+  AttachmentDescriptionStencilLayout(ImageLayout stencil_final_layout = {}, ImageLayout stencil_initial_layout = {}, void *p_next = {})
+    : stencil_final_layout_(stencil_final_layout), stencil_initial_layout_(stencil_initial_layout), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -5357,10 +4883,10 @@ struct PhysicalDeviceRayTracingMotionBlurFeaturesNV {
 
   using native_type = VkPhysicalDeviceRayTracingMotionBlurFeaturesNV;
 
-  PhysicalDeviceRayTracingMotionBlurFeaturesNV(void *p_next = {}, VkBool32 ray_tracing_motion_blur = {},
-                                               VkBool32 ray_tracing_motion_blur_pipeline_trace_rays_indirect = {})
-    : p_next_(p_next), ray_tracing_motion_blur_(ray_tracing_motion_blur),
-      ray_tracing_motion_blur_pipeline_trace_rays_indirect_(ray_tracing_motion_blur_pipeline_trace_rays_indirect) {}
+  PhysicalDeviceRayTracingMotionBlurFeaturesNV(VkBool32 ray_tracing_motion_blur_pipeline_trace_rays_indirect = {},
+                                               VkBool32 ray_tracing_motion_blur = {}, void *p_next = {})
+    : ray_tracing_motion_blur_pipeline_trace_rays_indirect_(ray_tracing_motion_blur_pipeline_trace_rays_indirect),
+      ray_tracing_motion_blur_(ray_tracing_motion_blur), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -5374,10 +4900,10 @@ struct PhysicalDevicePrimitiveTopologyListRestartFeaturesEXT {
 
   using native_type = VkPhysicalDevicePrimitiveTopologyListRestartFeaturesEXT;
 
-  PhysicalDevicePrimitiveTopologyListRestartFeaturesEXT(void *p_next = {}, VkBool32 primitive_topology_list_restart = {},
-                                                        VkBool32 primitive_topology_patch_list_restart = {})
-    : p_next_(p_next), primitive_topology_list_restart_(primitive_topology_list_restart),
-      primitive_topology_patch_list_restart_(primitive_topology_patch_list_restart) {}
+  PhysicalDevicePrimitiveTopologyListRestartFeaturesEXT(VkBool32 primitive_topology_patch_list_restart = {},
+                                                        VkBool32 primitive_topology_list_restart = {}, void *p_next = {})
+    : primitive_topology_patch_list_restart_(primitive_topology_patch_list_restart),
+      primitive_topology_list_restart_(primitive_topology_list_restart), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -5391,7 +4917,7 @@ struct AttachmentReferenceStencilLayout {
 
   using native_type = VkAttachmentReferenceStencilLayout;
 
-  AttachmentReferenceStencilLayout(void *p_next = {}, ImageLayout stencil_layout = {}) : p_next_(p_next), stencil_layout_(stencil_layout) {}
+  AttachmentReferenceStencilLayout(ImageLayout stencil_layout = {}, void *p_next = {}) : stencil_layout_(stencil_layout), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -5404,10 +4930,10 @@ struct PhysicalDeviceCooperativeMatrixFeaturesKHR {
 
   using native_type = VkPhysicalDeviceCooperativeMatrixFeaturesKHR;
 
-  PhysicalDeviceCooperativeMatrixFeaturesKHR(void *p_next = {}, VkBool32 cooperative_matrix = {},
-                                             VkBool32 cooperative_matrix_robust_buffer_access = {})
-    : p_next_(p_next), cooperative_matrix_(cooperative_matrix),
-      cooperative_matrix_robust_buffer_access_(cooperative_matrix_robust_buffer_access) {}
+  PhysicalDeviceCooperativeMatrixFeaturesKHR(VkBool32 cooperative_matrix_robust_buffer_access = {}, VkBool32 cooperative_matrix = {},
+                                             void *p_next = {})
+    : cooperative_matrix_robust_buffer_access_(cooperative_matrix_robust_buffer_access), cooperative_matrix_(cooperative_matrix),
+      p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -5421,12 +4947,12 @@ struct PhysicalDeviceFragmentShaderInterlockFeaturesEXT {
 
   using native_type = VkPhysicalDeviceFragmentShaderInterlockFeaturesEXT;
 
-  PhysicalDeviceFragmentShaderInterlockFeaturesEXT(void *p_next = {}, VkBool32 fragment_shader_sample_interlock = {},
-                                                   VkBool32 fragment_shader_pixel_interlock = {},
-                                                   VkBool32 fragment_shader_shading_rate_interlock = {})
-    : p_next_(p_next), fragment_shader_sample_interlock_(fragment_shader_sample_interlock),
-      fragment_shader_pixel_interlock_(fragment_shader_pixel_interlock),
-      fragment_shader_shading_rate_interlock_(fragment_shader_shading_rate_interlock) {}
+  PhysicalDeviceFragmentShaderInterlockFeaturesEXT(VkBool32 fragment_shader_shading_rate_interlock = {},
+                                                   VkBool32 fragment_shader_sample_interlock = {},
+                                                   VkBool32 fragment_shader_pixel_interlock = {}, void *p_next = {})
+    : fragment_shader_shading_rate_interlock_(fragment_shader_shading_rate_interlock),
+      fragment_shader_sample_interlock_(fragment_shader_sample_interlock),
+      fragment_shader_pixel_interlock_(fragment_shader_pixel_interlock), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -5441,11 +4967,11 @@ struct VideoEncodeH265RateControlLayerInfoKHR {
 
   using native_type = VkVideoEncodeH265RateControlLayerInfoKHR;
 
-  VideoEncodeH265RateControlLayerInfoKHR(const void *p_next = {}, VkBool32 use_min_qp = {}, VideoEncodeH265QpKHR min_qp = {},
-                                         VkBool32 use_max_qp = {}, VideoEncodeH265QpKHR max_qp = {}, VkBool32 use_max_frame_size = {},
-                                         VideoEncodeH265FrameSizeKHR max_frame_size = {})
-    : p_next_(p_next), use_min_qp_(use_min_qp), min_qp_(min_qp), use_max_qp_(use_max_qp), max_qp_(max_qp),
-      use_max_frame_size_(use_max_frame_size), max_frame_size_(max_frame_size) {}
+  VideoEncodeH265RateControlLayerInfoKHR(VideoEncodeH265FrameSizeKHR max_frame_size = {}, VkBool32 use_min_qp = {},
+                                         VideoEncodeH265QpKHR min_qp = {}, VkBool32 use_max_qp = {}, VideoEncodeH265QpKHR max_qp = {},
+                                         VkBool32 use_max_frame_size = {}, const void *p_next = {})
+    : max_frame_size_(max_frame_size), use_min_qp_(use_min_qp), min_qp_(min_qp), use_max_qp_(use_max_qp), max_qp_(max_qp),
+      use_max_frame_size_(use_max_frame_size), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -5463,8 +4989,8 @@ struct PhysicalDeviceShaderSMBuiltinsFeaturesNV {
 
   using native_type = VkPhysicalDeviceShaderSMBuiltinsFeaturesNV;
 
-  PhysicalDeviceShaderSMBuiltinsFeaturesNV(void *p_next = {}, VkBool32 shader_smbuiltins = {})
-    : p_next_(p_next), shader_smbuiltins_(shader_smbuiltins) {}
+  PhysicalDeviceShaderSMBuiltinsFeaturesNV(VkBool32 shader_smbuiltins = {}, void *p_next = {})
+    : shader_smbuiltins_(shader_smbuiltins), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -5477,7 +5003,7 @@ struct OutOfBandQueueTypeInfoNV {
 
   using native_type = VkOutOfBandQueueTypeInfoNV;
 
-  OutOfBandQueueTypeInfoNV(const void *p_next = {}, OutOfBandQueueType queue_type = {}) : p_next_(p_next), queue_type_(queue_type) {}
+  OutOfBandQueueTypeInfoNV(OutOfBandQueueType queue_type = {}, const void *p_next = {}) : queue_type_(queue_type), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -5490,8 +5016,8 @@ struct PhysicalDeviceIndexTypeUint8FeaturesKHR {
 
   using native_type = VkPhysicalDeviceIndexTypeUint8FeaturesKHR;
 
-  PhysicalDeviceIndexTypeUint8FeaturesKHR(void *p_next = {}, VkBool32 index_type_uint8 = {})
-    : p_next_(p_next), index_type_uint8_(index_type_uint8) {}
+  PhysicalDeviceIndexTypeUint8FeaturesKHR(VkBool32 index_type_uint8 = {}, void *p_next = {})
+    : index_type_uint8_(index_type_uint8), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -5504,8 +5030,8 @@ struct PerformanceOverrideInfoINTEL {
 
   using native_type = VkPerformanceOverrideInfoINTEL;
 
-  PerformanceOverrideInfoINTEL(const void *p_next = {}, PerformanceOverrideType type = {}, VkBool32 enable = {}, uint64_t parameter = {})
-    : p_next_(p_next), type_(type), enable_(enable), parameter_(parameter) {}
+  PerformanceOverrideInfoINTEL(uint64_t parameter = {}, PerformanceOverrideType type = {}, VkBool32 enable = {}, const void *p_next = {})
+    : parameter_(parameter), type_(type), enable_(enable), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -5520,12 +5046,12 @@ struct VideoDecodeH265SessionParametersAddInfoKHR {
 
   using native_type = VkVideoDecodeH265SessionParametersAddInfoKHR;
 
-  VideoDecodeH265SessionParametersAddInfoKHR(const void *p_next = {}, uint32_t std_vpscount = {},
+  VideoDecodeH265SessionParametersAddInfoKHR(const StdVideoH265PictureParameterSet *p_std_ppss = {}, uint32_t std_vpscount = {},
                                              const StdVideoH265VideoParameterSet *p_std_vpss = {}, uint32_t std_spscount = {},
                                              const StdVideoH265SequenceParameterSet *p_std_spss = {}, uint32_t std_ppscount = {},
-                                             const StdVideoH265PictureParameterSet *p_std_ppss = {})
-    : p_next_(p_next), std_vpscount_(std_vpscount), p_std_vpss_(p_std_vpss), std_spscount_(std_spscount), p_std_spss_(p_std_spss),
-      std_ppscount_(std_ppscount), p_std_ppss_(p_std_ppss) {}
+                                             const void *p_next = {})
+    : p_std_ppss_(p_std_ppss), std_vpscount_(std_vpscount), p_std_vpss_(p_std_vpss), std_spscount_(std_spscount), p_std_spss_(p_std_spss),
+      std_ppscount_(std_ppscount), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -5543,7 +5069,7 @@ struct PerformanceStreamMarkerInfoINTEL {
 
   using native_type = VkPerformanceStreamMarkerInfoINTEL;
 
-  PerformanceStreamMarkerInfoINTEL(const void *p_next = {}, uint32_t marker = {}) : p_next_(p_next), marker_(marker) {}
+  PerformanceStreamMarkerInfoINTEL(uint32_t marker = {}, const void *p_next = {}) : marker_(marker), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -5556,9 +5082,9 @@ struct SamplerBlockMatchWindowCreateInfoQCOM {
 
   using native_type = VkSamplerBlockMatchWindowCreateInfoQCOM;
 
-  SamplerBlockMatchWindowCreateInfoQCOM(const void *p_next = {}, Extent2D window_extent = {},
-                                        BlockMatchWindowCompareMode window_compare_mode = {})
-    : p_next_(p_next), window_extent_(window_extent), window_compare_mode_(window_compare_mode) {}
+  SamplerBlockMatchWindowCreateInfoQCOM(BlockMatchWindowCompareMode window_compare_mode = {}, Extent2D window_extent = {},
+                                        const void *p_next = {})
+    : window_compare_mode_(window_compare_mode), window_extent_(window_extent), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -5572,8 +5098,8 @@ struct QueryPoolPerformanceQueryCreateInfoINTEL {
 
   using native_type = VkQueryPoolPerformanceQueryCreateInfoINTEL;
 
-  QueryPoolPerformanceQueryCreateInfoINTEL(const void *p_next = {}, QueryPoolSamplingMode performance_counters_sampling = {})
-    : p_next_(p_next), performance_counters_sampling_(performance_counters_sampling) {}
+  QueryPoolPerformanceQueryCreateInfoINTEL(QueryPoolSamplingMode performance_counters_sampling = {}, const void *p_next = {})
+    : performance_counters_sampling_(performance_counters_sampling), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -5586,7 +5112,7 @@ struct InitializePerformanceApiInfoINTEL {
 
   using native_type = VkInitializePerformanceApiInfoINTEL;
 
-  InitializePerformanceApiInfoINTEL(const void *p_next = {}, void *p_user_data = {}) : p_next_(p_next), p_user_data_(p_user_data) {}
+  InitializePerformanceApiInfoINTEL(void *p_user_data = {}, const void *p_next = {}) : p_user_data_(p_user_data), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -5599,9 +5125,9 @@ struct DeviceGroupPresentInfoKHR {
 
   using native_type = VkDeviceGroupPresentInfoKHR;
 
-  DeviceGroupPresentInfoKHR(const void *p_next = {}, uint32_t swapchain_count = {}, const uint32_t *p_device_masks = {},
-                            DeviceGroupPresentModeMaskBit mode = {})
-    : p_next_(p_next), swapchain_count_(swapchain_count), p_device_masks_(p_device_masks), mode_(mode) {}
+  DeviceGroupPresentInfoKHR(DeviceGroupPresentModeMaskBit mode = {}, uint32_t swapchain_count = {}, const uint32_t *p_device_masks = {},
+                            const void *p_next = {})
+    : mode_(mode), swapchain_count_(swapchain_count), p_device_masks_(p_device_masks), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -5616,9 +5142,9 @@ struct AcquireNextImageInfoKHR {
 
   using native_type = VkAcquireNextImageInfoKHR;
 
-  AcquireNextImageInfoKHR(const void *p_next = {}, VkSwapchainKHR swapchain = {}, uint64_t timeout = {}, VkSemaphore semaphore = {},
-                          VkFence fence = {}, uint32_t device_mask = {})
-    : p_next_(p_next), swapchain_(swapchain), timeout_(timeout), semaphore_(semaphore), fence_(fence), device_mask_(device_mask) {}
+  AcquireNextImageInfoKHR(uint32_t device_mask = {}, VkSwapchainKHR swapchain = {}, uint64_t timeout = {}, VkSemaphore semaphore = {},
+                          VkFence fence = {}, const void *p_next = {})
+    : device_mask_(device_mask), swapchain_(swapchain), timeout_(timeout), semaphore_(semaphore), fence_(fence), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -5635,7 +5161,7 @@ struct ImageSwapchainCreateInfoKHR {
 
   using native_type = VkImageSwapchainCreateInfoKHR;
 
-  ImageSwapchainCreateInfoKHR(const void *p_next = {}, VkSwapchainKHR swapchain = {}) : p_next_(p_next), swapchain_(swapchain) {}
+  ImageSwapchainCreateInfoKHR(VkSwapchainKHR swapchain = {}, const void *p_next = {}) : swapchain_(swapchain), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -5643,33 +5169,13 @@ struct ImageSwapchainCreateInfoKHR {
   const void *p_next_;
   VkSwapchainKHR swapchain_;
 };
-#ifdef VK_USE_PLATFORM_FUCHSIA
-
-struct ImportSemaphoreZirconHandleInfoFUCHSIA {
-
-  using native_type = VkImportSemaphoreZirconHandleInfoFUCHSIA;
-
-  ImportSemaphoreZirconHandleInfoFUCHSIA(const void *p_next = {}, VkSemaphore semaphore = {}, VkSemaphoreImportFlags flags = {},
-                                         ExternalSemaphoreHandleTypeMaskBit handle_type = {}, zx_handle_t zircon_handle = {})
-    : p_next_(p_next), semaphore_(semaphore), flags_(flags), handle_type_(handle_type), zircon_handle_(zircon_handle) {}
-
-  auto *get() { return reinterpret_cast<native_type *>(this); }
-
-  StructureType s_type_ = StructureType::IMPORT_SEMAPHORE_ZIRCON_HANDLE_INFO_FUCHSIA;
-  const void *p_next_;
-  VkSemaphore semaphore_;
-  VkSemaphoreImportFlags flags_;
-  ExternalSemaphoreHandleTypeMaskBit handle_type_;
-  zx_handle_t zircon_handle_;
-};
-#endif
 
 struct MemoryGetFdInfoKHR {
 
   using native_type = VkMemoryGetFdInfoKHR;
 
-  MemoryGetFdInfoKHR(const void *p_next = {}, VkDeviceMemory memory = {}, ExternalMemoryHandleTypeMaskBit handle_type = {})
-    : p_next_(p_next), memory_(memory), handle_type_(handle_type) {}
+  MemoryGetFdInfoKHR(ExternalMemoryHandleTypeMaskBit handle_type = {}, VkDeviceMemory memory = {}, const void *p_next = {})
+    : handle_type_(handle_type), memory_(memory), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -5684,14 +5190,14 @@ struct AccelerationStructureMotionInstanceNV {
   using native_type = VkAccelerationStructureMotionInstanceNV;
 
   AccelerationStructureMotionInstanceNV(AccelerationStructureMotionInstanceType type = {},
-                                        VkAccelerationStructureMotionInstanceFlagsNV flags = {},
+                                        AccelerationStructureMotionInstanceMask flags = {},
                                         VkAccelerationStructureMotionInstanceDataNV data = {})
     : type_(type), flags_(flags), data_(data) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   AccelerationStructureMotionInstanceType type_;
-  VkAccelerationStructureMotionInstanceFlagsNV flags_;
+  AccelerationStructureMotionInstanceMask flags_;
   VkAccelerationStructureMotionInstanceDataNV data_;
 };
 
@@ -5699,10 +5205,10 @@ struct QueryPoolPerformanceCreateInfoKHR {
 
   using native_type = VkQueryPoolPerformanceCreateInfoKHR;
 
-  QueryPoolPerformanceCreateInfoKHR(const void *p_next = {}, uint32_t queue_family_index = {}, uint32_t counter_index_count = {},
-                                    const uint32_t *p_counter_indices = {})
-    : p_next_(p_next), queue_family_index_(queue_family_index), counter_index_count_(counter_index_count),
-      p_counter_indices_(p_counter_indices) {}
+  QueryPoolPerformanceCreateInfoKHR(const uint32_t *p_counter_indices = {}, uint32_t queue_family_index = {},
+                                    uint32_t counter_index_count = {}, const void *p_next = {})
+    : p_counter_indices_(p_counter_indices), queue_family_index_(queue_family_index), counter_index_count_(counter_index_count),
+      p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -5717,8 +5223,8 @@ struct BindBufferMemoryInfo {
 
   using native_type = VkBindBufferMemoryInfo;
 
-  BindBufferMemoryInfo(const void *p_next = {}, VkBuffer buffer = {}, VkDeviceMemory memory = {}, VkDeviceSize memory_offset = {})
-    : p_next_(p_next), buffer_(buffer), memory_(memory), memory_offset_(memory_offset) {}
+  BindBufferMemoryInfo(VkDeviceSize memory_offset = {}, VkBuffer buffer = {}, VkDeviceMemory memory = {}, const void *p_next = {})
+    : memory_offset_(memory_offset), buffer_(buffer), memory_(memory), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -5733,16 +5239,16 @@ struct ImportFenceFdInfoKHR {
 
   using native_type = VkImportFenceFdInfoKHR;
 
-  ImportFenceFdInfoKHR(const void *p_next = {}, VkFence fence = {}, VkFenceImportFlags flags = {},
-                       ExternalFenceHandleTypeMaskBit handle_type = {}, int fd = {})
-    : p_next_(p_next), fence_(fence), flags_(flags), handle_type_(handle_type), fd_(fd) {}
+  ImportFenceFdInfoKHR(int fd = {}, VkFence fence = {}, FenceImportMask flags = {}, ExternalFenceHandleTypeMaskBit handle_type = {},
+                       const void *p_next = {})
+    : fd_(fd), fence_(fence), flags_(flags), handle_type_(handle_type), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::IMPORT_FENCE_FD_INFO_KHR;
   const void *p_next_;
   VkFence fence_;
-  VkFenceImportFlags flags_;
+  FenceImportMask flags_;
   ExternalFenceHandleTypeMaskBit handle_type_;
   int fd_;
 };
@@ -5768,8 +5274,8 @@ struct LayerSettingsCreateInfoEXT {
 
   using native_type = VkLayerSettingsCreateInfoEXT;
 
-  LayerSettingsCreateInfoEXT(const void *p_next = {}, uint32_t setting_count = {}, const LayerSettingEXT *p_settings = {})
-    : p_next_(p_next), setting_count_(setting_count), p_settings_(p_settings) {}
+  LayerSettingsCreateInfoEXT(const LayerSettingEXT *p_settings = {}, uint32_t setting_count = {}, const void *p_next = {})
+    : p_settings_(p_settings), setting_count_(setting_count), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -5783,7 +5289,7 @@ struct DisplayEventInfoEXT {
 
   using native_type = VkDisplayEventInfoEXT;
 
-  DisplayEventInfoEXT(const void *p_next = {}, DisplayEventType display_event = {}) : p_next_(p_next), display_event_(display_event) {}
+  DisplayEventInfoEXT(DisplayEventType display_event = {}, const void *p_next = {}) : display_event_(display_event), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -5820,8 +5326,8 @@ struct AmigoProfilingSubmitInfoSEC {
 
   using native_type = VkAmigoProfilingSubmitInfoSEC;
 
-  AmigoProfilingSubmitInfoSEC(const void *p_next = {}, uint64_t first_draw_timestamp = {}, uint64_t swap_buffer_timestamp = {})
-    : p_next_(p_next), first_draw_timestamp_(first_draw_timestamp), swap_buffer_timestamp_(swap_buffer_timestamp) {}
+  AmigoProfilingSubmitInfoSEC(uint64_t swap_buffer_timestamp = {}, uint64_t first_draw_timestamp = {}, const void *p_next = {})
+    : swap_buffer_timestamp_(swap_buffer_timestamp), first_draw_timestamp_(first_draw_timestamp), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -5830,30 +5336,13 @@ struct AmigoProfilingSubmitInfoSEC {
   uint64_t first_draw_timestamp_;
   uint64_t swap_buffer_timestamp_;
 };
-#ifdef VK_USE_PLATFORM_WIN32_KHR
-
-struct FenceGetWin32HandleInfoKHR {
-
-  using native_type = VkFenceGetWin32HandleInfoKHR;
-
-  FenceGetWin32HandleInfoKHR(const void *p_next = {}, VkFence fence = {}, ExternalFenceHandleTypeMaskBit handle_type = {})
-    : p_next_(p_next), fence_(fence), handle_type_(handle_type) {}
-
-  auto *get() { return reinterpret_cast<native_type *>(this); }
-
-  StructureType s_type_ = StructureType::FENCE_GET_WIN32_HANDLE_INFO_KHR;
-  const void *p_next_;
-  VkFence fence_;
-  ExternalFenceHandleTypeMaskBit handle_type_;
-};
-#endif
 
 struct PhysicalDeviceShaderSubgroupExtendedTypesFeatures {
 
   using native_type = VkPhysicalDeviceShaderSubgroupExtendedTypesFeatures;
 
-  PhysicalDeviceShaderSubgroupExtendedTypesFeatures(void *p_next = {}, VkBool32 shader_subgroup_extended_types = {})
-    : p_next_(p_next), shader_subgroup_extended_types_(shader_subgroup_extended_types) {}
+  PhysicalDeviceShaderSubgroupExtendedTypesFeatures(VkBool32 shader_subgroup_extended_types = {}, void *p_next = {})
+    : shader_subgroup_extended_types_(shader_subgroup_extended_types), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -5866,8 +5355,8 @@ struct PerformanceConfigurationAcquireInfoINTEL {
 
   using native_type = VkPerformanceConfigurationAcquireInfoINTEL;
 
-  PerformanceConfigurationAcquireInfoINTEL(const void *p_next = {}, PerformanceConfigurationType type = {})
-    : p_next_(p_next), type_(type) {}
+  PerformanceConfigurationAcquireInfoINTEL(PerformanceConfigurationType type = {}, const void *p_next = {})
+    : type_(type), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -5875,32 +5364,13 @@ struct PerformanceConfigurationAcquireInfoINTEL {
   const void *p_next_;
   PerformanceConfigurationType type_;
 };
-#ifdef VK_USE_PLATFORM_WIN32_KHR
-
-struct ExportFenceWin32HandleInfoKHR {
-
-  using native_type = VkExportFenceWin32HandleInfoKHR;
-
-  ExportFenceWin32HandleInfoKHR(const void *p_next = {}, const SECURITY_ATTRIBUTES *p_attributes = {}, DWORD dw_access = {},
-                                LPCWSTR name = {})
-    : p_next_(p_next), p_attributes_(p_attributes), dw_access_(dw_access), name_(name) {}
-
-  auto *get() { return reinterpret_cast<native_type *>(this); }
-
-  StructureType s_type_ = StructureType::EXPORT_FENCE_WIN32_HANDLE_INFO_KHR;
-  const void *p_next_;
-  const SECURITY_ATTRIBUTES *p_attributes_;
-  DWORD dw_access_;
-  LPCWSTR name_;
-};
-#endif
 
 struct PipelineTessellationDomainOriginStateCreateInfo {
 
   using native_type = VkPipelineTessellationDomainOriginStateCreateInfo;
 
-  PipelineTessellationDomainOriginStateCreateInfo(const void *p_next = {}, TessellationDomainOrigin domain_origin = {})
-    : p_next_(p_next), domain_origin_(domain_origin) {}
+  PipelineTessellationDomainOriginStateCreateInfo(TessellationDomainOrigin domain_origin = {}, const void *p_next = {})
+    : domain_origin_(domain_origin), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -5928,9 +5398,9 @@ struct ExternalFenceProperties {
 
   StructureType s_type_ = StructureType::EXTERNAL_FENCE_PROPERTIES;
   void *p_next_;
-  VkExternalFenceHandleTypeFlags export_from_imported_handle_types_;
-  VkExternalFenceHandleTypeFlags compatible_handle_types_;
-  VkExternalFenceFeatureFlags external_fence_features_;
+  ExternalFenceHandleTypeMask export_from_imported_handle_types_;
+  ExternalFenceHandleTypeMask compatible_handle_types_;
+  ExternalFenceFeatureMask external_fence_features_;
 };
 
 struct PhysicalDeviceExtendedDynamicState3FeaturesEXT {
@@ -5938,7 +5408,7 @@ struct PhysicalDeviceExtendedDynamicState3FeaturesEXT {
   using native_type = VkPhysicalDeviceExtendedDynamicState3FeaturesEXT;
 
   PhysicalDeviceExtendedDynamicState3FeaturesEXT(
-    void *p_next = {}, VkBool32 extended_dynamic_state3tessellation_domain_origin = {},
+    VkBool32 extended_dynamic_state3shading_rate_image_enable = {}, VkBool32 extended_dynamic_state3tessellation_domain_origin = {},
     VkBool32 extended_dynamic_state3depth_clamp_enable = {}, VkBool32 extended_dynamic_state3polygon_mode = {},
     VkBool32 extended_dynamic_state3rasterization_samples = {}, VkBool32 extended_dynamic_state3sample_mask = {},
     VkBool32 extended_dynamic_state3alpha_to_coverage_enable = {}, VkBool32 extended_dynamic_state3alpha_to_one_enable = {},
@@ -5953,9 +5423,9 @@ struct PhysicalDeviceExtendedDynamicState3FeaturesEXT {
     VkBool32 extended_dynamic_state3coverage_to_color_enable = {}, VkBool32 extended_dynamic_state3coverage_to_color_location = {},
     VkBool32 extended_dynamic_state3coverage_modulation_mode = {}, VkBool32 extended_dynamic_state3coverage_modulation_table_enable = {},
     VkBool32 extended_dynamic_state3coverage_modulation_table = {}, VkBool32 extended_dynamic_state3coverage_reduction_mode = {},
-    VkBool32 extended_dynamic_state3representative_fragment_test_enable = {},
-    VkBool32 extended_dynamic_state3shading_rate_image_enable = {})
-    : p_next_(p_next), extended_dynamic_state3tessellation_domain_origin_(extended_dynamic_state3tessellation_domain_origin),
+    VkBool32 extended_dynamic_state3representative_fragment_test_enable = {}, void *p_next = {})
+    : extended_dynamic_state3shading_rate_image_enable_(extended_dynamic_state3shading_rate_image_enable),
+      extended_dynamic_state3tessellation_domain_origin_(extended_dynamic_state3tessellation_domain_origin),
       extended_dynamic_state3depth_clamp_enable_(extended_dynamic_state3depth_clamp_enable),
       extended_dynamic_state3polygon_mode_(extended_dynamic_state3polygon_mode),
       extended_dynamic_state3rasterization_samples_(extended_dynamic_state3rasterization_samples),
@@ -5985,7 +5455,7 @@ struct PhysicalDeviceExtendedDynamicState3FeaturesEXT {
       extended_dynamic_state3coverage_modulation_table_(extended_dynamic_state3coverage_modulation_table),
       extended_dynamic_state3coverage_reduction_mode_(extended_dynamic_state3coverage_reduction_mode),
       extended_dynamic_state3representative_fragment_test_enable_(extended_dynamic_state3representative_fragment_test_enable),
-      extended_dynamic_state3shading_rate_image_enable_(extended_dynamic_state3shading_rate_image_enable) {}
+      p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -6028,8 +5498,8 @@ struct PhysicalDeviceExternalFenceInfo {
 
   using native_type = VkPhysicalDeviceExternalFenceInfo;
 
-  PhysicalDeviceExternalFenceInfo(const void *p_next = {}, ExternalFenceHandleTypeMaskBit handle_type = {})
-    : p_next_(p_next), handle_type_(handle_type) {}
+  PhysicalDeviceExternalFenceInfo(ExternalFenceHandleTypeMaskBit handle_type = {}, const void *p_next = {})
+    : handle_type_(handle_type), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -6042,11 +5512,12 @@ struct PhysicalDeviceExtendedDynamicState2FeaturesEXT {
 
   using native_type = VkPhysicalDeviceExtendedDynamicState2FeaturesEXT;
 
-  PhysicalDeviceExtendedDynamicState2FeaturesEXT(void *p_next = {}, VkBool32 extended_dynamic_state2 = {},
-                                                 VkBool32 extended_dynamic_state2logic_op = {},
-                                                 VkBool32 extended_dynamic_state2patch_control_points = {})
-    : p_next_(p_next), extended_dynamic_state2_(extended_dynamic_state2), extended_dynamic_state2logic_op_(extended_dynamic_state2logic_op),
-      extended_dynamic_state2patch_control_points_(extended_dynamic_state2patch_control_points) {}
+  PhysicalDeviceExtendedDynamicState2FeaturesEXT(VkBool32 extended_dynamic_state2patch_control_points = {},
+                                                 VkBool32 extended_dynamic_state2 = {}, VkBool32 extended_dynamic_state2logic_op = {},
+                                                 void *p_next = {})
+    : extended_dynamic_state2patch_control_points_(extended_dynamic_state2patch_control_points),
+      extended_dynamic_state2_(extended_dynamic_state2), extended_dynamic_state2logic_op_(extended_dynamic_state2logic_op),
+      p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -6073,10 +5544,10 @@ struct PipelineViewportWScalingStateCreateInfoNV {
 
   using native_type = VkPipelineViewportWScalingStateCreateInfoNV;
 
-  PipelineViewportWScalingStateCreateInfoNV(const void *p_next = {}, VkBool32 viewport_wscaling_enable = {}, uint32_t viewport_count = {},
-                                            const ViewportWScalingNV *p_viewport_wscalings = {})
-    : p_next_(p_next), viewport_wscaling_enable_(viewport_wscaling_enable), viewport_count_(viewport_count),
-      p_viewport_wscalings_(p_viewport_wscalings) {}
+  PipelineViewportWScalingStateCreateInfoNV(const ViewportWScalingNV *p_viewport_wscalings = {}, VkBool32 viewport_wscaling_enable = {},
+                                            uint32_t viewport_count = {}, const void *p_next = {})
+    : p_viewport_wscalings_(p_viewport_wscalings), viewport_wscaling_enable_(viewport_wscaling_enable), viewport_count_(viewport_count),
+      p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -6091,8 +5562,8 @@ struct CommandBufferSubmitInfo {
 
   using native_type = VkCommandBufferSubmitInfo;
 
-  CommandBufferSubmitInfo(const void *p_next = {}, VkCommandBuffer command_buffer = {}, uint32_t device_mask = {})
-    : p_next_(p_next), command_buffer_(command_buffer), device_mask_(device_mask) {}
+  CommandBufferSubmitInfo(uint32_t device_mask = {}, VkCommandBuffer command_buffer = {}, const void *p_next = {})
+    : device_mask_(device_mask), command_buffer_(command_buffer), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -6101,45 +5572,6 @@ struct CommandBufferSubmitInfo {
   VkCommandBuffer command_buffer_;
   uint32_t device_mask_;
 };
-#ifdef VK_USE_PLATFORM_FUCHSIA
-
-struct SemaphoreGetZirconHandleInfoFUCHSIA {
-
-  using native_type = VkSemaphoreGetZirconHandleInfoFUCHSIA;
-
-  SemaphoreGetZirconHandleInfoFUCHSIA(const void *p_next = {}, VkSemaphore semaphore = {},
-                                      ExternalSemaphoreHandleTypeMaskBit handle_type = {})
-    : p_next_(p_next), semaphore_(semaphore), handle_type_(handle_type) {}
-
-  auto *get() { return reinterpret_cast<native_type *>(this); }
-
-  StructureType s_type_ = StructureType::SEMAPHORE_GET_ZIRCON_HANDLE_INFO_FUCHSIA;
-  const void *p_next_;
-  VkSemaphore semaphore_;
-  ExternalSemaphoreHandleTypeMaskBit handle_type_;
-};
-#endif
-#ifdef VK_USE_PLATFORM_WIN32_KHR
-
-struct ImportSemaphoreWin32HandleInfoKHR {
-
-  using native_type = VkImportSemaphoreWin32HandleInfoKHR;
-
-  ImportSemaphoreWin32HandleInfoKHR(const void *p_next = {}, VkSemaphore semaphore = {}, VkSemaphoreImportFlags flags = {},
-                                    ExternalSemaphoreHandleTypeMaskBit handle_type = {}, HANDLE handle = {}, LPCWSTR name = {})
-    : p_next_(p_next), semaphore_(semaphore), flags_(flags), handle_type_(handle_type), handle_(handle), name_(name) {}
-
-  auto *get() { return reinterpret_cast<native_type *>(this); }
-
-  StructureType s_type_ = StructureType::IMPORT_SEMAPHORE_WIN32_HANDLE_INFO_KHR;
-  const void *p_next_;
-  VkSemaphore semaphore_;
-  VkSemaphoreImportFlags flags_;
-  ExternalSemaphoreHandleTypeMaskBit handle_type_;
-  HANDLE handle_;
-  LPCWSTR name_;
-};
-#endif
 
 struct MemoryFdPropertiesKHR {
 
@@ -6156,8 +5588,8 @@ struct PhysicalDeviceShaderFloat16Int8Features {
 
   using native_type = VkPhysicalDeviceShaderFloat16Int8Features;
 
-  PhysicalDeviceShaderFloat16Int8Features(void *p_next = {}, VkBool32 shader_float16 = {}, VkBool32 shader_int8 = {})
-    : p_next_(p_next), shader_float16_(shader_float16), shader_int8_(shader_int8) {}
+  PhysicalDeviceShaderFloat16Int8Features(VkBool32 shader_int8 = {}, VkBool32 shader_float16 = {}, void *p_next = {})
+    : shader_int8_(shader_int8), shader_float16_(shader_float16), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -6183,11 +5615,10 @@ struct SampleLocationsInfoEXT {
 
   using native_type = VkSampleLocationsInfoEXT;
 
-  SampleLocationsInfoEXT(const void *p_next = {}, SampleCountMaskBit sample_locations_per_pixel = {},
-                         Extent2D sample_location_grid_size = {}, uint32_t sample_locations_count = {},
-                         const SampleLocationEXT *p_sample_locations = {})
-    : p_next_(p_next), sample_locations_per_pixel_(sample_locations_per_pixel), sample_location_grid_size_(sample_location_grid_size),
-      sample_locations_count_(sample_locations_count), p_sample_locations_(p_sample_locations) {}
+  SampleLocationsInfoEXT(const SampleLocationEXT *p_sample_locations = {}, SampleCountMaskBit sample_locations_per_pixel = {},
+                         Extent2D sample_location_grid_size = {}, uint32_t sample_locations_count = {}, const void *p_next = {})
+    : p_sample_locations_(p_sample_locations), sample_locations_per_pixel_(sample_locations_per_pixel),
+      sample_location_grid_size_(sample_location_grid_size), sample_locations_count_(sample_locations_count), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -6203,8 +5634,8 @@ struct ExternalMemoryAcquireUnmodifiedEXT {
 
   using native_type = VkExternalMemoryAcquireUnmodifiedEXT;
 
-  ExternalMemoryAcquireUnmodifiedEXT(const void *p_next = {}, VkBool32 acquire_unmodified_memory = {})
-    : p_next_(p_next), acquire_unmodified_memory_(acquire_unmodified_memory) {}
+  ExternalMemoryAcquireUnmodifiedEXT(VkBool32 acquire_unmodified_memory = {}, const void *p_next = {})
+    : acquire_unmodified_memory_(acquire_unmodified_memory), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -6212,43 +5643,13 @@ struct ExternalMemoryAcquireUnmodifiedEXT {
   const void *p_next_;
   VkBool32 acquire_unmodified_memory_;
 };
-#ifdef VK_USE_PLATFORM_FUCHSIA
-
-struct MemoryGetZirconHandleInfoFUCHSIA {
-
-  using native_type = VkMemoryGetZirconHandleInfoFUCHSIA;
-
-  MemoryGetZirconHandleInfoFUCHSIA(const void *p_next = {}, VkDeviceMemory memory = {}, ExternalMemoryHandleTypeMaskBit handle_type = {})
-    : p_next_(p_next), memory_(memory), handle_type_(handle_type) {}
-
-  auto *get() { return reinterpret_cast<native_type *>(this); }
-
-  StructureType s_type_ = StructureType::MEMORY_GET_ZIRCON_HANDLE_INFO_FUCHSIA;
-  const void *p_next_;
-  VkDeviceMemory memory_;
-  ExternalMemoryHandleTypeMaskBit handle_type_;
-};
-#endif
-#ifdef VK_USE_PLATFORM_FUCHSIA
-
-struct MemoryZirconHandlePropertiesFUCHSIA {
-
-  using native_type = VkMemoryZirconHandlePropertiesFUCHSIA;
-
-  auto *get() { return reinterpret_cast<native_type *>(this); }
-
-  StructureType s_type_ = StructureType::MEMORY_ZIRCON_HANDLE_PROPERTIES_FUCHSIA;
-  void *p_next_;
-  uint32_t memory_type_bits_;
-};
-#endif
 
 struct PhysicalDeviceColorWriteEnableFeaturesEXT {
 
   using native_type = VkPhysicalDeviceColorWriteEnableFeaturesEXT;
 
-  PhysicalDeviceColorWriteEnableFeaturesEXT(void *p_next = {}, VkBool32 color_write_enable = {})
-    : p_next_(p_next), color_write_enable_(color_write_enable) {}
+  PhysicalDeviceColorWriteEnableFeaturesEXT(VkBool32 color_write_enable = {}, void *p_next = {})
+    : color_write_enable_(color_write_enable), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -6272,10 +5673,10 @@ struct RayTracingShaderGroupCreateInfoNV {
 
   using native_type = VkRayTracingShaderGroupCreateInfoNV;
 
-  RayTracingShaderGroupCreateInfoNV(const void *p_next = {}, RayTracingShaderGroupType type = {}, uint32_t general_shader = {},
-                                    uint32_t closest_hit_shader = {}, uint32_t any_hit_shader = {}, uint32_t intersection_shader = {})
-    : p_next_(p_next), type_(type), general_shader_(general_shader), closest_hit_shader_(closest_hit_shader),
-      any_hit_shader_(any_hit_shader), intersection_shader_(intersection_shader) {}
+  RayTracingShaderGroupCreateInfoNV(uint32_t intersection_shader = {}, RayTracingShaderGroupType type = {}, uint32_t general_shader = {},
+                                    uint32_t closest_hit_shader = {}, uint32_t any_hit_shader = {}, const void *p_next = {})
+    : intersection_shader_(intersection_shader), type_(type), general_shader_(general_shader), closest_hit_shader_(closest_hit_shader),
+      any_hit_shader_(any_hit_shader), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -6287,40 +5688,21 @@ struct RayTracingShaderGroupCreateInfoNV {
   uint32_t any_hit_shader_;
   uint32_t intersection_shader_;
 };
-#ifdef VK_USE_PLATFORM_WIN32_KHR
-
-struct ExportMemoryWin32HandleInfoKHR {
-
-  using native_type = VkExportMemoryWin32HandleInfoKHR;
-
-  ExportMemoryWin32HandleInfoKHR(const void *p_next = {}, const SECURITY_ATTRIBUTES *p_attributes = {}, DWORD dw_access = {},
-                                 LPCWSTR name = {})
-    : p_next_(p_next), p_attributes_(p_attributes), dw_access_(dw_access), name_(name) {}
-
-  auto *get() { return reinterpret_cast<native_type *>(this); }
-
-  StructureType s_type_ = StructureType::EXPORT_MEMORY_WIN32_HANDLE_INFO_KHR;
-  const void *p_next_;
-  const SECURITY_ATTRIBUTES *p_attributes_;
-  DWORD dw_access_;
-  LPCWSTR name_;
-};
-#endif
 
 struct ComputePipelineCreateInfo {
 
   using native_type = VkComputePipelineCreateInfo;
 
-  ComputePipelineCreateInfo(const void *p_next = {}, VkPipelineCreateFlags flags = {}, PipelineShaderStageCreateInfo stage = {},
-                            VkPipelineLayout layout = {}, VkPipeline base_pipeline_handle = {}, int32_t base_pipeline_index = {})
-    : p_next_(p_next), flags_(flags), stage_(stage), layout_(layout), base_pipeline_handle_(base_pipeline_handle),
-      base_pipeline_index_(base_pipeline_index) {}
+  ComputePipelineCreateInfo(int32_t base_pipeline_index = {}, PipelineCreateMask flags = {}, PipelineShaderStageCreateInfo stage = {},
+                            VkPipelineLayout layout = {}, VkPipeline base_pipeline_handle = {}, const void *p_next = {})
+    : base_pipeline_index_(base_pipeline_index), flags_(flags), stage_(stage), layout_(layout), base_pipeline_handle_(base_pipeline_handle),
+      p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::COMPUTE_PIPELINE_CREATE_INFO;
   const void *p_next_;
-  VkPipelineCreateFlags flags_;
+  PipelineCreateMask flags_;
   PipelineShaderStageCreateInfo stage_;
   VkPipelineLayout layout_;
   VkPipeline base_pipeline_handle_;
@@ -6331,12 +5713,12 @@ struct RenderingAttachmentInfo {
 
   using native_type = VkRenderingAttachmentInfo;
 
-  RenderingAttachmentInfo(const void *p_next = {}, VkImageView image_view = {}, ImageLayout image_layout = {},
+  RenderingAttachmentInfo(VkClearValue clear_value = {}, VkImageView image_view = {}, ImageLayout image_layout = {},
                           ResolveModeMaskBit resolve_mode = {}, VkImageView resolve_image_view = {}, ImageLayout resolve_image_layout = {},
-                          AttachmentLoadOp load_op = {}, AttachmentStoreOp store_op = {}, VkClearValue clear_value = {})
-    : p_next_(p_next), image_view_(image_view), image_layout_(image_layout), resolve_mode_(resolve_mode),
+                          AttachmentLoadOp load_op = {}, AttachmentStoreOp store_op = {}, const void *p_next = {})
+    : clear_value_(clear_value), image_view_(image_view), image_layout_(image_layout), resolve_mode_(resolve_mode),
       resolve_image_view_(resolve_image_view), resolve_image_layout_(resolve_image_layout), load_op_(load_op), store_op_(store_op),
-      clear_value_(clear_value) {}
+      p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -6356,21 +5738,21 @@ struct SemaphoreCreateInfo {
 
   using native_type = VkSemaphoreCreateInfo;
 
-  SemaphoreCreateInfo(const void *p_next = {}, VkSemaphoreCreateFlags flags = {}) : p_next_(p_next), flags_(flags) {}
+  SemaphoreCreateInfo(SemaphoreCreateMask flags = {}, const void *p_next = {}) : flags_(flags), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::SEMAPHORE_CREATE_INFO;
   const void *p_next_;
-  VkSemaphoreCreateFlags flags_;
+  SemaphoreCreateMask flags_;
 };
 
 struct PipelineColorWriteCreateInfoEXT {
 
   using native_type = VkPipelineColorWriteCreateInfoEXT;
 
-  PipelineColorWriteCreateInfoEXT(const void *p_next = {}, uint32_t attachment_count = {}, const VkBool32 *p_color_write_enables = {})
-    : p_next_(p_next), attachment_count_(attachment_count), p_color_write_enables_(p_color_write_enables) {}
+  PipelineColorWriteCreateInfoEXT(const VkBool32 *p_color_write_enables = {}, uint32_t attachment_count = {}, const void *p_next = {})
+    : p_color_write_enables_(p_color_write_enables), attachment_count_(attachment_count), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -6384,30 +5766,30 @@ struct ExternalMemoryBufferCreateInfo {
 
   using native_type = VkExternalMemoryBufferCreateInfo;
 
-  ExternalMemoryBufferCreateInfo(const void *p_next = {}, VkExternalMemoryHandleTypeFlags handle_types = {})
-    : p_next_(p_next), handle_types_(handle_types) {}
+  ExternalMemoryBufferCreateInfo(ExternalMemoryHandleTypeMask handle_types = {}, const void *p_next = {})
+    : handle_types_(handle_types), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::EXTERNAL_MEMORY_BUFFER_CREATE_INFO;
   const void *p_next_;
-  VkExternalMemoryHandleTypeFlags handle_types_;
+  ExternalMemoryHandleTypeMask handle_types_;
 };
 
 struct MicromapCreateInfoEXT {
 
   using native_type = VkMicromapCreateInfoEXT;
 
-  MicromapCreateInfoEXT(const void *p_next = {}, VkMicromapCreateFlagsEXT create_flags = {}, VkBuffer buffer = {}, VkDeviceSize offset = {},
-                        VkDeviceSize size = {}, MicromapType type = {}, VkDeviceAddress device_address = {})
-    : p_next_(p_next), create_flags_(create_flags), buffer_(buffer), offset_(offset), size_(size), type_(type),
-      device_address_(device_address) {}
+  MicromapCreateInfoEXT(VkDeviceAddress device_address = {}, MicromapCreateMask create_flags = {}, VkBuffer buffer = {},
+                        VkDeviceSize offset = {}, VkDeviceSize size = {}, MicromapType type = {}, const void *p_next = {})
+    : device_address_(device_address), create_flags_(create_flags), buffer_(buffer), offset_(offset), size_(size), type_(type),
+      p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::MICROMAP_CREATE_INFO_EXT;
   const void *p_next_;
-  VkMicromapCreateFlagsEXT create_flags_;
+  MicromapCreateMask create_flags_;
   VkBuffer buffer_;
   VkDeviceSize offset_;
   VkDeviceSize size_;
@@ -6424,7 +5806,7 @@ struct DeviceGroupPresentCapabilitiesKHR {
   StructureType s_type_ = StructureType::DEVICE_GROUP_PRESENT_CAPABILITIES_KHR;
   void *p_next_;
   std::array<uint32_t, VK_MAX_DEVICE_GROUP_SIZE> present_mask_;
-  VkDeviceGroupPresentModeFlagsKHR modes_;
+  DeviceGroupPresentModeMask modes_;
 };
 
 struct ExternalMemoryProperties {
@@ -6433,9 +5815,9 @@ struct ExternalMemoryProperties {
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
-  VkExternalMemoryFeatureFlags external_memory_features_;
-  VkExternalMemoryHandleTypeFlags export_from_imported_handle_types_;
-  VkExternalMemoryHandleTypeFlags compatible_handle_types_;
+  ExternalMemoryFeatureMask external_memory_features_;
+  ExternalMemoryHandleTypeMask export_from_imported_handle_types_;
+  ExternalMemoryHandleTypeMask compatible_handle_types_;
 };
 
 struct ExternalBufferProperties {
@@ -6453,8 +5835,8 @@ struct RenderPassCreationControlEXT {
 
   using native_type = VkRenderPassCreationControlEXT;
 
-  RenderPassCreationControlEXT(const void *p_next = {}, VkBool32 disallow_merging = {})
-    : p_next_(p_next), disallow_merging_(disallow_merging) {}
+  RenderPassCreationControlEXT(VkBool32 disallow_merging = {}, const void *p_next = {})
+    : disallow_merging_(disallow_merging), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -6467,10 +5849,10 @@ struct VideoDecodeH264SessionParametersCreateInfoKHR {
 
   using native_type = VkVideoDecodeH264SessionParametersCreateInfoKHR;
 
-  VideoDecodeH264SessionParametersCreateInfoKHR(const void *p_next = {}, uint32_t max_std_spscount = {}, uint32_t max_std_ppscount = {},
-                                                const VideoDecodeH264SessionParametersAddInfoKHR *p_parameters_add_info = {})
-    : p_next_(p_next), max_std_spscount_(max_std_spscount), max_std_ppscount_(max_std_ppscount),
-      p_parameters_add_info_(p_parameters_add_info) {}
+  VideoDecodeH264SessionParametersCreateInfoKHR(const VideoDecodeH264SessionParametersAddInfoKHR *p_parameters_add_info = {},
+                                                uint32_t max_std_spscount = {}, uint32_t max_std_ppscount = {}, const void *p_next = {})
+    : p_parameters_add_info_(p_parameters_add_info), max_std_spscount_(max_std_spscount), max_std_ppscount_(max_std_ppscount),
+      p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -6485,8 +5867,8 @@ struct PhysicalDeviceVariablePointersFeatures {
 
   using native_type = VkPhysicalDeviceVariablePointersFeatures;
 
-  PhysicalDeviceVariablePointersFeatures(void *p_next = {}, VkBool32 variable_pointers_storage_buffer = {}, VkBool32 variable_pointers = {})
-    : p_next_(p_next), variable_pointers_storage_buffer_(variable_pointers_storage_buffer), variable_pointers_(variable_pointers) {}
+  PhysicalDeviceVariablePointersFeatures(VkBool32 variable_pointers = {}, VkBool32 variable_pointers_storage_buffer = {}, void *p_next = {})
+    : variable_pointers_(variable_pointers), variable_pointers_storage_buffer_(variable_pointers_storage_buffer), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -6515,11 +5897,11 @@ struct PhysicalDeviceVulkanMemoryModelFeatures {
 
   using native_type = VkPhysicalDeviceVulkanMemoryModelFeatures;
 
-  PhysicalDeviceVulkanMemoryModelFeatures(void *p_next = {}, VkBool32 vulkan_memory_model = {},
-                                          VkBool32 vulkan_memory_model_device_scope = {},
-                                          VkBool32 vulkan_memory_model_availability_visibility_chains = {})
-    : p_next_(p_next), vulkan_memory_model_(vulkan_memory_model), vulkan_memory_model_device_scope_(vulkan_memory_model_device_scope),
-      vulkan_memory_model_availability_visibility_chains_(vulkan_memory_model_availability_visibility_chains) {}
+  PhysicalDeviceVulkanMemoryModelFeatures(VkBool32 vulkan_memory_model_availability_visibility_chains = {},
+                                          VkBool32 vulkan_memory_model = {}, VkBool32 vulkan_memory_model_device_scope = {},
+                                          void *p_next = {})
+    : vulkan_memory_model_availability_visibility_chains_(vulkan_memory_model_availability_visibility_chains),
+      vulkan_memory_model_(vulkan_memory_model), vulkan_memory_model_device_scope_(vulkan_memory_model_device_scope), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -6581,20 +5963,19 @@ struct DebugUtilsMessengerCreateInfoEXT {
 
   using native_type = VkDebugUtilsMessengerCreateInfoEXT;
 
-  DebugUtilsMessengerCreateInfoEXT(const void *p_next = {}, VkDebugUtilsMessengerCreateFlagsEXT flags = {},
-                                   VkDebugUtilsMessageSeverityFlagsEXT message_severity = {},
-                                   VkDebugUtilsMessageTypeFlagsEXT message_type = {},
-                                   PFN_vkDebugUtilsMessengerCallbackEXT pfn_user_callback = {}, void *p_user_data = {})
-    : p_next_(p_next), flags_(flags), message_severity_(message_severity), message_type_(message_type),
-      pfn_user_callback_(pfn_user_callback), p_user_data_(p_user_data) {}
+  DebugUtilsMessengerCreateInfoEXT(void *p_user_data = {}, DebugUtilsMessengerCreateMask flags = {},
+                                   DebugUtilsMessageSeverityMask message_severity = {}, DebugUtilsMessageTypeMask message_type = {},
+                                   PFN_vkDebugUtilsMessengerCallbackEXT pfn_user_callback = {}, const void *p_next = {})
+    : p_user_data_(p_user_data), flags_(flags), message_severity_(message_severity), message_type_(message_type),
+      pfn_user_callback_(pfn_user_callback), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::DEBUG_UTILS_MESSENGER_CREATE_INFO_EXT;
   const void *p_next_;
-  VkDebugUtilsMessengerCreateFlagsEXT flags_;
-  VkDebugUtilsMessageSeverityFlagsEXT message_severity_;
-  VkDebugUtilsMessageTypeFlagsEXT message_type_;
+  DebugUtilsMessengerCreateMask flags_;
+  DebugUtilsMessageSeverityMask message_severity_;
+  DebugUtilsMessageTypeMask message_type_;
   PFN_vkDebugUtilsMessengerCallbackEXT pfn_user_callback_;
   void *p_user_data_;
 };
@@ -6603,9 +5984,9 @@ struct PhysicalDeviceImageFormatInfo2 {
 
   using native_type = VkPhysicalDeviceImageFormatInfo2;
 
-  PhysicalDeviceImageFormatInfo2(const void *p_next = {}, Format format = {}, ImageType type = {}, ImageTiling tiling = {},
-                                 VkImageUsageFlags usage = {}, VkImageCreateFlags flags = {})
-    : p_next_(p_next), format_(format), type_(type), tiling_(tiling), usage_(usage), flags_(flags) {}
+  PhysicalDeviceImageFormatInfo2(ImageCreateMask flags = {}, Format format = {}, ImageType type = {}, ImageTiling tiling = {},
+                                 ImageUsageMask usage = {}, const void *p_next = {})
+    : flags_(flags), format_(format), type_(type), tiling_(tiling), usage_(usage), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -6614,8 +5995,8 @@ struct PhysicalDeviceImageFormatInfo2 {
   Format format_;
   ImageType type_;
   ImageTiling tiling_;
-  VkImageUsageFlags usage_;
-  VkImageCreateFlags flags_;
+  ImageUsageMask usage_;
+  ImageCreateMask flags_;
 };
 
 struct FormatProperties {
@@ -6624,9 +6005,9 @@ struct FormatProperties {
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
-  VkFormatFeatureFlags linear_tiling_features_;
-  VkFormatFeatureFlags optimal_tiling_features_;
-  VkFormatFeatureFlags buffer_features_;
+  FormatFeatureMask linear_tiling_features_;
+  FormatFeatureMask optimal_tiling_features_;
+  FormatFeatureMask buffer_features_;
 };
 
 struct FormatProperties2 {
@@ -6655,8 +6036,8 @@ struct PhysicalDeviceShaderSubgroupUniformControlFlowFeaturesKHR {
 
   using native_type = VkPhysicalDeviceShaderSubgroupUniformControlFlowFeaturesKHR;
 
-  PhysicalDeviceShaderSubgroupUniformControlFlowFeaturesKHR(void *p_next = {}, VkBool32 shader_subgroup_uniform_control_flow = {})
-    : p_next_(p_next), shader_subgroup_uniform_control_flow_(shader_subgroup_uniform_control_flow) {}
+  PhysicalDeviceShaderSubgroupUniformControlFlowFeaturesKHR(VkBool32 shader_subgroup_uniform_control_flow = {}, void *p_next = {})
+    : shader_subgroup_uniform_control_flow_(shader_subgroup_uniform_control_flow), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -6681,17 +6062,16 @@ struct GeneratedCommandsInfoNV {
 
   using native_type = VkGeneratedCommandsInfoNV;
 
-  GeneratedCommandsInfoNV(const void *p_next = {}, PipelineBindPoint pipeline_bind_point = {}, VkPipeline pipeline = {},
+  GeneratedCommandsInfoNV(VkDeviceSize sequences_index_offset = {}, PipelineBindPoint pipeline_bind_point = {}, VkPipeline pipeline = {},
                           VkIndirectCommandsLayoutNV indirect_commands_layout = {}, uint32_t stream_count = {},
                           const IndirectCommandsStreamNV *p_streams = {}, uint32_t sequences_count = {}, VkBuffer preprocess_buffer = {},
                           VkDeviceSize preprocess_offset = {}, VkDeviceSize preprocess_size = {}, VkBuffer sequences_count_buffer = {},
-                          VkDeviceSize sequences_count_offset = {}, VkBuffer sequences_index_buffer = {},
-                          VkDeviceSize sequences_index_offset = {})
-    : p_next_(p_next), pipeline_bind_point_(pipeline_bind_point), pipeline_(pipeline), indirect_commands_layout_(indirect_commands_layout),
-      stream_count_(stream_count), p_streams_(p_streams), sequences_count_(sequences_count), preprocess_buffer_(preprocess_buffer),
-      preprocess_offset_(preprocess_offset), preprocess_size_(preprocess_size), sequences_count_buffer_(sequences_count_buffer),
-      sequences_count_offset_(sequences_count_offset), sequences_index_buffer_(sequences_index_buffer),
-      sequences_index_offset_(sequences_index_offset) {}
+                          VkDeviceSize sequences_count_offset = {}, VkBuffer sequences_index_buffer = {}, const void *p_next = {})
+    : sequences_index_offset_(sequences_index_offset), pipeline_bind_point_(pipeline_bind_point), pipeline_(pipeline),
+      indirect_commands_layout_(indirect_commands_layout), stream_count_(stream_count), p_streams_(p_streams),
+      sequences_count_(sequences_count), preprocess_buffer_(preprocess_buffer), preprocess_offset_(preprocess_offset),
+      preprocess_size_(preprocess_size), sequences_count_buffer_(sequences_count_buffer), sequences_count_offset_(sequences_count_offset),
+      sequences_index_buffer_(sequences_index_buffer), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -6716,14 +6096,14 @@ struct MemoryUnmapInfoKHR {
 
   using native_type = VkMemoryUnmapInfoKHR;
 
-  MemoryUnmapInfoKHR(const void *p_next = {}, VkMemoryUnmapFlagsKHR flags = {}, VkDeviceMemory memory = {})
-    : p_next_(p_next), flags_(flags), memory_(memory) {}
+  MemoryUnmapInfoKHR(VkDeviceMemory memory = {}, MemoryUnmapMask flags = {}, const void *p_next = {})
+    : memory_(memory), flags_(flags), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::MEMORY_UNMAP_INFO_KHR;
   const void *p_next_;
-  VkMemoryUnmapFlagsKHR flags_;
+  MemoryUnmapMask flags_;
   VkDeviceMemory memory_;
 };
 
@@ -6731,8 +6111,8 @@ struct PhysicalDeviceTilePropertiesFeaturesQCOM {
 
   using native_type = VkPhysicalDeviceTilePropertiesFeaturesQCOM;
 
-  PhysicalDeviceTilePropertiesFeaturesQCOM(void *p_next = {}, VkBool32 tile_properties = {})
-    : p_next_(p_next), tile_properties_(tile_properties) {}
+  PhysicalDeviceTilePropertiesFeaturesQCOM(VkBool32 tile_properties = {}, void *p_next = {})
+    : tile_properties_(tile_properties), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -6745,8 +6125,8 @@ struct VideoDecodeH264DpbSlotInfoKHR {
 
   using native_type = VkVideoDecodeH264DpbSlotInfoKHR;
 
-  VideoDecodeH264DpbSlotInfoKHR(const void *p_next = {}, const StdVideoDecodeH264ReferenceInfo *p_std_reference_info = {})
-    : p_next_(p_next), p_std_reference_info_(p_std_reference_info) {}
+  VideoDecodeH264DpbSlotInfoKHR(const StdVideoDecodeH264ReferenceInfo *p_std_reference_info = {}, const void *p_next = {})
+    : p_std_reference_info_(p_std_reference_info), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -6786,17 +6166,17 @@ struct SetDescriptorBufferOffsetsInfoEXT {
 
   using native_type = VkSetDescriptorBufferOffsetsInfoEXT;
 
-  SetDescriptorBufferOffsetsInfoEXT(const void *p_next = {}, VkShaderStageFlags stage_flags = {}, VkPipelineLayout layout = {},
+  SetDescriptorBufferOffsetsInfoEXT(const VkDeviceSize *p_offsets = {}, ShaderStageMask stage_flags = {}, VkPipelineLayout layout = {},
                                     uint32_t first_set = {}, uint32_t set_count = {}, const uint32_t *p_buffer_indices = {},
-                                    const VkDeviceSize *p_offsets = {})
-    : p_next_(p_next), stage_flags_(stage_flags), layout_(layout), first_set_(first_set), set_count_(set_count),
-      p_buffer_indices_(p_buffer_indices), p_offsets_(p_offsets) {}
+                                    const void *p_next = {})
+    : p_offsets_(p_offsets), stage_flags_(stage_flags), layout_(layout), first_set_(first_set), set_count_(set_count),
+      p_buffer_indices_(p_buffer_indices), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::SET_DESCRIPTOR_BUFFER_OFFSETS_INFO_EXT;
   const void *p_next_;
-  VkShaderStageFlags stage_flags_;
+  ShaderStageMask stage_flags_;
   VkPipelineLayout layout_;
   uint32_t first_set_;
   uint32_t set_count_;
@@ -6820,7 +6200,7 @@ struct SamplerCaptureDescriptorDataInfoEXT {
 
   using native_type = VkSamplerCaptureDescriptorDataInfoEXT;
 
-  SamplerCaptureDescriptorDataInfoEXT(const void *p_next = {}, VkSampler sampler = {}) : p_next_(p_next), sampler_(sampler) {}
+  SamplerCaptureDescriptorDataInfoEXT(VkSampler sampler = {}, const void *p_next = {}) : sampler_(sampler), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -6828,43 +6208,22 @@ struct SamplerCaptureDescriptorDataInfoEXT {
   const void *p_next_;
   VkSampler sampler_;
 };
-#ifdef VK_USE_PLATFORM_WIN32_KHR
-
-struct ImportFenceWin32HandleInfoKHR {
-
-  using native_type = VkImportFenceWin32HandleInfoKHR;
-
-  ImportFenceWin32HandleInfoKHR(const void *p_next = {}, VkFence fence = {}, VkFenceImportFlags flags = {},
-                                ExternalFenceHandleTypeMaskBit handle_type = {}, HANDLE handle = {}, LPCWSTR name = {})
-    : p_next_(p_next), fence_(fence), flags_(flags), handle_type_(handle_type), handle_(handle), name_(name) {}
-
-  auto *get() { return reinterpret_cast<native_type *>(this); }
-
-  StructureType s_type_ = StructureType::IMPORT_FENCE_WIN32_HANDLE_INFO_KHR;
-  const void *p_next_;
-  VkFence fence_;
-  VkFenceImportFlags flags_;
-  ExternalFenceHandleTypeMaskBit handle_type_;
-  HANDLE handle_;
-  LPCWSTR name_;
-};
-#endif
 
 struct IndirectCommandsLayoutTokenNV {
 
   using native_type = VkIndirectCommandsLayoutTokenNV;
 
-  IndirectCommandsLayoutTokenNV(const void *p_next = {}, IndirectCommandsTokenType token_type = {}, uint32_t stream = {},
+  IndirectCommandsLayoutTokenNV(const uint32_t *p_index_type_values = {}, IndirectCommandsTokenType token_type = {}, uint32_t stream = {},
                                 uint32_t offset = {}, uint32_t vertex_binding_unit = {}, VkBool32 vertex_dynamic_stride = {},
-                                VkPipelineLayout pushconstant_pipeline_layout = {}, VkShaderStageFlags pushconstant_shader_stage_flags = {},
+                                VkPipelineLayout pushconstant_pipeline_layout = {}, ShaderStageMask pushconstant_shader_stage_flags = {},
                                 uint32_t pushconstant_offset = {}, uint32_t pushconstant_size = {},
-                                VkIndirectStateFlagsNV indirect_state_flags = {}, uint32_t index_type_count = {},
-                                const IndexType *p_index_types = {}, const uint32_t *p_index_type_values = {})
-    : p_next_(p_next), token_type_(token_type), stream_(stream), offset_(offset), vertex_binding_unit_(vertex_binding_unit),
-      vertex_dynamic_stride_(vertex_dynamic_stride), pushconstant_pipeline_layout_(pushconstant_pipeline_layout),
-      pushconstant_shader_stage_flags_(pushconstant_shader_stage_flags), pushconstant_offset_(pushconstant_offset),
-      pushconstant_size_(pushconstant_size), indirect_state_flags_(indirect_state_flags), index_type_count_(index_type_count),
-      p_index_types_(p_index_types), p_index_type_values_(p_index_type_values) {}
+                                IndirectStateMask indirect_state_flags = {}, uint32_t index_type_count = {},
+                                const IndexType *p_index_types = {}, const void *p_next = {})
+    : p_index_type_values_(p_index_type_values), token_type_(token_type), stream_(stream), offset_(offset),
+      vertex_binding_unit_(vertex_binding_unit), vertex_dynamic_stride_(vertex_dynamic_stride),
+      pushconstant_pipeline_layout_(pushconstant_pipeline_layout), pushconstant_shader_stage_flags_(pushconstant_shader_stage_flags),
+      pushconstant_offset_(pushconstant_offset), pushconstant_size_(pushconstant_size), indirect_state_flags_(indirect_state_flags),
+      index_type_count_(index_type_count), p_index_types_(p_index_types), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -6876,10 +6235,10 @@ struct IndirectCommandsLayoutTokenNV {
   uint32_t vertex_binding_unit_;
   VkBool32 vertex_dynamic_stride_;
   VkPipelineLayout pushconstant_pipeline_layout_;
-  VkShaderStageFlags pushconstant_shader_stage_flags_;
+  ShaderStageMask pushconstant_shader_stage_flags_;
   uint32_t pushconstant_offset_;
   uint32_t pushconstant_size_;
-  VkIndirectStateFlagsNV indirect_state_flags_;
+  IndirectStateMask indirect_state_flags_;
   uint32_t index_type_count_;
   const IndexType *p_index_types_;
   const uint32_t *p_index_type_values_;
@@ -6889,54 +6248,38 @@ struct IndirectCommandsLayoutCreateInfoNV {
 
   using native_type = VkIndirectCommandsLayoutCreateInfoNV;
 
-  IndirectCommandsLayoutCreateInfoNV(const void *p_next = {}, VkIndirectCommandsLayoutUsageFlagsNV flags = {},
+  IndirectCommandsLayoutCreateInfoNV(const uint32_t *p_stream_strides = {}, IndirectCommandsLayoutUsageMask flags = {},
                                      PipelineBindPoint pipeline_bind_point = {}, uint32_t token_count = {},
                                      const IndirectCommandsLayoutTokenNV *p_tokens = {}, uint32_t stream_count = {},
-                                     const uint32_t *p_stream_strides = {})
-    : p_next_(p_next), flags_(flags), pipeline_bind_point_(pipeline_bind_point), token_count_(token_count), p_tokens_(p_tokens),
-      stream_count_(stream_count), p_stream_strides_(p_stream_strides) {}
+                                     const void *p_next = {})
+    : p_stream_strides_(p_stream_strides), flags_(flags), pipeline_bind_point_(pipeline_bind_point), token_count_(token_count),
+      p_tokens_(p_tokens), stream_count_(stream_count), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::INDIRECT_COMMANDS_LAYOUT_CREATE_INFO_NV;
   const void *p_next_;
-  VkIndirectCommandsLayoutUsageFlagsNV flags_;
+  IndirectCommandsLayoutUsageMask flags_;
   PipelineBindPoint pipeline_bind_point_;
   uint32_t token_count_;
   const IndirectCommandsLayoutTokenNV *p_tokens_;
   uint32_t stream_count_;
   const uint32_t *p_stream_strides_;
 };
-#ifdef VK_USE_PLATFORM_METAL_EXT
-
-struct ExportMetalObjectCreateInfoEXT {
-
-  using native_type = VkExportMetalObjectCreateInfoEXT;
-
-  ExportMetalObjectCreateInfoEXT(const void *p_next = {}, ExportMetalObjectTypeMaskBit export_object_type = {})
-    : p_next_(p_next), export_object_type_(export_object_type) {}
-
-  auto *get() { return reinterpret_cast<native_type *>(this); }
-
-  StructureType s_type_ = StructureType::EXPORT_METAL_OBJECT_CREATE_INFO_EXT;
-  const void *p_next_;
-  ExportMetalObjectTypeMaskBit export_object_type_;
-};
-#endif
 
 struct PipelineInputAssemblyStateCreateInfo {
 
   using native_type = VkPipelineInputAssemblyStateCreateInfo;
 
-  PipelineInputAssemblyStateCreateInfo(const void *p_next = {}, VkPipelineInputAssemblyStateCreateFlags flags = {},
-                                       PrimitiveTopology topology = {}, VkBool32 primitive_restart_enable = {})
-    : p_next_(p_next), flags_(flags), topology_(topology), primitive_restart_enable_(primitive_restart_enable) {}
+  PipelineInputAssemblyStateCreateInfo(VkBool32 primitive_restart_enable = {}, PipelineInputAssemblyStateCreateMask flags = {},
+                                       PrimitiveTopology topology = {}, const void *p_next = {})
+    : primitive_restart_enable_(primitive_restart_enable), flags_(flags), topology_(topology), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PIPELINE_INPUT_ASSEMBLY_STATE_CREATE_INFO;
   const void *p_next_;
-  VkPipelineInputAssemblyStateCreateFlags flags_;
+  PipelineInputAssemblyStateCreateMask flags_;
   PrimitiveTopology topology_;
   VkBool32 primitive_restart_enable_;
 };
@@ -6945,23 +6288,23 @@ struct InputAttachmentAspectReference {
 
   using native_type = VkInputAttachmentAspectReference;
 
-  InputAttachmentAspectReference(uint32_t subpass = {}, uint32_t input_attachment_index = {}, VkImageAspectFlags aspect_mask = {})
+  InputAttachmentAspectReference(uint32_t subpass = {}, uint32_t input_attachment_index = {}, ImageAspectMask aspect_mask = {})
     : subpass_(subpass), input_attachment_index_(input_attachment_index), aspect_mask_(aspect_mask) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   uint32_t subpass_;
   uint32_t input_attachment_index_;
-  VkImageAspectFlags aspect_mask_;
+  ImageAspectMask aspect_mask_;
 };
 
 struct RenderPassInputAttachmentAspectCreateInfo {
 
   using native_type = VkRenderPassInputAttachmentAspectCreateInfo;
 
-  RenderPassInputAttachmentAspectCreateInfo(const void *p_next = {}, uint32_t aspect_reference_count = {},
-                                            const InputAttachmentAspectReference *p_aspect_references = {})
-    : p_next_(p_next), aspect_reference_count_(aspect_reference_count), p_aspect_references_(p_aspect_references) {}
+  RenderPassInputAttachmentAspectCreateInfo(const InputAttachmentAspectReference *p_aspect_references = {},
+                                            uint32_t aspect_reference_count = {}, const void *p_next = {})
+    : p_aspect_references_(p_aspect_references), aspect_reference_count_(aspect_reference_count), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -6975,42 +6318,28 @@ struct PipelineCoverageReductionStateCreateInfoNV {
 
   using native_type = VkPipelineCoverageReductionStateCreateInfoNV;
 
-  PipelineCoverageReductionStateCreateInfoNV(const void *p_next = {}, VkPipelineCoverageReductionStateCreateFlagsNV flags = {},
-                                             CoverageReductionMode coverage_reduction_mode = {})
-    : p_next_(p_next), flags_(flags), coverage_reduction_mode_(coverage_reduction_mode) {}
+  PipelineCoverageReductionStateCreateInfoNV(CoverageReductionMode coverage_reduction_mode = {},
+                                             PipelineCoverageReductionStateCreateMask flags = {}, const void *p_next = {})
+    : coverage_reduction_mode_(coverage_reduction_mode), flags_(flags), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PIPELINE_COVERAGE_REDUCTION_STATE_CREATE_INFO_NV;
   const void *p_next_;
-  VkPipelineCoverageReductionStateCreateFlagsNV flags_;
+  PipelineCoverageReductionStateCreateMask flags_;
   CoverageReductionMode coverage_reduction_mode_;
 };
-#ifdef VK_USE_PLATFORM_ANDROID_KHR
-
-struct AndroidHardwareBufferFormatResolvePropertiesANDROID {
-
-  using native_type = VkAndroidHardwareBufferFormatResolvePropertiesANDROID;
-
-  auto *get() { return reinterpret_cast<native_type *>(this); }
-
-  StructureType s_type_ = StructureType::ANDROID_HARDWARE_BUFFER_FORMAT_RESOLVE_PROPERTIES_ANDROID;
-  void *p_next_;
-  Format color_attachment_format_;
-};
-#endif
 
 struct SubmitInfo {
 
   using native_type = VkSubmitInfo;
 
-  SubmitInfo(const void *p_next = {}, uint32_t wait_semaphore_count = {}, const VkSemaphore *p_wait_semaphores = {},
-             const VkPipelineStageFlags *p_wait_dst_stage_mask = {}, uint32_t command_buffer_count = {},
-             const VkCommandBuffer *p_command_buffers = {}, uint32_t signal_semaphore_count = {},
-             const VkSemaphore *p_signal_semaphores = {})
-    : p_next_(p_next), wait_semaphore_count_(wait_semaphore_count), p_wait_semaphores_(p_wait_semaphores),
+  SubmitInfo(const VkSemaphore *p_signal_semaphores = {}, uint32_t wait_semaphore_count = {}, const VkSemaphore *p_wait_semaphores = {},
+             const PipelineStageMask *p_wait_dst_stage_mask = {}, uint32_t command_buffer_count = {},
+             const VkCommandBuffer *p_command_buffers = {}, uint32_t signal_semaphore_count = {}, const void *p_next = {})
+    : p_signal_semaphores_(p_signal_semaphores), wait_semaphore_count_(wait_semaphore_count), p_wait_semaphores_(p_wait_semaphores),
       p_wait_dst_stage_mask_(p_wait_dst_stage_mask), command_buffer_count_(command_buffer_count), p_command_buffers_(p_command_buffers),
-      signal_semaphore_count_(signal_semaphore_count), p_signal_semaphores_(p_signal_semaphores) {}
+      signal_semaphore_count_(signal_semaphore_count), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -7018,7 +6347,7 @@ struct SubmitInfo {
   const void *p_next_;
   uint32_t wait_semaphore_count_;
   const VkSemaphore *p_wait_semaphores_;
-  const VkPipelineStageFlags *p_wait_dst_stage_mask_;
+  const PipelineStageMask *p_wait_dst_stage_mask_;
   uint32_t command_buffer_count_;
   const VkCommandBuffer *p_command_buffers_;
   uint32_t signal_semaphore_count_;
@@ -7031,7 +6360,7 @@ struct DisplayPlaneCapabilitiesKHR {
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
-  VkDisplayPlaneAlphaFlagsKHR supported_alpha_;
+  DisplayPlaneAlphaMask supported_alpha_;
   Offset2D min_src_position_;
   Offset2D max_src_position_;
   Extent2D min_src_extent_;
@@ -7075,21 +6404,19 @@ struct PipelineVertexInputStateCreateInfo {
 
   using native_type = VkPipelineVertexInputStateCreateInfo;
 
-  PipelineVertexInputStateCreateInfo(const void *p_next = {}, VkPipelineVertexInputStateCreateFlags flags = {},
-                                     uint32_t vertex_binding_description_count = {},
+  PipelineVertexInputStateCreateInfo(const VertexInputAttributeDescription *p_vertex_attribute_descriptions = {},
+                                     PipelineVertexInputStateCreateMask flags = {}, uint32_t vertex_binding_description_count = {},
                                      const VertexInputBindingDescription *p_vertex_binding_descriptions = {},
-                                     uint32_t vertex_attribute_description_count = {},
-                                     const VertexInputAttributeDescription *p_vertex_attribute_descriptions = {})
-    : p_next_(p_next), flags_(flags), vertex_binding_description_count_(vertex_binding_description_count),
-      p_vertex_binding_descriptions_(p_vertex_binding_descriptions),
-      vertex_attribute_description_count_(vertex_attribute_description_count),
-      p_vertex_attribute_descriptions_(p_vertex_attribute_descriptions) {}
+                                     uint32_t vertex_attribute_description_count = {}, const void *p_next = {})
+    : p_vertex_attribute_descriptions_(p_vertex_attribute_descriptions), flags_(flags),
+      vertex_binding_description_count_(vertex_binding_description_count), p_vertex_binding_descriptions_(p_vertex_binding_descriptions),
+      vertex_attribute_description_count_(vertex_attribute_description_count), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PIPELINE_VERTEX_INPUT_STATE_CREATE_INFO;
   const void *p_next_;
-  VkPipelineVertexInputStateCreateFlags flags_;
+  PipelineVertexInputStateCreateMask flags_;
   uint32_t vertex_binding_description_count_;
   const VertexInputBindingDescription *p_vertex_binding_descriptions_;
   uint32_t vertex_attribute_description_count_;
@@ -7100,15 +6427,15 @@ struct PipelineTessellationStateCreateInfo {
 
   using native_type = VkPipelineTessellationStateCreateInfo;
 
-  PipelineTessellationStateCreateInfo(const void *p_next = {}, VkPipelineTessellationStateCreateFlags flags = {},
-                                      uint32_t patch_control_points = {})
-    : p_next_(p_next), flags_(flags), patch_control_points_(patch_control_points) {}
+  PipelineTessellationStateCreateInfo(uint32_t patch_control_points = {}, PipelineTessellationStateCreateMask flags = {},
+                                      const void *p_next = {})
+    : patch_control_points_(patch_control_points), flags_(flags), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PIPELINE_TESSELLATION_STATE_CREATE_INFO;
   const void *p_next_;
-  VkPipelineTessellationStateCreateFlags flags_;
+  PipelineTessellationStateCreateMask flags_;
   uint32_t patch_control_points_;
 };
 
@@ -7116,11 +6443,11 @@ struct GraphicsShaderGroupCreateInfoNV {
 
   using native_type = VkGraphicsShaderGroupCreateInfoNV;
 
-  GraphicsShaderGroupCreateInfoNV(const void *p_next = {}, uint32_t stage_count = {}, const PipelineShaderStageCreateInfo *p_stages = {},
-                                  const PipelineVertexInputStateCreateInfo *p_vertex_input_state = {},
-                                  const PipelineTessellationStateCreateInfo *p_tessellation_state = {})
-    : p_next_(p_next), stage_count_(stage_count), p_stages_(p_stages), p_vertex_input_state_(p_vertex_input_state),
-      p_tessellation_state_(p_tessellation_state) {}
+  GraphicsShaderGroupCreateInfoNV(const PipelineTessellationStateCreateInfo *p_tessellation_state = {}, uint32_t stage_count = {},
+                                  const PipelineShaderStageCreateInfo *p_stages = {},
+                                  const PipelineVertexInputStateCreateInfo *p_vertex_input_state = {}, const void *p_next = {})
+    : p_tessellation_state_(p_tessellation_state), stage_count_(stage_count), p_stages_(p_stages),
+      p_vertex_input_state_(p_vertex_input_state), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -7167,7 +6494,7 @@ struct DescriptorSetLayoutBinding {
   using native_type = VkDescriptorSetLayoutBinding;
 
   DescriptorSetLayoutBinding(uint32_t binding = {}, DescriptorType descriptor_type = {}, uint32_t descriptor_count = {},
-                             VkShaderStageFlags stage_flags = {}, const VkSampler *p_immutable_samplers = {})
+                             ShaderStageMask stage_flags = {}, const VkSampler *p_immutable_samplers = {})
     : binding_(binding), descriptor_type_(descriptor_type), descriptor_count_(descriptor_count), stage_flags_(stage_flags),
       p_immutable_samplers_(p_immutable_samplers) {}
 
@@ -7176,7 +6503,7 @@ struct DescriptorSetLayoutBinding {
   uint32_t binding_;
   DescriptorType descriptor_type_;
   uint32_t descriptor_count_;
-  VkShaderStageFlags stage_flags_;
+  ShaderStageMask stage_flags_;
   const VkSampler *p_immutable_samplers_;
 };
 
@@ -7184,15 +6511,15 @@ struct DescriptorSetLayoutCreateInfo {
 
   using native_type = VkDescriptorSetLayoutCreateInfo;
 
-  DescriptorSetLayoutCreateInfo(const void *p_next = {}, VkDescriptorSetLayoutCreateFlags flags = {}, uint32_t binding_count = {},
-                                const DescriptorSetLayoutBinding *p_bindings = {})
-    : p_next_(p_next), flags_(flags), binding_count_(binding_count), p_bindings_(p_bindings) {}
+  DescriptorSetLayoutCreateInfo(const DescriptorSetLayoutBinding *p_bindings = {}, DescriptorSetLayoutCreateMask flags = {},
+                                uint32_t binding_count = {}, const void *p_next = {})
+    : p_bindings_(p_bindings), flags_(flags), binding_count_(binding_count), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::DESCRIPTOR_SET_LAYOUT_CREATE_INFO;
   const void *p_next_;
-  VkDescriptorSetLayoutCreateFlags flags_;
+  DescriptorSetLayoutCreateMask flags_;
   uint32_t binding_count_;
   const DescriptorSetLayoutBinding *p_bindings_;
 };
@@ -7201,8 +6528,8 @@ struct AttachmentReference2 {
 
   using native_type = VkAttachmentReference2;
 
-  AttachmentReference2(const void *p_next = {}, uint32_t attachment = {}, ImageLayout layout = {}, VkImageAspectFlags aspect_mask = {})
-    : p_next_(p_next), attachment_(attachment), layout_(layout), aspect_mask_(aspect_mask) {}
+  AttachmentReference2(ImageAspectMask aspect_mask = {}, uint32_t attachment = {}, ImageLayout layout = {}, const void *p_next = {})
+    : aspect_mask_(aspect_mask), attachment_(attachment), layout_(layout), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -7210,17 +6537,17 @@ struct AttachmentReference2 {
   const void *p_next_;
   uint32_t attachment_;
   ImageLayout layout_;
-  VkImageAspectFlags aspect_mask_;
+  ImageAspectMask aspect_mask_;
 };
 
 struct FragmentShadingRateAttachmentInfoKHR {
 
   using native_type = VkFragmentShadingRateAttachmentInfoKHR;
 
-  FragmentShadingRateAttachmentInfoKHR(const void *p_next = {}, const AttachmentReference2 *p_fragment_shading_rate_attachment = {},
-                                       Extent2D shading_rate_attachment_texel_size = {})
-    : p_next_(p_next), p_fragment_shading_rate_attachment_(p_fragment_shading_rate_attachment),
-      shading_rate_attachment_texel_size_(shading_rate_attachment_texel_size) {}
+  FragmentShadingRateAttachmentInfoKHR(Extent2D shading_rate_attachment_texel_size = {},
+                                       const AttachmentReference2 *p_fragment_shading_rate_attachment = {}, const void *p_next = {})
+    : shading_rate_attachment_texel_size_(shading_rate_attachment_texel_size),
+      p_fragment_shading_rate_attachment_(p_fragment_shading_rate_attachment), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -7234,13 +6561,13 @@ struct PrivateDataSlotCreateInfo {
 
   using native_type = VkPrivateDataSlotCreateInfo;
 
-  PrivateDataSlotCreateInfo(const void *p_next = {}, VkPrivateDataSlotCreateFlags flags = {}) : p_next_(p_next), flags_(flags) {}
+  PrivateDataSlotCreateInfo(PrivateDataSlotCreateMask flags = {}, const void *p_next = {}) : flags_(flags), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PRIVATE_DATA_SLOT_CREATE_INFO;
   const void *p_next_;
-  VkPrivateDataSlotCreateFlags flags_;
+  PrivateDataSlotCreateMask flags_;
 };
 
 struct VertexInputBindingDivisorDescriptionKHR {
@@ -7259,9 +6586,9 @@ struct PipelineVertexInputDivisorStateCreateInfoKHR {
 
   using native_type = VkPipelineVertexInputDivisorStateCreateInfoKHR;
 
-  PipelineVertexInputDivisorStateCreateInfoKHR(const void *p_next = {}, uint32_t vertex_binding_divisor_count = {},
-                                               const VertexInputBindingDivisorDescriptionKHR *p_vertex_binding_divisors = {})
-    : p_next_(p_next), vertex_binding_divisor_count_(vertex_binding_divisor_count), p_vertex_binding_divisors_(p_vertex_binding_divisors) {}
+  PipelineVertexInputDivisorStateCreateInfoKHR(const VertexInputBindingDivisorDescriptionKHR *p_vertex_binding_divisors = {},
+                                               uint32_t vertex_binding_divisor_count = {}, const void *p_next = {})
+    : p_vertex_binding_divisors_(p_vertex_binding_divisors), vertex_binding_divisor_count_(vertex_binding_divisor_count), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -7275,10 +6602,10 @@ struct VideoEncodeH264SessionParametersCreateInfoKHR {
 
   using native_type = VkVideoEncodeH264SessionParametersCreateInfoKHR;
 
-  VideoEncodeH264SessionParametersCreateInfoKHR(const void *p_next = {}, uint32_t max_std_spscount = {}, uint32_t max_std_ppscount = {},
-                                                const VideoEncodeH264SessionParametersAddInfoKHR *p_parameters_add_info = {})
-    : p_next_(p_next), max_std_spscount_(max_std_spscount), max_std_ppscount_(max_std_ppscount),
-      p_parameters_add_info_(p_parameters_add_info) {}
+  VideoEncodeH264SessionParametersCreateInfoKHR(const VideoEncodeH264SessionParametersAddInfoKHR *p_parameters_add_info = {},
+                                                uint32_t max_std_spscount = {}, uint32_t max_std_ppscount = {}, const void *p_next = {})
+    : p_parameters_add_info_(p_parameters_add_info), max_std_spscount_(max_std_spscount), max_std_ppscount_(max_std_ppscount),
+      p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -7293,10 +6620,10 @@ struct GraphicsPipelineShaderGroupsCreateInfoNV {
 
   using native_type = VkGraphicsPipelineShaderGroupsCreateInfoNV;
 
-  GraphicsPipelineShaderGroupsCreateInfoNV(const void *p_next = {}, uint32_t group_count = {},
+  GraphicsPipelineShaderGroupsCreateInfoNV(const VkPipeline *p_pipelines = {}, uint32_t group_count = {},
                                            const GraphicsShaderGroupCreateInfoNV *p_groups = {}, uint32_t pipeline_count = {},
-                                           const VkPipeline *p_pipelines = {})
-    : p_next_(p_next), group_count_(group_count), p_groups_(p_groups), pipeline_count_(pipeline_count), p_pipelines_(p_pipelines) {}
+                                           const void *p_next = {})
+    : p_pipelines_(p_pipelines), group_count_(group_count), p_groups_(p_groups), pipeline_count_(pipeline_count), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -7312,8 +6639,8 @@ struct DevicePrivateDataCreateInfo {
 
   using native_type = VkDevicePrivateDataCreateInfo;
 
-  DevicePrivateDataCreateInfo(const void *p_next = {}, uint32_t private_data_slot_request_count = {})
-    : p_next_(p_next), private_data_slot_request_count_(private_data_slot_request_count) {}
+  DevicePrivateDataCreateInfo(uint32_t private_data_slot_request_count = {}, const void *p_next = {})
+    : private_data_slot_request_count_(private_data_slot_request_count), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -7330,7 +6657,7 @@ struct PhysicalDeviceMemoryDecompressionPropertiesNV {
 
   StructureType s_type_ = StructureType::PHYSICAL_DEVICE_MEMORY_DECOMPRESSION_PROPERTIES_NV;
   void *p_next_;
-  VkMemoryDecompressionMethodFlagsNV decompression_methods_;
+  MemoryDecompressionMethodMask decompression_methods_;
   uint64_t max_decompression_indirect_count_;
 };
 
@@ -7338,16 +6665,16 @@ struct DeviceQueueCreateInfo {
 
   using native_type = VkDeviceQueueCreateInfo;
 
-  DeviceQueueCreateInfo(const void *p_next = {}, VkDeviceQueueCreateFlags flags = {}, uint32_t queue_family_index = {},
-                        uint32_t queue_count = {}, const float *p_queue_priorities = {})
-    : p_next_(p_next), flags_(flags), queue_family_index_(queue_family_index), queue_count_(queue_count),
-      p_queue_priorities_(p_queue_priorities) {}
+  DeviceQueueCreateInfo(const float *p_queue_priorities = {}, DeviceQueueCreateMask flags = {}, uint32_t queue_family_index = {},
+                        uint32_t queue_count = {}, const void *p_next = {})
+    : p_queue_priorities_(p_queue_priorities), flags_(flags), queue_family_index_(queue_family_index), queue_count_(queue_count),
+      p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::DEVICE_QUEUE_CREATE_INFO;
   const void *p_next_;
-  VkDeviceQueueCreateFlags flags_;
+  DeviceQueueCreateMask flags_;
   uint32_t queue_family_index_;
   uint32_t queue_count_;
   const float *p_queue_priorities_;
@@ -7469,20 +6796,20 @@ struct DeviceCreateInfo {
 
   using native_type = VkDeviceCreateInfo;
 
-  DeviceCreateInfo(const void *p_next = {}, VkDeviceCreateFlags flags = {}, uint32_t queue_create_info_count = {},
-                   const DeviceQueueCreateInfo *p_queue_create_infos = {}, uint32_t enabled_layer_count = {},
-                   const char *const *pp_enabled_layer_names = {}, uint32_t enabled_extension_count = {},
-                   const char *const *pp_enabled_extension_names = {}, const PhysicalDeviceFeatures *p_enabled_features = {})
-    : p_next_(p_next), flags_(flags), queue_create_info_count_(queue_create_info_count), p_queue_create_infos_(p_queue_create_infos),
-      enabled_layer_count_(enabled_layer_count), pp_enabled_layer_names_(pp_enabled_layer_names),
-      enabled_extension_count_(enabled_extension_count), pp_enabled_extension_names_(pp_enabled_extension_names),
-      p_enabled_features_(p_enabled_features) {}
+  DeviceCreateInfo(const PhysicalDeviceFeatures *p_enabled_features = {}, DeviceCreateMask flags = {},
+                   uint32_t queue_create_info_count = {}, const DeviceQueueCreateInfo *p_queue_create_infos = {},
+                   uint32_t enabled_layer_count = {}, const char *const *pp_enabled_layer_names = {}, uint32_t enabled_extension_count = {},
+                   const char *const *pp_enabled_extension_names = {}, const void *p_next = {})
+    : p_enabled_features_(p_enabled_features), flags_(flags), queue_create_info_count_(queue_create_info_count),
+      p_queue_create_infos_(p_queue_create_infos), enabled_layer_count_(enabled_layer_count),
+      pp_enabled_layer_names_(pp_enabled_layer_names), enabled_extension_count_(enabled_extension_count),
+      pp_enabled_extension_names_(pp_enabled_extension_names), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::DEVICE_CREATE_INFO;
   const void *p_next_;
-  VkDeviceCreateFlags flags_;
+  DeviceCreateMask flags_;
   uint32_t queue_create_info_count_;
   const DeviceQueueCreateInfo *p_queue_create_infos_;
   uint32_t enabled_layer_count_;
@@ -7534,7 +6861,7 @@ struct PhysicalDeviceOpticalFlowFeaturesNV {
 
   using native_type = VkPhysicalDeviceOpticalFlowFeaturesNV;
 
-  PhysicalDeviceOpticalFlowFeaturesNV(void *p_next = {}, VkBool32 optical_flow = {}) : p_next_(p_next), optical_flow_(optical_flow) {}
+  PhysicalDeviceOpticalFlowFeaturesNV(VkBool32 optical_flow = {}, void *p_next = {}) : optical_flow_(optical_flow), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -7547,23 +6874,23 @@ struct HeadlessSurfaceCreateInfoEXT {
 
   using native_type = VkHeadlessSurfaceCreateInfoEXT;
 
-  HeadlessSurfaceCreateInfoEXT(const void *p_next = {}, VkHeadlessSurfaceCreateFlagsEXT flags = {}) : p_next_(p_next), flags_(flags) {}
+  HeadlessSurfaceCreateInfoEXT(HeadlessSurfaceCreateMask flags = {}, const void *p_next = {}) : flags_(flags), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::HEADLESS_SURFACE_CREATE_INFO_EXT;
   const void *p_next_;
-  VkHeadlessSurfaceCreateFlagsEXT flags_;
+  HeadlessSurfaceCreateMask flags_;
 };
 
 struct PhysicalDeviceMapMemoryPlacedFeaturesEXT {
 
   using native_type = VkPhysicalDeviceMapMemoryPlacedFeaturesEXT;
 
-  PhysicalDeviceMapMemoryPlacedFeaturesEXT(void *p_next = {}, VkBool32 memory_map_placed = {}, VkBool32 memory_map_range_placed = {},
-                                           VkBool32 memory_unmap_reserve = {})
-    : p_next_(p_next), memory_map_placed_(memory_map_placed), memory_map_range_placed_(memory_map_range_placed),
-      memory_unmap_reserve_(memory_unmap_reserve) {}
+  PhysicalDeviceMapMemoryPlacedFeaturesEXT(VkBool32 memory_unmap_reserve = {}, VkBool32 memory_map_placed = {},
+                                           VkBool32 memory_map_range_placed = {}, void *p_next = {})
+    : memory_unmap_reserve_(memory_unmap_reserve), memory_map_placed_(memory_map_placed), memory_map_range_placed_(memory_map_range_placed),
+      p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -7578,7 +6905,7 @@ struct PhysicalDeviceYcbcrDegammaFeaturesQCOM {
 
   using native_type = VkPhysicalDeviceYcbcrDegammaFeaturesQCOM;
 
-  PhysicalDeviceYcbcrDegammaFeaturesQCOM(void *p_next = {}, VkBool32 ycbcr_degamma = {}) : p_next_(p_next), ycbcr_degamma_(ycbcr_degamma) {}
+  PhysicalDeviceYcbcrDegammaFeaturesQCOM(VkBool32 ycbcr_degamma = {}, void *p_next = {}) : ycbcr_degamma_(ycbcr_degamma), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -7591,8 +6918,8 @@ struct PhysicalDeviceShaderModuleIdentifierFeaturesEXT {
 
   using native_type = VkPhysicalDeviceShaderModuleIdentifierFeaturesEXT;
 
-  PhysicalDeviceShaderModuleIdentifierFeaturesEXT(void *p_next = {}, VkBool32 shader_module_identifier = {})
-    : p_next_(p_next), shader_module_identifier_(shader_module_identifier) {}
+  PhysicalDeviceShaderModuleIdentifierFeaturesEXT(VkBool32 shader_module_identifier = {}, void *p_next = {})
+    : shader_module_identifier_(shader_module_identifier), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -7605,8 +6932,8 @@ struct PhysicalDeviceDynamicRenderingFeatures {
 
   using native_type = VkPhysicalDeviceDynamicRenderingFeatures;
 
-  PhysicalDeviceDynamicRenderingFeatures(void *p_next = {}, VkBool32 dynamic_rendering = {})
-    : p_next_(p_next), dynamic_rendering_(dynamic_rendering) {}
+  PhysicalDeviceDynamicRenderingFeatures(VkBool32 dynamic_rendering = {}, void *p_next = {})
+    : dynamic_rendering_(dynamic_rendering), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -7619,8 +6946,8 @@ struct PhysicalDevicePipelineCreationCacheControlFeatures {
 
   using native_type = VkPhysicalDevicePipelineCreationCacheControlFeatures;
 
-  PhysicalDevicePipelineCreationCacheControlFeatures(void *p_next = {}, VkBool32 pipeline_creation_cache_control = {})
-    : p_next_(p_next), pipeline_creation_cache_control_(pipeline_creation_cache_control) {}
+  PhysicalDevicePipelineCreationCacheControlFeatures(VkBool32 pipeline_creation_cache_control = {}, void *p_next = {})
+    : pipeline_creation_cache_control_(pipeline_creation_cache_control), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -7633,12 +6960,12 @@ struct PhysicalDeviceDeviceGeneratedCommandsComputeFeaturesNV {
 
   using native_type = VkPhysicalDeviceDeviceGeneratedCommandsComputeFeaturesNV;
 
-  PhysicalDeviceDeviceGeneratedCommandsComputeFeaturesNV(void *p_next = {}, VkBool32 device_generated_compute = {},
-                                                         VkBool32 device_generated_compute_pipelines = {},
-                                                         VkBool32 device_generated_compute_capture_replay = {})
-    : p_next_(p_next), device_generated_compute_(device_generated_compute),
-      device_generated_compute_pipelines_(device_generated_compute_pipelines),
-      device_generated_compute_capture_replay_(device_generated_compute_capture_replay) {}
+  PhysicalDeviceDeviceGeneratedCommandsComputeFeaturesNV(VkBool32 device_generated_compute_capture_replay = {},
+                                                         VkBool32 device_generated_compute = {},
+                                                         VkBool32 device_generated_compute_pipelines = {}, void *p_next = {})
+    : device_generated_compute_capture_replay_(device_generated_compute_capture_replay),
+      device_generated_compute_(device_generated_compute), device_generated_compute_pipelines_(device_generated_compute_pipelines),
+      p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -7653,8 +6980,8 @@ struct PresentIdKHR {
 
   using native_type = VkPresentIdKHR;
 
-  PresentIdKHR(const void *p_next = {}, uint32_t swapchain_count = {}, const uint64_t *p_present_ids = {})
-    : p_next_(p_next), swapchain_count_(swapchain_count), p_present_ids_(p_present_ids) {}
+  PresentIdKHR(const uint64_t *p_present_ids = {}, uint32_t swapchain_count = {}, const void *p_next = {})
+    : p_present_ids_(p_present_ids), swapchain_count_(swapchain_count), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -7668,8 +6995,8 @@ struct PhysicalDeviceExternalImageFormatInfo {
 
   using native_type = VkPhysicalDeviceExternalImageFormatInfo;
 
-  PhysicalDeviceExternalImageFormatInfo(const void *p_next = {}, ExternalMemoryHandleTypeMaskBit handle_type = {})
-    : p_next_(p_next), handle_type_(handle_type) {}
+  PhysicalDeviceExternalImageFormatInfo(ExternalMemoryHandleTypeMaskBit handle_type = {}, const void *p_next = {})
+    : handle_type_(handle_type), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -7677,38 +7004,6 @@ struct PhysicalDeviceExternalImageFormatInfo {
   const void *p_next_;
   ExternalMemoryHandleTypeMaskBit handle_type_;
 };
-#ifdef VK_USE_PLATFORM_ANDROID_KHR
-
-struct MemoryGetAndroidHardwareBufferInfoANDROID {
-
-  using native_type = VkMemoryGetAndroidHardwareBufferInfoANDROID;
-
-  MemoryGetAndroidHardwareBufferInfoANDROID(const void *p_next = {}, VkDeviceMemory memory = {}) : p_next_(p_next), memory_(memory) {}
-
-  auto *get() { return reinterpret_cast<native_type *>(this); }
-
-  StructureType s_type_ = StructureType::MEMORY_GET_ANDROID_HARDWARE_BUFFER_INFO_ANDROID;
-  const void *p_next_;
-  VkDeviceMemory memory_;
-};
-#endif
-#ifdef VK_USE_PLATFORM_WIN32_KHR
-
-struct MemoryGetWin32HandleInfoKHR {
-
-  using native_type = VkMemoryGetWin32HandleInfoKHR;
-
-  MemoryGetWin32HandleInfoKHR(const void *p_next = {}, VkDeviceMemory memory = {}, ExternalMemoryHandleTypeMaskBit handle_type = {})
-    : p_next_(p_next), memory_(memory), handle_type_(handle_type) {}
-
-  auto *get() { return reinterpret_cast<native_type *>(this); }
-
-  StructureType s_type_ = StructureType::MEMORY_GET_WIN32_HANDLE_INFO_KHR;
-  const void *p_next_;
-  VkDeviceMemory memory_;
-  ExternalMemoryHandleTypeMaskBit handle_type_;
-};
-#endif
 
 struct MemoryHostPointerPropertiesEXT {
 
@@ -7725,8 +7020,8 @@ struct PhysicalDeviceSwapchainMaintenance1FeaturesEXT {
 
   using native_type = VkPhysicalDeviceSwapchainMaintenance1FeaturesEXT;
 
-  PhysicalDeviceSwapchainMaintenance1FeaturesEXT(void *p_next = {}, VkBool32 swapchain_maintenance1 = {})
-    : p_next_(p_next), swapchain_maintenance1_(swapchain_maintenance1) {}
+  PhysicalDeviceSwapchainMaintenance1FeaturesEXT(VkBool32 swapchain_maintenance1 = {}, void *p_next = {})
+    : swapchain_maintenance1_(swapchain_maintenance1), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -7740,7 +7035,7 @@ struct PhysicalDeviceDescriptorIndexingFeatures {
   using native_type = VkPhysicalDeviceDescriptorIndexingFeatures;
 
   PhysicalDeviceDescriptorIndexingFeatures(
-    void *p_next = {}, VkBool32 shader_input_attachment_array_dynamic_indexing = {},
+    VkBool32 runtime_descriptor_array = {}, VkBool32 shader_input_attachment_array_dynamic_indexing = {},
     VkBool32 shader_uniform_texel_buffer_array_dynamic_indexing = {}, VkBool32 shader_storage_texel_buffer_array_dynamic_indexing = {},
     VkBool32 shader_uniform_buffer_array_non_uniform_indexing = {}, VkBool32 shader_sampled_image_array_non_uniform_indexing = {},
     VkBool32 shader_storage_buffer_array_non_uniform_indexing = {}, VkBool32 shader_storage_image_array_non_uniform_indexing = {},
@@ -7750,9 +7045,9 @@ struct PhysicalDeviceDescriptorIndexingFeatures {
     VkBool32 descriptor_binding_storage_buffer_update_after_bind = {},
     VkBool32 descriptor_binding_uniform_texel_buffer_update_after_bind = {},
     VkBool32 descriptor_binding_storage_texel_buffer_update_after_bind = {}, VkBool32 descriptor_binding_update_unused_while_pending = {},
-    VkBool32 descriptor_binding_partially_bound = {}, VkBool32 descriptor_binding_variable_descriptor_count = {},
-    VkBool32 runtime_descriptor_array = {})
-    : p_next_(p_next), shader_input_attachment_array_dynamic_indexing_(shader_input_attachment_array_dynamic_indexing),
+    VkBool32 descriptor_binding_partially_bound = {}, VkBool32 descriptor_binding_variable_descriptor_count = {}, void *p_next = {})
+    : runtime_descriptor_array_(runtime_descriptor_array),
+      shader_input_attachment_array_dynamic_indexing_(shader_input_attachment_array_dynamic_indexing),
       shader_uniform_texel_buffer_array_dynamic_indexing_(shader_uniform_texel_buffer_array_dynamic_indexing),
       shader_storage_texel_buffer_array_dynamic_indexing_(shader_storage_texel_buffer_array_dynamic_indexing),
       shader_uniform_buffer_array_non_uniform_indexing_(shader_uniform_buffer_array_non_uniform_indexing),
@@ -7770,8 +7065,7 @@ struct PhysicalDeviceDescriptorIndexingFeatures {
       descriptor_binding_storage_texel_buffer_update_after_bind_(descriptor_binding_storage_texel_buffer_update_after_bind),
       descriptor_binding_update_unused_while_pending_(descriptor_binding_update_unused_while_pending),
       descriptor_binding_partially_bound_(descriptor_binding_partially_bound),
-      descriptor_binding_variable_descriptor_count_(descriptor_binding_variable_descriptor_count),
-      runtime_descriptor_array_(runtime_descriptor_array) {}
+      descriptor_binding_variable_descriptor_count_(descriptor_binding_variable_descriptor_count), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -7798,23 +7092,6 @@ struct PhysicalDeviceDescriptorIndexingFeatures {
   VkBool32 descriptor_binding_variable_descriptor_count_;
   VkBool32 runtime_descriptor_array_;
 };
-#ifdef VK_USE_PLATFORM_WIN32_KHR
-
-struct ExportMemoryWin32HandleInfoNV {
-
-  using native_type = VkExportMemoryWin32HandleInfoNV;
-
-  ExportMemoryWin32HandleInfoNV(const void *p_next = {}, const SECURITY_ATTRIBUTES *p_attributes = {}, DWORD dw_access = {})
-    : p_next_(p_next), p_attributes_(p_attributes), dw_access_(dw_access) {}
-
-  auto *get() { return reinterpret_cast<native_type *>(this); }
-
-  StructureType s_type_ = StructureType::EXPORT_MEMORY_WIN32_HANDLE_INFO_NV;
-  const void *p_next_;
-  const SECURITY_ATTRIBUTES *p_attributes_;
-  DWORD dw_access_;
-};
-#endif
 
 struct PhysicalDeviceFragmentDensityMapOffsetPropertiesQCOM {
 
@@ -7835,7 +7112,7 @@ struct PhysicalDeviceCooperativeMatrixPropertiesKHR {
 
   StructureType s_type_ = StructureType::PHYSICAL_DEVICE_COOPERATIVE_MATRIX_PROPERTIES_KHR;
   void *p_next_;
-  VkShaderStageFlags cooperative_matrix_supported_stages_;
+  ShaderStageMask cooperative_matrix_supported_stages_;
 };
 
 struct SubresourceHostMemcpySizeEXT {
@@ -7853,14 +7130,14 @@ struct ExportMemoryAllocateInfoNV {
 
   using native_type = VkExportMemoryAllocateInfoNV;
 
-  ExportMemoryAllocateInfoNV(const void *p_next = {}, VkExternalMemoryHandleTypeFlagsNV handle_types = {})
-    : p_next_(p_next), handle_types_(handle_types) {}
+  ExportMemoryAllocateInfoNV(ExternalMemoryHandleTypeMask handle_types = {}, const void *p_next = {})
+    : handle_types_(handle_types), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::EXPORT_MEMORY_ALLOCATE_INFO_NV;
   const void *p_next_;
-  VkExternalMemoryHandleTypeFlagsNV handle_types_;
+  ExternalMemoryHandleTypeMask handle_types_;
 };
 
 struct ImageFormatProperties {
@@ -7872,7 +7149,7 @@ struct ImageFormatProperties {
   Extent3D max_extent_;
   uint32_t max_mip_levels_;
   uint32_t max_array_layers_;
-  VkSampleCountFlags sample_counts_;
+  SampleCountMask sample_counts_;
   VkDeviceSize max_resource_size_;
 };
 
@@ -7883,17 +7160,17 @@ struct ExternalImageFormatPropertiesNV {
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   ImageFormatProperties image_format_properties_;
-  VkExternalMemoryFeatureFlagsNV external_memory_features_;
-  VkExternalMemoryHandleTypeFlagsNV export_from_imported_handle_types_;
-  VkExternalMemoryHandleTypeFlagsNV compatible_handle_types_;
+  ExternalMemoryFeatureMask external_memory_features_;
+  ExternalMemoryHandleTypeMask export_from_imported_handle_types_;
+  ExternalMemoryHandleTypeMask compatible_handle_types_;
 };
 
 struct DedicatedAllocationBufferCreateInfoNV {
 
   using native_type = VkDedicatedAllocationBufferCreateInfoNV;
 
-  DedicatedAllocationBufferCreateInfoNV(const void *p_next = {}, VkBool32 dedicated_allocation = {})
-    : p_next_(p_next), dedicated_allocation_(dedicated_allocation) {}
+  DedicatedAllocationBufferCreateInfoNV(VkBool32 dedicated_allocation = {}, const void *p_next = {})
+    : dedicated_allocation_(dedicated_allocation), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -7906,15 +7183,15 @@ struct DeviceDeviceMemoryReportCreateInfoEXT {
 
   using native_type = VkDeviceDeviceMemoryReportCreateInfoEXT;
 
-  DeviceDeviceMemoryReportCreateInfoEXT(const void *p_next = {}, VkDeviceMemoryReportFlagsEXT flags = {},
-                                        PFN_vkDeviceMemoryReportCallbackEXT pfn_user_callback = {}, void *p_user_data = {})
-    : p_next_(p_next), flags_(flags), pfn_user_callback_(pfn_user_callback), p_user_data_(p_user_data) {}
+  DeviceDeviceMemoryReportCreateInfoEXT(void *p_user_data = {}, DeviceMemoryReportMask flags = {},
+                                        PFN_vkDeviceMemoryReportCallbackEXT pfn_user_callback = {}, const void *p_next = {})
+    : p_user_data_(p_user_data), flags_(flags), pfn_user_callback_(pfn_user_callback), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::DEVICE_DEVICE_MEMORY_REPORT_CREATE_INFO_EXT;
   const void *p_next_;
-  VkDeviceMemoryReportFlagsEXT flags_;
+  DeviceMemoryReportMask flags_;
   PFN_vkDeviceMemoryReportCallbackEXT pfn_user_callback_;
   void *p_user_data_;
 };
@@ -7923,8 +7200,8 @@ struct OpticalFlowSessionCreatePrivateDataInfoNV {
 
   using native_type = VkOpticalFlowSessionCreatePrivateDataInfoNV;
 
-  OpticalFlowSessionCreatePrivateDataInfoNV(void *p_next = {}, uint32_t id = {}, uint32_t size = {}, const void *p_private_data = {})
-    : p_next_(p_next), id_(id), size_(size), p_private_data_(p_private_data) {}
+  OpticalFlowSessionCreatePrivateDataInfoNV(const void *p_private_data = {}, uint32_t id = {}, uint32_t size = {}, void *p_next = {})
+    : p_private_data_(p_private_data), id_(id), size_(size), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -7939,9 +7216,9 @@ struct AccelerationStructureGeometryInstancesDataKHR {
 
   using native_type = VkAccelerationStructureGeometryInstancesDataKHR;
 
-  AccelerationStructureGeometryInstancesDataKHR(const void *p_next = {}, VkBool32 array_of_pointers = {},
-                                                VkDeviceOrHostAddressConstKHR data = {})
-    : p_next_(p_next), array_of_pointers_(array_of_pointers), data_(data) {}
+  AccelerationStructureGeometryInstancesDataKHR(VkDeviceOrHostAddressConstKHR data = {}, VkBool32 array_of_pointers = {},
+                                                const void *p_next = {})
+    : data_(data), array_of_pointers_(array_of_pointers), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -7969,8 +7246,8 @@ struct PhysicalDeviceShaderExpectAssumeFeaturesKHR {
 
   using native_type = VkPhysicalDeviceShaderExpectAssumeFeaturesKHR;
 
-  PhysicalDeviceShaderExpectAssumeFeaturesKHR(void *p_next = {}, VkBool32 shader_expect_assume = {})
-    : p_next_(p_next), shader_expect_assume_(shader_expect_assume) {}
+  PhysicalDeviceShaderExpectAssumeFeaturesKHR(VkBool32 shader_expect_assume = {}, void *p_next = {})
+    : shader_expect_assume_(shader_expect_assume), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -7983,8 +7260,8 @@ struct CopyMicromapInfoEXT {
 
   using native_type = VkCopyMicromapInfoEXT;
 
-  CopyMicromapInfoEXT(const void *p_next = {}, VkMicromapEXT src = {}, VkMicromapEXT dst = {}, CopyMicromapMode mode = {})
-    : p_next_(p_next), src_(src), dst_(dst), mode_(mode) {}
+  CopyMicromapInfoEXT(CopyMicromapMode mode = {}, VkMicromapEXT src = {}, VkMicromapEXT dst = {}, const void *p_next = {})
+    : mode_(mode), src_(src), dst_(dst), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -7999,45 +7276,45 @@ struct ExportFenceCreateInfo {
 
   using native_type = VkExportFenceCreateInfo;
 
-  ExportFenceCreateInfo(const void *p_next = {}, VkExternalFenceHandleTypeFlags handle_types = {})
-    : p_next_(p_next), handle_types_(handle_types) {}
+  ExportFenceCreateInfo(ExternalFenceHandleTypeMask handle_types = {}, const void *p_next = {})
+    : handle_types_(handle_types), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::EXPORT_FENCE_CREATE_INFO;
   const void *p_next_;
-  VkExternalFenceHandleTypeFlags handle_types_;
+  ExternalFenceHandleTypeMask handle_types_;
 };
 
 struct SwapchainCreateInfoKHR {
 
   using native_type = VkSwapchainCreateInfoKHR;
 
-  SwapchainCreateInfoKHR(const void *p_next = {}, VkSwapchainCreateFlagsKHR flags = {}, VkSurfaceKHR surface = {},
+  SwapchainCreateInfoKHR(VkSwapchainKHR old_swapchain = {}, SwapchainCreateMask flags = {}, VkSurfaceKHR surface = {},
                          uint32_t min_image_count = {}, Format image_format = {}, ColorSpace image_color_space = {},
-                         Extent2D image_extent = {}, uint32_t image_array_layers = {}, VkImageUsageFlags image_usage = {},
+                         Extent2D image_extent = {}, uint32_t image_array_layers = {}, ImageUsageMask image_usage = {},
                          SharingMode image_sharing_mode = {}, uint32_t queue_family_index_count = {},
                          const uint32_t *p_queue_family_indices = {}, SurfaceTransformMaskBit pre_transform = {},
                          CompositeAlphaMaskBit composite_alpha = {}, PresentMode present_mode = {}, VkBool32 clipped = {},
-                         VkSwapchainKHR old_swapchain = {})
-    : p_next_(p_next), flags_(flags), surface_(surface), min_image_count_(min_image_count), image_format_(image_format),
+                         const void *p_next = {})
+    : old_swapchain_(old_swapchain), flags_(flags), surface_(surface), min_image_count_(min_image_count), image_format_(image_format),
       image_color_space_(image_color_space), image_extent_(image_extent), image_array_layers_(image_array_layers),
       image_usage_(image_usage), image_sharing_mode_(image_sharing_mode), queue_family_index_count_(queue_family_index_count),
       p_queue_family_indices_(p_queue_family_indices), pre_transform_(pre_transform), composite_alpha_(composite_alpha),
-      present_mode_(present_mode), clipped_(clipped), old_swapchain_(old_swapchain) {}
+      present_mode_(present_mode), clipped_(clipped), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::SWAPCHAIN_CREATE_INFO_KHR;
   const void *p_next_;
-  VkSwapchainCreateFlagsKHR flags_;
+  SwapchainCreateMask flags_;
   VkSurfaceKHR surface_;
   uint32_t min_image_count_;
   Format image_format_;
   ColorSpace image_color_space_;
   Extent2D image_extent_;
   uint32_t image_array_layers_;
-  VkImageUsageFlags image_usage_;
+  ImageUsageMask image_usage_;
   SharingMode image_sharing_mode_;
   uint32_t queue_family_index_count_;
   const uint32_t *p_queue_family_indices_;
@@ -8052,10 +7329,10 @@ struct PhysicalDevicePerformanceQueryFeaturesKHR {
 
   using native_type = VkPhysicalDevicePerformanceQueryFeaturesKHR;
 
-  PhysicalDevicePerformanceQueryFeaturesKHR(void *p_next = {}, VkBool32 performance_counter_query_pools = {},
-                                            VkBool32 performance_counter_multiple_query_pools = {})
-    : p_next_(p_next), performance_counter_query_pools_(performance_counter_query_pools),
-      performance_counter_multiple_query_pools_(performance_counter_multiple_query_pools) {}
+  PhysicalDevicePerformanceQueryFeaturesKHR(VkBool32 performance_counter_multiple_query_pools = {},
+                                            VkBool32 performance_counter_query_pools = {}, void *p_next = {})
+    : performance_counter_multiple_query_pools_(performance_counter_multiple_query_pools),
+      performance_counter_query_pools_(performance_counter_query_pools), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -8079,16 +7356,16 @@ struct ImportSemaphoreFdInfoKHR {
 
   using native_type = VkImportSemaphoreFdInfoKHR;
 
-  ImportSemaphoreFdInfoKHR(const void *p_next = {}, VkSemaphore semaphore = {}, VkSemaphoreImportFlags flags = {},
-                           ExternalSemaphoreHandleTypeMaskBit handle_type = {}, int fd = {})
-    : p_next_(p_next), semaphore_(semaphore), flags_(flags), handle_type_(handle_type), fd_(fd) {}
+  ImportSemaphoreFdInfoKHR(int fd = {}, VkSemaphore semaphore = {}, SemaphoreImportMask flags = {},
+                           ExternalSemaphoreHandleTypeMaskBit handle_type = {}, const void *p_next = {})
+    : fd_(fd), semaphore_(semaphore), flags_(flags), handle_type_(handle_type), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::IMPORT_SEMAPHORE_FD_INFO_KHR;
   const void *p_next_;
   VkSemaphore semaphore_;
-  VkSemaphoreImportFlags flags_;
+  SemaphoreImportMask flags_;
   ExternalSemaphoreHandleTypeMaskBit handle_type_;
   int fd_;
 };
@@ -8097,15 +7374,15 @@ struct DescriptorBufferBindingInfoEXT {
 
   using native_type = VkDescriptorBufferBindingInfoEXT;
 
-  DescriptorBufferBindingInfoEXT(void *p_next = {}, VkDeviceAddress address = {}, VkBufferUsageFlags usage = {})
-    : p_next_(p_next), address_(address), usage_(usage) {}
+  DescriptorBufferBindingInfoEXT(BufferUsageMask usage = {}, VkDeviceAddress address = {}, void *p_next = {})
+    : usage_(usage), address_(address), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::DESCRIPTOR_BUFFER_BINDING_INFO_EXT;
   void *p_next_;
   VkDeviceAddress address_;
-  VkBufferUsageFlags usage_;
+  BufferUsageMask usage_;
 };
 
 struct RectLayerKHR {
@@ -8138,8 +7415,8 @@ struct PresentRegionsKHR {
 
   using native_type = VkPresentRegionsKHR;
 
-  PresentRegionsKHR(const void *p_next = {}, uint32_t swapchain_count = {}, const PresentRegionKHR *p_regions = {})
-    : p_next_(p_next), swapchain_count_(swapchain_count), p_regions_(p_regions) {}
+  PresentRegionsKHR(const PresentRegionKHR *p_regions = {}, uint32_t swapchain_count = {}, const void *p_next = {})
+    : p_regions_(p_regions), swapchain_count_(swapchain_count), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -8153,8 +7430,8 @@ struct DebugMarkerMarkerInfoEXT {
 
   using native_type = VkDebugMarkerMarkerInfoEXT;
 
-  DebugMarkerMarkerInfoEXT(const void *p_next = {}, const char *p_marker_name = {}, const std::array<float, 4> &color = {})
-    : p_next_(p_next), p_marker_name_(p_marker_name), color_(color) {}
+  DebugMarkerMarkerInfoEXT(const std::array<float, 4> &color = {}, const char *p_marker_name = {}, const void *p_next = {})
+    : color_(color), p_marker_name_(p_marker_name), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -8163,33 +7440,15 @@ struct DebugMarkerMarkerInfoEXT {
   const char *p_marker_name_;
   std::array<float, 4> color_;
 };
-#ifdef VK_USE_PLATFORM_GGP
-
-struct StreamDescriptorSurfaceCreateInfoGGP {
-
-  using native_type = VkStreamDescriptorSurfaceCreateInfoGGP;
-
-  StreamDescriptorSurfaceCreateInfoGGP(const void *p_next = {}, VkStreamDescriptorSurfaceCreateFlagsGGP flags = {},
-                                       GgpStreamDescriptor stream_descriptor = {})
-    : p_next_(p_next), flags_(flags), stream_descriptor_(stream_descriptor) {}
-
-  auto *get() { return reinterpret_cast<native_type *>(this); }
-
-  StructureType s_type_ = StructureType::STREAM_DESCRIPTOR_SURFACE_CREATE_INFO_GGP;
-  const void *p_next_;
-  VkStreamDescriptorSurfaceCreateFlagsGGP flags_;
-  GgpStreamDescriptor stream_descriptor_;
-};
-#endif
 
 struct DeviceGroupRenderPassBeginInfo {
 
   using native_type = VkDeviceGroupRenderPassBeginInfo;
 
-  DeviceGroupRenderPassBeginInfo(const void *p_next = {}, uint32_t device_mask = {}, uint32_t device_render_area_count = {},
-                                 const Rect2D *p_device_render_areas = {})
-    : p_next_(p_next), device_mask_(device_mask), device_render_area_count_(device_render_area_count),
-      p_device_render_areas_(p_device_render_areas) {}
+  DeviceGroupRenderPassBeginInfo(const Rect2D *p_device_render_areas = {}, uint32_t device_mask = {},
+                                 uint32_t device_render_area_count = {}, const void *p_next = {})
+    : p_device_render_areas_(p_device_render_areas), device_mask_(device_mask), device_render_area_count_(device_render_area_count),
+      p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -8204,9 +7463,9 @@ struct DebugMarkerObjectTagInfoEXT {
 
   using native_type = VkDebugMarkerObjectTagInfoEXT;
 
-  DebugMarkerObjectTagInfoEXT(const void *p_next = {}, DebugReportObjectType object_type = {}, uint64_t object = {}, uint64_t tag_name = {},
-                              size_t tag_size = {}, const void *p_tag = {})
-    : p_next_(p_next), object_type_(object_type), object_(object), tag_name_(tag_name), tag_size_(tag_size), p_tag_(p_tag) {}
+  DebugMarkerObjectTagInfoEXT(const void *p_tag = {}, DebugReportObjectType object_type = {}, uint64_t object = {}, uint64_t tag_name = {},
+                              size_t tag_size = {}, const void *p_next = {})
+    : p_tag_(p_tag), object_type_(object_type), object_(object), tag_name_(tag_name), tag_size_(tag_size), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -8218,31 +7477,13 @@ struct DebugMarkerObjectTagInfoEXT {
   size_t tag_size_;
   const void *p_tag_;
 };
-#ifdef VK_USE_PLATFORM_WIN32_KHR
-
-struct Win32SurfaceCreateInfoKHR {
-
-  using native_type = VkWin32SurfaceCreateInfoKHR;
-
-  Win32SurfaceCreateInfoKHR(const void *p_next = {}, VkWin32SurfaceCreateFlagsKHR flags = {}, HINSTANCE hinstance = {}, HWND hwnd = {})
-    : p_next_(p_next), flags_(flags), hinstance_(hinstance), hwnd_(hwnd) {}
-
-  auto *get() { return reinterpret_cast<native_type *>(this); }
-
-  StructureType s_type_ = StructureType::WIN32_SURFACE_CREATE_INFO_KHR;
-  const void *p_next_;
-  VkWin32SurfaceCreateFlagsKHR flags_;
-  HINSTANCE hinstance_;
-  HWND hwnd_;
-};
-#endif
 
 struct PhysicalDeviceRenderPassStripedFeaturesARM {
 
   using native_type = VkPhysicalDeviceRenderPassStripedFeaturesARM;
 
-  PhysicalDeviceRenderPassStripedFeaturesARM(void *p_next = {}, VkBool32 render_pass_striped = {})
-    : p_next_(p_next), render_pass_striped_(render_pass_striped) {}
+  PhysicalDeviceRenderPassStripedFeaturesARM(VkBool32 render_pass_striped = {}, void *p_next = {})
+    : render_pass_striped_(render_pass_striped), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -8255,9 +7496,9 @@ struct PipelineViewportExclusiveScissorStateCreateInfoNV {
 
   using native_type = VkPipelineViewportExclusiveScissorStateCreateInfoNV;
 
-  PipelineViewportExclusiveScissorStateCreateInfoNV(const void *p_next = {}, uint32_t exclusive_scissor_count = {},
-                                                    const Rect2D *p_exclusive_scissors = {})
-    : p_next_(p_next), exclusive_scissor_count_(exclusive_scissor_count), p_exclusive_scissors_(p_exclusive_scissors) {}
+  PipelineViewportExclusiveScissorStateCreateInfoNV(const Rect2D *p_exclusive_scissors = {}, uint32_t exclusive_scissor_count = {},
+                                                    const void *p_next = {})
+    : p_exclusive_scissors_(p_exclusive_scissors), exclusive_scissor_count_(exclusive_scissor_count), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -8271,9 +7512,9 @@ struct DebugMarkerObjectNameInfoEXT {
 
   using native_type = VkDebugMarkerObjectNameInfoEXT;
 
-  DebugMarkerObjectNameInfoEXT(const void *p_next = {}, DebugReportObjectType object_type = {}, uint64_t object = {},
-                               const char *p_object_name = {})
-    : p_next_(p_next), object_type_(object_type), object_(object), p_object_name_(p_object_name) {}
+  DebugMarkerObjectNameInfoEXT(const char *p_object_name = {}, DebugReportObjectType object_type = {}, uint64_t object = {},
+                               const void *p_next = {})
+    : p_object_name_(p_object_name), object_type_(object_type), object_(object), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -8288,16 +7529,16 @@ struct PhysicalDeviceExternalBufferInfo {
 
   using native_type = VkPhysicalDeviceExternalBufferInfo;
 
-  PhysicalDeviceExternalBufferInfo(const void *p_next = {}, VkBufferCreateFlags flags = {}, VkBufferUsageFlags usage = {},
-                                   ExternalMemoryHandleTypeMaskBit handle_type = {})
-    : p_next_(p_next), flags_(flags), usage_(usage), handle_type_(handle_type) {}
+  PhysicalDeviceExternalBufferInfo(ExternalMemoryHandleTypeMaskBit handle_type = {}, BufferCreateMask flags = {},
+                                   BufferUsageMask usage = {}, const void *p_next = {})
+    : handle_type_(handle_type), flags_(flags), usage_(usage), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PHYSICAL_DEVICE_EXTERNAL_BUFFER_INFO;
   const void *p_next_;
-  VkBufferCreateFlags flags_;
-  VkBufferUsageFlags usage_;
+  BufferCreateMask flags_;
+  BufferUsageMask usage_;
   ExternalMemoryHandleTypeMaskBit handle_type_;
 };
 
@@ -8319,31 +7560,12 @@ struct CopyMemoryToImageIndirectCommandNV {
   Offset3D image_offset_;
   Extent3D image_extent_;
 };
-#ifdef VK_USE_PLATFORM_WIN32_KHR
-
-struct ImportMemoryWin32HandleInfoKHR {
-
-  using native_type = VkImportMemoryWin32HandleInfoKHR;
-
-  ImportMemoryWin32HandleInfoKHR(const void *p_next = {}, ExternalMemoryHandleTypeMaskBit handle_type = {}, HANDLE handle = {},
-                                 LPCWSTR name = {})
-    : p_next_(p_next), handle_type_(handle_type), handle_(handle), name_(name) {}
-
-  auto *get() { return reinterpret_cast<native_type *>(this); }
-
-  StructureType s_type_ = StructureType::IMPORT_MEMORY_WIN32_HANDLE_INFO_KHR;
-  const void *p_next_;
-  ExternalMemoryHandleTypeMaskBit handle_type_;
-  HANDLE handle_;
-  LPCWSTR name_;
-};
-#endif
 
 struct PhysicalDeviceMaintenance4Features {
 
   using native_type = VkPhysicalDeviceMaintenance4Features;
 
-  PhysicalDeviceMaintenance4Features(void *p_next = {}, VkBool32 maintenance4 = {}) : p_next_(p_next), maintenance4_(maintenance4) {}
+  PhysicalDeviceMaintenance4Features(VkBool32 maintenance4 = {}, void *p_next = {}) : maintenance4_(maintenance4), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -8356,8 +7578,8 @@ struct PhysicalDeviceInvocationMaskFeaturesHUAWEI {
 
   using native_type = VkPhysicalDeviceInvocationMaskFeaturesHUAWEI;
 
-  PhysicalDeviceInvocationMaskFeaturesHUAWEI(void *p_next = {}, VkBool32 invocation_mask = {})
-    : p_next_(p_next), invocation_mask_(invocation_mask) {}
+  PhysicalDeviceInvocationMaskFeaturesHUAWEI(VkBool32 invocation_mask = {}, void *p_next = {})
+    : invocation_mask_(invocation_mask), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -8389,9 +7611,9 @@ struct CopyAccelerationStructureInfoKHR {
 
   using native_type = VkCopyAccelerationStructureInfoKHR;
 
-  CopyAccelerationStructureInfoKHR(const void *p_next = {}, VkAccelerationStructureKHR src = {}, VkAccelerationStructureKHR dst = {},
-                                   CopyAccelerationStructureMode mode = {})
-    : p_next_(p_next), src_(src), dst_(dst), mode_(mode) {}
+  CopyAccelerationStructureInfoKHR(CopyAccelerationStructureMode mode = {}, VkAccelerationStructureKHR src = {},
+                                   VkAccelerationStructureKHR dst = {}, const void *p_next = {})
+    : mode_(mode), src_(src), dst_(dst), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -8414,21 +7636,6 @@ struct PhysicalDeviceShadingRateImagePropertiesNV {
   uint32_t shading_rate_palette_size_;
   uint32_t shading_rate_max_coarse_samples_;
 };
-#ifdef VK_USE_PLATFORM_ANDROID_KHR
-
-struct ExternalFormatANDROID {
-
-  using native_type = VkExternalFormatANDROID;
-
-  ExternalFormatANDROID(void *p_next = {}, uint64_t external_format = {}) : p_next_(p_next), external_format_(external_format) {}
-
-  auto *get() { return reinterpret_cast<native_type *>(this); }
-
-  StructureType s_type_ = StructureType::EXTERNAL_FORMAT_ANDROID;
-  void *p_next_;
-  uint64_t external_format_;
-};
-#endif
 
 struct ImageBlit {
 
@@ -8450,9 +7657,9 @@ struct AccelerationStructureMemoryRequirementsInfoNV {
 
   using native_type = VkAccelerationStructureMemoryRequirementsInfoNV;
 
-  AccelerationStructureMemoryRequirementsInfoNV(const void *p_next = {}, AccelerationStructureMemoryRequirementsType type = {},
-                                                VkAccelerationStructureNV acceleration_structure = {})
-    : p_next_(p_next), type_(type), acceleration_structure_(acceleration_structure) {}
+  AccelerationStructureMemoryRequirementsInfoNV(VkAccelerationStructureNV acceleration_structure = {},
+                                                AccelerationStructureMemoryRequirementsType type = {}, const void *p_next = {})
+    : acceleration_structure_(acceleration_structure), type_(type), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -8476,8 +7683,8 @@ struct PhysicalDeviceVulkan11Properties {
   uint32_t device_node_mask_;
   VkBool32 device_luidvalid_;
   uint32_t subgroup_size_;
-  VkShaderStageFlags subgroup_supported_stages_;
-  VkSubgroupFeatureFlags subgroup_supported_operations_;
+  ShaderStageMask subgroup_supported_stages_;
+  SubgroupFeatureMask subgroup_supported_operations_;
   VkBool32 subgroup_quad_operations_in_all_stages_;
   PointClippingBehavior point_clipping_behavior_;
   uint32_t max_multiview_view_count_;
@@ -8491,13 +7698,13 @@ struct BufferUsageFlags2CreateInfoKHR {
 
   using native_type = VkBufferUsageFlags2CreateInfoKHR;
 
-  BufferUsageFlags2CreateInfoKHR(const void *p_next = {}, VkBufferUsageFlags2KHR usage = {}) : p_next_(p_next), usage_(usage) {}
+  BufferUsageFlags2CreateInfoKHR(BufferUsageMask2 usage = {}, const void *p_next = {}) : usage_(usage), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::BUFFER_USAGE_FLAGS_2_CREATE_INFO_KHR;
   const void *p_next_;
-  VkBufferUsageFlags2KHR usage_;
+  BufferUsageMask2 usage_;
 };
 
 struct SurfaceCapabilitiesKHR {
@@ -8512,19 +7719,19 @@ struct SurfaceCapabilitiesKHR {
   Extent2D min_image_extent_;
   Extent2D max_image_extent_;
   uint32_t max_image_array_layers_;
-  VkSurfaceTransformFlagsKHR supported_transforms_;
+  SurfaceTransformMask supported_transforms_;
   SurfaceTransformMaskBit current_transform_;
-  VkCompositeAlphaFlagsKHR supported_composite_alpha_;
-  VkImageUsageFlags supported_usage_flags_;
+  CompositeAlphaMask supported_composite_alpha_;
+  ImageUsageMask supported_usage_flags_;
 };
 
 struct RenderingAttachmentLocationInfoKHR {
 
   using native_type = VkRenderingAttachmentLocationInfoKHR;
 
-  RenderingAttachmentLocationInfoKHR(const void *p_next = {}, uint32_t color_attachment_count = {},
-                                     const uint32_t *p_color_attachment_locations = {})
-    : p_next_(p_next), color_attachment_count_(color_attachment_count), p_color_attachment_locations_(p_color_attachment_locations) {}
+  RenderingAttachmentLocationInfoKHR(const uint32_t *p_color_attachment_locations = {}, uint32_t color_attachment_count = {},
+                                     const void *p_next = {})
+    : p_color_attachment_locations_(p_color_attachment_locations), color_attachment_count_(color_attachment_count), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -8538,8 +7745,8 @@ struct PhysicalDeviceYcbcrImageArraysFeaturesEXT {
 
   using native_type = VkPhysicalDeviceYcbcrImageArraysFeaturesEXT;
 
-  PhysicalDeviceYcbcrImageArraysFeaturesEXT(void *p_next = {}, VkBool32 ycbcr_image_arrays = {})
-    : p_next_(p_next), ycbcr_image_arrays_(ycbcr_image_arrays) {}
+  PhysicalDeviceYcbcrImageArraysFeaturesEXT(VkBool32 ycbcr_image_arrays = {}, void *p_next = {})
+    : ycbcr_image_arrays_(ycbcr_image_arrays), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -8547,32 +7754,13 @@ struct PhysicalDeviceYcbcrImageArraysFeaturesEXT {
   void *p_next_;
   VkBool32 ycbcr_image_arrays_;
 };
-#ifdef VK_USE_PLATFORM_SCREEN_QNX
-
-struct ScreenSurfaceCreateInfoQNX {
-
-  using native_type = VkScreenSurfaceCreateInfoQNX;
-
-  ScreenSurfaceCreateInfoQNX(const void *p_next = {}, VkScreenSurfaceCreateFlagsQNX flags = {}, struct _screen_context *context = {},
-                             struct _screen_window *window = {})
-    : p_next_(p_next), flags_(flags), context_(context), window_(window) {}
-
-  auto *get() { return reinterpret_cast<native_type *>(this); }
-
-  StructureType s_type_ = StructureType::SCREEN_SURFACE_CREATE_INFO_QNX;
-  const void *p_next_;
-  VkScreenSurfaceCreateFlagsQNX flags_;
-  struct _screen_context *context_;
-  struct _screen_window *window_;
-};
-#endif
 
 struct PhysicalDeviceUniformBufferStandardLayoutFeatures {
 
   using native_type = VkPhysicalDeviceUniformBufferStandardLayoutFeatures;
 
-  PhysicalDeviceUniformBufferStandardLayoutFeatures(void *p_next = {}, VkBool32 uniform_buffer_standard_layout = {})
-    : p_next_(p_next), uniform_buffer_standard_layout_(uniform_buffer_standard_layout) {}
+  PhysicalDeviceUniformBufferStandardLayoutFeatures(VkBool32 uniform_buffer_standard_layout = {}, void *p_next = {})
+    : uniform_buffer_standard_layout_(uniform_buffer_standard_layout), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -8599,9 +7787,9 @@ struct PipelineSampleLocationsStateCreateInfoEXT {
 
   using native_type = VkPipelineSampleLocationsStateCreateInfoEXT;
 
-  PipelineSampleLocationsStateCreateInfoEXT(const void *p_next = {}, VkBool32 sample_locations_enable = {},
-                                            SampleLocationsInfoEXT sample_locations_info = {})
-    : p_next_(p_next), sample_locations_enable_(sample_locations_enable), sample_locations_info_(sample_locations_info) {}
+  PipelineSampleLocationsStateCreateInfoEXT(SampleLocationsInfoEXT sample_locations_info = {}, VkBool32 sample_locations_enable = {},
+                                            const void *p_next = {})
+    : sample_locations_info_(sample_locations_info), sample_locations_enable_(sample_locations_enable), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -8623,33 +7811,6 @@ struct AttachmentSampleLocationsEXT {
   uint32_t attachment_index_;
   SampleLocationsInfoEXT sample_locations_info_;
 };
-#ifdef VK_USE_PLATFORM_WIN32_KHR
-
-struct Win32KeyedMutexAcquireReleaseInfoNV {
-
-  using native_type = VkWin32KeyedMutexAcquireReleaseInfoNV;
-
-  Win32KeyedMutexAcquireReleaseInfoNV(const void *p_next = {}, uint32_t acquire_count = {}, const VkDeviceMemory *p_acquire_syncs = {},
-                                      const uint64_t *p_acquire_keys = {}, const uint32_t *p_acquire_timeout_milliseconds = {},
-                                      uint32_t release_count = {}, const VkDeviceMemory *p_release_syncs = {},
-                                      const uint64_t *p_release_keys = {})
-    : p_next_(p_next), acquire_count_(acquire_count), p_acquire_syncs_(p_acquire_syncs), p_acquire_keys_(p_acquire_keys),
-      p_acquire_timeout_milliseconds_(p_acquire_timeout_milliseconds), release_count_(release_count), p_release_syncs_(p_release_syncs),
-      p_release_keys_(p_release_keys) {}
-
-  auto *get() { return reinterpret_cast<native_type *>(this); }
-
-  StructureType s_type_ = StructureType::WIN32_KEYED_MUTEX_ACQUIRE_RELEASE_INFO_NV;
-  const void *p_next_;
-  uint32_t acquire_count_;
-  const VkDeviceMemory *p_acquire_syncs_;
-  const uint64_t *p_acquire_keys_;
-  const uint32_t *p_acquire_timeout_milliseconds_;
-  uint32_t release_count_;
-  const VkDeviceMemory *p_release_syncs_;
-  const uint64_t *p_release_keys_;
-};
-#endif
 
 struct PhysicalDeviceShaderIntegerDotProductProperties {
 
@@ -8695,8 +7856,8 @@ struct PhysicalDevicePageableDeviceLocalMemoryFeaturesEXT {
 
   using native_type = VkPhysicalDevicePageableDeviceLocalMemoryFeaturesEXT;
 
-  PhysicalDevicePageableDeviceLocalMemoryFeaturesEXT(void *p_next = {}, VkBool32 pageable_device_local_memory = {})
-    : p_next_(p_next), pageable_device_local_memory_(pageable_device_local_memory) {}
+  PhysicalDevicePageableDeviceLocalMemoryFeaturesEXT(VkBool32 pageable_device_local_memory = {}, void *p_next = {})
+    : pageable_device_local_memory_(pageable_device_local_memory), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -8709,15 +7870,15 @@ struct PipelineDynamicStateCreateInfo {
 
   using native_type = VkPipelineDynamicStateCreateInfo;
 
-  PipelineDynamicStateCreateInfo(const void *p_next = {}, VkPipelineDynamicStateCreateFlags flags = {}, uint32_t dynamic_state_count = {},
-                                 const DynamicState *p_dynamic_states = {})
-    : p_next_(p_next), flags_(flags), dynamic_state_count_(dynamic_state_count), p_dynamic_states_(p_dynamic_states) {}
+  PipelineDynamicStateCreateInfo(const DynamicState *p_dynamic_states = {}, PipelineDynamicStateCreateMask flags = {},
+                                 uint32_t dynamic_state_count = {}, const void *p_next = {})
+    : p_dynamic_states_(p_dynamic_states), flags_(flags), dynamic_state_count_(dynamic_state_count), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PIPELINE_DYNAMIC_STATE_CREATE_INFO;
   const void *p_next_;
-  VkPipelineDynamicStateCreateFlags flags_;
+  PipelineDynamicStateCreateMask flags_;
   uint32_t dynamic_state_count_;
   const DynamicState *p_dynamic_states_;
 };
@@ -8726,21 +7887,21 @@ struct ExternalMemoryImageCreateInfo {
 
   using native_type = VkExternalMemoryImageCreateInfo;
 
-  ExternalMemoryImageCreateInfo(const void *p_next = {}, VkExternalMemoryHandleTypeFlags handle_types = {})
-    : p_next_(p_next), handle_types_(handle_types) {}
+  ExternalMemoryImageCreateInfo(ExternalMemoryHandleTypeMask handle_types = {}, const void *p_next = {})
+    : handle_types_(handle_types), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::EXTERNAL_MEMORY_IMAGE_CREATE_INFO;
   const void *p_next_;
-  VkExternalMemoryHandleTypeFlags handle_types_;
+  ExternalMemoryHandleTypeMask handle_types_;
 };
 
 struct DeviceEventInfoEXT {
 
   using native_type = VkDeviceEventInfoEXT;
 
-  DeviceEventInfoEXT(const void *p_next = {}, DeviceEventType device_event = {}) : p_next_(p_next), device_event_(device_event) {}
+  DeviceEventInfoEXT(DeviceEventType device_event = {}, const void *p_next = {}) : device_event_(device_event), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -8753,10 +7914,10 @@ struct PhysicalDeviceInlineUniformBlockFeatures {
 
   using native_type = VkPhysicalDeviceInlineUniformBlockFeatures;
 
-  PhysicalDeviceInlineUniformBlockFeatures(void *p_next = {}, VkBool32 inline_uniform_block = {},
-                                           VkBool32 descriptor_binding_inline_uniform_block_update_after_bind = {})
-    : p_next_(p_next), inline_uniform_block_(inline_uniform_block),
-      descriptor_binding_inline_uniform_block_update_after_bind_(descriptor_binding_inline_uniform_block_update_after_bind) {}
+  PhysicalDeviceInlineUniformBlockFeatures(VkBool32 descriptor_binding_inline_uniform_block_update_after_bind = {},
+                                           VkBool32 inline_uniform_block = {}, void *p_next = {})
+    : descriptor_binding_inline_uniform_block_update_after_bind_(descriptor_binding_inline_uniform_block_update_after_bind),
+      inline_uniform_block_(inline_uniform_block), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -8770,8 +7931,8 @@ struct CuModuleCreateInfoNVX {
 
   using native_type = VkCuModuleCreateInfoNVX;
 
-  CuModuleCreateInfoNVX(const void *p_next = {}, size_t data_size = {}, const void *p_data = {})
-    : p_next_(p_next), data_size_(data_size), p_data_(p_data) {}
+  CuModuleCreateInfoNVX(const void *p_data = {}, size_t data_size = {}, const void *p_next = {})
+    : p_data_(p_data), data_size_(data_size), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -8785,10 +7946,10 @@ struct VideoDecodeH265PictureInfoKHR {
 
   using native_type = VkVideoDecodeH265PictureInfoKHR;
 
-  VideoDecodeH265PictureInfoKHR(const void *p_next = {}, const StdVideoDecodeH265PictureInfo *p_std_picture_info = {},
-                                uint32_t slice_segment_count = {}, const uint32_t *p_slice_segment_offsets = {})
-    : p_next_(p_next), p_std_picture_info_(p_std_picture_info), slice_segment_count_(slice_segment_count),
-      p_slice_segment_offsets_(p_slice_segment_offsets) {}
+  VideoDecodeH265PictureInfoKHR(const uint32_t *p_slice_segment_offsets = {}, const StdVideoDecodeH265PictureInfo *p_std_picture_info = {},
+                                uint32_t slice_segment_count = {}, const void *p_next = {})
+    : p_slice_segment_offsets_(p_slice_segment_offsets), p_std_picture_info_(p_std_picture_info), slice_segment_count_(slice_segment_count),
+      p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -8798,39 +7959,21 @@ struct VideoDecodeH265PictureInfoKHR {
   uint32_t slice_segment_count_;
   const uint32_t *p_slice_segment_offsets_;
 };
-#ifdef VK_USE_PLATFORM_XLIB_KHR
-
-struct XlibSurfaceCreateInfoKHR {
-
-  using native_type = VkXlibSurfaceCreateInfoKHR;
-
-  XlibSurfaceCreateInfoKHR(const void *p_next = {}, VkXlibSurfaceCreateFlagsKHR flags = {}, Display *dpy = {}, Window window = {})
-    : p_next_(p_next), flags_(flags), dpy_(dpy), window_(window) {}
-
-  auto *get() { return reinterpret_cast<native_type *>(this); }
-
-  StructureType s_type_ = StructureType::XLIB_SURFACE_CREATE_INFO_KHR;
-  const void *p_next_;
-  VkXlibSurfaceCreateFlagsKHR flags_;
-  Display *dpy_;
-  Window window_;
-};
-#endif
 
 struct ImageViewCreateInfo {
 
   using native_type = VkImageViewCreateInfo;
 
-  ImageViewCreateInfo(const void *p_next = {}, VkImageViewCreateFlags flags = {}, VkImage image = {}, ImageViewType view_type = {},
-                      Format format = {}, ComponentMapping components = {}, ImageSubresourceRange subresource_range = {})
-    : p_next_(p_next), flags_(flags), image_(image), view_type_(view_type), format_(format), components_(components),
-      subresource_range_(subresource_range) {}
+  ImageViewCreateInfo(ImageSubresourceRange subresource_range = {}, ImageViewCreateMask flags = {}, VkImage image = {},
+                      ImageViewType view_type = {}, Format format = {}, ComponentMapping components = {}, const void *p_next = {})
+    : subresource_range_(subresource_range), flags_(flags), image_(image), view_type_(view_type), format_(format), components_(components),
+      p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::IMAGE_VIEW_CREATE_INFO;
   const void *p_next_;
-  VkImageViewCreateFlags flags_;
+  ImageViewCreateMask flags_;
   VkImage image_;
   ImageViewType view_type_;
   Format format_;
@@ -8842,19 +7985,18 @@ struct CommandBufferInheritanceRenderingInfo {
 
   using native_type = VkCommandBufferInheritanceRenderingInfo;
 
-  CommandBufferInheritanceRenderingInfo(const void *p_next = {}, VkRenderingFlags flags = {}, uint32_t view_mask = {},
+  CommandBufferInheritanceRenderingInfo(SampleCountMaskBit rasterization_samples = {}, RenderingMask flags = {}, uint32_t view_mask = {},
                                         uint32_t color_attachment_count = {}, const Format *p_color_attachment_formats = {},
-                                        Format depth_attachment_format = {}, Format stencil_attachment_format = {},
-                                        SampleCountMaskBit rasterization_samples = {})
-    : p_next_(p_next), flags_(flags), view_mask_(view_mask), color_attachment_count_(color_attachment_count),
+                                        Format depth_attachment_format = {}, Format stencil_attachment_format = {}, const void *p_next = {})
+    : rasterization_samples_(rasterization_samples), flags_(flags), view_mask_(view_mask), color_attachment_count_(color_attachment_count),
       p_color_attachment_formats_(p_color_attachment_formats), depth_attachment_format_(depth_attachment_format),
-      stencil_attachment_format_(stencil_attachment_format), rasterization_samples_(rasterization_samples) {}
+      stencil_attachment_format_(stencil_attachment_format), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::COMMAND_BUFFER_INHERITANCE_RENDERING_INFO;
   const void *p_next_;
-  VkRenderingFlags flags_;
+  RenderingMask flags_;
   uint32_t view_mask_;
   uint32_t color_attachment_count_;
   const Format *p_color_attachment_formats_;
@@ -8867,12 +8009,13 @@ struct PhysicalDeviceLineRasterizationFeaturesKHR {
 
   using native_type = VkPhysicalDeviceLineRasterizationFeaturesKHR;
 
-  PhysicalDeviceLineRasterizationFeaturesKHR(void *p_next = {}, VkBool32 rectangular_lines = {}, VkBool32 bresenham_lines = {},
-                                             VkBool32 smooth_lines = {}, VkBool32 stippled_rectangular_lines = {},
-                                             VkBool32 stippled_bresenham_lines = {}, VkBool32 stippled_smooth_lines = {})
-    : p_next_(p_next), rectangular_lines_(rectangular_lines), bresenham_lines_(bresenham_lines), smooth_lines_(smooth_lines),
-      stippled_rectangular_lines_(stippled_rectangular_lines), stippled_bresenham_lines_(stippled_bresenham_lines),
-      stippled_smooth_lines_(stippled_smooth_lines) {}
+  PhysicalDeviceLineRasterizationFeaturesKHR(VkBool32 stippled_smooth_lines = {}, VkBool32 rectangular_lines = {},
+                                             VkBool32 bresenham_lines = {}, VkBool32 smooth_lines = {},
+                                             VkBool32 stippled_rectangular_lines = {}, VkBool32 stippled_bresenham_lines = {},
+                                             void *p_next = {})
+    : stippled_smooth_lines_(stippled_smooth_lines), rectangular_lines_(rectangular_lines), bresenham_lines_(bresenham_lines),
+      smooth_lines_(smooth_lines), stippled_rectangular_lines_(stippled_rectangular_lines),
+      stippled_bresenham_lines_(stippled_bresenham_lines), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -8913,7 +8056,7 @@ struct SubpassDescription {
 
   using native_type = VkSubpassDescription;
 
-  SubpassDescription(VkSubpassDescriptionFlags flags = {}, PipelineBindPoint pipeline_bind_point = {}, uint32_t input_attachment_count = {},
+  SubpassDescription(SubpassDescriptionMask flags = {}, PipelineBindPoint pipeline_bind_point = {}, uint32_t input_attachment_count = {},
                      const AttachmentReference *p_input_attachments = {}, uint32_t color_attachment_count = {},
                      const AttachmentReference *p_color_attachments = {}, const AttachmentReference *p_resolve_attachments = {},
                      const AttachmentReference *p_depth_stencil_attachment = {}, uint32_t preserve_attachment_count = {},
@@ -8925,7 +8068,7 @@ struct SubpassDescription {
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
-  VkSubpassDescriptionFlags flags_;
+  SubpassDescriptionMask flags_;
   PipelineBindPoint pipeline_bind_point_;
   uint32_t input_attachment_count_;
   const AttachmentReference *p_input_attachments_;
@@ -8953,8 +8096,8 @@ struct CudaFunctionCreateInfoNV {
 
   using native_type = VkCudaFunctionCreateInfoNV;
 
-  CudaFunctionCreateInfoNV(const void *p_next = {}, VkCudaModuleNV module = {}, const char *p_name = {})
-    : p_next_(p_next), module_(module), p_name_(p_name) {}
+  CudaFunctionCreateInfoNV(const char *p_name = {}, VkCudaModuleNV module = {}, const void *p_next = {})
+    : p_name_(p_name), module_(module), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -8968,9 +8111,9 @@ struct HostImageLayoutTransitionInfoEXT {
 
   using native_type = VkHostImageLayoutTransitionInfoEXT;
 
-  HostImageLayoutTransitionInfoEXT(const void *p_next = {}, VkImage image = {}, ImageLayout old_layout = {}, ImageLayout new_layout = {},
-                                   ImageSubresourceRange subresource_range = {})
-    : p_next_(p_next), image_(image), old_layout_(old_layout), new_layout_(new_layout), subresource_range_(subresource_range) {}
+  HostImageLayoutTransitionInfoEXT(ImageSubresourceRange subresource_range = {}, VkImage image = {}, ImageLayout old_layout = {},
+                                   ImageLayout new_layout = {}, const void *p_next = {})
+    : subresource_range_(subresource_range), image_(image), old_layout_(old_layout), new_layout_(new_layout), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -8995,33 +8138,13 @@ struct ShadingRatePaletteNV {
   uint32_t shading_rate_palette_entry_count_;
   const ShadingRatePaletteEntry *p_shading_rate_palette_entries_;
 };
-#ifdef VK_USE_PLATFORM_ANDROID_KHR
-
-struct AndroidHardwareBufferFormatProperties2ANDROID {
-
-  using native_type = VkAndroidHardwareBufferFormatProperties2ANDROID;
-
-  auto *get() { return reinterpret_cast<native_type *>(this); }
-
-  StructureType s_type_ = StructureType::ANDROID_HARDWARE_BUFFER_FORMAT_PROPERTIES_2_ANDROID;
-  void *p_next_;
-  Format format_;
-  uint64_t external_format_;
-  VkFormatFeatureFlags2 format_features_;
-  ComponentMapping sampler_ycbcr_conversion_components_;
-  SamplerYcbcrModelConversion suggested_ycbcr_model_;
-  SamplerYcbcrRange suggested_ycbcr_range_;
-  ChromaLocation suggested_xchroma_offset_;
-  ChromaLocation suggested_ychroma_offset_;
-};
-#endif
 
 struct PhysicalDeviceExternalSemaphoreInfo {
 
   using native_type = VkPhysicalDeviceExternalSemaphoreInfo;
 
-  PhysicalDeviceExternalSemaphoreInfo(const void *p_next = {}, ExternalSemaphoreHandleTypeMaskBit handle_type = {})
-    : p_next_(p_next), handle_type_(handle_type) {}
+  PhysicalDeviceExternalSemaphoreInfo(ExternalSemaphoreHandleTypeMaskBit handle_type = {}, const void *p_next = {})
+    : handle_type_(handle_type), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -9035,7 +8158,7 @@ struct SparseMemoryBind {
   using native_type = VkSparseMemoryBind;
 
   SparseMemoryBind(VkDeviceSize resource_offset = {}, VkDeviceSize size = {}, VkDeviceMemory memory = {}, VkDeviceSize memory_offset = {},
-                   VkSparseMemoryBindFlags flags = {})
+                   SparseMemoryBindMask flags = {})
     : resource_offset_(resource_offset), size_(size), memory_(memory), memory_offset_(memory_offset), flags_(flags) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
@@ -9044,7 +8167,7 @@ struct SparseMemoryBind {
   VkDeviceSize size_;
   VkDeviceMemory memory_;
   VkDeviceSize memory_offset_;
-  VkSparseMemoryBindFlags flags_;
+  SparseMemoryBindMask flags_;
 };
 
 struct SparseBufferMemoryBindInfo {
@@ -9098,35 +8221,15 @@ struct PhysicalDeviceMeshShaderPropertiesEXT {
   VkBool32 prefers_compact_vertex_output_;
   VkBool32 prefers_compact_primitive_output_;
 };
-#ifdef VK_USE_PLATFORM_DIRECTFB_EXT
-
-struct DirectFBSurfaceCreateInfoEXT {
-
-  using native_type = VkDirectFBSurfaceCreateInfoEXT;
-
-  DirectFBSurfaceCreateInfoEXT(const void *p_next = {}, VkDirectFBSurfaceCreateFlagsEXT flags = {}, IDirectFB *dfb = {},
-                               IDirectFBSurface *surface = {})
-    : p_next_(p_next), flags_(flags), dfb_(dfb), surface_(surface) {}
-
-  auto *get() { return reinterpret_cast<native_type *>(this); }
-
-  StructureType s_type_ = StructureType::DIRECTFB_SURFACE_CREATE_INFO_EXT;
-  const void *p_next_;
-  VkDirectFBSurfaceCreateFlagsEXT flags_;
-  IDirectFB *dfb_;
-  IDirectFBSurface *surface_;
-};
-#endif
 
 struct PhysicalDeviceNestedCommandBufferFeaturesEXT {
 
   using native_type = VkPhysicalDeviceNestedCommandBufferFeaturesEXT;
 
-  PhysicalDeviceNestedCommandBufferFeaturesEXT(void *p_next = {}, VkBool32 nested_command_buffer = {},
-                                               VkBool32 nested_command_buffer_rendering = {},
-                                               VkBool32 nested_command_buffer_simultaneous_use = {})
-    : p_next_(p_next), nested_command_buffer_(nested_command_buffer), nested_command_buffer_rendering_(nested_command_buffer_rendering),
-      nested_command_buffer_simultaneous_use_(nested_command_buffer_simultaneous_use) {}
+  PhysicalDeviceNestedCommandBufferFeaturesEXT(VkBool32 nested_command_buffer_simultaneous_use = {}, VkBool32 nested_command_buffer = {},
+                                               VkBool32 nested_command_buffer_rendering = {}, void *p_next = {})
+    : nested_command_buffer_simultaneous_use_(nested_command_buffer_simultaneous_use), nested_command_buffer_(nested_command_buffer),
+      nested_command_buffer_rendering_(nested_command_buffer_rendering), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -9148,41 +8251,23 @@ struct PhysicalDeviceMaintenance3Properties {
   uint32_t max_per_set_descriptors_;
   VkDeviceSize max_memory_allocation_size_;
 };
-#ifdef VK_ENABLE_BETA_EXTENSIONS
-
-struct PipelineShaderStageNodeCreateInfoAMDX {
-
-  using native_type = VkPipelineShaderStageNodeCreateInfoAMDX;
-
-  PipelineShaderStageNodeCreateInfoAMDX(const void *p_next = {}, const char *p_name = {}, uint32_t index = {})
-    : p_next_(p_next), p_name_(p_name), index_(index) {}
-
-  auto *get() { return reinterpret_cast<native_type *>(this); }
-
-  StructureType s_type_ = StructureType::PIPELINE_SHADER_STAGE_NODE_CREATE_INFO_AMDX;
-  const void *p_next_;
-  const char *p_name_;
-  uint32_t index_;
-};
-#endif
 
 struct BufferMemoryBarrier {
 
   using native_type = VkBufferMemoryBarrier;
 
-  BufferMemoryBarrier(const void *p_next = {}, VkAccessFlags src_access_mask = {}, VkAccessFlags dst_access_mask = {},
+  BufferMemoryBarrier(VkDeviceSize size = {}, AccessMask src_access_mask = {}, AccessMask dst_access_mask = {},
                       uint32_t src_queue_family_index = {}, uint32_t dst_queue_family_index = {}, VkBuffer buffer = {},
-                      VkDeviceSize offset = {}, VkDeviceSize size = {})
-    : p_next_(p_next), src_access_mask_(src_access_mask), dst_access_mask_(dst_access_mask),
-      src_queue_family_index_(src_queue_family_index), dst_queue_family_index_(dst_queue_family_index), buffer_(buffer), offset_(offset),
-      size_(size) {}
+                      VkDeviceSize offset = {}, const void *p_next = {})
+    : size_(size), src_access_mask_(src_access_mask), dst_access_mask_(dst_access_mask), src_queue_family_index_(src_queue_family_index),
+      dst_queue_family_index_(dst_queue_family_index), buffer_(buffer), offset_(offset), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::BUFFER_MEMORY_BARRIER;
   const void *p_next_;
-  VkAccessFlags src_access_mask_;
-  VkAccessFlags dst_access_mask_;
+  AccessMask src_access_mask_;
+  AccessMask dst_access_mask_;
   uint32_t src_queue_family_index_;
   uint32_t dst_queue_family_index_;
   VkBuffer buffer_;
@@ -9194,8 +8279,8 @@ struct MemoryGetRemoteAddressInfoNV {
 
   using native_type = VkMemoryGetRemoteAddressInfoNV;
 
-  MemoryGetRemoteAddressInfoNV(const void *p_next = {}, VkDeviceMemory memory = {}, ExternalMemoryHandleTypeMaskBit handle_type = {})
-    : p_next_(p_next), memory_(memory), handle_type_(handle_type) {}
+  MemoryGetRemoteAddressInfoNV(ExternalMemoryHandleTypeMaskBit handle_type = {}, VkDeviceMemory memory = {}, const void *p_next = {})
+    : handle_type_(handle_type), memory_(memory), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -9209,8 +8294,8 @@ struct BufferDeviceAddressCreateInfoEXT {
 
   using native_type = VkBufferDeviceAddressCreateInfoEXT;
 
-  BufferDeviceAddressCreateInfoEXT(const void *p_next = {}, VkDeviceAddress device_address = {})
-    : p_next_(p_next), device_address_(device_address) {}
+  BufferDeviceAddressCreateInfoEXT(VkDeviceAddress device_address = {}, const void *p_next = {})
+    : device_address_(device_address), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -9223,15 +8308,14 @@ struct OpticalFlowExecuteInfoNV {
 
   using native_type = VkOpticalFlowExecuteInfoNV;
 
-  OpticalFlowExecuteInfoNV(void *p_next = {}, VkOpticalFlowExecuteFlagsNV flags = {}, uint32_t region_count = {},
-                           const Rect2D *p_regions = {})
-    : p_next_(p_next), flags_(flags), region_count_(region_count), p_regions_(p_regions) {}
+  OpticalFlowExecuteInfoNV(const Rect2D *p_regions = {}, OpticalFlowExecuteMask flags = {}, uint32_t region_count = {}, void *p_next = {})
+    : p_regions_(p_regions), flags_(flags), region_count_(region_count), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::OPTICAL_FLOW_EXECUTE_INFO_NV;
   void *p_next_;
-  VkOpticalFlowExecuteFlagsNV flags_;
+  OpticalFlowExecuteMask flags_;
   uint32_t region_count_;
   const Rect2D *p_regions_;
 };
@@ -9254,18 +8338,18 @@ struct FramebufferAttachmentImageInfo {
 
   using native_type = VkFramebufferAttachmentImageInfo;
 
-  FramebufferAttachmentImageInfo(const void *p_next = {}, VkImageCreateFlags flags = {}, VkImageUsageFlags usage = {}, uint32_t width = {},
-                                 uint32_t height = {}, uint32_t layer_count = {}, uint32_t view_format_count = {},
-                                 const Format *p_view_formats = {})
-    : p_next_(p_next), flags_(flags), usage_(usage), width_(width), height_(height), layer_count_(layer_count),
-      view_format_count_(view_format_count), p_view_formats_(p_view_formats) {}
+  FramebufferAttachmentImageInfo(const Format *p_view_formats = {}, ImageCreateMask flags = {}, ImageUsageMask usage = {},
+                                 uint32_t width = {}, uint32_t height = {}, uint32_t layer_count = {}, uint32_t view_format_count = {},
+                                 const void *p_next = {})
+    : p_view_formats_(p_view_formats), flags_(flags), usage_(usage), width_(width), height_(height), layer_count_(layer_count),
+      view_format_count_(view_format_count), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::FRAMEBUFFER_ATTACHMENT_IMAGE_INFO;
   const void *p_next_;
-  VkImageCreateFlags flags_;
-  VkImageUsageFlags usage_;
+  ImageCreateMask flags_;
+  ImageUsageMask usage_;
   uint32_t width_;
   uint32_t height_;
   uint32_t layer_count_;
@@ -9277,9 +8361,9 @@ struct FramebufferAttachmentsCreateInfo {
 
   using native_type = VkFramebufferAttachmentsCreateInfo;
 
-  FramebufferAttachmentsCreateInfo(const void *p_next = {}, uint32_t attachment_image_info_count = {},
-                                   const FramebufferAttachmentImageInfo *p_attachment_image_infos = {})
-    : p_next_(p_next), attachment_image_info_count_(attachment_image_info_count), p_attachment_image_infos_(p_attachment_image_infos) {}
+  FramebufferAttachmentsCreateInfo(const FramebufferAttachmentImageInfo *p_attachment_image_infos = {},
+                                   uint32_t attachment_image_info_count = {}, const void *p_next = {})
+    : p_attachment_image_infos_(p_attachment_image_infos), attachment_image_info_count_(attachment_image_info_count), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -9320,8 +8404,8 @@ struct BindImageMemorySwapchainInfoKHR {
 
   using native_type = VkBindImageMemorySwapchainInfoKHR;
 
-  BindImageMemorySwapchainInfoKHR(const void *p_next = {}, VkSwapchainKHR swapchain = {}, uint32_t image_index = {})
-    : p_next_(p_next), swapchain_(swapchain), image_index_(image_index) {}
+  BindImageMemorySwapchainInfoKHR(uint32_t image_index = {}, VkSwapchainKHR swapchain = {}, const void *p_next = {})
+    : image_index_(image_index), swapchain_(swapchain), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -9330,22 +8414,6 @@ struct BindImageMemorySwapchainInfoKHR {
   VkSwapchainKHR swapchain_;
   uint32_t image_index_;
 };
-#ifdef VK_USE_PLATFORM_SCREEN_QNX
-
-struct PhysicalDeviceExternalMemoryScreenBufferFeaturesQNX {
-
-  using native_type = VkPhysicalDeviceExternalMemoryScreenBufferFeaturesQNX;
-
-  PhysicalDeviceExternalMemoryScreenBufferFeaturesQNX(void *p_next = {}, VkBool32 screen_buffer_import = {})
-    : p_next_(p_next), screen_buffer_import_(screen_buffer_import) {}
-
-  auto *get() { return reinterpret_cast<native_type *>(this); }
-
-  StructureType s_type_ = StructureType::PHYSICAL_DEVICE_EXTERNAL_MEMORY_SCREEN_BUFFER_FEATURES_QNX;
-  void *p_next_;
-  VkBool32 screen_buffer_import_;
-};
-#endif
 
 struct ShaderResourceUsageAMD {
 
@@ -9366,7 +8434,7 @@ struct ShaderStatisticsInfoAMD {
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
-  VkShaderStageFlags shader_stage_mask_;
+  ShaderStageMask shader_stage_mask_;
   ShaderResourceUsageAMD resource_usage_;
   uint32_t num_physical_vgprs_;
   uint32_t num_physical_sgprs_;
@@ -9410,8 +8478,8 @@ struct PhysicalDeviceLegacyDitheringFeaturesEXT {
 
   using native_type = VkPhysicalDeviceLegacyDitheringFeaturesEXT;
 
-  PhysicalDeviceLegacyDitheringFeaturesEXT(void *p_next = {}, VkBool32 legacy_dithering = {})
-    : p_next_(p_next), legacy_dithering_(legacy_dithering) {}
+  PhysicalDeviceLegacyDitheringFeaturesEXT(VkBool32 legacy_dithering = {}, void *p_next = {})
+    : legacy_dithering_(legacy_dithering), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -9442,10 +8510,10 @@ struct PhysicalDeviceMultiviewFeatures {
 
   using native_type = VkPhysicalDeviceMultiviewFeatures;
 
-  PhysicalDeviceMultiviewFeatures(void *p_next = {}, VkBool32 multiview = {}, VkBool32 multiview_geometry_shader = {},
-                                  VkBool32 multiview_tessellation_shader = {})
-    : p_next_(p_next), multiview_(multiview), multiview_geometry_shader_(multiview_geometry_shader),
-      multiview_tessellation_shader_(multiview_tessellation_shader) {}
+  PhysicalDeviceMultiviewFeatures(VkBool32 multiview_tessellation_shader = {}, VkBool32 multiview = {},
+                                  VkBool32 multiview_geometry_shader = {}, void *p_next = {})
+    : multiview_tessellation_shader_(multiview_tessellation_shader), multiview_(multiview),
+      multiview_geometry_shader_(multiview_geometry_shader), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -9460,35 +8528,34 @@ struct DeviceGroupSwapchainCreateInfoKHR {
 
   using native_type = VkDeviceGroupSwapchainCreateInfoKHR;
 
-  DeviceGroupSwapchainCreateInfoKHR(const void *p_next = {}, VkDeviceGroupPresentModeFlagsKHR modes = {})
-    : p_next_(p_next), modes_(modes) {}
+  DeviceGroupSwapchainCreateInfoKHR(DeviceGroupPresentModeMask modes = {}, const void *p_next = {}) : modes_(modes), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::DEVICE_GROUP_SWAPCHAIN_CREATE_INFO_KHR;
   const void *p_next_;
-  VkDeviceGroupPresentModeFlagsKHR modes_;
+  DeviceGroupPresentModeMask modes_;
 };
 
 struct PipelineCreateFlags2CreateInfoKHR {
 
   using native_type = VkPipelineCreateFlags2CreateInfoKHR;
 
-  PipelineCreateFlags2CreateInfoKHR(const void *p_next = {}, VkPipelineCreateFlags2KHR flags = {}) : p_next_(p_next), flags_(flags) {}
+  PipelineCreateFlags2CreateInfoKHR(PipelineCreateMask2 flags = {}, const void *p_next = {}) : flags_(flags), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PIPELINE_CREATE_FLAGS_2_CREATE_INFO_KHR;
   const void *p_next_;
-  VkPipelineCreateFlags2KHR flags_;
+  PipelineCreateMask2 flags_;
 };
 
 struct DedicatedAllocationMemoryAllocateInfoNV {
 
   using native_type = VkDedicatedAllocationMemoryAllocateInfoNV;
 
-  DedicatedAllocationMemoryAllocateInfoNV(const void *p_next = {}, VkImage image = {}, VkBuffer buffer = {})
-    : p_next_(p_next), image_(image), buffer_(buffer) {}
+  DedicatedAllocationMemoryAllocateInfoNV(VkBuffer buffer = {}, VkImage image = {}, const void *p_next = {})
+    : buffer_(buffer), image_(image), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -9513,10 +8580,10 @@ struct ComputePipelineIndirectBufferInfoNV {
 
   using native_type = VkComputePipelineIndirectBufferInfoNV;
 
-  ComputePipelineIndirectBufferInfoNV(const void *p_next = {}, VkDeviceAddress device_address = {}, VkDeviceSize size = {},
-                                      VkDeviceAddress pipeline_device_address_capture_replay = {})
-    : p_next_(p_next), device_address_(device_address), size_(size),
-      pipeline_device_address_capture_replay_(pipeline_device_address_capture_replay) {}
+  ComputePipelineIndirectBufferInfoNV(VkDeviceAddress pipeline_device_address_capture_replay = {}, VkDeviceAddress device_address = {},
+                                      VkDeviceSize size = {}, const void *p_next = {})
+    : pipeline_device_address_capture_replay_(pipeline_device_address_capture_replay), device_address_(device_address), size_(size),
+      p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -9531,13 +8598,13 @@ struct VideoCodingControlInfoKHR {
 
   using native_type = VkVideoCodingControlInfoKHR;
 
-  VideoCodingControlInfoKHR(const void *p_next = {}, VkVideoCodingControlFlagsKHR flags = {}) : p_next_(p_next), flags_(flags) {}
+  VideoCodingControlInfoKHR(VideoCodingControlMask flags = {}, const void *p_next = {}) : flags_(flags), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::VIDEO_CODING_CONTROL_INFO_KHR;
   const void *p_next_;
-  VkVideoCodingControlFlagsKHR flags_;
+  VideoCodingControlMask flags_;
 };
 
 struct QueueFamilyProperties {
@@ -9546,7 +8613,7 @@ struct QueueFamilyProperties {
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
-  VkQueueFlags queue_flags_;
+  QueueMask queue_flags_;
   uint32_t queue_count_;
   uint32_t timestamp_valid_bits_;
   Extent3D min_image_transfer_granularity_;
@@ -9556,8 +8623,8 @@ struct PhysicalDeviceDescriptorSetHostMappingFeaturesVALVE {
 
   using native_type = VkPhysicalDeviceDescriptorSetHostMappingFeaturesVALVE;
 
-  PhysicalDeviceDescriptorSetHostMappingFeaturesVALVE(void *p_next = {}, VkBool32 descriptor_set_host_mapping = {})
-    : p_next_(p_next), descriptor_set_host_mapping_(descriptor_set_host_mapping) {}
+  PhysicalDeviceDescriptorSetHostMappingFeaturesVALVE(VkBool32 descriptor_set_host_mapping = {}, void *p_next = {})
+    : descriptor_set_host_mapping_(descriptor_set_host_mapping), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -9572,8 +8639,8 @@ struct AccelerationStructureMatrixMotionInstanceNV {
 
   AccelerationStructureMatrixMotionInstanceNV(TransformMatrixKHR transform_t0 = {}, TransformMatrixKHR transform_t1 = {},
                                               uint32_t instance_custom_index = {}, uint32_t mask = {},
-                                              uint32_t instance_shader_binding_table_record_offset = {},
-                                              VkGeometryInstanceFlagsKHR flags = {}, uint64_t acceleration_structure_reference = {})
+                                              uint32_t instance_shader_binding_table_record_offset = {}, VkGeometryInstanceFlagsKHR flags = {},
+                                              uint64_t acceleration_structure_reference = {})
     : transform_t0_(transform_t0), transform_t1_(transform_t1), instance_custom_index_(instance_custom_index), mask_(mask),
       instance_shader_binding_table_record_offset_(instance_shader_binding_table_record_offset), flags_(flags),
       acceleration_structure_reference_(acceleration_structure_reference) {}
@@ -9593,11 +8660,10 @@ struct VideoEncodeH265PictureInfoKHR {
 
   using native_type = VkVideoEncodeH265PictureInfoKHR;
 
-  VideoEncodeH265PictureInfoKHR(const void *p_next = {}, uint32_t nalu_slice_segment_entry_count = {},
-                                const VideoEncodeH265NaluSliceSegmentInfoKHR *p_nalu_slice_segment_entries = {},
-                                const StdVideoEncodeH265PictureInfo *p_std_picture_info = {})
-    : p_next_(p_next), nalu_slice_segment_entry_count_(nalu_slice_segment_entry_count),
-      p_nalu_slice_segment_entries_(p_nalu_slice_segment_entries), p_std_picture_info_(p_std_picture_info) {}
+  VideoEncodeH265PictureInfoKHR(const StdVideoEncodeH265PictureInfo *p_std_picture_info = {}, uint32_t nalu_slice_segment_entry_count = {},
+                                const VideoEncodeH265NaluSliceSegmentInfoKHR *p_nalu_slice_segment_entries = {}, const void *p_next = {})
+    : p_std_picture_info_(p_std_picture_info), nalu_slice_segment_entry_count_(nalu_slice_segment_entry_count),
+      p_nalu_slice_segment_entries_(p_nalu_slice_segment_entries), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -9612,10 +8678,10 @@ struct BlitImageInfo2 {
 
   using native_type = VkBlitImageInfo2;
 
-  BlitImageInfo2(const void *p_next = {}, VkImage src_image = {}, ImageLayout src_image_layout = {}, VkImage dst_image = {},
-                 ImageLayout dst_image_layout = {}, uint32_t region_count = {}, const ImageBlit2 *p_regions = {}, Filter filter = {})
-    : p_next_(p_next), src_image_(src_image), src_image_layout_(src_image_layout), dst_image_(dst_image),
-      dst_image_layout_(dst_image_layout), region_count_(region_count), p_regions_(p_regions), filter_(filter) {}
+  BlitImageInfo2(Filter filter = {}, VkImage src_image = {}, ImageLayout src_image_layout = {}, VkImage dst_image = {},
+                 ImageLayout dst_image_layout = {}, uint32_t region_count = {}, const ImageBlit2 *p_regions = {}, const void *p_next = {})
+    : filter_(filter), src_image_(src_image), src_image_layout_(src_image_layout), dst_image_(dst_image),
+      dst_image_layout_(dst_image_layout), region_count_(region_count), p_regions_(p_regions), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -9634,15 +8700,15 @@ struct MemoryBarrier {
 
   using native_type = VkMemoryBarrier;
 
-  MemoryBarrier(const void *p_next = {}, VkAccessFlags src_access_mask = {}, VkAccessFlags dst_access_mask = {})
-    : p_next_(p_next), src_access_mask_(src_access_mask), dst_access_mask_(dst_access_mask) {}
+  MemoryBarrier(AccessMask dst_access_mask = {}, AccessMask src_access_mask = {}, const void *p_next = {})
+    : dst_access_mask_(dst_access_mask), src_access_mask_(src_access_mask), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::MEMORY_BARRIER;
   const void *p_next_;
-  VkAccessFlags src_access_mask_;
-  VkAccessFlags dst_access_mask_;
+  AccessMask src_access_mask_;
+  AccessMask dst_access_mask_;
 };
 
 struct PhysicalDeviceSubpassShadingPropertiesHUAWEI {
@@ -9660,9 +8726,9 @@ struct PhysicalDeviceSparseImageFormatInfo2 {
 
   using native_type = VkPhysicalDeviceSparseImageFormatInfo2;
 
-  PhysicalDeviceSparseImageFormatInfo2(const void *p_next = {}, Format format = {}, ImageType type = {}, SampleCountMaskBit samples = {},
-                                       VkImageUsageFlags usage = {}, ImageTiling tiling = {})
-    : p_next_(p_next), format_(format), type_(type), samples_(samples), usage_(usage), tiling_(tiling) {}
+  PhysicalDeviceSparseImageFormatInfo2(ImageTiling tiling = {}, Format format = {}, ImageType type = {}, SampleCountMaskBit samples = {},
+                                       ImageUsageMask usage = {}, const void *p_next = {})
+    : tiling_(tiling), format_(format), type_(type), samples_(samples), usage_(usage), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -9671,7 +8737,7 @@ struct PhysicalDeviceSparseImageFormatInfo2 {
   Format format_;
   ImageType type_;
   SampleCountMaskBit samples_;
-  VkImageUsageFlags usage_;
+  ImageUsageMask usage_;
   ImageTiling tiling_;
 };
 
@@ -9694,7 +8760,7 @@ struct SparseImageMemoryBind {
   using native_type = VkSparseImageMemoryBind;
 
   SparseImageMemoryBind(ImageSubresource subresource = {}, Offset3D offset = {}, Extent3D extent = {}, VkDeviceMemory memory = {},
-                        VkDeviceSize memory_offset = {}, VkSparseMemoryBindFlags flags = {})
+                        VkDeviceSize memory_offset = {}, SparseMemoryBindMask flags = {})
     : subresource_(subresource), offset_(offset), extent_(extent), memory_(memory), memory_offset_(memory_offset), flags_(flags) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
@@ -9704,7 +8770,7 @@ struct SparseImageMemoryBind {
   Extent3D extent_;
   VkDeviceMemory memory_;
   VkDeviceSize memory_offset_;
-  VkSparseMemoryBindFlags flags_;
+  SparseMemoryBindMask flags_;
 };
 
 struct SparseImageMemoryBindInfo {
@@ -9725,15 +8791,15 @@ struct BindSparseInfo {
 
   using native_type = VkBindSparseInfo;
 
-  BindSparseInfo(const void *p_next = {}, uint32_t wait_semaphore_count = {}, const VkSemaphore *p_wait_semaphores = {},
+  BindSparseInfo(const VkSemaphore *p_signal_semaphores = {}, uint32_t wait_semaphore_count = {}, const VkSemaphore *p_wait_semaphores = {},
                  uint32_t buffer_bind_count = {}, const SparseBufferMemoryBindInfo *p_buffer_binds = {},
                  uint32_t image_opaque_bind_count = {}, const SparseImageOpaqueMemoryBindInfo *p_image_opaque_binds = {},
                  uint32_t image_bind_count = {}, const SparseImageMemoryBindInfo *p_image_binds = {}, uint32_t signal_semaphore_count = {},
-                 const VkSemaphore *p_signal_semaphores = {})
-    : p_next_(p_next), wait_semaphore_count_(wait_semaphore_count), p_wait_semaphores_(p_wait_semaphores),
+                 const void *p_next = {})
+    : p_signal_semaphores_(p_signal_semaphores), wait_semaphore_count_(wait_semaphore_count), p_wait_semaphores_(p_wait_semaphores),
       buffer_bind_count_(buffer_bind_count), p_buffer_binds_(p_buffer_binds), image_opaque_bind_count_(image_opaque_bind_count),
       p_image_opaque_binds_(p_image_opaque_binds), image_bind_count_(image_bind_count), p_image_binds_(p_image_binds),
-      signal_semaphore_count_(signal_semaphore_count), p_signal_semaphores_(p_signal_semaphores) {}
+      signal_semaphore_count_(signal_semaphore_count), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -9755,8 +8821,8 @@ struct PhysicalDevicePipelineRobustnessFeaturesEXT {
 
   using native_type = VkPhysicalDevicePipelineRobustnessFeaturesEXT;
 
-  PhysicalDevicePipelineRobustnessFeaturesEXT(void *p_next = {}, VkBool32 pipeline_robustness = {})
-    : p_next_(p_next), pipeline_robustness_(pipeline_robustness) {}
+  PhysicalDevicePipelineRobustnessFeaturesEXT(VkBool32 pipeline_robustness = {}, void *p_next = {})
+    : pipeline_robustness_(pipeline_robustness), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -9769,14 +8835,14 @@ struct ShaderModuleCreateInfo {
 
   using native_type = VkShaderModuleCreateInfo;
 
-  ShaderModuleCreateInfo(const void *p_next = {}, VkShaderModuleCreateFlags flags = {}, size_t code_size = {}, const uint32_t *p_code = {})
-    : p_next_(p_next), flags_(flags), code_size_(code_size), p_code_(p_code) {}
+  ShaderModuleCreateInfo(const uint32_t *p_code = {}, ShaderModuleCreateMask flags = {}, size_t code_size = {}, const void *p_next = {})
+    : p_code_(p_code), flags_(flags), code_size_(code_size), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::SHADER_MODULE_CREATE_INFO;
   const void *p_next_;
-  VkShaderModuleCreateFlags flags_;
+  ShaderModuleCreateMask flags_;
   size_t code_size_;
   const uint32_t *p_code_;
 };
@@ -9799,21 +8865,21 @@ struct SwapchainCounterCreateInfoEXT {
 
   using native_type = VkSwapchainCounterCreateInfoEXT;
 
-  SwapchainCounterCreateInfoEXT(const void *p_next = {}, VkSurfaceCounterFlagsEXT surface_counters = {})
-    : p_next_(p_next), surface_counters_(surface_counters) {}
+  SwapchainCounterCreateInfoEXT(SurfaceCounterMask surface_counters = {}, const void *p_next = {})
+    : surface_counters_(surface_counters), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::SWAPCHAIN_COUNTER_CREATE_INFO_EXT;
   const void *p_next_;
-  VkSurfaceCounterFlagsEXT surface_counters_;
+  SurfaceCounterMask surface_counters_;
 };
 
 struct LatencySubmissionPresentIdNV {
 
   using native_type = VkLatencySubmissionPresentIdNV;
 
-  LatencySubmissionPresentIdNV(const void *p_next = {}, uint64_t present_id = {}) : p_next_(p_next), present_id_(present_id) {}
+  LatencySubmissionPresentIdNV(uint64_t present_id = {}, const void *p_next = {}) : present_id_(present_id), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -9826,9 +8892,9 @@ struct DescriptorSetAllocateInfo {
 
   using native_type = VkDescriptorSetAllocateInfo;
 
-  DescriptorSetAllocateInfo(const void *p_next = {}, VkDescriptorPool descriptor_pool = {}, uint32_t descriptor_set_count = {},
-                            const VkDescriptorSetLayout *p_set_layouts = {})
-    : p_next_(p_next), descriptor_pool_(descriptor_pool), descriptor_set_count_(descriptor_set_count), p_set_layouts_(p_set_layouts) {}
+  DescriptorSetAllocateInfo(const VkDescriptorSetLayout *p_set_layouts = {}, VkDescriptorPool descriptor_pool = {},
+                            uint32_t descriptor_set_count = {}, const void *p_next = {})
+    : p_set_layouts_(p_set_layouts), descriptor_pool_(descriptor_pool), descriptor_set_count_(descriptor_set_count), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -9838,37 +8904,21 @@ struct DescriptorSetAllocateInfo {
   uint32_t descriptor_set_count_;
   const VkDescriptorSetLayout *p_set_layouts_;
 };
-#ifdef VK_USE_PLATFORM_ANDROID_KHR
-
-struct PhysicalDeviceExternalFormatResolvePropertiesANDROID {
-
-  using native_type = VkPhysicalDeviceExternalFormatResolvePropertiesANDROID;
-
-  auto *get() { return reinterpret_cast<native_type *>(this); }
-
-  StructureType s_type_ = StructureType::PHYSICAL_DEVICE_EXTERNAL_FORMAT_RESOLVE_PROPERTIES_ANDROID;
-  void *p_next_;
-  VkBool32 null_color_attachment_with_external_format_resolve_;
-  ChromaLocation external_format_resolve_chroma_offset_x_;
-  ChromaLocation external_format_resolve_chroma_offset_y_;
-};
-#endif
 
 struct VideoSessionParametersCreateInfoKHR {
 
   using native_type = VkVideoSessionParametersCreateInfoKHR;
 
-  VideoSessionParametersCreateInfoKHR(const void *p_next = {}, VkVideoSessionParametersCreateFlagsKHR flags = {},
-                                      VkVideoSessionParametersKHR video_session_parameters_template = {},
-                                      VkVideoSessionKHR video_session = {})
-    : p_next_(p_next), flags_(flags), video_session_parameters_template_(video_session_parameters_template), video_session_(video_session) {
+  VideoSessionParametersCreateInfoKHR(VkVideoSessionKHR video_session = {}, VideoSessionParametersCreateMask flags = {},
+                                      VkVideoSessionParametersKHR video_session_parameters_template = {}, const void *p_next = {})
+    : video_session_(video_session), flags_(flags), video_session_parameters_template_(video_session_parameters_template), p_next_(p_next) {
   }
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::VIDEO_SESSION_PARAMETERS_CREATE_INFO_KHR;
   const void *p_next_;
-  VkVideoSessionParametersCreateFlagsKHR flags_;
+  VideoSessionParametersCreateMask flags_;
   VkVideoSessionParametersKHR video_session_parameters_template_;
   VkVideoSessionKHR video_session_;
 };
@@ -9877,13 +8927,13 @@ struct GeometryTrianglesNV {
 
   using native_type = VkGeometryTrianglesNV;
 
-  GeometryTrianglesNV(const void *p_next = {}, VkBuffer vertex_data = {}, VkDeviceSize vertex_offset = {}, uint32_t vertex_count = {},
-                      VkDeviceSize vertex_stride = {}, Format vertex_format = {}, VkBuffer index_data = {}, VkDeviceSize index_offset = {},
-                      uint32_t index_count = {}, IndexType index_type = {}, VkBuffer transform_data = {},
-                      VkDeviceSize transform_offset = {})
-    : p_next_(p_next), vertex_data_(vertex_data), vertex_offset_(vertex_offset), vertex_count_(vertex_count), vertex_stride_(vertex_stride),
-      vertex_format_(vertex_format), index_data_(index_data), index_offset_(index_offset), index_count_(index_count),
-      index_type_(index_type), transform_data_(transform_data), transform_offset_(transform_offset) {}
+  GeometryTrianglesNV(VkDeviceSize transform_offset = {}, VkBuffer vertex_data = {}, VkDeviceSize vertex_offset = {},
+                      uint32_t vertex_count = {}, VkDeviceSize vertex_stride = {}, Format vertex_format = {}, VkBuffer index_data = {},
+                      VkDeviceSize index_offset = {}, uint32_t index_count = {}, IndexType index_type = {}, VkBuffer transform_data = {},
+                      const void *p_next = {})
+    : transform_offset_(transform_offset), vertex_data_(vertex_data), vertex_offset_(vertex_offset), vertex_count_(vertex_count),
+      vertex_stride_(vertex_stride), vertex_format_(vertex_format), index_data_(index_data), index_offset_(index_offset),
+      index_count_(index_count), index_type_(index_type), transform_data_(transform_data), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -9940,8 +8990,8 @@ struct DescriptorSetBindingReferenceVALVE {
 
   using native_type = VkDescriptorSetBindingReferenceVALVE;
 
-  DescriptorSetBindingReferenceVALVE(const void *p_next = {}, VkDescriptorSetLayout descriptor_set_layout = {}, uint32_t binding = {})
-    : p_next_(p_next), descriptor_set_layout_(descriptor_set_layout), binding_(binding) {}
+  DescriptorSetBindingReferenceVALVE(uint32_t binding = {}, VkDescriptorSetLayout descriptor_set_layout = {}, const void *p_next = {})
+    : binding_(binding), descriptor_set_layout_(descriptor_set_layout), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -9966,8 +9016,8 @@ struct RenderPassAttachmentBeginInfo {
 
   using native_type = VkRenderPassAttachmentBeginInfo;
 
-  RenderPassAttachmentBeginInfo(const void *p_next = {}, uint32_t attachment_count = {}, const VkImageView *p_attachments = {})
-    : p_next_(p_next), attachment_count_(attachment_count), p_attachments_(p_attachments) {}
+  RenderPassAttachmentBeginInfo(const VkImageView *p_attachments = {}, uint32_t attachment_count = {}, const void *p_next = {})
+    : p_attachments_(p_attachments), attachment_count_(attachment_count), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -9981,8 +9031,8 @@ struct PhysicalDeviceDeviceGeneratedCommandsFeaturesNV {
 
   using native_type = VkPhysicalDeviceDeviceGeneratedCommandsFeaturesNV;
 
-  PhysicalDeviceDeviceGeneratedCommandsFeaturesNV(void *p_next = {}, VkBool32 device_generated_commands = {})
-    : p_next_(p_next), device_generated_commands_(device_generated_commands) {}
+  PhysicalDeviceDeviceGeneratedCommandsFeaturesNV(VkBool32 device_generated_commands = {}, void *p_next = {})
+    : device_generated_commands_(device_generated_commands), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -9990,23 +9040,6 @@ struct PhysicalDeviceDeviceGeneratedCommandsFeaturesNV {
   void *p_next_;
   VkBool32 device_generated_commands_;
 };
-#ifdef VK_USE_PLATFORM_FUCHSIA
-
-struct BufferCollectionImageCreateInfoFUCHSIA {
-
-  using native_type = VkBufferCollectionImageCreateInfoFUCHSIA;
-
-  BufferCollectionImageCreateInfoFUCHSIA(const void *p_next = {}, VkBufferCollectionFUCHSIA collection = {}, uint32_t index = {})
-    : p_next_(p_next), collection_(collection), index_(index) {}
-
-  auto *get() { return reinterpret_cast<native_type *>(this); }
-
-  StructureType s_type_ = StructureType::BUFFER_COLLECTION_IMAGE_CREATE_INFO_FUCHSIA;
-  const void *p_next_;
-  VkBufferCollectionFUCHSIA collection_;
-  uint32_t index_;
-};
-#endif
 
 struct QueueFamilyGlobalPriorityPropertiesKHR {
 
@@ -10024,8 +9057,8 @@ struct PhysicalDeviceImageCompressionControlFeaturesEXT {
 
   using native_type = VkPhysicalDeviceImageCompressionControlFeaturesEXT;
 
-  PhysicalDeviceImageCompressionControlFeaturesEXT(void *p_next = {}, VkBool32 image_compression_control = {})
-    : p_next_(p_next), image_compression_control_(image_compression_control) {}
+  PhysicalDeviceImageCompressionControlFeaturesEXT(VkBool32 image_compression_control = {}, void *p_next = {})
+    : image_compression_control_(image_compression_control), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -10033,21 +9066,6 @@ struct PhysicalDeviceImageCompressionControlFeaturesEXT {
   void *p_next_;
   VkBool32 image_compression_control_;
 };
-#ifdef VK_USE_PLATFORM_SCREEN_QNX
-
-struct ExternalFormatQNX {
-
-  using native_type = VkExternalFormatQNX;
-
-  ExternalFormatQNX(void *p_next = {}, uint64_t external_format = {}) : p_next_(p_next), external_format_(external_format) {}
-
-  auto *get() { return reinterpret_cast<native_type *>(this); }
-
-  StructureType s_type_ = StructureType::EXTERNAL_FORMAT_QNX;
-  void *p_next_;
-  uint64_t external_format_;
-};
-#endif
 
 struct MemoryType {
 
@@ -10055,7 +9073,7 @@ struct MemoryType {
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
-  VkMemoryPropertyFlags property_flags_;
+  MemoryPropertyMask property_flags_;
   uint32_t heap_index_;
 };
 
@@ -10066,7 +9084,7 @@ struct MemoryHeap {
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   VkDeviceSize size_;
-  VkMemoryHeapFlags flags_;
+  MemoryHeapMask flags_;
 };
 
 struct PhysicalDeviceMemoryProperties {
@@ -10098,8 +9116,8 @@ struct PresentTimesInfoGOOGLE {
 
   using native_type = VkPresentTimesInfoGOOGLE;
 
-  PresentTimesInfoGOOGLE(const void *p_next = {}, uint32_t swapchain_count = {}, const PresentTimeGOOGLE *p_times = {})
-    : p_next_(p_next), swapchain_count_(swapchain_count), p_times_(p_times) {}
+  PresentTimesInfoGOOGLE(const PresentTimeGOOGLE *p_times = {}, uint32_t swapchain_count = {}, const void *p_next = {})
+    : p_times_(p_times), swapchain_count_(swapchain_count), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -10136,7 +9154,7 @@ struct DisplayPropertiesKHR {
   const char *display_name_;
   Extent2D physical_dimensions_;
   Extent2D physical_resolution_;
-  VkSurfaceTransformFlagsKHR supported_transforms_;
+  SurfaceTransformMask supported_transforms_;
   VkBool32 plane_reorder_possible_;
   VkBool32 persistent_content_;
 };
@@ -10145,8 +9163,8 @@ struct ImagePlaneMemoryRequirementsInfo {
 
   using native_type = VkImagePlaneMemoryRequirementsInfo;
 
-  ImagePlaneMemoryRequirementsInfo(const void *p_next = {}, ImageAspectMaskBit plane_aspect = {})
-    : p_next_(p_next), plane_aspect_(plane_aspect) {}
+  ImagePlaneMemoryRequirementsInfo(ImageAspectMaskBit plane_aspect = {}, const void *p_next = {})
+    : plane_aspect_(plane_aspect), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -10175,25 +9193,6 @@ struct AllocationCallbacks {
   PFN_vkInternalAllocationNotification pfn_internal_allocation_;
   PFN_vkInternalFreeNotification pfn_internal_free_;
 };
-#ifdef VK_USE_PLATFORM_WIN32_KHR
-
-struct ExportSemaphoreWin32HandleInfoKHR {
-
-  using native_type = VkExportSemaphoreWin32HandleInfoKHR;
-
-  ExportSemaphoreWin32HandleInfoKHR(const void *p_next = {}, const SECURITY_ATTRIBUTES *p_attributes = {}, DWORD dw_access = {},
-                                    LPCWSTR name = {})
-    : p_next_(p_next), p_attributes_(p_attributes), dw_access_(dw_access), name_(name) {}
-
-  auto *get() { return reinterpret_cast<native_type *>(this); }
-
-  StructureType s_type_ = StructureType::EXPORT_SEMAPHORE_WIN32_HANDLE_INFO_KHR;
-  const void *p_next_;
-  const SECURITY_ATTRIBUTES *p_attributes_;
-  DWORD dw_access_;
-  LPCWSTR name_;
-};
-#endif
 
 struct PhysicalDeviceDrmPropertiesEXT {
 
@@ -10239,19 +9238,19 @@ struct PipelineMultisampleStateCreateInfo {
 
   using native_type = VkPipelineMultisampleStateCreateInfo;
 
-  PipelineMultisampleStateCreateInfo(const void *p_next = {}, VkPipelineMultisampleStateCreateFlags flags = {},
+  PipelineMultisampleStateCreateInfo(VkBool32 alpha_to_one_enable = {}, PipelineMultisampleStateCreateMask flags = {},
                                      SampleCountMaskBit rasterization_samples = {}, VkBool32 sample_shading_enable = {},
                                      float min_sample_shading = {}, const VkSampleMask *p_sample_mask = {},
-                                     VkBool32 alpha_to_coverage_enable = {}, VkBool32 alpha_to_one_enable = {})
-    : p_next_(p_next), flags_(flags), rasterization_samples_(rasterization_samples), sample_shading_enable_(sample_shading_enable),
-      min_sample_shading_(min_sample_shading), p_sample_mask_(p_sample_mask), alpha_to_coverage_enable_(alpha_to_coverage_enable),
-      alpha_to_one_enable_(alpha_to_one_enable) {}
+                                     VkBool32 alpha_to_coverage_enable = {}, const void *p_next = {})
+    : alpha_to_one_enable_(alpha_to_one_enable), flags_(flags), rasterization_samples_(rasterization_samples),
+      sample_shading_enable_(sample_shading_enable), min_sample_shading_(min_sample_shading), p_sample_mask_(p_sample_mask),
+      alpha_to_coverage_enable_(alpha_to_coverage_enable), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PIPELINE_MULTISAMPLE_STATE_CREATE_INFO;
   const void *p_next_;
-  VkPipelineMultisampleStateCreateFlags flags_;
+  PipelineMultisampleStateCreateMask flags_;
   SampleCountMaskBit rasterization_samples_;
   VkBool32 sample_shading_enable_;
   float min_sample_shading_;
@@ -10264,8 +9263,8 @@ struct PhysicalDeviceDescriptorPoolOverallocationFeaturesNV {
 
   using native_type = VkPhysicalDeviceDescriptorPoolOverallocationFeaturesNV;
 
-  PhysicalDeviceDescriptorPoolOverallocationFeaturesNV(void *p_next = {}, VkBool32 descriptor_pool_overallocation = {})
-    : p_next_(p_next), descriptor_pool_overallocation_(descriptor_pool_overallocation) {}
+  PhysicalDeviceDescriptorPoolOverallocationFeaturesNV(VkBool32 descriptor_pool_overallocation = {}, void *p_next = {})
+    : descriptor_pool_overallocation_(descriptor_pool_overallocation), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -10296,7 +9295,7 @@ struct PhysicalDeviceFeatures2 {
 
   using native_type = VkPhysicalDeviceFeatures2;
 
-  PhysicalDeviceFeatures2(void *p_next = {}, PhysicalDeviceFeatures features = {}) : p_next_(p_next), features_(features) {}
+  PhysicalDeviceFeatures2(PhysicalDeviceFeatures features = {}, void *p_next = {}) : features_(features), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -10309,18 +9308,19 @@ struct RenderingInfo {
 
   using native_type = VkRenderingInfo;
 
-  RenderingInfo(const void *p_next = {}, VkRenderingFlags flags = {}, Rect2D render_area = {}, uint32_t layer_count = {},
-                uint32_t view_mask = {}, uint32_t color_attachment_count = {}, const RenderingAttachmentInfo *p_color_attachments = {},
-                const RenderingAttachmentInfo *p_depth_attachment = {}, const RenderingAttachmentInfo *p_stencil_attachment = {})
-    : p_next_(p_next), flags_(flags), render_area_(render_area), layer_count_(layer_count), view_mask_(view_mask),
-      color_attachment_count_(color_attachment_count), p_color_attachments_(p_color_attachments), p_depth_attachment_(p_depth_attachment),
-      p_stencil_attachment_(p_stencil_attachment) {}
+  RenderingInfo(const RenderingAttachmentInfo *p_stencil_attachment = {}, RenderingMask flags = {}, Rect2D render_area = {},
+                uint32_t layer_count = {}, uint32_t view_mask = {}, uint32_t color_attachment_count = {},
+                const RenderingAttachmentInfo *p_color_attachments = {}, const RenderingAttachmentInfo *p_depth_attachment = {},
+                const void *p_next = {})
+    : p_stencil_attachment_(p_stencil_attachment), flags_(flags), render_area_(render_area), layer_count_(layer_count),
+      view_mask_(view_mask), color_attachment_count_(color_attachment_count), p_color_attachments_(p_color_attachments),
+      p_depth_attachment_(p_depth_attachment), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::RENDERING_INFO;
   const void *p_next_;
-  VkRenderingFlags flags_;
+  RenderingMask flags_;
   Rect2D render_area_;
   uint32_t layer_count_;
   uint32_t view_mask_;
@@ -10335,13 +9335,13 @@ struct PhysicalDeviceShaderAtomicFloat2FeaturesEXT {
   using native_type = VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT;
 
   PhysicalDeviceShaderAtomicFloat2FeaturesEXT(
-    void *p_next = {}, VkBool32 shader_buffer_float16atomics = {}, VkBool32 shader_buffer_float16atomic_add = {},
-    VkBool32 shader_buffer_float16atomic_min_max = {}, VkBool32 shader_buffer_float32atomic_min_max = {},
-    VkBool32 shader_buffer_float64atomic_min_max = {}, VkBool32 shader_shared_float16atomics = {},
-    VkBool32 shader_shared_float16atomic_add = {}, VkBool32 shader_shared_float16atomic_min_max = {},
-    VkBool32 shader_shared_float32atomic_min_max = {}, VkBool32 shader_shared_float64atomic_min_max = {},
-    VkBool32 shader_image_float32atomic_min_max = {}, VkBool32 sparse_image_float32atomic_min_max = {})
-    : p_next_(p_next), shader_buffer_float16atomics_(shader_buffer_float16atomics),
+    VkBool32 sparse_image_float32atomic_min_max = {}, VkBool32 shader_buffer_float16atomics = {},
+    VkBool32 shader_buffer_float16atomic_add = {}, VkBool32 shader_buffer_float16atomic_min_max = {},
+    VkBool32 shader_buffer_float32atomic_min_max = {}, VkBool32 shader_buffer_float64atomic_min_max = {},
+    VkBool32 shader_shared_float16atomics = {}, VkBool32 shader_shared_float16atomic_add = {},
+    VkBool32 shader_shared_float16atomic_min_max = {}, VkBool32 shader_shared_float32atomic_min_max = {},
+    VkBool32 shader_shared_float64atomic_min_max = {}, VkBool32 shader_image_float32atomic_min_max = {}, void *p_next = {})
+    : sparse_image_float32atomic_min_max_(sparse_image_float32atomic_min_max), shader_buffer_float16atomics_(shader_buffer_float16atomics),
       shader_buffer_float16atomic_add_(shader_buffer_float16atomic_add),
       shader_buffer_float16atomic_min_max_(shader_buffer_float16atomic_min_max),
       shader_buffer_float32atomic_min_max_(shader_buffer_float32atomic_min_max),
@@ -10350,8 +9350,7 @@ struct PhysicalDeviceShaderAtomicFloat2FeaturesEXT {
       shader_shared_float16atomic_min_max_(shader_shared_float16atomic_min_max),
       shader_shared_float32atomic_min_max_(shader_shared_float32atomic_min_max),
       shader_shared_float64atomic_min_max_(shader_shared_float64atomic_min_max),
-      shader_image_float32atomic_min_max_(shader_image_float32atomic_min_max),
-      sparse_image_float32atomic_min_max_(sparse_image_float32atomic_min_max) {}
+      shader_image_float32atomic_min_max_(shader_image_float32atomic_min_max), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -10375,15 +9374,15 @@ struct DebugReportCallbackCreateInfoEXT {
 
   using native_type = VkDebugReportCallbackCreateInfoEXT;
 
-  DebugReportCallbackCreateInfoEXT(const void *p_next = {}, VkDebugReportFlagsEXT flags = {},
-                                   PFN_vkDebugReportCallbackEXT pfn_callback = {}, void *p_user_data = {})
-    : p_next_(p_next), flags_(flags), pfn_callback_(pfn_callback), p_user_data_(p_user_data) {}
+  DebugReportCallbackCreateInfoEXT(void *p_user_data = {}, DebugReportMask flags = {}, PFN_vkDebugReportCallbackEXT pfn_callback = {},
+                                   const void *p_next = {})
+    : p_user_data_(p_user_data), flags_(flags), pfn_callback_(pfn_callback), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::DEBUG_REPORT_CALLBACK_CREATE_INFO_EXT;
   const void *p_next_;
-  VkDebugReportFlagsEXT flags_;
+  DebugReportMask flags_;
   PFN_vkDebugReportCallbackEXT pfn_callback_;
   void *p_user_data_;
 };
@@ -10404,7 +9403,7 @@ struct PhysicalDeviceMaintenance7FeaturesKHR {
 
   using native_type = VkPhysicalDeviceMaintenance7FeaturesKHR;
 
-  PhysicalDeviceMaintenance7FeaturesKHR(void *p_next = {}, VkBool32 maintenance7 = {}) : p_next_(p_next), maintenance7_(maintenance7) {}
+  PhysicalDeviceMaintenance7FeaturesKHR(VkBool32 maintenance7 = {}, void *p_next = {}) : maintenance7_(maintenance7), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -10417,7 +9416,7 @@ struct DescriptorBufferBindingPushDescriptorBufferHandleEXT {
 
   using native_type = VkDescriptorBufferBindingPushDescriptorBufferHandleEXT;
 
-  DescriptorBufferBindingPushDescriptorBufferHandleEXT(void *p_next = {}, VkBuffer buffer = {}) : p_next_(p_next), buffer_(buffer) {}
+  DescriptorBufferBindingPushDescriptorBufferHandleEXT(VkBuffer buffer = {}, void *p_next = {}) : buffer_(buffer), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -10430,14 +9429,14 @@ struct ExportSemaphoreCreateInfo {
 
   using native_type = VkExportSemaphoreCreateInfo;
 
-  ExportSemaphoreCreateInfo(const void *p_next = {}, VkExternalSemaphoreHandleTypeFlags handle_types = {})
-    : p_next_(p_next), handle_types_(handle_types) {}
+  ExportSemaphoreCreateInfo(ExternalSemaphoreHandleTypeMask handle_types = {}, const void *p_next = {})
+    : handle_types_(handle_types), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::EXPORT_SEMAPHORE_CREATE_INFO;
   const void *p_next_;
-  VkExternalSemaphoreHandleTypeFlags handle_types_;
+  ExternalSemaphoreHandleTypeMask handle_types_;
 };
 
 struct MemoryRequirements {
@@ -10455,12 +9454,12 @@ struct DeviceGroupSubmitInfo {
 
   using native_type = VkDeviceGroupSubmitInfo;
 
-  DeviceGroupSubmitInfo(const void *p_next = {}, uint32_t wait_semaphore_count = {}, const uint32_t *p_wait_semaphore_device_indices = {},
-                        uint32_t command_buffer_count = {}, const uint32_t *p_command_buffer_device_masks = {},
-                        uint32_t signal_semaphore_count = {}, const uint32_t *p_signal_semaphore_device_indices = {})
-    : p_next_(p_next), wait_semaphore_count_(wait_semaphore_count), p_wait_semaphore_device_indices_(p_wait_semaphore_device_indices),
-      command_buffer_count_(command_buffer_count), p_command_buffer_device_masks_(p_command_buffer_device_masks),
-      signal_semaphore_count_(signal_semaphore_count), p_signal_semaphore_device_indices_(p_signal_semaphore_device_indices) {}
+  DeviceGroupSubmitInfo(const uint32_t *p_signal_semaphore_device_indices = {}, uint32_t wait_semaphore_count = {},
+                        const uint32_t *p_wait_semaphore_device_indices = {}, uint32_t command_buffer_count = {},
+                        const uint32_t *p_command_buffer_device_masks = {}, uint32_t signal_semaphore_count = {}, const void *p_next = {})
+    : p_signal_semaphore_device_indices_(p_signal_semaphore_device_indices), wait_semaphore_count_(wait_semaphore_count),
+      p_wait_semaphore_device_indices_(p_wait_semaphore_device_indices), command_buffer_count_(command_buffer_count),
+      p_command_buffer_device_masks_(p_command_buffer_device_masks), signal_semaphore_count_(signal_semaphore_count), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -10473,23 +9472,6 @@ struct DeviceGroupSubmitInfo {
   uint32_t signal_semaphore_count_;
   const uint32_t *p_signal_semaphore_device_indices_;
 };
-#ifdef VK_USE_PLATFORM_WIN32_KHR
-
-struct ImportMemoryWin32HandleInfoNV {
-
-  using native_type = VkImportMemoryWin32HandleInfoNV;
-
-  ImportMemoryWin32HandleInfoNV(const void *p_next = {}, VkExternalMemoryHandleTypeFlagsNV handle_type = {}, HANDLE handle = {})
-    : p_next_(p_next), handle_type_(handle_type), handle_(handle) {}
-
-  auto *get() { return reinterpret_cast<native_type *>(this); }
-
-  StructureType s_type_ = StructureType::IMPORT_MEMORY_WIN32_HANDLE_INFO_NV;
-  const void *p_next_;
-  VkExternalMemoryHandleTypeFlagsNV handle_type_;
-  HANDLE handle_;
-};
-#endif
 
 struct VideoDecodeH264CapabilitiesKHR {
 
@@ -10589,16 +9571,16 @@ struct PhysicalDeviceLimits {
   uint32_t max_framebuffer_width_;
   uint32_t max_framebuffer_height_;
   uint32_t max_framebuffer_layers_;
-  VkSampleCountFlags framebuffer_color_sample_counts_;
-  VkSampleCountFlags framebuffer_depth_sample_counts_;
-  VkSampleCountFlags framebuffer_stencil_sample_counts_;
-  VkSampleCountFlags framebuffer_no_attachments_sample_counts_;
+  SampleCountMask framebuffer_color_sample_counts_;
+  SampleCountMask framebuffer_depth_sample_counts_;
+  SampleCountMask framebuffer_stencil_sample_counts_;
+  SampleCountMask framebuffer_no_attachments_sample_counts_;
   uint32_t max_color_attachments_;
-  VkSampleCountFlags sampled_image_color_sample_counts_;
-  VkSampleCountFlags sampled_image_integer_sample_counts_;
-  VkSampleCountFlags sampled_image_depth_sample_counts_;
-  VkSampleCountFlags sampled_image_stencil_sample_counts_;
-  VkSampleCountFlags storage_image_sample_counts_;
+  SampleCountMask sampled_image_color_sample_counts_;
+  SampleCountMask sampled_image_integer_sample_counts_;
+  SampleCountMask sampled_image_depth_sample_counts_;
+  SampleCountMask sampled_image_stencil_sample_counts_;
+  SampleCountMask storage_image_sample_counts_;
   uint32_t max_sample_mask_words_;
   VkBool32 timestamp_compute_and_graphics_;
   float timestamp_period_;
@@ -10673,9 +9655,9 @@ struct PhysicalDevicePerStageDescriptorSetFeaturesNV {
 
   using native_type = VkPhysicalDevicePerStageDescriptorSetFeaturesNV;
 
-  PhysicalDevicePerStageDescriptorSetFeaturesNV(void *p_next = {}, VkBool32 per_stage_descriptor_set = {},
-                                                VkBool32 dynamic_pipeline_layout = {})
-    : p_next_(p_next), per_stage_descriptor_set_(per_stage_descriptor_set), dynamic_pipeline_layout_(dynamic_pipeline_layout) {}
+  PhysicalDevicePerStageDescriptorSetFeaturesNV(VkBool32 dynamic_pipeline_layout = {}, VkBool32 per_stage_descriptor_set = {},
+                                                void *p_next = {})
+    : dynamic_pipeline_layout_(dynamic_pipeline_layout), per_stage_descriptor_set_(per_stage_descriptor_set), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -10689,8 +9671,8 @@ struct SemaphoreGetFdInfoKHR {
 
   using native_type = VkSemaphoreGetFdInfoKHR;
 
-  SemaphoreGetFdInfoKHR(const void *p_next = {}, VkSemaphore semaphore = {}, ExternalSemaphoreHandleTypeMaskBit handle_type = {})
-    : p_next_(p_next), semaphore_(semaphore), handle_type_(handle_type) {}
+  SemaphoreGetFdInfoKHR(ExternalSemaphoreHandleTypeMaskBit handle_type = {}, VkSemaphore semaphore = {}, const void *p_next = {})
+    : handle_type_(handle_type), semaphore_(semaphore), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -10704,11 +9686,11 @@ struct BindAccelerationStructureMemoryInfoNV {
 
   using native_type = VkBindAccelerationStructureMemoryInfoNV;
 
-  BindAccelerationStructureMemoryInfoNV(const void *p_next = {}, VkAccelerationStructureNV acceleration_structure = {},
+  BindAccelerationStructureMemoryInfoNV(const uint32_t *p_device_indices = {}, VkAccelerationStructureNV acceleration_structure = {},
                                         VkDeviceMemory memory = {}, VkDeviceSize memory_offset = {}, uint32_t device_index_count = {},
-                                        const uint32_t *p_device_indices = {})
-    : p_next_(p_next), acceleration_structure_(acceleration_structure), memory_(memory), memory_offset_(memory_offset),
-      device_index_count_(device_index_count), p_device_indices_(p_device_indices) {}
+                                        const void *p_next = {})
+    : p_device_indices_(p_device_indices), acceleration_structure_(acceleration_structure), memory_(memory), memory_offset_(memory_offset),
+      device_index_count_(device_index_count), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -10725,10 +9707,11 @@ struct GeneratedCommandsMemoryRequirementsInfoNV {
 
   using native_type = VkGeneratedCommandsMemoryRequirementsInfoNV;
 
-  GeneratedCommandsMemoryRequirementsInfoNV(const void *p_next = {}, PipelineBindPoint pipeline_bind_point = {}, VkPipeline pipeline = {},
-                                            VkIndirectCommandsLayoutNV indirect_commands_layout = {}, uint32_t max_sequences_count = {})
-    : p_next_(p_next), pipeline_bind_point_(pipeline_bind_point), pipeline_(pipeline), indirect_commands_layout_(indirect_commands_layout),
-      max_sequences_count_(max_sequences_count) {}
+  GeneratedCommandsMemoryRequirementsInfoNV(uint32_t max_sequences_count = {}, PipelineBindPoint pipeline_bind_point = {},
+                                            VkPipeline pipeline = {}, VkIndirectCommandsLayoutNV indirect_commands_layout = {},
+                                            const void *p_next = {})
+    : max_sequences_count_(max_sequences_count), pipeline_bind_point_(pipeline_bind_point), pipeline_(pipeline),
+      indirect_commands_layout_(indirect_commands_layout), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -10744,9 +9727,9 @@ struct CopyMemoryToAccelerationStructureInfoKHR {
 
   using native_type = VkCopyMemoryToAccelerationStructureInfoKHR;
 
-  CopyMemoryToAccelerationStructureInfoKHR(const void *p_next = {}, VkDeviceOrHostAddressConstKHR src = {},
-                                           VkAccelerationStructureKHR dst = {}, CopyAccelerationStructureMode mode = {})
-    : p_next_(p_next), src_(src), dst_(dst), mode_(mode) {}
+  CopyMemoryToAccelerationStructureInfoKHR(CopyAccelerationStructureMode mode = {}, VkDeviceOrHostAddressConstKHR src = {},
+                                           VkAccelerationStructureKHR dst = {}, const void *p_next = {})
+    : mode_(mode), src_(src), dst_(dst), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -10761,9 +9744,9 @@ struct DepthBiasRepresentationInfoEXT {
 
   using native_type = VkDepthBiasRepresentationInfoEXT;
 
-  DepthBiasRepresentationInfoEXT(const void *p_next = {}, DepthBiasRepresentation depth_bias_representation = {},
-                                 VkBool32 depth_bias_exact = {})
-    : p_next_(p_next), depth_bias_representation_(depth_bias_representation), depth_bias_exact_(depth_bias_exact) {}
+  DepthBiasRepresentationInfoEXT(VkBool32 depth_bias_exact = {}, DepthBiasRepresentation depth_bias_representation = {},
+                                 const void *p_next = {})
+    : depth_bias_exact_(depth_bias_exact), depth_bias_representation_(depth_bias_representation), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -10779,9 +9762,9 @@ struct SparseImageFormatProperties {
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
-  VkImageAspectFlags aspect_mask_;
+  ImageAspectMask aspect_mask_;
   Extent3D image_granularity_;
-  VkSparseImageFormatFlags flags_;
+  SparseImageFormatMask flags_;
 };
 
 struct SparseImageMemoryRequirements {
@@ -10801,8 +9784,8 @@ struct DeviceGroupBindSparseInfo {
 
   using native_type = VkDeviceGroupBindSparseInfo;
 
-  DeviceGroupBindSparseInfo(const void *p_next = {}, uint32_t resource_device_index = {}, uint32_t memory_device_index = {})
-    : p_next_(p_next), resource_device_index_(resource_device_index), memory_device_index_(memory_device_index) {}
+  DeviceGroupBindSparseInfo(uint32_t memory_device_index = {}, uint32_t resource_device_index = {}, const void *p_next = {})
+    : memory_device_index_(memory_device_index), resource_device_index_(resource_device_index), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -10816,8 +9799,8 @@ struct DeviceBufferMemoryRequirements {
 
   using native_type = VkDeviceBufferMemoryRequirements;
 
-  DeviceBufferMemoryRequirements(const void *p_next = {}, const BufferCreateInfo *p_create_info = {})
-    : p_next_(p_next), p_create_info_(p_create_info) {}
+  DeviceBufferMemoryRequirements(const BufferCreateInfo *p_create_info = {}, const void *p_next = {})
+    : p_create_info_(p_create_info), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -10830,10 +9813,11 @@ struct BindImageMemoryDeviceGroupInfo {
 
   using native_type = VkBindImageMemoryDeviceGroupInfo;
 
-  BindImageMemoryDeviceGroupInfo(const void *p_next = {}, uint32_t device_index_count = {}, const uint32_t *p_device_indices = {},
-                                 uint32_t split_instance_bind_region_count = {}, const Rect2D *p_split_instance_bind_regions = {})
-    : p_next_(p_next), device_index_count_(device_index_count), p_device_indices_(p_device_indices),
-      split_instance_bind_region_count_(split_instance_bind_region_count), p_split_instance_bind_regions_(p_split_instance_bind_regions) {}
+  BindImageMemoryDeviceGroupInfo(const Rect2D *p_split_instance_bind_regions = {}, uint32_t device_index_count = {},
+                                 const uint32_t *p_device_indices = {}, uint32_t split_instance_bind_region_count = {},
+                                 const void *p_next = {})
+    : p_split_instance_bind_regions_(p_split_instance_bind_regions), device_index_count_(device_index_count),
+      p_device_indices_(p_device_indices), split_instance_bind_region_count_(split_instance_bind_region_count), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -10849,12 +9833,12 @@ struct SubpassDependency2 {
 
   using native_type = VkSubpassDependency2;
 
-  SubpassDependency2(const void *p_next = {}, uint32_t src_subpass = {}, uint32_t dst_subpass = {},
-                     VkPipelineStageFlags src_stage_mask = {}, VkPipelineStageFlags dst_stage_mask = {}, VkAccessFlags src_access_mask = {},
-                     VkAccessFlags dst_access_mask = {}, VkDependencyFlags dependency_flags = {}, int32_t view_offset = {})
-    : p_next_(p_next), src_subpass_(src_subpass), dst_subpass_(dst_subpass), src_stage_mask_(src_stage_mask),
+  SubpassDependency2(int32_t view_offset = {}, uint32_t src_subpass = {}, uint32_t dst_subpass = {}, PipelineStageMask src_stage_mask = {},
+                     PipelineStageMask dst_stage_mask = {}, AccessMask src_access_mask = {}, AccessMask dst_access_mask = {},
+                     DependencyMask dependency_flags = {}, const void *p_next = {})
+    : view_offset_(view_offset), src_subpass_(src_subpass), dst_subpass_(dst_subpass), src_stage_mask_(src_stage_mask),
       dst_stage_mask_(dst_stage_mask), src_access_mask_(src_access_mask), dst_access_mask_(dst_access_mask),
-      dependency_flags_(dependency_flags), view_offset_(view_offset) {}
+      dependency_flags_(dependency_flags), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -10862,35 +9846,19 @@ struct SubpassDependency2 {
   const void *p_next_;
   uint32_t src_subpass_;
   uint32_t dst_subpass_;
-  VkPipelineStageFlags src_stage_mask_;
-  VkPipelineStageFlags dst_stage_mask_;
-  VkAccessFlags src_access_mask_;
-  VkAccessFlags dst_access_mask_;
-  VkDependencyFlags dependency_flags_;
+  PipelineStageMask src_stage_mask_;
+  PipelineStageMask dst_stage_mask_;
+  AccessMask src_access_mask_;
+  AccessMask dst_access_mask_;
+  DependencyMask dependency_flags_;
   int32_t view_offset_;
 };
-#ifdef VK_ENABLE_BETA_EXTENSIONS
-
-struct PhysicalDeviceShaderEnqueueFeaturesAMDX {
-
-  using native_type = VkPhysicalDeviceShaderEnqueueFeaturesAMDX;
-
-  PhysicalDeviceShaderEnqueueFeaturesAMDX(void *p_next = {}, VkBool32 shader_enqueue = {})
-    : p_next_(p_next), shader_enqueue_(shader_enqueue) {}
-
-  auto *get() { return reinterpret_cast<native_type *>(this); }
-
-  StructureType s_type_ = StructureType::PHYSICAL_DEVICE_SHADER_ENQUEUE_FEATURES_AMDX;
-  void *p_next_;
-  VkBool32 shader_enqueue_;
-};
-#endif
 
 struct DeviceGroupCommandBufferBeginInfo {
 
   using native_type = VkDeviceGroupCommandBufferBeginInfo;
 
-  DeviceGroupCommandBufferBeginInfo(const void *p_next = {}, uint32_t device_mask = {}) : p_next_(p_next), device_mask_(device_mask) {}
+  DeviceGroupCommandBufferBeginInfo(uint32_t device_mask = {}, const void *p_next = {}) : device_mask_(device_mask), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -10898,30 +9866,13 @@ struct DeviceGroupCommandBufferBeginInfo {
   const void *p_next_;
   uint32_t device_mask_;
 };
-#ifdef VK_USE_PLATFORM_VI_NN
-
-struct ViSurfaceCreateInfoNN {
-
-  using native_type = VkViSurfaceCreateInfoNN;
-
-  ViSurfaceCreateInfoNN(const void *p_next = {}, VkViSurfaceCreateFlagsNN flags = {}, void *window = {})
-    : p_next_(p_next), flags_(flags), window_(window) {}
-
-  auto *get() { return reinterpret_cast<native_type *>(this); }
-
-  StructureType s_type_ = StructureType::VI_SURFACE_CREATE_INFO_NN;
-  const void *p_next_;
-  VkViSurfaceCreateFlagsNN flags_;
-  void *window_;
-};
-#endif
 
 struct PhysicalDeviceImageRobustnessFeatures {
 
   using native_type = VkPhysicalDeviceImageRobustnessFeatures;
 
-  PhysicalDeviceImageRobustnessFeatures(void *p_next = {}, VkBool32 robust_image_access = {})
-    : p_next_(p_next), robust_image_access_(robust_image_access) {}
+  PhysicalDeviceImageRobustnessFeatures(VkBool32 robust_image_access = {}, void *p_next = {})
+    : robust_image_access_(robust_image_access), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -10934,19 +9885,20 @@ struct PipelineCoverageModulationStateCreateInfoNV {
 
   using native_type = VkPipelineCoverageModulationStateCreateInfoNV;
 
-  PipelineCoverageModulationStateCreateInfoNV(const void *p_next = {}, VkPipelineCoverageModulationStateCreateFlagsNV flags = {},
+  PipelineCoverageModulationStateCreateInfoNV(const float *p_coverage_modulation_table = {},
+                                              PipelineCoverageModulationStateCreateMask flags = {},
                                               CoverageModulationMode coverage_modulation_mode = {},
                                               VkBool32 coverage_modulation_table_enable = {}, uint32_t coverage_modulation_table_count = {},
-                                              const float *p_coverage_modulation_table = {})
-    : p_next_(p_next), flags_(flags), coverage_modulation_mode_(coverage_modulation_mode),
+                                              const void *p_next = {})
+    : p_coverage_modulation_table_(p_coverage_modulation_table), flags_(flags), coverage_modulation_mode_(coverage_modulation_mode),
       coverage_modulation_table_enable_(coverage_modulation_table_enable),
-      coverage_modulation_table_count_(coverage_modulation_table_count), p_coverage_modulation_table_(p_coverage_modulation_table) {}
+      coverage_modulation_table_count_(coverage_modulation_table_count), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PIPELINE_COVERAGE_MODULATION_STATE_CREATE_INFO_NV;
   const void *p_next_;
-  VkPipelineCoverageModulationStateCreateFlagsNV flags_;
+  PipelineCoverageModulationStateCreateMask flags_;
   CoverageModulationMode coverage_modulation_mode_;
   VkBool32 coverage_modulation_table_enable_;
   uint32_t coverage_modulation_table_count_;
@@ -10957,8 +9909,8 @@ struct PhysicalDeviceShaderRelaxedExtendedInstructionFeaturesKHR {
 
   using native_type = VkPhysicalDeviceShaderRelaxedExtendedInstructionFeaturesKHR;
 
-  PhysicalDeviceShaderRelaxedExtendedInstructionFeaturesKHR(void *p_next = {}, VkBool32 shader_relaxed_extended_instruction = {})
-    : p_next_(p_next), shader_relaxed_extended_instruction_(shader_relaxed_extended_instruction) {}
+  PhysicalDeviceShaderRelaxedExtendedInstructionFeaturesKHR(VkBool32 shader_relaxed_extended_instruction = {}, void *p_next = {})
+    : shader_relaxed_extended_instruction_(shader_relaxed_extended_instruction), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -10971,9 +9923,9 @@ struct CommandBufferAllocateInfo {
 
   using native_type = VkCommandBufferAllocateInfo;
 
-  CommandBufferAllocateInfo(const void *p_next = {}, VkCommandPool command_pool = {}, CommandBufferLevel level = {},
-                            uint32_t command_buffer_count = {})
-    : p_next_(p_next), command_pool_(command_pool), level_(level), command_buffer_count_(command_buffer_count) {}
+  CommandBufferAllocateInfo(uint32_t command_buffer_count = {}, VkCommandPool command_pool = {}, CommandBufferLevel level = {},
+                            const void *p_next = {})
+    : command_buffer_count_(command_buffer_count), command_pool_(command_pool), level_(level), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -10983,23 +9935,6 @@ struct CommandBufferAllocateInfo {
   CommandBufferLevel level_;
   uint32_t command_buffer_count_;
 };
-#ifdef VK_USE_PLATFORM_FUCHSIA
-
-struct ImportMemoryZirconHandleInfoFUCHSIA {
-
-  using native_type = VkImportMemoryZirconHandleInfoFUCHSIA;
-
-  ImportMemoryZirconHandleInfoFUCHSIA(const void *p_next = {}, ExternalMemoryHandleTypeMaskBit handle_type = {}, zx_handle_t handle = {})
-    : p_next_(p_next), handle_type_(handle_type), handle_(handle) {}
-
-  auto *get() { return reinterpret_cast<native_type *>(this); }
-
-  StructureType s_type_ = StructureType::IMPORT_MEMORY_ZIRCON_HANDLE_INFO_FUCHSIA;
-  const void *p_next_;
-  ExternalMemoryHandleTypeMaskBit handle_type_;
-  zx_handle_t handle_;
-};
-#endif
 
 struct BaseInStructure {
 
@@ -11017,8 +9952,8 @@ struct FenceGetFdInfoKHR {
 
   using native_type = VkFenceGetFdInfoKHR;
 
-  FenceGetFdInfoKHR(const void *p_next = {}, VkFence fence = {}, ExternalFenceHandleTypeMaskBit handle_type = {})
-    : p_next_(p_next), fence_(fence), handle_type_(handle_type) {}
+  FenceGetFdInfoKHR(ExternalFenceHandleTypeMaskBit handle_type = {}, VkFence fence = {}, const void *p_next = {})
+    : handle_type_(handle_type), fence_(fence), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -11032,23 +9967,22 @@ struct AccelerationStructureBuildGeometryInfoKHR {
 
   using native_type = VkAccelerationStructureBuildGeometryInfoKHR;
 
-  AccelerationStructureBuildGeometryInfoKHR(const void *p_next = {}, AccelerationStructureType type = {},
-                                            VkBuildAccelerationStructureFlagsKHR flags = {}, BuildAccelerationStructureMode mode = {},
+  AccelerationStructureBuildGeometryInfoKHR(VkDeviceOrHostAddressKHR scratch_data = {}, AccelerationStructureType type = {},
+                                            BuildAccelerationStructureMask flags = {}, BuildAccelerationStructureMode mode = {},
                                             VkAccelerationStructureKHR src_acceleration_structure = {},
                                             VkAccelerationStructureKHR dst_acceleration_structure = {}, uint32_t geometry_count = {},
                                             const AccelerationStructureGeometryKHR *p_geometries = {},
-                                            const AccelerationStructureGeometryKHR *const *pp_geometries = {},
-                                            VkDeviceOrHostAddressKHR scratch_data = {})
-    : p_next_(p_next), type_(type), flags_(flags), mode_(mode), src_acceleration_structure_(src_acceleration_structure),
+                                            const AccelerationStructureGeometryKHR *const *pp_geometries = {}, const void *p_next = {})
+    : scratch_data_(scratch_data), type_(type), flags_(flags), mode_(mode), src_acceleration_structure_(src_acceleration_structure),
       dst_acceleration_structure_(dst_acceleration_structure), geometry_count_(geometry_count), p_geometries_(p_geometries),
-      pp_geometries_(pp_geometries), scratch_data_(scratch_data) {}
+      pp_geometries_(pp_geometries), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::ACCELERATION_STRUCTURE_BUILD_GEOMETRY_INFO_KHR;
   const void *p_next_;
   AccelerationStructureType type_;
-  VkBuildAccelerationStructureFlagsKHR flags_;
+  BuildAccelerationStructureMask flags_;
   BuildAccelerationStructureMode mode_;
   VkAccelerationStructureKHR src_acceleration_structure_;
   VkAccelerationStructureKHR dst_acceleration_structure_;
@@ -11062,8 +9996,8 @@ struct DisplayPresentInfoKHR {
 
   using native_type = VkDisplayPresentInfoKHR;
 
-  DisplayPresentInfoKHR(const void *p_next = {}, Rect2D src_rect = {}, Rect2D dst_rect = {}, VkBool32 persistent = {})
-    : p_next_(p_next), src_rect_(src_rect), dst_rect_(dst_rect), persistent_(persistent) {}
+  DisplayPresentInfoKHR(VkBool32 persistent = {}, Rect2D src_rect = {}, Rect2D dst_rect = {}, const void *p_next = {})
+    : persistent_(persistent), src_rect_(src_rect), dst_rect_(dst_rect), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -11073,27 +10007,14 @@ struct DisplayPresentInfoKHR {
   Rect2D dst_rect_;
   VkBool32 persistent_;
 };
-#ifdef VK_ENABLE_BETA_EXTENSIONS
-
-struct PhysicalDeviceDisplacementMicromapPropertiesNV {
-
-  using native_type = VkPhysicalDeviceDisplacementMicromapPropertiesNV;
-
-  auto *get() { return reinterpret_cast<native_type *>(this); }
-
-  StructureType s_type_ = StructureType::PHYSICAL_DEVICE_DISPLACEMENT_MICROMAP_PROPERTIES_NV;
-  void *p_next_;
-  uint32_t max_displacement_micromap_subdivision_level_;
-};
-#endif
 
 struct DescriptorSetVariableDescriptorCountAllocateInfo {
 
   using native_type = VkDescriptorSetVariableDescriptorCountAllocateInfo;
 
-  DescriptorSetVariableDescriptorCountAllocateInfo(const void *p_next = {}, uint32_t descriptor_set_count = {},
-                                                   const uint32_t *p_descriptor_counts = {})
-    : p_next_(p_next), descriptor_set_count_(descriptor_set_count), p_descriptor_counts_(p_descriptor_counts) {}
+  DescriptorSetVariableDescriptorCountAllocateInfo(const uint32_t *p_descriptor_counts = {}, uint32_t descriptor_set_count = {},
+                                                   const void *p_next = {})
+    : p_descriptor_counts_(p_descriptor_counts), descriptor_set_count_(descriptor_set_count), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -11107,10 +10028,10 @@ struct ApplicationInfo {
 
   using native_type = VkApplicationInfo;
 
-  ApplicationInfo(const void *p_next = {}, const char *p_application_name = {}, uint32_t application_version = {},
-                  const char *p_engine_name = {}, uint32_t engine_version = {}, uint32_t api_version = {})
-    : p_next_(p_next), p_application_name_(p_application_name), application_version_(application_version), p_engine_name_(p_engine_name),
-      engine_version_(engine_version), api_version_(api_version) {}
+  ApplicationInfo(uint32_t api_version = {}, const char *p_application_name = {}, uint32_t application_version = {},
+                  const char *p_engine_name = {}, uint32_t engine_version = {}, const void *p_next = {})
+    : api_version_(api_version), p_application_name_(p_application_name), application_version_(application_version),
+      p_engine_name_(p_engine_name), engine_version_(engine_version), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -11127,18 +10048,18 @@ struct InstanceCreateInfo {
 
   using native_type = VkInstanceCreateInfo;
 
-  InstanceCreateInfo(const void *p_next = {}, VkInstanceCreateFlags flags = {}, const ApplicationInfo *p_application_info = {},
-                     uint32_t enabled_layer_count = {}, const char *const *pp_enabled_layer_names = {},
-                     uint32_t enabled_extension_count = {}, const char *const *pp_enabled_extension_names = {})
-    : p_next_(p_next), flags_(flags), p_application_info_(p_application_info), enabled_layer_count_(enabled_layer_count),
-      pp_enabled_layer_names_(pp_enabled_layer_names), enabled_extension_count_(enabled_extension_count),
-      pp_enabled_extension_names_(pp_enabled_extension_names) {}
+  InstanceCreateInfo(const char *const *pp_enabled_extension_names = {}, InstanceCreateMask flags = {},
+                     const ApplicationInfo *p_application_info = {}, uint32_t enabled_layer_count = {},
+                     const char *const *pp_enabled_layer_names = {}, uint32_t enabled_extension_count = {}, const void *p_next = {})
+    : pp_enabled_extension_names_(pp_enabled_extension_names), flags_(flags), p_application_info_(p_application_info),
+      enabled_layer_count_(enabled_layer_count), pp_enabled_layer_names_(pp_enabled_layer_names),
+      enabled_extension_count_(enabled_extension_count), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::INSTANCE_CREATE_INFO;
   const void *p_next_;
-  VkInstanceCreateFlags flags_;
+  InstanceCreateMask flags_;
   const ApplicationInfo *p_application_info_;
   uint32_t enabled_layer_count_;
   const char *const *pp_enabled_layer_names_;
@@ -11167,7 +10088,7 @@ struct PipelineColorBlendAttachmentState {
   PipelineColorBlendAttachmentState(VkBool32 blend_enable = {}, BlendFactor src_color_blend_factor = {},
                                     BlendFactor dst_color_blend_factor = {}, BlendOp color_blend_op = {},
                                     BlendFactor src_alpha_blend_factor = {}, BlendFactor dst_alpha_blend_factor = {},
-                                    BlendOp alpha_blend_op = {}, VkColorComponentFlags color_write_mask = {})
+                                    BlendOp alpha_blend_op = {}, ColorComponentMask color_write_mask = {})
     : blend_enable_(blend_enable), src_color_blend_factor_(src_color_blend_factor), dst_color_blend_factor_(dst_color_blend_factor),
       color_blend_op_(color_blend_op), src_alpha_blend_factor_(src_alpha_blend_factor), dst_alpha_blend_factor_(dst_alpha_blend_factor),
       alpha_blend_op_(alpha_blend_op), color_write_mask_(color_write_mask) {}
@@ -11181,15 +10102,15 @@ struct PipelineColorBlendAttachmentState {
   BlendFactor src_alpha_blend_factor_;
   BlendFactor dst_alpha_blend_factor_;
   BlendOp alpha_blend_op_;
-  VkColorComponentFlags color_write_mask_;
+  ColorComponentMask color_write_mask_;
 };
 
 struct PhysicalDeviceZeroInitializeWorkgroupMemoryFeatures {
 
   using native_type = VkPhysicalDeviceZeroInitializeWorkgroupMemoryFeatures;
 
-  PhysicalDeviceZeroInitializeWorkgroupMemoryFeatures(void *p_next = {}, VkBool32 shader_zero_initialize_workgroup_memory = {})
-    : p_next_(p_next), shader_zero_initialize_workgroup_memory_(shader_zero_initialize_workgroup_memory) {}
+  PhysicalDeviceZeroInitializeWorkgroupMemoryFeatures(VkBool32 shader_zero_initialize_workgroup_memory = {}, void *p_next = {})
+    : shader_zero_initialize_workgroup_memory_(shader_zero_initialize_workgroup_memory), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -11202,17 +10123,17 @@ struct FramebufferCreateInfo {
 
   using native_type = VkFramebufferCreateInfo;
 
-  FramebufferCreateInfo(const void *p_next = {}, VkFramebufferCreateFlags flags = {}, VkRenderPass render_pass = {},
+  FramebufferCreateInfo(uint32_t layers = {}, FramebufferCreateMask flags = {}, VkRenderPass render_pass = {},
                         uint32_t attachment_count = {}, const VkImageView *p_attachments = {}, uint32_t width = {}, uint32_t height = {},
-                        uint32_t layers = {})
-    : p_next_(p_next), flags_(flags), render_pass_(render_pass), attachment_count_(attachment_count), p_attachments_(p_attachments),
-      width_(width), height_(height), layers_(layers) {}
+                        const void *p_next = {})
+    : layers_(layers), flags_(flags), render_pass_(render_pass), attachment_count_(attachment_count), p_attachments_(p_attachments),
+      width_(width), height_(height), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::FRAMEBUFFER_CREATE_INFO;
   const void *p_next_;
-  VkFramebufferCreateFlags flags_;
+  FramebufferCreateMask flags_;
   VkRenderPass render_pass_;
   uint32_t attachment_count_;
   const VkImageView *p_attachments_;
@@ -11225,16 +10146,14 @@ struct PhysicalDeviceAccelerationStructureFeaturesKHR {
 
   using native_type = VkPhysicalDeviceAccelerationStructureFeaturesKHR;
 
-  PhysicalDeviceAccelerationStructureFeaturesKHR(void *p_next = {}, VkBool32 acceleration_structure = {},
-                                                 VkBool32 acceleration_structure_capture_replay = {},
+  PhysicalDeviceAccelerationStructureFeaturesKHR(VkBool32 descriptor_binding_acceleration_structure_update_after_bind = {},
+                                                 VkBool32 acceleration_structure = {}, VkBool32 acceleration_structure_capture_replay = {},
                                                  VkBool32 acceleration_structure_indirect_build = {},
-                                                 VkBool32 acceleration_structure_host_commands = {},
-                                                 VkBool32 descriptor_binding_acceleration_structure_update_after_bind = {})
-    : p_next_(p_next), acceleration_structure_(acceleration_structure),
-      acceleration_structure_capture_replay_(acceleration_structure_capture_replay),
+                                                 VkBool32 acceleration_structure_host_commands = {}, void *p_next = {})
+    : descriptor_binding_acceleration_structure_update_after_bind_(descriptor_binding_acceleration_structure_update_after_bind),
+      acceleration_structure_(acceleration_structure), acceleration_structure_capture_replay_(acceleration_structure_capture_replay),
       acceleration_structure_indirect_build_(acceleration_structure_indirect_build),
-      acceleration_structure_host_commands_(acceleration_structure_host_commands),
-      descriptor_binding_acceleration_structure_update_after_bind_(descriptor_binding_acceleration_structure_update_after_bind) {}
+      acceleration_structure_host_commands_(acceleration_structure_host_commands), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -11251,12 +10170,12 @@ struct PhysicalDevicePrimitivesGeneratedQueryFeaturesEXT {
 
   using native_type = VkPhysicalDevicePrimitivesGeneratedQueryFeaturesEXT;
 
-  PhysicalDevicePrimitivesGeneratedQueryFeaturesEXT(void *p_next = {}, VkBool32 primitives_generated_query = {},
-                                                    VkBool32 primitives_generated_query_with_rasterizer_discard = {},
-                                                    VkBool32 primitives_generated_query_with_non_zero_streams = {})
-    : p_next_(p_next), primitives_generated_query_(primitives_generated_query),
-      primitives_generated_query_with_rasterizer_discard_(primitives_generated_query_with_rasterizer_discard),
-      primitives_generated_query_with_non_zero_streams_(primitives_generated_query_with_non_zero_streams) {}
+  PhysicalDevicePrimitivesGeneratedQueryFeaturesEXT(VkBool32 primitives_generated_query_with_non_zero_streams = {},
+                                                    VkBool32 primitives_generated_query = {},
+                                                    VkBool32 primitives_generated_query_with_rasterizer_discard = {}, void *p_next = {})
+    : primitives_generated_query_with_non_zero_streams_(primitives_generated_query_with_non_zero_streams),
+      primitives_generated_query_(primitives_generated_query),
+      primitives_generated_query_with_rasterizer_discard_(primitives_generated_query_with_rasterizer_discard), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -11266,37 +10185,18 @@ struct PhysicalDevicePrimitivesGeneratedQueryFeaturesEXT {
   VkBool32 primitives_generated_query_with_rasterizer_discard_;
   VkBool32 primitives_generated_query_with_non_zero_streams_;
 };
-#ifdef VK_USE_PLATFORM_XCB_KHR
-
-struct XcbSurfaceCreateInfoKHR {
-
-  using native_type = VkXcbSurfaceCreateInfoKHR;
-
-  XcbSurfaceCreateInfoKHR(const void *p_next = {}, VkXcbSurfaceCreateFlagsKHR flags = {}, xcb_connection_t *connection = {},
-                          xcb_window_t window = {})
-    : p_next_(p_next), flags_(flags), connection_(connection), window_(window) {}
-
-  auto *get() { return reinterpret_cast<native_type *>(this); }
-
-  StructureType s_type_ = StructureType::XCB_SURFACE_CREATE_INFO_KHR;
-  const void *p_next_;
-  VkXcbSurfaceCreateFlagsKHR flags_;
-  xcb_connection_t *connection_;
-  xcb_window_t window_;
-};
-#endif
 
 struct SamplerYcbcrConversionCreateInfo {
 
   using native_type = VkSamplerYcbcrConversionCreateInfo;
 
-  SamplerYcbcrConversionCreateInfo(const void *p_next = {}, Format format = {}, SamplerYcbcrModelConversion ycbcr_model = {},
-                                   SamplerYcbcrRange ycbcr_range = {}, ComponentMapping components = {},
-                                   ChromaLocation x_chroma_offset = {}, ChromaLocation y_chroma_offset = {}, Filter chroma_filter = {},
-                                   VkBool32 force_explicit_reconstruction = {})
-    : p_next_(p_next), format_(format), ycbcr_model_(ycbcr_model), ycbcr_range_(ycbcr_range), components_(components),
-      x_chroma_offset_(x_chroma_offset), y_chroma_offset_(y_chroma_offset), chroma_filter_(chroma_filter),
-      force_explicit_reconstruction_(force_explicit_reconstruction) {}
+  SamplerYcbcrConversionCreateInfo(VkBool32 force_explicit_reconstruction = {}, Format format = {},
+                                   SamplerYcbcrModelConversion ycbcr_model = {}, SamplerYcbcrRange ycbcr_range = {},
+                                   ComponentMapping components = {}, ChromaLocation x_chroma_offset = {},
+                                   ChromaLocation y_chroma_offset = {}, Filter chroma_filter = {}, const void *p_next = {})
+    : force_explicit_reconstruction_(force_explicit_reconstruction), format_(format), ycbcr_model_(ycbcr_model), ycbcr_range_(ycbcr_range),
+      components_(components), x_chroma_offset_(x_chroma_offset), y_chroma_offset_(y_chroma_offset), chroma_filter_(chroma_filter),
+      p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -11346,9 +10246,9 @@ struct ExternalSemaphoreProperties {
 
   StructureType s_type_ = StructureType::EXTERNAL_SEMAPHORE_PROPERTIES;
   void *p_next_;
-  VkExternalSemaphoreHandleTypeFlags export_from_imported_handle_types_;
-  VkExternalSemaphoreHandleTypeFlags compatible_handle_types_;
-  VkExternalSemaphoreFeatureFlags external_semaphore_features_;
+  ExternalSemaphoreHandleTypeMask export_from_imported_handle_types_;
+  ExternalSemaphoreHandleTypeMask compatible_handle_types_;
+  ExternalSemaphoreFeatureMask external_semaphore_features_;
 };
 
 struct DescriptorUpdateTemplateEntry {
@@ -11374,21 +10274,22 @@ struct DescriptorUpdateTemplateCreateInfo {
 
   using native_type = VkDescriptorUpdateTemplateCreateInfo;
 
-  DescriptorUpdateTemplateCreateInfo(const void *p_next = {}, VkDescriptorUpdateTemplateCreateFlags flags = {},
+  DescriptorUpdateTemplateCreateInfo(uint32_t set = {}, DescriptorUpdateTemplateCreateMask flags = {},
                                      uint32_t descriptor_update_entry_count = {},
                                      const DescriptorUpdateTemplateEntry *p_descriptor_update_entries = {},
                                      DescriptorUpdateTemplateType template_type = {}, VkDescriptorSetLayout descriptor_set_layout = {},
-                                     PipelineBindPoint pipeline_bind_point = {}, VkPipelineLayout pipeline_layout = {}, uint32_t set = {})
-    : p_next_(p_next), flags_(flags), descriptor_update_entry_count_(descriptor_update_entry_count),
+                                     PipelineBindPoint pipeline_bind_point = {}, VkPipelineLayout pipeline_layout = {},
+                                     const void *p_next = {})
+    : set_(set), flags_(flags), descriptor_update_entry_count_(descriptor_update_entry_count),
       p_descriptor_update_entries_(p_descriptor_update_entries), template_type_(template_type),
       descriptor_set_layout_(descriptor_set_layout), pipeline_bind_point_(pipeline_bind_point), pipeline_layout_(pipeline_layout),
-      set_(set) {}
+      p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::DESCRIPTOR_UPDATE_TEMPLATE_CREATE_INFO;
   const void *p_next_;
-  VkDescriptorUpdateTemplateCreateFlags flags_;
+  DescriptorUpdateTemplateCreateMask flags_;
   uint32_t descriptor_update_entry_count_;
   const DescriptorUpdateTemplateEntry *p_descriptor_update_entries_;
   DescriptorUpdateTemplateType template_type_;
@@ -11402,9 +10303,9 @@ struct WriteDescriptorSetAccelerationStructureNV {
 
   using native_type = VkWriteDescriptorSetAccelerationStructureNV;
 
-  WriteDescriptorSetAccelerationStructureNV(const void *p_next = {}, uint32_t acceleration_structure_count = {},
-                                            const VkAccelerationStructureNV *p_acceleration_structures = {})
-    : p_next_(p_next), acceleration_structure_count_(acceleration_structure_count), p_acceleration_structures_(p_acceleration_structures) {}
+  WriteDescriptorSetAccelerationStructureNV(const VkAccelerationStructureNV *p_acceleration_structures = {},
+                                            uint32_t acceleration_structure_count = {}, const void *p_next = {})
+    : p_acceleration_structures_(p_acceleration_structures), acceleration_structure_count_(acceleration_structure_count), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -11429,11 +10330,11 @@ struct CommandBufferInheritanceInfo {
 
   using native_type = VkCommandBufferInheritanceInfo;
 
-  CommandBufferInheritanceInfo(const void *p_next = {}, VkRenderPass render_pass = {}, uint32_t subpass = {},
-                               VkFramebuffer framebuffer = {}, VkBool32 occlusion_query_enable = {}, VkQueryControlFlags query_flags = {},
-                               VkQueryPipelineStatisticFlags pipeline_statistics = {})
-    : p_next_(p_next), render_pass_(render_pass), subpass_(subpass), framebuffer_(framebuffer),
-      occlusion_query_enable_(occlusion_query_enable), query_flags_(query_flags), pipeline_statistics_(pipeline_statistics) {}
+  CommandBufferInheritanceInfo(QueryPipelineStatisticMask pipeline_statistics = {}, VkRenderPass render_pass = {}, uint32_t subpass = {},
+                               VkFramebuffer framebuffer = {}, VkBool32 occlusion_query_enable = {}, QueryControlMask query_flags = {},
+                               const void *p_next = {})
+    : pipeline_statistics_(pipeline_statistics), render_pass_(render_pass), subpass_(subpass), framebuffer_(framebuffer),
+      occlusion_query_enable_(occlusion_query_enable), query_flags_(query_flags), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -11443,16 +10344,16 @@ struct CommandBufferInheritanceInfo {
   uint32_t subpass_;
   VkFramebuffer framebuffer_;
   VkBool32 occlusion_query_enable_;
-  VkQueryControlFlags query_flags_;
-  VkQueryPipelineStatisticFlags pipeline_statistics_;
+  QueryControlMask query_flags_;
+  QueryPipelineStatisticMask pipeline_statistics_;
 };
 
 struct MappedMemoryRange {
 
   using native_type = VkMappedMemoryRange;
 
-  MappedMemoryRange(const void *p_next = {}, VkDeviceMemory memory = {}, VkDeviceSize offset = {}, VkDeviceSize size = {})
-    : p_next_(p_next), memory_(memory), offset_(offset), size_(size) {}
+  MappedMemoryRange(VkDeviceSize size = {}, VkDeviceMemory memory = {}, VkDeviceSize offset = {}, const void *p_next = {})
+    : size_(size), memory_(memory), offset_(offset), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -11467,12 +10368,12 @@ struct RayTracingShaderGroupCreateInfoKHR {
 
   using native_type = VkRayTracingShaderGroupCreateInfoKHR;
 
-  RayTracingShaderGroupCreateInfoKHR(const void *p_next = {}, RayTracingShaderGroupType type = {}, uint32_t general_shader = {},
-                                     uint32_t closest_hit_shader = {}, uint32_t any_hit_shader = {}, uint32_t intersection_shader = {},
-                                     const void *p_shader_group_capture_replay_handle = {})
-    : p_next_(p_next), type_(type), general_shader_(general_shader), closest_hit_shader_(closest_hit_shader),
-      any_hit_shader_(any_hit_shader), intersection_shader_(intersection_shader),
-      p_shader_group_capture_replay_handle_(p_shader_group_capture_replay_handle) {}
+  RayTracingShaderGroupCreateInfoKHR(const void *p_shader_group_capture_replay_handle = {}, RayTracingShaderGroupType type = {},
+                                     uint32_t general_shader = {}, uint32_t closest_hit_shader = {}, uint32_t any_hit_shader = {},
+                                     uint32_t intersection_shader = {}, const void *p_next = {})
+    : p_shader_group_capture_replay_handle_(p_shader_group_capture_replay_handle), type_(type), general_shader_(general_shader),
+      closest_hit_shader_(closest_hit_shader), any_hit_shader_(any_hit_shader), intersection_shader_(intersection_shader), p_next_(p_next) {
+  }
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -11490,16 +10391,16 @@ struct PipelineViewportStateCreateInfo {
 
   using native_type = VkPipelineViewportStateCreateInfo;
 
-  PipelineViewportStateCreateInfo(const void *p_next = {}, VkPipelineViewportStateCreateFlags flags = {}, uint32_t viewport_count = {},
-                                  const Viewport *p_viewports = {}, uint32_t scissor_count = {}, const Rect2D *p_scissors = {})
-    : p_next_(p_next), flags_(flags), viewport_count_(viewport_count), p_viewports_(p_viewports), scissor_count_(scissor_count),
-      p_scissors_(p_scissors) {}
+  PipelineViewportStateCreateInfo(const Rect2D *p_scissors = {}, PipelineViewportStateCreateMask flags = {}, uint32_t viewport_count = {},
+                                  const Viewport *p_viewports = {}, uint32_t scissor_count = {}, const void *p_next = {})
+    : p_scissors_(p_scissors), flags_(flags), viewport_count_(viewport_count), p_viewports_(p_viewports), scissor_count_(scissor_count),
+      p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PIPELINE_VIEWPORT_STATE_CREATE_INFO;
   const void *p_next_;
-  VkPipelineViewportStateCreateFlags flags_;
+  PipelineViewportStateCreateMask flags_;
   uint32_t viewport_count_;
   const Viewport *p_viewports_;
   uint32_t scissor_count_;
@@ -11510,25 +10411,25 @@ struct PipelineRasterizationStateCreateInfo {
 
   using native_type = VkPipelineRasterizationStateCreateInfo;
 
-  PipelineRasterizationStateCreateInfo(const void *p_next = {}, VkPipelineRasterizationStateCreateFlags flags = {},
+  PipelineRasterizationStateCreateInfo(float line_width = {}, PipelineRasterizationStateCreateMask flags = {},
                                        VkBool32 depth_clamp_enable = {}, VkBool32 rasterizer_discard_enable = {},
-                                       PolygonMode polygon_mode = {}, VkCullModeFlags cull_mode = {}, FrontFace front_face = {},
+                                       PolygonMode polygon_mode = {}, CullModeMask cull_mode = {}, FrontFace front_face = {},
                                        VkBool32 depth_bias_enable = {}, float depth_bias_constant_factor = {}, float depth_bias_clamp = {},
-                                       float depth_bias_slope_factor = {}, float line_width = {})
-    : p_next_(p_next), flags_(flags), depth_clamp_enable_(depth_clamp_enable), rasterizer_discard_enable_(rasterizer_discard_enable),
-      polygon_mode_(polygon_mode), cull_mode_(cull_mode), front_face_(front_face), depth_bias_enable_(depth_bias_enable),
-      depth_bias_constant_factor_(depth_bias_constant_factor), depth_bias_clamp_(depth_bias_clamp),
-      depth_bias_slope_factor_(depth_bias_slope_factor), line_width_(line_width) {}
+                                       float depth_bias_slope_factor = {}, const void *p_next = {})
+    : line_width_(line_width), flags_(flags), depth_clamp_enable_(depth_clamp_enable),
+      rasterizer_discard_enable_(rasterizer_discard_enable), polygon_mode_(polygon_mode), cull_mode_(cull_mode), front_face_(front_face),
+      depth_bias_enable_(depth_bias_enable), depth_bias_constant_factor_(depth_bias_constant_factor), depth_bias_clamp_(depth_bias_clamp),
+      depth_bias_slope_factor_(depth_bias_slope_factor), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PIPELINE_RASTERIZATION_STATE_CREATE_INFO;
   const void *p_next_;
-  VkPipelineRasterizationStateCreateFlags flags_;
+  PipelineRasterizationStateCreateMask flags_;
   VkBool32 depth_clamp_enable_;
   VkBool32 rasterizer_discard_enable_;
   PolygonMode polygon_mode_;
-  VkCullModeFlags cull_mode_;
+  CullModeMask cull_mode_;
   FrontFace front_face_;
   VkBool32 depth_bias_enable_;
   float depth_bias_constant_factor_;
@@ -11561,19 +10462,19 @@ struct PipelineDepthStencilStateCreateInfo {
 
   using native_type = VkPipelineDepthStencilStateCreateInfo;
 
-  PipelineDepthStencilStateCreateInfo(const void *p_next = {}, VkPipelineDepthStencilStateCreateFlags flags = {},
+  PipelineDepthStencilStateCreateInfo(float max_depth_bounds = {}, PipelineDepthStencilStateCreateMask flags = {},
                                       VkBool32 depth_test_enable = {}, VkBool32 depth_write_enable = {}, CompareOp depth_compare_op = {},
                                       VkBool32 depth_bounds_test_enable = {}, VkBool32 stencil_test_enable = {}, StencilOpState front = {},
-                                      StencilOpState back = {}, float min_depth_bounds = {}, float max_depth_bounds = {})
-    : p_next_(p_next), flags_(flags), depth_test_enable_(depth_test_enable), depth_write_enable_(depth_write_enable),
+                                      StencilOpState back = {}, float min_depth_bounds = {}, const void *p_next = {})
+    : max_depth_bounds_(max_depth_bounds), flags_(flags), depth_test_enable_(depth_test_enable), depth_write_enable_(depth_write_enable),
       depth_compare_op_(depth_compare_op), depth_bounds_test_enable_(depth_bounds_test_enable), stencil_test_enable_(stencil_test_enable),
-      front_(front), back_(back), min_depth_bounds_(min_depth_bounds), max_depth_bounds_(max_depth_bounds) {}
+      front_(front), back_(back), min_depth_bounds_(min_depth_bounds), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PIPELINE_DEPTH_STENCIL_STATE_CREATE_INFO;
   const void *p_next_;
-  VkPipelineDepthStencilStateCreateFlags flags_;
+  PipelineDepthStencilStateCreateMask flags_;
   VkBool32 depth_test_enable_;
   VkBool32 depth_write_enable_;
   CompareOp depth_compare_op_;
@@ -11589,18 +10490,17 @@ struct PipelineColorBlendStateCreateInfo {
 
   using native_type = VkPipelineColorBlendStateCreateInfo;
 
-  PipelineColorBlendStateCreateInfo(const void *p_next = {}, VkPipelineColorBlendStateCreateFlags flags = {}, VkBool32 logic_op_enable = {},
-                                    LogicOp logic_op = {}, uint32_t attachment_count = {},
-                                    const PipelineColorBlendAttachmentState *p_attachments = {},
-                                    const std::array<float, 4> &blend_constants = {})
-    : p_next_(p_next), flags_(flags), logic_op_enable_(logic_op_enable), logic_op_(logic_op), attachment_count_(attachment_count),
-      p_attachments_(p_attachments), blend_constants_(blend_constants) {}
+  PipelineColorBlendStateCreateInfo(const std::array<float, 4> &blend_constants = {}, PipelineColorBlendStateCreateMask flags = {},
+                                    VkBool32 logic_op_enable = {}, LogicOp logic_op = {}, uint32_t attachment_count = {},
+                                    const PipelineColorBlendAttachmentState *p_attachments = {}, const void *p_next = {})
+    : blend_constants_(blend_constants), flags_(flags), logic_op_enable_(logic_op_enable), logic_op_(logic_op),
+      attachment_count_(attachment_count), p_attachments_(p_attachments), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PIPELINE_COLOR_BLEND_STATE_CREATE_INFO;
   const void *p_next_;
-  VkPipelineColorBlendStateCreateFlags flags_;
+  PipelineColorBlendStateCreateMask flags_;
   VkBool32 logic_op_enable_;
   LogicOp logic_op_;
   uint32_t attachment_count_;
@@ -11612,7 +10512,7 @@ struct GraphicsPipelineCreateInfo {
 
   using native_type = VkGraphicsPipelineCreateInfo;
 
-  GraphicsPipelineCreateInfo(const void *p_next = {}, VkPipelineCreateFlags flags = {}, uint32_t stage_count = {},
+  GraphicsPipelineCreateInfo(int32_t base_pipeline_index = {}, PipelineCreateMask flags = {}, uint32_t stage_count = {},
                              const PipelineShaderStageCreateInfo *p_stages = {},
                              const PipelineVertexInputStateCreateInfo *p_vertex_input_state = {},
                              const PipelineInputAssemblyStateCreateInfo *p_input_assembly_state = {},
@@ -11624,19 +10524,19 @@ struct GraphicsPipelineCreateInfo {
                              const PipelineColorBlendStateCreateInfo *p_color_blend_state = {},
                              const PipelineDynamicStateCreateInfo *p_dynamic_state = {}, VkPipelineLayout layout = {},
                              VkRenderPass render_pass = {}, uint32_t subpass = {}, VkPipeline base_pipeline_handle = {},
-                             int32_t base_pipeline_index = {})
-    : p_next_(p_next), flags_(flags), stage_count_(stage_count), p_stages_(p_stages), p_vertex_input_state_(p_vertex_input_state),
-      p_input_assembly_state_(p_input_assembly_state), p_tessellation_state_(p_tessellation_state), p_viewport_state_(p_viewport_state),
-      p_rasterization_state_(p_rasterization_state), p_multisample_state_(p_multisample_state),
-      p_depth_stencil_state_(p_depth_stencil_state), p_color_blend_state_(p_color_blend_state), p_dynamic_state_(p_dynamic_state),
-      layout_(layout), render_pass_(render_pass), subpass_(subpass), base_pipeline_handle_(base_pipeline_handle),
-      base_pipeline_index_(base_pipeline_index) {}
+                             const void *p_next = {})
+    : base_pipeline_index_(base_pipeline_index), flags_(flags), stage_count_(stage_count), p_stages_(p_stages),
+      p_vertex_input_state_(p_vertex_input_state), p_input_assembly_state_(p_input_assembly_state),
+      p_tessellation_state_(p_tessellation_state), p_viewport_state_(p_viewport_state), p_rasterization_state_(p_rasterization_state),
+      p_multisample_state_(p_multisample_state), p_depth_stencil_state_(p_depth_stencil_state), p_color_blend_state_(p_color_blend_state),
+      p_dynamic_state_(p_dynamic_state), layout_(layout), render_pass_(render_pass), subpass_(subpass),
+      base_pipeline_handle_(base_pipeline_handle), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::GRAPHICS_PIPELINE_CREATE_INFO;
   const void *p_next_;
-  VkPipelineCreateFlags flags_;
+  PipelineCreateMask flags_;
   uint32_t stage_count_;
   const PipelineShaderStageCreateInfo *p_stages_;
   const PipelineVertexInputStateCreateInfo *p_vertex_input_state_;
@@ -11670,17 +10570,17 @@ struct DisplaySurfaceCreateInfoKHR {
 
   using native_type = VkDisplaySurfaceCreateInfoKHR;
 
-  DisplaySurfaceCreateInfoKHR(const void *p_next = {}, VkDisplaySurfaceCreateFlagsKHR flags = {}, VkDisplayModeKHR display_mode = {},
+  DisplaySurfaceCreateInfoKHR(Extent2D image_extent = {}, DisplaySurfaceCreateMask flags = {}, VkDisplayModeKHR display_mode = {},
                               uint32_t plane_index = {}, uint32_t plane_stack_index = {}, SurfaceTransformMaskBit transform = {},
-                              float global_alpha = {}, DisplayPlaneAlphaMaskBit alpha_mode = {}, Extent2D image_extent = {})
-    : p_next_(p_next), flags_(flags), display_mode_(display_mode), plane_index_(plane_index), plane_stack_index_(plane_stack_index),
-      transform_(transform), global_alpha_(global_alpha), alpha_mode_(alpha_mode), image_extent_(image_extent) {}
+                              float global_alpha = {}, DisplayPlaneAlphaMaskBit alpha_mode = {}, const void *p_next = {})
+    : image_extent_(image_extent), flags_(flags), display_mode_(display_mode), plane_index_(plane_index),
+      plane_stack_index_(plane_stack_index), transform_(transform), global_alpha_(global_alpha), alpha_mode_(alpha_mode), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::DISPLAY_SURFACE_CREATE_INFO_KHR;
   const void *p_next_;
-  VkDisplaySurfaceCreateFlagsKHR flags_;
+  DisplaySurfaceCreateMask flags_;
   VkDisplayModeKHR display_mode_;
   uint32_t plane_index_;
   uint32_t plane_stack_index_;
@@ -11694,7 +10594,7 @@ struct PhysicalDeviceRayQueryFeaturesKHR {
 
   using native_type = VkPhysicalDeviceRayQueryFeaturesKHR;
 
-  PhysicalDeviceRayQueryFeaturesKHR(void *p_next = {}, VkBool32 ray_query = {}) : p_next_(p_next), ray_query_(ray_query) {}
+  PhysicalDeviceRayQueryFeaturesKHR(VkBool32 ray_query = {}, void *p_next = {}) : ray_query_(ray_query), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -11707,8 +10607,8 @@ struct PipelineIndirectDeviceAddressInfoNV {
 
   using native_type = VkPipelineIndirectDeviceAddressInfoNV;
 
-  PipelineIndirectDeviceAddressInfoNV(const void *p_next = {}, PipelineBindPoint pipeline_bind_point = {}, VkPipeline pipeline = {})
-    : p_next_(p_next), pipeline_bind_point_(pipeline_bind_point), pipeline_(pipeline) {}
+  PipelineIndirectDeviceAddressInfoNV(VkPipeline pipeline = {}, PipelineBindPoint pipeline_bind_point = {}, const void *p_next = {})
+    : pipeline_(pipeline), pipeline_bind_point_(pipeline_bind_point), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -11740,8 +10640,8 @@ struct PhysicalDeviceSeparateDepthStencilLayoutsFeatures {
 
   using native_type = VkPhysicalDeviceSeparateDepthStencilLayoutsFeatures;
 
-  PhysicalDeviceSeparateDepthStencilLayoutsFeatures(void *p_next = {}, VkBool32 separate_depth_stencil_layouts = {})
-    : p_next_(p_next), separate_depth_stencil_layouts_(separate_depth_stencil_layouts) {}
+  PhysicalDeviceSeparateDepthStencilLayoutsFeatures(VkBool32 separate_depth_stencil_layouts = {}, void *p_next = {})
+    : separate_depth_stencil_layouts_(separate_depth_stencil_layouts), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -11758,7 +10658,7 @@ struct PhysicalDeviceCooperativeMatrixPropertiesNV {
 
   StructureType s_type_ = StructureType::PHYSICAL_DEVICE_COOPERATIVE_MATRIX_PROPERTIES_NV;
   void *p_next_;
-  VkShaderStageFlags cooperative_matrix_supported_stages_;
+  ShaderStageMask cooperative_matrix_supported_stages_;
 };
 
 struct DescriptorPoolSize {
@@ -11777,47 +10677,26 @@ struct DescriptorPoolCreateInfo {
 
   using native_type = VkDescriptorPoolCreateInfo;
 
-  DescriptorPoolCreateInfo(const void *p_next = {}, VkDescriptorPoolCreateFlags flags = {}, uint32_t max_sets = {},
-                           uint32_t pool_size_count = {}, const DescriptorPoolSize *p_pool_sizes = {})
-    : p_next_(p_next), flags_(flags), max_sets_(max_sets), pool_size_count_(pool_size_count), p_pool_sizes_(p_pool_sizes) {}
+  DescriptorPoolCreateInfo(const DescriptorPoolSize *p_pool_sizes = {}, DescriptorPoolCreateMask flags = {}, uint32_t max_sets = {},
+                           uint32_t pool_size_count = {}, const void *p_next = {})
+    : p_pool_sizes_(p_pool_sizes), flags_(flags), max_sets_(max_sets), pool_size_count_(pool_size_count), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::DESCRIPTOR_POOL_CREATE_INFO;
   const void *p_next_;
-  VkDescriptorPoolCreateFlags flags_;
+  DescriptorPoolCreateMask flags_;
   uint32_t max_sets_;
   uint32_t pool_size_count_;
   const DescriptorPoolSize *p_pool_sizes_;
 };
-#ifdef VK_USE_PLATFORM_METAL_EXT
-
-struct ExportMetalTextureInfoEXT {
-
-  using native_type = VkExportMetalTextureInfoEXT;
-
-  ExportMetalTextureInfoEXT(const void *p_next = {}, VkImage image = {}, VkImageView image_view = {}, VkBufferView buffer_view = {},
-                            ImageAspectMaskBit plane = {}, MTLTexture_id mtl_texture = {})
-    : p_next_(p_next), image_(image), image_view_(image_view), buffer_view_(buffer_view), plane_(plane), mtl_texture_(mtl_texture) {}
-
-  auto *get() { return reinterpret_cast<native_type *>(this); }
-
-  StructureType s_type_ = StructureType::EXPORT_METAL_TEXTURE_INFO_EXT;
-  const void *p_next_;
-  VkImage image_;
-  VkImageView image_view_;
-  VkBufferView buffer_view_;
-  ImageAspectMaskBit plane_;
-  MTLTexture_id mtl_texture_;
-};
-#endif
 
 struct ImportMemoryFdInfoKHR {
 
   using native_type = VkImportMemoryFdInfoKHR;
 
-  ImportMemoryFdInfoKHR(const void *p_next = {}, ExternalMemoryHandleTypeMaskBit handle_type = {}, int fd = {})
-    : p_next_(p_next), handle_type_(handle_type), fd_(fd) {}
+  ImportMemoryFdInfoKHR(int fd = {}, ExternalMemoryHandleTypeMaskBit handle_type = {}, const void *p_next = {})
+    : fd_(fd), handle_type_(handle_type), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -11842,8 +10721,8 @@ struct WriteDescriptorSetInlineUniformBlock {
 
   using native_type = VkWriteDescriptorSetInlineUniformBlock;
 
-  WriteDescriptorSetInlineUniformBlock(const void *p_next = {}, uint32_t data_size = {}, const void *p_data = {})
-    : p_next_(p_next), data_size_(data_size), p_data_(p_data) {}
+  WriteDescriptorSetInlineUniformBlock(const void *p_data = {}, uint32_t data_size = {}, const void *p_next = {})
+    : p_data_(p_data), data_size_(data_size), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -11857,10 +10736,10 @@ struct VideoEncodeH264GopRemainingFrameInfoKHR {
 
   using native_type = VkVideoEncodeH264GopRemainingFrameInfoKHR;
 
-  VideoEncodeH264GopRemainingFrameInfoKHR(const void *p_next = {}, VkBool32 use_gop_remaining_frames = {}, uint32_t gop_remaining_i = {},
-                                          uint32_t gop_remaining_p = {}, uint32_t gop_remaining_b = {})
-    : p_next_(p_next), use_gop_remaining_frames_(use_gop_remaining_frames), gop_remaining_i_(gop_remaining_i),
-      gop_remaining_p_(gop_remaining_p), gop_remaining_b_(gop_remaining_b) {}
+  VideoEncodeH264GopRemainingFrameInfoKHR(uint32_t gop_remaining_b = {}, VkBool32 use_gop_remaining_frames = {},
+                                          uint32_t gop_remaining_i = {}, uint32_t gop_remaining_p = {}, const void *p_next = {})
+    : gop_remaining_b_(gop_remaining_b), use_gop_remaining_frames_(use_gop_remaining_frames), gop_remaining_i_(gop_remaining_i),
+      gop_remaining_p_(gop_remaining_p), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -11871,31 +10750,13 @@ struct VideoEncodeH264GopRemainingFrameInfoKHR {
   uint32_t gop_remaining_p_;
   uint32_t gop_remaining_b_;
 };
-#ifdef VK_USE_PLATFORM_FUCHSIA
-
-struct ImagePipeSurfaceCreateInfoFUCHSIA {
-
-  using native_type = VkImagePipeSurfaceCreateInfoFUCHSIA;
-
-  ImagePipeSurfaceCreateInfoFUCHSIA(const void *p_next = {}, VkImagePipeSurfaceCreateFlagsFUCHSIA flags = {},
-                                    zx_handle_t image_pipe_handle = {})
-    : p_next_(p_next), flags_(flags), image_pipe_handle_(image_pipe_handle) {}
-
-  auto *get() { return reinterpret_cast<native_type *>(this); }
-
-  StructureType s_type_ = StructureType::IMAGEPIPE_SURFACE_CREATE_INFO_FUCHSIA;
-  const void *p_next_;
-  VkImagePipeSurfaceCreateFlagsFUCHSIA flags_;
-  zx_handle_t image_pipe_handle_;
-};
-#endif
 
 struct GeometryAABBNV {
 
   using native_type = VkGeometryAABBNV;
 
-  GeometryAABBNV(const void *p_next = {}, VkBuffer aabb_data = {}, uint32_t num_aabbs = {}, uint32_t stride = {}, VkDeviceSize offset = {})
-    : p_next_(p_next), aabb_data_(aabb_data), num_aabbs_(num_aabbs), stride_(stride), offset_(offset) {}
+  GeometryAABBNV(VkDeviceSize offset = {}, VkBuffer aabb_data = {}, uint32_t num_aabbs = {}, uint32_t stride = {}, const void *p_next = {})
+    : offset_(offset), aabb_data_(aabb_data), num_aabbs_(num_aabbs), stride_(stride), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -11923,8 +10784,8 @@ struct GeometryNV {
 
   using native_type = VkGeometryNV;
 
-  GeometryNV(const void *p_next = {}, GeometryType geometry_type = {}, GeometryDataNV geometry = {}, VkGeometryFlagsKHR flags = {})
-    : p_next_(p_next), geometry_type_(geometry_type), geometry_(geometry), flags_(flags) {}
+  GeometryNV(GeometryMask flags = {}, GeometryType geometry_type = {}, GeometryDataNV geometry = {}, const void *p_next = {})
+    : flags_(flags), geometry_type_(geometry_type), geometry_(geometry), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -11932,18 +10793,18 @@ struct GeometryNV {
   const void *p_next_;
   GeometryType geometry_type_;
   GeometryDataNV geometry_;
-  VkGeometryFlagsKHR flags_;
+  GeometryMask flags_;
 };
 
 struct AccelerationStructureInfoNV {
 
   using native_type = VkAccelerationStructureInfoNV;
 
-  AccelerationStructureInfoNV(const void *p_next = {}, VkAccelerationStructureTypeNV type = {},
+  AccelerationStructureInfoNV(const GeometryNV *p_geometries = {}, VkAccelerationStructureTypeNV type = {},
                               VkBuildAccelerationStructureFlagsNV flags = {}, uint32_t instance_count = {}, uint32_t geometry_count = {},
-                              const GeometryNV *p_geometries = {})
-    : p_next_(p_next), type_(type), flags_(flags), instance_count_(instance_count), geometry_count_(geometry_count),
-      p_geometries_(p_geometries) {}
+                              const void *p_next = {})
+    : p_geometries_(p_geometries), type_(type), flags_(flags), instance_count_(instance_count), geometry_count_(geometry_count),
+      p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -11960,8 +10821,8 @@ struct AccelerationStructureCreateInfoNV {
 
   using native_type = VkAccelerationStructureCreateInfoNV;
 
-  AccelerationStructureCreateInfoNV(const void *p_next = {}, VkDeviceSize compacted_size = {}, AccelerationStructureInfoNV info = {})
-    : p_next_(p_next), compacted_size_(compacted_size), info_(info) {}
+  AccelerationStructureCreateInfoNV(AccelerationStructureInfoNV info = {}, VkDeviceSize compacted_size = {}, const void *p_next = {})
+    : info_(info), compacted_size_(compacted_size), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -11975,8 +10836,8 @@ struct PhysicalDeviceFaultFeaturesEXT {
 
   using native_type = VkPhysicalDeviceFaultFeaturesEXT;
 
-  PhysicalDeviceFaultFeaturesEXT(void *p_next = {}, VkBool32 device_fault = {}, VkBool32 device_fault_vendor_binary = {})
-    : p_next_(p_next), device_fault_(device_fault), device_fault_vendor_binary_(device_fault_vendor_binary) {}
+  PhysicalDeviceFaultFeaturesEXT(VkBool32 device_fault_vendor_binary = {}, VkBool32 device_fault = {}, void *p_next = {})
+    : device_fault_vendor_binary_(device_fault_vendor_binary), device_fault_(device_fault), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -11990,9 +10851,9 @@ struct ImageDrmFormatModifierListCreateInfoEXT {
 
   using native_type = VkImageDrmFormatModifierListCreateInfoEXT;
 
-  ImageDrmFormatModifierListCreateInfoEXT(const void *p_next = {}, uint32_t drm_format_modifier_count = {},
-                                          const uint64_t *p_drm_format_modifiers = {})
-    : p_next_(p_next), drm_format_modifier_count_(drm_format_modifier_count), p_drm_format_modifiers_(p_drm_format_modifiers) {}
+  ImageDrmFormatModifierListCreateInfoEXT(const uint64_t *p_drm_format_modifiers = {}, uint32_t drm_format_modifier_count = {},
+                                          const void *p_next = {})
+    : p_drm_format_modifiers_(p_drm_format_modifiers), drm_format_modifier_count_(drm_format_modifier_count), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -12001,41 +10862,13 @@ struct ImageDrmFormatModifierListCreateInfoEXT {
   uint32_t drm_format_modifier_count_;
   const uint64_t *p_drm_format_modifiers_;
 };
-#ifdef VK_ENABLE_BETA_EXTENSIONS
-
-struct PhysicalDeviceShaderEnqueuePropertiesAMDX {
-
-  using native_type = VkPhysicalDeviceShaderEnqueuePropertiesAMDX;
-
-  PhysicalDeviceShaderEnqueuePropertiesAMDX(void *p_next = {}, uint32_t max_execution_graph_depth = {},
-                                            uint32_t max_execution_graph_shader_output_nodes = {},
-                                            uint32_t max_execution_graph_shader_payload_size = {},
-                                            uint32_t max_execution_graph_shader_payload_count = {},
-                                            uint32_t execution_graph_dispatch_address_alignment = {})
-    : p_next_(p_next), max_execution_graph_depth_(max_execution_graph_depth),
-      max_execution_graph_shader_output_nodes_(max_execution_graph_shader_output_nodes),
-      max_execution_graph_shader_payload_size_(max_execution_graph_shader_payload_size),
-      max_execution_graph_shader_payload_count_(max_execution_graph_shader_payload_count),
-      execution_graph_dispatch_address_alignment_(execution_graph_dispatch_address_alignment) {}
-
-  auto *get() { return reinterpret_cast<native_type *>(this); }
-
-  StructureType s_type_ = StructureType::PHYSICAL_DEVICE_SHADER_ENQUEUE_PROPERTIES_AMDX;
-  void *p_next_;
-  uint32_t max_execution_graph_depth_;
-  uint32_t max_execution_graph_shader_output_nodes_;
-  uint32_t max_execution_graph_shader_payload_size_;
-  uint32_t max_execution_graph_shader_payload_count_;
-  uint32_t execution_graph_dispatch_address_alignment_;
-};
-#endif
 
 struct PhysicalDeviceTextureCompressionASTCHDRFeatures {
 
   using native_type = VkPhysicalDeviceTextureCompressionASTCHDRFeatures;
 
-  PhysicalDeviceTextureCompressionASTCHDRFeatures(void *p_next = {}, VkBool32 texture_compression_astc_hdr = {})
-    : p_next_(p_next), texture_compression_astc_hdr_(texture_compression_astc_hdr) {}
+  PhysicalDeviceTextureCompressionASTCHDRFeatures(VkBool32 texture_compression_astc_hdr = {}, void *p_next = {})
+    : texture_compression_astc_hdr_(texture_compression_astc_hdr), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -12060,11 +10893,11 @@ struct MemoryToImageCopyEXT {
 
   using native_type = VkMemoryToImageCopyEXT;
 
-  MemoryToImageCopyEXT(const void *p_next = {}, const void *p_host_pointer = {}, uint32_t memory_row_length = {},
+  MemoryToImageCopyEXT(Extent3D image_extent = {}, const void *p_host_pointer = {}, uint32_t memory_row_length = {},
                        uint32_t memory_image_height = {}, ImageSubresourceLayers image_subresource = {}, Offset3D image_offset = {},
-                       Extent3D image_extent = {})
-    : p_next_(p_next), p_host_pointer_(p_host_pointer), memory_row_length_(memory_row_length), memory_image_height_(memory_image_height),
-      image_subresource_(image_subresource), image_offset_(image_offset), image_extent_(image_extent) {}
+                       const void *p_next = {})
+    : image_extent_(image_extent), p_host_pointer_(p_host_pointer), memory_row_length_(memory_row_length),
+      memory_image_height_(memory_image_height), image_subresource_(image_subresource), image_offset_(image_offset), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -12082,8 +10915,8 @@ struct PhysicalDeviceRawAccessChainsFeaturesNV {
 
   using native_type = VkPhysicalDeviceRawAccessChainsFeaturesNV;
 
-  PhysicalDeviceRawAccessChainsFeaturesNV(void *p_next = {}, VkBool32 shader_raw_access_chains = {})
-    : p_next_(p_next), shader_raw_access_chains_(shader_raw_access_chains) {}
+  PhysicalDeviceRawAccessChainsFeaturesNV(VkBool32 shader_raw_access_chains = {}, void *p_next = {})
+    : shader_raw_access_chains_(shader_raw_access_chains), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -12096,14 +10929,13 @@ struct PhysicalDeviceVideoFormatInfoKHR {
 
   using native_type = VkPhysicalDeviceVideoFormatInfoKHR;
 
-  PhysicalDeviceVideoFormatInfoKHR(const void *p_next = {}, VkImageUsageFlags image_usage = {})
-    : p_next_(p_next), image_usage_(image_usage) {}
+  PhysicalDeviceVideoFormatInfoKHR(ImageUsageMask image_usage = {}, const void *p_next = {}) : image_usage_(image_usage), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PHYSICAL_DEVICE_VIDEO_FORMAT_INFO_KHR;
   const void *p_next_;
-  VkImageUsageFlags image_usage_;
+  ImageUsageMask image_usage_;
 };
 
 struct SurfaceCapabilities2EXT {
@@ -12120,11 +10952,11 @@ struct SurfaceCapabilities2EXT {
   Extent2D min_image_extent_;
   Extent2D max_image_extent_;
   uint32_t max_image_array_layers_;
-  VkSurfaceTransformFlagsKHR supported_transforms_;
+  SurfaceTransformMask supported_transforms_;
   SurfaceTransformMaskBit current_transform_;
-  VkCompositeAlphaFlagsKHR supported_composite_alpha_;
-  VkImageUsageFlags supported_usage_flags_;
-  VkSurfaceCounterFlagsEXT supported_surface_counters_;
+  CompositeAlphaMask supported_composite_alpha_;
+  ImageUsageMask supported_usage_flags_;
+  SurfaceCounterMask supported_surface_counters_;
 };
 
 struct VideoDecodeCapabilitiesKHR {
@@ -12135,15 +10967,15 @@ struct VideoDecodeCapabilitiesKHR {
 
   StructureType s_type_ = StructureType::VIDEO_DECODE_CAPABILITIES_KHR;
   void *p_next_;
-  VkVideoDecodeCapabilityFlagsKHR flags_;
+  VideoDecodeCapabilityMask flags_;
 };
 
 struct VideoProfileListInfoKHR {
 
   using native_type = VkVideoProfileListInfoKHR;
 
-  VideoProfileListInfoKHR(const void *p_next = {}, uint32_t profile_count = {}, const VideoProfileInfoKHR *p_profiles = {})
-    : p_next_(p_next), profile_count_(profile_count), p_profiles_(p_profiles) {}
+  VideoProfileListInfoKHR(const VideoProfileInfoKHR *p_profiles = {}, uint32_t profile_count = {}, const void *p_next = {})
+    : p_profiles_(p_profiles), profile_count_(profile_count), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -12152,30 +10984,14 @@ struct VideoProfileListInfoKHR {
   uint32_t profile_count_;
   const VideoProfileInfoKHR *p_profiles_;
 };
-#ifdef VK_USE_PLATFORM_WIN32_KHR
-
-struct SurfaceFullScreenExclusiveInfoEXT {
-
-  using native_type = VkSurfaceFullScreenExclusiveInfoEXT;
-
-  SurfaceFullScreenExclusiveInfoEXT(void *p_next = {}, FullScreenExclusive full_screen_exclusive = {})
-    : p_next_(p_next), full_screen_exclusive_(full_screen_exclusive) {}
-
-  auto *get() { return reinterpret_cast<native_type *>(this); }
-
-  StructureType s_type_ = StructureType::SURFACE_FULL_SCREEN_EXCLUSIVE_INFO_EXT;
-  void *p_next_;
-  FullScreenExclusive full_screen_exclusive_;
-};
-#endif
 
 struct BindVideoSessionMemoryInfoKHR {
 
   using native_type = VkBindVideoSessionMemoryInfoKHR;
 
-  BindVideoSessionMemoryInfoKHR(const void *p_next = {}, uint32_t memory_bind_index = {}, VkDeviceMemory memory = {},
-                                VkDeviceSize memory_offset = {}, VkDeviceSize memory_size = {})
-    : p_next_(p_next), memory_bind_index_(memory_bind_index), memory_(memory), memory_offset_(memory_offset), memory_size_(memory_size) {}
+  BindVideoSessionMemoryInfoKHR(VkDeviceSize memory_size = {}, uint32_t memory_bind_index = {}, VkDeviceMemory memory = {},
+                                VkDeviceSize memory_offset = {}, const void *p_next = {})
+    : memory_size_(memory_size), memory_bind_index_(memory_bind_index), memory_(memory), memory_offset_(memory_offset), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -12186,27 +11002,6 @@ struct BindVideoSessionMemoryInfoKHR {
   VkDeviceSize memory_offset_;
   VkDeviceSize memory_size_;
 };
-#ifdef VK_USE_PLATFORM_WIN32_KHR
-
-struct D3D12FenceSubmitInfoKHR {
-
-  using native_type = VkD3D12FenceSubmitInfoKHR;
-
-  D3D12FenceSubmitInfoKHR(const void *p_next = {}, uint32_t wait_semaphore_values_count = {}, const uint64_t *p_wait_semaphore_values = {},
-                          uint32_t signal_semaphore_values_count = {}, const uint64_t *p_signal_semaphore_values = {})
-    : p_next_(p_next), wait_semaphore_values_count_(wait_semaphore_values_count), p_wait_semaphore_values_(p_wait_semaphore_values),
-      signal_semaphore_values_count_(signal_semaphore_values_count), p_signal_semaphore_values_(p_signal_semaphore_values) {}
-
-  auto *get() { return reinterpret_cast<native_type *>(this); }
-
-  StructureType s_type_ = StructureType::D3D12_FENCE_SUBMIT_INFO_KHR;
-  const void *p_next_;
-  uint32_t wait_semaphore_values_count_;
-  const uint64_t *p_wait_semaphore_values_;
-  uint32_t signal_semaphore_values_count_;
-  const uint64_t *p_signal_semaphore_values_;
-};
-#endif
 
 struct PhysicalDeviceConservativeRasterizationPropertiesEXT {
 
@@ -12253,88 +11048,17 @@ struct DrawIndirectCommand {
   uint32_t first_vertex_;
   uint32_t first_instance_;
 };
-#ifdef VK_USE_PLATFORM_WIN32_KHR
-
-struct Win32KeyedMutexAcquireReleaseInfoKHR {
-
-  using native_type = VkWin32KeyedMutexAcquireReleaseInfoKHR;
-
-  Win32KeyedMutexAcquireReleaseInfoKHR(const void *p_next = {}, uint32_t acquire_count = {}, const VkDeviceMemory *p_acquire_syncs = {},
-                                       const uint64_t *p_acquire_keys = {}, const uint32_t *p_acquire_timeouts = {},
-                                       uint32_t release_count = {}, const VkDeviceMemory *p_release_syncs = {},
-                                       const uint64_t *p_release_keys = {})
-    : p_next_(p_next), acquire_count_(acquire_count), p_acquire_syncs_(p_acquire_syncs), p_acquire_keys_(p_acquire_keys),
-      p_acquire_timeouts_(p_acquire_timeouts), release_count_(release_count), p_release_syncs_(p_release_syncs),
-      p_release_keys_(p_release_keys) {}
-
-  auto *get() { return reinterpret_cast<native_type *>(this); }
-
-  StructureType s_type_ = StructureType::WIN32_KEYED_MUTEX_ACQUIRE_RELEASE_INFO_KHR;
-  const void *p_next_;
-  uint32_t acquire_count_;
-  const VkDeviceMemory *p_acquire_syncs_;
-  const uint64_t *p_acquire_keys_;
-  const uint32_t *p_acquire_timeouts_;
-  uint32_t release_count_;
-  const VkDeviceMemory *p_release_syncs_;
-  const uint64_t *p_release_keys_;
-};
-#endif
-#ifdef VK_ENABLE_BETA_EXTENSIONS
-
-struct PhysicalDevicePortabilitySubsetFeaturesKHR {
-
-  using native_type = VkPhysicalDevicePortabilitySubsetFeaturesKHR;
-
-  PhysicalDevicePortabilitySubsetFeaturesKHR(void *p_next = {}, VkBool32 constant_alpha_color_blend_factors = {}, VkBool32 events = {},
-                                             VkBool32 image_view_format_reinterpretation = {}, VkBool32 image_view_format_swizzle = {},
-                                             VkBool32 image_view2don3dimage = {}, VkBool32 multisample_array_image = {},
-                                             VkBool32 mutable_comparison_samplers = {}, VkBool32 point_polygons = {},
-                                             VkBool32 sampler_mip_lod_bias = {}, VkBool32 separate_stencil_mask_ref = {},
-                                             VkBool32 shader_sample_rate_interpolation_functions = {}, VkBool32 tessellation_isolines = {},
-                                             VkBool32 tessellation_point_mode = {}, VkBool32 triangle_fans = {},
-                                             VkBool32 vertex_attribute_access_beyond_stride = {})
-    : p_next_(p_next), constant_alpha_color_blend_factors_(constant_alpha_color_blend_factors), events_(events),
-      image_view_format_reinterpretation_(image_view_format_reinterpretation), image_view_format_swizzle_(image_view_format_swizzle),
-      image_view2don3dimage_(image_view2don3dimage), multisample_array_image_(multisample_array_image),
-      mutable_comparison_samplers_(mutable_comparison_samplers), point_polygons_(point_polygons),
-      sampler_mip_lod_bias_(sampler_mip_lod_bias), separate_stencil_mask_ref_(separate_stencil_mask_ref),
-      shader_sample_rate_interpolation_functions_(shader_sample_rate_interpolation_functions),
-      tessellation_isolines_(tessellation_isolines), tessellation_point_mode_(tessellation_point_mode), triangle_fans_(triangle_fans),
-      vertex_attribute_access_beyond_stride_(vertex_attribute_access_beyond_stride) {}
-
-  auto *get() { return reinterpret_cast<native_type *>(this); }
-
-  StructureType s_type_ = StructureType::PHYSICAL_DEVICE_PORTABILITY_SUBSET_FEATURES_KHR;
-  void *p_next_;
-  VkBool32 constant_alpha_color_blend_factors_;
-  VkBool32 events_;
-  VkBool32 image_view_format_reinterpretation_;
-  VkBool32 image_view_format_swizzle_;
-  VkBool32 image_view2don3dimage_;
-  VkBool32 multisample_array_image_;
-  VkBool32 mutable_comparison_samplers_;
-  VkBool32 point_polygons_;
-  VkBool32 sampler_mip_lod_bias_;
-  VkBool32 separate_stencil_mask_ref_;
-  VkBool32 shader_sample_rate_interpolation_functions_;
-  VkBool32 tessellation_isolines_;
-  VkBool32 tessellation_point_mode_;
-  VkBool32 triangle_fans_;
-  VkBool32 vertex_attribute_access_beyond_stride_;
-};
-#endif
 
 struct ClearAttachment {
 
   using native_type = VkClearAttachment;
 
-  ClearAttachment(VkImageAspectFlags aspect_mask = {}, uint32_t color_attachment = {}, VkClearValue clear_value = {})
+  ClearAttachment(ImageAspectMask aspect_mask = {}, uint32_t color_attachment = {}, VkClearValue clear_value = {})
     : aspect_mask_(aspect_mask), color_attachment_(color_attachment), clear_value_(clear_value) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
-  VkImageAspectFlags aspect_mask_;
+  ImageAspectMask aspect_mask_;
   uint32_t color_attachment_;
   VkClearValue clear_value_;
 };
@@ -12343,8 +11067,8 @@ struct GetLatencyMarkerInfoNV {
 
   using native_type = VkGetLatencyMarkerInfoNV;
 
-  GetLatencyMarkerInfoNV(const void *p_next = {}, uint32_t timing_count = {}, LatencyTimingsFrameReportNV *p_timings = {})
-    : p_next_(p_next), timing_count_(timing_count), p_timings_(p_timings) {}
+  GetLatencyMarkerInfoNV(LatencyTimingsFrameReportNV *p_timings = {}, uint32_t timing_count = {}, const void *p_next = {})
+    : p_timings_(p_timings), timing_count_(timing_count), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -12353,30 +11077,13 @@ struct GetLatencyMarkerInfoNV {
   uint32_t timing_count_;
   LatencyTimingsFrameReportNV *p_timings_;
 };
-#ifdef VK_USE_PLATFORM_WIN32_KHR
-
-struct SemaphoreGetWin32HandleInfoKHR {
-
-  using native_type = VkSemaphoreGetWin32HandleInfoKHR;
-
-  SemaphoreGetWin32HandleInfoKHR(const void *p_next = {}, VkSemaphore semaphore = {}, ExternalSemaphoreHandleTypeMaskBit handle_type = {})
-    : p_next_(p_next), semaphore_(semaphore), handle_type_(handle_type) {}
-
-  auto *get() { return reinterpret_cast<native_type *>(this); }
-
-  StructureType s_type_ = StructureType::SEMAPHORE_GET_WIN32_HANDLE_INFO_KHR;
-  const void *p_next_;
-  VkSemaphore semaphore_;
-  ExternalSemaphoreHandleTypeMaskBit handle_type_;
-};
-#endif
 
 struct DeviceMemoryOverallocationCreateInfoAMD {
 
   using native_type = VkDeviceMemoryOverallocationCreateInfoAMD;
 
-  DeviceMemoryOverallocationCreateInfoAMD(const void *p_next = {}, MemoryOverallocationBehavior overallocation_behavior = {})
-    : p_next_(p_next), overallocation_behavior_(overallocation_behavior) {}
+  DeviceMemoryOverallocationCreateInfoAMD(MemoryOverallocationBehavior overallocation_behavior = {}, const void *p_next = {})
+    : overallocation_behavior_(overallocation_behavior), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -12389,8 +11096,8 @@ struct OpaqueCaptureDescriptorDataCreateInfoEXT {
 
   using native_type = VkOpaqueCaptureDescriptorDataCreateInfoEXT;
 
-  OpaqueCaptureDescriptorDataCreateInfoEXT(const void *p_next = {}, const void *opaque_capture_descriptor_data = {})
-    : p_next_(p_next), opaque_capture_descriptor_data_(opaque_capture_descriptor_data) {}
+  OpaqueCaptureDescriptorDataCreateInfoEXT(const void *opaque_capture_descriptor_data = {}, const void *p_next = {})
+    : opaque_capture_descriptor_data_(opaque_capture_descriptor_data), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -12403,9 +11110,9 @@ struct PipelineFragmentShadingRateStateCreateInfoKHR {
 
   using native_type = VkPipelineFragmentShadingRateStateCreateInfoKHR;
 
-  PipelineFragmentShadingRateStateCreateInfoKHR(const void *p_next = {}, Extent2D fragment_size = {},
-                                                const std::array<FragmentShadingRateCombinerOp, 2> &combiner_ops = {})
-    : p_next_(p_next), fragment_size_(fragment_size), combiner_ops_(combiner_ops) {}
+  PipelineFragmentShadingRateStateCreateInfoKHR(const std::array<FragmentShadingRateCombinerOp, 2> &combiner_ops = {},
+                                                Extent2D fragment_size = {}, const void *p_next = {})
+    : combiner_ops_(combiner_ops), fragment_size_(fragment_size), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -12419,15 +11126,15 @@ struct PipelineRasterizationDepthClipStateCreateInfoEXT {
 
   using native_type = VkPipelineRasterizationDepthClipStateCreateInfoEXT;
 
-  PipelineRasterizationDepthClipStateCreateInfoEXT(const void *p_next = {}, VkPipelineRasterizationDepthClipStateCreateFlagsEXT flags = {},
-                                                   VkBool32 depth_clip_enable = {})
-    : p_next_(p_next), flags_(flags), depth_clip_enable_(depth_clip_enable) {}
+  PipelineRasterizationDepthClipStateCreateInfoEXT(VkBool32 depth_clip_enable = {},
+                                                   PipelineRasterizationDepthClipStateCreateMask flags = {}, const void *p_next = {})
+    : depth_clip_enable_(depth_clip_enable), flags_(flags), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PIPELINE_RASTERIZATION_DEPTH_CLIP_STATE_CREATE_INFO_EXT;
   const void *p_next_;
-  VkPipelineRasterizationDepthClipStateCreateFlagsEXT flags_;
+  PipelineRasterizationDepthClipStateCreateMask flags_;
   VkBool32 depth_clip_enable_;
 };
 
@@ -12435,8 +11142,8 @@ struct SamplerYcbcrConversionInfo {
 
   using native_type = VkSamplerYcbcrConversionInfo;
 
-  SamplerYcbcrConversionInfo(const void *p_next = {}, VkSamplerYcbcrConversion conversion = {})
-    : p_next_(p_next), conversion_(conversion) {}
+  SamplerYcbcrConversionInfo(VkSamplerYcbcrConversion conversion = {}, const void *p_next = {})
+    : conversion_(conversion), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -12449,7 +11156,7 @@ struct ProtectedSubmitInfo {
 
   using native_type = VkProtectedSubmitInfo;
 
-  ProtectedSubmitInfo(const void *p_next = {}, VkBool32 protected_submit = {}) : p_next_(p_next), protected_submit_(protected_submit) {}
+  ProtectedSubmitInfo(VkBool32 protected_submit = {}, const void *p_next = {}) : protected_submit_(protected_submit), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -12457,25 +11164,12 @@ struct ProtectedSubmitInfo {
   const void *p_next_;
   VkBool32 protected_submit_;
 };
-#ifdef VK_USE_PLATFORM_ANDROID_KHR
-
-struct AndroidHardwareBufferUsageANDROID {
-
-  using native_type = VkAndroidHardwareBufferUsageANDROID;
-
-  auto *get() { return reinterpret_cast<native_type *>(this); }
-
-  StructureType s_type_ = StructureType::ANDROID_HARDWARE_BUFFER_USAGE_ANDROID;
-  void *p_next_;
-  uint64_t android_hardware_buffer_usage_;
-};
-#endif
 
 struct DisplayPowerInfoEXT {
 
   using native_type = VkDisplayPowerInfoEXT;
 
-  DisplayPowerInfoEXT(const void *p_next = {}, DisplayPowerState power_state = {}) : p_next_(p_next), power_state_(power_state) {}
+  DisplayPowerInfoEXT(DisplayPowerState power_state = {}, const void *p_next = {}) : power_state_(power_state), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -12488,12 +11182,12 @@ struct ValidationFeaturesEXT {
 
   using native_type = VkValidationFeaturesEXT;
 
-  ValidationFeaturesEXT(const void *p_next = {}, uint32_t enabled_validation_feature_count = {},
+  ValidationFeaturesEXT(const ValidationFeatureDisable *p_disabled_validation_features = {}, uint32_t enabled_validation_feature_count = {},
                         const ValidationFeatureEnable *p_enabled_validation_features = {}, uint32_t disabled_validation_feature_count = {},
-                        const ValidationFeatureDisable *p_disabled_validation_features = {})
-    : p_next_(p_next), enabled_validation_feature_count_(enabled_validation_feature_count),
+                        const void *p_next = {})
+    : p_disabled_validation_features_(p_disabled_validation_features), enabled_validation_feature_count_(enabled_validation_feature_count),
       p_enabled_validation_features_(p_enabled_validation_features), disabled_validation_feature_count_(disabled_validation_feature_count),
-      p_disabled_validation_features_(p_disabled_validation_features) {}
+      p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -12513,7 +11207,7 @@ struct PerformanceCounterDescriptionKHR {
 
   StructureType s_type_ = StructureType::PERFORMANCE_COUNTER_DESCRIPTION_KHR;
   void *p_next_;
-  VkPerformanceCounterDescriptionFlagsKHR flags_;
+  PerformanceCounterDescriptionMask flags_;
   std::array<char, VK_MAX_DESCRIPTION_SIZE> name_;
   std::array<char, VK_MAX_DESCRIPTION_SIZE> category_;
   std::array<char, VK_MAX_DESCRIPTION_SIZE> description_;
@@ -12523,15 +11217,15 @@ struct PipelineCacheCreateInfo {
 
   using native_type = VkPipelineCacheCreateInfo;
 
-  PipelineCacheCreateInfo(const void *p_next = {}, VkPipelineCacheCreateFlags flags = {}, size_t initial_data_size = {},
-                          const void *p_initial_data = {})
-    : p_next_(p_next), flags_(flags), initial_data_size_(initial_data_size), p_initial_data_(p_initial_data) {}
+  PipelineCacheCreateInfo(const void *p_initial_data = {}, PipelineCacheCreateMask flags = {}, size_t initial_data_size = {},
+                          const void *p_next = {})
+    : p_initial_data_(p_initial_data), flags_(flags), initial_data_size_(initial_data_size), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PIPELINE_CACHE_CREATE_INFO;
   const void *p_next_;
-  VkPipelineCacheCreateFlags flags_;
+  PipelineCacheCreateMask flags_;
   size_t initial_data_size_;
   const void *p_initial_data_;
 };
@@ -12551,11 +11245,11 @@ struct CopyDescriptorSet {
 
   using native_type = VkCopyDescriptorSet;
 
-  CopyDescriptorSet(const void *p_next = {}, VkDescriptorSet src_set = {}, uint32_t src_binding = {}, uint32_t src_array_element = {},
-                    VkDescriptorSet dst_set = {}, uint32_t dst_binding = {}, uint32_t dst_array_element = {},
-                    uint32_t descriptor_count = {})
-    : p_next_(p_next), src_set_(src_set), src_binding_(src_binding), src_array_element_(src_array_element), dst_set_(dst_set),
-      dst_binding_(dst_binding), dst_array_element_(dst_array_element), descriptor_count_(descriptor_count) {}
+  CopyDescriptorSet(uint32_t descriptor_count = {}, VkDescriptorSet src_set = {}, uint32_t src_binding = {},
+                    uint32_t src_array_element = {}, VkDescriptorSet dst_set = {}, uint32_t dst_binding = {},
+                    uint32_t dst_array_element = {}, const void *p_next = {})
+    : descriptor_count_(descriptor_count), src_set_(src_set), src_binding_(src_binding), src_array_element_(src_array_element),
+      dst_set_(dst_set), dst_binding_(dst_binding), dst_array_element_(dst_array_element), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -12574,7 +11268,7 @@ struct ImageViewCaptureDescriptorDataInfoEXT {
 
   using native_type = VkImageViewCaptureDescriptorDataInfoEXT;
 
-  ImageViewCaptureDescriptorDataInfoEXT(const void *p_next = {}, VkImageView image_view = {}) : p_next_(p_next), image_view_(image_view) {}
+  ImageViewCaptureDescriptorDataInfoEXT(VkImageView image_view = {}, const void *p_next = {}) : image_view_(image_view), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -12600,9 +11294,9 @@ struct PushDescriptorSetWithTemplateInfoKHR {
 
   using native_type = VkPushDescriptorSetWithTemplateInfoKHR;
 
-  PushDescriptorSetWithTemplateInfoKHR(const void *p_next = {}, VkDescriptorUpdateTemplate descriptor_update_template = {},
-                                       VkPipelineLayout layout = {}, uint32_t set = {}, const void *p_data = {})
-    : p_next_(p_next), descriptor_update_template_(descriptor_update_template), layout_(layout), set_(set), p_data_(p_data) {}
+  PushDescriptorSetWithTemplateInfoKHR(const void *p_data = {}, VkDescriptorUpdateTemplate descriptor_update_template = {},
+                                       VkPipelineLayout layout = {}, uint32_t set = {}, const void *p_next = {})
+    : p_data_(p_data), descriptor_update_template_(descriptor_update_template), layout_(layout), set_(set), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -12618,8 +11312,8 @@ struct PhysicalDeviceShaderDemoteToHelperInvocationFeatures {
 
   using native_type = VkPhysicalDeviceShaderDemoteToHelperInvocationFeatures;
 
-  PhysicalDeviceShaderDemoteToHelperInvocationFeatures(void *p_next = {}, VkBool32 shader_demote_to_helper_invocation = {})
-    : p_next_(p_next), shader_demote_to_helper_invocation_(shader_demote_to_helper_invocation) {}
+  PhysicalDeviceShaderDemoteToHelperInvocationFeatures(VkBool32 shader_demote_to_helper_invocation = {}, void *p_next = {})
+    : shader_demote_to_helper_invocation_(shader_demote_to_helper_invocation), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -12632,17 +11326,17 @@ struct PipelineLayoutCreateInfo {
 
   using native_type = VkPipelineLayoutCreateInfo;
 
-  PipelineLayoutCreateInfo(const void *p_next = {}, VkPipelineLayoutCreateFlags flags = {}, uint32_t set_layout_count = {},
-                           const VkDescriptorSetLayout *p_set_layouts = {}, uint32_t push_constant_range_count = {},
-                           const PushConstantRange *p_push_constant_ranges = {})
-    : p_next_(p_next), flags_(flags), set_layout_count_(set_layout_count), p_set_layouts_(p_set_layouts),
-      push_constant_range_count_(push_constant_range_count), p_push_constant_ranges_(p_push_constant_ranges) {}
+  PipelineLayoutCreateInfo(const PushConstantRange *p_push_constant_ranges = {}, PipelineLayoutCreateMask flags = {},
+                           uint32_t set_layout_count = {}, const VkDescriptorSetLayout *p_set_layouts = {},
+                           uint32_t push_constant_range_count = {}, const void *p_next = {})
+    : p_push_constant_ranges_(p_push_constant_ranges), flags_(flags), set_layout_count_(set_layout_count), p_set_layouts_(p_set_layouts),
+      push_constant_range_count_(push_constant_range_count), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PIPELINE_LAYOUT_CREATE_INFO;
   const void *p_next_;
-  VkPipelineLayoutCreateFlags flags_;
+  PipelineLayoutCreateMask flags_;
   uint32_t set_layout_count_;
   const VkDescriptorSetLayout *p_set_layouts_;
   uint32_t push_constant_range_count_;
@@ -12653,21 +11347,21 @@ struct SamplerCreateInfo {
 
   using native_type = VkSamplerCreateInfo;
 
-  SamplerCreateInfo(const void *p_next = {}, VkSamplerCreateFlags flags = {}, Filter mag_filter = {}, Filter min_filter = {},
+  SamplerCreateInfo(VkBool32 unnormalized_coordinates = {}, SamplerCreateMask flags = {}, Filter mag_filter = {}, Filter min_filter = {},
                     SamplerMipmapMode mipmap_mode = {}, SamplerAddressMode address_mode_u = {}, SamplerAddressMode address_mode_v = {},
                     SamplerAddressMode address_mode_w = {}, float mip_lod_bias = {}, VkBool32 anisotropy_enable = {},
                     float max_anisotropy = {}, VkBool32 compare_enable = {}, CompareOp compare_op = {}, float min_lod = {},
-                    float max_lod = {}, BorderColor border_color = {}, VkBool32 unnormalized_coordinates = {})
-    : p_next_(p_next), flags_(flags), mag_filter_(mag_filter), min_filter_(min_filter), mipmap_mode_(mipmap_mode),
-      address_mode_u_(address_mode_u), address_mode_v_(address_mode_v), address_mode_w_(address_mode_w), mip_lod_bias_(mip_lod_bias),
-      anisotropy_enable_(anisotropy_enable), max_anisotropy_(max_anisotropy), compare_enable_(compare_enable), compare_op_(compare_op),
-      min_lod_(min_lod), max_lod_(max_lod), border_color_(border_color), unnormalized_coordinates_(unnormalized_coordinates) {}
+                    float max_lod = {}, BorderColor border_color = {}, const void *p_next = {})
+    : unnormalized_coordinates_(unnormalized_coordinates), flags_(flags), mag_filter_(mag_filter), min_filter_(min_filter),
+      mipmap_mode_(mipmap_mode), address_mode_u_(address_mode_u), address_mode_v_(address_mode_v), address_mode_w_(address_mode_w),
+      mip_lod_bias_(mip_lod_bias), anisotropy_enable_(anisotropy_enable), max_anisotropy_(max_anisotropy), compare_enable_(compare_enable),
+      compare_op_(compare_op), min_lod_(min_lod), max_lod_(max_lod), border_color_(border_color), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::SAMPLER_CREATE_INFO;
   const void *p_next_;
-  VkSamplerCreateFlags flags_;
+  SamplerCreateMask flags_;
   Filter mag_filter_;
   Filter min_filter_;
   SamplerMipmapMode mipmap_mode_;
@@ -12696,18 +11390,17 @@ struct PhysicalDeviceSubgroupSizeControlProperties {
   uint32_t min_subgroup_size_;
   uint32_t max_subgroup_size_;
   uint32_t max_compute_workgroup_subgroups_;
-  VkShaderStageFlags required_subgroup_size_stages_;
+  ShaderStageMask required_subgroup_size_stages_;
 };
 
 struct PhysicalDeviceFragmentDensityMapFeaturesEXT {
 
   using native_type = VkPhysicalDeviceFragmentDensityMapFeaturesEXT;
 
-  PhysicalDeviceFragmentDensityMapFeaturesEXT(void *p_next = {}, VkBool32 fragment_density_map = {},
-                                              VkBool32 fragment_density_map_dynamic = {},
-                                              VkBool32 fragment_density_map_non_subsampled_images = {})
-    : p_next_(p_next), fragment_density_map_(fragment_density_map), fragment_density_map_dynamic_(fragment_density_map_dynamic),
-      fragment_density_map_non_subsampled_images_(fragment_density_map_non_subsampled_images) {}
+  PhysicalDeviceFragmentDensityMapFeaturesEXT(VkBool32 fragment_density_map_non_subsampled_images = {}, VkBool32 fragment_density_map = {},
+                                              VkBool32 fragment_density_map_dynamic = {}, void *p_next = {})
+    : fragment_density_map_non_subsampled_images_(fragment_density_map_non_subsampled_images), fragment_density_map_(fragment_density_map),
+      fragment_density_map_dynamic_(fragment_density_map_dynamic), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -12722,9 +11415,9 @@ struct VertexInputBindingDescription2EXT {
 
   using native_type = VkVertexInputBindingDescription2EXT;
 
-  VertexInputBindingDescription2EXT(void *p_next = {}, uint32_t binding = {}, uint32_t stride = {}, VertexInputRate input_rate = {},
-                                    uint32_t divisor = {})
-    : p_next_(p_next), binding_(binding), stride_(stride), input_rate_(input_rate), divisor_(divisor) {}
+  VertexInputBindingDescription2EXT(uint32_t divisor = {}, uint32_t binding = {}, uint32_t stride = {}, VertexInputRate input_rate = {},
+                                    void *p_next = {})
+    : divisor_(divisor), binding_(binding), stride_(stride), input_rate_(input_rate), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -12740,14 +11433,14 @@ struct CommandPoolCreateInfo {
 
   using native_type = VkCommandPoolCreateInfo;
 
-  CommandPoolCreateInfo(const void *p_next = {}, VkCommandPoolCreateFlags flags = {}, uint32_t queue_family_index = {})
-    : p_next_(p_next), flags_(flags), queue_family_index_(queue_family_index) {}
+  CommandPoolCreateInfo(uint32_t queue_family_index = {}, CommandPoolCreateMask flags = {}, const void *p_next = {})
+    : queue_family_index_(queue_family_index), flags_(flags), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::COMMAND_POOL_CREATE_INFO;
   const void *p_next_;
-  VkCommandPoolCreateFlags flags_;
+  CommandPoolCreateMask flags_;
   uint32_t queue_family_index_;
 };
 
@@ -12755,15 +11448,15 @@ struct CommandBufferBeginInfo {
 
   using native_type = VkCommandBufferBeginInfo;
 
-  CommandBufferBeginInfo(const void *p_next = {}, VkCommandBufferUsageFlags flags = {},
-                         const CommandBufferInheritanceInfo *p_inheritance_info = {})
-    : p_next_(p_next), flags_(flags), p_inheritance_info_(p_inheritance_info) {}
+  CommandBufferBeginInfo(const CommandBufferInheritanceInfo *p_inheritance_info = {}, CommandBufferUsageMask flags = {},
+                         const void *p_next = {})
+    : p_inheritance_info_(p_inheritance_info), flags_(flags), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::COMMAND_BUFFER_BEGIN_INFO;
   const void *p_next_;
-  VkCommandBufferUsageFlags flags_;
+  CommandBufferUsageMask flags_;
   const CommandBufferInheritanceInfo *p_inheritance_info_;
 };
 
@@ -12789,17 +11482,17 @@ struct DrmFormatModifierPropertiesEXT {
 
   uint64_t drm_format_modifier_;
   uint32_t drm_format_modifier_plane_count_;
-  VkFormatFeatureFlags drm_format_modifier_tiling_features_;
+  FormatFeatureMask drm_format_modifier_tiling_features_;
 };
 
 struct PhysicalDeviceShaderSubgroupRotateFeaturesKHR {
 
   using native_type = VkPhysicalDeviceShaderSubgroupRotateFeaturesKHR;
 
-  PhysicalDeviceShaderSubgroupRotateFeaturesKHR(void *p_next = {}, VkBool32 shader_subgroup_rotate = {},
-                                                VkBool32 shader_subgroup_rotate_clustered = {})
-    : p_next_(p_next), shader_subgroup_rotate_(shader_subgroup_rotate),
-      shader_subgroup_rotate_clustered_(shader_subgroup_rotate_clustered) {}
+  PhysicalDeviceShaderSubgroupRotateFeaturesKHR(VkBool32 shader_subgroup_rotate_clustered = {}, VkBool32 shader_subgroup_rotate = {},
+                                                void *p_next = {})
+    : shader_subgroup_rotate_clustered_(shader_subgroup_rotate_clustered), shader_subgroup_rotate_(shader_subgroup_rotate),
+      p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -12824,8 +11517,8 @@ struct BindBufferMemoryDeviceGroupInfo {
 
   using native_type = VkBindBufferMemoryDeviceGroupInfo;
 
-  BindBufferMemoryDeviceGroupInfo(const void *p_next = {}, uint32_t device_index_count = {}, const uint32_t *p_device_indices = {})
-    : p_next_(p_next), device_index_count_(device_index_count), p_device_indices_(p_device_indices) {}
+  BindBufferMemoryDeviceGroupInfo(const uint32_t *p_device_indices = {}, uint32_t device_index_count = {}, const void *p_next = {})
+    : p_device_indices_(p_device_indices), device_index_count_(device_index_count), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -12839,7 +11532,7 @@ struct AttachmentDescription {
 
   using native_type = VkAttachmentDescription;
 
-  AttachmentDescription(VkAttachmentDescriptionFlags flags = {}, Format format = {}, SampleCountMaskBit samples = {},
+  AttachmentDescription(AttachmentDescriptionMask flags = {}, Format format = {}, SampleCountMaskBit samples = {},
                         AttachmentLoadOp load_op = {}, AttachmentStoreOp store_op = {}, AttachmentLoadOp stencil_load_op = {},
                         AttachmentStoreOp stencil_store_op = {}, ImageLayout initial_layout = {}, ImageLayout final_layout = {})
     : flags_(flags), format_(format), samples_(samples), load_op_(load_op), store_op_(store_op), stencil_load_op_(stencil_load_op),
@@ -12847,7 +11540,7 @@ struct AttachmentDescription {
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
-  VkAttachmentDescriptionFlags flags_;
+  AttachmentDescriptionMask flags_;
   Format format_;
   SampleCountMaskBit samples_;
   AttachmentLoadOp load_op_;
@@ -12862,8 +11555,8 @@ struct PhysicalDeviceRayTracingInvocationReorderFeaturesNV {
 
   using native_type = VkPhysicalDeviceRayTracingInvocationReorderFeaturesNV;
 
-  PhysicalDeviceRayTracingInvocationReorderFeaturesNV(void *p_next = {}, VkBool32 ray_tracing_invocation_reorder = {})
-    : p_next_(p_next), ray_tracing_invocation_reorder_(ray_tracing_invocation_reorder) {}
+  PhysicalDeviceRayTracingInvocationReorderFeaturesNV(VkBool32 ray_tracing_invocation_reorder = {}, void *p_next = {})
+    : ray_tracing_invocation_reorder_(ray_tracing_invocation_reorder), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -12903,7 +11596,7 @@ struct CalibratedTimestampInfoKHR {
 
   using native_type = VkCalibratedTimestampInfoKHR;
 
-  CalibratedTimestampInfoKHR(const void *p_next = {}, TimeDomain time_domain = {}) : p_next_(p_next), time_domain_(time_domain) {}
+  CalibratedTimestampInfoKHR(TimeDomain time_domain = {}, const void *p_next = {}) : time_domain_(time_domain), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -12916,10 +11609,10 @@ struct RenderPassBeginInfo {
 
   using native_type = VkRenderPassBeginInfo;
 
-  RenderPassBeginInfo(const void *p_next = {}, VkRenderPass render_pass = {}, VkFramebuffer framebuffer = {}, Rect2D render_area = {},
-                      uint32_t clear_value_count = {}, const VkClearValue *p_clear_values = {})
-    : p_next_(p_next), render_pass_(render_pass), framebuffer_(framebuffer), render_area_(render_area),
-      clear_value_count_(clear_value_count), p_clear_values_(p_clear_values) {}
+  RenderPassBeginInfo(const VkClearValue *p_clear_values = {}, VkRenderPass render_pass = {}, VkFramebuffer framebuffer = {},
+                      Rect2D render_area = {}, uint32_t clear_value_count = {}, const void *p_next = {})
+    : p_clear_values_(p_clear_values), render_pass_(render_pass), framebuffer_(framebuffer), render_area_(render_area),
+      clear_value_count_(clear_value_count), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -12936,9 +11629,9 @@ struct SubpassDependency {
 
   using native_type = VkSubpassDependency;
 
-  SubpassDependency(uint32_t src_subpass = {}, uint32_t dst_subpass = {}, VkPipelineStageFlags src_stage_mask = {},
-                    VkPipelineStageFlags dst_stage_mask = {}, VkAccessFlags src_access_mask = {}, VkAccessFlags dst_access_mask = {},
-                    VkDependencyFlags dependency_flags = {})
+  SubpassDependency(uint32_t src_subpass = {}, uint32_t dst_subpass = {}, PipelineStageMask src_stage_mask = {},
+                    PipelineStageMask dst_stage_mask = {}, AccessMask src_access_mask = {}, AccessMask dst_access_mask = {},
+                    DependencyMask dependency_flags = {})
     : src_subpass_(src_subpass), dst_subpass_(dst_subpass), src_stage_mask_(src_stage_mask), dst_stage_mask_(dst_stage_mask),
       src_access_mask_(src_access_mask), dst_access_mask_(dst_access_mask), dependency_flags_(dependency_flags) {}
 
@@ -12946,29 +11639,28 @@ struct SubpassDependency {
 
   uint32_t src_subpass_;
   uint32_t dst_subpass_;
-  VkPipelineStageFlags src_stage_mask_;
-  VkPipelineStageFlags dst_stage_mask_;
-  VkAccessFlags src_access_mask_;
-  VkAccessFlags dst_access_mask_;
-  VkDependencyFlags dependency_flags_;
+  PipelineStageMask src_stage_mask_;
+  PipelineStageMask dst_stage_mask_;
+  AccessMask src_access_mask_;
+  AccessMask dst_access_mask_;
+  DependencyMask dependency_flags_;
 };
 
 struct RenderPassCreateInfo {
 
   using native_type = VkRenderPassCreateInfo;
 
-  RenderPassCreateInfo(const void *p_next = {}, VkRenderPassCreateFlags flags = {}, uint32_t attachment_count = {},
+  RenderPassCreateInfo(const SubpassDependency *p_dependencies = {}, RenderPassCreateMask flags = {}, uint32_t attachment_count = {},
                        const AttachmentDescription *p_attachments = {}, uint32_t subpass_count = {},
-                       const SubpassDescription *p_subpasses = {}, uint32_t dependency_count = {},
-                       const SubpassDependency *p_dependencies = {})
-    : p_next_(p_next), flags_(flags), attachment_count_(attachment_count), p_attachments_(p_attachments), subpass_count_(subpass_count),
-      p_subpasses_(p_subpasses), dependency_count_(dependency_count), p_dependencies_(p_dependencies) {}
+                       const SubpassDescription *p_subpasses = {}, uint32_t dependency_count = {}, const void *p_next = {})
+    : p_dependencies_(p_dependencies), flags_(flags), attachment_count_(attachment_count), p_attachments_(p_attachments),
+      subpass_count_(subpass_count), p_subpasses_(p_subpasses), dependency_count_(dependency_count), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::RENDER_PASS_CREATE_INFO;
   const void *p_next_;
-  VkRenderPassCreateFlags flags_;
+  RenderPassCreateMask flags_;
   uint32_t attachment_count_;
   const AttachmentDescription *p_attachments_;
   uint32_t subpass_count_;
@@ -12981,8 +11673,8 @@ struct SetLatencyMarkerInfoNV {
 
   using native_type = VkSetLatencyMarkerInfoNV;
 
-  SetLatencyMarkerInfoNV(const void *p_next = {}, uint64_t present_id = {}, LatencyMarker marker = {})
-    : p_next_(p_next), present_id_(present_id), marker_(marker) {}
+  SetLatencyMarkerInfoNV(LatencyMarker marker = {}, uint64_t present_id = {}, const void *p_next = {})
+    : marker_(marker), present_id_(present_id), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -12996,9 +11688,9 @@ struct MultiviewPerViewAttributesInfoNVX {
 
   using native_type = VkMultiviewPerViewAttributesInfoNVX;
 
-  MultiviewPerViewAttributesInfoNVX(const void *p_next = {}, VkBool32 per_view_attributes = {},
-                                    VkBool32 per_view_attributes_position_xonly = {})
-    : p_next_(p_next), per_view_attributes_(per_view_attributes), per_view_attributes_position_xonly_(per_view_attributes_position_xonly) {}
+  MultiviewPerViewAttributesInfoNVX(VkBool32 per_view_attributes_position_xonly = {}, VkBool32 per_view_attributes = {},
+                                    const void *p_next = {})
+    : per_view_attributes_position_xonly_(per_view_attributes_position_xonly), per_view_attributes_(per_view_attributes), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -13012,15 +11704,15 @@ struct PipelineRasterizationStateStreamCreateInfoEXT {
 
   using native_type = VkPipelineRasterizationStateStreamCreateInfoEXT;
 
-  PipelineRasterizationStateStreamCreateInfoEXT(const void *p_next = {}, VkPipelineRasterizationStateStreamCreateFlagsEXT flags = {},
-                                                uint32_t rasterization_stream = {})
-    : p_next_(p_next), flags_(flags), rasterization_stream_(rasterization_stream) {}
+  PipelineRasterizationStateStreamCreateInfoEXT(uint32_t rasterization_stream = {}, PipelineRasterizationStateStreamCreateMask flags = {},
+                                                const void *p_next = {})
+    : rasterization_stream_(rasterization_stream), flags_(flags), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PIPELINE_RASTERIZATION_STATE_STREAM_CREATE_INFO_EXT;
   const void *p_next_;
-  VkPipelineRasterizationStateStreamCreateFlagsEXT flags_;
+  PipelineRasterizationStateStreamCreateMask flags_;
   uint32_t rasterization_stream_;
 };
 
@@ -13028,14 +11720,14 @@ struct MemoryAllocateFlagsInfo {
 
   using native_type = VkMemoryAllocateFlagsInfo;
 
-  MemoryAllocateFlagsInfo(const void *p_next = {}, VkMemoryAllocateFlags flags = {}, uint32_t device_mask = {})
-    : p_next_(p_next), flags_(flags), device_mask_(device_mask) {}
+  MemoryAllocateFlagsInfo(uint32_t device_mask = {}, MemoryAllocateMask flags = {}, const void *p_next = {})
+    : device_mask_(device_mask), flags_(flags), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::MEMORY_ALLOCATE_FLAGS_INFO;
   const void *p_next_;
-  VkMemoryAllocateFlags flags_;
+  MemoryAllocateMask flags_;
   uint32_t device_mask_;
 };
 
@@ -13043,13 +11735,13 @@ struct EventCreateInfo {
 
   using native_type = VkEventCreateInfo;
 
-  EventCreateInfo(const void *p_next = {}, VkEventCreateFlags flags = {}) : p_next_(p_next), flags_(flags) {}
+  EventCreateInfo(EventCreateMask flags = {}, const void *p_next = {}) : flags_(flags), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::EVENT_CREATE_INFO;
   const void *p_next_;
-  VkEventCreateFlags flags_;
+  EventCreateMask flags_;
 };
 
 struct PhysicalDeviceDiscardRectanglePropertiesEXT {
@@ -13068,7 +11760,7 @@ struct PhysicalDeviceVulkan12Features {
   using native_type = VkPhysicalDeviceVulkan12Features;
 
   PhysicalDeviceVulkan12Features(
-    void *p_next = {}, VkBool32 sampler_mirror_clamp_to_edge = {}, VkBool32 draw_indirect_count = {},
+    VkBool32 subgroup_broadcast_dynamic_id = {}, VkBool32 sampler_mirror_clamp_to_edge = {}, VkBool32 draw_indirect_count = {},
     VkBool32 storage_buffer8bit_access = {}, VkBool32 uniform_and_storage_buffer8bit_access = {}, VkBool32 storage_push_constant8 = {},
     VkBool32 shader_buffer_int64atomics = {}, VkBool32 shader_shared_int64atomics = {}, VkBool32 shader_float16 = {},
     VkBool32 shader_int8 = {}, VkBool32 descriptor_indexing = {}, VkBool32 shader_input_attachment_array_dynamic_indexing = {},
@@ -13088,12 +11780,12 @@ struct PhysicalDeviceVulkan12Features {
     VkBool32 buffer_device_address = {}, VkBool32 buffer_device_address_capture_replay = {},
     VkBool32 buffer_device_address_multi_device = {}, VkBool32 vulkan_memory_model = {}, VkBool32 vulkan_memory_model_device_scope = {},
     VkBool32 vulkan_memory_model_availability_visibility_chains = {}, VkBool32 shader_output_viewport_index = {},
-    VkBool32 shader_output_layer = {}, VkBool32 subgroup_broadcast_dynamic_id = {})
-    : p_next_(p_next), sampler_mirror_clamp_to_edge_(sampler_mirror_clamp_to_edge), draw_indirect_count_(draw_indirect_count),
-      storage_buffer8bit_access_(storage_buffer8bit_access), uniform_and_storage_buffer8bit_access_(uniform_and_storage_buffer8bit_access),
-      storage_push_constant8_(storage_push_constant8), shader_buffer_int64atomics_(shader_buffer_int64atomics),
-      shader_shared_int64atomics_(shader_shared_int64atomics), shader_float16_(shader_float16), shader_int8_(shader_int8),
-      descriptor_indexing_(descriptor_indexing),
+    VkBool32 shader_output_layer = {}, void *p_next = {})
+    : subgroup_broadcast_dynamic_id_(subgroup_broadcast_dynamic_id), sampler_mirror_clamp_to_edge_(sampler_mirror_clamp_to_edge),
+      draw_indirect_count_(draw_indirect_count), storage_buffer8bit_access_(storage_buffer8bit_access),
+      uniform_and_storage_buffer8bit_access_(uniform_and_storage_buffer8bit_access), storage_push_constant8_(storage_push_constant8),
+      shader_buffer_int64atomics_(shader_buffer_int64atomics), shader_shared_int64atomics_(shader_shared_int64atomics),
+      shader_float16_(shader_float16), shader_int8_(shader_int8), descriptor_indexing_(descriptor_indexing),
       shader_input_attachment_array_dynamic_indexing_(shader_input_attachment_array_dynamic_indexing),
       shader_uniform_texel_buffer_array_dynamic_indexing_(shader_uniform_texel_buffer_array_dynamic_indexing),
       shader_storage_texel_buffer_array_dynamic_indexing_(shader_storage_texel_buffer_array_dynamic_indexing),
@@ -13122,8 +11814,7 @@ struct PhysicalDeviceVulkan12Features {
       buffer_device_address_multi_device_(buffer_device_address_multi_device), vulkan_memory_model_(vulkan_memory_model),
       vulkan_memory_model_device_scope_(vulkan_memory_model_device_scope),
       vulkan_memory_model_availability_visibility_chains_(vulkan_memory_model_availability_visibility_chains),
-      shader_output_viewport_index_(shader_output_viewport_index), shader_output_layer_(shader_output_layer),
-      subgroup_broadcast_dynamic_id_(subgroup_broadcast_dynamic_id) {}
+      shader_output_viewport_index_(shader_output_viewport_index), shader_output_layer_(shader_output_layer), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -13182,20 +11873,20 @@ struct FenceCreateInfo {
 
   using native_type = VkFenceCreateInfo;
 
-  FenceCreateInfo(const void *p_next = {}, VkFenceCreateFlags flags = {}) : p_next_(p_next), flags_(flags) {}
+  FenceCreateInfo(FenceCreateMask flags = {}, const void *p_next = {}) : flags_(flags), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::FENCE_CREATE_INFO;
   const void *p_next_;
-  VkFenceCreateFlags flags_;
+  FenceCreateMask flags_;
 };
 
 struct BufferDeviceAddressInfo {
 
   using native_type = VkBufferDeviceAddressInfo;
 
-  BufferDeviceAddressInfo(const void *p_next = {}, VkBuffer buffer = {}) : p_next_(p_next), buffer_(buffer) {}
+  BufferDeviceAddressInfo(VkBuffer buffer = {}, const void *p_next = {}) : buffer_(buffer), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -13208,18 +11899,18 @@ struct QueryPoolCreateInfo {
 
   using native_type = VkQueryPoolCreateInfo;
 
-  QueryPoolCreateInfo(const void *p_next = {}, VkQueryPoolCreateFlags flags = {}, QueryType query_type = {}, uint32_t query_count = {},
-                      VkQueryPipelineStatisticFlags pipeline_statistics = {})
-    : p_next_(p_next), flags_(flags), query_type_(query_type), query_count_(query_count), pipeline_statistics_(pipeline_statistics) {}
+  QueryPoolCreateInfo(QueryPipelineStatisticMask pipeline_statistics = {}, QueryPoolCreateMask flags = {}, QueryType query_type = {},
+                      uint32_t query_count = {}, const void *p_next = {})
+    : pipeline_statistics_(pipeline_statistics), flags_(flags), query_type_(query_type), query_count_(query_count), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::QUERY_POOL_CREATE_INFO;
   const void *p_next_;
-  VkQueryPoolCreateFlags flags_;
+  QueryPoolCreateMask flags_;
   QueryType query_type_;
   uint32_t query_count_;
-  VkQueryPipelineStatisticFlags pipeline_statistics_;
+  QueryPipelineStatisticMask pipeline_statistics_;
 };
 
 struct MultiDrawInfoEXT {
@@ -13238,34 +11929,15 @@ struct ExportMemoryAllocateInfo {
 
   using native_type = VkExportMemoryAllocateInfo;
 
-  ExportMemoryAllocateInfo(const void *p_next = {}, VkExternalMemoryHandleTypeFlags handle_types = {})
-    : p_next_(p_next), handle_types_(handle_types) {}
+  ExportMemoryAllocateInfo(ExternalMemoryHandleTypeMask handle_types = {}, const void *p_next = {})
+    : handle_types_(handle_types), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::EXPORT_MEMORY_ALLOCATE_INFO;
   const void *p_next_;
-  VkExternalMemoryHandleTypeFlags handle_types_;
+  ExternalMemoryHandleTypeMask handle_types_;
 };
-#ifdef VK_USE_PLATFORM_WAYLAND_KHR
-
-struct WaylandSurfaceCreateInfoKHR {
-
-  using native_type = VkWaylandSurfaceCreateInfoKHR;
-
-  WaylandSurfaceCreateInfoKHR(const void *p_next = {}, VkWaylandSurfaceCreateFlagsKHR flags = {}, struct wl_display *display = {},
-                              struct wl_surface *surface = {})
-    : p_next_(p_next), flags_(flags), display_(display), surface_(surface) {}
-
-  auto *get() { return reinterpret_cast<native_type *>(this); }
-
-  StructureType s_type_ = StructureType::WAYLAND_SURFACE_CREATE_INFO_KHR;
-  const void *p_next_;
-  VkWaylandSurfaceCreateFlagsKHR flags_;
-  struct wl_display *display_;
-  struct wl_surface *surface_;
-};
-#endif
 
 struct AccelerationStructureSRTMotionInstanceNV {
 
@@ -13293,10 +11965,10 @@ struct PhysicalDeviceRobustness2FeaturesEXT {
 
   using native_type = VkPhysicalDeviceRobustness2FeaturesEXT;
 
-  PhysicalDeviceRobustness2FeaturesEXT(void *p_next = {}, VkBool32 robust_buffer_access2 = {}, VkBool32 robust_image_access2 = {},
-                                       VkBool32 null_descriptor = {})
-    : p_next_(p_next), robust_buffer_access2_(robust_buffer_access2), robust_image_access2_(robust_image_access2),
-      null_descriptor_(null_descriptor) {}
+  PhysicalDeviceRobustness2FeaturesEXT(VkBool32 null_descriptor = {}, VkBool32 robust_buffer_access2 = {},
+                                       VkBool32 robust_image_access2 = {}, void *p_next = {})
+    : null_descriptor_(null_descriptor), robust_buffer_access2_(robust_buffer_access2), robust_image_access2_(robust_image_access2),
+      p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -13311,8 +11983,8 @@ struct PipelineRasterizationStateRasterizationOrderAMD {
 
   using native_type = VkPipelineRasterizationStateRasterizationOrderAMD;
 
-  PipelineRasterizationStateRasterizationOrderAMD(const void *p_next = {}, RasterizationOrder rasterization_order = {})
-    : p_next_(p_next), rasterization_order_(rasterization_order) {}
+  PipelineRasterizationStateRasterizationOrderAMD(RasterizationOrder rasterization_order = {}, const void *p_next = {})
+    : rasterization_order_(rasterization_order), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -13325,7 +11997,7 @@ struct VideoEncodeQualityLevelInfoKHR {
 
   using native_type = VkVideoEncodeQualityLevelInfoKHR;
 
-  VideoEncodeQualityLevelInfoKHR(const void *p_next = {}, uint32_t quality_level = {}) : p_next_(p_next), quality_level_(quality_level) {}
+  VideoEncodeQualityLevelInfoKHR(uint32_t quality_level = {}, const void *p_next = {}) : quality_level_(quality_level), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -13346,22 +12018,6 @@ struct DisplayModeParametersKHR {
   Extent2D visible_region_;
   uint32_t refresh_rate_;
 };
-#ifdef VK_ENABLE_BETA_EXTENSIONS
-
-struct PhysicalDeviceDisplacementMicromapFeaturesNV {
-
-  using native_type = VkPhysicalDeviceDisplacementMicromapFeaturesNV;
-
-  PhysicalDeviceDisplacementMicromapFeaturesNV(void *p_next = {}, VkBool32 displacement_micromap = {})
-    : p_next_(p_next), displacement_micromap_(displacement_micromap) {}
-
-  auto *get() { return reinterpret_cast<native_type *>(this); }
-
-  StructureType s_type_ = StructureType::PHYSICAL_DEVICE_DISPLACEMENT_MICROMAP_FEATURES_NV;
-  void *p_next_;
-  VkBool32 displacement_micromap_;
-};
-#endif
 
 struct ShaderModuleIdentifierEXT {
 
@@ -13379,8 +12035,8 @@ struct BindImageMemoryInfo {
 
   using native_type = VkBindImageMemoryInfo;
 
-  BindImageMemoryInfo(const void *p_next = {}, VkImage image = {}, VkDeviceMemory memory = {}, VkDeviceSize memory_offset = {})
-    : p_next_(p_next), image_(image), memory_(memory), memory_offset_(memory_offset) {}
+  BindImageMemoryInfo(VkDeviceSize memory_offset = {}, VkImage image = {}, VkDeviceMemory memory = {}, const void *p_next = {})
+    : memory_offset_(memory_offset), image_(image), memory_(memory), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -13395,24 +12051,24 @@ struct ExternalMemoryImageCreateInfoNV {
 
   using native_type = VkExternalMemoryImageCreateInfoNV;
 
-  ExternalMemoryImageCreateInfoNV(const void *p_next = {}, VkExternalMemoryHandleTypeFlagsNV handle_types = {})
-    : p_next_(p_next), handle_types_(handle_types) {}
+  ExternalMemoryImageCreateInfoNV(ExternalMemoryHandleTypeMask handle_types = {}, const void *p_next = {})
+    : handle_types_(handle_types), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::EXTERNAL_MEMORY_IMAGE_CREATE_INFO_NV;
   const void *p_next_;
-  VkExternalMemoryHandleTypeFlagsNV handle_types_;
+  ExternalMemoryHandleTypeMask handle_types_;
 };
 
 struct ValidationFlagsEXT {
 
   using native_type = VkValidationFlagsEXT;
 
-  ValidationFlagsEXT(const void *p_next = {}, uint32_t disabled_validation_check_count = {},
-                     const ValidationCheck *p_disabled_validation_checks = {})
-    : p_next_(p_next), disabled_validation_check_count_(disabled_validation_check_count),
-      p_disabled_validation_checks_(p_disabled_validation_checks) {}
+  ValidationFlagsEXT(const ValidationCheck *p_disabled_validation_checks = {}, uint32_t disabled_validation_check_count = {},
+                     const void *p_next = {})
+    : p_disabled_validation_checks_(p_disabled_validation_checks), disabled_validation_check_count_(disabled_validation_check_count),
+      p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -13421,27 +12077,13 @@ struct ValidationFlagsEXT {
   uint32_t disabled_validation_check_count_;
   const ValidationCheck *p_disabled_validation_checks_;
 };
-#ifdef VK_USE_PLATFORM_ANDROID_KHR
-
-struct AndroidHardwareBufferPropertiesANDROID {
-
-  using native_type = VkAndroidHardwareBufferPropertiesANDROID;
-
-  auto *get() { return reinterpret_cast<native_type *>(this); }
-
-  StructureType s_type_ = StructureType::ANDROID_HARDWARE_BUFFER_PROPERTIES_ANDROID;
-  void *p_next_;
-  VkDeviceSize allocation_size_;
-  uint32_t memory_type_bits_;
-};
-#endif
 
 struct SwapchainDisplayNativeHdrCreateInfoAMD {
 
   using native_type = VkSwapchainDisplayNativeHdrCreateInfoAMD;
 
-  SwapchainDisplayNativeHdrCreateInfoAMD(const void *p_next = {}, VkBool32 local_dimming_enable = {})
-    : p_next_(p_next), local_dimming_enable_(local_dimming_enable) {}
+  SwapchainDisplayNativeHdrCreateInfoAMD(VkBool32 local_dimming_enable = {}, const void *p_next = {})
+    : local_dimming_enable_(local_dimming_enable), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -13449,23 +12091,6 @@ struct SwapchainDisplayNativeHdrCreateInfoAMD {
   const void *p_next_;
   VkBool32 local_dimming_enable_;
 };
-#ifdef VK_USE_PLATFORM_ANDROID_KHR
-
-struct AndroidSurfaceCreateInfoKHR {
-
-  using native_type = VkAndroidSurfaceCreateInfoKHR;
-
-  AndroidSurfaceCreateInfoKHR(const void *p_next = {}, VkAndroidSurfaceCreateFlagsKHR flags = {}, struct ANativeWindow *window = {})
-    : p_next_(p_next), flags_(flags), window_(window) {}
-
-  auto *get() { return reinterpret_cast<native_type *>(this); }
-
-  StructureType s_type_ = StructureType::ANDROID_SURFACE_CREATE_INFO_KHR;
-  const void *p_next_;
-  VkAndroidSurfaceCreateFlagsKHR flags_;
-  struct ANativeWindow *window_;
-};
-#endif
 
 struct XYColorEXT {
 
@@ -13483,7 +12108,7 @@ struct PhysicalDevicePresentIdFeaturesKHR {
 
   using native_type = VkPhysicalDevicePresentIdFeaturesKHR;
 
-  PhysicalDevicePresentIdFeaturesKHR(void *p_next = {}, VkBool32 present_id = {}) : p_next_(p_next), present_id_(present_id) {}
+  PhysicalDevicePresentIdFeaturesKHR(VkBool32 present_id = {}, void *p_next = {}) : present_id_(present_id), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -13496,8 +12121,8 @@ struct PhysicalDeviceShaderDrawParametersFeatures {
 
   using native_type = VkPhysicalDeviceShaderDrawParametersFeatures;
 
-  PhysicalDeviceShaderDrawParametersFeatures(void *p_next = {}, VkBool32 shader_draw_parameters = {})
-    : p_next_(p_next), shader_draw_parameters_(shader_draw_parameters) {}
+  PhysicalDeviceShaderDrawParametersFeatures(VkBool32 shader_draw_parameters = {}, void *p_next = {})
+    : shader_draw_parameters_(shader_draw_parameters), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -13510,12 +12135,12 @@ struct HdrMetadataEXT {
 
   using native_type = VkHdrMetadataEXT;
 
-  HdrMetadataEXT(const void *p_next = {}, XYColorEXT display_primary_red = {}, XYColorEXT display_primary_green = {},
+  HdrMetadataEXT(float max_frame_average_light_level = {}, XYColorEXT display_primary_red = {}, XYColorEXT display_primary_green = {},
                  XYColorEXT display_primary_blue = {}, XYColorEXT white_point = {}, float max_luminance = {}, float min_luminance = {},
-                 float max_content_light_level = {}, float max_frame_average_light_level = {})
-    : p_next_(p_next), display_primary_red_(display_primary_red), display_primary_green_(display_primary_green),
-      display_primary_blue_(display_primary_blue), white_point_(white_point), max_luminance_(max_luminance), min_luminance_(min_luminance),
-      max_content_light_level_(max_content_light_level), max_frame_average_light_level_(max_frame_average_light_level) {}
+                 float max_content_light_level = {}, const void *p_next = {})
+    : max_frame_average_light_level_(max_frame_average_light_level), display_primary_red_(display_primary_red),
+      display_primary_green_(display_primary_green), display_primary_blue_(display_primary_blue), white_point_(white_point),
+      max_luminance_(max_luminance), min_luminance_(min_luminance), max_content_light_level_(max_content_light_level), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -13539,15 +12164,15 @@ struct PhysicalDeviceCopyMemoryIndirectPropertiesNV {
 
   StructureType s_type_ = StructureType::PHYSICAL_DEVICE_COPY_MEMORY_INDIRECT_PROPERTIES_NV;
   void *p_next_;
-  VkQueueFlags supported_queues_;
+  QueueMask supported_queues_;
 };
 
 struct PhysicalDeviceSubpassShadingFeaturesHUAWEI {
 
   using native_type = VkPhysicalDeviceSubpassShadingFeaturesHUAWEI;
 
-  PhysicalDeviceSubpassShadingFeaturesHUAWEI(void *p_next = {}, VkBool32 subpass_shading = {})
-    : p_next_(p_next), subpass_shading_(subpass_shading) {}
+  PhysicalDeviceSubpassShadingFeaturesHUAWEI(VkBool32 subpass_shading = {}, void *p_next = {})
+    : subpass_shading_(subpass_shading), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -13560,7 +12185,7 @@ struct PhysicalDevicePresentWaitFeaturesKHR {
 
   using native_type = VkPhysicalDevicePresentWaitFeaturesKHR;
 
-  PhysicalDevicePresentWaitFeaturesKHR(void *p_next = {}, VkBool32 present_wait = {}) : p_next_(p_next), present_wait_(present_wait) {}
+  PhysicalDevicePresentWaitFeaturesKHR(VkBool32 present_wait = {}, void *p_next = {}) : present_wait_(present_wait), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -13639,8 +12264,8 @@ struct PhysicalDeviceImageAlignmentControlPropertiesMESA {
 
   using native_type = VkPhysicalDeviceImageAlignmentControlPropertiesMESA;
 
-  PhysicalDeviceImageAlignmentControlPropertiesMESA(void *p_next = {}, uint32_t supported_image_alignment_mask = {})
-    : p_next_(p_next), supported_image_alignment_mask_(supported_image_alignment_mask) {}
+  PhysicalDeviceImageAlignmentControlPropertiesMESA(uint32_t supported_image_alignment_mask = {}, void *p_next = {})
+    : supported_image_alignment_mask_(supported_image_alignment_mask), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -13653,13 +12278,13 @@ struct CudaLaunchInfoNV {
 
   using native_type = VkCudaLaunchInfoNV;
 
-  CudaLaunchInfoNV(const void *p_next = {}, VkCudaFunctionNV function = {}, uint32_t grid_dim_x = {}, uint32_t grid_dim_y = {},
+  CudaLaunchInfoNV(const void *const *p_extras = {}, VkCudaFunctionNV function = {}, uint32_t grid_dim_x = {}, uint32_t grid_dim_y = {},
                    uint32_t grid_dim_z = {}, uint32_t block_dim_x = {}, uint32_t block_dim_y = {}, uint32_t block_dim_z = {},
                    uint32_t shared_mem_bytes = {}, size_t param_count = {}, const void *const *p_params = {}, size_t extra_count = {},
-                   const void *const *p_extras = {})
-    : p_next_(p_next), function_(function), grid_dim_x_(grid_dim_x), grid_dim_y_(grid_dim_y), grid_dim_z_(grid_dim_z),
+                   const void *p_next = {})
+    : p_extras_(p_extras), function_(function), grid_dim_x_(grid_dim_x), grid_dim_y_(grid_dim_y), grid_dim_z_(grid_dim_z),
       block_dim_x_(block_dim_x), block_dim_y_(block_dim_y), block_dim_z_(block_dim_z), shared_mem_bytes_(shared_mem_bytes),
-      param_count_(param_count), p_params_(p_params), extra_count_(extra_count), p_extras_(p_extras) {}
+      param_count_(param_count), p_params_(p_params), extra_count_(extra_count), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -13694,8 +12319,8 @@ struct CuFunctionCreateInfoNVX {
 
   using native_type = VkCuFunctionCreateInfoNVX;
 
-  CuFunctionCreateInfoNVX(const void *p_next = {}, VkCuModuleNVX module = {}, const char *p_name = {})
-    : p_next_(p_next), module_(module), p_name_(p_name) {}
+  CuFunctionCreateInfoNVX(const char *p_name = {}, VkCuModuleNVX module = {}, const void *p_next = {})
+    : p_name_(p_name), module_(module), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -13704,47 +12329,13 @@ struct CuFunctionCreateInfoNVX {
   VkCuModuleNVX module_;
   const char *p_name_;
 };
-#ifdef VK_USE_PLATFORM_IOS_MVK
-
-struct IOSSurfaceCreateInfoMVK {
-
-  using native_type = VkIOSSurfaceCreateInfoMVK;
-
-  IOSSurfaceCreateInfoMVK(const void *p_next = {}, VkIOSSurfaceCreateFlagsMVK flags = {}, const void *p_view = {})
-    : p_next_(p_next), flags_(flags), p_view_(p_view) {}
-
-  auto *get() { return reinterpret_cast<native_type *>(this); }
-
-  StructureType s_type_ = StructureType::IOS_SURFACE_CREATE_INFO_MVK;
-  const void *p_next_;
-  VkIOSSurfaceCreateFlagsMVK flags_;
-  const void *p_view_;
-};
-#endif
-#ifdef VK_USE_PLATFORM_MACOS_MVK
-
-struct MacOSSurfaceCreateInfoMVK {
-
-  using native_type = VkMacOSSurfaceCreateInfoMVK;
-
-  MacOSSurfaceCreateInfoMVK(const void *p_next = {}, VkMacOSSurfaceCreateFlagsMVK flags = {}, const void *p_view = {})
-    : p_next_(p_next), flags_(flags), p_view_(p_view) {}
-
-  auto *get() { return reinterpret_cast<native_type *>(this); }
-
-  StructureType s_type_ = StructureType::MACOS_SURFACE_CREATE_INFO_MVK;
-  const void *p_next_;
-  VkMacOSSurfaceCreateFlagsMVK flags_;
-  const void *p_view_;
-};
-#endif
 
 struct PhysicalDeviceCubicClampFeaturesQCOM {
 
   using native_type = VkPhysicalDeviceCubicClampFeaturesQCOM;
 
-  PhysicalDeviceCubicClampFeaturesQCOM(void *p_next = {}, VkBool32 cubic_range_clamp = {})
-    : p_next_(p_next), cubic_range_clamp_(cubic_range_clamp) {}
+  PhysicalDeviceCubicClampFeaturesQCOM(VkBool32 cubic_range_clamp = {}, void *p_next = {})
+    : cubic_range_clamp_(cubic_range_clamp), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -13757,46 +12348,29 @@ struct AccelerationStructureCreateInfoKHR {
 
   using native_type = VkAccelerationStructureCreateInfoKHR;
 
-  AccelerationStructureCreateInfoKHR(const void *p_next = {}, VkAccelerationStructureCreateFlagsKHR create_flags = {}, VkBuffer buffer = {},
-                                     VkDeviceSize offset = {}, VkDeviceSize size = {}, AccelerationStructureType type = {},
-                                     VkDeviceAddress device_address = {})
-    : p_next_(p_next), create_flags_(create_flags), buffer_(buffer), offset_(offset), size_(size), type_(type),
-      device_address_(device_address) {}
+  AccelerationStructureCreateInfoKHR(VkDeviceAddress device_address = {}, AccelerationStructureCreateMask create_flags = {},
+                                     VkBuffer buffer = {}, VkDeviceSize offset = {}, VkDeviceSize size = {},
+                                     AccelerationStructureType type = {}, const void *p_next = {})
+    : device_address_(device_address), create_flags_(create_flags), buffer_(buffer), offset_(offset), size_(size), type_(type),
+      p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::ACCELERATION_STRUCTURE_CREATE_INFO_KHR;
   const void *p_next_;
-  VkAccelerationStructureCreateFlagsKHR create_flags_;
+  AccelerationStructureCreateMask create_flags_;
   VkBuffer buffer_;
   VkDeviceSize offset_;
   VkDeviceSize size_;
   AccelerationStructureType type_;
   VkDeviceAddress device_address_;
 };
-#ifdef VK_USE_PLATFORM_METAL_EXT
-
-struct MetalSurfaceCreateInfoEXT {
-
-  using native_type = VkMetalSurfaceCreateInfoEXT;
-
-  MetalSurfaceCreateInfoEXT(const void *p_next = {}, VkMetalSurfaceCreateFlagsEXT flags = {}, const CAMetalLayer *p_layer = {})
-    : p_next_(p_next), flags_(flags), p_layer_(p_layer) {}
-
-  auto *get() { return reinterpret_cast<native_type *>(this); }
-
-  StructureType s_type_ = StructureType::METAL_SURFACE_CREATE_INFO_EXT;
-  const void *p_next_;
-  VkMetalSurfaceCreateFlagsEXT flags_;
-  const CAMetalLayer *p_layer_;
-};
-#endif
 
 struct BindImagePlaneMemoryInfo {
 
   using native_type = VkBindImagePlaneMemoryInfo;
 
-  BindImagePlaneMemoryInfo(const void *p_next = {}, ImageAspectMaskBit plane_aspect = {}) : p_next_(p_next), plane_aspect_(plane_aspect) {}
+  BindImagePlaneMemoryInfo(ImageAspectMaskBit plane_aspect = {}, const void *p_next = {}) : plane_aspect_(plane_aspect), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -13809,15 +12383,16 @@ struct PipelineViewportSwizzleStateCreateInfoNV {
 
   using native_type = VkPipelineViewportSwizzleStateCreateInfoNV;
 
-  PipelineViewportSwizzleStateCreateInfoNV(const void *p_next = {}, VkPipelineViewportSwizzleStateCreateFlagsNV flags = {},
-                                           uint32_t viewport_count = {}, const ViewportSwizzleNV *p_viewport_swizzles = {})
-    : p_next_(p_next), flags_(flags), viewport_count_(viewport_count), p_viewport_swizzles_(p_viewport_swizzles) {}
+  PipelineViewportSwizzleStateCreateInfoNV(const ViewportSwizzleNV *p_viewport_swizzles = {},
+                                           PipelineViewportSwizzleStateCreateMask flags = {}, uint32_t viewport_count = {},
+                                           const void *p_next = {})
+    : p_viewport_swizzles_(p_viewport_swizzles), flags_(flags), viewport_count_(viewport_count), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PIPELINE_VIEWPORT_SWIZZLE_STATE_CREATE_INFO_NV;
   const void *p_next_;
-  VkPipelineViewportSwizzleStateCreateFlagsNV flags_;
+  PipelineViewportSwizzleStateCreateMask flags_;
   uint32_t viewport_count_;
   const ViewportSwizzleNV *p_viewport_swizzles_;
 };
@@ -13826,17 +12401,17 @@ struct PipelineDiscardRectangleStateCreateInfoEXT {
 
   using native_type = VkPipelineDiscardRectangleStateCreateInfoEXT;
 
-  PipelineDiscardRectangleStateCreateInfoEXT(const void *p_next = {}, VkPipelineDiscardRectangleStateCreateFlagsEXT flags = {},
+  PipelineDiscardRectangleStateCreateInfoEXT(const Rect2D *p_discard_rectangles = {}, PipelineDiscardRectangleStateCreateMask flags = {},
                                              DiscardRectangleMode discard_rectangle_mode = {}, uint32_t discard_rectangle_count = {},
-                                             const Rect2D *p_discard_rectangles = {})
-    : p_next_(p_next), flags_(flags), discard_rectangle_mode_(discard_rectangle_mode), discard_rectangle_count_(discard_rectangle_count),
-      p_discard_rectangles_(p_discard_rectangles) {}
+                                             const void *p_next = {})
+    : p_discard_rectangles_(p_discard_rectangles), flags_(flags), discard_rectangle_mode_(discard_rectangle_mode),
+      discard_rectangle_count_(discard_rectangle_count), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PIPELINE_DISCARD_RECTANGLE_STATE_CREATE_INFO_EXT;
   const void *p_next_;
-  VkPipelineDiscardRectangleStateCreateFlagsEXT flags_;
+  PipelineDiscardRectangleStateCreateMask flags_;
   DiscardRectangleMode discard_rectangle_mode_;
   uint32_t discard_rectangle_count_;
   const Rect2D *p_discard_rectangles_;
@@ -13848,7 +12423,7 @@ struct PipelineCreationFeedback {
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
-  VkPipelineCreationFeedbackFlags flags_;
+  PipelineCreationFeedbackMask flags_;
   uint64_t duration_;
 };
 
@@ -13856,12 +12431,12 @@ struct PipelineCreationFeedbackCreateInfo {
 
   using native_type = VkPipelineCreationFeedbackCreateInfo;
 
-  PipelineCreationFeedbackCreateInfo(const void *p_next = {}, PipelineCreationFeedback *p_pipeline_creation_feedback = {},
-                                     uint32_t pipeline_stage_creation_feedback_count = {},
-                                     PipelineCreationFeedback *p_pipeline_stage_creation_feedbacks = {})
-    : p_next_(p_next), p_pipeline_creation_feedback_(p_pipeline_creation_feedback),
-      pipeline_stage_creation_feedback_count_(pipeline_stage_creation_feedback_count),
-      p_pipeline_stage_creation_feedbacks_(p_pipeline_stage_creation_feedbacks) {}
+  PipelineCreationFeedbackCreateInfo(PipelineCreationFeedback *p_pipeline_stage_creation_feedbacks = {},
+                                     PipelineCreationFeedback *p_pipeline_creation_feedback = {},
+                                     uint32_t pipeline_stage_creation_feedback_count = {}, const void *p_next = {})
+    : p_pipeline_stage_creation_feedbacks_(p_pipeline_stage_creation_feedbacks),
+      p_pipeline_creation_feedback_(p_pipeline_creation_feedback),
+      pipeline_stage_creation_feedback_count_(pipeline_stage_creation_feedback_count), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -13876,8 +12451,8 @@ struct BlitImageCubicWeightsInfoQCOM {
 
   using native_type = VkBlitImageCubicWeightsInfoQCOM;
 
-  BlitImageCubicWeightsInfoQCOM(const void *p_next = {}, CubicFilterWeights cubic_weights = {})
-    : p_next_(p_next), cubic_weights_(cubic_weights) {}
+  BlitImageCubicWeightsInfoQCOM(CubicFilterWeights cubic_weights = {}, const void *p_next = {})
+    : cubic_weights_(cubic_weights), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -13901,8 +12476,8 @@ struct SamplerBorderColorComponentMappingCreateInfoEXT {
 
   using native_type = VkSamplerBorderColorComponentMappingCreateInfoEXT;
 
-  SamplerBorderColorComponentMappingCreateInfoEXT(const void *p_next = {}, ComponentMapping components = {}, VkBool32 srgb = {})
-    : p_next_(p_next), components_(components), srgb_(srgb) {}
+  SamplerBorderColorComponentMappingCreateInfoEXT(VkBool32 srgb = {}, ComponentMapping components = {}, const void *p_next = {})
+    : srgb_(srgb), components_(components), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -13916,9 +12491,9 @@ struct PhysicalDeviceShadingRateImageFeaturesNV {
 
   using native_type = VkPhysicalDeviceShadingRateImageFeaturesNV;
 
-  PhysicalDeviceShadingRateImageFeaturesNV(void *p_next = {}, VkBool32 shading_rate_image = {},
-                                           VkBool32 shading_rate_coarse_sample_order = {})
-    : p_next_(p_next), shading_rate_image_(shading_rate_image), shading_rate_coarse_sample_order_(shading_rate_coarse_sample_order) {}
+  PhysicalDeviceShadingRateImageFeaturesNV(VkBool32 shading_rate_coarse_sample_order = {}, VkBool32 shading_rate_image = {},
+                                           void *p_next = {})
+    : shading_rate_coarse_sample_order_(shading_rate_coarse_sample_order), shading_rate_image_(shading_rate_image), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -13932,7 +12507,7 @@ struct PhysicalDeviceSurfaceInfo2KHR {
 
   using native_type = VkPhysicalDeviceSurfaceInfo2KHR;
 
-  PhysicalDeviceSurfaceInfo2KHR(const void *p_next = {}, VkSurfaceKHR surface = {}) : p_next_(p_next), surface_(surface) {}
+  PhysicalDeviceSurfaceInfo2KHR(VkSurfaceKHR surface = {}, const void *p_next = {}) : surface_(surface), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -13956,8 +12531,8 @@ struct AccelerationStructureGeometryMotionTrianglesDataNV {
 
   using native_type = VkAccelerationStructureGeometryMotionTrianglesDataNV;
 
-  AccelerationStructureGeometryMotionTrianglesDataNV(const void *p_next = {}, VkDeviceOrHostAddressConstKHR vertex_data = {})
-    : p_next_(p_next), vertex_data_(vertex_data) {}
+  AccelerationStructureGeometryMotionTrianglesDataNV(VkDeviceOrHostAddressConstKHR vertex_data = {}, const void *p_next = {})
+    : vertex_data_(vertex_data), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -13970,16 +12545,16 @@ struct PipelineCoverageToColorStateCreateInfoNV {
 
   using native_type = VkPipelineCoverageToColorStateCreateInfoNV;
 
-  PipelineCoverageToColorStateCreateInfoNV(const void *p_next = {}, VkPipelineCoverageToColorStateCreateFlagsNV flags = {},
-                                           VkBool32 coverage_to_color_enable = {}, uint32_t coverage_to_color_location = {})
-    : p_next_(p_next), flags_(flags), coverage_to_color_enable_(coverage_to_color_enable),
-      coverage_to_color_location_(coverage_to_color_location) {}
+  PipelineCoverageToColorStateCreateInfoNV(uint32_t coverage_to_color_location = {}, PipelineCoverageToColorStateCreateMask flags = {},
+                                           VkBool32 coverage_to_color_enable = {}, const void *p_next = {})
+    : coverage_to_color_location_(coverage_to_color_location), flags_(flags), coverage_to_color_enable_(coverage_to_color_enable),
+      p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PIPELINE_COVERAGE_TO_COLOR_STATE_CREATE_INFO_NV;
   const void *p_next_;
-  VkPipelineCoverageToColorStateCreateFlagsNV flags_;
+  PipelineCoverageToColorStateCreateMask flags_;
   VkBool32 coverage_to_color_enable_;
   uint32_t coverage_to_color_location_;
 };
@@ -13999,11 +12574,11 @@ struct TimelineSemaphoreSubmitInfo {
 
   using native_type = VkTimelineSemaphoreSubmitInfo;
 
-  TimelineSemaphoreSubmitInfo(const void *p_next = {}, uint32_t wait_semaphore_value_count = {},
+  TimelineSemaphoreSubmitInfo(const uint64_t *p_signal_semaphore_values = {}, uint32_t wait_semaphore_value_count = {},
                               const uint64_t *p_wait_semaphore_values = {}, uint32_t signal_semaphore_value_count = {},
-                              const uint64_t *p_signal_semaphore_values = {})
-    : p_next_(p_next), wait_semaphore_value_count_(wait_semaphore_value_count), p_wait_semaphore_values_(p_wait_semaphore_values),
-      signal_semaphore_value_count_(signal_semaphore_value_count), p_signal_semaphore_values_(p_signal_semaphore_values) {}
+                              const void *p_next = {})
+    : p_signal_semaphore_values_(p_signal_semaphore_values), wait_semaphore_value_count_(wait_semaphore_value_count),
+      p_wait_semaphore_values_(p_wait_semaphore_values), signal_semaphore_value_count_(signal_semaphore_value_count), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -14019,8 +12594,8 @@ struct MemoryDedicatedAllocateInfo {
 
   using native_type = VkMemoryDedicatedAllocateInfo;
 
-  MemoryDedicatedAllocateInfo(const void *p_next = {}, VkImage image = {}, VkBuffer buffer = {})
-    : p_next_(p_next), image_(image), buffer_(buffer) {}
+  MemoryDedicatedAllocateInfo(VkBuffer buffer = {}, VkImage image = {}, const void *p_next = {})
+    : buffer_(buffer), image_(image), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -14055,8 +12630,8 @@ struct PhysicalDeviceExclusiveScissorFeaturesNV {
 
   using native_type = VkPhysicalDeviceExclusiveScissorFeaturesNV;
 
-  PhysicalDeviceExclusiveScissorFeaturesNV(void *p_next = {}, VkBool32 exclusive_scissor = {})
-    : p_next_(p_next), exclusive_scissor_(exclusive_scissor) {}
+  PhysicalDeviceExclusiveScissorFeaturesNV(VkBool32 exclusive_scissor = {}, void *p_next = {})
+    : exclusive_scissor_(exclusive_scissor), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -14080,8 +12655,8 @@ struct CommandBufferInheritanceConditionalRenderingInfoEXT {
 
   using native_type = VkCommandBufferInheritanceConditionalRenderingInfoEXT;
 
-  CommandBufferInheritanceConditionalRenderingInfoEXT(const void *p_next = {}, VkBool32 conditional_rendering_enable = {})
-    : p_next_(p_next), conditional_rendering_enable_(conditional_rendering_enable) {}
+  CommandBufferInheritanceConditionalRenderingInfoEXT(VkBool32 conditional_rendering_enable = {}, const void *p_next = {})
+    : conditional_rendering_enable_(conditional_rendering_enable), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -14094,8 +12669,8 @@ struct DisplayPlaneInfo2KHR {
 
   using native_type = VkDisplayPlaneInfo2KHR;
 
-  DisplayPlaneInfo2KHR(const void *p_next = {}, VkDisplayModeKHR mode = {}, uint32_t plane_index = {})
-    : p_next_(p_next), mode_(mode), plane_index_(plane_index) {}
+  DisplayPlaneInfo2KHR(uint32_t plane_index = {}, VkDisplayModeKHR mode = {}, const void *p_next = {})
+    : plane_index_(plane_index), mode_(mode), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -14109,10 +12684,10 @@ struct DepthBiasInfoEXT {
 
   using native_type = VkDepthBiasInfoEXT;
 
-  DepthBiasInfoEXT(const void *p_next = {}, float depth_bias_constant_factor = {}, float depth_bias_clamp = {},
-                   float depth_bias_slope_factor = {})
-    : p_next_(p_next), depth_bias_constant_factor_(depth_bias_constant_factor), depth_bias_clamp_(depth_bias_clamp),
-      depth_bias_slope_factor_(depth_bias_slope_factor) {}
+  DepthBiasInfoEXT(float depth_bias_slope_factor = {}, float depth_bias_constant_factor = {}, float depth_bias_clamp = {},
+                   const void *p_next = {})
+    : depth_bias_slope_factor_(depth_bias_slope_factor), depth_bias_constant_factor_(depth_bias_constant_factor),
+      depth_bias_clamp_(depth_bias_clamp), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -14127,8 +12702,8 @@ struct PhysicalDeviceDiagnosticsConfigFeaturesNV {
 
   using native_type = VkPhysicalDeviceDiagnosticsConfigFeaturesNV;
 
-  PhysicalDeviceDiagnosticsConfigFeaturesNV(void *p_next = {}, VkBool32 diagnostics_config = {})
-    : p_next_(p_next), diagnostics_config_(diagnostics_config) {}
+  PhysicalDeviceDiagnosticsConfigFeaturesNV(VkBool32 diagnostics_config = {}, void *p_next = {})
+    : diagnostics_config_(diagnostics_config), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -14174,19 +12749,19 @@ struct SharedPresentSurfaceCapabilitiesKHR {
 
   StructureType s_type_ = StructureType::SHARED_PRESENT_SURFACE_CAPABILITIES_KHR;
   void *p_next_;
-  VkImageUsageFlags shared_present_supported_usage_flags_;
+  ImageUsageMask shared_present_supported_usage_flags_;
 };
 
 struct PhysicalDevice16BitStorageFeatures {
 
   using native_type = VkPhysicalDevice16BitStorageFeatures;
 
-  PhysicalDevice16BitStorageFeatures(void *p_next = {}, VkBool32 storage_buffer16bit_access = {},
+  PhysicalDevice16BitStorageFeatures(VkBool32 storage_input_output16 = {}, VkBool32 storage_buffer16bit_access = {},
                                      VkBool32 uniform_and_storage_buffer16bit_access = {}, VkBool32 storage_push_constant16 = {},
-                                     VkBool32 storage_input_output16 = {})
-    : p_next_(p_next), storage_buffer16bit_access_(storage_buffer16bit_access),
+                                     void *p_next = {})
+    : storage_input_output16_(storage_input_output16), storage_buffer16bit_access_(storage_buffer16bit_access),
       uniform_and_storage_buffer16bit_access_(uniform_and_storage_buffer16bit_access), storage_push_constant16_(storage_push_constant16),
-      storage_input_output16_(storage_input_output16) {}
+      p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -14211,29 +12786,12 @@ struct StridedDeviceAddressRegionKHR {
   VkDeviceSize stride_;
   VkDeviceSize size_;
 };
-#ifdef VK_USE_PLATFORM_METAL_EXT
-
-struct ExportMetalCommandQueueInfoEXT {
-
-  using native_type = VkExportMetalCommandQueueInfoEXT;
-
-  ExportMetalCommandQueueInfoEXT(const void *p_next = {}, VkQueue queue = {}, MTLCommandQueue_id mtl_command_queue = {})
-    : p_next_(p_next), queue_(queue), mtl_command_queue_(mtl_command_queue) {}
-
-  auto *get() { return reinterpret_cast<native_type *>(this); }
-
-  StructureType s_type_ = StructureType::EXPORT_METAL_COMMAND_QUEUE_INFO_EXT;
-  const void *p_next_;
-  VkQueue queue_;
-  MTLCommandQueue_id mtl_command_queue_;
-};
-#endif
 
 struct BufferMemoryRequirementsInfo2 {
 
   using native_type = VkBufferMemoryRequirementsInfo2;
 
-  BufferMemoryRequirementsInfo2(const void *p_next = {}, VkBuffer buffer = {}) : p_next_(p_next), buffer_(buffer) {}
+  BufferMemoryRequirementsInfo2(VkBuffer buffer = {}, const void *p_next = {}) : buffer_(buffer), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -14246,7 +12804,7 @@ struct ImageSparseMemoryRequirementsInfo2 {
 
   using native_type = VkImageSparseMemoryRequirementsInfo2;
 
-  ImageSparseMemoryRequirementsInfo2(const void *p_next = {}, VkImage image = {}) : p_next_(p_next), image_(image) {}
+  ImageSparseMemoryRequirementsInfo2(VkImage image = {}, const void *p_next = {}) : image_(image), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -14259,8 +12817,8 @@ struct VideoDecodeAV1DpbSlotInfoKHR {
 
   using native_type = VkVideoDecodeAV1DpbSlotInfoKHR;
 
-  VideoDecodeAV1DpbSlotInfoKHR(const void *p_next = {}, const StdVideoDecodeAV1ReferenceInfo *p_std_reference_info = {})
-    : p_next_(p_next), p_std_reference_info_(p_std_reference_info) {}
+  VideoDecodeAV1DpbSlotInfoKHR(const StdVideoDecodeAV1ReferenceInfo *p_std_reference_info = {}, const void *p_next = {})
+    : p_std_reference_info_(p_std_reference_info), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -14284,10 +12842,10 @@ struct PhysicalDeviceProvokingVertexFeaturesEXT {
 
   using native_type = VkPhysicalDeviceProvokingVertexFeaturesEXT;
 
-  PhysicalDeviceProvokingVertexFeaturesEXT(void *p_next = {}, VkBool32 provoking_vertex_last = {},
-                                           VkBool32 transform_feedback_preserves_provoking_vertex = {})
-    : p_next_(p_next), provoking_vertex_last_(provoking_vertex_last),
-      transform_feedback_preserves_provoking_vertex_(transform_feedback_preserves_provoking_vertex) {}
+  PhysicalDeviceProvokingVertexFeaturesEXT(VkBool32 transform_feedback_preserves_provoking_vertex = {}, VkBool32 provoking_vertex_last = {},
+                                           void *p_next = {})
+    : transform_feedback_preserves_provoking_vertex_(transform_feedback_preserves_provoking_vertex),
+      provoking_vertex_last_(provoking_vertex_last), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -14312,8 +12870,8 @@ struct DeviceGroupDeviceCreateInfo {
 
   using native_type = VkDeviceGroupDeviceCreateInfo;
 
-  DeviceGroupDeviceCreateInfo(const void *p_next = {}, uint32_t physical_device_count = {}, const VkPhysicalDevice *p_physical_devices = {})
-    : p_next_(p_next), physical_device_count_(physical_device_count), p_physical_devices_(p_physical_devices) {}
+  DeviceGroupDeviceCreateInfo(const VkPhysicalDevice *p_physical_devices = {}, uint32_t physical_device_count = {}, const void *p_next = {})
+    : p_physical_devices_(p_physical_devices), physical_device_count_(physical_device_count), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -14327,8 +12885,8 @@ struct DeviceImageMemoryRequirements {
 
   using native_type = VkDeviceImageMemoryRequirements;
 
-  DeviceImageMemoryRequirements(const void *p_next = {}, const ImageCreateInfo *p_create_info = {}, ImageAspectMaskBit plane_aspect = {})
-    : p_next_(p_next), p_create_info_(p_create_info), plane_aspect_(plane_aspect) {}
+  DeviceImageMemoryRequirements(ImageAspectMaskBit plane_aspect = {}, const ImageCreateInfo *p_create_info = {}, const void *p_next = {})
+    : plane_aspect_(plane_aspect), p_create_info_(p_create_info), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -14337,19 +12895,6 @@ struct DeviceImageMemoryRequirements {
   const ImageCreateInfo *p_create_info_;
   ImageAspectMaskBit plane_aspect_;
 };
-#ifdef VK_USE_PLATFORM_WIN32_KHR
-
-struct MemoryWin32HandlePropertiesKHR {
-
-  using native_type = VkMemoryWin32HandlePropertiesKHR;
-
-  auto *get() { return reinterpret_cast<native_type *>(this); }
-
-  StructureType s_type_ = StructureType::MEMORY_WIN32_HANDLE_PROPERTIES_KHR;
-  void *p_next_;
-  uint32_t memory_type_bits_;
-};
-#endif
 
 struct SparseImageMemoryRequirements2 {
 
@@ -14428,8 +12973,8 @@ struct ImageViewSlicedCreateInfoEXT {
 
   using native_type = VkImageViewSlicedCreateInfoEXT;
 
-  ImageViewSlicedCreateInfoEXT(const void *p_next = {}, uint32_t slice_offset = {}, uint32_t slice_count = {})
-    : p_next_(p_next), slice_offset_(slice_offset), slice_count_(slice_count) {}
+  ImageViewSlicedCreateInfoEXT(uint32_t slice_count = {}, uint32_t slice_offset = {}, const void *p_next = {})
+    : slice_count_(slice_count), slice_offset_(slice_offset), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -14443,10 +12988,10 @@ struct VideoEncodeH265GopRemainingFrameInfoKHR {
 
   using native_type = VkVideoEncodeH265GopRemainingFrameInfoKHR;
 
-  VideoEncodeH265GopRemainingFrameInfoKHR(const void *p_next = {}, VkBool32 use_gop_remaining_frames = {}, uint32_t gop_remaining_i = {},
-                                          uint32_t gop_remaining_p = {}, uint32_t gop_remaining_b = {})
-    : p_next_(p_next), use_gop_remaining_frames_(use_gop_remaining_frames), gop_remaining_i_(gop_remaining_i),
-      gop_remaining_p_(gop_remaining_p), gop_remaining_b_(gop_remaining_b) {}
+  VideoEncodeH265GopRemainingFrameInfoKHR(uint32_t gop_remaining_b = {}, VkBool32 use_gop_remaining_frames = {},
+                                          uint32_t gop_remaining_i = {}, uint32_t gop_remaining_p = {}, const void *p_next = {})
+    : gop_remaining_b_(gop_remaining_b), use_gop_remaining_frames_(use_gop_remaining_frames), gop_remaining_i_(gop_remaining_i),
+      gop_remaining_p_(gop_remaining_p), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -14457,19 +13002,6 @@ struct VideoEncodeH265GopRemainingFrameInfoKHR {
   uint32_t gop_remaining_p_;
   uint32_t gop_remaining_b_;
 };
-#ifdef VK_USE_PLATFORM_WIN32_KHR
-
-struct SurfaceCapabilitiesFullScreenExclusiveEXT {
-
-  using native_type = VkSurfaceCapabilitiesFullScreenExclusiveEXT;
-
-  auto *get() { return reinterpret_cast<native_type *>(this); }
-
-  StructureType s_type_ = StructureType::SURFACE_CAPABILITIES_FULL_SCREEN_EXCLUSIVE_EXT;
-  void *p_next_;
-  VkBool32 full_screen_exclusive_supported_;
-};
-#endif
 
 struct PhysicalDeviceMaintenance7PropertiesKHR {
 
@@ -14493,9 +13025,9 @@ struct PhysicalDeviceShaderAtomicInt64Features {
 
   using native_type = VkPhysicalDeviceShaderAtomicInt64Features;
 
-  PhysicalDeviceShaderAtomicInt64Features(void *p_next = {}, VkBool32 shader_buffer_int64atomics = {},
-                                          VkBool32 shader_shared_int64atomics = {})
-    : p_next_(p_next), shader_buffer_int64atomics_(shader_buffer_int64atomics), shader_shared_int64atomics_(shader_shared_int64atomics) {}
+  PhysicalDeviceShaderAtomicInt64Features(VkBool32 shader_shared_int64atomics = {}, VkBool32 shader_buffer_int64atomics = {},
+                                          void *p_next = {})
+    : shader_shared_int64atomics_(shader_shared_int64atomics), shader_buffer_int64atomics_(shader_buffer_int64atomics), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -14509,8 +13041,8 @@ struct PhysicalDeviceSamplerYcbcrConversionFeatures {
 
   using native_type = VkPhysicalDeviceSamplerYcbcrConversionFeatures;
 
-  PhysicalDeviceSamplerYcbcrConversionFeatures(void *p_next = {}, VkBool32 sampler_ycbcr_conversion = {})
-    : p_next_(p_next), sampler_ycbcr_conversion_(sampler_ycbcr_conversion) {}
+  PhysicalDeviceSamplerYcbcrConversionFeatures(VkBool32 sampler_ycbcr_conversion = {}, void *p_next = {})
+    : sampler_ycbcr_conversion_(sampler_ycbcr_conversion), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -14523,8 +13055,8 @@ struct VideoDecodeAV1ProfileInfoKHR {
 
   using native_type = VkVideoDecodeAV1ProfileInfoKHR;
 
-  VideoDecodeAV1ProfileInfoKHR(const void *p_next = {}, StdVideoAV1Profile std_profile = {}, VkBool32 film_grain_support = {})
-    : p_next_(p_next), std_profile_(std_profile), film_grain_support_(film_grain_support) {}
+  VideoDecodeAV1ProfileInfoKHR(VkBool32 film_grain_support = {}, StdVideoAV1Profile std_profile = {}, const void *p_next = {})
+    : film_grain_support_(film_grain_support), std_profile_(std_profile), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -14538,19 +13070,18 @@ struct AttachmentDescription2 {
 
   using native_type = VkAttachmentDescription2;
 
-  AttachmentDescription2(const void *p_next = {}, VkAttachmentDescriptionFlags flags = {}, Format format = {},
+  AttachmentDescription2(ImageLayout final_layout = {}, AttachmentDescriptionMask flags = {}, Format format = {},
                          SampleCountMaskBit samples = {}, AttachmentLoadOp load_op = {}, AttachmentStoreOp store_op = {},
                          AttachmentLoadOp stencil_load_op = {}, AttachmentStoreOp stencil_store_op = {}, ImageLayout initial_layout = {},
-                         ImageLayout final_layout = {})
-    : p_next_(p_next), flags_(flags), format_(format), samples_(samples), load_op_(load_op), store_op_(store_op),
-      stencil_load_op_(stencil_load_op), stencil_store_op_(stencil_store_op), initial_layout_(initial_layout), final_layout_(final_layout) {
-  }
+                         const void *p_next = {})
+    : final_layout_(final_layout), flags_(flags), format_(format), samples_(samples), load_op_(load_op), store_op_(store_op),
+      stencil_load_op_(stencil_load_op), stencil_store_op_(stencil_store_op), initial_layout_(initial_layout), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::ATTACHMENT_DESCRIPTION_2;
   const void *p_next_;
-  VkAttachmentDescriptionFlags flags_;
+  AttachmentDescriptionMask flags_;
   Format format_;
   SampleCountMaskBit samples_;
   AttachmentLoadOp load_op_;
@@ -14569,13 +13100,13 @@ struct VideoEncodeCapabilitiesKHR {
 
   StructureType s_type_ = StructureType::VIDEO_ENCODE_CAPABILITIES_KHR;
   void *p_next_;
-  VkVideoEncodeCapabilityFlagsKHR flags_;
-  VkVideoEncodeRateControlModeFlagsKHR rate_control_modes_;
+  VideoEncodeCapabilityMask flags_;
+  VideoEncodeRateControlModeMask rate_control_modes_;
   uint32_t max_rate_control_layers_;
   uint64_t max_bitrate_;
   uint32_t max_quality_levels_;
   Extent2D encode_input_picture_granularity_;
-  VkVideoEncodeFeedbackFlagsKHR supported_encode_feedback_flags_;
+  VideoEncodeFeedbackMask supported_encode_feedback_flags_;
 };
 
 struct TextureLODGatherFormatPropertiesAMD {
@@ -14593,8 +13124,8 @@ struct SamplerCustomBorderColorCreateInfoEXT {
 
   using native_type = VkSamplerCustomBorderColorCreateInfoEXT;
 
-  SamplerCustomBorderColorCreateInfoEXT(const void *p_next = {}, VkClearColorValue custom_border_color = {}, Format format = {})
-    : p_next_(p_next), custom_border_color_(custom_border_color), format_(format) {}
+  SamplerCustomBorderColorCreateInfoEXT(Format format = {}, VkClearColorValue custom_border_color = {}, const void *p_next = {})
+    : format_(format), custom_border_color_(custom_border_color), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -14608,9 +13139,9 @@ struct ConditionalRenderingBeginInfoEXT {
 
   using native_type = VkConditionalRenderingBeginInfoEXT;
 
-  ConditionalRenderingBeginInfoEXT(const void *p_next = {}, VkBuffer buffer = {}, VkDeviceSize offset = {},
-                                   VkConditionalRenderingFlagsEXT flags = {})
-    : p_next_(p_next), buffer_(buffer), offset_(offset), flags_(flags) {}
+  ConditionalRenderingBeginInfoEXT(ConditionalRenderingMask flags = {}, VkBuffer buffer = {}, VkDeviceSize offset = {},
+                                   const void *p_next = {})
+    : flags_(flags), buffer_(buffer), offset_(offset), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -14618,15 +13149,15 @@ struct ConditionalRenderingBeginInfoEXT {
   const void *p_next_;
   VkBuffer buffer_;
   VkDeviceSize offset_;
-  VkConditionalRenderingFlagsEXT flags_;
+  ConditionalRenderingMask flags_;
 };
 
 struct PhysicalDeviceProtectedMemoryFeatures {
 
   using native_type = VkPhysicalDeviceProtectedMemoryFeatures;
 
-  PhysicalDeviceProtectedMemoryFeatures(void *p_next = {}, VkBool32 protected_memory = {})
-    : p_next_(p_next), protected_memory_(protected_memory) {}
+  PhysicalDeviceProtectedMemoryFeatures(VkBool32 protected_memory = {}, void *p_next = {})
+    : protected_memory_(protected_memory), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -14639,8 +13170,8 @@ struct PhysicalDeviceShaderClockFeaturesKHR {
 
   using native_type = VkPhysicalDeviceShaderClockFeaturesKHR;
 
-  PhysicalDeviceShaderClockFeaturesKHR(void *p_next = {}, VkBool32 shader_subgroup_clock = {}, VkBool32 shader_device_clock = {})
-    : p_next_(p_next), shader_subgroup_clock_(shader_subgroup_clock), shader_device_clock_(shader_device_clock) {}
+  PhysicalDeviceShaderClockFeaturesKHR(VkBool32 shader_device_clock = {}, VkBool32 shader_subgroup_clock = {}, void *p_next = {})
+    : shader_device_clock_(shader_device_clock), shader_subgroup_clock_(shader_subgroup_clock), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -14654,15 +13185,15 @@ struct SemaphoreWaitInfo {
 
   using native_type = VkSemaphoreWaitInfo;
 
-  SemaphoreWaitInfo(const void *p_next = {}, VkSemaphoreWaitFlags flags = {}, uint32_t semaphore_count = {},
-                    const VkSemaphore *p_semaphores = {}, const uint64_t *p_values = {})
-    : p_next_(p_next), flags_(flags), semaphore_count_(semaphore_count), p_semaphores_(p_semaphores), p_values_(p_values) {}
+  SemaphoreWaitInfo(const uint64_t *p_values = {}, SemaphoreWaitMask flags = {}, uint32_t semaphore_count = {},
+                    const VkSemaphore *p_semaphores = {}, const void *p_next = {})
+    : p_values_(p_values), flags_(flags), semaphore_count_(semaphore_count), p_semaphores_(p_semaphores), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::SEMAPHORE_WAIT_INFO;
   const void *p_next_;
-  VkSemaphoreWaitFlags flags_;
+  SemaphoreWaitMask flags_;
   uint32_t semaphore_count_;
   const VkSemaphore *p_semaphores_;
   const uint64_t *p_values_;
@@ -14672,20 +13203,19 @@ struct SubmitInfo2 {
 
   using native_type = VkSubmitInfo2;
 
-  SubmitInfo2(const void *p_next = {}, VkSubmitFlags flags = {}, uint32_t wait_semaphore_info_count = {},
+  SubmitInfo2(const SemaphoreSubmitInfo *p_signal_semaphore_infos = {}, SubmitMask flags = {}, uint32_t wait_semaphore_info_count = {},
               const SemaphoreSubmitInfo *p_wait_semaphore_infos = {}, uint32_t command_buffer_info_count = {},
               const CommandBufferSubmitInfo *p_command_buffer_infos = {}, uint32_t signal_semaphore_info_count = {},
-              const SemaphoreSubmitInfo *p_signal_semaphore_infos = {})
-    : p_next_(p_next), flags_(flags), wait_semaphore_info_count_(wait_semaphore_info_count),
+              const void *p_next = {})
+    : p_signal_semaphore_infos_(p_signal_semaphore_infos), flags_(flags), wait_semaphore_info_count_(wait_semaphore_info_count),
       p_wait_semaphore_infos_(p_wait_semaphore_infos), command_buffer_info_count_(command_buffer_info_count),
-      p_command_buffer_infos_(p_command_buffer_infos), signal_semaphore_info_count_(signal_semaphore_info_count),
-      p_signal_semaphore_infos_(p_signal_semaphore_infos) {}
+      p_command_buffer_infos_(p_command_buffer_infos), signal_semaphore_info_count_(signal_semaphore_info_count), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::SUBMIT_INFO_2;
   const void *p_next_;
-  VkSubmitFlags flags_;
+  SubmitMask flags_;
   uint32_t wait_semaphore_info_count_;
   const SemaphoreSubmitInfo *p_wait_semaphore_infos_;
   uint32_t command_buffer_info_count_;
@@ -14709,10 +13239,10 @@ struct PhysicalDeviceComputeShaderDerivativesFeaturesNV {
 
   using native_type = VkPhysicalDeviceComputeShaderDerivativesFeaturesNV;
 
-  PhysicalDeviceComputeShaderDerivativesFeaturesNV(void *p_next = {}, VkBool32 compute_derivative_group_quads = {},
-                                                   VkBool32 compute_derivative_group_linear = {})
-    : p_next_(p_next), compute_derivative_group_quads_(compute_derivative_group_quads),
-      compute_derivative_group_linear_(compute_derivative_group_linear) {}
+  PhysicalDeviceComputeShaderDerivativesFeaturesNV(VkBool32 compute_derivative_group_linear = {},
+                                                   VkBool32 compute_derivative_group_quads = {}, void *p_next = {})
+    : compute_derivative_group_linear_(compute_derivative_group_linear), compute_derivative_group_quads_(compute_derivative_group_quads),
+      p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -14730,7 +13260,7 @@ struct PhysicalDeviceSampleLocationsPropertiesEXT {
 
   StructureType s_type_ = StructureType::PHYSICAL_DEVICE_SAMPLE_LOCATIONS_PROPERTIES_EXT;
   void *p_next_;
-  VkSampleCountFlags sample_location_sample_counts_;
+  SampleCountMask sample_location_sample_counts_;
   Extent2D max_sample_location_grid_size_;
   std::array<float, 2> sample_location_coordinate_range_;
   uint32_t sample_location_sub_pixel_bits_;
@@ -14741,8 +13271,8 @@ struct PipelineExecutableInfoKHR {
 
   using native_type = VkPipelineExecutableInfoKHR;
 
-  PipelineExecutableInfoKHR(const void *p_next = {}, VkPipeline pipeline = {}, uint32_t executable_index = {})
-    : p_next_(p_next), pipeline_(pipeline), executable_index_(executable_index) {}
+  PipelineExecutableInfoKHR(uint32_t executable_index = {}, VkPipeline pipeline = {}, const void *p_next = {})
+    : executable_index_(executable_index), pipeline_(pipeline), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -14767,15 +13297,15 @@ struct BufferViewCreateInfo {
 
   using native_type = VkBufferViewCreateInfo;
 
-  BufferViewCreateInfo(const void *p_next = {}, VkBufferViewCreateFlags flags = {}, VkBuffer buffer = {}, Format format = {},
-                       VkDeviceSize offset = {}, VkDeviceSize range = {})
-    : p_next_(p_next), flags_(flags), buffer_(buffer), format_(format), offset_(offset), range_(range) {}
+  BufferViewCreateInfo(VkDeviceSize range = {}, BufferViewCreateMask flags = {}, VkBuffer buffer = {}, Format format = {},
+                       VkDeviceSize offset = {}, const void *p_next = {})
+    : range_(range), flags_(flags), buffer_(buffer), format_(format), offset_(offset), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::BUFFER_VIEW_CREATE_INFO;
   const void *p_next_;
-  VkBufferViewCreateFlags flags_;
+  BufferViewCreateMask flags_;
   VkBuffer buffer_;
   Format format_;
   VkDeviceSize offset_;
@@ -14786,8 +13316,8 @@ struct SamplerReductionModeCreateInfo {
 
   using native_type = VkSamplerReductionModeCreateInfo;
 
-  SamplerReductionModeCreateInfo(const void *p_next = {}, SamplerReductionMode reduction_mode = {})
-    : p_next_(p_next), reduction_mode_(reduction_mode) {}
+  SamplerReductionModeCreateInfo(SamplerReductionMode reduction_mode = {}, const void *p_next = {})
+    : reduction_mode_(reduction_mode), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -14795,29 +13325,13 @@ struct SamplerReductionModeCreateInfo {
   const void *p_next_;
   SamplerReductionMode reduction_mode_;
 };
-#ifdef VK_USE_PLATFORM_FUCHSIA
-
-struct BufferCollectionCreateInfoFUCHSIA {
-
-  using native_type = VkBufferCollectionCreateInfoFUCHSIA;
-
-  BufferCollectionCreateInfoFUCHSIA(const void *p_next = {}, zx_handle_t collection_token = {})
-    : p_next_(p_next), collection_token_(collection_token) {}
-
-  auto *get() { return reinterpret_cast<native_type *>(this); }
-
-  StructureType s_type_ = StructureType::BUFFER_COLLECTION_CREATE_INFO_FUCHSIA;
-  const void *p_next_;
-  zx_handle_t collection_token_;
-};
-#endif
 
 struct PhysicalDeviceBlendOperationAdvancedFeaturesEXT {
 
   using native_type = VkPhysicalDeviceBlendOperationAdvancedFeaturesEXT;
 
-  PhysicalDeviceBlendOperationAdvancedFeaturesEXT(void *p_next = {}, VkBool32 advanced_blend_coherent_operations = {})
-    : p_next_(p_next), advanced_blend_coherent_operations_(advanced_blend_coherent_operations) {}
+  PhysicalDeviceBlendOperationAdvancedFeaturesEXT(VkBool32 advanced_blend_coherent_operations = {}, void *p_next = {})
+    : advanced_blend_coherent_operations_(advanced_blend_coherent_operations), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -14830,8 +13344,8 @@ struct MemoryAllocateInfo {
 
   using native_type = VkMemoryAllocateInfo;
 
-  MemoryAllocateInfo(const void *p_next = {}, VkDeviceSize allocation_size = {}, uint32_t memory_type_index = {})
-    : p_next_(p_next), allocation_size_(allocation_size), memory_type_index_(memory_type_index) {}
+  MemoryAllocateInfo(uint32_t memory_type_index = {}, VkDeviceSize allocation_size = {}, const void *p_next = {})
+    : memory_type_index_(memory_type_index), allocation_size_(allocation_size), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -14856,14 +13370,14 @@ struct RenderPassSampleLocationsBeginInfoEXT {
 
   using native_type = VkRenderPassSampleLocationsBeginInfoEXT;
 
-  RenderPassSampleLocationsBeginInfoEXT(const void *p_next = {}, uint32_t attachment_initial_sample_locations_count = {},
+  RenderPassSampleLocationsBeginInfoEXT(const SubpassSampleLocationsEXT *p_post_subpass_sample_locations = {},
+                                        uint32_t attachment_initial_sample_locations_count = {},
                                         const AttachmentSampleLocationsEXT *p_attachment_initial_sample_locations = {},
-                                        uint32_t post_subpass_sample_locations_count = {},
-                                        const SubpassSampleLocationsEXT *p_post_subpass_sample_locations = {})
-    : p_next_(p_next), attachment_initial_sample_locations_count_(attachment_initial_sample_locations_count),
+                                        uint32_t post_subpass_sample_locations_count = {}, const void *p_next = {})
+    : p_post_subpass_sample_locations_(p_post_subpass_sample_locations),
+      attachment_initial_sample_locations_count_(attachment_initial_sample_locations_count),
       p_attachment_initial_sample_locations_(p_attachment_initial_sample_locations),
-      post_subpass_sample_locations_count_(post_subpass_sample_locations_count),
-      p_post_subpass_sample_locations_(p_post_subpass_sample_locations) {}
+      post_subpass_sample_locations_count_(post_subpass_sample_locations_count), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -14879,7 +13393,7 @@ struct PhysicalDeviceMultiDrawFeaturesEXT {
 
   using native_type = VkPhysicalDeviceMultiDrawFeaturesEXT;
 
-  PhysicalDeviceMultiDrawFeaturesEXT(void *p_next = {}, VkBool32 multi_draw = {}) : p_next_(p_next), multi_draw_(multi_draw) {}
+  PhysicalDeviceMultiDrawFeaturesEXT(VkBool32 multi_draw = {}, void *p_next = {}) : multi_draw_(multi_draw), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -14908,8 +13422,8 @@ struct PhysicalDeviceDepthClipEnableFeaturesEXT {
 
   using native_type = VkPhysicalDeviceDepthClipEnableFeaturesEXT;
 
-  PhysicalDeviceDepthClipEnableFeaturesEXT(void *p_next = {}, VkBool32 depth_clip_enable = {})
-    : p_next_(p_next), depth_clip_enable_(depth_clip_enable) {}
+  PhysicalDeviceDepthClipEnableFeaturesEXT(VkBool32 depth_clip_enable = {}, void *p_next = {})
+    : depth_clip_enable_(depth_clip_enable), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -14933,9 +13447,9 @@ struct PipelineColorBlendAdvancedStateCreateInfoEXT {
 
   using native_type = VkPipelineColorBlendAdvancedStateCreateInfoEXT;
 
-  PipelineColorBlendAdvancedStateCreateInfoEXT(const void *p_next = {}, VkBool32 src_premultiplied = {}, VkBool32 dst_premultiplied = {},
-                                               BlendOverlap blend_overlap = {})
-    : p_next_(p_next), src_premultiplied_(src_premultiplied), dst_premultiplied_(dst_premultiplied), blend_overlap_(blend_overlap) {}
+  PipelineColorBlendAdvancedStateCreateInfoEXT(BlendOverlap blend_overlap = {}, VkBool32 src_premultiplied = {},
+                                               VkBool32 dst_premultiplied = {}, const void *p_next = {})
+    : blend_overlap_(blend_overlap), src_premultiplied_(src_premultiplied), dst_premultiplied_(dst_premultiplied), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -14950,15 +13464,14 @@ struct DeviceQueueInfo2 {
 
   using native_type = VkDeviceQueueInfo2;
 
-  DeviceQueueInfo2(const void *p_next = {}, VkDeviceQueueCreateFlags flags = {}, uint32_t queue_family_index = {},
-                   uint32_t queue_index = {})
-    : p_next_(p_next), flags_(flags), queue_family_index_(queue_family_index), queue_index_(queue_index) {}
+  DeviceQueueInfo2(uint32_t queue_index = {}, DeviceQueueCreateMask flags = {}, uint32_t queue_family_index = {}, const void *p_next = {})
+    : queue_index_(queue_index), flags_(flags), queue_family_index_(queue_family_index), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::DEVICE_QUEUE_INFO_2;
   const void *p_next_;
-  VkDeviceQueueCreateFlags flags_;
+  DeviceQueueCreateMask flags_;
   uint32_t queue_family_index_;
   uint32_t queue_index_;
 };
@@ -14982,8 +13495,8 @@ struct SemaphoreTypeCreateInfo {
 
   using native_type = VkSemaphoreTypeCreateInfo;
 
-  SemaphoreTypeCreateInfo(const void *p_next = {}, SemaphoreType semaphore_type = {}, uint64_t initial_value = {})
-    : p_next_(p_next), semaphore_type_(semaphore_type), initial_value_(initial_value) {}
+  SemaphoreTypeCreateInfo(uint64_t initial_value = {}, SemaphoreType semaphore_type = {}, const void *p_next = {})
+    : initial_value_(initial_value), semaphore_type_(semaphore_type), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -14997,8 +13510,8 @@ struct DescriptorPoolInlineUniformBlockCreateInfo {
 
   using native_type = VkDescriptorPoolInlineUniformBlockCreateInfo;
 
-  DescriptorPoolInlineUniformBlockCreateInfo(const void *p_next = {}, uint32_t max_inline_uniform_block_bindings = {})
-    : p_next_(p_next), max_inline_uniform_block_bindings_(max_inline_uniform_block_bindings) {}
+  DescriptorPoolInlineUniformBlockCreateInfo(uint32_t max_inline_uniform_block_bindings = {}, const void *p_next = {})
+    : max_inline_uniform_block_bindings_(max_inline_uniform_block_bindings), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -15011,15 +13524,15 @@ struct ValidationCacheCreateInfoEXT {
 
   using native_type = VkValidationCacheCreateInfoEXT;
 
-  ValidationCacheCreateInfoEXT(const void *p_next = {}, VkValidationCacheCreateFlagsEXT flags = {}, size_t initial_data_size = {},
-                               const void *p_initial_data = {})
-    : p_next_(p_next), flags_(flags), initial_data_size_(initial_data_size), p_initial_data_(p_initial_data) {}
+  ValidationCacheCreateInfoEXT(const void *p_initial_data = {}, ValidationCacheCreateMask flags = {}, size_t initial_data_size = {},
+                               const void *p_next = {})
+    : p_initial_data_(p_initial_data), flags_(flags), initial_data_size_(initial_data_size), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::VALIDATION_CACHE_CREATE_INFO_EXT;
   const void *p_next_;
-  VkValidationCacheCreateFlagsEXT flags_;
+  ValidationCacheCreateMask flags_;
   size_t initial_data_size_;
   const void *p_initial_data_;
 };
@@ -15028,8 +13541,8 @@ struct ShaderModuleValidationCacheCreateInfoEXT {
 
   using native_type = VkShaderModuleValidationCacheCreateInfoEXT;
 
-  ShaderModuleValidationCacheCreateInfoEXT(const void *p_next = {}, VkValidationCacheEXT validation_cache = {})
-    : p_next_(p_next), validation_cache_(validation_cache) {}
+  ShaderModuleValidationCacheCreateInfoEXT(VkValidationCacheEXT validation_cache = {}, const void *p_next = {})
+    : validation_cache_(validation_cache), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -15090,14 +13603,14 @@ struct PhysicalDeviceVulkan12Properties {
   uint32_t max_descriptor_set_update_after_bind_sampled_images_;
   uint32_t max_descriptor_set_update_after_bind_storage_images_;
   uint32_t max_descriptor_set_update_after_bind_input_attachments_;
-  VkResolveModeFlags supported_depth_resolve_modes_;
-  VkResolveModeFlags supported_stencil_resolve_modes_;
+  ResolveModeMask supported_depth_resolve_modes_;
+  ResolveModeMask supported_stencil_resolve_modes_;
   VkBool32 independent_resolve_none_;
   VkBool32 independent_resolve_;
   VkBool32 filter_minmax_single_component_formats_;
   VkBool32 filter_minmax_image_component_mapping_;
   uint64_t max_timeline_semaphore_value_difference_;
-  VkSampleCountFlags framebuffer_integer_color_sample_counts_;
+  SampleCountMask framebuffer_integer_color_sample_counts_;
 };
 
 struct LayerProperties {
@@ -15116,8 +13629,8 @@ struct ImportMemoryHostPointerInfoEXT {
 
   using native_type = VkImportMemoryHostPointerInfoEXT;
 
-  ImportMemoryHostPointerInfoEXT(const void *p_next = {}, ExternalMemoryHandleTypeMaskBit handle_type = {}, void *p_host_pointer = {})
-    : p_next_(p_next), handle_type_(handle_type), p_host_pointer_(p_host_pointer) {}
+  ImportMemoryHostPointerInfoEXT(void *p_host_pointer = {}, ExternalMemoryHandleTypeMaskBit handle_type = {}, const void *p_next = {})
+    : p_host_pointer_(p_host_pointer), handle_type_(handle_type), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -15135,7 +13648,7 @@ struct QueueFamilyCheckpointPropertiesNV {
 
   StructureType s_type_ = StructureType::QUEUE_FAMILY_CHECKPOINT_PROPERTIES_NV;
   void *p_next_;
-  VkPipelineStageFlags checkpoint_execution_stage_mask_;
+  PipelineStageMask checkpoint_execution_stage_mask_;
 };
 
 struct PhysicalDeviceMaintenance4Properties {
@@ -15148,29 +13661,12 @@ struct PhysicalDeviceMaintenance4Properties {
   void *p_next_;
   VkDeviceSize max_buffer_size_;
 };
-#ifdef VK_USE_PLATFORM_METAL_EXT
-
-struct ExportMetalIOSurfaceInfoEXT {
-
-  using native_type = VkExportMetalIOSurfaceInfoEXT;
-
-  ExportMetalIOSurfaceInfoEXT(const void *p_next = {}, VkImage image = {}, IOSurfaceRef io_surface = {})
-    : p_next_(p_next), image_(image), io_surface_(io_surface) {}
-
-  auto *get() { return reinterpret_cast<native_type *>(this); }
-
-  StructureType s_type_ = StructureType::EXPORT_METAL_IO_SURFACE_INFO_EXT;
-  const void *p_next_;
-  VkImage image_;
-  IOSurfaceRef io_surface_;
-};
-#endif
 
 struct PhysicalDeviceMaintenance5FeaturesKHR {
 
   using native_type = VkPhysicalDeviceMaintenance5FeaturesKHR;
 
-  PhysicalDeviceMaintenance5FeaturesKHR(void *p_next = {}, VkBool32 maintenance5 = {}) : p_next_(p_next), maintenance5_(maintenance5) {}
+  PhysicalDeviceMaintenance5FeaturesKHR(VkBool32 maintenance5 = {}, void *p_next = {}) : maintenance5_(maintenance5), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -15183,7 +13679,7 @@ struct PhysicalDeviceMaintenance6FeaturesKHR {
 
   using native_type = VkPhysicalDeviceMaintenance6FeaturesKHR;
 
-  PhysicalDeviceMaintenance6FeaturesKHR(void *p_next = {}, VkBool32 maintenance6 = {}) : p_next_(p_next), maintenance6_(maintenance6) {}
+  PhysicalDeviceMaintenance6FeaturesKHR(VkBool32 maintenance6 = {}, void *p_next = {}) : maintenance6_(maintenance6), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -15196,9 +13692,9 @@ struct CopyMicromapToMemoryInfoEXT {
 
   using native_type = VkCopyMicromapToMemoryInfoEXT;
 
-  CopyMicromapToMemoryInfoEXT(const void *p_next = {}, VkMicromapEXT src = {}, VkDeviceOrHostAddressKHR dst = {},
-                              CopyMicromapMode mode = {})
-    : p_next_(p_next), src_(src), dst_(dst), mode_(mode) {}
+  CopyMicromapToMemoryInfoEXT(CopyMicromapMode mode = {}, VkMicromapEXT src = {}, VkDeviceOrHostAddressKHR dst = {},
+                              const void *p_next = {})
+    : mode_(mode), src_(src), dst_(dst), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -15208,33 +13704,13 @@ struct CopyMicromapToMemoryInfoEXT {
   VkDeviceOrHostAddressKHR dst_;
   CopyMicromapMode mode_;
 };
-#ifdef VK_USE_PLATFORM_ANDROID_KHR
-
-struct AndroidHardwareBufferFormatPropertiesANDROID {
-
-  using native_type = VkAndroidHardwareBufferFormatPropertiesANDROID;
-
-  auto *get() { return reinterpret_cast<native_type *>(this); }
-
-  StructureType s_type_ = StructureType::ANDROID_HARDWARE_BUFFER_FORMAT_PROPERTIES_ANDROID;
-  void *p_next_;
-  Format format_;
-  uint64_t external_format_;
-  VkFormatFeatureFlags format_features_;
-  ComponentMapping sampler_ycbcr_conversion_components_;
-  SamplerYcbcrModelConversion suggested_ycbcr_model_;
-  SamplerYcbcrRange suggested_ycbcr_range_;
-  ChromaLocation suggested_xchroma_offset_;
-  ChromaLocation suggested_ychroma_offset_;
-};
-#endif
 
 struct PhysicalDeviceMultiviewPerViewViewportsFeaturesQCOM {
 
   using native_type = VkPhysicalDeviceMultiviewPerViewViewportsFeaturesQCOM;
 
-  PhysicalDeviceMultiviewPerViewViewportsFeaturesQCOM(void *p_next = {}, VkBool32 multiview_per_view_viewports = {})
-    : p_next_(p_next), multiview_per_view_viewports_(multiview_per_view_viewports) {}
+  PhysicalDeviceMultiviewPerViewViewportsFeaturesQCOM(VkBool32 multiview_per_view_viewports = {}, void *p_next = {})
+    : multiview_per_view_viewports_(multiview_per_view_viewports), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -15247,8 +13723,8 @@ struct PhysicalDeviceNonSeamlessCubeMapFeaturesEXT {
 
   using native_type = VkPhysicalDeviceNonSeamlessCubeMapFeaturesEXT;
 
-  PhysicalDeviceNonSeamlessCubeMapFeaturesEXT(void *p_next = {}, VkBool32 non_seamless_cube_map = {})
-    : p_next_(p_next), non_seamless_cube_map_(non_seamless_cube_map) {}
+  PhysicalDeviceNonSeamlessCubeMapFeaturesEXT(VkBool32 non_seamless_cube_map = {}, void *p_next = {})
+    : non_seamless_cube_map_(non_seamless_cube_map), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -15274,9 +13750,9 @@ struct PhysicalDeviceLayeredApiPropertiesListKHR {
 
   using native_type = VkPhysicalDeviceLayeredApiPropertiesListKHR;
 
-  PhysicalDeviceLayeredApiPropertiesListKHR(void *p_next = {}, uint32_t layered_api_count = {},
-                                            PhysicalDeviceLayeredApiPropertiesKHR *p_layered_apis = {})
-    : p_next_(p_next), layered_api_count_(layered_api_count), p_layered_apis_(p_layered_apis) {}
+  PhysicalDeviceLayeredApiPropertiesListKHR(PhysicalDeviceLayeredApiPropertiesKHR *p_layered_apis = {}, uint32_t layered_api_count = {},
+                                            void *p_next = {})
+    : p_layered_apis_(p_layered_apis), layered_api_count_(layered_api_count), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -15290,12 +13766,10 @@ struct RenderingAreaInfoKHR {
 
   using native_type = VkRenderingAreaInfoKHR;
 
-  RenderingAreaInfoKHR(const void *p_next = {}, uint32_t view_mask = {}, uint32_t color_attachment_count = {},
-                       const Format *p_color_attachment_formats = {}, Format depth_attachment_format = {},
-                       Format stencil_attachment_format = {})
-    : p_next_(p_next), view_mask_(view_mask), color_attachment_count_(color_attachment_count),
-      p_color_attachment_formats_(p_color_attachment_formats), depth_attachment_format_(depth_attachment_format),
-      stencil_attachment_format_(stencil_attachment_format) {}
+  RenderingAreaInfoKHR(Format stencil_attachment_format = {}, uint32_t view_mask = {}, uint32_t color_attachment_count = {},
+                       const Format *p_color_attachment_formats = {}, Format depth_attachment_format = {}, const void *p_next = {})
+    : stencil_attachment_format_(stencil_attachment_format), view_mask_(view_mask), color_attachment_count_(color_attachment_count),
+      p_color_attachment_formats_(p_color_attachment_formats), depth_attachment_format_(depth_attachment_format), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -15347,23 +13821,6 @@ struct DescriptorSetLayoutSupport {
   void *p_next_;
   VkBool32 supported_;
 };
-#ifdef VK_USE_PLATFORM_METAL_EXT
-
-struct ExportMetalBufferInfoEXT {
-
-  using native_type = VkExportMetalBufferInfoEXT;
-
-  ExportMetalBufferInfoEXT(const void *p_next = {}, VkDeviceMemory memory = {}, MTLBuffer_id mtl_buffer = {})
-    : p_next_(p_next), memory_(memory), mtl_buffer_(mtl_buffer) {}
-
-  auto *get() { return reinterpret_cast<native_type *>(this); }
-
-  StructureType s_type_ = StructureType::EXPORT_METAL_BUFFER_INFO_EXT;
-  const void *p_next_;
-  VkDeviceMemory memory_;
-  MTLBuffer_id mtl_buffer_;
-};
-#endif
 
 struct PhysicalDeviceFloatControlsProperties {
 
@@ -15407,8 +13864,8 @@ struct DeviceQueueGlobalPriorityCreateInfoKHR {
 
   using native_type = VkDeviceQueueGlobalPriorityCreateInfoKHR;
 
-  DeviceQueueGlobalPriorityCreateInfoKHR(const void *p_next = {}, QueueGlobalPriority global_priority = {})
-    : p_next_(p_next), global_priority_(global_priority) {}
+  DeviceQueueGlobalPriorityCreateInfoKHR(QueueGlobalPriority global_priority = {}, const void *p_next = {})
+    : global_priority_(global_priority), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -15421,8 +13878,8 @@ struct PhysicalDeviceHostQueryResetFeatures {
 
   using native_type = VkPhysicalDeviceHostQueryResetFeatures;
 
-  PhysicalDeviceHostQueryResetFeatures(void *p_next = {}, VkBool32 host_query_reset = {})
-    : p_next_(p_next), host_query_reset_(host_query_reset) {}
+  PhysicalDeviceHostQueryResetFeatures(VkBool32 host_query_reset = {}, void *p_next = {})
+    : host_query_reset_(host_query_reset), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -15435,10 +13892,10 @@ struct CommandBufferInheritanceViewportScissorInfoNV {
 
   using native_type = VkCommandBufferInheritanceViewportScissorInfoNV;
 
-  CommandBufferInheritanceViewportScissorInfoNV(const void *p_next = {}, VkBool32 viewport_scissor2d = {},
-                                                uint32_t viewport_depth_count = {}, const Viewport *p_viewport_depths = {})
-    : p_next_(p_next), viewport_scissor2d_(viewport_scissor2d), viewport_depth_count_(viewport_depth_count),
-      p_viewport_depths_(p_viewport_depths) {}
+  CommandBufferInheritanceViewportScissorInfoNV(const Viewport *p_viewport_depths = {}, VkBool32 viewport_scissor2d = {},
+                                                uint32_t viewport_depth_count = {}, const void *p_next = {})
+    : p_viewport_depths_(p_viewport_depths), viewport_scissor2d_(viewport_scissor2d), viewport_depth_count_(viewport_depth_count),
+      p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -15453,8 +13910,8 @@ struct PhysicalDeviceGlobalPriorityQueryFeaturesKHR {
 
   using native_type = VkPhysicalDeviceGlobalPriorityQueryFeaturesKHR;
 
-  PhysicalDeviceGlobalPriorityQueryFeaturesKHR(void *p_next = {}, VkBool32 global_priority_query = {})
-    : p_next_(p_next), global_priority_query_(global_priority_query) {}
+  PhysicalDeviceGlobalPriorityQueryFeaturesKHR(VkBool32 global_priority_query = {}, void *p_next = {})
+    : global_priority_query_(global_priority_query), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -15467,8 +13924,8 @@ struct PhysicalDeviceShaderIntegerFunctions2FeaturesINTEL {
 
   using native_type = VkPhysicalDeviceShaderIntegerFunctions2FeaturesINTEL;
 
-  PhysicalDeviceShaderIntegerFunctions2FeaturesINTEL(void *p_next = {}, VkBool32 shader_integer_functions2 = {})
-    : p_next_(p_next), shader_integer_functions2_(shader_integer_functions2) {}
+  PhysicalDeviceShaderIntegerFunctions2FeaturesINTEL(VkBool32 shader_integer_functions2 = {}, void *p_next = {})
+    : shader_integer_functions2_(shader_integer_functions2), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -15481,9 +13938,9 @@ struct DebugUtilsObjectTagInfoEXT {
 
   using native_type = VkDebugUtilsObjectTagInfoEXT;
 
-  DebugUtilsObjectTagInfoEXT(const void *p_next = {}, ObjectType object_type = {}, uint64_t object_handle = {}, uint64_t tag_name = {},
-                             size_t tag_size = {}, const void *p_tag = {})
-    : p_next_(p_next), object_type_(object_type), object_handle_(object_handle), tag_name_(tag_name), tag_size_(tag_size), p_tag_(p_tag) {}
+  DebugUtilsObjectTagInfoEXT(const void *p_tag = {}, ObjectType object_type = {}, uint64_t object_handle = {}, uint64_t tag_name = {},
+                             size_t tag_size = {}, const void *p_next = {})
+    : p_tag_(p_tag), object_type_(object_type), object_handle_(object_handle), tag_name_(tag_name), tag_size_(tag_size), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -15500,9 +13957,9 @@ struct MultiviewPerViewRenderAreasRenderPassBeginInfoQCOM {
 
   using native_type = VkMultiviewPerViewRenderAreasRenderPassBeginInfoQCOM;
 
-  MultiviewPerViewRenderAreasRenderPassBeginInfoQCOM(const void *p_next = {}, uint32_t per_view_render_area_count = {},
-                                                     const Rect2D *p_per_view_render_areas = {})
-    : p_next_(p_next), per_view_render_area_count_(per_view_render_area_count), p_per_view_render_areas_(p_per_view_render_areas) {}
+  MultiviewPerViewRenderAreasRenderPassBeginInfoQCOM(const Rect2D *p_per_view_render_areas = {}, uint32_t per_view_render_area_count = {},
+                                                     const void *p_next = {})
+    : p_per_view_render_areas_(p_per_view_render_areas), per_view_render_area_count_(per_view_render_area_count), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -15516,8 +13973,8 @@ struct DebugUtilsLabelEXT {
 
   using native_type = VkDebugUtilsLabelEXT;
 
-  DebugUtilsLabelEXT(const void *p_next = {}, const char *p_label_name = {}, const std::array<float, 4> &color = {})
-    : p_next_(p_next), p_label_name_(p_label_name), color_(color) {}
+  DebugUtilsLabelEXT(const std::array<float, 4> &color = {}, const char *p_label_name = {}, const void *p_next = {})
+    : color_(color), p_label_name_(p_label_name), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -15535,7 +13992,7 @@ struct PhysicalDeviceFragmentShadingRateKHR {
 
   StructureType s_type_ = StructureType::PHYSICAL_DEVICE_FRAGMENT_SHADING_RATE_KHR;
   void *p_next_;
-  VkSampleCountFlags sample_counts_;
+  SampleCountMask sample_counts_;
   Extent2D fragment_size_;
 };
 
@@ -15543,9 +14000,9 @@ struct DebugUtilsObjectNameInfoEXT {
 
   using native_type = VkDebugUtilsObjectNameInfoEXT;
 
-  DebugUtilsObjectNameInfoEXT(const void *p_next = {}, ObjectType object_type = {}, uint64_t object_handle = {},
-                              const char *p_object_name = {})
-    : p_next_(p_next), object_type_(object_type), object_handle_(object_handle), p_object_name_(p_object_name) {}
+  DebugUtilsObjectNameInfoEXT(const char *p_object_name = {}, ObjectType object_type = {}, uint64_t object_handle = {},
+                              const void *p_next = {})
+    : p_object_name_(p_object_name), object_type_(object_type), object_handle_(object_handle), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -15560,20 +14017,20 @@ struct DebugUtilsMessengerCallbackDataEXT {
 
   using native_type = VkDebugUtilsMessengerCallbackDataEXT;
 
-  DebugUtilsMessengerCallbackDataEXT(const void *p_next = {}, VkDebugUtilsMessengerCallbackDataFlagsEXT flags = {},
+  DebugUtilsMessengerCallbackDataEXT(const DebugUtilsObjectNameInfoEXT *p_objects = {}, DebugUtilsMessengerCallbackDataMask flags = {},
                                      const char *p_message_id_name = {}, int32_t message_id_number = {}, const char *p_message = {},
                                      uint32_t queue_label_count = {}, const DebugUtilsLabelEXT *p_queue_labels = {},
                                      uint32_t cmd_buf_label_count = {}, const DebugUtilsLabelEXT *p_cmd_buf_labels = {},
-                                     uint32_t object_count = {}, const DebugUtilsObjectNameInfoEXT *p_objects = {})
-    : p_next_(p_next), flags_(flags), p_message_id_name_(p_message_id_name), message_id_number_(message_id_number), p_message_(p_message),
-      queue_label_count_(queue_label_count), p_queue_labels_(p_queue_labels), cmd_buf_label_count_(cmd_buf_label_count),
-      p_cmd_buf_labels_(p_cmd_buf_labels), object_count_(object_count), p_objects_(p_objects) {}
+                                     uint32_t object_count = {}, const void *p_next = {})
+    : p_objects_(p_objects), flags_(flags), p_message_id_name_(p_message_id_name), message_id_number_(message_id_number),
+      p_message_(p_message), queue_label_count_(queue_label_count), p_queue_labels_(p_queue_labels),
+      cmd_buf_label_count_(cmd_buf_label_count), p_cmd_buf_labels_(p_cmd_buf_labels), object_count_(object_count), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::DEBUG_UTILS_MESSENGER_CALLBACK_DATA_EXT;
   const void *p_next_;
-  VkDebugUtilsMessengerCallbackDataFlagsEXT flags_;
+  DebugUtilsMessengerCallbackDataMask flags_;
   const char *p_message_id_name_;
   int32_t message_id_number_;
   const char *p_message_;
@@ -15589,8 +14046,8 @@ struct PhysicalDeviceShaderFloatControls2FeaturesKHR {
 
   using native_type = VkPhysicalDeviceShaderFloatControls2FeaturesKHR;
 
-  PhysicalDeviceShaderFloatControls2FeaturesKHR(void *p_next = {}, VkBool32 shader_float_controls2 = {})
-    : p_next_(p_next), shader_float_controls2_(shader_float_controls2) {}
+  PhysicalDeviceShaderFloatControls2FeaturesKHR(VkBool32 shader_float_controls2 = {}, void *p_next = {})
+    : shader_float_controls2_(shader_float_controls2), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -15614,8 +14071,8 @@ struct PhysicalDeviceTransformFeedbackFeaturesEXT {
 
   using native_type = VkPhysicalDeviceTransformFeedbackFeaturesEXT;
 
-  PhysicalDeviceTransformFeedbackFeaturesEXT(void *p_next = {}, VkBool32 transform_feedback = {}, VkBool32 geometry_streams = {})
-    : p_next_(p_next), transform_feedback_(transform_feedback), geometry_streams_(geometry_streams) {}
+  PhysicalDeviceTransformFeedbackFeaturesEXT(VkBool32 geometry_streams = {}, VkBool32 transform_feedback = {}, void *p_next = {})
+    : geometry_streams_(geometry_streams), transform_feedback_(transform_feedback), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -15645,7 +14102,7 @@ struct DeviceMemoryReportCallbackDataEXT {
 
   StructureType s_type_ = StructureType::DEVICE_MEMORY_REPORT_CALLBACK_DATA_EXT;
   void *p_next_;
-  VkDeviceMemoryReportFlagsEXT flags_;
+  DeviceMemoryReportMask flags_;
   DeviceMemoryReportEventType type_;
   uint64_t memory_object_id_;
   VkDeviceSize size_;
@@ -15658,22 +14115,23 @@ struct SubpassDescription2 {
 
   using native_type = VkSubpassDescription2;
 
-  SubpassDescription2(const void *p_next = {}, VkSubpassDescriptionFlags flags = {}, PipelineBindPoint pipeline_bind_point = {},
-                      uint32_t view_mask = {}, uint32_t input_attachment_count = {}, const AttachmentReference2 *p_input_attachments = {},
-                      uint32_t color_attachment_count = {}, const AttachmentReference2 *p_color_attachments = {},
-                      const AttachmentReference2 *p_resolve_attachments = {}, const AttachmentReference2 *p_depth_stencil_attachment = {},
-                      uint32_t preserve_attachment_count = {}, const uint32_t *p_preserve_attachments = {})
-    : p_next_(p_next), flags_(flags), pipeline_bind_point_(pipeline_bind_point), view_mask_(view_mask),
+  SubpassDescription2(const uint32_t *p_preserve_attachments = {}, SubpassDescriptionMask flags = {},
+                      PipelineBindPoint pipeline_bind_point = {}, uint32_t view_mask = {}, uint32_t input_attachment_count = {},
+                      const AttachmentReference2 *p_input_attachments = {}, uint32_t color_attachment_count = {},
+                      const AttachmentReference2 *p_color_attachments = {}, const AttachmentReference2 *p_resolve_attachments = {},
+                      const AttachmentReference2 *p_depth_stencil_attachment = {}, uint32_t preserve_attachment_count = {},
+                      const void *p_next = {})
+    : p_preserve_attachments_(p_preserve_attachments), flags_(flags), pipeline_bind_point_(pipeline_bind_point), view_mask_(view_mask),
       input_attachment_count_(input_attachment_count), p_input_attachments_(p_input_attachments),
       color_attachment_count_(color_attachment_count), p_color_attachments_(p_color_attachments),
       p_resolve_attachments_(p_resolve_attachments), p_depth_stencil_attachment_(p_depth_stencil_attachment),
-      preserve_attachment_count_(preserve_attachment_count), p_preserve_attachments_(p_preserve_attachments) {}
+      preserve_attachment_count_(preserve_attachment_count), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::SUBPASS_DESCRIPTION_2;
   const void *p_next_;
-  VkSubpassDescriptionFlags flags_;
+  SubpassDescriptionMask flags_;
   PipelineBindPoint pipeline_bind_point_;
   uint32_t view_mask_;
   uint32_t input_attachment_count_;
@@ -15690,20 +14148,19 @@ struct RenderPassCreateInfo2 {
 
   using native_type = VkRenderPassCreateInfo2;
 
-  RenderPassCreateInfo2(const void *p_next = {}, VkRenderPassCreateFlags flags = {}, uint32_t attachment_count = {},
+  RenderPassCreateInfo2(const uint32_t *p_correlated_view_masks = {}, RenderPassCreateMask flags = {}, uint32_t attachment_count = {},
                         const AttachmentDescription2 *p_attachments = {}, uint32_t subpass_count = {},
                         const SubpassDescription2 *p_subpasses = {}, uint32_t dependency_count = {},
-                        const SubpassDependency2 *p_dependencies = {}, uint32_t correlated_view_mask_count = {},
-                        const uint32_t *p_correlated_view_masks = {})
-    : p_next_(p_next), flags_(flags), attachment_count_(attachment_count), p_attachments_(p_attachments), subpass_count_(subpass_count),
-      p_subpasses_(p_subpasses), dependency_count_(dependency_count), p_dependencies_(p_dependencies),
-      correlated_view_mask_count_(correlated_view_mask_count), p_correlated_view_masks_(p_correlated_view_masks) {}
+                        const SubpassDependency2 *p_dependencies = {}, uint32_t correlated_view_mask_count = {}, const void *p_next = {})
+    : p_correlated_view_masks_(p_correlated_view_masks), flags_(flags), attachment_count_(attachment_count), p_attachments_(p_attachments),
+      subpass_count_(subpass_count), p_subpasses_(p_subpasses), dependency_count_(dependency_count), p_dependencies_(p_dependencies),
+      correlated_view_mask_count_(correlated_view_mask_count), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::RENDER_PASS_CREATE_INFO_2;
   const void *p_next_;
-  VkRenderPassCreateFlags flags_;
+  RenderPassCreateMask flags_;
   uint32_t attachment_count_;
   const AttachmentDescription2 *p_attachments_;
   uint32_t subpass_count_;
@@ -15718,11 +14175,11 @@ struct VideoDecodeH265SessionParametersCreateInfoKHR {
 
   using native_type = VkVideoDecodeH265SessionParametersCreateInfoKHR;
 
-  VideoDecodeH265SessionParametersCreateInfoKHR(const void *p_next = {}, uint32_t max_std_vpscount = {}, uint32_t max_std_spscount = {},
-                                                uint32_t max_std_ppscount = {},
-                                                const VideoDecodeH265SessionParametersAddInfoKHR *p_parameters_add_info = {})
-    : p_next_(p_next), max_std_vpscount_(max_std_vpscount), max_std_spscount_(max_std_spscount), max_std_ppscount_(max_std_ppscount),
-      p_parameters_add_info_(p_parameters_add_info) {}
+  VideoDecodeH265SessionParametersCreateInfoKHR(const VideoDecodeH265SessionParametersAddInfoKHR *p_parameters_add_info = {},
+                                                uint32_t max_std_vpscount = {}, uint32_t max_std_spscount = {},
+                                                uint32_t max_std_ppscount = {}, const void *p_next = {})
+    : p_parameters_add_info_(p_parameters_add_info), max_std_vpscount_(max_std_vpscount), max_std_spscount_(max_std_spscount),
+      max_std_ppscount_(max_std_ppscount), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -15742,7 +14199,7 @@ struct PhysicalDeviceShaderCoreProperties2AMD {
 
   StructureType s_type_ = StructureType::PHYSICAL_DEVICE_SHADER_CORE_PROPERTIES_2_AMD;
   void *p_next_;
-  VkShaderCorePropertiesFlagsAMD shader_core_features_;
+  ShaderCorePropertiesMask shader_core_features_;
   uint32_t active_compute_unit_count_;
 };
 
@@ -15750,18 +14207,18 @@ struct PipelineRasterizationConservativeStateCreateInfoEXT {
 
   using native_type = VkPipelineRasterizationConservativeStateCreateInfoEXT;
 
-  PipelineRasterizationConservativeStateCreateInfoEXT(const void *p_next = {},
-                                                      VkPipelineRasterizationConservativeStateCreateFlagsEXT flags = {},
+  PipelineRasterizationConservativeStateCreateInfoEXT(float extra_primitive_overestimation_size = {},
+                                                      PipelineRasterizationConservativeStateCreateMask flags = {},
                                                       ConservativeRasterizationMode conservative_rasterization_mode = {},
-                                                      float extra_primitive_overestimation_size = {})
-    : p_next_(p_next), flags_(flags), conservative_rasterization_mode_(conservative_rasterization_mode),
-      extra_primitive_overestimation_size_(extra_primitive_overestimation_size) {}
+                                                      const void *p_next = {})
+    : extra_primitive_overestimation_size_(extra_primitive_overestimation_size), flags_(flags),
+      conservative_rasterization_mode_(conservative_rasterization_mode), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PIPELINE_RASTERIZATION_CONSERVATIVE_STATE_CREATE_INFO_EXT;
   const void *p_next_;
-  VkPipelineRasterizationConservativeStateCreateFlagsEXT flags_;
+  PipelineRasterizationConservativeStateCreateMask flags_;
   ConservativeRasterizationMode conservative_rasterization_mode_;
   float extra_primitive_overestimation_size_;
 };
@@ -15781,10 +14238,11 @@ struct PhysicalDeviceImageDrmFormatModifierInfoEXT {
 
   using native_type = VkPhysicalDeviceImageDrmFormatModifierInfoEXT;
 
-  PhysicalDeviceImageDrmFormatModifierInfoEXT(const void *p_next = {}, uint64_t drm_format_modifier = {}, SharingMode sharing_mode = {},
-                                              uint32_t queue_family_index_count = {}, const uint32_t *p_queue_family_indices = {})
-    : p_next_(p_next), drm_format_modifier_(drm_format_modifier), sharing_mode_(sharing_mode),
-      queue_family_index_count_(queue_family_index_count), p_queue_family_indices_(p_queue_family_indices) {}
+  PhysicalDeviceImageDrmFormatModifierInfoEXT(const uint32_t *p_queue_family_indices = {}, uint64_t drm_format_modifier = {},
+                                              SharingMode sharing_mode = {}, uint32_t queue_family_index_count = {},
+                                              const void *p_next = {})
+    : p_queue_family_indices_(p_queue_family_indices), drm_format_modifier_(drm_format_modifier), sharing_mode_(sharing_mode),
+      queue_family_index_count_(queue_family_index_count), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -15800,16 +14258,16 @@ struct DescriptorSetLayoutBindingFlagsCreateInfo {
 
   using native_type = VkDescriptorSetLayoutBindingFlagsCreateInfo;
 
-  DescriptorSetLayoutBindingFlagsCreateInfo(const void *p_next = {}, uint32_t binding_count = {},
-                                            const VkDescriptorBindingFlags *p_binding_flags = {})
-    : p_next_(p_next), binding_count_(binding_count), p_binding_flags_(p_binding_flags) {}
+  DescriptorSetLayoutBindingFlagsCreateInfo(const DescriptorBindingMask *p_binding_flags = {}, uint32_t binding_count = {},
+                                            const void *p_next = {})
+    : p_binding_flags_(p_binding_flags), binding_count_(binding_count), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::DESCRIPTOR_SET_LAYOUT_BINDING_FLAGS_CREATE_INFO;
   const void *p_next_;
   uint32_t binding_count_;
-  const VkDescriptorBindingFlags *p_binding_flags_;
+  const DescriptorBindingMask *p_binding_flags_;
 };
 
 struct DescriptorSetVariableDescriptorCountLayoutSupport {
@@ -15827,8 +14285,8 @@ struct ImageViewHandleInfoNVX {
 
   using native_type = VkImageViewHandleInfoNVX;
 
-  ImageViewHandleInfoNVX(const void *p_next = {}, VkImageView image_view = {}, DescriptorType descriptor_type = {}, VkSampler sampler = {})
-    : p_next_(p_next), image_view_(image_view), descriptor_type_(descriptor_type), sampler_(sampler) {}
+  ImageViewHandleInfoNVX(VkSampler sampler = {}, VkImageView image_view = {}, DescriptorType descriptor_type = {}, const void *p_next = {})
+    : sampler_(sampler), image_view_(image_view), descriptor_type_(descriptor_type), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -15843,7 +14301,7 @@ struct SubpassBeginInfo {
 
   using native_type = VkSubpassBeginInfo;
 
-  SubpassBeginInfo(const void *p_next = {}, SubpassContents contents = {}) : p_next_(p_next), contents_(contents) {}
+  SubpassBeginInfo(SubpassContents contents = {}, const void *p_next = {}) : contents_(contents), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -15856,8 +14314,8 @@ struct PhysicalDeviceCornerSampledImageFeaturesNV {
 
   using native_type = VkPhysicalDeviceCornerSampledImageFeaturesNV;
 
-  PhysicalDeviceCornerSampledImageFeaturesNV(void *p_next = {}, VkBool32 corner_sampled_image = {})
-    : p_next_(p_next), corner_sampled_image_(corner_sampled_image) {}
+  PhysicalDeviceCornerSampledImageFeaturesNV(VkBool32 corner_sampled_image = {}, void *p_next = {})
+    : corner_sampled_image_(corner_sampled_image), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -15870,8 +14328,8 @@ struct PhysicalDeviceFragmentDensityMapOffsetFeaturesQCOM {
 
   using native_type = VkPhysicalDeviceFragmentDensityMapOffsetFeaturesQCOM;
 
-  PhysicalDeviceFragmentDensityMapOffsetFeaturesQCOM(void *p_next = {}, VkBool32 fragment_density_map_offset = {})
-    : p_next_(p_next), fragment_density_map_offset_(fragment_density_map_offset) {}
+  PhysicalDeviceFragmentDensityMapOffsetFeaturesQCOM(VkBool32 fragment_density_map_offset = {}, void *p_next = {})
+    : fragment_density_map_offset_(fragment_density_map_offset), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -15884,8 +14342,8 @@ struct PhysicalDeviceTimelineSemaphoreFeatures {
 
   using native_type = VkPhysicalDeviceTimelineSemaphoreFeatures;
 
-  PhysicalDeviceTimelineSemaphoreFeatures(void *p_next = {}, VkBool32 timeline_semaphore = {})
-    : p_next_(p_next), timeline_semaphore_(timeline_semaphore) {}
+  PhysicalDeviceTimelineSemaphoreFeatures(VkBool32 timeline_semaphore = {}, void *p_next = {})
+    : timeline_semaphore_(timeline_semaphore), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -15898,8 +14356,8 @@ struct SemaphoreSignalInfo {
 
   using native_type = VkSemaphoreSignalInfo;
 
-  SemaphoreSignalInfo(const void *p_next = {}, VkSemaphore semaphore = {}, uint64_t value = {})
-    : p_next_(p_next), semaphore_(semaphore), value_(value) {}
+  SemaphoreSignalInfo(uint64_t value = {}, VkSemaphore semaphore = {}, const void *p_next = {})
+    : value_(value), semaphore_(semaphore), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -15913,8 +14371,8 @@ struct PhysicalDevicePresentBarrierFeaturesNV {
 
   using native_type = VkPhysicalDevicePresentBarrierFeaturesNV;
 
-  PhysicalDevicePresentBarrierFeaturesNV(void *p_next = {}, VkBool32 present_barrier = {})
-    : p_next_(p_next), present_barrier_(present_barrier) {}
+  PhysicalDevicePresentBarrierFeaturesNV(VkBool32 present_barrier = {}, void *p_next = {})
+    : present_barrier_(present_barrier), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -15927,8 +14385,8 @@ struct DescriptorSetLayoutHostMappingInfoVALVE {
 
   using native_type = VkDescriptorSetLayoutHostMappingInfoVALVE;
 
-  DescriptorSetLayoutHostMappingInfoVALVE(void *p_next = {}, size_t descriptor_offset = {}, uint32_t descriptor_size = {})
-    : p_next_(p_next), descriptor_offset_(descriptor_offset), descriptor_size_(descriptor_size) {}
+  DescriptorSetLayoutHostMappingInfoVALVE(uint32_t descriptor_size = {}, size_t descriptor_offset = {}, void *p_next = {})
+    : descriptor_size_(descriptor_size), descriptor_offset_(descriptor_offset), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -15942,17 +14400,17 @@ struct CopyImageToImageInfoEXT {
 
   using native_type = VkCopyImageToImageInfoEXT;
 
-  CopyImageToImageInfoEXT(const void *p_next = {}, VkHostImageCopyFlagsEXT flags = {}, VkImage src_image = {},
+  CopyImageToImageInfoEXT(const ImageCopy2 *p_regions = {}, HostImageCopyMask flags = {}, VkImage src_image = {},
                           ImageLayout src_image_layout = {}, VkImage dst_image = {}, ImageLayout dst_image_layout = {},
-                          uint32_t region_count = {}, const ImageCopy2 *p_regions = {})
-    : p_next_(p_next), flags_(flags), src_image_(src_image), src_image_layout_(src_image_layout), dst_image_(dst_image),
-      dst_image_layout_(dst_image_layout), region_count_(region_count), p_regions_(p_regions) {}
+                          uint32_t region_count = {}, const void *p_next = {})
+    : p_regions_(p_regions), flags_(flags), src_image_(src_image), src_image_layout_(src_image_layout), dst_image_(dst_image),
+      dst_image_layout_(dst_image_layout), region_count_(region_count), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::COPY_IMAGE_TO_IMAGE_INFO_EXT;
   const void *p_next_;
-  VkHostImageCopyFlagsEXT flags_;
+  HostImageCopyMask flags_;
   VkImage src_image_;
   ImageLayout src_image_layout_;
   VkImage dst_image_;
@@ -15977,8 +14435,8 @@ struct PhysicalDeviceImageViewImageFormatInfoEXT {
 
   using native_type = VkPhysicalDeviceImageViewImageFormatInfoEXT;
 
-  PhysicalDeviceImageViewImageFormatInfoEXT(void *p_next = {}, ImageViewType image_view_type = {})
-    : p_next_(p_next), image_view_type_(image_view_type) {}
+  PhysicalDeviceImageViewImageFormatInfoEXT(ImageViewType image_view_type = {}, void *p_next = {})
+    : image_view_type_(image_view_type), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -15991,8 +14449,8 @@ struct PhysicalDeviceCoherentMemoryFeaturesAMD {
 
   using native_type = VkPhysicalDeviceCoherentMemoryFeaturesAMD;
 
-  PhysicalDeviceCoherentMemoryFeaturesAMD(void *p_next = {}, VkBool32 device_coherent_memory = {})
-    : p_next_(p_next), device_coherent_memory_(device_coherent_memory) {}
+  PhysicalDeviceCoherentMemoryFeaturesAMD(VkBool32 device_coherent_memory = {}, void *p_next = {})
+    : device_coherent_memory_(device_coherent_memory), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -16000,28 +14458,13 @@ struct PhysicalDeviceCoherentMemoryFeaturesAMD {
   void *p_next_;
   VkBool32 device_coherent_memory_;
 };
-#ifdef VK_USE_PLATFORM_ANDROID_KHR
-
-struct ImportAndroidHardwareBufferInfoANDROID {
-
-  using native_type = VkImportAndroidHardwareBufferInfoANDROID;
-
-  ImportAndroidHardwareBufferInfoANDROID(const void *p_next = {}, struct AHardwareBuffer *buffer = {}) : p_next_(p_next), buffer_(buffer) {}
-
-  auto *get() { return reinterpret_cast<native_type *>(this); }
-
-  StructureType s_type_ = StructureType::IMPORT_ANDROID_HARDWARE_BUFFER_INFO_ANDROID;
-  const void *p_next_;
-  struct AHardwareBuffer *buffer_;
-};
-#endif
 
 struct ImageFormatListCreateInfo {
 
   using native_type = VkImageFormatListCreateInfo;
 
-  ImageFormatListCreateInfo(const void *p_next = {}, uint32_t view_format_count = {}, const Format *p_view_formats = {})
-    : p_next_(p_next), view_format_count_(view_format_count), p_view_formats_(p_view_formats) {}
+  ImageFormatListCreateInfo(const Format *p_view_formats = {}, uint32_t view_format_count = {}, const void *p_next = {})
+    : p_view_formats_(p_view_formats), view_format_count_(view_format_count), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -16035,23 +14478,23 @@ struct ImageViewUsageCreateInfo {
 
   using native_type = VkImageViewUsageCreateInfo;
 
-  ImageViewUsageCreateInfo(const void *p_next = {}, VkImageUsageFlags usage = {}) : p_next_(p_next), usage_(usage) {}
+  ImageViewUsageCreateInfo(ImageUsageMask usage = {}, const void *p_next = {}) : usage_(usage), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::IMAGE_VIEW_USAGE_CREATE_INFO;
   const void *p_next_;
-  VkImageUsageFlags usage_;
+  ImageUsageMask usage_;
 };
 
 struct PhysicalDevice8BitStorageFeatures {
 
   using native_type = VkPhysicalDevice8BitStorageFeatures;
 
-  PhysicalDevice8BitStorageFeatures(void *p_next = {}, VkBool32 storage_buffer8bit_access = {},
-                                    VkBool32 uniform_and_storage_buffer8bit_access = {}, VkBool32 storage_push_constant8 = {})
-    : p_next_(p_next), storage_buffer8bit_access_(storage_buffer8bit_access),
-      uniform_and_storage_buffer8bit_access_(uniform_and_storage_buffer8bit_access), storage_push_constant8_(storage_push_constant8) {}
+  PhysicalDevice8BitStorageFeatures(VkBool32 storage_push_constant8 = {}, VkBool32 storage_buffer8bit_access = {},
+                                    VkBool32 uniform_and_storage_buffer8bit_access = {}, void *p_next = {})
+    : storage_push_constant8_(storage_push_constant8), storage_buffer8bit_access_(storage_buffer8bit_access),
+      uniform_and_storage_buffer8bit_access_(uniform_and_storage_buffer8bit_access), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -16066,10 +14509,10 @@ struct CopyImageInfo2 {
 
   using native_type = VkCopyImageInfo2;
 
-  CopyImageInfo2(const void *p_next = {}, VkImage src_image = {}, ImageLayout src_image_layout = {}, VkImage dst_image = {},
-                 ImageLayout dst_image_layout = {}, uint32_t region_count = {}, const ImageCopy2 *p_regions = {})
-    : p_next_(p_next), src_image_(src_image), src_image_layout_(src_image_layout), dst_image_(dst_image),
-      dst_image_layout_(dst_image_layout), region_count_(region_count), p_regions_(p_regions) {}
+  CopyImageInfo2(const ImageCopy2 *p_regions = {}, VkImage src_image = {}, ImageLayout src_image_layout = {}, VkImage dst_image = {},
+                 ImageLayout dst_image_layout = {}, uint32_t region_count = {}, const void *p_next = {})
+    : p_regions_(p_regions), src_image_(src_image), src_image_layout_(src_image_layout), dst_image_(dst_image),
+      dst_image_layout_(dst_image_layout), region_count_(region_count), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -16087,9 +14530,9 @@ struct PhysicalDeviceConditionalRenderingFeaturesEXT {
 
   using native_type = VkPhysicalDeviceConditionalRenderingFeaturesEXT;
 
-  PhysicalDeviceConditionalRenderingFeaturesEXT(void *p_next = {}, VkBool32 conditional_rendering = {},
-                                                VkBool32 inherited_conditional_rendering = {})
-    : p_next_(p_next), conditional_rendering_(conditional_rendering), inherited_conditional_rendering_(inherited_conditional_rendering) {}
+  PhysicalDeviceConditionalRenderingFeaturesEXT(VkBool32 inherited_conditional_rendering = {}, VkBool32 conditional_rendering = {},
+                                                void *p_next = {})
+    : inherited_conditional_rendering_(inherited_conditional_rendering), conditional_rendering_(conditional_rendering), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -16103,8 +14546,8 @@ struct SwapchainPresentModesCreateInfoEXT {
 
   using native_type = VkSwapchainPresentModesCreateInfoEXT;
 
-  SwapchainPresentModesCreateInfoEXT(const void *p_next = {}, uint32_t present_mode_count = {}, const PresentMode *p_present_modes = {})
-    : p_next_(p_next), present_mode_count_(present_mode_count), p_present_modes_(p_present_modes) {}
+  SwapchainPresentModesCreateInfoEXT(const PresentMode *p_present_modes = {}, uint32_t present_mode_count = {}, const void *p_next = {})
+    : p_present_modes_(p_present_modes), present_mode_count_(present_mode_count), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -16118,8 +14561,8 @@ struct PhysicalDeviceDeviceMemoryReportFeaturesEXT {
 
   using native_type = VkPhysicalDeviceDeviceMemoryReportFeaturesEXT;
 
-  PhysicalDeviceDeviceMemoryReportFeaturesEXT(void *p_next = {}, VkBool32 device_memory_report = {})
-    : p_next_(p_next), device_memory_report_(device_memory_report) {}
+  PhysicalDeviceDeviceMemoryReportFeaturesEXT(VkBool32 device_memory_report = {}, void *p_next = {})
+    : device_memory_report_(device_memory_report), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -16132,12 +14575,12 @@ struct PhysicalDeviceMeshShaderFeaturesEXT {
 
   using native_type = VkPhysicalDeviceMeshShaderFeaturesEXT;
 
-  PhysicalDeviceMeshShaderFeaturesEXT(void *p_next = {}, VkBool32 task_shader = {}, VkBool32 mesh_shader = {},
+  PhysicalDeviceMeshShaderFeaturesEXT(VkBool32 mesh_shader_queries = {}, VkBool32 task_shader = {}, VkBool32 mesh_shader = {},
                                       VkBool32 multiview_mesh_shader = {}, VkBool32 primitive_fragment_shading_rate_mesh_shader = {},
-                                      VkBool32 mesh_shader_queries = {})
-    : p_next_(p_next), task_shader_(task_shader), mesh_shader_(mesh_shader), multiview_mesh_shader_(multiview_mesh_shader),
-      primitive_fragment_shading_rate_mesh_shader_(primitive_fragment_shading_rate_mesh_shader), mesh_shader_queries_(mesh_shader_queries) {
-  }
+                                      void *p_next = {})
+    : mesh_shader_queries_(mesh_shader_queries), task_shader_(task_shader), mesh_shader_(mesh_shader),
+      multiview_mesh_shader_(multiview_mesh_shader),
+      primitive_fragment_shading_rate_mesh_shader_(primitive_fragment_shading_rate_mesh_shader), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -16154,7 +14597,7 @@ struct PerformanceMarkerInfoINTEL {
 
   using native_type = VkPerformanceMarkerInfoINTEL;
 
-  PerformanceMarkerInfoINTEL(const void *p_next = {}, uint64_t marker = {}) : p_next_(p_next), marker_(marker) {}
+  PerformanceMarkerInfoINTEL(uint64_t marker = {}, const void *p_next = {}) : marker_(marker), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -16172,8 +14615,8 @@ struct PhysicalDeviceSubgroupProperties {
   StructureType s_type_ = StructureType::PHYSICAL_DEVICE_SUBGROUP_PROPERTIES;
   void *p_next_;
   uint32_t subgroup_size_;
-  VkShaderStageFlags supported_stages_;
-  VkSubgroupFeatureFlags supported_operations_;
+  ShaderStageMask supported_stages_;
+  SubgroupFeatureMask supported_operations_;
   VkBool32 quad_operations_in_all_stages_;
 };
 
@@ -16181,20 +14624,20 @@ struct PhysicalDeviceShaderAtomicFloatFeaturesEXT {
 
   using native_type = VkPhysicalDeviceShaderAtomicFloatFeaturesEXT;
 
-  PhysicalDeviceShaderAtomicFloatFeaturesEXT(void *p_next = {}, VkBool32 shader_buffer_float32atomics = {},
+  PhysicalDeviceShaderAtomicFloatFeaturesEXT(VkBool32 sparse_image_float32atomic_add = {}, VkBool32 shader_buffer_float32atomics = {},
                                              VkBool32 shader_buffer_float32atomic_add = {}, VkBool32 shader_buffer_float64atomics = {},
                                              VkBool32 shader_buffer_float64atomic_add = {}, VkBool32 shader_shared_float32atomics = {},
                                              VkBool32 shader_shared_float32atomic_add = {}, VkBool32 shader_shared_float64atomics = {},
                                              VkBool32 shader_shared_float64atomic_add = {}, VkBool32 shader_image_float32atomics = {},
                                              VkBool32 shader_image_float32atomic_add = {}, VkBool32 sparse_image_float32atomics = {},
-                                             VkBool32 sparse_image_float32atomic_add = {})
-    : p_next_(p_next), shader_buffer_float32atomics_(shader_buffer_float32atomics),
+                                             void *p_next = {})
+    : sparse_image_float32atomic_add_(sparse_image_float32atomic_add), shader_buffer_float32atomics_(shader_buffer_float32atomics),
       shader_buffer_float32atomic_add_(shader_buffer_float32atomic_add), shader_buffer_float64atomics_(shader_buffer_float64atomics),
       shader_buffer_float64atomic_add_(shader_buffer_float64atomic_add), shader_shared_float32atomics_(shader_shared_float32atomics),
       shader_shared_float32atomic_add_(shader_shared_float32atomic_add), shader_shared_float64atomics_(shader_shared_float64atomics),
       shader_shared_float64atomic_add_(shader_shared_float64atomic_add), shader_image_float32atomics_(shader_image_float32atomics),
       shader_image_float32atomic_add_(shader_image_float32atomic_add), sparse_image_float32atomics_(sparse_image_float32atomics),
-      sparse_image_float32atomic_add_(sparse_image_float32atomic_add) {}
+      p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -16213,29 +14656,13 @@ struct PhysicalDeviceShaderAtomicFloatFeaturesEXT {
   VkBool32 sparse_image_float32atomics_;
   VkBool32 sparse_image_float32atomic_add_;
 };
-#ifdef VK_ENABLE_BETA_EXTENSIONS
-
-struct DispatchGraphCountInfoAMDX {
-
-  using native_type = VkDispatchGraphCountInfoAMDX;
-
-  DispatchGraphCountInfoAMDX(uint32_t count = {}, VkDeviceOrHostAddressConstAMDX infos = {}, uint64_t stride = {})
-    : count_(count), infos_(infos), stride_(stride) {}
-
-  auto *get() { return reinterpret_cast<native_type *>(this); }
-
-  uint32_t count_;
-  VkDeviceOrHostAddressConstAMDX infos_;
-  uint64_t stride_;
-};
-#endif
 
 struct DedicatedAllocationImageCreateInfoNV {
 
   using native_type = VkDedicatedAllocationImageCreateInfoNV;
 
-  DedicatedAllocationImageCreateInfoNV(const void *p_next = {}, VkBool32 dedicated_allocation = {})
-    : p_next_(p_next), dedicated_allocation_(dedicated_allocation) {}
+  DedicatedAllocationImageCreateInfoNV(VkBool32 dedicated_allocation = {}, const void *p_next = {})
+    : dedicated_allocation_(dedicated_allocation), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -16248,10 +14675,10 @@ struct PhysicalDeviceVertexAttributeDivisorFeaturesKHR {
 
   using native_type = VkPhysicalDeviceVertexAttributeDivisorFeaturesKHR;
 
-  PhysicalDeviceVertexAttributeDivisorFeaturesKHR(void *p_next = {}, VkBool32 vertex_attribute_instance_rate_divisor = {},
-                                                  VkBool32 vertex_attribute_instance_rate_zero_divisor = {})
-    : p_next_(p_next), vertex_attribute_instance_rate_divisor_(vertex_attribute_instance_rate_divisor),
-      vertex_attribute_instance_rate_zero_divisor_(vertex_attribute_instance_rate_zero_divisor) {}
+  PhysicalDeviceVertexAttributeDivisorFeaturesKHR(VkBool32 vertex_attribute_instance_rate_zero_divisor = {},
+                                                  VkBool32 vertex_attribute_instance_rate_divisor = {}, void *p_next = {})
+    : vertex_attribute_instance_rate_zero_divisor_(vertex_attribute_instance_rate_zero_divisor),
+      vertex_attribute_instance_rate_divisor_(vertex_attribute_instance_rate_divisor), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -16277,17 +14704,17 @@ struct FrameBoundaryEXT {
 
   using native_type = VkFrameBoundaryEXT;
 
-  FrameBoundaryEXT(const void *p_next = {}, VkFrameBoundaryFlagsEXT flags = {}, uint64_t frame_id = {}, uint32_t image_count = {},
+  FrameBoundaryEXT(const void *p_tag = {}, FrameBoundaryMask flags = {}, uint64_t frame_id = {}, uint32_t image_count = {},
                    const VkImage *p_images = {}, uint32_t buffer_count = {}, const VkBuffer *p_buffers = {}, uint64_t tag_name = {},
-                   size_t tag_size = {}, const void *p_tag = {})
-    : p_next_(p_next), flags_(flags), frame_id_(frame_id), image_count_(image_count), p_images_(p_images), buffer_count_(buffer_count),
-      p_buffers_(p_buffers), tag_name_(tag_name), tag_size_(tag_size), p_tag_(p_tag) {}
+                   size_t tag_size = {}, const void *p_next = {})
+    : p_tag_(p_tag), flags_(flags), frame_id_(frame_id), image_count_(image_count), p_images_(p_images), buffer_count_(buffer_count),
+      p_buffers_(p_buffers), tag_name_(tag_name), tag_size_(tag_size), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::FRAME_BOUNDARY_EXT;
   const void *p_next_;
-  VkFrameBoundaryFlagsEXT flags_;
+  FrameBoundaryMask flags_;
   uint64_t frame_id_;
   uint32_t image_count_;
   const VkImage *p_images_;
@@ -16306,8 +14733,8 @@ struct PhysicalDeviceDepthStencilResolveProperties {
 
   StructureType s_type_ = StructureType::PHYSICAL_DEVICE_DEPTH_STENCIL_RESOLVE_PROPERTIES;
   void *p_next_;
-  VkResolveModeFlags supported_depth_resolve_modes_;
-  VkResolveModeFlags supported_stencil_resolve_modes_;
+  ResolveModeMask supported_depth_resolve_modes_;
+  ResolveModeMask supported_stencil_resolve_modes_;
   VkBool32 independent_resolve_none_;
   VkBool32 independent_resolve_;
 };
@@ -16316,8 +14743,8 @@ struct RenderPassSubpassFeedbackCreateInfoEXT {
 
   using native_type = VkRenderPassSubpassFeedbackCreateInfoEXT;
 
-  RenderPassSubpassFeedbackCreateInfoEXT(const void *p_next = {}, RenderPassSubpassFeedbackInfoEXT *p_subpass_feedback = {})
-    : p_next_(p_next), p_subpass_feedback_(p_subpass_feedback) {}
+  RenderPassSubpassFeedbackCreateInfoEXT(RenderPassSubpassFeedbackInfoEXT *p_subpass_feedback = {}, const void *p_next = {})
+    : p_subpass_feedback_(p_subpass_feedback), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -16330,11 +14757,11 @@ struct SubpassDescriptionDepthStencilResolve {
 
   using native_type = VkSubpassDescriptionDepthStencilResolve;
 
-  SubpassDescriptionDepthStencilResolve(const void *p_next = {}, ResolveModeMaskBit depth_resolve_mode = {},
-                                        ResolveModeMaskBit stencil_resolve_mode = {},
-                                        const AttachmentReference2 *p_depth_stencil_resolve_attachment = {})
-    : p_next_(p_next), depth_resolve_mode_(depth_resolve_mode), stencil_resolve_mode_(stencil_resolve_mode),
-      p_depth_stencil_resolve_attachment_(p_depth_stencil_resolve_attachment) {}
+  SubpassDescriptionDepthStencilResolve(const AttachmentReference2 *p_depth_stencil_resolve_attachment = {},
+                                        ResolveModeMaskBit depth_resolve_mode = {}, ResolveModeMaskBit stencil_resolve_mode = {},
+                                        const void *p_next = {})
+    : p_depth_stencil_resolve_attachment_(p_depth_stencil_resolve_attachment), depth_resolve_mode_(depth_resolve_mode),
+      stencil_resolve_mode_(stencil_resolve_mode), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -16349,8 +14776,8 @@ struct SwapchainPresentFenceInfoEXT {
 
   using native_type = VkSwapchainPresentFenceInfoEXT;
 
-  SwapchainPresentFenceInfoEXT(const void *p_next = {}, uint32_t swapchain_count = {}, const VkFence *p_fences = {})
-    : p_next_(p_next), swapchain_count_(swapchain_count), p_fences_(p_fences) {}
+  SwapchainPresentFenceInfoEXT(const VkFence *p_fences = {}, uint32_t swapchain_count = {}, const void *p_next = {})
+    : p_fences_(p_fences), swapchain_count_(swapchain_count), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -16364,14 +14791,14 @@ struct AcquireProfilingLockInfoKHR {
 
   using native_type = VkAcquireProfilingLockInfoKHR;
 
-  AcquireProfilingLockInfoKHR(const void *p_next = {}, VkAcquireProfilingLockFlagsKHR flags = {}, uint64_t timeout = {})
-    : p_next_(p_next), flags_(flags), timeout_(timeout) {}
+  AcquireProfilingLockInfoKHR(uint64_t timeout = {}, AcquireProfilingLockMask flags = {}, const void *p_next = {})
+    : timeout_(timeout), flags_(flags), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::ACQUIRE_PROFILING_LOCK_INFO_KHR;
   const void *p_next_;
-  VkAcquireProfilingLockFlagsKHR flags_;
+  AcquireProfilingLockMask flags_;
   uint64_t timeout_;
 };
 
@@ -16402,7 +14829,7 @@ struct ImageViewASTCDecodeModeEXT {
 
   using native_type = VkImageViewASTCDecodeModeEXT;
 
-  ImageViewASTCDecodeModeEXT(const void *p_next = {}, Format decode_mode = {}) : p_next_(p_next), decode_mode_(decode_mode) {}
+  ImageViewASTCDecodeModeEXT(Format decode_mode = {}, const void *p_next = {}) : decode_mode_(decode_mode), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -16415,8 +14842,8 @@ struct PhysicalDeviceASTCDecodeFeaturesEXT {
 
   using native_type = VkPhysicalDeviceASTCDecodeFeaturesEXT;
 
-  PhysicalDeviceASTCDecodeFeaturesEXT(void *p_next = {}, VkBool32 decode_mode_shared_exponent = {})
-    : p_next_(p_next), decode_mode_shared_exponent_(decode_mode_shared_exponent) {}
+  PhysicalDeviceASTCDecodeFeaturesEXT(VkBool32 decode_mode_shared_exponent = {}, void *p_next = {})
+    : decode_mode_shared_exponent_(decode_mode_shared_exponent), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -16449,10 +14876,10 @@ struct PhysicalDeviceRayTracingMaintenance1FeaturesKHR {
 
   using native_type = VkPhysicalDeviceRayTracingMaintenance1FeaturesKHR;
 
-  PhysicalDeviceRayTracingMaintenance1FeaturesKHR(void *p_next = {}, VkBool32 ray_tracing_maintenance1 = {},
-                                                  VkBool32 ray_tracing_pipeline_trace_rays_indirect2 = {})
-    : p_next_(p_next), ray_tracing_maintenance1_(ray_tracing_maintenance1),
-      ray_tracing_pipeline_trace_rays_indirect2_(ray_tracing_pipeline_trace_rays_indirect2) {}
+  PhysicalDeviceRayTracingMaintenance1FeaturesKHR(VkBool32 ray_tracing_pipeline_trace_rays_indirect2 = {},
+                                                  VkBool32 ray_tracing_maintenance1 = {}, void *p_next = {})
+    : ray_tracing_pipeline_trace_rays_indirect2_(ray_tracing_pipeline_trace_rays_indirect2),
+      ray_tracing_maintenance1_(ray_tracing_maintenance1), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -16466,8 +14893,8 @@ struct PhysicalDeviceRepresentativeFragmentTestFeaturesNV {
 
   using native_type = VkPhysicalDeviceRepresentativeFragmentTestFeaturesNV;
 
-  PhysicalDeviceRepresentativeFragmentTestFeaturesNV(void *p_next = {}, VkBool32 representative_fragment_test = {})
-    : p_next_(p_next), representative_fragment_test_(representative_fragment_test) {}
+  PhysicalDeviceRepresentativeFragmentTestFeaturesNV(VkBool32 representative_fragment_test = {}, void *p_next = {})
+    : representative_fragment_test_(representative_fragment_test), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -16480,8 +14907,8 @@ struct PipelineRepresentativeFragmentTestStateCreateInfoNV {
 
   using native_type = VkPipelineRepresentativeFragmentTestStateCreateInfoNV;
 
-  PipelineRepresentativeFragmentTestStateCreateInfoNV(const void *p_next = {}, VkBool32 representative_fragment_test_enable = {})
-    : p_next_(p_next), representative_fragment_test_enable_(representative_fragment_test_enable) {}
+  PipelineRepresentativeFragmentTestStateCreateInfoNV(VkBool32 representative_fragment_test_enable = {}, const void *p_next = {})
+    : representative_fragment_test_enable_(representative_fragment_test_enable), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -16494,8 +14921,8 @@ struct PhysicalDeviceShaderImageFootprintFeaturesNV {
 
   using native_type = VkPhysicalDeviceShaderImageFootprintFeaturesNV;
 
-  PhysicalDeviceShaderImageFootprintFeaturesNV(void *p_next = {}, VkBool32 image_footprint = {})
-    : p_next_(p_next), image_footprint_(image_footprint) {}
+  PhysicalDeviceShaderImageFootprintFeaturesNV(VkBool32 image_footprint = {}, void *p_next = {})
+    : image_footprint_(image_footprint), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -16508,19 +14935,19 @@ struct ImageMemoryBarrier {
 
   using native_type = VkImageMemoryBarrier;
 
-  ImageMemoryBarrier(const void *p_next = {}, VkAccessFlags src_access_mask = {}, VkAccessFlags dst_access_mask = {},
+  ImageMemoryBarrier(ImageSubresourceRange subresource_range = {}, AccessMask src_access_mask = {}, AccessMask dst_access_mask = {},
                      ImageLayout old_layout = {}, ImageLayout new_layout = {}, uint32_t src_queue_family_index = {},
-                     uint32_t dst_queue_family_index = {}, VkImage image = {}, ImageSubresourceRange subresource_range = {})
-    : p_next_(p_next), src_access_mask_(src_access_mask), dst_access_mask_(dst_access_mask), old_layout_(old_layout),
+                     uint32_t dst_queue_family_index = {}, VkImage image = {}, const void *p_next = {})
+    : subresource_range_(subresource_range), src_access_mask_(src_access_mask), dst_access_mask_(dst_access_mask), old_layout_(old_layout),
       new_layout_(new_layout), src_queue_family_index_(src_queue_family_index), dst_queue_family_index_(dst_queue_family_index),
-      image_(image), subresource_range_(subresource_range) {}
+      image_(image), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::IMAGE_MEMORY_BARRIER;
   const void *p_next_;
-  VkAccessFlags src_access_mask_;
-  VkAccessFlags dst_access_mask_;
+  AccessMask src_access_mask_;
+  AccessMask dst_access_mask_;
   ImageLayout old_layout_;
   ImageLayout new_layout_;
   uint32_t src_queue_family_index_;
@@ -16533,14 +14960,14 @@ struct DisplayModeCreateInfoKHR {
 
   using native_type = VkDisplayModeCreateInfoKHR;
 
-  DisplayModeCreateInfoKHR(const void *p_next = {}, VkDisplayModeCreateFlagsKHR flags = {}, DisplayModeParametersKHR parameters = {})
-    : p_next_(p_next), flags_(flags), parameters_(parameters) {}
+  DisplayModeCreateInfoKHR(DisplayModeParametersKHR parameters = {}, DisplayModeCreateMask flags = {}, const void *p_next = {})
+    : parameters_(parameters), flags_(flags), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::DISPLAY_MODE_CREATE_INFO_KHR;
   const void *p_next_;
-  VkDisplayModeCreateFlagsKHR flags_;
+  DisplayModeCreateMask flags_;
   DisplayModeParametersKHR parameters_;
 };
 
@@ -16548,22 +14975,22 @@ struct ImageStencilUsageCreateInfo {
 
   using native_type = VkImageStencilUsageCreateInfo;
 
-  ImageStencilUsageCreateInfo(const void *p_next = {}, VkImageUsageFlags stencil_usage = {})
-    : p_next_(p_next), stencil_usage_(stencil_usage) {}
+  ImageStencilUsageCreateInfo(ImageUsageMask stencil_usage = {}, const void *p_next = {})
+    : stencil_usage_(stencil_usage), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::IMAGE_STENCIL_USAGE_CREATE_INFO;
   const void *p_next_;
-  VkImageUsageFlags stencil_usage_;
+  ImageUsageMask stencil_usage_;
 };
 
 struct PhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV {
 
   using native_type = VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV;
 
-  PhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV(void *p_next = {}, VkBool32 dedicated_allocation_image_aliasing = {})
-    : p_next_(p_next), dedicated_allocation_image_aliasing_(dedicated_allocation_image_aliasing) {}
+  PhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV(VkBool32 dedicated_allocation_image_aliasing = {}, void *p_next = {})
+    : dedicated_allocation_image_aliasing_(dedicated_allocation_image_aliasing), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -16576,16 +15003,16 @@ struct CopyMemoryToImageInfoEXT {
 
   using native_type = VkCopyMemoryToImageInfoEXT;
 
-  CopyMemoryToImageInfoEXT(const void *p_next = {}, VkHostImageCopyFlagsEXT flags = {}, VkImage dst_image = {},
-                           ImageLayout dst_image_layout = {}, uint32_t region_count = {}, const MemoryToImageCopyEXT *p_regions = {})
-    : p_next_(p_next), flags_(flags), dst_image_(dst_image), dst_image_layout_(dst_image_layout), region_count_(region_count),
-      p_regions_(p_regions) {}
+  CopyMemoryToImageInfoEXT(const MemoryToImageCopyEXT *p_regions = {}, HostImageCopyMask flags = {}, VkImage dst_image = {},
+                           ImageLayout dst_image_layout = {}, uint32_t region_count = {}, const void *p_next = {})
+    : p_regions_(p_regions), flags_(flags), dst_image_(dst_image), dst_image_layout_(dst_image_layout), region_count_(region_count),
+      p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::COPY_MEMORY_TO_IMAGE_INFO_EXT;
   const void *p_next_;
-  VkHostImageCopyFlagsEXT flags_;
+  HostImageCopyMask flags_;
   VkImage dst_image_;
   ImageLayout dst_image_layout_;
   uint32_t region_count_;
@@ -16596,8 +15023,8 @@ struct PhysicalDeviceCopyMemoryIndirectFeaturesNV {
 
   using native_type = VkPhysicalDeviceCopyMemoryIndirectFeaturesNV;
 
-  PhysicalDeviceCopyMemoryIndirectFeaturesNV(void *p_next = {}, VkBool32 indirect_copy = {})
-    : p_next_(p_next), indirect_copy_(indirect_copy) {}
+  PhysicalDeviceCopyMemoryIndirectFeaturesNV(VkBool32 indirect_copy = {}, void *p_next = {})
+    : indirect_copy_(indirect_copy), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -16610,8 +15037,8 @@ struct PhysicalDeviceMemoryDecompressionFeaturesNV {
 
   using native_type = VkPhysicalDeviceMemoryDecompressionFeaturesNV;
 
-  PhysicalDeviceMemoryDecompressionFeaturesNV(void *p_next = {}, VkBool32 memory_decompression = {})
-    : p_next_(p_next), memory_decompression_(memory_decompression) {}
+  PhysicalDeviceMemoryDecompressionFeaturesNV(VkBool32 memory_decompression = {}, void *p_next = {})
+    : memory_decompression_(memory_decompression), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -16624,8 +15051,8 @@ struct PhysicalDeviceRayTracingValidationFeaturesNV {
 
   using native_type = VkPhysicalDeviceRayTracingValidationFeaturesNV;
 
-  PhysicalDeviceRayTracingValidationFeaturesNV(void *p_next = {}, VkBool32 ray_tracing_validation = {})
-    : p_next_(p_next), ray_tracing_validation_(ray_tracing_validation) {}
+  PhysicalDeviceRayTracingValidationFeaturesNV(VkBool32 ray_tracing_validation = {}, void *p_next = {})
+    : ray_tracing_validation_(ray_tracing_validation), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -16638,8 +15065,8 @@ struct PhysicalDeviceCoverageReductionModeFeaturesNV {
 
   using native_type = VkPhysicalDeviceCoverageReductionModeFeaturesNV;
 
-  PhysicalDeviceCoverageReductionModeFeaturesNV(void *p_next = {}, VkBool32 coverage_reduction_mode = {})
-    : p_next_(p_next), coverage_reduction_mode_(coverage_reduction_mode) {}
+  PhysicalDeviceCoverageReductionModeFeaturesNV(VkBool32 coverage_reduction_mode = {}, void *p_next = {})
+    : coverage_reduction_mode_(coverage_reduction_mode), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -16652,10 +15079,11 @@ struct PipelineViewportShadingRateImageStateCreateInfoNV {
 
   using native_type = VkPipelineViewportShadingRateImageStateCreateInfoNV;
 
-  PipelineViewportShadingRateImageStateCreateInfoNV(const void *p_next = {}, VkBool32 shading_rate_image_enable = {},
-                                                    uint32_t viewport_count = {}, const ShadingRatePaletteNV *p_shading_rate_palettes = {})
-    : p_next_(p_next), shading_rate_image_enable_(shading_rate_image_enable), viewport_count_(viewport_count),
-      p_shading_rate_palettes_(p_shading_rate_palettes) {}
+  PipelineViewportShadingRateImageStateCreateInfoNV(const ShadingRatePaletteNV *p_shading_rate_palettes = {},
+                                                    VkBool32 shading_rate_image_enable = {}, uint32_t viewport_count = {},
+                                                    const void *p_next = {})
+    : p_shading_rate_palettes_(p_shading_rate_palettes), shading_rate_image_enable_(shading_rate_image_enable),
+      viewport_count_(viewport_count), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -16670,8 +15098,8 @@ struct PhysicalDeviceShaderAtomicFloat16VectorFeaturesNV {
 
   using native_type = VkPhysicalDeviceShaderAtomicFloat16VectorFeaturesNV;
 
-  PhysicalDeviceShaderAtomicFloat16VectorFeaturesNV(void *p_next = {}, VkBool32 shader_float16vector_atomics = {})
-    : p_next_(p_next), shader_float16vector_atomics_(shader_float16vector_atomics) {}
+  PhysicalDeviceShaderAtomicFloat16VectorFeaturesNV(VkBool32 shader_float16vector_atomics = {}, void *p_next = {})
+    : shader_float16vector_atomics_(shader_float16vector_atomics), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -16698,12 +15126,12 @@ struct PhysicalDeviceDepthBiasControlFeaturesEXT {
 
   using native_type = VkPhysicalDeviceDepthBiasControlFeaturesEXT;
 
-  PhysicalDeviceDepthBiasControlFeaturesEXT(void *p_next = {}, VkBool32 depth_bias_control = {},
+  PhysicalDeviceDepthBiasControlFeaturesEXT(VkBool32 depth_bias_exact = {}, VkBool32 depth_bias_control = {},
                                             VkBool32 least_representable_value_force_unorm_representation = {},
-                                            VkBool32 float_representation = {}, VkBool32 depth_bias_exact = {})
-    : p_next_(p_next), depth_bias_control_(depth_bias_control),
+                                            VkBool32 float_representation = {}, void *p_next = {})
+    : depth_bias_exact_(depth_bias_exact), depth_bias_control_(depth_bias_control),
       least_representable_value_force_unorm_representation_(least_representable_value_force_unorm_representation),
-      float_representation_(float_representation), depth_bias_exact_(depth_bias_exact) {}
+      float_representation_(float_representation), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -16723,7 +15151,7 @@ struct CheckpointData2NV {
 
   StructureType s_type_ = StructureType::CHECKPOINT_DATA_2_NV;
   void *p_next_;
-  VkPipelineStageFlags2 stage_;
+  PipelineStageMask2 stage_;
   void *p_checkpoint_marker_;
 };
 
@@ -16748,7 +15176,7 @@ struct ImageMemoryRequirementsInfo2 {
 
   using native_type = VkImageMemoryRequirementsInfo2;
 
-  ImageMemoryRequirementsInfo2(const void *p_next = {}, VkImage image = {}) : p_next_(p_next), image_(image) {}
+  ImageMemoryRequirementsInfo2(VkImage image = {}, const void *p_next = {}) : image_(image), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -16761,11 +15189,11 @@ struct PipelineViewportCoarseSampleOrderStateCreateInfoNV {
 
   using native_type = VkPipelineViewportCoarseSampleOrderStateCreateInfoNV;
 
-  PipelineViewportCoarseSampleOrderStateCreateInfoNV(const void *p_next = {}, CoarseSampleOrderType sample_order_type = {},
-                                                     uint32_t custom_sample_order_count = {},
-                                                     const CoarseSampleOrderCustomNV *p_custom_sample_orders = {})
-    : p_next_(p_next), sample_order_type_(sample_order_type), custom_sample_order_count_(custom_sample_order_count),
-      p_custom_sample_orders_(p_custom_sample_orders) {}
+  PipelineViewportCoarseSampleOrderStateCreateInfoNV(const CoarseSampleOrderCustomNV *p_custom_sample_orders = {},
+                                                     CoarseSampleOrderType sample_order_type = {}, uint32_t custom_sample_order_count = {},
+                                                     const void *p_next = {})
+    : p_custom_sample_orders_(p_custom_sample_orders), sample_order_type_(sample_order_type),
+      custom_sample_order_count_(custom_sample_order_count), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -16817,19 +15245,19 @@ struct RayTracingPipelineCreateInfoNV {
 
   using native_type = VkRayTracingPipelineCreateInfoNV;
 
-  RayTracingPipelineCreateInfoNV(const void *p_next = {}, VkPipelineCreateFlags flags = {}, uint32_t stage_count = {},
+  RayTracingPipelineCreateInfoNV(int32_t base_pipeline_index = {}, PipelineCreateMask flags = {}, uint32_t stage_count = {},
                                  const PipelineShaderStageCreateInfo *p_stages = {}, uint32_t group_count = {},
                                  const RayTracingShaderGroupCreateInfoNV *p_groups = {}, uint32_t max_recursion_depth = {},
-                                 VkPipelineLayout layout = {}, VkPipeline base_pipeline_handle = {}, int32_t base_pipeline_index = {})
-    : p_next_(p_next), flags_(flags), stage_count_(stage_count), p_stages_(p_stages), group_count_(group_count), p_groups_(p_groups),
-      max_recursion_depth_(max_recursion_depth), layout_(layout), base_pipeline_handle_(base_pipeline_handle),
-      base_pipeline_index_(base_pipeline_index) {}
+                                 VkPipelineLayout layout = {}, VkPipeline base_pipeline_handle = {}, const void *p_next = {})
+    : base_pipeline_index_(base_pipeline_index), flags_(flags), stage_count_(stage_count), p_stages_(p_stages), group_count_(group_count),
+      p_groups_(p_groups), max_recursion_depth_(max_recursion_depth), layout_(layout), base_pipeline_handle_(base_pipeline_handle),
+      p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::RAY_TRACING_PIPELINE_CREATE_INFO_NV;
   const void *p_next_;
-  VkPipelineCreateFlags flags_;
+  PipelineCreateMask flags_;
   uint32_t stage_count_;
   const PipelineShaderStageCreateInfo *p_stages_;
   uint32_t group_count_;
@@ -16863,9 +15291,9 @@ struct WriteDescriptorSetAccelerationStructureKHR {
 
   using native_type = VkWriteDescriptorSetAccelerationStructureKHR;
 
-  WriteDescriptorSetAccelerationStructureKHR(const void *p_next = {}, uint32_t acceleration_structure_count = {},
-                                             const VkAccelerationStructureKHR *p_acceleration_structures = {})
-    : p_next_(p_next), acceleration_structure_count_(acceleration_structure_count), p_acceleration_structures_(p_acceleration_structures) {}
+  WriteDescriptorSetAccelerationStructureKHR(const VkAccelerationStructureKHR *p_acceleration_structures = {},
+                                             uint32_t acceleration_structure_count = {}, const void *p_next = {})
+    : p_acceleration_structures_(p_acceleration_structures), acceleration_structure_count_(acceleration_structure_count), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -16879,23 +15307,23 @@ struct RayTracingPipelineCreateInfoKHR {
 
   using native_type = VkRayTracingPipelineCreateInfoKHR;
 
-  RayTracingPipelineCreateInfoKHR(const void *p_next = {}, VkPipelineCreateFlags flags = {}, uint32_t stage_count = {},
+  RayTracingPipelineCreateInfoKHR(int32_t base_pipeline_index = {}, PipelineCreateMask flags = {}, uint32_t stage_count = {},
                                   const PipelineShaderStageCreateInfo *p_stages = {}, uint32_t group_count = {},
                                   const RayTracingShaderGroupCreateInfoKHR *p_groups = {}, uint32_t max_pipeline_ray_recursion_depth = {},
                                   const PipelineLibraryCreateInfoKHR *p_library_info = {},
                                   const RayTracingPipelineInterfaceCreateInfoKHR *p_library_interface = {},
                                   const PipelineDynamicStateCreateInfo *p_dynamic_state = {}, VkPipelineLayout layout = {},
-                                  VkPipeline base_pipeline_handle = {}, int32_t base_pipeline_index = {})
-    : p_next_(p_next), flags_(flags), stage_count_(stage_count), p_stages_(p_stages), group_count_(group_count), p_groups_(p_groups),
-      max_pipeline_ray_recursion_depth_(max_pipeline_ray_recursion_depth), p_library_info_(p_library_info),
+                                  VkPipeline base_pipeline_handle = {}, const void *p_next = {})
+    : base_pipeline_index_(base_pipeline_index), flags_(flags), stage_count_(stage_count), p_stages_(p_stages), group_count_(group_count),
+      p_groups_(p_groups), max_pipeline_ray_recursion_depth_(max_pipeline_ray_recursion_depth), p_library_info_(p_library_info),
       p_library_interface_(p_library_interface), p_dynamic_state_(p_dynamic_state), layout_(layout),
-      base_pipeline_handle_(base_pipeline_handle), base_pipeline_index_(base_pipeline_index) {}
+      base_pipeline_handle_(base_pipeline_handle), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::RAY_TRACING_PIPELINE_CREATE_INFO_KHR;
   const void *p_next_;
-  VkPipelineCreateFlags flags_;
+  PipelineCreateMask flags_;
   uint32_t stage_count_;
   const PipelineShaderStageCreateInfo *p_stages_;
   uint32_t group_count_;
@@ -16913,10 +15341,10 @@ struct CopyImageToBufferInfo2 {
 
   using native_type = VkCopyImageToBufferInfo2;
 
-  CopyImageToBufferInfo2(const void *p_next = {}, VkImage src_image = {}, ImageLayout src_image_layout = {}, VkBuffer dst_buffer = {},
-                         uint32_t region_count = {}, const BufferImageCopy2 *p_regions = {})
-    : p_next_(p_next), src_image_(src_image), src_image_layout_(src_image_layout), dst_buffer_(dst_buffer), region_count_(region_count),
-      p_regions_(p_regions) {}
+  CopyImageToBufferInfo2(const BufferImageCopy2 *p_regions = {}, VkImage src_image = {}, ImageLayout src_image_layout = {},
+                         VkBuffer dst_buffer = {}, uint32_t region_count = {}, const void *p_next = {})
+    : p_regions_(p_regions), src_image_(src_image), src_image_layout_(src_image_layout), dst_buffer_(dst_buffer),
+      region_count_(region_count), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -16933,16 +15361,14 @@ struct PhysicalDeviceRayTracingPipelineFeaturesKHR {
 
   using native_type = VkPhysicalDeviceRayTracingPipelineFeaturesKHR;
 
-  PhysicalDeviceRayTracingPipelineFeaturesKHR(void *p_next = {}, VkBool32 ray_tracing_pipeline = {},
+  PhysicalDeviceRayTracingPipelineFeaturesKHR(VkBool32 ray_traversal_primitive_culling = {}, VkBool32 ray_tracing_pipeline = {},
                                               VkBool32 ray_tracing_pipeline_shader_group_handle_capture_replay = {},
                                               VkBool32 ray_tracing_pipeline_shader_group_handle_capture_replay_mixed = {},
-                                              VkBool32 ray_tracing_pipeline_trace_rays_indirect = {},
-                                              VkBool32 ray_traversal_primitive_culling = {})
-    : p_next_(p_next), ray_tracing_pipeline_(ray_tracing_pipeline),
+                                              VkBool32 ray_tracing_pipeline_trace_rays_indirect = {}, void *p_next = {})
+    : ray_traversal_primitive_culling_(ray_traversal_primitive_culling), ray_tracing_pipeline_(ray_tracing_pipeline),
       ray_tracing_pipeline_shader_group_handle_capture_replay_(ray_tracing_pipeline_shader_group_handle_capture_replay),
       ray_tracing_pipeline_shader_group_handle_capture_replay_mixed_(ray_tracing_pipeline_shader_group_handle_capture_replay_mixed),
-      ray_tracing_pipeline_trace_rays_indirect_(ray_tracing_pipeline_trace_rays_indirect),
-      ray_traversal_primitive_culling_(ray_traversal_primitive_culling) {}
+      ray_tracing_pipeline_trace_rays_indirect_(ray_tracing_pipeline_trace_rays_indirect), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -16959,19 +15385,19 @@ struct VideoDecodeInfoKHR {
 
   using native_type = VkVideoDecodeInfoKHR;
 
-  VideoDecodeInfoKHR(const void *p_next = {}, VkVideoDecodeFlagsKHR flags = {}, VkBuffer src_buffer = {},
+  VideoDecodeInfoKHR(const VideoReferenceSlotInfoKHR *p_reference_slots = {}, VideoDecodeMask flags = {}, VkBuffer src_buffer = {},
                      VkDeviceSize src_buffer_offset = {}, VkDeviceSize src_buffer_range = {},
                      VideoPictureResourceInfoKHR dst_picture_resource = {}, const VideoReferenceSlotInfoKHR *p_setup_reference_slot = {},
-                     uint32_t reference_slot_count = {}, const VideoReferenceSlotInfoKHR *p_reference_slots = {})
-    : p_next_(p_next), flags_(flags), src_buffer_(src_buffer), src_buffer_offset_(src_buffer_offset), src_buffer_range_(src_buffer_range),
-      dst_picture_resource_(dst_picture_resource), p_setup_reference_slot_(p_setup_reference_slot),
-      reference_slot_count_(reference_slot_count), p_reference_slots_(p_reference_slots) {}
+                     uint32_t reference_slot_count = {}, const void *p_next = {})
+    : p_reference_slots_(p_reference_slots), flags_(flags), src_buffer_(src_buffer), src_buffer_offset_(src_buffer_offset),
+      src_buffer_range_(src_buffer_range), dst_picture_resource_(dst_picture_resource), p_setup_reference_slot_(p_setup_reference_slot),
+      reference_slot_count_(reference_slot_count), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::VIDEO_DECODE_INFO_KHR;
   const void *p_next_;
-  VkVideoDecodeFlagsKHR flags_;
+  VideoDecodeMask flags_;
   VkBuffer src_buffer_;
   VkDeviceSize src_buffer_offset_;
   VkDeviceSize src_buffer_range_;
@@ -16985,12 +15411,10 @@ struct PhysicalDeviceBufferDeviceAddressFeatures {
 
   using native_type = VkPhysicalDeviceBufferDeviceAddressFeatures;
 
-  PhysicalDeviceBufferDeviceAddressFeatures(void *p_next = {}, VkBool32 buffer_device_address = {},
-                                            VkBool32 buffer_device_address_capture_replay = {},
-                                            VkBool32 buffer_device_address_multi_device = {})
-    : p_next_(p_next), buffer_device_address_(buffer_device_address),
-      buffer_device_address_capture_replay_(buffer_device_address_capture_replay),
-      buffer_device_address_multi_device_(buffer_device_address_multi_device) {}
+  PhysicalDeviceBufferDeviceAddressFeatures(VkBool32 buffer_device_address_multi_device = {}, VkBool32 buffer_device_address = {},
+                                            VkBool32 buffer_device_address_capture_replay = {}, void *p_next = {})
+    : buffer_device_address_multi_device_(buffer_device_address_multi_device), buffer_device_address_(buffer_device_address),
+      buffer_device_address_capture_replay_(buffer_device_address_capture_replay), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -17037,8 +15461,8 @@ struct PhysicalDeviceShaderQuadControlFeaturesKHR {
 
   using native_type = VkPhysicalDeviceShaderQuadControlFeaturesKHR;
 
-  PhysicalDeviceShaderQuadControlFeaturesKHR(void *p_next = {}, VkBool32 shader_quad_control = {})
-    : p_next_(p_next), shader_quad_control_(shader_quad_control) {}
+  PhysicalDeviceShaderQuadControlFeaturesKHR(VkBool32 shader_quad_control = {}, void *p_next = {})
+    : shader_quad_control_(shader_quad_control), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -17051,14 +15475,13 @@ struct GraphicsPipelineLibraryCreateInfoEXT {
 
   using native_type = VkGraphicsPipelineLibraryCreateInfoEXT;
 
-  GraphicsPipelineLibraryCreateInfoEXT(const void *p_next = {}, VkGraphicsPipelineLibraryFlagsEXT flags = {})
-    : p_next_(p_next), flags_(flags) {}
+  GraphicsPipelineLibraryCreateInfoEXT(GraphicsPipelineLibraryMask flags = {}, const void *p_next = {}) : flags_(flags), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::GRAPHICS_PIPELINE_LIBRARY_CREATE_INFO_EXT;
   const void *p_next_;
-  VkGraphicsPipelineLibraryFlagsEXT flags_;
+  GraphicsPipelineLibraryMask flags_;
 };
 
 struct DrmFormatModifierPropertiesListEXT {
@@ -17077,8 +15500,8 @@ struct PhysicalDeviceFragmentDensityMap2FeaturesEXT {
 
   using native_type = VkPhysicalDeviceFragmentDensityMap2FeaturesEXT;
 
-  PhysicalDeviceFragmentDensityMap2FeaturesEXT(void *p_next = {}, VkBool32 fragment_density_map_deferred = {})
-    : p_next_(p_next), fragment_density_map_deferred_(fragment_density_map_deferred) {}
+  PhysicalDeviceFragmentDensityMap2FeaturesEXT(VkBool32 fragment_density_map_deferred = {}, void *p_next = {})
+    : fragment_density_map_deferred_(fragment_density_map_deferred), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -17118,7 +15541,7 @@ struct PhysicalDevicePrivateDataFeatures {
 
   using native_type = VkPhysicalDevicePrivateDataFeatures;
 
-  PhysicalDevicePrivateDataFeatures(void *p_next = {}, VkBool32 private_data = {}) : p_next_(p_next), private_data_(private_data) {}
+  PhysicalDevicePrivateDataFeatures(VkBool32 private_data = {}, void *p_next = {}) : private_data_(private_data), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -17131,8 +15554,8 @@ struct RenderPassFragmentDensityMapCreateInfoEXT {
 
   using native_type = VkRenderPassFragmentDensityMapCreateInfoEXT;
 
-  RenderPassFragmentDensityMapCreateInfoEXT(const void *p_next = {}, AttachmentReference fragment_density_map_attachment = {})
-    : p_next_(p_next), fragment_density_map_attachment_(fragment_density_map_attachment) {}
+  RenderPassFragmentDensityMapCreateInfoEXT(AttachmentReference fragment_density_map_attachment = {}, const void *p_next = {})
+    : fragment_density_map_attachment_(fragment_density_map_attachment), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -17145,11 +15568,11 @@ struct PresentInfoKHR {
 
   using native_type = VkPresentInfoKHR;
 
-  PresentInfoKHR(const void *p_next = {}, uint32_t wait_semaphore_count = {}, const VkSemaphore *p_wait_semaphores = {},
+  PresentInfoKHR(Result *p_results = {}, uint32_t wait_semaphore_count = {}, const VkSemaphore *p_wait_semaphores = {},
                  uint32_t swapchain_count = {}, const VkSwapchainKHR *p_swapchains = {}, const uint32_t *p_image_indices = {},
-                 Result *p_results = {})
-    : p_next_(p_next), wait_semaphore_count_(wait_semaphore_count), p_wait_semaphores_(p_wait_semaphores),
-      swapchain_count_(swapchain_count), p_swapchains_(p_swapchains), p_image_indices_(p_image_indices), p_results_(p_results) {}
+                 const void *p_next = {})
+    : p_results_(p_results), wait_semaphore_count_(wait_semaphore_count), p_wait_semaphores_(p_wait_semaphores),
+      swapchain_count_(swapchain_count), p_swapchains_(p_swapchains), p_image_indices_(p_image_indices), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -17178,10 +15601,10 @@ struct SubpassFragmentDensityMapOffsetEndInfoQCOM {
 
   using native_type = VkSubpassFragmentDensityMapOffsetEndInfoQCOM;
 
-  SubpassFragmentDensityMapOffsetEndInfoQCOM(const void *p_next = {}, uint32_t fragment_density_offset_count = {},
-                                             const Offset2D *p_fragment_density_offsets = {})
-    : p_next_(p_next), fragment_density_offset_count_(fragment_density_offset_count),
-      p_fragment_density_offsets_(p_fragment_density_offsets) {}
+  SubpassFragmentDensityMapOffsetEndInfoQCOM(const Offset2D *p_fragment_density_offsets = {}, uint32_t fragment_density_offset_count = {},
+                                             const void *p_next = {})
+    : p_fragment_density_offsets_(p_fragment_density_offsets), fragment_density_offset_count_(fragment_density_offset_count),
+      p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -17195,8 +15618,8 @@ struct PhysicalDeviceScalarBlockLayoutFeatures {
 
   using native_type = VkPhysicalDeviceScalarBlockLayoutFeatures;
 
-  PhysicalDeviceScalarBlockLayoutFeatures(void *p_next = {}, VkBool32 scalar_block_layout = {})
-    : p_next_(p_next), scalar_block_layout_(scalar_block_layout) {}
+  PhysicalDeviceScalarBlockLayoutFeatures(VkBool32 scalar_block_layout = {}, void *p_next = {})
+    : scalar_block_layout_(scalar_block_layout), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -17213,7 +15636,7 @@ struct VideoEncodeH264QualityLevelPropertiesKHR {
 
   StructureType s_type_ = StructureType::VIDEO_ENCODE_H264_QUALITY_LEVEL_PROPERTIES_KHR;
   void *p_next_;
-  VkVideoEncodeH264RateControlFlagsKHR preferred_rate_control_flags_;
+  VideoEncodeH264RateControlMask preferred_rate_control_flags_;
   uint32_t preferred_gop_frame_count_;
   uint32_t preferred_idr_period_;
   uint32_t preferred_consecutive_bframe_count_;
@@ -17228,8 +15651,8 @@ struct PhysicalDeviceMemoryPriorityFeaturesEXT {
 
   using native_type = VkPhysicalDeviceMemoryPriorityFeaturesEXT;
 
-  PhysicalDeviceMemoryPriorityFeaturesEXT(void *p_next = {}, VkBool32 memory_priority = {})
-    : p_next_(p_next), memory_priority_(memory_priority) {}
+  PhysicalDeviceMemoryPriorityFeaturesEXT(VkBool32 memory_priority = {}, void *p_next = {})
+    : memory_priority_(memory_priority), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -17242,10 +15665,10 @@ struct ImageDrmFormatModifierExplicitCreateInfoEXT {
 
   using native_type = VkImageDrmFormatModifierExplicitCreateInfoEXT;
 
-  ImageDrmFormatModifierExplicitCreateInfoEXT(const void *p_next = {}, uint64_t drm_format_modifier = {},
-                                              uint32_t drm_format_modifier_plane_count = {}, const SubresourceLayout *p_plane_layouts = {})
-    : p_next_(p_next), drm_format_modifier_(drm_format_modifier), drm_format_modifier_plane_count_(drm_format_modifier_plane_count),
-      p_plane_layouts_(p_plane_layouts) {}
+  ImageDrmFormatModifierExplicitCreateInfoEXT(const SubresourceLayout *p_plane_layouts = {}, uint64_t drm_format_modifier = {},
+                                              uint32_t drm_format_modifier_plane_count = {}, const void *p_next = {})
+    : p_plane_layouts_(p_plane_layouts), drm_format_modifier_(drm_format_modifier),
+      drm_format_modifier_plane_count_(drm_format_modifier_plane_count), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -17260,8 +15683,8 @@ struct PerformanceQuerySubmitInfoKHR {
 
   using native_type = VkPerformanceQuerySubmitInfoKHR;
 
-  PerformanceQuerySubmitInfoKHR(const void *p_next = {}, uint32_t counter_pass_index = {})
-    : p_next_(p_next), counter_pass_index_(counter_pass_index) {}
+  PerformanceQuerySubmitInfoKHR(uint32_t counter_pass_index = {}, const void *p_next = {})
+    : counter_pass_index_(counter_pass_index), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -17274,10 +15697,10 @@ struct RenderingFragmentShadingRateAttachmentInfoKHR {
 
   using native_type = VkRenderingFragmentShadingRateAttachmentInfoKHR;
 
-  RenderingFragmentShadingRateAttachmentInfoKHR(const void *p_next = {}, VkImageView image_view = {}, ImageLayout image_layout = {},
-                                                Extent2D shading_rate_attachment_texel_size = {})
-    : p_next_(p_next), image_view_(image_view), image_layout_(image_layout),
-      shading_rate_attachment_texel_size_(shading_rate_attachment_texel_size) {}
+  RenderingFragmentShadingRateAttachmentInfoKHR(Extent2D shading_rate_attachment_texel_size = {}, VkImageView image_view = {},
+                                                ImageLayout image_layout = {}, const void *p_next = {})
+    : shading_rate_attachment_texel_size_(shading_rate_attachment_texel_size), image_view_(image_view), image_layout_(image_layout),
+      p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -17292,7 +15715,7 @@ struct MemoryPriorityAllocateInfoEXT {
 
   using native_type = VkMemoryPriorityAllocateInfoEXT;
 
-  MemoryPriorityAllocateInfoEXT(const void *p_next = {}, float priority = {}) : p_next_(p_next), priority_(priority) {}
+  MemoryPriorityAllocateInfoEXT(float priority = {}, const void *p_next = {}) : priority_(priority), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -17305,12 +15728,10 @@ struct PhysicalDeviceBufferDeviceAddressFeaturesEXT {
 
   using native_type = VkPhysicalDeviceBufferDeviceAddressFeaturesEXT;
 
-  PhysicalDeviceBufferDeviceAddressFeaturesEXT(void *p_next = {}, VkBool32 buffer_device_address = {},
-                                               VkBool32 buffer_device_address_capture_replay = {},
-                                               VkBool32 buffer_device_address_multi_device = {})
-    : p_next_(p_next), buffer_device_address_(buffer_device_address),
-      buffer_device_address_capture_replay_(buffer_device_address_capture_replay),
-      buffer_device_address_multi_device_(buffer_device_address_multi_device) {}
+  PhysicalDeviceBufferDeviceAddressFeaturesEXT(VkBool32 buffer_device_address_multi_device = {}, VkBool32 buffer_device_address = {},
+                                               VkBool32 buffer_device_address_capture_replay = {}, void *p_next = {})
+    : buffer_device_address_multi_device_(buffer_device_address_multi_device), buffer_device_address_(buffer_device_address),
+      buffer_device_address_capture_replay_(buffer_device_address_capture_replay), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -17325,11 +15746,12 @@ struct RenderPassMultiviewCreateInfo {
 
   using native_type = VkRenderPassMultiviewCreateInfo;
 
-  RenderPassMultiviewCreateInfo(const void *p_next = {}, uint32_t subpass_count = {}, const uint32_t *p_view_masks = {},
+  RenderPassMultiviewCreateInfo(const uint32_t *p_correlation_masks = {}, uint32_t subpass_count = {}, const uint32_t *p_view_masks = {},
                                 uint32_t dependency_count = {}, const int32_t *p_view_offsets = {}, uint32_t correlation_mask_count = {},
-                                const uint32_t *p_correlation_masks = {})
-    : p_next_(p_next), subpass_count_(subpass_count), p_view_masks_(p_view_masks), dependency_count_(dependency_count),
-      p_view_offsets_(p_view_offsets), correlation_mask_count_(correlation_mask_count), p_correlation_masks_(p_correlation_masks) {}
+                                const void *p_next = {})
+    : p_correlation_masks_(p_correlation_masks), subpass_count_(subpass_count), p_view_masks_(p_view_masks),
+      dependency_count_(dependency_count), p_view_offsets_(p_view_offsets), correlation_mask_count_(correlation_mask_count),
+      p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -17347,8 +15769,8 @@ struct BufferOpaqueCaptureAddressCreateInfo {
 
   using native_type = VkBufferOpaqueCaptureAddressCreateInfo;
 
-  BufferOpaqueCaptureAddressCreateInfo(const void *p_next = {}, uint64_t opaque_capture_address = {})
-    : p_next_(p_next), opaque_capture_address_(opaque_capture_address) {}
+  BufferOpaqueCaptureAddressCreateInfo(uint64_t opaque_capture_address = {}, const void *p_next = {})
+    : opaque_capture_address_(opaque_capture_address), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -17361,8 +15783,8 @@ struct PhysicalDeviceImagelessFramebufferFeatures {
 
   using native_type = VkPhysicalDeviceImagelessFramebufferFeatures;
 
-  PhysicalDeviceImagelessFramebufferFeatures(void *p_next = {}, VkBool32 imageless_framebuffer = {})
-    : p_next_(p_next), imageless_framebuffer_(imageless_framebuffer) {}
+  PhysicalDeviceImagelessFramebufferFeatures(VkBool32 imageless_framebuffer = {}, void *p_next = {})
+    : imageless_framebuffer_(imageless_framebuffer), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -17387,8 +15809,8 @@ struct SwapchainPresentBarrierCreateInfoNV {
 
   using native_type = VkSwapchainPresentBarrierCreateInfoNV;
 
-  SwapchainPresentBarrierCreateInfoNV(void *p_next = {}, VkBool32 present_barrier_enable = {})
-    : p_next_(p_next), present_barrier_enable_(present_barrier_enable) {}
+  SwapchainPresentBarrierCreateInfoNV(VkBool32 present_barrier_enable = {}, void *p_next = {})
+    : present_barrier_enable_(present_barrier_enable), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -17401,10 +15823,10 @@ struct PhysicalDeviceCooperativeMatrixFeaturesNV {
 
   using native_type = VkPhysicalDeviceCooperativeMatrixFeaturesNV;
 
-  PhysicalDeviceCooperativeMatrixFeaturesNV(void *p_next = {}, VkBool32 cooperative_matrix = {},
-                                            VkBool32 cooperative_matrix_robust_buffer_access = {})
-    : p_next_(p_next), cooperative_matrix_(cooperative_matrix),
-      cooperative_matrix_robust_buffer_access_(cooperative_matrix_robust_buffer_access) {}
+  PhysicalDeviceCooperativeMatrixFeaturesNV(VkBool32 cooperative_matrix_robust_buffer_access = {}, VkBool32 cooperative_matrix = {},
+                                            void *p_next = {})
+    : cooperative_matrix_robust_buffer_access_(cooperative_matrix_robust_buffer_access), cooperative_matrix_(cooperative_matrix),
+      p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -17425,28 +15847,13 @@ struct ImageViewAddressPropertiesNVX {
   VkDeviceAddress device_address_;
   VkDeviceSize size_;
 };
-#ifdef VK_USE_PLATFORM_GGP
-
-struct PresentFrameTokenGGP {
-
-  using native_type = VkPresentFrameTokenGGP;
-
-  PresentFrameTokenGGP(const void *p_next = {}, GgpFrameToken frame_token = {}) : p_next_(p_next), frame_token_(frame_token) {}
-
-  auto *get() { return reinterpret_cast<native_type *>(this); }
-
-  StructureType s_type_ = StructureType::PRESENT_FRAME_TOKEN_GGP;
-  const void *p_next_;
-  GgpFrameToken frame_token_;
-};
-#endif
 
 struct AccelerationStructureDeviceAddressInfoKHR {
 
   using native_type = VkAccelerationStructureDeviceAddressInfoKHR;
 
-  AccelerationStructureDeviceAddressInfoKHR(const void *p_next = {}, VkAccelerationStructureKHR acceleration_structure = {})
-    : p_next_(p_next), acceleration_structure_(acceleration_structure) {}
+  AccelerationStructureDeviceAddressInfoKHR(VkAccelerationStructureKHR acceleration_structure = {}, const void *p_next = {})
+    : acceleration_structure_(acceleration_structure), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -17472,21 +15879,6 @@ struct PhysicalDeviceAccelerationStructurePropertiesKHR {
   uint32_t max_descriptor_set_update_after_bind_acceleration_structures_;
   uint32_t min_acceleration_structure_scratch_offset_alignment_;
 };
-#ifdef VK_USE_PLATFORM_WIN32_KHR
-
-struct SurfaceFullScreenExclusiveWin32InfoEXT {
-
-  using native_type = VkSurfaceFullScreenExclusiveWin32InfoEXT;
-
-  SurfaceFullScreenExclusiveWin32InfoEXT(const void *p_next = {}, HMONITOR hmonitor = {}) : p_next_(p_next), hmonitor_(hmonitor) {}
-
-  auto *get() { return reinterpret_cast<native_type *>(this); }
-
-  StructureType s_type_ = StructureType::SURFACE_FULL_SCREEN_EXCLUSIVE_WIN32_INFO_EXT;
-  const void *p_next_;
-  HMONITOR hmonitor_;
-};
-#endif
 
 struct PhysicalDevicePerformanceQueryPropertiesKHR {
 
@@ -17503,8 +15895,8 @@ struct DescriptorGetInfoEXT {
 
   using native_type = VkDescriptorGetInfoEXT;
 
-  DescriptorGetInfoEXT(const void *p_next = {}, DescriptorType type = {}, VkDescriptorDataEXT data = {})
-    : p_next_(p_next), type_(type), data_(data) {}
+  DescriptorGetInfoEXT(VkDescriptorDataEXT data = {}, DescriptorType type = {}, const void *p_next = {})
+    : data_(data), type_(type), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -17532,8 +15924,8 @@ struct PhysicalDeviceMeshShaderFeaturesNV {
 
   using native_type = VkPhysicalDeviceMeshShaderFeaturesNV;
 
-  PhysicalDeviceMeshShaderFeaturesNV(void *p_next = {}, VkBool32 task_shader = {}, VkBool32 mesh_shader = {})
-    : p_next_(p_next), task_shader_(task_shader), mesh_shader_(mesh_shader) {}
+  PhysicalDeviceMeshShaderFeaturesNV(VkBool32 mesh_shader = {}, VkBool32 task_shader = {}, void *p_next = {})
+    : mesh_shader_(mesh_shader), task_shader_(task_shader), p_next_(p_next) {}
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -17553,8 +15945,8 @@ struct FramebufferMixedSamplesCombinationNV {
   void *p_next_;
   CoverageReductionMode coverage_reduction_mode_;
   SampleCountMaskBit rasterization_samples_;
-  VkSampleCountFlags depth_stencil_samples_;
-  VkSampleCountFlags color_samples_;
+  SampleCountMask depth_stencil_samples_;
+  SampleCountMask color_samples_;
 };
 
 #endif

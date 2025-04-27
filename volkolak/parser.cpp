@@ -73,6 +73,7 @@ void StructuresSorter::DepthFirstSearch(std::string_view name) {
 std::string Parser::GetGeneratedMemberType(std::string_view source_type) const {
   if (type_structures_.contains(source_type)) return std::string(source_type.substr(VULKAN_PREFIX_SIZE));
   if (type_enums_.contains(source_type)) return type_enums_.at(source_type).GetName();
+  if (type_masks_.contains(source_type)) return GetNameString(source_type, FLAG_SUFFIX).GetName();
   return std::string(source_type);
 }
 
@@ -173,14 +174,14 @@ void Parser::ParseExtensions() {
 
 // START PARSING
 
-String Parser::GetNameString(std::string_view source_name) const {
+String Parser::GetNameString(std::string_view source_name, std::string_view suffix) const {
   String result;
   result.tag = GetTag(source_name);
   source_name.remove_suffix(result.tag.size());
-  if (auto position = source_name.find(FLAG_SUFFIX); position != std::string::npos) {
+  if (auto position = source_name.find(suffix); position != std::string::npos) {
     result.prefix = source_name.substr(0, position);
-    result.center = source_name.substr(position, FLAG_SUFFIX_SIZE);
-    result.suffix = source_name.substr(position + FLAG_SUFFIX_SIZE);
+    result.center = source_name.substr(position, suffix.size());
+    result.suffix = source_name.substr(position + suffix.size());
   } else {
     result.prefix = source_name;
   }
@@ -206,18 +207,31 @@ void Parser::ParseBeginExtensions() {
   }
 }
 
+void Parser::ParseBeginMasks() {
+  for (const auto &mask_xpath_node : document_.select_nodes(mask_query)) {
+    auto mask_node = mask_xpath_node.node();
+    auto name = NAME(mask_node);
+    auto type = TYPE(mask_node);
+    if (auto requires_name = Requires(mask_node); requires_name.empty() == false) type = requires_name;
+    if (auto bitvalues_name = Bitvalues(mask_node); bitvalues_name.empty() == false) type = bitvalues_name;
+    type_masks_.emplace(name, type);
+  }
+}
+
 void Parser::ParseBegin() {
   auto registry = document_.child("registry");
 
   for (const auto &t : registry.child("tags")) extension_tags_.emplace_back(Name(t));
-  for (const auto &b : registry.select_nodes(mask_query_32)) type_masks_32_.emplace(Requires(b.node()), NAME(b.node()));
-  for (const auto &b : registry.select_nodes(mask_query_64)) type_masks_64_.emplace(Bitvalues(b.node()), NAME(b.node()));
-  for (const auto &m : registry.select_nodes(empty_mask_query_32)) type_empty_masks_.emplace(NAME(m.node()));
   for (const auto &b : registry.select_nodes(structure_query)) type_structures_.emplace(Name(b.node()));
-  for (const auto &e : registry.select_nodes(enum_query)) type_enums_.emplace(Name(e.node()), GetNameString(Name(e.node())));
   for (const auto &s : registry.select_nodes(vulkansc_types_query)) disabled_types_.emplace(Name(s.node()));
   for (const auto &s : registry.select_nodes(disabled_types_query)) disabled_types_.emplace(Name(s.node()));
+  for (const auto &enum_node : registry.select_nodes(enum_query)) {
+    auto node = enum_node.node();
+    auto name = Name(node);
+    type_enums_.emplace(name, GetNameString(name, FLAG_BITS_SUFFIX));
+  }
 
+  ParseBeginMasks();
   ParseBeginExtensions();
 }
 
@@ -256,6 +270,12 @@ auto GenerateInitializer(const StructureMemberData &member) {
   return std::format(initializer_format, member.name, argument);
 }
 
+void Parser::SortArguments(std::span<StructureMemberData> arguments) {
+  if (auto it = std::ranges::find(arguments, "p_next_", &StructureMemberData::name); it != arguments.end()) {
+    std::ranges::swap(*it, arguments.back());
+  }
+}
+
 void Parser::GenerateStructureFile() {
   std::string result;
 
@@ -263,22 +283,23 @@ void Parser::GenerateStructureFile() {
   sorter.Sort();
 
   for (const auto &structure_index : sorter.GetIndices()) {
-    std::string members, arguments, initializer;
-    const auto &structure = parsed_structures_[structure_index];
+    std::string members;
+    auto &structure = parsed_structures_[structure_index];
     auto name = structure.name.substr(VULKAN_PREFIX_SIZE);
-    for (const auto &[index, member] : std::views::enumerate(structure.members)) {
-      auto separator = (index != structure.members.size() - 1) ? "," : " ";
-      members += GenerateSignature(member) + ";\n";
-      if (member.value.empty()) arguments += GenerateArgument(member) + separator;
-      if (member.value.empty()) initializer += GenerateInitializer(member) + separator;
-    }
+    for (const auto &member : structure.members) members += GenerateSignature(member) + ";\n";
+    SortArguments(structure.members);
+    auto filtered = structure.members | std::views::filter([](const StructureMemberData &member) { return member.value.empty(); });
+    auto arguments = filtered | std::views::transform(GenerateArgument) | std::views::join_with(',') | std::ranges::to<std::string>();
+    auto initializer = filtered | std::views::transform(GenerateInitializer) | std::views::join_with(',') | std::ranges::to<std::string>();
 
     constexpr auto constructor_template = "{0}({1}): {2} {{}}";
     auto constuctor = (structure.returned == false) ? std::format(constructor_template, name, arguments, initializer) : "";
     auto structure_definition = std::format(structure_template, name, members, constuctor);
 
     if (protected_structures_.contains(structure.name)) {
-      result += std::format(ifdef_template, protected_structures_[structure.name], structure_definition);
+      if (options_.generate_protected_structure) {
+        result += std::format(ifdef_template, protected_structures_[structure.name], structure_definition);
+      }
     } else {
       result += structure_definition;
     }
@@ -342,14 +363,15 @@ void Parser::GenerateEnumFile() {
   std::cout << result << std::endl;
 }
 
-void Parser::PrintInformation() {
-  for (const auto &tag : extension_tags_) std::println("Tag Name: {}", tag);
-  for (const auto &mask_32 : type_masks_32_) std::println("Mask 32 - Requires: {}, Name: {}", mask_32.first, mask_32.second);
-  for (const auto &mask_64 : type_masks_64_) std::println("Mask 64 - B Values: {}: Name: {}", mask_64.first, mask_64.second);
-  for (const auto &empty_mask : type_empty_masks_) std::println("Empty Mask 32 - Name: {}", empty_mask);
-  for (const auto &structure : type_structures_) std::println("Structure Name: {}", structure);
-  for (const auto &extension : protected_extensions_) std::println("Extension Name: {}, Protect: {}", extension.first, extension.second);
-  for (const auto &structure : protected_structures_) std::println("Structure Name: {}, Protect: {}", structure.first, structure.second);
+void Parser::GenerateMaskFile() {
+  std::string result;
+  for (const auto &[key, value] : type_masks_) {
+    auto name = GetNameString(key, FLAG_SUFFIX);
+    auto mask = type_enums_.contains(value) ? type_enums_.at(value).GetName() : std::string(value);
+    result += std::format(using_mask_template, name.GetName(), mask);
+  }
+
+  std::cout << result << std::endl;
 }
 
 Parser::Parser(const std::filesystem::path &specification_path) {

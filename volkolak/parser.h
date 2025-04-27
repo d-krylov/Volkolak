@@ -82,8 +82,7 @@ public:
   void GenerateEnumFile();
   void GenerateEnumDefinitionFile();
   void GenerateStructureFile();
-
-  void PrintInformation();
+  void GenerateMaskFile();
 
 private:
   // MAIN PARSE
@@ -91,6 +90,7 @@ private:
   void ParseFeatures();
   void ParseBegin();
   void ParseBeginExtensions();
+  void ParseBeginMasks();
   void ParseStructures();
   void ParseExtensions();
 
@@ -100,7 +100,7 @@ private:
   std::string_view GetTag(std::string_view source_name) const;
 
   // PARSE START
-  String GetNameString(std::string_view source_name) const;
+  String GetNameString(std::string_view source_name, std::string_view suffix) const;
 
   // STRUCTURES PARSING
   std::string GetGeneratedMemberType(std::string_view source_type) const;
@@ -112,17 +112,16 @@ private:
   void GenerateEnumRecordsFromExtensions(std::string &enum_return, std::string_view enum_name);
 
   void SortStructures();
+  void SortArguments(std::span<StructureMemberData> arguments);
 
 private:
   pugi::xml_document document_;
   // After ParseBegin
   std::vector<std::string_view> extension_tags_;                                // registry/tags
-  std::unordered_map<std::string_view, std::string_view> type_masks_32_;        // registry/types/type (bitmask, requires, VkFlags)
-  std::unordered_map<std::string_view, std::string_view> type_masks_64_;        // registry/types/type (bitmask, VkFlags64)
   std::unordered_map<std::string_view, std::string_view> protected_extensions_; // registry/extensions/extension
   std::unordered_map<std::string_view, std::string_view> protected_structures_; // registry/extensions/extension
+  std::unordered_map<std::string_view, std::string_view> type_masks_;           // registry/types/type (bitmask)
   std::unordered_map<std::string_view, String> type_enums_;                     // registry/types/type (enum)
-  std::unordered_set<std::string_view> type_empty_masks_;                       // registry/types/type (bitmask, no requires, VkFlags)
   std::unordered_set<std::string_view> type_structures_;                        // registry/types/type (structure)
   std::unordered_set<std::string_view> disabled_types_;
 

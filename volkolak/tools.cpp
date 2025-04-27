@@ -76,7 +76,7 @@ std::string String::Get() const {
   std::string result;
   result.reserve(prefix.size() + center.size() + suffix.size());
   result.append(prefix);
-  result.append(center == FLAG_SUFFIX ? MASK_SUFFIX : center);
+  result.append(center == FLAG_BITS_SUFFIX ? MASK_BIT_SUFFIX : (center == FLAG_SUFFIX ? MASK_SUFFIX : center));
   result.append(suffix);
   return result;
 }

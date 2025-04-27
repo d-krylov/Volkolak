@@ -4,6 +4,8 @@
 #include "vulkan/vulkan.h"
 #include "vulkan/vulkan_metal.h"
 
+enum class Flags {};
+
 enum class MemoryUnmapMaskBit { RESERVE_BIT_EXT = VK_MEMORY_UNMAP_RESERVE_BIT_EXT };
 enum class ComponentType {
   FLOAT16_KHR = VK_COMPONENT_TYPE_FLOAT16_KHR,
