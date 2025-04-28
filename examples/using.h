@@ -126,7 +126,6 @@ using ColorComponentMask = Mask<ColorComponentMaskBit>;
 using ExternalFenceFeatureMask = Mask<ExternalFenceFeatureMaskBit>;
 using CommandPoolTrimMask = Mask<Flags>;
 using XcbSurfaceCreateMask = Mask<Flags>;
-using GeometryInstanceMask = Mask<GeometryInstanceMaskBit>;
 using CommandPoolResetMask = Mask<CommandPoolResetMaskBit>;
 using SubgroupFeatureMask = Mask<SubgroupFeatureMaskBit>;
 using BuildAccelerationStructureMask = Mask<BuildAccelerationStructureMaskBit>;
@@ -191,5 +190,6 @@ using ExternalSemaphoreFeatureMask = Mask<ExternalSemaphoreFeatureMaskBit>;
 using ExternalSemaphoreHandleTypeMask = Mask<ExternalSemaphoreHandleTypeMaskBit>;
 using SurfaceCounterMask = Mask<SurfaceCounterMaskBit>;
 using PipelineDiscardRectangleStateCreateMask = Mask<Flags>;
+using GeometryInstanceMask = VkGeometryInstanceFlagsKHR;
 
 #endif

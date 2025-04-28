@@ -55,6 +55,8 @@ struct StructureData {
 struct Options {
   bool generate_contructor_returned = false;
   bool generate_protected_structure = false;
+  bool generate_alias_enums_records = false;
+  bool generate_protected_enums_records = false;
 };
 
 class StructuresSorter {
@@ -83,6 +85,7 @@ public:
   void GenerateEnumDefinitionFile();
   void GenerateStructureFile();
   void GenerateMaskFile();
+  void GenerateFormatFile();
 
 private:
   // MAIN PARSE

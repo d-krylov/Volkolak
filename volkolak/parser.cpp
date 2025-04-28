@@ -18,6 +18,12 @@ auto Requires = [](const pugi::xml_node &node) -> std::string_view { return node
 auto Bitvalues = [](const pugi::xml_node &node) -> std::string_view { return node.attribute("bitvalues").as_string(); };
 auto Supported = [](const pugi::xml_node &node) -> std::string_view { return node.attribute("supported").as_string(); };
 
+auto Compressed = [](const pugi::xml_node &node) -> std::string_view { return node.attribute("compressed").as_string(); };
+auto Bits = [](const pugi::xml_node &node) { return node.attribute("bits").as_int(); };
+auto BlockSize = [](const pugi::xml_node &node) { return node.attribute("blockSize").as_int(); };
+auto Texels = [](const pugi::xml_node &node) { return node.attribute("texelsPerBlock").as_int(); };
+auto Packed = [](const pugi::xml_node &node) { return node.attribute("packed").as_int(); };
+
 auto NAME = [](const pugi::xml_node &node) -> std::string_view { return node.child("name").child_value(); };
 auto TYPE = [](const pugi::xml_node &node) -> std::string_view { return node.child("type").child_value(); };
 auto ENUM = [](const pugi::xml_node &node) -> std::string_view { return node.child("enum").child_value(); };
@@ -161,6 +167,7 @@ void Parser::ParseExtensions() {
     auto &extension = parsed_extensions_[extension_name];
     for (const auto &require_node : extension_node.children("require")) {
       for (const auto &enum_node : require_node.children("enum")) {
+        if (enum_node.attribute("alias") && options_.generate_alias_enums_records == false) continue;
         auto extend_name = Extends(enum_node);
         auto record_name = Name(enum_node);
         if ((extend_name.empty() == false) && (Api(enum_node).empty() || Api(enum_node) == "vulkan")) {
@@ -170,6 +177,30 @@ void Parser::ParseExtensions() {
       }
     }
   }
+}
+
+void Parser::GenerateFormatFile() {
+  std::string result;
+  constexpr std::string_view format_prefix = "VK_FORMAT_";
+  for (const auto &format : document_.child("registry").child("formats")) {
+    auto format_name = Name(format).substr(format_prefix.size());
+    auto compressed = Compressed(format);
+
+    auto get_component = [&](const pugi::xml_node &node) {
+      return std::format(format_component_template, Name(node), compressed.empty() ? Bits(node) : 0);
+    };
+
+    // clang-format off
+    auto components = format.children("component") 
+      | std::views::transform(get_component)
+      | std::views::join_with(',') 
+      | std::ranges::to<std::string>();
+    // clang-format on
+
+    result += std::format(format_table_element_template, format_name, BlockSize(format), Texels(format), components);
+  }
+
+  std::cout << result << std::endl;
 }
 
 // START PARSING
@@ -330,6 +361,7 @@ std::string GetEnumRecords(std::span<const EnumRecordData> records, std::string_
 
 void Parser::GenerateEnumRecordsFromExtensions(std::string &records_result, std::string_view enum_name) {
   for (const auto &[extension_name, extension_data] : parsed_extensions_) {
+    if (protected_extensions_.contains(extension_name) && options_.generate_protected_enums_records == false) continue;
     auto records_string = GetEnumRecords(extension_data.enum_records, enum_name);
     if (records_string.empty()) continue;
     if (auto enum_protected = protected_extensions_.find(extension_name); enum_protected != protected_extensions_.end()) {

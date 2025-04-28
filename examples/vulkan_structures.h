@@ -12,6 +12,16 @@ struct PhysicalDeviceShaderReplicatedCompositesFeaturesEXT {
   PhysicalDeviceShaderReplicatedCompositesFeaturesEXT(VkBool32 shader_replicated_composites = {}, void *p_next = {})
     : shader_replicated_composites_(shader_replicated_composites), p_next_(p_next) {}
 
+  PhysicalDeviceShaderReplicatedCompositesFeaturesEXT(const native_type &rhs)
+    : PhysicalDeviceShaderReplicatedCompositesFeaturesEXT(std::bit_cast<PhysicalDeviceShaderReplicatedCompositesFeaturesEXT>(rhs)) {}
+
+  PhysicalDeviceShaderReplicatedCompositesFeaturesEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceShaderReplicatedCompositesFeaturesEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceShaderReplicatedCompositesFeaturesEXT &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PHYSICAL_DEVICE_SHADER_REPLICATED_COMPOSITES_FEATURES_EXT;
@@ -26,6 +36,16 @@ struct PhysicalDeviceImageAlignmentControlFeaturesMESA {
   PhysicalDeviceImageAlignmentControlFeaturesMESA(VkBool32 image_alignment_control = {}, void *p_next = {})
     : image_alignment_control_(image_alignment_control), p_next_(p_next) {}
 
+  PhysicalDeviceImageAlignmentControlFeaturesMESA(const native_type &rhs)
+    : PhysicalDeviceImageAlignmentControlFeaturesMESA(std::bit_cast<PhysicalDeviceImageAlignmentControlFeaturesMESA>(rhs)) {}
+
+  PhysicalDeviceImageAlignmentControlFeaturesMESA &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceImageAlignmentControlFeaturesMESA>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceImageAlignmentControlFeaturesMESA &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PHYSICAL_DEVICE_IMAGE_ALIGNMENT_CONTROL_FEATURES_MESA;
@@ -38,6 +58,15 @@ struct MemoryMapPlacedInfoEXT {
   using native_type = VkMemoryMapPlacedInfoEXT;
 
   MemoryMapPlacedInfoEXT(void *p_placed_address = {}, const void *p_next = {}) : p_placed_address_(p_placed_address), p_next_(p_next) {}
+
+  MemoryMapPlacedInfoEXT(const native_type &rhs) : MemoryMapPlacedInfoEXT(std::bit_cast<MemoryMapPlacedInfoEXT>(rhs)) {}
+
+  MemoryMapPlacedInfoEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<MemoryMapPlacedInfoEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const MemoryMapPlacedInfoEXT &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -53,6 +82,16 @@ struct PhysicalDeviceDynamicRenderingLocalReadFeaturesKHR {
   PhysicalDeviceDynamicRenderingLocalReadFeaturesKHR(VkBool32 dynamic_rendering_local_read = {}, void *p_next = {})
     : dynamic_rendering_local_read_(dynamic_rendering_local_read), p_next_(p_next) {}
 
+  PhysicalDeviceDynamicRenderingLocalReadFeaturesKHR(const native_type &rhs)
+    : PhysicalDeviceDynamicRenderingLocalReadFeaturesKHR(std::bit_cast<PhysicalDeviceDynamicRenderingLocalReadFeaturesKHR>(rhs)) {}
+
+  PhysicalDeviceDynamicRenderingLocalReadFeaturesKHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceDynamicRenderingLocalReadFeaturesKHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceDynamicRenderingLocalReadFeaturesKHR &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PHYSICAL_DEVICE_DYNAMIC_RENDERING_LOCAL_READ_FEATURES_KHR;
@@ -67,6 +106,15 @@ struct SemaphoreSubmitInfo {
   SemaphoreSubmitInfo(uint32_t device_index = {}, VkSemaphore semaphore = {}, uint64_t value = {}, PipelineStageMask2 stage_mask = {},
                       const void *p_next = {})
     : device_index_(device_index), semaphore_(semaphore), value_(value), stage_mask_(stage_mask), p_next_(p_next) {}
+
+  SemaphoreSubmitInfo(const native_type &rhs) : SemaphoreSubmitInfo(std::bit_cast<SemaphoreSubmitInfo>(rhs)) {}
+
+  SemaphoreSubmitInfo &operator=(const native_type &rhs) {
+    *this = std::bit_cast<SemaphoreSubmitInfo>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const SemaphoreSubmitInfo &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -86,6 +134,16 @@ struct RenderPassStripeSubmitInfoARM {
                                 const void *p_next = {})
     : p_stripe_semaphore_infos_(p_stripe_semaphore_infos), stripe_semaphore_info_count_(stripe_semaphore_info_count), p_next_(p_next) {}
 
+  RenderPassStripeSubmitInfoARM(const native_type &rhs)
+    : RenderPassStripeSubmitInfoARM(std::bit_cast<RenderPassStripeSubmitInfoARM>(rhs)) {}
+
+  RenderPassStripeSubmitInfoARM &operator=(const native_type &rhs) {
+    *this = std::bit_cast<RenderPassStripeSubmitInfoARM>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const RenderPassStripeSubmitInfoARM &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::RENDER_PASS_STRIPE_SUBMIT_INFO_ARM;
@@ -100,6 +158,15 @@ struct Offset2D {
 
   Offset2D(int32_t x = {}, int32_t y = {}) : x_(x), y_(y) {}
 
+  Offset2D(const native_type &rhs) : Offset2D(std::bit_cast<Offset2D>(rhs)) {}
+
+  Offset2D &operator=(const native_type &rhs) {
+    *this = std::bit_cast<Offset2D>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const Offset2D &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   int32_t x_;
@@ -111,6 +178,15 @@ struct Extent2D {
   using native_type = VkExtent2D;
 
   Extent2D(uint32_t width = {}, uint32_t height = {}) : width_(width), height_(height) {}
+
+  Extent2D(const native_type &rhs) : Extent2D(std::bit_cast<Extent2D>(rhs)) {}
+
+  Extent2D &operator=(const native_type &rhs) {
+    *this = std::bit_cast<Extent2D>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const Extent2D &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -124,6 +200,15 @@ struct Rect2D {
 
   Rect2D(Offset2D offset = {}, Extent2D extent = {}) : offset_(offset), extent_(extent) {}
 
+  Rect2D(const native_type &rhs) : Rect2D(std::bit_cast<Rect2D>(rhs)) {}
+
+  Rect2D &operator=(const native_type &rhs) {
+    *this = std::bit_cast<Rect2D>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const Rect2D &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   Offset2D offset_;
@@ -135,6 +220,15 @@ struct RenderPassStripeInfoARM {
   using native_type = VkRenderPassStripeInfoARM;
 
   RenderPassStripeInfoARM(Rect2D stripe_area = {}, const void *p_next = {}) : stripe_area_(stripe_area), p_next_(p_next) {}
+
+  RenderPassStripeInfoARM(const native_type &rhs) : RenderPassStripeInfoARM(std::bit_cast<RenderPassStripeInfoARM>(rhs)) {}
+
+  RenderPassStripeInfoARM &operator=(const native_type &rhs) {
+    *this = std::bit_cast<RenderPassStripeInfoARM>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const RenderPassStripeInfoARM &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -149,6 +243,15 @@ struct RenderPassStripeBeginInfoARM {
 
   RenderPassStripeBeginInfoARM(const RenderPassStripeInfoARM *p_stripe_infos = {}, uint32_t stripe_info_count = {}, const void *p_next = {})
     : p_stripe_infos_(p_stripe_infos), stripe_info_count_(stripe_info_count), p_next_(p_next) {}
+
+  RenderPassStripeBeginInfoARM(const native_type &rhs) : RenderPassStripeBeginInfoARM(std::bit_cast<RenderPassStripeBeginInfoARM>(rhs)) {}
+
+  RenderPassStripeBeginInfoARM &operator=(const native_type &rhs) {
+    *this = std::bit_cast<RenderPassStripeBeginInfoARM>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const RenderPassStripeBeginInfoARM &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -165,6 +268,16 @@ struct PhysicalDeviceRelaxedLineRasterizationFeaturesIMG {
   PhysicalDeviceRelaxedLineRasterizationFeaturesIMG(VkBool32 relaxed_line_rasterization = {}, void *p_next = {})
     : relaxed_line_rasterization_(relaxed_line_rasterization), p_next_(p_next) {}
 
+  PhysicalDeviceRelaxedLineRasterizationFeaturesIMG(const native_type &rhs)
+    : PhysicalDeviceRelaxedLineRasterizationFeaturesIMG(std::bit_cast<PhysicalDeviceRelaxedLineRasterizationFeaturesIMG>(rhs)) {}
+
+  PhysicalDeviceRelaxedLineRasterizationFeaturesIMG &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceRelaxedLineRasterizationFeaturesIMG>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceRelaxedLineRasterizationFeaturesIMG &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PHYSICAL_DEVICE_RELAXED_LINE_RASTERIZATION_FEATURES_IMG;
@@ -178,6 +291,16 @@ struct PhysicalDeviceSchedulingControlsPropertiesARM {
 
   PhysicalDeviceSchedulingControlsPropertiesARM(PhysicalDeviceSchedulingControlsMask scheduling_controls_flags = {}, void *p_next = {})
     : scheduling_controls_flags_(scheduling_controls_flags), p_next_(p_next) {}
+
+  PhysicalDeviceSchedulingControlsPropertiesARM(const native_type &rhs)
+    : PhysicalDeviceSchedulingControlsPropertiesARM(std::bit_cast<PhysicalDeviceSchedulingControlsPropertiesARM>(rhs)) {}
+
+  PhysicalDeviceSchedulingControlsPropertiesARM &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceSchedulingControlsPropertiesARM>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceSchedulingControlsPropertiesARM &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -193,6 +316,16 @@ struct PhysicalDeviceSchedulingControlsFeaturesARM {
   PhysicalDeviceSchedulingControlsFeaturesARM(VkBool32 scheduling_controls = {}, void *p_next = {})
     : scheduling_controls_(scheduling_controls), p_next_(p_next) {}
 
+  PhysicalDeviceSchedulingControlsFeaturesARM(const native_type &rhs)
+    : PhysicalDeviceSchedulingControlsFeaturesARM(std::bit_cast<PhysicalDeviceSchedulingControlsFeaturesARM>(rhs)) {}
+
+  PhysicalDeviceSchedulingControlsFeaturesARM &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceSchedulingControlsFeaturesARM>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceSchedulingControlsFeaturesARM &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PHYSICAL_DEVICE_SCHEDULING_CONTROLS_FEATURES_ARM;
@@ -203,6 +336,16 @@ struct PhysicalDeviceSchedulingControlsFeaturesARM {
 struct PhysicalDeviceCudaKernelLaunchPropertiesNV {
 
   using native_type = VkPhysicalDeviceCudaKernelLaunchPropertiesNV;
+
+  PhysicalDeviceCudaKernelLaunchPropertiesNV(const native_type &rhs)
+    : PhysicalDeviceCudaKernelLaunchPropertiesNV(std::bit_cast<PhysicalDeviceCudaKernelLaunchPropertiesNV>(rhs)) {}
+
+  PhysicalDeviceCudaKernelLaunchPropertiesNV &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceCudaKernelLaunchPropertiesNV>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceCudaKernelLaunchPropertiesNV &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -219,6 +362,16 @@ struct PhysicalDeviceCudaKernelLaunchFeaturesNV {
   PhysicalDeviceCudaKernelLaunchFeaturesNV(VkBool32 cuda_kernel_launch_features = {}, void *p_next = {})
     : cuda_kernel_launch_features_(cuda_kernel_launch_features), p_next_(p_next) {}
 
+  PhysicalDeviceCudaKernelLaunchFeaturesNV(const native_type &rhs)
+    : PhysicalDeviceCudaKernelLaunchFeaturesNV(std::bit_cast<PhysicalDeviceCudaKernelLaunchFeaturesNV>(rhs)) {}
+
+  PhysicalDeviceCudaKernelLaunchFeaturesNV &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceCudaKernelLaunchFeaturesNV>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceCudaKernelLaunchFeaturesNV &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PHYSICAL_DEVICE_CUDA_KERNEL_LAUNCH_FEATURES_NV;
@@ -232,6 +385,15 @@ struct LatencySurfaceCapabilitiesNV {
 
   LatencySurfaceCapabilitiesNV(PresentMode *p_present_modes = {}, uint32_t present_mode_count = {}, const void *p_next = {})
     : p_present_modes_(p_present_modes), present_mode_count_(present_mode_count), p_next_(p_next) {}
+
+  LatencySurfaceCapabilitiesNV(const native_type &rhs) : LatencySurfaceCapabilitiesNV(std::bit_cast<LatencySurfaceCapabilitiesNV>(rhs)) {}
+
+  LatencySurfaceCapabilitiesNV &operator=(const native_type &rhs) {
+    *this = std::bit_cast<LatencySurfaceCapabilitiesNV>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const LatencySurfaceCapabilitiesNV &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -248,6 +410,15 @@ struct SwapchainLatencyCreateInfoNV {
   SwapchainLatencyCreateInfoNV(VkBool32 latency_mode_enable = {}, const void *p_next = {})
     : latency_mode_enable_(latency_mode_enable), p_next_(p_next) {}
 
+  SwapchainLatencyCreateInfoNV(const native_type &rhs) : SwapchainLatencyCreateInfoNV(std::bit_cast<SwapchainLatencyCreateInfoNV>(rhs)) {}
+
+  SwapchainLatencyCreateInfoNV &operator=(const native_type &rhs) {
+    *this = std::bit_cast<SwapchainLatencyCreateInfoNV>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const SwapchainLatencyCreateInfoNV &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::SWAPCHAIN_LATENCY_CREATE_INFO_NV;
@@ -258,6 +429,15 @@ struct SwapchainLatencyCreateInfoNV {
 struct LatencyTimingsFrameReportNV {
 
   using native_type = VkLatencyTimingsFrameReportNV;
+
+  LatencyTimingsFrameReportNV(const native_type &rhs) : LatencyTimingsFrameReportNV(std::bit_cast<LatencyTimingsFrameReportNV>(rhs)) {}
+
+  LatencyTimingsFrameReportNV &operator=(const native_type &rhs) {
+    *this = std::bit_cast<LatencyTimingsFrameReportNV>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const LatencyTimingsFrameReportNV &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -286,6 +466,15 @@ struct LatencySleepInfoNV {
   LatencySleepInfoNV(uint64_t value = {}, VkSemaphore signal_semaphore = {}, const void *p_next = {})
     : value_(value), signal_semaphore_(signal_semaphore), p_next_(p_next) {}
 
+  LatencySleepInfoNV(const native_type &rhs) : LatencySleepInfoNV(std::bit_cast<LatencySleepInfoNV>(rhs)) {}
+
+  LatencySleepInfoNV &operator=(const native_type &rhs) {
+    *this = std::bit_cast<LatencySleepInfoNV>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const LatencySleepInfoNV &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::LATENCY_SLEEP_INFO_NV;
@@ -303,6 +492,15 @@ struct LatencySleepModeInfoNV {
     : minimum_interval_us_(minimum_interval_us), low_latency_mode_(low_latency_mode), low_latency_boost_(low_latency_boost),
       p_next_(p_next) {}
 
+  LatencySleepModeInfoNV(const native_type &rhs) : LatencySleepModeInfoNV(std::bit_cast<LatencySleepModeInfoNV>(rhs)) {}
+
+  LatencySleepModeInfoNV &operator=(const native_type &rhs) {
+    *this = std::bit_cast<LatencySleepModeInfoNV>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const LatencySleepModeInfoNV &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::LATENCY_SLEEP_MODE_INFO_NV;
@@ -319,6 +517,16 @@ struct PhysicalDeviceCubicWeightsFeaturesQCOM {
   PhysicalDeviceCubicWeightsFeaturesQCOM(VkBool32 selectable_cubic_weights = {}, void *p_next = {})
     : selectable_cubic_weights_(selectable_cubic_weights), p_next_(p_next) {}
 
+  PhysicalDeviceCubicWeightsFeaturesQCOM(const native_type &rhs)
+    : PhysicalDeviceCubicWeightsFeaturesQCOM(std::bit_cast<PhysicalDeviceCubicWeightsFeaturesQCOM>(rhs)) {}
+
+  PhysicalDeviceCubicWeightsFeaturesQCOM &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceCubicWeightsFeaturesQCOM>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceCubicWeightsFeaturesQCOM &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PHYSICAL_DEVICE_CUBIC_WEIGHTS_FEATURES_QCOM;
@@ -332,6 +540,16 @@ struct SamplerYcbcrConversionYcbcrDegammaCreateInfoQCOM {
 
   SamplerYcbcrConversionYcbcrDegammaCreateInfoQCOM(VkBool32 enable_cb_cr_degamma = {}, VkBool32 enable_ydegamma = {}, void *p_next = {})
     : enable_cb_cr_degamma_(enable_cb_cr_degamma), enable_ydegamma_(enable_ydegamma), p_next_(p_next) {}
+
+  SamplerYcbcrConversionYcbcrDegammaCreateInfoQCOM(const native_type &rhs)
+    : SamplerYcbcrConversionYcbcrDegammaCreateInfoQCOM(std::bit_cast<SamplerYcbcrConversionYcbcrDegammaCreateInfoQCOM>(rhs)) {}
+
+  SamplerYcbcrConversionYcbcrDegammaCreateInfoQCOM &operator=(const native_type &rhs) {
+    *this = std::bit_cast<SamplerYcbcrConversionYcbcrDegammaCreateInfoQCOM>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const SamplerYcbcrConversionYcbcrDegammaCreateInfoQCOM &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -348,6 +566,16 @@ struct BindDescriptorBufferEmbeddedSamplersInfoEXT {
   BindDescriptorBufferEmbeddedSamplersInfoEXT(uint32_t set = {}, ShaderStageMask stage_flags = {}, VkPipelineLayout layout = {},
                                               const void *p_next = {})
     : set_(set), stage_flags_(stage_flags), layout_(layout), p_next_(p_next) {}
+
+  BindDescriptorBufferEmbeddedSamplersInfoEXT(const native_type &rhs)
+    : BindDescriptorBufferEmbeddedSamplersInfoEXT(std::bit_cast<BindDescriptorBufferEmbeddedSamplersInfoEXT>(rhs)) {}
+
+  BindDescriptorBufferEmbeddedSamplersInfoEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<BindDescriptorBufferEmbeddedSamplersInfoEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const BindDescriptorBufferEmbeddedSamplersInfoEXT &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -366,6 +594,15 @@ struct PushConstantsInfoKHR {
                        uint32_t size = {}, const void *p_next = {})
     : p_values_(p_values), layout_(layout), stage_flags_(stage_flags), offset_(offset), size_(size), p_next_(p_next) {}
 
+  PushConstantsInfoKHR(const native_type &rhs) : PushConstantsInfoKHR(std::bit_cast<PushConstantsInfoKHR>(rhs)) {}
+
+  PushConstantsInfoKHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PushConstantsInfoKHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PushConstantsInfoKHR &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PUSH_CONSTANTS_INFO_KHR;
@@ -383,6 +620,15 @@ struct BindMemoryStatusKHR {
 
   BindMemoryStatusKHR(Result *p_result = {}, const void *p_next = {}) : p_result_(p_result), p_next_(p_next) {}
 
+  BindMemoryStatusKHR(const native_type &rhs) : BindMemoryStatusKHR(std::bit_cast<BindMemoryStatusKHR>(rhs)) {}
+
+  BindMemoryStatusKHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<BindMemoryStatusKHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const BindMemoryStatusKHR &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::BIND_MEMORY_STATUS_KHR;
@@ -396,6 +642,15 @@ struct SpecializationMapEntry {
 
   SpecializationMapEntry(uint32_t constant_id = {}, uint32_t offset = {}, size_t size = {})
     : constant_id_(constant_id), offset_(offset), size_(size) {}
+
+  SpecializationMapEntry(const native_type &rhs) : SpecializationMapEntry(std::bit_cast<SpecializationMapEntry>(rhs)) {}
+
+  SpecializationMapEntry &operator=(const native_type &rhs) {
+    *this = std::bit_cast<SpecializationMapEntry>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const SpecializationMapEntry &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -412,6 +667,15 @@ struct SpecializationInfo {
                      const void *p_data = {})
     : map_entry_count_(map_entry_count), p_map_entries_(p_map_entries), data_size_(data_size), p_data_(p_data) {}
 
+  SpecializationInfo(const native_type &rhs) : SpecializationInfo(std::bit_cast<SpecializationInfo>(rhs)) {}
+
+  SpecializationInfo &operator=(const native_type &rhs) {
+    *this = std::bit_cast<SpecializationInfo>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const SpecializationInfo &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   uint32_t map_entry_count_;
@@ -427,6 +691,16 @@ struct PipelineShaderStageCreateInfo {
   PipelineShaderStageCreateInfo(const SpecializationInfo *p_specialization_info = {}, PipelineShaderStageCreateMask flags = {},
                                 ShaderStageMaskBit stage = {}, VkShaderModule module = {}, const char *p_name = {}, const void *p_next = {})
     : p_specialization_info_(p_specialization_info), flags_(flags), stage_(stage), module_(module), p_name_(p_name), p_next_(p_next) {}
+
+  PipelineShaderStageCreateInfo(const native_type &rhs)
+    : PipelineShaderStageCreateInfo(std::bit_cast<PipelineShaderStageCreateInfo>(rhs)) {}
+
+  PipelineShaderStageCreateInfo &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PipelineShaderStageCreateInfo>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PipelineShaderStageCreateInfo &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -446,6 +720,15 @@ struct PipelineLibraryCreateInfoKHR {
   PipelineLibraryCreateInfoKHR(const VkPipeline *p_libraries = {}, uint32_t library_count = {}, const void *p_next = {})
     : p_libraries_(p_libraries), library_count_(library_count), p_next_(p_next) {}
 
+  PipelineLibraryCreateInfoKHR(const native_type &rhs) : PipelineLibraryCreateInfoKHR(std::bit_cast<PipelineLibraryCreateInfoKHR>(rhs)) {}
+
+  PipelineLibraryCreateInfoKHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PipelineLibraryCreateInfoKHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PipelineLibraryCreateInfoKHR &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PIPELINE_LIBRARY_CREATE_INFO_KHR;
@@ -464,6 +747,15 @@ struct BindDescriptorSetsInfoKHR {
     : p_dynamic_offsets_(p_dynamic_offsets), stage_flags_(stage_flags), layout_(layout), first_set_(first_set),
       descriptor_set_count_(descriptor_set_count), p_descriptor_sets_(p_descriptor_sets), dynamic_offset_count_(dynamic_offset_count),
       p_next_(p_next) {}
+
+  BindDescriptorSetsInfoKHR(const native_type &rhs) : BindDescriptorSetsInfoKHR(std::bit_cast<BindDescriptorSetsInfoKHR>(rhs)) {}
+
+  BindDescriptorSetsInfoKHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<BindDescriptorSetsInfoKHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const BindDescriptorSetsInfoKHR &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -489,6 +781,16 @@ struct PhysicalDeviceShaderTileImageFeaturesEXT {
       shader_tile_image_color_read_access_(shader_tile_image_color_read_access),
       shader_tile_image_depth_read_access_(shader_tile_image_depth_read_access), p_next_(p_next) {}
 
+  PhysicalDeviceShaderTileImageFeaturesEXT(const native_type &rhs)
+    : PhysicalDeviceShaderTileImageFeaturesEXT(std::bit_cast<PhysicalDeviceShaderTileImageFeaturesEXT>(rhs)) {}
+
+  PhysicalDeviceShaderTileImageFeaturesEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceShaderTileImageFeaturesEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceShaderTileImageFeaturesEXT &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PHYSICAL_DEVICE_SHADER_TILE_IMAGE_FEATURES_EXT;
@@ -504,6 +806,15 @@ struct PushConstantRange {
 
   PushConstantRange(ShaderStageMask stage_flags = {}, uint32_t offset = {}, uint32_t size = {})
     : stage_flags_(stage_flags), offset_(offset), size_(size) {}
+
+  PushConstantRange(const native_type &rhs) : PushConstantRange(std::bit_cast<PushConstantRange>(rhs)) {}
+
+  PushConstantRange &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PushConstantRange>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PushConstantRange &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -524,6 +835,15 @@ struct ShaderCreateInfoEXT {
     : p_specialization_info_(p_specialization_info), flags_(flags), stage_(stage), next_stage_(next_stage), code_type_(code_type),
       code_size_(code_size), p_code_(p_code), p_name_(p_name), set_layout_count_(set_layout_count), p_set_layouts_(p_set_layouts),
       push_constant_range_count_(push_constant_range_count), p_push_constant_ranges_(p_push_constant_ranges), p_next_(p_next) {}
+
+  ShaderCreateInfoEXT(const native_type &rhs) : ShaderCreateInfoEXT(std::bit_cast<ShaderCreateInfoEXT>(rhs)) {}
+
+  ShaderCreateInfoEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<ShaderCreateInfoEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const ShaderCreateInfoEXT &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -549,6 +869,16 @@ struct PhysicalDeviceShaderObjectFeaturesEXT {
 
   PhysicalDeviceShaderObjectFeaturesEXT(VkBool32 shader_object = {}, void *p_next = {}) : shader_object_(shader_object), p_next_(p_next) {}
 
+  PhysicalDeviceShaderObjectFeaturesEXT(const native_type &rhs)
+    : PhysicalDeviceShaderObjectFeaturesEXT(std::bit_cast<PhysicalDeviceShaderObjectFeaturesEXT>(rhs)) {}
+
+  PhysicalDeviceShaderObjectFeaturesEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceShaderObjectFeaturesEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceShaderObjectFeaturesEXT &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PHYSICAL_DEVICE_SHADER_OBJECT_FEATURES_EXT;
@@ -563,6 +893,15 @@ struct MemoryMapInfoKHR {
   MemoryMapInfoKHR(VkDeviceSize size = {}, MemoryMapMask flags = {}, VkDeviceMemory memory = {}, VkDeviceSize offset = {},
                    const void *p_next = {})
     : size_(size), flags_(flags), memory_(memory), offset_(offset), p_next_(p_next) {}
+
+  MemoryMapInfoKHR(const native_type &rhs) : MemoryMapInfoKHR(std::bit_cast<MemoryMapInfoKHR>(rhs)) {}
+
+  MemoryMapInfoKHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<MemoryMapInfoKHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const MemoryMapInfoKHR &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -581,6 +920,15 @@ struct QueryLowLatencySupportNV {
   QueryLowLatencySupportNV(void *p_queried_low_latency_data = {}, const void *p_next = {})
     : p_queried_low_latency_data_(p_queried_low_latency_data), p_next_(p_next) {}
 
+  QueryLowLatencySupportNV(const native_type &rhs) : QueryLowLatencySupportNV(std::bit_cast<QueryLowLatencySupportNV>(rhs)) {}
+
+  QueryLowLatencySupportNV &operator=(const native_type &rhs) {
+    *this = std::bit_cast<QueryLowLatencySupportNV>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const QueryLowLatencySupportNV &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::QUERY_LOW_LATENCY_SUPPORT_NV;
@@ -591,6 +939,16 @@ struct QueryLowLatencySupportNV {
 struct PhysicalDeviceShaderCorePropertiesARM {
 
   using native_type = VkPhysicalDeviceShaderCorePropertiesARM;
+
+  PhysicalDeviceShaderCorePropertiesARM(const native_type &rhs)
+    : PhysicalDeviceShaderCorePropertiesARM(std::bit_cast<PhysicalDeviceShaderCorePropertiesARM>(rhs)) {}
+
+  PhysicalDeviceShaderCorePropertiesARM &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceShaderCorePropertiesARM>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceShaderCorePropertiesARM &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -608,6 +966,16 @@ struct PhysicalDeviceRayTracingPositionFetchFeaturesKHR {
   PhysicalDeviceRayTracingPositionFetchFeaturesKHR(VkBool32 ray_tracing_position_fetch = {}, void *p_next = {})
     : ray_tracing_position_fetch_(ray_tracing_position_fetch), p_next_(p_next) {}
 
+  PhysicalDeviceRayTracingPositionFetchFeaturesKHR(const native_type &rhs)
+    : PhysicalDeviceRayTracingPositionFetchFeaturesKHR(std::bit_cast<PhysicalDeviceRayTracingPositionFetchFeaturesKHR>(rhs)) {}
+
+  PhysicalDeviceRayTracingPositionFetchFeaturesKHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceRayTracingPositionFetchFeaturesKHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceRayTracingPositionFetchFeaturesKHR &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PHYSICAL_DEVICE_RAY_TRACING_POSITION_FETCH_FEATURES_KHR;
@@ -622,6 +990,16 @@ struct DirectDriverLoadingInfoLUNARG {
   DirectDriverLoadingInfoLUNARG(PFN_vkGetInstanceProcAddrLUNARG pfn_get_instance_proc_addr = {}, DirectDriverLoadingMask flags = {},
                                 void *p_next = {})
     : pfn_get_instance_proc_addr_(pfn_get_instance_proc_addr), flags_(flags), p_next_(p_next) {}
+
+  DirectDriverLoadingInfoLUNARG(const native_type &rhs)
+    : DirectDriverLoadingInfoLUNARG(std::bit_cast<DirectDriverLoadingInfoLUNARG>(rhs)) {}
+
+  DirectDriverLoadingInfoLUNARG &operator=(const native_type &rhs) {
+    *this = std::bit_cast<DirectDriverLoadingInfoLUNARG>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const DirectDriverLoadingInfoLUNARG &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -639,6 +1017,16 @@ struct DirectDriverLoadingListLUNARG {
                                 uint32_t driver_count = {}, const void *p_next = {})
     : p_drivers_(p_drivers), mode_(mode), driver_count_(driver_count), p_next_(p_next) {}
 
+  DirectDriverLoadingListLUNARG(const native_type &rhs)
+    : DirectDriverLoadingListLUNARG(std::bit_cast<DirectDriverLoadingListLUNARG>(rhs)) {}
+
+  DirectDriverLoadingListLUNARG &operator=(const native_type &rhs) {
+    *this = std::bit_cast<DirectDriverLoadingListLUNARG>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const DirectDriverLoadingListLUNARG &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::DIRECT_DRIVER_LOADING_LIST_LUNARG;
@@ -655,6 +1043,16 @@ struct PhysicalDeviceExtendedSparseAddressSpaceFeaturesNV {
   PhysicalDeviceExtendedSparseAddressSpaceFeaturesNV(VkBool32 extended_sparse_address_space = {}, void *p_next = {})
     : extended_sparse_address_space_(extended_sparse_address_space), p_next_(p_next) {}
 
+  PhysicalDeviceExtendedSparseAddressSpaceFeaturesNV(const native_type &rhs)
+    : PhysicalDeviceExtendedSparseAddressSpaceFeaturesNV(std::bit_cast<PhysicalDeviceExtendedSparseAddressSpaceFeaturesNV>(rhs)) {}
+
+  PhysicalDeviceExtendedSparseAddressSpaceFeaturesNV &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceExtendedSparseAddressSpaceFeaturesNV>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceExtendedSparseAddressSpaceFeaturesNV &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PHYSICAL_DEVICE_EXTENDED_SPARSE_ADDRESS_SPACE_FEATURES_NV;
@@ -669,6 +1067,16 @@ struct SwapchainPresentScalingCreateInfoEXT {
   SwapchainPresentScalingCreateInfoEXT(PresentGravityMask present_gravity_y = {}, PresentScalingMask scaling_behavior = {},
                                        PresentGravityMask present_gravity_x = {}, const void *p_next = {})
     : present_gravity_y_(present_gravity_y), scaling_behavior_(scaling_behavior), present_gravity_x_(present_gravity_x), p_next_(p_next) {}
+
+  SwapchainPresentScalingCreateInfoEXT(const native_type &rhs)
+    : SwapchainPresentScalingCreateInfoEXT(std::bit_cast<SwapchainPresentScalingCreateInfoEXT>(rhs)) {}
+
+  SwapchainPresentScalingCreateInfoEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<SwapchainPresentScalingCreateInfoEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const SwapchainPresentScalingCreateInfoEXT &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -686,6 +1094,15 @@ struct SwapchainPresentModeInfoEXT {
   SwapchainPresentModeInfoEXT(const PresentMode *p_present_modes = {}, uint32_t swapchain_count = {}, const void *p_next = {})
     : p_present_modes_(p_present_modes), swapchain_count_(swapchain_count), p_next_(p_next) {}
 
+  SwapchainPresentModeInfoEXT(const native_type &rhs) : SwapchainPresentModeInfoEXT(std::bit_cast<SwapchainPresentModeInfoEXT>(rhs)) {}
+
+  SwapchainPresentModeInfoEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<SwapchainPresentModeInfoEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const SwapchainPresentModeInfoEXT &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::SWAPCHAIN_PRESENT_MODE_INFO_EXT;
@@ -697,6 +1114,16 @@ struct SwapchainPresentModeInfoEXT {
 struct PhysicalDeviceLayeredDriverPropertiesMSFT {
 
   using native_type = VkPhysicalDeviceLayeredDriverPropertiesMSFT;
+
+  PhysicalDeviceLayeredDriverPropertiesMSFT(const native_type &rhs)
+    : PhysicalDeviceLayeredDriverPropertiesMSFT(std::bit_cast<PhysicalDeviceLayeredDriverPropertiesMSFT>(rhs)) {}
+
+  PhysicalDeviceLayeredDriverPropertiesMSFT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceLayeredDriverPropertiesMSFT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceLayeredDriverPropertiesMSFT &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -712,6 +1139,16 @@ struct SurfacePresentModeCompatibilityEXT {
   SurfacePresentModeCompatibilityEXT(PresentMode *p_present_modes = {}, uint32_t present_mode_count = {}, void *p_next = {})
     : p_present_modes_(p_present_modes), present_mode_count_(present_mode_count), p_next_(p_next) {}
 
+  SurfacePresentModeCompatibilityEXT(const native_type &rhs)
+    : SurfacePresentModeCompatibilityEXT(std::bit_cast<SurfacePresentModeCompatibilityEXT>(rhs)) {}
+
+  SurfacePresentModeCompatibilityEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<SurfacePresentModeCompatibilityEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const SurfacePresentModeCompatibilityEXT &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::SURFACE_PRESENT_MODE_COMPATIBILITY_EXT;
@@ -723,6 +1160,16 @@ struct SurfacePresentModeCompatibilityEXT {
 struct SurfacePresentScalingCapabilitiesEXT {
 
   using native_type = VkSurfacePresentScalingCapabilitiesEXT;
+
+  SurfacePresentScalingCapabilitiesEXT(const native_type &rhs)
+    : SurfacePresentScalingCapabilitiesEXT(std::bit_cast<SurfacePresentScalingCapabilitiesEXT>(rhs)) {}
+
+  SurfacePresentScalingCapabilitiesEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<SurfacePresentScalingCapabilitiesEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const SurfacePresentScalingCapabilitiesEXT &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -741,6 +1188,15 @@ struct SurfacePresentModeEXT {
 
   SurfacePresentModeEXT(PresentMode present_mode = {}, void *p_next = {}) : present_mode_(present_mode), p_next_(p_next) {}
 
+  SurfacePresentModeEXT(const native_type &rhs) : SurfacePresentModeEXT(std::bit_cast<SurfacePresentModeEXT>(rhs)) {}
+
+  SurfacePresentModeEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<SurfacePresentModeEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const SurfacePresentModeEXT &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::SURFACE_PRESENT_MODE_EXT;
@@ -754,6 +1210,17 @@ struct PhysicalDeviceDynamicRenderingUnusedAttachmentsFeaturesEXT {
 
   PhysicalDeviceDynamicRenderingUnusedAttachmentsFeaturesEXT(VkBool32 dynamic_rendering_unused_attachments = {}, void *p_next = {})
     : dynamic_rendering_unused_attachments_(dynamic_rendering_unused_attachments), p_next_(p_next) {}
+
+  PhysicalDeviceDynamicRenderingUnusedAttachmentsFeaturesEXT(const native_type &rhs)
+    : PhysicalDeviceDynamicRenderingUnusedAttachmentsFeaturesEXT(
+        std::bit_cast<PhysicalDeviceDynamicRenderingUnusedAttachmentsFeaturesEXT>(rhs)) {}
+
+  PhysicalDeviceDynamicRenderingUnusedAttachmentsFeaturesEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceDynamicRenderingUnusedAttachmentsFeaturesEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceDynamicRenderingUnusedAttachmentsFeaturesEXT &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -769,6 +1236,16 @@ struct PhysicalDeviceFrameBoundaryFeaturesEXT {
   PhysicalDeviceFrameBoundaryFeaturesEXT(VkBool32 frame_boundary = {}, void *p_next = {})
     : frame_boundary_(frame_boundary), p_next_(p_next) {}
 
+  PhysicalDeviceFrameBoundaryFeaturesEXT(const native_type &rhs)
+    : PhysicalDeviceFrameBoundaryFeaturesEXT(std::bit_cast<PhysicalDeviceFrameBoundaryFeaturesEXT>(rhs)) {}
+
+  PhysicalDeviceFrameBoundaryFeaturesEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceFrameBoundaryFeaturesEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceFrameBoundaryFeaturesEXT &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PHYSICAL_DEVICE_FRAME_BOUNDARY_FEATURES_EXT;
@@ -783,6 +1260,16 @@ struct PhysicalDeviceShaderCoreBuiltinsFeaturesARM {
   PhysicalDeviceShaderCoreBuiltinsFeaturesARM(VkBool32 shader_core_builtins = {}, void *p_next = {})
     : shader_core_builtins_(shader_core_builtins), p_next_(p_next) {}
 
+  PhysicalDeviceShaderCoreBuiltinsFeaturesARM(const native_type &rhs)
+    : PhysicalDeviceShaderCoreBuiltinsFeaturesARM(std::bit_cast<PhysicalDeviceShaderCoreBuiltinsFeaturesARM>(rhs)) {}
+
+  PhysicalDeviceShaderCoreBuiltinsFeaturesARM &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceShaderCoreBuiltinsFeaturesARM>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceShaderCoreBuiltinsFeaturesARM &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PHYSICAL_DEVICE_SHADER_CORE_BUILTINS_FEATURES_ARM;
@@ -793,6 +1280,16 @@ struct PhysicalDeviceShaderCoreBuiltinsFeaturesARM {
 struct PhysicalDeviceShaderCoreBuiltinsPropertiesARM {
 
   using native_type = VkPhysicalDeviceShaderCoreBuiltinsPropertiesARM;
+
+  PhysicalDeviceShaderCoreBuiltinsPropertiesARM(const native_type &rhs)
+    : PhysicalDeviceShaderCoreBuiltinsPropertiesARM(std::bit_cast<PhysicalDeviceShaderCoreBuiltinsPropertiesARM>(rhs)) {}
+
+  PhysicalDeviceShaderCoreBuiltinsPropertiesARM &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceShaderCoreBuiltinsPropertiesARM>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceShaderCoreBuiltinsPropertiesARM &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -812,6 +1309,15 @@ struct DecompressMemoryRegionNV {
     : src_address_(src_address), dst_address_(dst_address), compressed_size_(compressed_size), decompressed_size_(decompressed_size),
       decompression_method_(decompression_method) {}
 
+  DecompressMemoryRegionNV(const native_type &rhs) : DecompressMemoryRegionNV(std::bit_cast<DecompressMemoryRegionNV>(rhs)) {}
+
+  DecompressMemoryRegionNV &operator=(const native_type &rhs) {
+    *this = std::bit_cast<DecompressMemoryRegionNV>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const DecompressMemoryRegionNV &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   VkDeviceAddress src_address_;
@@ -827,6 +1333,16 @@ struct PhysicalDevicePipelineLibraryGroupHandlesFeaturesEXT {
 
   PhysicalDevicePipelineLibraryGroupHandlesFeaturesEXT(VkBool32 pipeline_library_group_handles = {}, void *p_next = {})
     : pipeline_library_group_handles_(pipeline_library_group_handles), p_next_(p_next) {}
+
+  PhysicalDevicePipelineLibraryGroupHandlesFeaturesEXT(const native_type &rhs)
+    : PhysicalDevicePipelineLibraryGroupHandlesFeaturesEXT(std::bit_cast<PhysicalDevicePipelineLibraryGroupHandlesFeaturesEXT>(rhs)) {}
+
+  PhysicalDevicePipelineLibraryGroupHandlesFeaturesEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDevicePipelineLibraryGroupHandlesFeaturesEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDevicePipelineLibraryGroupHandlesFeaturesEXT &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -848,6 +1364,16 @@ struct DeviceFaultVendorBinaryHeaderVersionOneEXT {
       driver_version_(driver_version), pipeline_cache_uuid_(pipeline_cache_uuid), application_name_offset_(application_name_offset),
       application_version_(application_version), engine_name_offset_(engine_name_offset), engine_version_(engine_version),
       api_version_(api_version) {}
+
+  DeviceFaultVendorBinaryHeaderVersionOneEXT(const native_type &rhs)
+    : DeviceFaultVendorBinaryHeaderVersionOneEXT(std::bit_cast<DeviceFaultVendorBinaryHeaderVersionOneEXT>(rhs)) {}
+
+  DeviceFaultVendorBinaryHeaderVersionOneEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<DeviceFaultVendorBinaryHeaderVersionOneEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const DeviceFaultVendorBinaryHeaderVersionOneEXT &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -872,6 +1398,15 @@ struct DeviceFaultVendorInfoEXT {
                            uint64_t vendor_fault_data = {})
     : description_(description), vendor_fault_code_(vendor_fault_code), vendor_fault_data_(vendor_fault_data) {}
 
+  DeviceFaultVendorInfoEXT(const native_type &rhs) : DeviceFaultVendorInfoEXT(std::bit_cast<DeviceFaultVendorInfoEXT>(rhs)) {}
+
+  DeviceFaultVendorInfoEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<DeviceFaultVendorInfoEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const DeviceFaultVendorInfoEXT &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   std::array<char, VK_MAX_DESCRIPTION_SIZE> description_;
@@ -886,6 +1421,15 @@ struct DeviceFaultAddressInfoEXT {
   DeviceFaultAddressInfoEXT(DeviceFaultAddressType address_type = {}, VkDeviceAddress reported_address = {},
                             VkDeviceSize address_precision = {})
     : address_type_(address_type), reported_address_(reported_address), address_precision_(address_precision) {}
+
+  DeviceFaultAddressInfoEXT(const native_type &rhs) : DeviceFaultAddressInfoEXT(std::bit_cast<DeviceFaultAddressInfoEXT>(rhs)) {}
+
+  DeviceFaultAddressInfoEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<DeviceFaultAddressInfoEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const DeviceFaultAddressInfoEXT &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -906,6 +1450,16 @@ struct OpticalFlowSessionCreateInfoNV {
       cost_format_(cost_format), output_grid_size_(output_grid_size), hint_grid_size_(hint_grid_size),
       performance_level_(performance_level), p_next_(p_next) {}
 
+  OpticalFlowSessionCreateInfoNV(const native_type &rhs)
+    : OpticalFlowSessionCreateInfoNV(std::bit_cast<OpticalFlowSessionCreateInfoNV>(rhs)) {}
+
+  OpticalFlowSessionCreateInfoNV &operator=(const native_type &rhs) {
+    *this = std::bit_cast<OpticalFlowSessionCreateInfoNV>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const OpticalFlowSessionCreateInfoNV &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::OPTICAL_FLOW_SESSION_CREATE_INFO_NV;
@@ -925,6 +1479,16 @@ struct OpticalFlowImageFormatPropertiesNV {
 
   using native_type = VkOpticalFlowImageFormatPropertiesNV;
 
+  OpticalFlowImageFormatPropertiesNV(const native_type &rhs)
+    : OpticalFlowImageFormatPropertiesNV(std::bit_cast<OpticalFlowImageFormatPropertiesNV>(rhs)) {}
+
+  OpticalFlowImageFormatPropertiesNV &operator=(const native_type &rhs) {
+    *this = std::bit_cast<OpticalFlowImageFormatPropertiesNV>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const OpticalFlowImageFormatPropertiesNV &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::OPTICAL_FLOW_IMAGE_FORMAT_PROPERTIES_NV;
@@ -937,6 +1501,15 @@ struct OpticalFlowImageFormatInfoNV {
   using native_type = VkOpticalFlowImageFormatInfoNV;
 
   OpticalFlowImageFormatInfoNV(OpticalFlowUsageMask usage = {}, const void *p_next = {}) : usage_(usage), p_next_(p_next) {}
+
+  OpticalFlowImageFormatInfoNV(const native_type &rhs) : OpticalFlowImageFormatInfoNV(std::bit_cast<OpticalFlowImageFormatInfoNV>(rhs)) {}
+
+  OpticalFlowImageFormatInfoNV &operator=(const native_type &rhs) {
+    *this = std::bit_cast<OpticalFlowImageFormatInfoNV>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const OpticalFlowImageFormatInfoNV &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -952,6 +1525,16 @@ struct PhysicalDeviceAddressBindingReportFeaturesEXT {
   PhysicalDeviceAddressBindingReportFeaturesEXT(VkBool32 report_address_binding = {}, void *p_next = {})
     : report_address_binding_(report_address_binding), p_next_(p_next) {}
 
+  PhysicalDeviceAddressBindingReportFeaturesEXT(const native_type &rhs)
+    : PhysicalDeviceAddressBindingReportFeaturesEXT(std::bit_cast<PhysicalDeviceAddressBindingReportFeaturesEXT>(rhs)) {}
+
+  PhysicalDeviceAddressBindingReportFeaturesEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceAddressBindingReportFeaturesEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceAddressBindingReportFeaturesEXT &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PHYSICAL_DEVICE_ADDRESS_BINDING_REPORT_FEATURES_EXT;
@@ -965,6 +1548,16 @@ struct PhysicalDeviceDepthClampZeroOneFeaturesEXT {
 
   PhysicalDeviceDepthClampZeroOneFeaturesEXT(VkBool32 depth_clamp_zero_one = {}, void *p_next = {})
     : depth_clamp_zero_one_(depth_clamp_zero_one), p_next_(p_next) {}
+
+  PhysicalDeviceDepthClampZeroOneFeaturesEXT(const native_type &rhs)
+    : PhysicalDeviceDepthClampZeroOneFeaturesEXT(std::bit_cast<PhysicalDeviceDepthClampZeroOneFeaturesEXT>(rhs)) {}
+
+  PhysicalDeviceDepthClampZeroOneFeaturesEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceDepthClampZeroOneFeaturesEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceDepthClampZeroOneFeaturesEXT &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -980,6 +1573,16 @@ struct PhysicalDeviceAttachmentFeedbackLoopLayoutFeaturesEXT {
   PhysicalDeviceAttachmentFeedbackLoopLayoutFeaturesEXT(VkBool32 attachment_feedback_loop_layout = {}, void *p_next = {})
     : attachment_feedback_loop_layout_(attachment_feedback_loop_layout), p_next_(p_next) {}
 
+  PhysicalDeviceAttachmentFeedbackLoopLayoutFeaturesEXT(const native_type &rhs)
+    : PhysicalDeviceAttachmentFeedbackLoopLayoutFeaturesEXT(std::bit_cast<PhysicalDeviceAttachmentFeedbackLoopLayoutFeaturesEXT>(rhs)) {}
+
+  PhysicalDeviceAttachmentFeedbackLoopLayoutFeaturesEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceAttachmentFeedbackLoopLayoutFeaturesEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceAttachmentFeedbackLoopLayoutFeaturesEXT &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PHYSICAL_DEVICE_ATTACHMENT_FEEDBACK_LOOP_LAYOUT_FEATURES_EXT;
@@ -993,6 +1596,16 @@ struct PhysicalDeviceAmigoProfilingFeaturesSEC {
 
   PhysicalDeviceAmigoProfilingFeaturesSEC(VkBool32 amigo_profiling = {}, void *p_next = {})
     : amigo_profiling_(amigo_profiling), p_next_(p_next) {}
+
+  PhysicalDeviceAmigoProfilingFeaturesSEC(const native_type &rhs)
+    : PhysicalDeviceAmigoProfilingFeaturesSEC(std::bit_cast<PhysicalDeviceAmigoProfilingFeaturesSEC>(rhs)) {}
+
+  PhysicalDeviceAmigoProfilingFeaturesSEC &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceAmigoProfilingFeaturesSEC>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceAmigoProfilingFeaturesSEC &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -1008,6 +1621,15 @@ struct DescriptorImageInfo {
   DescriptorImageInfo(VkSampler sampler = {}, VkImageView image_view = {}, ImageLayout image_layout = {})
     : sampler_(sampler), image_view_(image_view), image_layout_(image_layout) {}
 
+  DescriptorImageInfo(const native_type &rhs) : DescriptorImageInfo(std::bit_cast<DescriptorImageInfo>(rhs)) {}
+
+  DescriptorImageInfo &operator=(const native_type &rhs) {
+    *this = std::bit_cast<DescriptorImageInfo>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const DescriptorImageInfo &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   VkSampler sampler_;
@@ -1021,6 +1643,15 @@ struct DescriptorBufferInfo {
 
   DescriptorBufferInfo(VkBuffer buffer = {}, VkDeviceSize offset = {}, VkDeviceSize range = {})
     : buffer_(buffer), offset_(offset), range_(range) {}
+
+  DescriptorBufferInfo(const native_type &rhs) : DescriptorBufferInfo(std::bit_cast<DescriptorBufferInfo>(rhs)) {}
+
+  DescriptorBufferInfo &operator=(const native_type &rhs) {
+    *this = std::bit_cast<DescriptorBufferInfo>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const DescriptorBufferInfo &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -1039,6 +1670,15 @@ struct WriteDescriptorSet {
     : p_texel_buffer_view_(p_texel_buffer_view), dst_set_(dst_set), dst_binding_(dst_binding), dst_array_element_(dst_array_element),
       descriptor_count_(descriptor_count), descriptor_type_(descriptor_type), p_image_info_(p_image_info), p_buffer_info_(p_buffer_info),
       p_next_(p_next) {}
+
+  WriteDescriptorSet(const native_type &rhs) : WriteDescriptorSet(std::bit_cast<WriteDescriptorSet>(rhs)) {}
+
+  WriteDescriptorSet &operator=(const native_type &rhs) {
+    *this = std::bit_cast<WriteDescriptorSet>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const WriteDescriptorSet &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -1063,6 +1703,15 @@ struct PushDescriptorSetInfoKHR {
     : p_descriptor_writes_(p_descriptor_writes), stage_flags_(stage_flags), layout_(layout), set_(set),
       descriptor_write_count_(descriptor_write_count), p_next_(p_next) {}
 
+  PushDescriptorSetInfoKHR(const native_type &rhs) : PushDescriptorSetInfoKHR(std::bit_cast<PushDescriptorSetInfoKHR>(rhs)) {}
+
+  PushDescriptorSetInfoKHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PushDescriptorSetInfoKHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PushDescriptorSetInfoKHR &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PUSH_DESCRIPTOR_SET_INFO_KHR;
@@ -1080,6 +1729,15 @@ struct Extent3D {
 
   Extent3D(uint32_t width = {}, uint32_t height = {}, uint32_t depth = {}) : width_(width), height_(height), depth_(depth) {}
 
+  Extent3D(const native_type &rhs) : Extent3D(std::bit_cast<Extent3D>(rhs)) {}
+
+  Extent3D &operator=(const native_type &rhs) {
+    *this = std::bit_cast<Extent3D>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const Extent3D &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   uint32_t width_;
@@ -1093,6 +1751,15 @@ struct TilePropertiesQCOM {
 
   TilePropertiesQCOM(Offset2D origin = {}, Extent3D tile_size = {}, Extent2D apron_size = {}, void *p_next = {})
     : origin_(origin), tile_size_(tile_size), apron_size_(apron_size), p_next_(p_next) {}
+
+  TilePropertiesQCOM(const native_type &rhs) : TilePropertiesQCOM(std::bit_cast<TilePropertiesQCOM>(rhs)) {}
+
+  TilePropertiesQCOM &operator=(const native_type &rhs) {
+    *this = std::bit_cast<TilePropertiesQCOM>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const TilePropertiesQCOM &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -1112,6 +1779,16 @@ struct PhysicalDeviceImageProcessingFeaturesQCOM {
     : texture_block_match_(texture_block_match), texture_sample_weighted_(texture_sample_weighted), texture_box_filter_(texture_box_filter),
       p_next_(p_next) {}
 
+  PhysicalDeviceImageProcessingFeaturesQCOM(const native_type &rhs)
+    : PhysicalDeviceImageProcessingFeaturesQCOM(std::bit_cast<PhysicalDeviceImageProcessingFeaturesQCOM>(rhs)) {}
+
+  PhysicalDeviceImageProcessingFeaturesQCOM &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceImageProcessingFeaturesQCOM>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceImageProcessingFeaturesQCOM &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PHYSICAL_DEVICE_IMAGE_PROCESSING_FEATURES_QCOM;
@@ -1129,6 +1806,16 @@ struct ImageViewSampleWeightCreateInfoQCOM {
                                       const void *p_next = {})
     : num_phases_(num_phases), filter_center_(filter_center), filter_size_(filter_size), p_next_(p_next) {}
 
+  ImageViewSampleWeightCreateInfoQCOM(const native_type &rhs)
+    : ImageViewSampleWeightCreateInfoQCOM(std::bit_cast<ImageViewSampleWeightCreateInfoQCOM>(rhs)) {}
+
+  ImageViewSampleWeightCreateInfoQCOM &operator=(const native_type &rhs) {
+    *this = std::bit_cast<ImageViewSampleWeightCreateInfoQCOM>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const ImageViewSampleWeightCreateInfoQCOM &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::IMAGE_VIEW_SAMPLE_WEIGHT_CREATE_INFO_QCOM;
@@ -1141,6 +1828,16 @@ struct ImageViewSampleWeightCreateInfoQCOM {
 struct PhysicalDevicePipelineRobustnessPropertiesEXT {
 
   using native_type = VkPhysicalDevicePipelineRobustnessPropertiesEXT;
+
+  PhysicalDevicePipelineRobustnessPropertiesEXT(const native_type &rhs)
+    : PhysicalDevicePipelineRobustnessPropertiesEXT(std::bit_cast<PhysicalDevicePipelineRobustnessPropertiesEXT>(rhs)) {}
+
+  PhysicalDevicePipelineRobustnessPropertiesEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDevicePipelineRobustnessPropertiesEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDevicePipelineRobustnessPropertiesEXT &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -1162,6 +1859,16 @@ struct PipelineRobustnessCreateInfoEXT {
     : images_(images), storage_buffers_(storage_buffers), uniform_buffers_(uniform_buffers), vertex_inputs_(vertex_inputs),
       p_next_(p_next) {}
 
+  PipelineRobustnessCreateInfoEXT(const native_type &rhs)
+    : PipelineRobustnessCreateInfoEXT(std::bit_cast<PipelineRobustnessCreateInfoEXT>(rhs)) {}
+
+  PipelineRobustnessCreateInfoEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PipelineRobustnessCreateInfoEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PipelineRobustnessCreateInfoEXT &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PIPELINE_ROBUSTNESS_CREATE_INFO_EXT;
@@ -1179,6 +1886,16 @@ struct PhysicalDeviceMultiviewPerViewRenderAreasFeaturesQCOM {
   PhysicalDeviceMultiviewPerViewRenderAreasFeaturesQCOM(VkBool32 multiview_per_view_render_areas = {}, void *p_next = {})
     : multiview_per_view_render_areas_(multiview_per_view_render_areas), p_next_(p_next) {}
 
+  PhysicalDeviceMultiviewPerViewRenderAreasFeaturesQCOM(const native_type &rhs)
+    : PhysicalDeviceMultiviewPerViewRenderAreasFeaturesQCOM(std::bit_cast<PhysicalDeviceMultiviewPerViewRenderAreasFeaturesQCOM>(rhs)) {}
+
+  PhysicalDeviceMultiviewPerViewRenderAreasFeaturesQCOM &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceMultiviewPerViewRenderAreasFeaturesQCOM>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceMultiviewPerViewRenderAreasFeaturesQCOM &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PHYSICAL_DEVICE_MULTIVIEW_PER_VIEW_RENDER_AREAS_FEATURES_QCOM;
@@ -1192,6 +1909,17 @@ struct PhysicalDeviceShaderEarlyAndLateFragmentTestsFeaturesAMD {
 
   PhysicalDeviceShaderEarlyAndLateFragmentTestsFeaturesAMD(VkBool32 shader_early_and_late_fragment_tests = {}, void *p_next = {})
     : shader_early_and_late_fragment_tests_(shader_early_and_late_fragment_tests), p_next_(p_next) {}
+
+  PhysicalDeviceShaderEarlyAndLateFragmentTestsFeaturesAMD(const native_type &rhs)
+    : PhysicalDeviceShaderEarlyAndLateFragmentTestsFeaturesAMD(
+        std::bit_cast<PhysicalDeviceShaderEarlyAndLateFragmentTestsFeaturesAMD>(rhs)) {}
+
+  PhysicalDeviceShaderEarlyAndLateFragmentTestsFeaturesAMD &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceShaderEarlyAndLateFragmentTestsFeaturesAMD>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceShaderEarlyAndLateFragmentTestsFeaturesAMD &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -1207,6 +1935,16 @@ struct PhysicalDevicePipelinePropertiesFeaturesEXT {
   PhysicalDevicePipelinePropertiesFeaturesEXT(VkBool32 pipeline_properties_identifier = {}, void *p_next = {})
     : pipeline_properties_identifier_(pipeline_properties_identifier), p_next_(p_next) {}
 
+  PhysicalDevicePipelinePropertiesFeaturesEXT(const native_type &rhs)
+    : PhysicalDevicePipelinePropertiesFeaturesEXT(std::bit_cast<PhysicalDevicePipelinePropertiesFeaturesEXT>(rhs)) {}
+
+  PhysicalDevicePipelinePropertiesFeaturesEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDevicePipelinePropertiesFeaturesEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDevicePipelinePropertiesFeaturesEXT &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PHYSICAL_DEVICE_PIPELINE_PROPERTIES_FEATURES_EXT;
@@ -1218,6 +1956,16 @@ struct PipelinePropertiesIdentifierEXT {
 
   using native_type = VkPipelinePropertiesIdentifierEXT;
 
+  PipelinePropertiesIdentifierEXT(const native_type &rhs)
+    : PipelinePropertiesIdentifierEXT(std::bit_cast<PipelinePropertiesIdentifierEXT>(rhs)) {}
+
+  PipelinePropertiesIdentifierEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PipelinePropertiesIdentifierEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PipelinePropertiesIdentifierEXT &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PIPELINE_PROPERTIES_IDENTIFIER_EXT;
@@ -1228,6 +1976,16 @@ struct PipelinePropertiesIdentifierEXT {
 struct PhysicalDeviceShaderTileImagePropertiesEXT {
 
   using native_type = VkPhysicalDeviceShaderTileImagePropertiesEXT;
+
+  PhysicalDeviceShaderTileImagePropertiesEXT(const native_type &rhs)
+    : PhysicalDeviceShaderTileImagePropertiesEXT(std::bit_cast<PhysicalDeviceShaderTileImagePropertiesEXT>(rhs)) {}
+
+  PhysicalDeviceShaderTileImagePropertiesEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceShaderTileImagePropertiesEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceShaderTileImagePropertiesEXT &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -1244,6 +2002,15 @@ struct MicromapUsageEXT {
 
   MicromapUsageEXT(uint32_t count = {}, uint32_t subdivision_level = {}, uint32_t format = {})
     : count_(count), subdivision_level_(subdivision_level), format_(format) {}
+
+  MicromapUsageEXT(const native_type &rhs) : MicromapUsageEXT(std::bit_cast<MicromapUsageEXT>(rhs)) {}
+
+  MicromapUsageEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<MicromapUsageEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const MicromapUsageEXT &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -1264,6 +2031,16 @@ struct AccelerationStructureTrianglesOpacityMicromapEXT {
     : micromap_(micromap), index_type_(index_type), index_buffer_(index_buffer), index_stride_(index_stride), base_triangle_(base_triangle),
       usage_counts_count_(usage_counts_count), p_usage_counts_(p_usage_counts), pp_usage_counts_(pp_usage_counts), p_next_(p_next) {}
 
+  AccelerationStructureTrianglesOpacityMicromapEXT(const native_type &rhs)
+    : AccelerationStructureTrianglesOpacityMicromapEXT(std::bit_cast<AccelerationStructureTrianglesOpacityMicromapEXT>(rhs)) {}
+
+  AccelerationStructureTrianglesOpacityMicromapEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<AccelerationStructureTrianglesOpacityMicromapEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const AccelerationStructureTrianglesOpacityMicromapEXT &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::ACCELERATION_STRUCTURE_TRIANGLES_OPACITY_MICROMAP_EXT;
@@ -1282,6 +2059,16 @@ struct PhysicalDeviceOpacityMicromapPropertiesEXT {
 
   using native_type = VkPhysicalDeviceOpacityMicromapPropertiesEXT;
 
+  PhysicalDeviceOpacityMicromapPropertiesEXT(const native_type &rhs)
+    : PhysicalDeviceOpacityMicromapPropertiesEXT(std::bit_cast<PhysicalDeviceOpacityMicromapPropertiesEXT>(rhs)) {}
+
+  PhysicalDeviceOpacityMicromapPropertiesEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceOpacityMicromapPropertiesEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceOpacityMicromapPropertiesEXT &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PHYSICAL_DEVICE_OPACITY_MICROMAP_PROPERTIES_EXT;
@@ -1296,6 +2083,15 @@ struct MicromapTriangleEXT {
 
   MicromapTriangleEXT(uint32_t data_offset = {}, uint16_t subdivision_level = {}, uint16_t format = {})
     : data_offset_(data_offset), subdivision_level_(subdivision_level), format_(format) {}
+
+  MicromapTriangleEXT(const native_type &rhs) : MicromapTriangleEXT(std::bit_cast<MicromapTriangleEXT>(rhs)) {}
+
+  MicromapTriangleEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<MicromapTriangleEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const MicromapTriangleEXT &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -1312,6 +2108,15 @@ struct MicromapBuildSizesInfoEXT {
                             const void *p_next = {})
     : discardable_(discardable), micromap_size_(micromap_size), build_scratch_size_(build_scratch_size), p_next_(p_next) {}
 
+  MicromapBuildSizesInfoEXT(const native_type &rhs) : MicromapBuildSizesInfoEXT(std::bit_cast<MicromapBuildSizesInfoEXT>(rhs)) {}
+
+  MicromapBuildSizesInfoEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<MicromapBuildSizesInfoEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const MicromapBuildSizesInfoEXT &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::MICROMAP_BUILD_SIZES_INFO_EXT;
@@ -1326,6 +2131,15 @@ struct MicromapVersionInfoEXT {
   using native_type = VkMicromapVersionInfoEXT;
 
   MicromapVersionInfoEXT(const uint8_t *p_version_data = {}, const void *p_next = {}) : p_version_data_(p_version_data), p_next_(p_next) {}
+
+  MicromapVersionInfoEXT(const native_type &rhs) : MicromapVersionInfoEXT(std::bit_cast<MicromapVersionInfoEXT>(rhs)) {}
+
+  MicromapVersionInfoEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<MicromapVersionInfoEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const MicromapVersionInfoEXT &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -1346,6 +2160,15 @@ struct MicromapBuildInfoEXT {
     : triangle_array_stride_(triangle_array_stride), type_(type), flags_(flags), mode_(mode), dst_micromap_(dst_micromap),
       usage_counts_count_(usage_counts_count), p_usage_counts_(p_usage_counts), pp_usage_counts_(pp_usage_counts), data_(data),
       scratch_data_(scratch_data), triangle_array_(triangle_array), p_next_(p_next) {}
+
+  MicromapBuildInfoEXT(const native_type &rhs) : MicromapBuildInfoEXT(std::bit_cast<MicromapBuildInfoEXT>(rhs)) {}
+
+  MicromapBuildInfoEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<MicromapBuildInfoEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const MicromapBuildInfoEXT &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -1371,6 +2194,16 @@ struct PhysicalDeviceSubpassMergeFeedbackFeaturesEXT {
   PhysicalDeviceSubpassMergeFeedbackFeaturesEXT(VkBool32 subpass_merge_feedback = {}, void *p_next = {})
     : subpass_merge_feedback_(subpass_merge_feedback), p_next_(p_next) {}
 
+  PhysicalDeviceSubpassMergeFeedbackFeaturesEXT(const native_type &rhs)
+    : PhysicalDeviceSubpassMergeFeedbackFeaturesEXT(std::bit_cast<PhysicalDeviceSubpassMergeFeedbackFeaturesEXT>(rhs)) {}
+
+  PhysicalDeviceSubpassMergeFeedbackFeaturesEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceSubpassMergeFeedbackFeaturesEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceSubpassMergeFeedbackFeaturesEXT &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PHYSICAL_DEVICE_SUBPASS_MERGE_FEEDBACK_FEATURES_EXT;
@@ -1381,6 +2214,16 @@ struct PhysicalDeviceSubpassMergeFeedbackFeaturesEXT {
 struct RenderPassCreationFeedbackInfoEXT {
 
   using native_type = VkRenderPassCreationFeedbackInfoEXT;
+
+  RenderPassCreationFeedbackInfoEXT(const native_type &rhs)
+    : RenderPassCreationFeedbackInfoEXT(std::bit_cast<RenderPassCreationFeedbackInfoEXT>(rhs)) {}
+
+  RenderPassCreationFeedbackInfoEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<RenderPassCreationFeedbackInfoEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const RenderPassCreationFeedbackInfoEXT &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -1393,6 +2236,16 @@ struct RenderPassCreationFeedbackCreateInfoEXT {
 
   RenderPassCreationFeedbackCreateInfoEXT(RenderPassCreationFeedbackInfoEXT *p_render_pass_feedback = {}, const void *p_next = {})
     : p_render_pass_feedback_(p_render_pass_feedback), p_next_(p_next) {}
+
+  RenderPassCreationFeedbackCreateInfoEXT(const native_type &rhs)
+    : RenderPassCreationFeedbackCreateInfoEXT(std::bit_cast<RenderPassCreationFeedbackCreateInfoEXT>(rhs)) {}
+
+  RenderPassCreationFeedbackCreateInfoEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<RenderPassCreationFeedbackCreateInfoEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const RenderPassCreationFeedbackCreateInfoEXT &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -1409,6 +2262,15 @@ struct SubresourceLayout {
                     VkDeviceSize depth_pitch = {})
     : offset_(offset), size_(size), row_pitch_(row_pitch), array_pitch_(array_pitch), depth_pitch_(depth_pitch) {}
 
+  SubresourceLayout(const native_type &rhs) : SubresourceLayout(std::bit_cast<SubresourceLayout>(rhs)) {}
+
+  SubresourceLayout &operator=(const native_type &rhs) {
+    *this = std::bit_cast<SubresourceLayout>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const SubresourceLayout &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   VkDeviceSize offset_;
@@ -1421,6 +2283,15 @@ struct SubresourceLayout {
 struct SubresourceLayout2KHR {
 
   using native_type = VkSubresourceLayout2KHR;
+
+  SubresourceLayout2KHR(const native_type &rhs) : SubresourceLayout2KHR(std::bit_cast<SubresourceLayout2KHR>(rhs)) {}
+
+  SubresourceLayout2KHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<SubresourceLayout2KHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const SubresourceLayout2KHR &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -1436,6 +2307,15 @@ struct ImageSubresource {
   ImageSubresource(ImageAspectMask aspect_mask = {}, uint32_t mip_level = {}, uint32_t array_layer = {})
     : aspect_mask_(aspect_mask), mip_level_(mip_level), array_layer_(array_layer) {}
 
+  ImageSubresource(const native_type &rhs) : ImageSubresource(std::bit_cast<ImageSubresource>(rhs)) {}
+
+  ImageSubresource &operator=(const native_type &rhs) {
+    *this = std::bit_cast<ImageSubresource>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const ImageSubresource &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   ImageAspectMask aspect_mask_;
@@ -1449,6 +2329,15 @@ struct ImageSubresource2KHR {
 
   ImageSubresource2KHR(ImageSubresource image_subresource = {}, void *p_next = {})
     : image_subresource_(image_subresource), p_next_(p_next) {}
+
+  ImageSubresource2KHR(const native_type &rhs) : ImageSubresource2KHR(std::bit_cast<ImageSubresource2KHR>(rhs)) {}
+
+  ImageSubresource2KHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<ImageSubresource2KHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const ImageSubresource2KHR &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -1464,6 +2353,17 @@ struct PhysicalDeviceImageCompressionControlSwapchainFeaturesEXT {
   PhysicalDeviceImageCompressionControlSwapchainFeaturesEXT(VkBool32 image_compression_control_swapchain = {}, void *p_next = {})
     : image_compression_control_swapchain_(image_compression_control_swapchain), p_next_(p_next) {}
 
+  PhysicalDeviceImageCompressionControlSwapchainFeaturesEXT(const native_type &rhs)
+    : PhysicalDeviceImageCompressionControlSwapchainFeaturesEXT(
+        std::bit_cast<PhysicalDeviceImageCompressionControlSwapchainFeaturesEXT>(rhs)) {}
+
+  PhysicalDeviceImageCompressionControlSwapchainFeaturesEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceImageCompressionControlSwapchainFeaturesEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceImageCompressionControlSwapchainFeaturesEXT &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PHYSICAL_DEVICE_IMAGE_COMPRESSION_CONTROL_SWAPCHAIN_FEATURES_EXT;
@@ -1474,6 +2374,16 @@ struct PhysicalDeviceImageCompressionControlSwapchainFeaturesEXT {
 struct ImageCompressionPropertiesEXT {
 
   using native_type = VkImageCompressionPropertiesEXT;
+
+  ImageCompressionPropertiesEXT(const native_type &rhs)
+    : ImageCompressionPropertiesEXT(std::bit_cast<ImageCompressionPropertiesEXT>(rhs)) {}
+
+  ImageCompressionPropertiesEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<ImageCompressionPropertiesEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const ImageCompressionPropertiesEXT &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -1486,6 +2396,16 @@ struct ImageCompressionPropertiesEXT {
 struct PhysicalDeviceOpticalFlowPropertiesNV {
 
   using native_type = VkPhysicalDeviceOpticalFlowPropertiesNV;
+
+  PhysicalDeviceOpticalFlowPropertiesNV(const native_type &rhs)
+    : PhysicalDeviceOpticalFlowPropertiesNV(std::bit_cast<PhysicalDeviceOpticalFlowPropertiesNV>(rhs)) {}
+
+  PhysicalDeviceOpticalFlowPropertiesNV &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceOpticalFlowPropertiesNV>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceOpticalFlowPropertiesNV &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -1513,6 +2433,15 @@ struct ImageCompressionControlEXT {
     : p_fixed_rate_flags_(p_fixed_rate_flags), flags_(flags), compression_control_plane_count_(compression_control_plane_count),
       p_next_(p_next) {}
 
+  ImageCompressionControlEXT(const native_type &rhs) : ImageCompressionControlEXT(std::bit_cast<ImageCompressionControlEXT>(rhs)) {}
+
+  ImageCompressionControlEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<ImageCompressionControlEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const ImageCompressionControlEXT &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::IMAGE_COMPRESSION_CONTROL_EXT;
@@ -1529,6 +2458,16 @@ struct ImageAlignmentControlCreateInfoMESA {
   ImageAlignmentControlCreateInfoMESA(uint32_t maximum_requested_alignment = {}, const void *p_next = {})
     : maximum_requested_alignment_(maximum_requested_alignment), p_next_(p_next) {}
 
+  ImageAlignmentControlCreateInfoMESA(const native_type &rhs)
+    : ImageAlignmentControlCreateInfoMESA(std::bit_cast<ImageAlignmentControlCreateInfoMESA>(rhs)) {}
+
+  ImageAlignmentControlCreateInfoMESA &operator=(const native_type &rhs) {
+    *this = std::bit_cast<ImageAlignmentControlCreateInfoMESA>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const ImageAlignmentControlCreateInfoMESA &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::IMAGE_ALIGNMENT_CONTROL_CREATE_INFO_MESA;
@@ -1543,6 +2482,16 @@ struct PipelineShaderStageModuleIdentifierCreateInfoEXT {
   PipelineShaderStageModuleIdentifierCreateInfoEXT(const uint8_t *p_identifier = {}, uint32_t identifier_size = {}, const void *p_next = {})
     : p_identifier_(p_identifier), identifier_size_(identifier_size), p_next_(p_next) {}
 
+  PipelineShaderStageModuleIdentifierCreateInfoEXT(const native_type &rhs)
+    : PipelineShaderStageModuleIdentifierCreateInfoEXT(std::bit_cast<PipelineShaderStageModuleIdentifierCreateInfoEXT>(rhs)) {}
+
+  PipelineShaderStageModuleIdentifierCreateInfoEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PipelineShaderStageModuleIdentifierCreateInfoEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PipelineShaderStageModuleIdentifierCreateInfoEXT &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PIPELINE_SHADER_STAGE_MODULE_IDENTIFIER_CREATE_INFO_EXT;
@@ -1554,6 +2503,16 @@ struct PipelineShaderStageModuleIdentifierCreateInfoEXT {
 struct PhysicalDeviceShaderModuleIdentifierPropertiesEXT {
 
   using native_type = VkPhysicalDeviceShaderModuleIdentifierPropertiesEXT;
+
+  PhysicalDeviceShaderModuleIdentifierPropertiesEXT(const native_type &rhs)
+    : PhysicalDeviceShaderModuleIdentifierPropertiesEXT(std::bit_cast<PhysicalDeviceShaderModuleIdentifierPropertiesEXT>(rhs)) {}
+
+  PhysicalDeviceShaderModuleIdentifierPropertiesEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceShaderModuleIdentifierPropertiesEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceShaderModuleIdentifierPropertiesEXT &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -1571,6 +2530,16 @@ struct PhysicalDeviceGraphicsPipelineLibraryPropertiesEXT {
     : graphics_pipeline_library_independent_interpolation_decoration_(graphics_pipeline_library_independent_interpolation_decoration),
       graphics_pipeline_library_fast_linking_(graphics_pipeline_library_fast_linking), p_next_(p_next) {}
 
+  PhysicalDeviceGraphicsPipelineLibraryPropertiesEXT(const native_type &rhs)
+    : PhysicalDeviceGraphicsPipelineLibraryPropertiesEXT(std::bit_cast<PhysicalDeviceGraphicsPipelineLibraryPropertiesEXT>(rhs)) {}
+
+  PhysicalDeviceGraphicsPipelineLibraryPropertiesEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceGraphicsPipelineLibraryPropertiesEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceGraphicsPipelineLibraryPropertiesEXT &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PHYSICAL_DEVICE_GRAPHICS_PIPELINE_LIBRARY_PROPERTIES_EXT;
@@ -1586,6 +2555,16 @@ struct PhysicalDeviceGraphicsPipelineLibraryFeaturesEXT {
   PhysicalDeviceGraphicsPipelineLibraryFeaturesEXT(VkBool32 graphics_pipeline_library = {}, void *p_next = {})
     : graphics_pipeline_library_(graphics_pipeline_library), p_next_(p_next) {}
 
+  PhysicalDeviceGraphicsPipelineLibraryFeaturesEXT(const native_type &rhs)
+    : PhysicalDeviceGraphicsPipelineLibraryFeaturesEXT(std::bit_cast<PhysicalDeviceGraphicsPipelineLibraryFeaturesEXT>(rhs)) {}
+
+  PhysicalDeviceGraphicsPipelineLibraryFeaturesEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceGraphicsPipelineLibraryFeaturesEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceGraphicsPipelineLibraryFeaturesEXT &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PHYSICAL_DEVICE_GRAPHICS_PIPELINE_LIBRARY_FEATURES_EXT;
@@ -1598,6 +2577,15 @@ struct ImageViewMinLodCreateInfoEXT {
   using native_type = VkImageViewMinLodCreateInfoEXT;
 
   ImageViewMinLodCreateInfoEXT(float min_lod = {}, const void *p_next = {}) : min_lod_(min_lod), p_next_(p_next) {}
+
+  ImageViewMinLodCreateInfoEXT(const native_type &rhs) : ImageViewMinLodCreateInfoEXT(std::bit_cast<ImageViewMinLodCreateInfoEXT>(rhs)) {}
+
+  ImageViewMinLodCreateInfoEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<ImageViewMinLodCreateInfoEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const ImageViewMinLodCreateInfoEXT &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -1615,6 +2603,15 @@ struct AttachmentSampleCountInfoAMD {
     : depth_stencil_attachment_samples_(depth_stencil_attachment_samples), color_attachment_count_(color_attachment_count),
       p_color_attachment_samples_(p_color_attachment_samples), p_next_(p_next) {}
 
+  AttachmentSampleCountInfoAMD(const native_type &rhs) : AttachmentSampleCountInfoAMD(std::bit_cast<AttachmentSampleCountInfoAMD>(rhs)) {}
+
+  AttachmentSampleCountInfoAMD &operator=(const native_type &rhs) {
+    *this = std::bit_cast<AttachmentSampleCountInfoAMD>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const AttachmentSampleCountInfoAMD &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::ATTACHMENT_SAMPLE_COUNT_INFO_AMD;
@@ -1630,6 +2627,16 @@ struct RenderingFragmentDensityMapAttachmentInfoEXT {
 
   RenderingFragmentDensityMapAttachmentInfoEXT(ImageLayout image_layout = {}, VkImageView image_view = {}, const void *p_next = {})
     : image_layout_(image_layout), image_view_(image_view), p_next_(p_next) {}
+
+  RenderingFragmentDensityMapAttachmentInfoEXT(const native_type &rhs)
+    : RenderingFragmentDensityMapAttachmentInfoEXT(std::bit_cast<RenderingFragmentDensityMapAttachmentInfoEXT>(rhs)) {}
+
+  RenderingFragmentDensityMapAttachmentInfoEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<RenderingFragmentDensityMapAttachmentInfoEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const RenderingFragmentDensityMapAttachmentInfoEXT &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -1648,6 +2655,15 @@ struct PipelineRenderingCreateInfo {
     : stencil_attachment_format_(stencil_attachment_format), view_mask_(view_mask), color_attachment_count_(color_attachment_count),
       p_color_attachment_formats_(p_color_attachment_formats), depth_attachment_format_(depth_attachment_format), p_next_(p_next) {}
 
+  PipelineRenderingCreateInfo(const native_type &rhs) : PipelineRenderingCreateInfo(std::bit_cast<PipelineRenderingCreateInfo>(rhs)) {}
+
+  PipelineRenderingCreateInfo &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PipelineRenderingCreateInfo>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PipelineRenderingCreateInfo &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PIPELINE_RENDERING_CREATE_INFO;
@@ -1663,6 +2679,16 @@ struct DrmFormatModifierProperties2EXT {
 
   using native_type = VkDrmFormatModifierProperties2EXT;
 
+  DrmFormatModifierProperties2EXT(const native_type &rhs)
+    : DrmFormatModifierProperties2EXT(std::bit_cast<DrmFormatModifierProperties2EXT>(rhs)) {}
+
+  DrmFormatModifierProperties2EXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<DrmFormatModifierProperties2EXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const DrmFormatModifierProperties2EXT &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   uint64_t drm_format_modifier_;
@@ -1673,6 +2699,16 @@ struct DrmFormatModifierProperties2EXT {
 struct DrmFormatModifierPropertiesList2EXT {
 
   using native_type = VkDrmFormatModifierPropertiesList2EXT;
+
+  DrmFormatModifierPropertiesList2EXT(const native_type &rhs)
+    : DrmFormatModifierPropertiesList2EXT(std::bit_cast<DrmFormatModifierPropertiesList2EXT>(rhs)) {}
+
+  DrmFormatModifierPropertiesList2EXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<DrmFormatModifierPropertiesList2EXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const DrmFormatModifierPropertiesList2EXT &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -1693,6 +2729,17 @@ struct PhysicalDeviceRasterizationOrderAttachmentAccessFeaturesEXT {
       rasterization_order_color_attachment_access_(rasterization_order_color_attachment_access),
       rasterization_order_depth_attachment_access_(rasterization_order_depth_attachment_access), p_next_(p_next) {}
 
+  PhysicalDeviceRasterizationOrderAttachmentAccessFeaturesEXT(const native_type &rhs)
+    : PhysicalDeviceRasterizationOrderAttachmentAccessFeaturesEXT(
+        std::bit_cast<PhysicalDeviceRasterizationOrderAttachmentAccessFeaturesEXT>(rhs)) {}
+
+  PhysicalDeviceRasterizationOrderAttachmentAccessFeaturesEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceRasterizationOrderAttachmentAccessFeaturesEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceRasterizationOrderAttachmentAccessFeaturesEXT &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PHYSICAL_DEVICE_RASTERIZATION_ORDER_ATTACHMENT_ACCESS_FEATURES_EXT;
@@ -1705,6 +2752,15 @@ struct PhysicalDeviceRasterizationOrderAttachmentAccessFeaturesEXT {
 struct FormatProperties3 {
 
   using native_type = VkFormatProperties3;
+
+  FormatProperties3(const native_type &rhs) : FormatProperties3(std::bit_cast<FormatProperties3>(rhs)) {}
+
+  FormatProperties3 &operator=(const native_type &rhs) {
+    *this = std::bit_cast<FormatProperties3>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const FormatProperties3 &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -1722,6 +2778,16 @@ struct PhysicalDeviceRGBA10X6FormatsFeaturesEXT {
   PhysicalDeviceRGBA10X6FormatsFeaturesEXT(VkBool32 format_rgba10x6without_ycb_cr_sampler = {}, void *p_next = {})
     : format_rgba10x6without_ycb_cr_sampler_(format_rgba10x6without_ycb_cr_sampler), p_next_(p_next) {}
 
+  PhysicalDeviceRGBA10X6FormatsFeaturesEXT(const native_type &rhs)
+    : PhysicalDeviceRGBA10X6FormatsFeaturesEXT(std::bit_cast<PhysicalDeviceRGBA10X6FormatsFeaturesEXT>(rhs)) {}
+
+  PhysicalDeviceRGBA10X6FormatsFeaturesEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceRGBA10X6FormatsFeaturesEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceRGBA10X6FormatsFeaturesEXT &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PHYSICAL_DEVICE_RGBA10X6_FORMATS_FEATURES_EXT;
@@ -1735,6 +2801,15 @@ struct CudaModuleCreateInfoNV {
 
   CudaModuleCreateInfoNV(const void *p_data = {}, size_t data_size = {}, const void *p_next = {})
     : p_data_(p_data), data_size_(data_size), p_next_(p_next) {}
+
+  CudaModuleCreateInfoNV(const native_type &rhs) : CudaModuleCreateInfoNV(std::bit_cast<CudaModuleCreateInfoNV>(rhs)) {}
+
+  CudaModuleCreateInfoNV &operator=(const native_type &rhs) {
+    *this = std::bit_cast<CudaModuleCreateInfoNV>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const CudaModuleCreateInfoNV &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -1755,6 +2830,15 @@ struct ImageCreateInfo {
     : initial_layout_(initial_layout), flags_(flags), image_type_(image_type), format_(format), extent_(extent), mip_levels_(mip_levels),
       array_layers_(array_layers), samples_(samples), tiling_(tiling), usage_(usage), sharing_mode_(sharing_mode),
       queue_family_index_count_(queue_family_index_count), p_queue_family_indices_(p_queue_family_indices), p_next_(p_next) {}
+
+  ImageCreateInfo(const native_type &rhs) : ImageCreateInfo(std::bit_cast<ImageCreateInfo>(rhs)) {}
+
+  ImageCreateInfo &operator=(const native_type &rhs) {
+    *this = std::bit_cast<ImageCreateInfo>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const ImageCreateInfo &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -1785,6 +2869,15 @@ struct BufferCreateInfo {
     : p_queue_family_indices_(p_queue_family_indices), flags_(flags), size_(size), usage_(usage), sharing_mode_(sharing_mode),
       queue_family_index_count_(queue_family_index_count), p_next_(p_next) {}
 
+  BufferCreateInfo(const native_type &rhs) : BufferCreateInfo(std::bit_cast<BufferCreateInfo>(rhs)) {}
+
+  BufferCreateInfo &operator=(const native_type &rhs) {
+    *this = std::bit_cast<BufferCreateInfo>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const BufferCreateInfo &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::BUFFER_CREATE_INFO;
@@ -1805,6 +2898,15 @@ struct SRTDataNV {
             float pvz = {}, float qx = {}, float qy = {}, float qz = {}, float qw = {}, float tx = {}, float ty = {}, float tz = {})
     : sx_(sx), a_(a), b_(b), pvx_(pvx), sy_(sy), c_(c), pvy_(pvy), sz_(sz), pvz_(pvz), qx_(qx), qy_(qy), qz_(qz), qw_(qw), tx_(tx), ty_(ty),
       tz_(tz) {}
+
+  SRTDataNV(const native_type &rhs) : SRTDataNV(std::bit_cast<SRTDataNV>(rhs)) {}
+
+  SRTDataNV &operator=(const native_type &rhs) {
+    *this = std::bit_cast<SRTDataNV>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const SRTDataNV &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -1833,6 +2935,16 @@ struct AccelerationStructureMotionInfoNV {
   AccelerationStructureMotionInfoNV(AccelerationStructureMotionInfoMask flags = {}, uint32_t max_instances = {}, const void *p_next = {})
     : flags_(flags), max_instances_(max_instances), p_next_(p_next) {}
 
+  AccelerationStructureMotionInfoNV(const native_type &rhs)
+    : AccelerationStructureMotionInfoNV(std::bit_cast<AccelerationStructureMotionInfoNV>(rhs)) {}
+
+  AccelerationStructureMotionInfoNV &operator=(const native_type &rhs) {
+    *this = std::bit_cast<AccelerationStructureMotionInfoNV>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const AccelerationStructureMotionInfoNV &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::ACCELERATION_STRUCTURE_MOTION_INFO_NV;
@@ -1844,6 +2956,16 @@ struct AccelerationStructureMotionInfoNV {
 struct PhysicalDeviceImageProcessingPropertiesQCOM {
 
   using native_type = VkPhysicalDeviceImageProcessingPropertiesQCOM;
+
+  PhysicalDeviceImageProcessingPropertiesQCOM(const native_type &rhs)
+    : PhysicalDeviceImageProcessingPropertiesQCOM(std::bit_cast<PhysicalDeviceImageProcessingPropertiesQCOM>(rhs)) {}
+
+  PhysicalDeviceImageProcessingPropertiesQCOM &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceImageProcessingPropertiesQCOM>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceImageProcessingPropertiesQCOM &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -1859,6 +2981,16 @@ struct PhysicalDeviceFragmentShaderBarycentricPropertiesKHR {
 
   using native_type = VkPhysicalDeviceFragmentShaderBarycentricPropertiesKHR;
 
+  PhysicalDeviceFragmentShaderBarycentricPropertiesKHR(const native_type &rhs)
+    : PhysicalDeviceFragmentShaderBarycentricPropertiesKHR(std::bit_cast<PhysicalDeviceFragmentShaderBarycentricPropertiesKHR>(rhs)) {}
+
+  PhysicalDeviceFragmentShaderBarycentricPropertiesKHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceFragmentShaderBarycentricPropertiesKHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceFragmentShaderBarycentricPropertiesKHR &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PHYSICAL_DEVICE_FRAGMENT_SHADER_BARYCENTRIC_PROPERTIES_KHR;
@@ -1873,6 +3005,16 @@ struct PhysicalDeviceFragmentShaderBarycentricFeaturesKHR {
   PhysicalDeviceFragmentShaderBarycentricFeaturesKHR(VkBool32 fragment_shader_barycentric = {}, void *p_next = {})
     : fragment_shader_barycentric_(fragment_shader_barycentric), p_next_(p_next) {}
 
+  PhysicalDeviceFragmentShaderBarycentricFeaturesKHR(const native_type &rhs)
+    : PhysicalDeviceFragmentShaderBarycentricFeaturesKHR(std::bit_cast<PhysicalDeviceFragmentShaderBarycentricFeaturesKHR>(rhs)) {}
+
+  PhysicalDeviceFragmentShaderBarycentricFeaturesKHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceFragmentShaderBarycentricFeaturesKHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceFragmentShaderBarycentricFeaturesKHR &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PHYSICAL_DEVICE_FRAGMENT_SHADER_BARYCENTRIC_FEATURES_KHR;
@@ -1886,6 +3028,16 @@ struct PhysicalDeviceShaderIntegerDotProductFeatures {
 
   PhysicalDeviceShaderIntegerDotProductFeatures(VkBool32 shader_integer_dot_product = {}, void *p_next = {})
     : shader_integer_dot_product_(shader_integer_dot_product), p_next_(p_next) {}
+
+  PhysicalDeviceShaderIntegerDotProductFeatures(const native_type &rhs)
+    : PhysicalDeviceShaderIntegerDotProductFeatures(std::bit_cast<PhysicalDeviceShaderIntegerDotProductFeatures>(rhs)) {}
+
+  PhysicalDeviceShaderIntegerDotProductFeatures &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceShaderIntegerDotProductFeatures>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceShaderIntegerDotProductFeatures &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -1902,6 +3054,16 @@ struct AccelerationStructureCaptureDescriptorDataInfoEXT {
                                                     VkAccelerationStructureKHR acceleration_structure = {}, const void *p_next = {})
     : acceleration_structure_nv_(acceleration_structure_nv), acceleration_structure_(acceleration_structure), p_next_(p_next) {}
 
+  AccelerationStructureCaptureDescriptorDataInfoEXT(const native_type &rhs)
+    : AccelerationStructureCaptureDescriptorDataInfoEXT(std::bit_cast<AccelerationStructureCaptureDescriptorDataInfoEXT>(rhs)) {}
+
+  AccelerationStructureCaptureDescriptorDataInfoEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<AccelerationStructureCaptureDescriptorDataInfoEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const AccelerationStructureCaptureDescriptorDataInfoEXT &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::ACCELERATION_STRUCTURE_CAPTURE_DESCRIPTOR_DATA_INFO_EXT;
@@ -1916,6 +3078,16 @@ struct ImageCaptureDescriptorDataInfoEXT {
 
   ImageCaptureDescriptorDataInfoEXT(VkImage image = {}, const void *p_next = {}) : image_(image), p_next_(p_next) {}
 
+  ImageCaptureDescriptorDataInfoEXT(const native_type &rhs)
+    : ImageCaptureDescriptorDataInfoEXT(std::bit_cast<ImageCaptureDescriptorDataInfoEXT>(rhs)) {}
+
+  ImageCaptureDescriptorDataInfoEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<ImageCaptureDescriptorDataInfoEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const ImageCaptureDescriptorDataInfoEXT &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::IMAGE_CAPTURE_DESCRIPTOR_DATA_INFO_EXT;
@@ -1928,6 +3100,16 @@ struct BufferCaptureDescriptorDataInfoEXT {
   using native_type = VkBufferCaptureDescriptorDataInfoEXT;
 
   BufferCaptureDescriptorDataInfoEXT(VkBuffer buffer = {}, const void *p_next = {}) : buffer_(buffer), p_next_(p_next) {}
+
+  BufferCaptureDescriptorDataInfoEXT(const native_type &rhs)
+    : BufferCaptureDescriptorDataInfoEXT(std::bit_cast<BufferCaptureDescriptorDataInfoEXT>(rhs)) {}
+
+  BufferCaptureDescriptorDataInfoEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<BufferCaptureDescriptorDataInfoEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const BufferCaptureDescriptorDataInfoEXT &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -1943,6 +3125,15 @@ struct DescriptorAddressInfoEXT {
   DescriptorAddressInfoEXT(Format format = {}, VkDeviceAddress address = {}, VkDeviceSize range = {}, void *p_next = {})
     : format_(format), address_(address), range_(range), p_next_(p_next) {}
 
+  DescriptorAddressInfoEXT(const native_type &rhs) : DescriptorAddressInfoEXT(std::bit_cast<DescriptorAddressInfoEXT>(rhs)) {}
+
+  DescriptorAddressInfoEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<DescriptorAddressInfoEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const DescriptorAddressInfoEXT &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::DESCRIPTOR_ADDRESS_INFO_EXT;
@@ -1955,6 +3146,16 @@ struct DescriptorAddressInfoEXT {
 struct PhysicalDeviceDescriptorBufferPropertiesEXT {
 
   using native_type = VkPhysicalDeviceDescriptorBufferPropertiesEXT;
+
+  PhysicalDeviceDescriptorBufferPropertiesEXT(const native_type &rhs)
+    : PhysicalDeviceDescriptorBufferPropertiesEXT(std::bit_cast<PhysicalDeviceDescriptorBufferPropertiesEXT>(rhs)) {}
+
+  PhysicalDeviceDescriptorBufferPropertiesEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceDescriptorBufferPropertiesEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceDescriptorBufferPropertiesEXT &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -2007,6 +3208,15 @@ struct CuLaunchInfoNVX {
       block_dim_x_(block_dim_x), block_dim_y_(block_dim_y), block_dim_z_(block_dim_z), shared_mem_bytes_(shared_mem_bytes),
       param_count_(param_count), p_params_(p_params), extra_count_(extra_count), p_next_(p_next) {}
 
+  CuLaunchInfoNVX(const native_type &rhs) : CuLaunchInfoNVX(std::bit_cast<CuLaunchInfoNVX>(rhs)) {}
+
+  CuLaunchInfoNVX &operator=(const native_type &rhs) {
+    *this = std::bit_cast<CuLaunchInfoNVX>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const CuLaunchInfoNVX &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::CU_LAUNCH_INFO_NVX;
@@ -2029,6 +3239,16 @@ struct PhysicalDeviceExtendedSparseAddressSpacePropertiesNV {
 
   using native_type = VkPhysicalDeviceExtendedSparseAddressSpacePropertiesNV;
 
+  PhysicalDeviceExtendedSparseAddressSpacePropertiesNV(const native_type &rhs)
+    : PhysicalDeviceExtendedSparseAddressSpacePropertiesNV(std::bit_cast<PhysicalDeviceExtendedSparseAddressSpacePropertiesNV>(rhs)) {}
+
+  PhysicalDeviceExtendedSparseAddressSpacePropertiesNV &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceExtendedSparseAddressSpacePropertiesNV>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceExtendedSparseAddressSpacePropertiesNV &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PHYSICAL_DEVICE_EXTENDED_SPARSE_ADDRESS_SPACE_PROPERTIES_NV;
@@ -2045,6 +3265,16 @@ struct PipelineRasterizationProvokingVertexStateCreateInfoEXT {
   PipelineRasterizationProvokingVertexStateCreateInfoEXT(ProvokingVertexMode provoking_vertex_mode = {}, const void *p_next = {})
     : provoking_vertex_mode_(provoking_vertex_mode), p_next_(p_next) {}
 
+  PipelineRasterizationProvokingVertexStateCreateInfoEXT(const native_type &rhs)
+    : PipelineRasterizationProvokingVertexStateCreateInfoEXT(std::bit_cast<PipelineRasterizationProvokingVertexStateCreateInfoEXT>(rhs)) {}
+
+  PipelineRasterizationProvokingVertexStateCreateInfoEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PipelineRasterizationProvokingVertexStateCreateInfoEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PipelineRasterizationProvokingVertexStateCreateInfoEXT &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PIPELINE_RASTERIZATION_PROVOKING_VERTEX_STATE_CREATE_INFO_EXT;
@@ -2058,6 +3288,16 @@ struct PhysicalDeviceYcbcr2Plane444FormatsFeaturesEXT {
 
   PhysicalDeviceYcbcr2Plane444FormatsFeaturesEXT(VkBool32 ycbcr2plane444formats = {}, void *p_next = {})
     : ycbcr2plane444formats_(ycbcr2plane444formats), p_next_(p_next) {}
+
+  PhysicalDeviceYcbcr2Plane444FormatsFeaturesEXT(const native_type &rhs)
+    : PhysicalDeviceYcbcr2Plane444FormatsFeaturesEXT(std::bit_cast<PhysicalDeviceYcbcr2Plane444FormatsFeaturesEXT>(rhs)) {}
+
+  PhysicalDeviceYcbcr2Plane444FormatsFeaturesEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceYcbcr2Plane444FormatsFeaturesEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceYcbcr2Plane444FormatsFeaturesEXT &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -2073,6 +3313,16 @@ struct PhysicalDeviceInheritedViewportScissorFeaturesNV {
   PhysicalDeviceInheritedViewportScissorFeaturesNV(VkBool32 inherited_viewport_scissor2d = {}, void *p_next = {})
     : inherited_viewport_scissor2d_(inherited_viewport_scissor2d), p_next_(p_next) {}
 
+  PhysicalDeviceInheritedViewportScissorFeaturesNV(const native_type &rhs)
+    : PhysicalDeviceInheritedViewportScissorFeaturesNV(std::bit_cast<PhysicalDeviceInheritedViewportScissorFeaturesNV>(rhs)) {}
+
+  PhysicalDeviceInheritedViewportScissorFeaturesNV &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceInheritedViewportScissorFeaturesNV>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceInheritedViewportScissorFeaturesNV &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PHYSICAL_DEVICE_INHERITED_VIEWPORT_SCISSOR_FEATURES_NV;
@@ -2087,6 +3337,16 @@ struct VideoEncodeH265ProfileInfoKHR {
   VideoEncodeH265ProfileInfoKHR(StdVideoH265ProfileIdc std_profile_idc = {}, const void *p_next = {})
     : std_profile_idc_(std_profile_idc), p_next_(p_next) {}
 
+  VideoEncodeH265ProfileInfoKHR(const native_type &rhs)
+    : VideoEncodeH265ProfileInfoKHR(std::bit_cast<VideoEncodeH265ProfileInfoKHR>(rhs)) {}
+
+  VideoEncodeH265ProfileInfoKHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<VideoEncodeH265ProfileInfoKHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const VideoEncodeH265ProfileInfoKHR &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::VIDEO_ENCODE_H265_PROFILE_INFO_KHR;
@@ -2100,6 +3360,15 @@ struct VideoEncodeH265FrameSizeKHR {
 
   VideoEncodeH265FrameSizeKHR(uint32_t frame_isize = {}, uint32_t frame_psize = {}, uint32_t frame_bsize = {})
     : frame_isize_(frame_isize), frame_psize_(frame_psize), frame_bsize_(frame_bsize) {}
+
+  VideoEncodeH265FrameSizeKHR(const native_type &rhs) : VideoEncodeH265FrameSizeKHR(std::bit_cast<VideoEncodeH265FrameSizeKHR>(rhs)) {}
+
+  VideoEncodeH265FrameSizeKHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<VideoEncodeH265FrameSizeKHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const VideoEncodeH265FrameSizeKHR &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -2117,6 +3386,16 @@ struct VideoEncodeH265RateControlInfoKHR {
     : sub_layer_count_(sub_layer_count), flags_(flags), gop_frame_count_(gop_frame_count), idr_period_(idr_period),
       consecutive_bframe_count_(consecutive_bframe_count), p_next_(p_next) {}
 
+  VideoEncodeH265RateControlInfoKHR(const native_type &rhs)
+    : VideoEncodeH265RateControlInfoKHR(std::bit_cast<VideoEncodeH265RateControlInfoKHR>(rhs)) {}
+
+  VideoEncodeH265RateControlInfoKHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<VideoEncodeH265RateControlInfoKHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const VideoEncodeH265RateControlInfoKHR &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::VIDEO_ENCODE_H265_RATE_CONTROL_INFO_KHR;
@@ -2131,6 +3410,16 @@ struct VideoEncodeH265RateControlInfoKHR {
 struct VideoEncodeH265SessionParametersFeedbackInfoKHR {
 
   using native_type = VkVideoEncodeH265SessionParametersFeedbackInfoKHR;
+
+  VideoEncodeH265SessionParametersFeedbackInfoKHR(const native_type &rhs)
+    : VideoEncodeH265SessionParametersFeedbackInfoKHR(std::bit_cast<VideoEncodeH265SessionParametersFeedbackInfoKHR>(rhs)) {}
+
+  VideoEncodeH265SessionParametersFeedbackInfoKHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<VideoEncodeH265SessionParametersFeedbackInfoKHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const VideoEncodeH265SessionParametersFeedbackInfoKHR &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -2151,6 +3440,16 @@ struct VideoEncodeH265SessionParametersGetInfoKHR {
     : std_ppsid_(std_ppsid), write_std_vps_(write_std_vps), write_std_sps_(write_std_sps), write_std_pps_(write_std_pps),
       std_vpsid_(std_vpsid), std_spsid_(std_spsid), p_next_(p_next) {}
 
+  VideoEncodeH265SessionParametersGetInfoKHR(const native_type &rhs)
+    : VideoEncodeH265SessionParametersGetInfoKHR(std::bit_cast<VideoEncodeH265SessionParametersGetInfoKHR>(rhs)) {}
+
+  VideoEncodeH265SessionParametersGetInfoKHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<VideoEncodeH265SessionParametersGetInfoKHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const VideoEncodeH265SessionParametersGetInfoKHR &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::VIDEO_ENCODE_H265_SESSION_PARAMETERS_GET_INFO_KHR;
@@ -2170,6 +3469,16 @@ struct PhysicalDeviceImageProcessing2FeaturesQCOM {
   PhysicalDeviceImageProcessing2FeaturesQCOM(VkBool32 texture_block_match2 = {}, void *p_next = {})
     : texture_block_match2_(texture_block_match2), p_next_(p_next) {}
 
+  PhysicalDeviceImageProcessing2FeaturesQCOM(const native_type &rhs)
+    : PhysicalDeviceImageProcessing2FeaturesQCOM(std::bit_cast<PhysicalDeviceImageProcessing2FeaturesQCOM>(rhs)) {}
+
+  PhysicalDeviceImageProcessing2FeaturesQCOM &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceImageProcessing2FeaturesQCOM>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceImageProcessing2FeaturesQCOM &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PHYSICAL_DEVICE_IMAGE_PROCESSING_2_FEATURES_QCOM;
@@ -2183,6 +3492,16 @@ struct VideoEncodeH265DpbSlotInfoKHR {
 
   VideoEncodeH265DpbSlotInfoKHR(const StdVideoEncodeH265ReferenceInfo *p_std_reference_info = {}, const void *p_next = {})
     : p_std_reference_info_(p_std_reference_info), p_next_(p_next) {}
+
+  VideoEncodeH265DpbSlotInfoKHR(const native_type &rhs)
+    : VideoEncodeH265DpbSlotInfoKHR(std::bit_cast<VideoEncodeH265DpbSlotInfoKHR>(rhs)) {}
+
+  VideoEncodeH265DpbSlotInfoKHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<VideoEncodeH265DpbSlotInfoKHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const VideoEncodeH265DpbSlotInfoKHR &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -2201,6 +3520,16 @@ struct VideoEncodeH265SessionParametersAddInfoKHR {
                                              const void *p_next = {})
     : p_std_ppss_(p_std_ppss), std_vpscount_(std_vpscount), p_std_vpss_(p_std_vpss), std_spscount_(std_spscount), p_std_spss_(p_std_spss),
       std_ppscount_(std_ppscount), p_next_(p_next) {}
+
+  VideoEncodeH265SessionParametersAddInfoKHR(const native_type &rhs)
+    : VideoEncodeH265SessionParametersAddInfoKHR(std::bit_cast<VideoEncodeH265SessionParametersAddInfoKHR>(rhs)) {}
+
+  VideoEncodeH265SessionParametersAddInfoKHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<VideoEncodeH265SessionParametersAddInfoKHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const VideoEncodeH265SessionParametersAddInfoKHR &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -2224,6 +3553,16 @@ struct VideoEncodeH265SessionParametersCreateInfoKHR {
     : p_parameters_add_info_(p_parameters_add_info), max_std_vpscount_(max_std_vpscount), max_std_spscount_(max_std_spscount),
       max_std_ppscount_(max_std_ppscount), p_next_(p_next) {}
 
+  VideoEncodeH265SessionParametersCreateInfoKHR(const native_type &rhs)
+    : VideoEncodeH265SessionParametersCreateInfoKHR(std::bit_cast<VideoEncodeH265SessionParametersCreateInfoKHR>(rhs)) {}
+
+  VideoEncodeH265SessionParametersCreateInfoKHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<VideoEncodeH265SessionParametersCreateInfoKHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const VideoEncodeH265SessionParametersCreateInfoKHR &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::VIDEO_ENCODE_H265_SESSION_PARAMETERS_CREATE_INFO_KHR;
@@ -2241,6 +3580,16 @@ struct VideoEncodeH265SessionCreateInfoKHR {
   VideoEncodeH265SessionCreateInfoKHR(StdVideoH265LevelIdc max_level_idc = {}, VkBool32 use_max_level_idc = {}, const void *p_next = {})
     : max_level_idc_(max_level_idc), use_max_level_idc_(use_max_level_idc), p_next_(p_next) {}
 
+  VideoEncodeH265SessionCreateInfoKHR(const native_type &rhs)
+    : VideoEncodeH265SessionCreateInfoKHR(std::bit_cast<VideoEncodeH265SessionCreateInfoKHR>(rhs)) {}
+
+  VideoEncodeH265SessionCreateInfoKHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<VideoEncodeH265SessionCreateInfoKHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const VideoEncodeH265SessionCreateInfoKHR &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::VIDEO_ENCODE_H265_SESSION_CREATE_INFO_KHR;
@@ -2255,6 +3604,15 @@ struct VideoEncodeH265QpKHR {
 
   VideoEncodeH265QpKHR(int32_t qp_i = {}, int32_t qp_p = {}, int32_t qp_b = {}) : qp_i_(qp_i), qp_p_(qp_p), qp_b_(qp_b) {}
 
+  VideoEncodeH265QpKHR(const native_type &rhs) : VideoEncodeH265QpKHR(std::bit_cast<VideoEncodeH265QpKHR>(rhs)) {}
+
+  VideoEncodeH265QpKHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<VideoEncodeH265QpKHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const VideoEncodeH265QpKHR &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   int32_t qp_i_;
@@ -2265,6 +3623,16 @@ struct VideoEncodeH265QpKHR {
 struct VideoEncodeH265QualityLevelPropertiesKHR {
 
   using native_type = VkVideoEncodeH265QualityLevelPropertiesKHR;
+
+  VideoEncodeH265QualityLevelPropertiesKHR(const native_type &rhs)
+    : VideoEncodeH265QualityLevelPropertiesKHR(std::bit_cast<VideoEncodeH265QualityLevelPropertiesKHR>(rhs)) {}
+
+  VideoEncodeH265QualityLevelPropertiesKHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<VideoEncodeH265QualityLevelPropertiesKHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const VideoEncodeH265QualityLevelPropertiesKHR &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -2283,6 +3651,16 @@ struct VideoEncodeH265QualityLevelPropertiesKHR {
 struct VideoEncodeH265CapabilitiesKHR {
 
   using native_type = VkVideoEncodeH265CapabilitiesKHR;
+
+  VideoEncodeH265CapabilitiesKHR(const native_type &rhs)
+    : VideoEncodeH265CapabilitiesKHR(std::bit_cast<VideoEncodeH265CapabilitiesKHR>(rhs)) {}
+
+  VideoEncodeH265CapabilitiesKHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<VideoEncodeH265CapabilitiesKHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const VideoEncodeH265CapabilitiesKHR &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -2312,6 +3690,15 @@ struct VideoEncodeH264QpKHR {
 
   VideoEncodeH264QpKHR(int32_t qp_i = {}, int32_t qp_p = {}, int32_t qp_b = {}) : qp_i_(qp_i), qp_p_(qp_p), qp_b_(qp_b) {}
 
+  VideoEncodeH264QpKHR(const native_type &rhs) : VideoEncodeH264QpKHR(std::bit_cast<VideoEncodeH264QpKHR>(rhs)) {}
+
+  VideoEncodeH264QpKHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<VideoEncodeH264QpKHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const VideoEncodeH264QpKHR &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   int32_t qp_i_;
@@ -2325,6 +3712,15 @@ struct VideoEncodeH264FrameSizeKHR {
 
   VideoEncodeH264FrameSizeKHR(uint32_t frame_isize = {}, uint32_t frame_psize = {}, uint32_t frame_bsize = {})
     : frame_isize_(frame_isize), frame_psize_(frame_psize), frame_bsize_(frame_bsize) {}
+
+  VideoEncodeH264FrameSizeKHR(const native_type &rhs) : VideoEncodeH264FrameSizeKHR(std::bit_cast<VideoEncodeH264FrameSizeKHR>(rhs)) {}
+
+  VideoEncodeH264FrameSizeKHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<VideoEncodeH264FrameSizeKHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const VideoEncodeH264FrameSizeKHR &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -2342,6 +3738,16 @@ struct VideoEncodeH264RateControlLayerInfoKHR {
                                          VkBool32 use_max_frame_size = {}, const void *p_next = {})
     : max_frame_size_(max_frame_size), use_min_qp_(use_min_qp), min_qp_(min_qp), use_max_qp_(use_max_qp), max_qp_(max_qp),
       use_max_frame_size_(use_max_frame_size), p_next_(p_next) {}
+
+  VideoEncodeH264RateControlLayerInfoKHR(const native_type &rhs)
+    : VideoEncodeH264RateControlLayerInfoKHR(std::bit_cast<VideoEncodeH264RateControlLayerInfoKHR>(rhs)) {}
+
+  VideoEncodeH264RateControlLayerInfoKHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<VideoEncodeH264RateControlLayerInfoKHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const VideoEncodeH264RateControlLayerInfoKHR &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -2365,6 +3771,16 @@ struct VideoEncodeH264RateControlInfoKHR {
     : temporal_layer_count_(temporal_layer_count), flags_(flags), gop_frame_count_(gop_frame_count), idr_period_(idr_period),
       consecutive_bframe_count_(consecutive_bframe_count), p_next_(p_next) {}
 
+  VideoEncodeH264RateControlInfoKHR(const native_type &rhs)
+    : VideoEncodeH264RateControlInfoKHR(std::bit_cast<VideoEncodeH264RateControlInfoKHR>(rhs)) {}
+
+  VideoEncodeH264RateControlInfoKHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<VideoEncodeH264RateControlInfoKHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const VideoEncodeH264RateControlInfoKHR &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::VIDEO_ENCODE_H264_RATE_CONTROL_INFO_KHR;
@@ -2384,6 +3800,16 @@ struct VideoEncodeH264NaluSliceInfoKHR {
                                   const void *p_next = {})
     : p_std_slice_header_(p_std_slice_header), constant_qp_(constant_qp), p_next_(p_next) {}
 
+  VideoEncodeH264NaluSliceInfoKHR(const native_type &rhs)
+    : VideoEncodeH264NaluSliceInfoKHR(std::bit_cast<VideoEncodeH264NaluSliceInfoKHR>(rhs)) {}
+
+  VideoEncodeH264NaluSliceInfoKHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<VideoEncodeH264NaluSliceInfoKHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const VideoEncodeH264NaluSliceInfoKHR &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::VIDEO_ENCODE_H264_NALU_SLICE_INFO_KHR;
@@ -2398,6 +3824,16 @@ struct VideoEncodeH264ProfileInfoKHR {
 
   VideoEncodeH264ProfileInfoKHR(StdVideoH264ProfileIdc std_profile_idc = {}, const void *p_next = {})
     : std_profile_idc_(std_profile_idc), p_next_(p_next) {}
+
+  VideoEncodeH264ProfileInfoKHR(const native_type &rhs)
+    : VideoEncodeH264ProfileInfoKHR(std::bit_cast<VideoEncodeH264ProfileInfoKHR>(rhs)) {}
+
+  VideoEncodeH264ProfileInfoKHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<VideoEncodeH264ProfileInfoKHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const VideoEncodeH264ProfileInfoKHR &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -2416,6 +3852,16 @@ struct VideoEncodeH264PictureInfoKHR {
     : generate_prefix_nalu_(generate_prefix_nalu), nalu_slice_entry_count_(nalu_slice_entry_count),
       p_nalu_slice_entries_(p_nalu_slice_entries), p_std_picture_info_(p_std_picture_info), p_next_(p_next) {}
 
+  VideoEncodeH264PictureInfoKHR(const native_type &rhs)
+    : VideoEncodeH264PictureInfoKHR(std::bit_cast<VideoEncodeH264PictureInfoKHR>(rhs)) {}
+
+  VideoEncodeH264PictureInfoKHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<VideoEncodeH264PictureInfoKHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const VideoEncodeH264PictureInfoKHR &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::VIDEO_ENCODE_H264_PICTURE_INFO_KHR;
@@ -2433,6 +3879,16 @@ struct VideoEncodeH264DpbSlotInfoKHR {
   VideoEncodeH264DpbSlotInfoKHR(const StdVideoEncodeH264ReferenceInfo *p_std_reference_info = {}, const void *p_next = {})
     : p_std_reference_info_(p_std_reference_info), p_next_(p_next) {}
 
+  VideoEncodeH264DpbSlotInfoKHR(const native_type &rhs)
+    : VideoEncodeH264DpbSlotInfoKHR(std::bit_cast<VideoEncodeH264DpbSlotInfoKHR>(rhs)) {}
+
+  VideoEncodeH264DpbSlotInfoKHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<VideoEncodeH264DpbSlotInfoKHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const VideoEncodeH264DpbSlotInfoKHR &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::VIDEO_ENCODE_H264_DPB_SLOT_INFO_KHR;
@@ -2443,6 +3899,16 @@ struct VideoEncodeH264DpbSlotInfoKHR {
 struct VideoEncodeH264SessionParametersFeedbackInfoKHR {
 
   using native_type = VkVideoEncodeH264SessionParametersFeedbackInfoKHR;
+
+  VideoEncodeH264SessionParametersFeedbackInfoKHR(const native_type &rhs)
+    : VideoEncodeH264SessionParametersFeedbackInfoKHR(std::bit_cast<VideoEncodeH264SessionParametersFeedbackInfoKHR>(rhs)) {}
+
+  VideoEncodeH264SessionParametersFeedbackInfoKHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<VideoEncodeH264SessionParametersFeedbackInfoKHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const VideoEncodeH264SessionParametersFeedbackInfoKHR &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -2461,6 +3927,16 @@ struct VideoEncodeH264SessionParametersAddInfoKHR {
                                              const void *p_next = {})
     : p_std_ppss_(p_std_ppss), std_spscount_(std_spscount), p_std_spss_(p_std_spss), std_ppscount_(std_ppscount), p_next_(p_next) {}
 
+  VideoEncodeH264SessionParametersAddInfoKHR(const native_type &rhs)
+    : VideoEncodeH264SessionParametersAddInfoKHR(std::bit_cast<VideoEncodeH264SessionParametersAddInfoKHR>(rhs)) {}
+
+  VideoEncodeH264SessionParametersAddInfoKHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<VideoEncodeH264SessionParametersAddInfoKHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const VideoEncodeH264SessionParametersAddInfoKHR &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::VIDEO_ENCODE_H264_SESSION_PARAMETERS_ADD_INFO_KHR;
@@ -2478,6 +3954,16 @@ struct VideoEncodeH264SessionCreateInfoKHR {
   VideoEncodeH264SessionCreateInfoKHR(StdVideoH264LevelIdc max_level_idc = {}, VkBool32 use_max_level_idc = {}, const void *p_next = {})
     : max_level_idc_(max_level_idc), use_max_level_idc_(use_max_level_idc), p_next_(p_next) {}
 
+  VideoEncodeH264SessionCreateInfoKHR(const native_type &rhs)
+    : VideoEncodeH264SessionCreateInfoKHR(std::bit_cast<VideoEncodeH264SessionCreateInfoKHR>(rhs)) {}
+
+  VideoEncodeH264SessionCreateInfoKHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<VideoEncodeH264SessionCreateInfoKHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const VideoEncodeH264SessionCreateInfoKHR &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::VIDEO_ENCODE_H264_SESSION_CREATE_INFO_KHR;
@@ -2489,6 +3975,16 @@ struct VideoEncodeH264SessionCreateInfoKHR {
 struct VideoEncodeH264CapabilitiesKHR {
 
   using native_type = VkVideoEncodeH264CapabilitiesKHR;
+
+  VideoEncodeH264CapabilitiesKHR(const native_type &rhs)
+    : VideoEncodeH264CapabilitiesKHR(std::bit_cast<VideoEncodeH264CapabilitiesKHR>(rhs)) {}
+
+  VideoEncodeH264CapabilitiesKHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<VideoEncodeH264CapabilitiesKHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const VideoEncodeH264CapabilitiesKHR &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -2518,6 +4014,16 @@ struct VideoEncodeRateControlLayerInfoKHR {
     : frame_rate_denominator_(frame_rate_denominator), average_bitrate_(average_bitrate), max_bitrate_(max_bitrate),
       frame_rate_numerator_(frame_rate_numerator), p_next_(p_next) {}
 
+  VideoEncodeRateControlLayerInfoKHR(const native_type &rhs)
+    : VideoEncodeRateControlLayerInfoKHR(std::bit_cast<VideoEncodeRateControlLayerInfoKHR>(rhs)) {}
+
+  VideoEncodeRateControlLayerInfoKHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<VideoEncodeRateControlLayerInfoKHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const VideoEncodeRateControlLayerInfoKHR &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::VIDEO_ENCODE_RATE_CONTROL_LAYER_INFO_KHR;
@@ -2539,6 +4045,16 @@ struct VideoEncodeRateControlInfoKHR {
     : initial_virtual_buffer_size_in_ms_(initial_virtual_buffer_size_in_ms), flags_(flags), rate_control_mode_(rate_control_mode),
       layer_count_(layer_count), p_layers_(p_layers), virtual_buffer_size_in_ms_(virtual_buffer_size_in_ms), p_next_(p_next) {}
 
+  VideoEncodeRateControlInfoKHR(const native_type &rhs)
+    : VideoEncodeRateControlInfoKHR(std::bit_cast<VideoEncodeRateControlInfoKHR>(rhs)) {}
+
+  VideoEncodeRateControlInfoKHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<VideoEncodeRateControlInfoKHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const VideoEncodeRateControlInfoKHR &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::VIDEO_ENCODE_RATE_CONTROL_INFO_KHR;
@@ -2555,6 +4071,16 @@ struct VideoEncodeQualityLevelPropertiesKHR {
 
   using native_type = VkVideoEncodeQualityLevelPropertiesKHR;
 
+  VideoEncodeQualityLevelPropertiesKHR(const native_type &rhs)
+    : VideoEncodeQualityLevelPropertiesKHR(std::bit_cast<VideoEncodeQualityLevelPropertiesKHR>(rhs)) {}
+
+  VideoEncodeQualityLevelPropertiesKHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<VideoEncodeQualityLevelPropertiesKHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const VideoEncodeQualityLevelPropertiesKHR &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::VIDEO_ENCODE_QUALITY_LEVEL_PROPERTIES_KHR;
@@ -2570,6 +4096,16 @@ struct VideoEncodeH264SessionParametersGetInfoKHR {
   VideoEncodeH264SessionParametersGetInfoKHR(uint32_t std_ppsid = {}, VkBool32 write_std_sps = {}, VkBool32 write_std_pps = {},
                                              uint32_t std_spsid = {}, const void *p_next = {})
     : std_ppsid_(std_ppsid), write_std_sps_(write_std_sps), write_std_pps_(write_std_pps), std_spsid_(std_spsid), p_next_(p_next) {}
+
+  VideoEncodeH264SessionParametersGetInfoKHR(const native_type &rhs)
+    : VideoEncodeH264SessionParametersGetInfoKHR(std::bit_cast<VideoEncodeH264SessionParametersGetInfoKHR>(rhs)) {}
+
+  VideoEncodeH264SessionParametersGetInfoKHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<VideoEncodeH264SessionParametersGetInfoKHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const VideoEncodeH264SessionParametersGetInfoKHR &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -2591,6 +4127,15 @@ struct VideoProfileInfoKHR {
     : chroma_bit_depth_(chroma_bit_depth), video_codec_operation_(video_codec_operation), chroma_subsampling_(chroma_subsampling),
       luma_bit_depth_(luma_bit_depth), p_next_(p_next) {}
 
+  VideoProfileInfoKHR(const native_type &rhs) : VideoProfileInfoKHR(std::bit_cast<VideoProfileInfoKHR>(rhs)) {}
+
+  VideoProfileInfoKHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<VideoProfileInfoKHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const VideoProfileInfoKHR &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::VIDEO_PROFILE_INFO_KHR;
@@ -2609,6 +4154,16 @@ struct PhysicalDeviceVideoEncodeQualityLevelInfoKHR {
                                                const void *p_next = {})
     : quality_level_(quality_level), p_video_profile_(p_video_profile), p_next_(p_next) {}
 
+  PhysicalDeviceVideoEncodeQualityLevelInfoKHR(const native_type &rhs)
+    : PhysicalDeviceVideoEncodeQualityLevelInfoKHR(std::bit_cast<PhysicalDeviceVideoEncodeQualityLevelInfoKHR>(rhs)) {}
+
+  PhysicalDeviceVideoEncodeQualityLevelInfoKHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceVideoEncodeQualityLevelInfoKHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceVideoEncodeQualityLevelInfoKHR &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PHYSICAL_DEVICE_VIDEO_ENCODE_QUALITY_LEVEL_INFO_KHR;
@@ -2620,6 +4175,16 @@ struct PhysicalDeviceVideoEncodeQualityLevelInfoKHR {
 struct PhysicalDeviceProvokingVertexPropertiesEXT {
 
   using native_type = VkPhysicalDeviceProvokingVertexPropertiesEXT;
+
+  PhysicalDeviceProvokingVertexPropertiesEXT(const native_type &rhs)
+    : PhysicalDeviceProvokingVertexPropertiesEXT(std::bit_cast<PhysicalDeviceProvokingVertexPropertiesEXT>(rhs)) {}
+
+  PhysicalDeviceProvokingVertexPropertiesEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceProvokingVertexPropertiesEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceProvokingVertexPropertiesEXT &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -2635,6 +4200,16 @@ struct QueryPoolVideoEncodeFeedbackCreateInfoKHR {
 
   QueryPoolVideoEncodeFeedbackCreateInfoKHR(VideoEncodeFeedbackMask encode_feedback_flags = {}, const void *p_next = {})
     : encode_feedback_flags_(encode_feedback_flags), p_next_(p_next) {}
+
+  QueryPoolVideoEncodeFeedbackCreateInfoKHR(const native_type &rhs)
+    : QueryPoolVideoEncodeFeedbackCreateInfoKHR(std::bit_cast<QueryPoolVideoEncodeFeedbackCreateInfoKHR>(rhs)) {}
+
+  QueryPoolVideoEncodeFeedbackCreateInfoKHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<QueryPoolVideoEncodeFeedbackCreateInfoKHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const QueryPoolVideoEncodeFeedbackCreateInfoKHR &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -2652,6 +4227,15 @@ struct VideoPictureResourceInfoKHR {
     : image_view_binding_(image_view_binding), coded_offset_(coded_offset), coded_extent_(coded_extent),
       base_array_layer_(base_array_layer), p_next_(p_next) {}
 
+  VideoPictureResourceInfoKHR(const native_type &rhs) : VideoPictureResourceInfoKHR(std::bit_cast<VideoPictureResourceInfoKHR>(rhs)) {}
+
+  VideoPictureResourceInfoKHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<VideoPictureResourceInfoKHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const VideoPictureResourceInfoKHR &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::VIDEO_PICTURE_RESOURCE_INFO_KHR;
@@ -2668,6 +4252,15 @@ struct VideoReferenceSlotInfoKHR {
 
   VideoReferenceSlotInfoKHR(const VideoPictureResourceInfoKHR *p_picture_resource = {}, int32_t slot_index = {}, const void *p_next = {})
     : p_picture_resource_(p_picture_resource), slot_index_(slot_index), p_next_(p_next) {}
+
+  VideoReferenceSlotInfoKHR(const native_type &rhs) : VideoReferenceSlotInfoKHR(std::bit_cast<VideoReferenceSlotInfoKHR>(rhs)) {}
+
+  VideoReferenceSlotInfoKHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<VideoReferenceSlotInfoKHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const VideoReferenceSlotInfoKHR &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -2689,6 +4282,15 @@ struct VideoEncodeInfoKHR {
       dst_buffer_offset_(dst_buffer_offset), dst_buffer_range_(dst_buffer_range), src_picture_resource_(src_picture_resource),
       p_setup_reference_slot_(p_setup_reference_slot), reference_slot_count_(reference_slot_count), p_reference_slots_(p_reference_slots),
       p_next_(p_next) {}
+
+  VideoEncodeInfoKHR(const native_type &rhs) : VideoEncodeInfoKHR(std::bit_cast<VideoEncodeInfoKHR>(rhs)) {}
+
+  VideoEncodeInfoKHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<VideoEncodeInfoKHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const VideoEncodeInfoKHR &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -2712,6 +4314,15 @@ struct ComponentMapping {
   ComponentMapping(ComponentSwizzle r = {}, ComponentSwizzle g = {}, ComponentSwizzle b = {}, ComponentSwizzle a = {})
     : r_(r), g_(g), b_(b), a_(a) {}
 
+  ComponentMapping(const native_type &rhs) : ComponentMapping(std::bit_cast<ComponentMapping>(rhs)) {}
+
+  ComponentMapping &operator=(const native_type &rhs) {
+    *this = std::bit_cast<ComponentMapping>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const ComponentMapping &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   ComponentSwizzle r_;
@@ -2727,6 +4338,16 @@ struct DeviceAddressBindingCallbackDataEXT {
   DeviceAddressBindingCallbackDataEXT(DeviceAddressBindingType binding_type = {}, DeviceAddressBindingMask flags = {},
                                       VkDeviceAddress base_address = {}, VkDeviceSize size = {}, void *p_next = {})
     : binding_type_(binding_type), flags_(flags), base_address_(base_address), size_(size), p_next_(p_next) {}
+
+  DeviceAddressBindingCallbackDataEXT(const native_type &rhs)
+    : DeviceAddressBindingCallbackDataEXT(std::bit_cast<DeviceAddressBindingCallbackDataEXT>(rhs)) {}
+
+  DeviceAddressBindingCallbackDataEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<DeviceAddressBindingCallbackDataEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const DeviceAddressBindingCallbackDataEXT &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -2744,6 +4365,15 @@ struct VideoEndCodingInfoKHR {
 
   VideoEndCodingInfoKHR(VideoEndCodingMask flags = {}, const void *p_next = {}) : flags_(flags), p_next_(p_next) {}
 
+  VideoEndCodingInfoKHR(const native_type &rhs) : VideoEndCodingInfoKHR(std::bit_cast<VideoEndCodingInfoKHR>(rhs)) {}
+
+  VideoEndCodingInfoKHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<VideoEndCodingInfoKHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const VideoEndCodingInfoKHR &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::VIDEO_END_CODING_INFO_KHR;
@@ -2759,6 +4389,16 @@ struct PhysicalDeviceOpacityMicromapFeaturesEXT {
                                            VkBool32 micromap_capture_replay = {}, void *p_next = {})
     : micromap_host_commands_(micromap_host_commands), micromap_(micromap), micromap_capture_replay_(micromap_capture_replay),
       p_next_(p_next) {}
+
+  PhysicalDeviceOpacityMicromapFeaturesEXT(const native_type &rhs)
+    : PhysicalDeviceOpacityMicromapFeaturesEXT(std::bit_cast<PhysicalDeviceOpacityMicromapFeaturesEXT>(rhs)) {}
+
+  PhysicalDeviceOpacityMicromapFeaturesEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceOpacityMicromapFeaturesEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceOpacityMicromapFeaturesEXT &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -2778,6 +4418,15 @@ struct VideoBeginCodingInfoKHR {
                           uint32_t reference_slot_count = {}, const void *p_next = {})
     : p_reference_slots_(p_reference_slots), flags_(flags), video_session_(video_session),
       video_session_parameters_(video_session_parameters), reference_slot_count_(reference_slot_count), p_next_(p_next) {}
+
+  VideoBeginCodingInfoKHR(const native_type &rhs) : VideoBeginCodingInfoKHR(std::bit_cast<VideoBeginCodingInfoKHR>(rhs)) {}
+
+  VideoBeginCodingInfoKHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<VideoBeginCodingInfoKHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const VideoBeginCodingInfoKHR &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -2799,6 +4448,15 @@ struct DeviceFaultCountsEXT {
     : vendor_binary_size_(vendor_binary_size), address_info_count_(address_info_count), vendor_info_count_(vendor_info_count),
       p_next_(p_next) {}
 
+  DeviceFaultCountsEXT(const native_type &rhs) : DeviceFaultCountsEXT(std::bit_cast<DeviceFaultCountsEXT>(rhs)) {}
+
+  DeviceFaultCountsEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<DeviceFaultCountsEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const DeviceFaultCountsEXT &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::DEVICE_FAULT_COUNTS_EXT;
@@ -2815,6 +4473,16 @@ struct VideoEncodeSessionParametersGetInfoKHR {
   VideoEncodeSessionParametersGetInfoKHR(VkVideoSessionParametersKHR video_session_parameters = {}, const void *p_next = {})
     : video_session_parameters_(video_session_parameters), p_next_(p_next) {}
 
+  VideoEncodeSessionParametersGetInfoKHR(const native_type &rhs)
+    : VideoEncodeSessionParametersGetInfoKHR(std::bit_cast<VideoEncodeSessionParametersGetInfoKHR>(rhs)) {}
+
+  VideoEncodeSessionParametersGetInfoKHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<VideoEncodeSessionParametersGetInfoKHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const VideoEncodeSessionParametersGetInfoKHR &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::VIDEO_ENCODE_SESSION_PARAMETERS_GET_INFO_KHR;
@@ -2829,6 +4497,16 @@ struct VideoSessionParametersUpdateInfoKHR {
   VideoSessionParametersUpdateInfoKHR(uint32_t update_sequence_count = {}, const void *p_next = {})
     : update_sequence_count_(update_sequence_count), p_next_(p_next) {}
 
+  VideoSessionParametersUpdateInfoKHR(const native_type &rhs)
+    : VideoSessionParametersUpdateInfoKHR(std::bit_cast<VideoSessionParametersUpdateInfoKHR>(rhs)) {}
+
+  VideoSessionParametersUpdateInfoKHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<VideoSessionParametersUpdateInfoKHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const VideoSessionParametersUpdateInfoKHR &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::VIDEO_SESSION_PARAMETERS_UPDATE_INFO_KHR;
@@ -2839,6 +4517,15 @@ struct VideoSessionParametersUpdateInfoKHR {
 struct ExtensionProperties {
 
   using native_type = VkExtensionProperties;
+
+  ExtensionProperties(const native_type &rhs) : ExtensionProperties(std::bit_cast<ExtensionProperties>(rhs)) {}
+
+  ExtensionProperties &operator=(const native_type &rhs) {
+    *this = std::bit_cast<ExtensionProperties>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const ExtensionProperties &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -2858,6 +4545,15 @@ struct VideoSessionCreateInfoKHR {
       p_video_profile_(p_video_profile), picture_format_(picture_format), max_coded_extent_(max_coded_extent),
       reference_picture_format_(reference_picture_format), max_dpb_slots_(max_dpb_slots),
       max_active_reference_pictures_(max_active_reference_pictures), p_next_(p_next) {}
+
+  VideoSessionCreateInfoKHR(const native_type &rhs) : VideoSessionCreateInfoKHR(std::bit_cast<VideoSessionCreateInfoKHR>(rhs)) {}
+
+  VideoSessionCreateInfoKHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<VideoSessionCreateInfoKHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const VideoSessionCreateInfoKHR &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -2885,6 +4581,15 @@ struct VideoDecodeAV1PictureInfoKHR {
     : p_tile_sizes_(p_tile_sizes), p_std_picture_info_(p_std_picture_info), reference_name_slot_indices_(reference_name_slot_indices),
       frame_header_offset_(frame_header_offset), tile_count_(tile_count), p_tile_offsets_(p_tile_offsets), p_next_(p_next) {}
 
+  VideoDecodeAV1PictureInfoKHR(const native_type &rhs) : VideoDecodeAV1PictureInfoKHR(std::bit_cast<VideoDecodeAV1PictureInfoKHR>(rhs)) {}
+
+  VideoDecodeAV1PictureInfoKHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<VideoDecodeAV1PictureInfoKHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const VideoDecodeAV1PictureInfoKHR &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::VIDEO_DECODE_AV1_PICTURE_INFO_KHR;
@@ -2904,6 +4609,16 @@ struct VideoDecodeAV1SessionParametersCreateInfoKHR {
   VideoDecodeAV1SessionParametersCreateInfoKHR(const StdVideoAV1SequenceHeader *p_std_sequence_header = {}, const void *p_next = {})
     : p_std_sequence_header_(p_std_sequence_header), p_next_(p_next) {}
 
+  VideoDecodeAV1SessionParametersCreateInfoKHR(const native_type &rhs)
+    : VideoDecodeAV1SessionParametersCreateInfoKHR(std::bit_cast<VideoDecodeAV1SessionParametersCreateInfoKHR>(rhs)) {}
+
+  VideoDecodeAV1SessionParametersCreateInfoKHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<VideoDecodeAV1SessionParametersCreateInfoKHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const VideoDecodeAV1SessionParametersCreateInfoKHR &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::VIDEO_DECODE_AV1_SESSION_PARAMETERS_CREATE_INFO_KHR;
@@ -2914,6 +4629,16 @@ struct VideoDecodeAV1SessionParametersCreateInfoKHR {
 struct VideoDecodeAV1CapabilitiesKHR {
 
   using native_type = VkVideoDecodeAV1CapabilitiesKHR;
+
+  VideoDecodeAV1CapabilitiesKHR(const native_type &rhs)
+    : VideoDecodeAV1CapabilitiesKHR(std::bit_cast<VideoDecodeAV1CapabilitiesKHR>(rhs)) {}
+
+  VideoDecodeAV1CapabilitiesKHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<VideoDecodeAV1CapabilitiesKHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const VideoDecodeAV1CapabilitiesKHR &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -2929,6 +4654,16 @@ struct VideoDecodeH265DpbSlotInfoKHR {
   VideoDecodeH265DpbSlotInfoKHR(const StdVideoDecodeH265ReferenceInfo *p_std_reference_info = {}, const void *p_next = {})
     : p_std_reference_info_(p_std_reference_info), p_next_(p_next) {}
 
+  VideoDecodeH265DpbSlotInfoKHR(const native_type &rhs)
+    : VideoDecodeH265DpbSlotInfoKHR(std::bit_cast<VideoDecodeH265DpbSlotInfoKHR>(rhs)) {}
+
+  VideoDecodeH265DpbSlotInfoKHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<VideoDecodeH265DpbSlotInfoKHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const VideoDecodeH265DpbSlotInfoKHR &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::VIDEO_DECODE_H265_DPB_SLOT_INFO_KHR;
@@ -2942,6 +4677,16 @@ struct VideoDecodeH265ProfileInfoKHR {
 
   VideoDecodeH265ProfileInfoKHR(StdVideoH265ProfileIdc std_profile_idc = {}, const void *p_next = {})
     : std_profile_idc_(std_profile_idc), p_next_(p_next) {}
+
+  VideoDecodeH265ProfileInfoKHR(const native_type &rhs)
+    : VideoDecodeH265ProfileInfoKHR(std::bit_cast<VideoDecodeH265ProfileInfoKHR>(rhs)) {}
+
+  VideoDecodeH265ProfileInfoKHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<VideoDecodeH265ProfileInfoKHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const VideoDecodeH265ProfileInfoKHR &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -2957,6 +4702,16 @@ struct VideoDecodeH264PictureInfoKHR {
   VideoDecodeH264PictureInfoKHR(const uint32_t *p_slice_offsets = {}, const StdVideoDecodeH264PictureInfo *p_std_picture_info = {},
                                 uint32_t slice_count = {}, const void *p_next = {})
     : p_slice_offsets_(p_slice_offsets), p_std_picture_info_(p_std_picture_info), slice_count_(slice_count), p_next_(p_next) {}
+
+  VideoDecodeH264PictureInfoKHR(const native_type &rhs)
+    : VideoDecodeH264PictureInfoKHR(std::bit_cast<VideoDecodeH264PictureInfoKHR>(rhs)) {}
+
+  VideoDecodeH264PictureInfoKHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<VideoDecodeH264PictureInfoKHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const VideoDecodeH264PictureInfoKHR &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -2978,6 +4733,16 @@ struct PhysicalDeviceDescriptorBufferFeaturesEXT {
       descriptor_buffer_capture_replay_(descriptor_buffer_capture_replay),
       descriptor_buffer_image_layout_ignored_(descriptor_buffer_image_layout_ignored), p_next_(p_next) {}
 
+  PhysicalDeviceDescriptorBufferFeaturesEXT(const native_type &rhs)
+    : PhysicalDeviceDescriptorBufferFeaturesEXT(std::bit_cast<PhysicalDeviceDescriptorBufferFeaturesEXT>(rhs)) {}
+
+  PhysicalDeviceDescriptorBufferFeaturesEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceDescriptorBufferFeaturesEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceDescriptorBufferFeaturesEXT &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PHYSICAL_DEVICE_DESCRIPTOR_BUFFER_FEATURES_EXT;
@@ -2997,6 +4762,16 @@ struct VideoDecodeH264SessionParametersAddInfoKHR {
                                              const void *p_next = {})
     : p_std_ppss_(p_std_ppss), std_spscount_(std_spscount), p_std_spss_(p_std_spss), std_ppscount_(std_ppscount), p_next_(p_next) {}
 
+  VideoDecodeH264SessionParametersAddInfoKHR(const native_type &rhs)
+    : VideoDecodeH264SessionParametersAddInfoKHR(std::bit_cast<VideoDecodeH264SessionParametersAddInfoKHR>(rhs)) {}
+
+  VideoDecodeH264SessionParametersAddInfoKHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<VideoDecodeH264SessionParametersAddInfoKHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const VideoDecodeH264SessionParametersAddInfoKHR &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::VIDEO_DECODE_H264_SESSION_PARAMETERS_ADD_INFO_KHR;
@@ -3015,6 +4790,16 @@ struct VideoDecodeH264ProfileInfoKHR {
                                 const void *p_next = {})
     : picture_layout_(picture_layout), std_profile_idc_(std_profile_idc), p_next_(p_next) {}
 
+  VideoDecodeH264ProfileInfoKHR(const native_type &rhs)
+    : VideoDecodeH264ProfileInfoKHR(std::bit_cast<VideoDecodeH264ProfileInfoKHR>(rhs)) {}
+
+  VideoDecodeH264ProfileInfoKHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<VideoDecodeH264ProfileInfoKHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const VideoDecodeH264ProfileInfoKHR &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::VIDEO_DECODE_H264_PROFILE_INFO_KHR;
@@ -3030,6 +4815,15 @@ struct VideoDecodeUsageInfoKHR {
   VideoDecodeUsageInfoKHR(VideoDecodeUsageMask video_usage_hints = {}, const void *p_next = {})
     : video_usage_hints_(video_usage_hints), p_next_(p_next) {}
 
+  VideoDecodeUsageInfoKHR(const native_type &rhs) : VideoDecodeUsageInfoKHR(std::bit_cast<VideoDecodeUsageInfoKHR>(rhs)) {}
+
+  VideoDecodeUsageInfoKHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<VideoDecodeUsageInfoKHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const VideoDecodeUsageInfoKHR &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::VIDEO_DECODE_USAGE_INFO_KHR;
@@ -3044,6 +4838,15 @@ struct VideoInlineQueryInfoKHR {
   VideoInlineQueryInfoKHR(uint32_t query_count = {}, VkQueryPool query_pool = {}, uint32_t first_query = {}, const void *p_next = {})
     : query_count_(query_count), query_pool_(query_pool), first_query_(first_query), p_next_(p_next) {}
 
+  VideoInlineQueryInfoKHR(const native_type &rhs) : VideoInlineQueryInfoKHR(std::bit_cast<VideoInlineQueryInfoKHR>(rhs)) {}
+
+  VideoInlineQueryInfoKHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<VideoInlineQueryInfoKHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const VideoInlineQueryInfoKHR &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::VIDEO_INLINE_QUERY_INFO_KHR;
@@ -3056,6 +4859,15 @@ struct VideoInlineQueryInfoKHR {
 struct VideoCapabilitiesKHR {
 
   using native_type = VkVideoCapabilitiesKHR;
+
+  VideoCapabilitiesKHR(const native_type &rhs) : VideoCapabilitiesKHR(std::bit_cast<VideoCapabilitiesKHR>(rhs)) {}
+
+  VideoCapabilitiesKHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<VideoCapabilitiesKHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const VideoCapabilitiesKHR &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -3076,6 +4888,15 @@ struct VideoFormatPropertiesKHR {
 
   using native_type = VkVideoFormatPropertiesKHR;
 
+  VideoFormatPropertiesKHR(const native_type &rhs) : VideoFormatPropertiesKHR(std::bit_cast<VideoFormatPropertiesKHR>(rhs)) {}
+
+  VideoFormatPropertiesKHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<VideoFormatPropertiesKHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const VideoFormatPropertiesKHR &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::VIDEO_FORMAT_PROPERTIES_KHR;
@@ -3092,6 +4913,16 @@ struct QueueFamilyQueryResultStatusPropertiesKHR {
 
   using native_type = VkQueueFamilyQueryResultStatusPropertiesKHR;
 
+  QueueFamilyQueryResultStatusPropertiesKHR(const native_type &rhs)
+    : QueueFamilyQueryResultStatusPropertiesKHR(std::bit_cast<QueueFamilyQueryResultStatusPropertiesKHR>(rhs)) {}
+
+  QueueFamilyQueryResultStatusPropertiesKHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<QueueFamilyQueryResultStatusPropertiesKHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const QueueFamilyQueryResultStatusPropertiesKHR &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::QUEUE_FAMILY_QUERY_RESULT_STATUS_PROPERTIES_KHR;
@@ -3102,6 +4933,16 @@ struct QueueFamilyQueryResultStatusPropertiesKHR {
 struct QueueFamilyVideoPropertiesKHR {
 
   using native_type = VkQueueFamilyVideoPropertiesKHR;
+
+  QueueFamilyVideoPropertiesKHR(const native_type &rhs)
+    : QueueFamilyVideoPropertiesKHR(std::bit_cast<QueueFamilyVideoPropertiesKHR>(rhs)) {}
+
+  QueueFamilyVideoPropertiesKHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<QueueFamilyVideoPropertiesKHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const QueueFamilyVideoPropertiesKHR &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -3116,6 +4957,16 @@ struct PhysicalDevicePipelineProtectedAccessFeaturesEXT {
 
   PhysicalDevicePipelineProtectedAccessFeaturesEXT(VkBool32 pipeline_protected_access = {}, void *p_next = {})
     : pipeline_protected_access_(pipeline_protected_access), p_next_(p_next) {}
+
+  PhysicalDevicePipelineProtectedAccessFeaturesEXT(const native_type &rhs)
+    : PhysicalDevicePipelineProtectedAccessFeaturesEXT(std::bit_cast<PhysicalDevicePipelineProtectedAccessFeaturesEXT>(rhs)) {}
+
+  PhysicalDevicePipelineProtectedAccessFeaturesEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDevicePipelineProtectedAccessFeaturesEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDevicePipelineProtectedAccessFeaturesEXT &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -3133,6 +4984,16 @@ struct MultisampledRenderToSingleSampledInfoEXT {
     : rasterization_samples_(rasterization_samples),
       multisampled_render_to_single_sampled_enable_(multisampled_render_to_single_sampled_enable), p_next_(p_next) {}
 
+  MultisampledRenderToSingleSampledInfoEXT(const native_type &rhs)
+    : MultisampledRenderToSingleSampledInfoEXT(std::bit_cast<MultisampledRenderToSingleSampledInfoEXT>(rhs)) {}
+
+  MultisampledRenderToSingleSampledInfoEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<MultisampledRenderToSingleSampledInfoEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const MultisampledRenderToSingleSampledInfoEXT &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::MULTISAMPLED_RENDER_TO_SINGLE_SAMPLED_INFO_EXT;
@@ -3145,6 +5006,16 @@ struct SubpassResolvePerformanceQueryEXT {
 
   using native_type = VkSubpassResolvePerformanceQueryEXT;
 
+  SubpassResolvePerformanceQueryEXT(const native_type &rhs)
+    : SubpassResolvePerformanceQueryEXT(std::bit_cast<SubpassResolvePerformanceQueryEXT>(rhs)) {}
+
+  SubpassResolvePerformanceQueryEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<SubpassResolvePerformanceQueryEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const SubpassResolvePerformanceQueryEXT &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::SUBPASS_RESOLVE_PERFORMANCE_QUERY_EXT;
@@ -3155,6 +5026,16 @@ struct SubpassResolvePerformanceQueryEXT {
 struct PhysicalDeviceMapMemoryPlacedPropertiesEXT {
 
   using native_type = VkPhysicalDeviceMapMemoryPlacedPropertiesEXT;
+
+  PhysicalDeviceMapMemoryPlacedPropertiesEXT(const native_type &rhs)
+    : PhysicalDeviceMapMemoryPlacedPropertiesEXT(std::bit_cast<PhysicalDeviceMapMemoryPlacedPropertiesEXT>(rhs)) {}
+
+  PhysicalDeviceMapMemoryPlacedPropertiesEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceMapMemoryPlacedPropertiesEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceMapMemoryPlacedPropertiesEXT &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -3170,6 +5051,17 @@ struct PhysicalDeviceMultisampledRenderToSingleSampledFeaturesEXT {
   PhysicalDeviceMultisampledRenderToSingleSampledFeaturesEXT(VkBool32 multisampled_render_to_single_sampled = {}, void *p_next = {})
     : multisampled_render_to_single_sampled_(multisampled_render_to_single_sampled), p_next_(p_next) {}
 
+  PhysicalDeviceMultisampledRenderToSingleSampledFeaturesEXT(const native_type &rhs)
+    : PhysicalDeviceMultisampledRenderToSingleSampledFeaturesEXT(
+        std::bit_cast<PhysicalDeviceMultisampledRenderToSingleSampledFeaturesEXT>(rhs)) {}
+
+  PhysicalDeviceMultisampledRenderToSingleSampledFeaturesEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceMultisampledRenderToSingleSampledFeaturesEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceMultisampledRenderToSingleSampledFeaturesEXT &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PHYSICAL_DEVICE_MULTISAMPLED_RENDER_TO_SINGLE_SAMPLED_FEATURES_EXT;
@@ -3180,6 +5072,16 @@ struct PhysicalDeviceMultisampledRenderToSingleSampledFeaturesEXT {
 struct HostImageCopyDevicePerformanceQueryEXT {
 
   using native_type = VkHostImageCopyDevicePerformanceQueryEXT;
+
+  HostImageCopyDevicePerformanceQueryEXT(const native_type &rhs)
+    : HostImageCopyDevicePerformanceQueryEXT(std::bit_cast<HostImageCopyDevicePerformanceQueryEXT>(rhs)) {}
+
+  HostImageCopyDevicePerformanceQueryEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<HostImageCopyDevicePerformanceQueryEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const HostImageCopyDevicePerformanceQueryEXT &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -3197,6 +5099,15 @@ struct ImageSubresourceLayers {
                          uint32_t layer_count = {})
     : aspect_mask_(aspect_mask), mip_level_(mip_level), base_array_layer_(base_array_layer), layer_count_(layer_count) {}
 
+  ImageSubresourceLayers(const native_type &rhs) : ImageSubresourceLayers(std::bit_cast<ImageSubresourceLayers>(rhs)) {}
+
+  ImageSubresourceLayers &operator=(const native_type &rhs) {
+    *this = std::bit_cast<ImageSubresourceLayers>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const ImageSubresourceLayers &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   ImageAspectMask aspect_mask_;
@@ -3210,6 +5121,15 @@ struct Offset3D {
   using native_type = VkOffset3D;
 
   Offset3D(int32_t x = {}, int32_t y = {}, int32_t z = {}) : x_(x), y_(y), z_(z) {}
+
+  Offset3D(const native_type &rhs) : Offset3D(std::bit_cast<Offset3D>(rhs)) {}
+
+  Offset3D &operator=(const native_type &rhs) {
+    *this = std::bit_cast<Offset3D>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const Offset3D &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -3227,6 +5147,15 @@ struct ImageToMemoryCopyEXT {
                        const void *p_next = {})
     : image_extent_(image_extent), p_host_pointer_(p_host_pointer), memory_row_length_(memory_row_length),
       memory_image_height_(memory_image_height), image_subresource_(image_subresource), image_offset_(image_offset), p_next_(p_next) {}
+
+  ImageToMemoryCopyEXT(const native_type &rhs) : ImageToMemoryCopyEXT(std::bit_cast<ImageToMemoryCopyEXT>(rhs)) {}
+
+  ImageToMemoryCopyEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<ImageToMemoryCopyEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const ImageToMemoryCopyEXT &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -3248,6 +5177,15 @@ struct CopyImageToMemoryInfoEXT {
                            ImageLayout src_image_layout = {}, uint32_t region_count = {}, const void *p_next = {})
     : p_regions_(p_regions), flags_(flags), src_image_(src_image), src_image_layout_(src_image_layout), region_count_(region_count),
       p_next_(p_next) {}
+
+  CopyImageToMemoryInfoEXT(const native_type &rhs) : CopyImageToMemoryInfoEXT(std::bit_cast<CopyImageToMemoryInfoEXT>(rhs)) {}
+
+  CopyImageToMemoryInfoEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<CopyImageToMemoryInfoEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const CopyImageToMemoryInfoEXT &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -3272,6 +5210,16 @@ struct PhysicalDeviceHostImageCopyPropertiesEXT {
       p_copy_src_layouts_(p_copy_src_layouts), copy_dst_layout_count_(copy_dst_layout_count), p_copy_dst_layouts_(p_copy_dst_layouts),
       optimal_tiling_layout_uuid_(optimal_tiling_layout_uuid), p_next_(p_next) {}
 
+  PhysicalDeviceHostImageCopyPropertiesEXT(const native_type &rhs)
+    : PhysicalDeviceHostImageCopyPropertiesEXT(std::bit_cast<PhysicalDeviceHostImageCopyPropertiesEXT>(rhs)) {}
+
+  PhysicalDeviceHostImageCopyPropertiesEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceHostImageCopyPropertiesEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceHostImageCopyPropertiesEXT &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PHYSICAL_DEVICE_HOST_IMAGE_COPY_PROPERTIES_EXT;
@@ -3288,6 +5236,16 @@ struct VideoEncodeSessionParametersFeedbackInfoKHR {
 
   using native_type = VkVideoEncodeSessionParametersFeedbackInfoKHR;
 
+  VideoEncodeSessionParametersFeedbackInfoKHR(const native_type &rhs)
+    : VideoEncodeSessionParametersFeedbackInfoKHR(std::bit_cast<VideoEncodeSessionParametersFeedbackInfoKHR>(rhs)) {}
+
+  VideoEncodeSessionParametersFeedbackInfoKHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<VideoEncodeSessionParametersFeedbackInfoKHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const VideoEncodeSessionParametersFeedbackInfoKHR &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::VIDEO_ENCODE_SESSION_PARAMETERS_FEEDBACK_INFO_KHR;
@@ -3301,6 +5259,16 @@ struct PhysicalDeviceHostImageCopyFeaturesEXT {
 
   PhysicalDeviceHostImageCopyFeaturesEXT(VkBool32 host_image_copy = {}, void *p_next = {})
     : host_image_copy_(host_image_copy), p_next_(p_next) {}
+
+  PhysicalDeviceHostImageCopyFeaturesEXT(const native_type &rhs)
+    : PhysicalDeviceHostImageCopyFeaturesEXT(std::bit_cast<PhysicalDeviceHostImageCopyFeaturesEXT>(rhs)) {}
+
+  PhysicalDeviceHostImageCopyFeaturesEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceHostImageCopyFeaturesEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceHostImageCopyFeaturesEXT &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -3316,6 +5284,16 @@ struct PhysicalDeviceSynchronization2Features {
   PhysicalDeviceSynchronization2Features(VkBool32 synchronization2 = {}, void *p_next = {})
     : synchronization2_(synchronization2), p_next_(p_next) {}
 
+  PhysicalDeviceSynchronization2Features(const native_type &rhs)
+    : PhysicalDeviceSynchronization2Features(std::bit_cast<PhysicalDeviceSynchronization2Features>(rhs)) {}
+
+  PhysicalDeviceSynchronization2Features &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceSynchronization2Features>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceSynchronization2Features &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PHYSICAL_DEVICE_SYNCHRONIZATION_2_FEATURES;
@@ -3326,6 +5304,16 @@ struct PhysicalDeviceSynchronization2Features {
 struct QueueFamilyCheckpointProperties2NV {
 
   using native_type = VkQueueFamilyCheckpointProperties2NV;
+
+  QueueFamilyCheckpointProperties2NV(const native_type &rhs)
+    : QueueFamilyCheckpointProperties2NV(std::bit_cast<QueueFamilyCheckpointProperties2NV>(rhs)) {}
+
+  QueueFamilyCheckpointProperties2NV &operator=(const native_type &rhs) {
+    *this = std::bit_cast<QueueFamilyCheckpointProperties2NV>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const QueueFamilyCheckpointProperties2NV &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -3342,6 +5330,15 @@ struct MemoryBarrier2 {
                  PipelineStageMask2 dst_stage_mask = {}, const void *p_next = {})
     : dst_access_mask_(dst_access_mask), src_stage_mask_(src_stage_mask), src_access_mask_(src_access_mask),
       dst_stage_mask_(dst_stage_mask), p_next_(p_next) {}
+
+  MemoryBarrier2(const native_type &rhs) : MemoryBarrier2(std::bit_cast<MemoryBarrier2>(rhs)) {}
+
+  MemoryBarrier2 &operator=(const native_type &rhs) {
+    *this = std::bit_cast<MemoryBarrier2>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const MemoryBarrier2 &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -3363,6 +5360,15 @@ struct BufferMemoryBarrier2 {
     : size_(size), src_stage_mask_(src_stage_mask), src_access_mask_(src_access_mask), dst_stage_mask_(dst_stage_mask),
       dst_access_mask_(dst_access_mask), src_queue_family_index_(src_queue_family_index), dst_queue_family_index_(dst_queue_family_index),
       buffer_(buffer), offset_(offset), p_next_(p_next) {}
+
+  BufferMemoryBarrier2(const native_type &rhs) : BufferMemoryBarrier2(std::bit_cast<BufferMemoryBarrier2>(rhs)) {}
+
+  BufferMemoryBarrier2 &operator=(const native_type &rhs) {
+    *this = std::bit_cast<BufferMemoryBarrier2>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const BufferMemoryBarrier2 &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -3388,6 +5394,15 @@ struct ImageSubresourceRange {
     : aspect_mask_(aspect_mask), base_mip_level_(base_mip_level), level_count_(level_count), base_array_layer_(base_array_layer),
       layer_count_(layer_count) {}
 
+  ImageSubresourceRange(const native_type &rhs) : ImageSubresourceRange(std::bit_cast<ImageSubresourceRange>(rhs)) {}
+
+  ImageSubresourceRange &operator=(const native_type &rhs) {
+    *this = std::bit_cast<ImageSubresourceRange>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const ImageSubresourceRange &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   ImageAspectMask aspect_mask_;
@@ -3408,6 +5423,15 @@ struct ImageMemoryBarrier2 {
     : subresource_range_(subresource_range), src_stage_mask_(src_stage_mask), src_access_mask_(src_access_mask),
       dst_stage_mask_(dst_stage_mask), dst_access_mask_(dst_access_mask), old_layout_(old_layout), new_layout_(new_layout),
       src_queue_family_index_(src_queue_family_index), dst_queue_family_index_(dst_queue_family_index), image_(image), p_next_(p_next) {}
+
+  ImageMemoryBarrier2(const native_type &rhs) : ImageMemoryBarrier2(std::bit_cast<ImageMemoryBarrier2>(rhs)) {}
+
+  ImageMemoryBarrier2 &operator=(const native_type &rhs) {
+    *this = std::bit_cast<ImageMemoryBarrier2>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const ImageMemoryBarrier2 &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -3437,6 +5461,15 @@ struct DependencyInfo {
       p_memory_barriers_(p_memory_barriers), buffer_memory_barrier_count_(buffer_memory_barrier_count),
       p_buffer_memory_barriers_(p_buffer_memory_barriers), image_memory_barrier_count_(image_memory_barrier_count), p_next_(p_next) {}
 
+  DependencyInfo(const native_type &rhs) : DependencyInfo(std::bit_cast<DependencyInfo>(rhs)) {}
+
+  DependencyInfo &operator=(const native_type &rhs) {
+    *this = std::bit_cast<DependencyInfo>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const DependencyInfo &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::DEPENDENCY_INFO;
@@ -3458,6 +5491,16 @@ struct VertexInputAttributeDescription2EXT {
                                       void *p_next = {})
     : offset_(offset), location_(location), binding_(binding), format_(format), p_next_(p_next) {}
 
+  VertexInputAttributeDescription2EXT(const native_type &rhs)
+    : VertexInputAttributeDescription2EXT(std::bit_cast<VertexInputAttributeDescription2EXT>(rhs)) {}
+
+  VertexInputAttributeDescription2EXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<VertexInputAttributeDescription2EXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const VertexInputAttributeDescription2EXT &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::VERTEX_INPUT_ATTRIBUTE_DESCRIPTION_2_EXT;
@@ -3475,6 +5518,16 @@ struct PhysicalDeviceExternalMemoryRDMAFeaturesNV {
   PhysicalDeviceExternalMemoryRDMAFeaturesNV(VkBool32 external_memory_rdma = {}, void *p_next = {})
     : external_memory_rdma_(external_memory_rdma), p_next_(p_next) {}
 
+  PhysicalDeviceExternalMemoryRDMAFeaturesNV(const native_type &rhs)
+    : PhysicalDeviceExternalMemoryRDMAFeaturesNV(std::bit_cast<PhysicalDeviceExternalMemoryRDMAFeaturesNV>(rhs)) {}
+
+  PhysicalDeviceExternalMemoryRDMAFeaturesNV &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceExternalMemoryRDMAFeaturesNV>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceExternalMemoryRDMAFeaturesNV &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PHYSICAL_DEVICE_EXTERNAL_MEMORY_RDMA_FEATURES_NV;
@@ -3488,6 +5541,16 @@ struct PhysicalDeviceVertexInputDynamicStateFeaturesEXT {
 
   PhysicalDeviceVertexInputDynamicStateFeaturesEXT(VkBool32 vertex_input_dynamic_state = {}, void *p_next = {})
     : vertex_input_dynamic_state_(vertex_input_dynamic_state), p_next_(p_next) {}
+
+  PhysicalDeviceVertexInputDynamicStateFeaturesEXT(const native_type &rhs)
+    : PhysicalDeviceVertexInputDynamicStateFeaturesEXT(std::bit_cast<PhysicalDeviceVertexInputDynamicStateFeaturesEXT>(rhs)) {}
+
+  PhysicalDeviceVertexInputDynamicStateFeaturesEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceVertexInputDynamicStateFeaturesEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceVertexInputDynamicStateFeaturesEXT &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -3503,6 +5566,16 @@ struct PipelineViewportDepthClipControlCreateInfoEXT {
   PipelineViewportDepthClipControlCreateInfoEXT(VkBool32 negative_one_to_one = {}, const void *p_next = {})
     : negative_one_to_one_(negative_one_to_one), p_next_(p_next) {}
 
+  PipelineViewportDepthClipControlCreateInfoEXT(const native_type &rhs)
+    : PipelineViewportDepthClipControlCreateInfoEXT(std::bit_cast<PipelineViewportDepthClipControlCreateInfoEXT>(rhs)) {}
+
+  PipelineViewportDepthClipControlCreateInfoEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PipelineViewportDepthClipControlCreateInfoEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PipelineViewportDepthClipControlCreateInfoEXT &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PIPELINE_VIEWPORT_DEPTH_CLIP_CONTROL_CREATE_INFO_EXT;
@@ -3516,6 +5589,15 @@ struct MutableDescriptorTypeListEXT {
 
   MutableDescriptorTypeListEXT(uint32_t descriptor_type_count = {}, const DescriptorType *p_descriptor_types = {})
     : descriptor_type_count_(descriptor_type_count), p_descriptor_types_(p_descriptor_types) {}
+
+  MutableDescriptorTypeListEXT(const native_type &rhs) : MutableDescriptorTypeListEXT(std::bit_cast<MutableDescriptorTypeListEXT>(rhs)) {}
+
+  MutableDescriptorTypeListEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<MutableDescriptorTypeListEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const MutableDescriptorTypeListEXT &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -3532,6 +5614,16 @@ struct MutableDescriptorTypeCreateInfoEXT {
     : p_mutable_descriptor_type_lists_(p_mutable_descriptor_type_lists),
       mutable_descriptor_type_list_count_(mutable_descriptor_type_list_count), p_next_(p_next) {}
 
+  MutableDescriptorTypeCreateInfoEXT(const native_type &rhs)
+    : MutableDescriptorTypeCreateInfoEXT(std::bit_cast<MutableDescriptorTypeCreateInfoEXT>(rhs)) {}
+
+  MutableDescriptorTypeCreateInfoEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<MutableDescriptorTypeCreateInfoEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const MutableDescriptorTypeCreateInfoEXT &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::MUTABLE_DESCRIPTOR_TYPE_CREATE_INFO_EXT;
@@ -3547,6 +5639,16 @@ struct PhysicalDeviceMutableDescriptorTypeFeaturesEXT {
   PhysicalDeviceMutableDescriptorTypeFeaturesEXT(VkBool32 mutable_descriptor_type = {}, void *p_next = {})
     : mutable_descriptor_type_(mutable_descriptor_type), p_next_(p_next) {}
 
+  PhysicalDeviceMutableDescriptorTypeFeaturesEXT(const native_type &rhs)
+    : PhysicalDeviceMutableDescriptorTypeFeaturesEXT(std::bit_cast<PhysicalDeviceMutableDescriptorTypeFeaturesEXT>(rhs)) {}
+
+  PhysicalDeviceMutableDescriptorTypeFeaturesEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceMutableDescriptorTypeFeaturesEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceMutableDescriptorTypeFeaturesEXT &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PHYSICAL_DEVICE_MUTABLE_DESCRIPTOR_TYPE_FEATURES_EXT;
@@ -3557,6 +5659,15 @@ struct PhysicalDeviceMutableDescriptorTypeFeaturesEXT {
 struct DeviceFaultInfoEXT {
 
   using native_type = VkDeviceFaultInfoEXT;
+
+  DeviceFaultInfoEXT(const native_type &rhs) : DeviceFaultInfoEXT(std::bit_cast<DeviceFaultInfoEXT>(rhs)) {}
+
+  DeviceFaultInfoEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<DeviceFaultInfoEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const DeviceFaultInfoEXT &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -3575,6 +5686,16 @@ struct PhysicalDeviceLegacyVertexAttributesPropertiesEXT {
   PhysicalDeviceLegacyVertexAttributesPropertiesEXT(VkBool32 native_unaligned_performance = {}, void *p_next = {})
     : native_unaligned_performance_(native_unaligned_performance), p_next_(p_next) {}
 
+  PhysicalDeviceLegacyVertexAttributesPropertiesEXT(const native_type &rhs)
+    : PhysicalDeviceLegacyVertexAttributesPropertiesEXT(std::bit_cast<PhysicalDeviceLegacyVertexAttributesPropertiesEXT>(rhs)) {}
+
+  PhysicalDeviceLegacyVertexAttributesPropertiesEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceLegacyVertexAttributesPropertiesEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceLegacyVertexAttributesPropertiesEXT &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PHYSICAL_DEVICE_LEGACY_VERTEX_ATTRIBUTES_PROPERTIES_EXT;
@@ -3588,6 +5709,16 @@ struct PhysicalDeviceLegacyVertexAttributesFeaturesEXT {
 
   PhysicalDeviceLegacyVertexAttributesFeaturesEXT(VkBool32 legacy_vertex_attributes = {}, void *p_next = {})
     : legacy_vertex_attributes_(legacy_vertex_attributes), p_next_(p_next) {}
+
+  PhysicalDeviceLegacyVertexAttributesFeaturesEXT(const native_type &rhs)
+    : PhysicalDeviceLegacyVertexAttributesFeaturesEXT(std::bit_cast<PhysicalDeviceLegacyVertexAttributesFeaturesEXT>(rhs)) {}
+
+  PhysicalDeviceLegacyVertexAttributesFeaturesEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceLegacyVertexAttributesFeaturesEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceLegacyVertexAttributesFeaturesEXT &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -3603,6 +5734,17 @@ struct PhysicalDeviceAttachmentFeedbackLoopDynamicStateFeaturesEXT {
   PhysicalDeviceAttachmentFeedbackLoopDynamicStateFeaturesEXT(VkBool32 attachment_feedback_loop_dynamic_state = {}, void *p_next = {})
     : attachment_feedback_loop_dynamic_state_(attachment_feedback_loop_dynamic_state), p_next_(p_next) {}
 
+  PhysicalDeviceAttachmentFeedbackLoopDynamicStateFeaturesEXT(const native_type &rhs)
+    : PhysicalDeviceAttachmentFeedbackLoopDynamicStateFeaturesEXT(
+        std::bit_cast<PhysicalDeviceAttachmentFeedbackLoopDynamicStateFeaturesEXT>(rhs)) {}
+
+  PhysicalDeviceAttachmentFeedbackLoopDynamicStateFeaturesEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceAttachmentFeedbackLoopDynamicStateFeaturesEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceAttachmentFeedbackLoopDynamicStateFeaturesEXT &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PHYSICAL_DEVICE_ATTACHMENT_FEEDBACK_LOOP_DYNAMIC_STATE_FEATURES_EXT;
@@ -3613,6 +5755,16 @@ struct PhysicalDeviceAttachmentFeedbackLoopDynamicStateFeaturesEXT {
 struct PhysicalDeviceImageProcessing2PropertiesQCOM {
 
   using native_type = VkPhysicalDeviceImageProcessing2PropertiesQCOM;
+
+  PhysicalDeviceImageProcessing2PropertiesQCOM(const native_type &rhs)
+    : PhysicalDeviceImageProcessing2PropertiesQCOM(std::bit_cast<PhysicalDeviceImageProcessing2PropertiesQCOM>(rhs)) {}
+
+  PhysicalDeviceImageProcessing2PropertiesQCOM &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceImageProcessing2PropertiesQCOM>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceImageProcessing2PropertiesQCOM &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -3628,6 +5780,16 @@ struct PhysicalDeviceImageSlicedViewOf3DFeaturesEXT {
   PhysicalDeviceImageSlicedViewOf3DFeaturesEXT(VkBool32 image_sliced_view_of3d = {}, void *p_next = {})
     : image_sliced_view_of3d_(image_sliced_view_of3d), p_next_(p_next) {}
 
+  PhysicalDeviceImageSlicedViewOf3DFeaturesEXT(const native_type &rhs)
+    : PhysicalDeviceImageSlicedViewOf3DFeaturesEXT(std::bit_cast<PhysicalDeviceImageSlicedViewOf3DFeaturesEXT>(rhs)) {}
+
+  PhysicalDeviceImageSlicedViewOf3DFeaturesEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceImageSlicedViewOf3DFeaturesEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceImageSlicedViewOf3DFeaturesEXT &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PHYSICAL_DEVICE_IMAGE_SLICED_VIEW_OF_3D_FEATURES_EXT;
@@ -3641,6 +5803,16 @@ struct PhysicalDeviceImage2DViewOf3DFeaturesEXT {
 
   PhysicalDeviceImage2DViewOf3DFeaturesEXT(VkBool32 sampler2dview_of3d = {}, VkBool32 image2dview_of3d = {}, void *p_next = {})
     : sampler2dview_of3d_(sampler2dview_of3d), image2dview_of3d_(image2dview_of3d), p_next_(p_next) {}
+
+  PhysicalDeviceImage2DViewOf3DFeaturesEXT(const native_type &rhs)
+    : PhysicalDeviceImage2DViewOf3DFeaturesEXT(std::bit_cast<PhysicalDeviceImage2DViewOf3DFeaturesEXT>(rhs)) {}
+
+  PhysicalDeviceImage2DViewOf3DFeaturesEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceImage2DViewOf3DFeaturesEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceImage2DViewOf3DFeaturesEXT &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -3659,6 +5831,16 @@ struct PipelineFragmentShadingRateEnumStateCreateInfoNV {
                                                    const void *p_next = {})
     : combiner_ops_(combiner_ops), shading_rate_type_(shading_rate_type), shading_rate_(shading_rate), p_next_(p_next) {}
 
+  PipelineFragmentShadingRateEnumStateCreateInfoNV(const native_type &rhs)
+    : PipelineFragmentShadingRateEnumStateCreateInfoNV(std::bit_cast<PipelineFragmentShadingRateEnumStateCreateInfoNV>(rhs)) {}
+
+  PipelineFragmentShadingRateEnumStateCreateInfoNV &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PipelineFragmentShadingRateEnumStateCreateInfoNV>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PipelineFragmentShadingRateEnumStateCreateInfoNV &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PIPELINE_FRAGMENT_SHADING_RATE_ENUM_STATE_CREATE_INFO_NV;
@@ -3675,6 +5857,16 @@ struct PhysicalDeviceNestedCommandBufferPropertiesEXT {
   PhysicalDeviceNestedCommandBufferPropertiesEXT(uint32_t max_command_buffer_nesting_level = {}, void *p_next = {})
     : max_command_buffer_nesting_level_(max_command_buffer_nesting_level), p_next_(p_next) {}
 
+  PhysicalDeviceNestedCommandBufferPropertiesEXT(const native_type &rhs)
+    : PhysicalDeviceNestedCommandBufferPropertiesEXT(std::bit_cast<PhysicalDeviceNestedCommandBufferPropertiesEXT>(rhs)) {}
+
+  PhysicalDeviceNestedCommandBufferPropertiesEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceNestedCommandBufferPropertiesEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceNestedCommandBufferPropertiesEXT &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PHYSICAL_DEVICE_NESTED_COMMAND_BUFFER_PROPERTIES_EXT;
@@ -3688,6 +5880,16 @@ struct PhysicalDeviceFragmentShadingRateEnumsPropertiesNV {
 
   PhysicalDeviceFragmentShadingRateEnumsPropertiesNV(SampleCountMaskBit max_fragment_shading_rate_invocation_count = {}, void *p_next = {})
     : max_fragment_shading_rate_invocation_count_(max_fragment_shading_rate_invocation_count), p_next_(p_next) {}
+
+  PhysicalDeviceFragmentShadingRateEnumsPropertiesNV(const native_type &rhs)
+    : PhysicalDeviceFragmentShadingRateEnumsPropertiesNV(std::bit_cast<PhysicalDeviceFragmentShadingRateEnumsPropertiesNV>(rhs)) {}
+
+  PhysicalDeviceFragmentShadingRateEnumsPropertiesNV &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceFragmentShadingRateEnumsPropertiesNV>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceFragmentShadingRateEnumsPropertiesNV &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -3707,6 +5909,16 @@ struct PhysicalDeviceFragmentShadingRateEnumsFeaturesNV {
       fragment_shading_rate_enums_(fragment_shading_rate_enums), supersample_fragment_shading_rates_(supersample_fragment_shading_rates),
       p_next_(p_next) {}
 
+  PhysicalDeviceFragmentShadingRateEnumsFeaturesNV(const native_type &rhs)
+    : PhysicalDeviceFragmentShadingRateEnumsFeaturesNV(std::bit_cast<PhysicalDeviceFragmentShadingRateEnumsFeaturesNV>(rhs)) {}
+
+  PhysicalDeviceFragmentShadingRateEnumsFeaturesNV &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceFragmentShadingRateEnumsFeaturesNV>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceFragmentShadingRateEnumsFeaturesNV &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PHYSICAL_DEVICE_FRAGMENT_SHADING_RATE_ENUMS_FEATURES_NV;
@@ -3723,6 +5935,16 @@ struct PhysicalDeviceShaderTerminateInvocationFeatures {
   PhysicalDeviceShaderTerminateInvocationFeatures(VkBool32 shader_terminate_invocation = {}, void *p_next = {})
     : shader_terminate_invocation_(shader_terminate_invocation), p_next_(p_next) {}
 
+  PhysicalDeviceShaderTerminateInvocationFeatures(const native_type &rhs)
+    : PhysicalDeviceShaderTerminateInvocationFeatures(std::bit_cast<PhysicalDeviceShaderTerminateInvocationFeatures>(rhs)) {}
+
+  PhysicalDeviceShaderTerminateInvocationFeatures &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceShaderTerminateInvocationFeatures>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceShaderTerminateInvocationFeatures &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PHYSICAL_DEVICE_SHADER_TERMINATE_INVOCATION_FEATURES;
@@ -3738,6 +5960,16 @@ struct PhysicalDeviceFragmentShadingRateFeaturesKHR {
                                                VkBool32 primitive_fragment_shading_rate = {}, void *p_next = {})
     : attachment_fragment_shading_rate_(attachment_fragment_shading_rate), pipeline_fragment_shading_rate_(pipeline_fragment_shading_rate),
       primitive_fragment_shading_rate_(primitive_fragment_shading_rate), p_next_(p_next) {}
+
+  PhysicalDeviceFragmentShadingRateFeaturesKHR(const native_type &rhs)
+    : PhysicalDeviceFragmentShadingRateFeaturesKHR(std::bit_cast<PhysicalDeviceFragmentShadingRateFeaturesKHR>(rhs)) {}
+
+  PhysicalDeviceFragmentShadingRateFeaturesKHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceFragmentShadingRateFeaturesKHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceFragmentShadingRateFeaturesKHR &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -3756,6 +5988,15 @@ struct ImageResolve2 {
                 ImageSubresourceLayers dst_subresource = {}, Offset3D dst_offset = {}, const void *p_next = {})
     : extent_(extent), src_subresource_(src_subresource), src_offset_(src_offset), dst_subresource_(dst_subresource),
       dst_offset_(dst_offset), p_next_(p_next) {}
+
+  ImageResolve2(const native_type &rhs) : ImageResolve2(std::bit_cast<ImageResolve2>(rhs)) {}
+
+  ImageResolve2 &operator=(const native_type &rhs) {
+    *this = std::bit_cast<ImageResolve2>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const ImageResolve2 &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -3776,6 +6017,15 @@ struct ResolveImageInfo2 {
                     ImageLayout dst_image_layout = {}, uint32_t region_count = {}, const void *p_next = {})
     : p_regions_(p_regions), src_image_(src_image), src_image_layout_(src_image_layout), dst_image_(dst_image),
       dst_image_layout_(dst_image_layout), region_count_(region_count), p_next_(p_next) {}
+
+  ResolveImageInfo2(const native_type &rhs) : ResolveImageInfo2(std::bit_cast<ResolveImageInfo2>(rhs)) {}
+
+  ResolveImageInfo2 &operator=(const native_type &rhs) {
+    *this = std::bit_cast<ResolveImageInfo2>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const ResolveImageInfo2 &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -3799,6 +6049,15 @@ struct BufferImageCopy2 {
     : image_extent_(image_extent), buffer_offset_(buffer_offset), buffer_row_length_(buffer_row_length),
       buffer_image_height_(buffer_image_height), image_subresource_(image_subresource), image_offset_(image_offset), p_next_(p_next) {}
 
+  BufferImageCopy2(const native_type &rhs) : BufferImageCopy2(std::bit_cast<BufferImageCopy2>(rhs)) {}
+
+  BufferImageCopy2 &operator=(const native_type &rhs) {
+    *this = std::bit_cast<BufferImageCopy2>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const BufferImageCopy2 &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::BUFFER_IMAGE_COPY_2;
@@ -3820,6 +6079,15 @@ struct CopyBufferToImageInfo2 {
     : p_regions_(p_regions), src_buffer_(src_buffer), dst_image_(dst_image), dst_image_layout_(dst_image_layout),
       region_count_(region_count), p_next_(p_next) {}
 
+  CopyBufferToImageInfo2(const native_type &rhs) : CopyBufferToImageInfo2(std::bit_cast<CopyBufferToImageInfo2>(rhs)) {}
+
+  CopyBufferToImageInfo2 &operator=(const native_type &rhs) {
+    *this = std::bit_cast<CopyBufferToImageInfo2>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const CopyBufferToImageInfo2 &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::COPY_BUFFER_TO_IMAGE_INFO_2;
@@ -3838,6 +6106,15 @@ struct BufferCopy2 {
   BufferCopy2(VkDeviceSize size = {}, VkDeviceSize src_offset = {}, VkDeviceSize dst_offset = {}, const void *p_next = {})
     : size_(size), src_offset_(src_offset), dst_offset_(dst_offset), p_next_(p_next) {}
 
+  BufferCopy2(const native_type &rhs) : BufferCopy2(std::bit_cast<BufferCopy2>(rhs)) {}
+
+  BufferCopy2 &operator=(const native_type &rhs) {
+    *this = std::bit_cast<BufferCopy2>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const BufferCopy2 &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::BUFFER_COPY_2;
@@ -3854,6 +6131,15 @@ struct CopyBufferInfo2 {
   CopyBufferInfo2(const BufferCopy2 *p_regions = {}, VkBuffer src_buffer = {}, VkBuffer dst_buffer = {}, uint32_t region_count = {},
                   const void *p_next = {})
     : p_regions_(p_regions), src_buffer_(src_buffer), dst_buffer_(dst_buffer), region_count_(region_count), p_next_(p_next) {}
+
+  CopyBufferInfo2(const native_type &rhs) : CopyBufferInfo2(std::bit_cast<CopyBufferInfo2>(rhs)) {}
+
+  CopyBufferInfo2 &operator=(const native_type &rhs) {
+    *this = std::bit_cast<CopyBufferInfo2>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const CopyBufferInfo2 &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -3873,6 +6159,16 @@ struct PhysicalDeviceShaderImageAtomicInt64FeaturesEXT {
                                                   void *p_next = {})
     : sparse_image_int64atomics_(sparse_image_int64atomics), shader_image_int64atomics_(shader_image_int64atomics), p_next_(p_next) {}
 
+  PhysicalDeviceShaderImageAtomicInt64FeaturesEXT(const native_type &rhs)
+    : PhysicalDeviceShaderImageAtomicInt64FeaturesEXT(std::bit_cast<PhysicalDeviceShaderImageAtomicInt64FeaturesEXT>(rhs)) {}
+
+  PhysicalDeviceShaderImageAtomicInt64FeaturesEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceShaderImageAtomicInt64FeaturesEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceShaderImageAtomicInt64FeaturesEXT &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PHYSICAL_DEVICE_SHADER_IMAGE_ATOMIC_INT64_FEATURES_EXT;
@@ -3889,6 +6185,15 @@ struct ImageBlit2 {
              const std::array<Offset3D, 2> &src_offsets = {}, ImageSubresourceLayers dst_subresource = {}, const void *p_next = {})
     : dst_offsets_(dst_offsets), src_subresource_(src_subresource), src_offsets_(src_offsets), dst_subresource_(dst_subresource),
       p_next_(p_next) {}
+
+  ImageBlit2(const native_type &rhs) : ImageBlit2(std::bit_cast<ImageBlit2>(rhs)) {}
+
+  ImageBlit2 &operator=(const native_type &rhs) {
+    *this = std::bit_cast<ImageBlit2>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const ImageBlit2 &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -3909,6 +6214,15 @@ struct ImageCopy2 {
     : extent_(extent), src_subresource_(src_subresource), src_offset_(src_offset), dst_subresource_(dst_subresource),
       dst_offset_(dst_offset), p_next_(p_next) {}
 
+  ImageCopy2(const native_type &rhs) : ImageCopy2(std::bit_cast<ImageCopy2>(rhs)) {}
+
+  ImageCopy2 &operator=(const native_type &rhs) {
+    *this = std::bit_cast<ImageCopy2>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const ImageCopy2 &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::IMAGE_COPY_2;
@@ -3928,6 +6242,16 @@ struct VideoEncodeH265NaluSliceSegmentInfoKHR {
                                          int32_t constant_qp = {}, const void *p_next = {})
     : p_std_slice_segment_header_(p_std_slice_segment_header), constant_qp_(constant_qp), p_next_(p_next) {}
 
+  VideoEncodeH265NaluSliceSegmentInfoKHR(const native_type &rhs)
+    : VideoEncodeH265NaluSliceSegmentInfoKHR(std::bit_cast<VideoEncodeH265NaluSliceSegmentInfoKHR>(rhs)) {}
+
+  VideoEncodeH265NaluSliceSegmentInfoKHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<VideoEncodeH265NaluSliceSegmentInfoKHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const VideoEncodeH265NaluSliceSegmentInfoKHR &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::VIDEO_ENCODE_H265_NALU_SLICE_SEGMENT_INFO_KHR;
@@ -3943,6 +6267,16 @@ struct PhysicalDeviceClusterCullingShaderVrsFeaturesHUAWEI {
   PhysicalDeviceClusterCullingShaderVrsFeaturesHUAWEI(VkBool32 cluster_shading_rate = {}, void *p_next = {})
     : cluster_shading_rate_(cluster_shading_rate), p_next_(p_next) {}
 
+  PhysicalDeviceClusterCullingShaderVrsFeaturesHUAWEI(const native_type &rhs)
+    : PhysicalDeviceClusterCullingShaderVrsFeaturesHUAWEI(std::bit_cast<PhysicalDeviceClusterCullingShaderVrsFeaturesHUAWEI>(rhs)) {}
+
+  PhysicalDeviceClusterCullingShaderVrsFeaturesHUAWEI &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceClusterCullingShaderVrsFeaturesHUAWEI>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceClusterCullingShaderVrsFeaturesHUAWEI &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PHYSICAL_DEVICE_CLUSTER_CULLING_SHADER_VRS_FEATURES_HUAWEI;
@@ -3955,6 +6289,16 @@ struct PhysicalDeviceImageViewMinLodFeaturesEXT {
   using native_type = VkPhysicalDeviceImageViewMinLodFeaturesEXT;
 
   PhysicalDeviceImageViewMinLodFeaturesEXT(VkBool32 min_lod = {}, void *p_next = {}) : min_lod_(min_lod), p_next_(p_next) {}
+
+  PhysicalDeviceImageViewMinLodFeaturesEXT(const native_type &rhs)
+    : PhysicalDeviceImageViewMinLodFeaturesEXT(std::bit_cast<PhysicalDeviceImageViewMinLodFeaturesEXT>(rhs)) {}
+
+  PhysicalDeviceImageViewMinLodFeaturesEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceImageViewMinLodFeaturesEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceImageViewMinLodFeaturesEXT &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -3971,6 +6315,16 @@ struct PhysicalDeviceClusterCullingShaderFeaturesHUAWEI {
                                                    void *p_next = {})
     : multiview_cluster_culling_shader_(multiview_cluster_culling_shader), clusterculling_shader_(clusterculling_shader), p_next_(p_next) {}
 
+  PhysicalDeviceClusterCullingShaderFeaturesHUAWEI(const native_type &rhs)
+    : PhysicalDeviceClusterCullingShaderFeaturesHUAWEI(std::bit_cast<PhysicalDeviceClusterCullingShaderFeaturesHUAWEI>(rhs)) {}
+
+  PhysicalDeviceClusterCullingShaderFeaturesHUAWEI &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceClusterCullingShaderFeaturesHUAWEI>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceClusterCullingShaderFeaturesHUAWEI &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PHYSICAL_DEVICE_CLUSTER_CULLING_SHADER_FEATURES_HUAWEI;
@@ -3985,6 +6339,16 @@ struct PhysicalDevice4444FormatsFeaturesEXT {
 
   PhysicalDevice4444FormatsFeaturesEXT(VkBool32 format_a4b4g4r4 = {}, VkBool32 format_a4r4g4b4 = {}, void *p_next = {})
     : format_a4b4g4r4_(format_a4b4g4r4), format_a4r4g4b4_(format_a4r4g4b4), p_next_(p_next) {}
+
+  PhysicalDevice4444FormatsFeaturesEXT(const native_type &rhs)
+    : PhysicalDevice4444FormatsFeaturesEXT(std::bit_cast<PhysicalDevice4444FormatsFeaturesEXT>(rhs)) {}
+
+  PhysicalDevice4444FormatsFeaturesEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDevice4444FormatsFeaturesEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDevice4444FormatsFeaturesEXT &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -4001,6 +6365,16 @@ struct SamplerCubicWeightsCreateInfoQCOM {
   SamplerCubicWeightsCreateInfoQCOM(CubicFilterWeights cubic_weights = {}, const void *p_next = {})
     : cubic_weights_(cubic_weights), p_next_(p_next) {}
 
+  SamplerCubicWeightsCreateInfoQCOM(const native_type &rhs)
+    : SamplerCubicWeightsCreateInfoQCOM(std::bit_cast<SamplerCubicWeightsCreateInfoQCOM>(rhs)) {}
+
+  SamplerCubicWeightsCreateInfoQCOM &operator=(const native_type &rhs) {
+    *this = std::bit_cast<SamplerCubicWeightsCreateInfoQCOM>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const SamplerCubicWeightsCreateInfoQCOM &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::SAMPLER_CUBIC_WEIGHTS_CREATE_INFO_QCOM;
@@ -4014,6 +6388,16 @@ struct PhysicalDeviceLinearColorAttachmentFeaturesNV {
 
   PhysicalDeviceLinearColorAttachmentFeaturesNV(VkBool32 linear_color_attachment = {}, void *p_next = {})
     : linear_color_attachment_(linear_color_attachment), p_next_(p_next) {}
+
+  PhysicalDeviceLinearColorAttachmentFeaturesNV(const native_type &rhs)
+    : PhysicalDeviceLinearColorAttachmentFeaturesNV(std::bit_cast<PhysicalDeviceLinearColorAttachmentFeaturesNV>(rhs)) {}
+
+  PhysicalDeviceLinearColorAttachmentFeaturesNV &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceLinearColorAttachmentFeaturesNV>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceLinearColorAttachmentFeaturesNV &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -4035,6 +6419,16 @@ struct PhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR {
       workgroup_memory_explicit_layout_scalar_block_layout_(workgroup_memory_explicit_layout_scalar_block_layout),
       workgroup_memory_explicit_layout8bit_access_(workgroup_memory_explicit_layout8bit_access), p_next_(p_next) {}
 
+  PhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR(const native_type &rhs)
+    : PhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR(std::bit_cast<PhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR>(rhs)) {}
+
+  PhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PHYSICAL_DEVICE_WORKGROUP_MEMORY_EXPLICIT_LAYOUT_FEATURES_KHR;
@@ -4048,6 +6442,16 @@ struct PhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR {
 struct PhysicalDeviceRobustness2PropertiesEXT {
 
   using native_type = VkPhysicalDeviceRobustness2PropertiesEXT;
+
+  PhysicalDeviceRobustness2PropertiesEXT(const native_type &rhs)
+    : PhysicalDeviceRobustness2PropertiesEXT(std::bit_cast<PhysicalDeviceRobustness2PropertiesEXT>(rhs)) {}
+
+  PhysicalDeviceRobustness2PropertiesEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceRobustness2PropertiesEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceRobustness2PropertiesEXT &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -4065,6 +6469,15 @@ struct VideoEncodeUsageInfoKHR {
                           VideoEncodeContentMask video_content_hints = {}, const void *p_next = {})
     : tuning_mode_(tuning_mode), video_usage_hints_(video_usage_hints), video_content_hints_(video_content_hints), p_next_(p_next) {}
 
+  VideoEncodeUsageInfoKHR(const native_type &rhs) : VideoEncodeUsageInfoKHR(std::bit_cast<VideoEncodeUsageInfoKHR>(rhs)) {}
+
+  VideoEncodeUsageInfoKHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<VideoEncodeUsageInfoKHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const VideoEncodeUsageInfoKHR &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::VIDEO_ENCODE_USAGE_INFO_KHR;
@@ -4080,6 +6493,16 @@ struct DeviceDiagnosticsConfigCreateInfoNV {
 
   DeviceDiagnosticsConfigCreateInfoNV(DeviceDiagnosticsConfigMask flags = {}, const void *p_next = {}) : flags_(flags), p_next_(p_next) {}
 
+  DeviceDiagnosticsConfigCreateInfoNV(const native_type &rhs)
+    : DeviceDiagnosticsConfigCreateInfoNV(std::bit_cast<DeviceDiagnosticsConfigCreateInfoNV>(rhs)) {}
+
+  DeviceDiagnosticsConfigCreateInfoNV &operator=(const native_type &rhs) {
+    *this = std::bit_cast<DeviceDiagnosticsConfigCreateInfoNV>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const DeviceDiagnosticsConfigCreateInfoNV &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::DEVICE_DIAGNOSTICS_CONFIG_CREATE_INFO_NV;
@@ -4094,6 +6517,16 @@ struct CommandBufferInheritanceRenderPassTransformInfoQCOM {
   CommandBufferInheritanceRenderPassTransformInfoQCOM(Rect2D render_area = {}, SurfaceTransformMaskBit transform = {}, void *p_next = {})
     : render_area_(render_area), transform_(transform), p_next_(p_next) {}
 
+  CommandBufferInheritanceRenderPassTransformInfoQCOM(const native_type &rhs)
+    : CommandBufferInheritanceRenderPassTransformInfoQCOM(std::bit_cast<CommandBufferInheritanceRenderPassTransformInfoQCOM>(rhs)) {}
+
+  CommandBufferInheritanceRenderPassTransformInfoQCOM &operator=(const native_type &rhs) {
+    *this = std::bit_cast<CommandBufferInheritanceRenderPassTransformInfoQCOM>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const CommandBufferInheritanceRenderPassTransformInfoQCOM &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::COMMAND_BUFFER_INHERITANCE_RENDER_PASS_TRANSFORM_INFO_QCOM;
@@ -4107,6 +6540,15 @@ struct CopyCommandTransformInfoQCOM {
   using native_type = VkCopyCommandTransformInfoQCOM;
 
   CopyCommandTransformInfoQCOM(SurfaceTransformMaskBit transform = {}, const void *p_next = {}) : transform_(transform), p_next_(p_next) {}
+
+  CopyCommandTransformInfoQCOM(const native_type &rhs) : CopyCommandTransformInfoQCOM(std::bit_cast<CopyCommandTransformInfoQCOM>(rhs)) {}
+
+  CopyCommandTransformInfoQCOM &operator=(const native_type &rhs) {
+    *this = std::bit_cast<CopyCommandTransformInfoQCOM>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const CopyCommandTransformInfoQCOM &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -4123,6 +6565,15 @@ struct CopyMemoryToMicromapInfoEXT {
                               const void *p_next = {})
     : mode_(mode), src_(src), dst_(dst), p_next_(p_next) {}
 
+  CopyMemoryToMicromapInfoEXT(const native_type &rhs) : CopyMemoryToMicromapInfoEXT(std::bit_cast<CopyMemoryToMicromapInfoEXT>(rhs)) {}
+
+  CopyMemoryToMicromapInfoEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<CopyMemoryToMicromapInfoEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const CopyMemoryToMicromapInfoEXT &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::COPY_MEMORY_TO_MICROMAP_INFO_EXT;
@@ -4138,6 +6589,16 @@ struct RenderPassTransformBeginInfoQCOM {
 
   RenderPassTransformBeginInfoQCOM(SurfaceTransformMaskBit transform = {}, void *p_next = {}) : transform_(transform), p_next_(p_next) {}
 
+  RenderPassTransformBeginInfoQCOM(const native_type &rhs)
+    : RenderPassTransformBeginInfoQCOM(std::bit_cast<RenderPassTransformBeginInfoQCOM>(rhs)) {}
+
+  RenderPassTransformBeginInfoQCOM &operator=(const native_type &rhs) {
+    *this = std::bit_cast<RenderPassTransformBeginInfoQCOM>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const RenderPassTransformBeginInfoQCOM &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::RENDER_PASS_TRANSFORM_BEGIN_INFO_QCOM;
@@ -4152,6 +6613,16 @@ struct DeviceImageSubresourceInfoKHR {
   DeviceImageSubresourceInfoKHR(const ImageSubresource2KHR *p_subresource = {}, const ImageCreateInfo *p_create_info = {},
                                 const void *p_next = {})
     : p_subresource_(p_subresource), p_create_info_(p_create_info), p_next_(p_next) {}
+
+  DeviceImageSubresourceInfoKHR(const native_type &rhs)
+    : DeviceImageSubresourceInfoKHR(std::bit_cast<DeviceImageSubresourceInfoKHR>(rhs)) {}
+
+  DeviceImageSubresourceInfoKHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<DeviceImageSubresourceInfoKHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const DeviceImageSubresourceInfoKHR &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -4170,6 +6641,15 @@ struct ColorBlendAdvancedEXT {
     : advanced_blend_op_(advanced_blend_op), src_premultiplied_(src_premultiplied), dst_premultiplied_(dst_premultiplied),
       blend_overlap_(blend_overlap), clamp_results_(clamp_results) {}
 
+  ColorBlendAdvancedEXT(const native_type &rhs) : ColorBlendAdvancedEXT(std::bit_cast<ColorBlendAdvancedEXT>(rhs)) {}
+
+  ColorBlendAdvancedEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<ColorBlendAdvancedEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const ColorBlendAdvancedEXT &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   BlendOp advanced_blend_op_;
@@ -4186,6 +6666,16 @@ struct PhysicalDeviceExtendedDynamicState3PropertiesEXT {
   PhysicalDeviceExtendedDynamicState3PropertiesEXT(VkBool32 dynamic_primitive_topology_unrestricted = {}, void *p_next = {})
     : dynamic_primitive_topology_unrestricted_(dynamic_primitive_topology_unrestricted), p_next_(p_next) {}
 
+  PhysicalDeviceExtendedDynamicState3PropertiesEXT(const native_type &rhs)
+    : PhysicalDeviceExtendedDynamicState3PropertiesEXT(std::bit_cast<PhysicalDeviceExtendedDynamicState3PropertiesEXT>(rhs)) {}
+
+  PhysicalDeviceExtendedDynamicState3PropertiesEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceExtendedDynamicState3PropertiesEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceExtendedDynamicState3PropertiesEXT &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PHYSICAL_DEVICE_EXTENDED_DYNAMIC_STATE_3_PROPERTIES_EXT;
@@ -4200,6 +6690,16 @@ struct PhysicalDeviceExtendedDynamicStateFeaturesEXT {
   PhysicalDeviceExtendedDynamicStateFeaturesEXT(VkBool32 extended_dynamic_state = {}, void *p_next = {})
     : extended_dynamic_state_(extended_dynamic_state), p_next_(p_next) {}
 
+  PhysicalDeviceExtendedDynamicStateFeaturesEXT(const native_type &rhs)
+    : PhysicalDeviceExtendedDynamicStateFeaturesEXT(std::bit_cast<PhysicalDeviceExtendedDynamicStateFeaturesEXT>(rhs)) {}
+
+  PhysicalDeviceExtendedDynamicStateFeaturesEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceExtendedDynamicStateFeaturesEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceExtendedDynamicStateFeaturesEXT &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PHYSICAL_DEVICE_EXTENDED_DYNAMIC_STATE_FEATURES_EXT;
@@ -4213,6 +6713,16 @@ struct PhysicalDeviceDepthClipControlFeaturesEXT {
 
   PhysicalDeviceDepthClipControlFeaturesEXT(VkBool32 depth_clip_control = {}, void *p_next = {})
     : depth_clip_control_(depth_clip_control), p_next_(p_next) {}
+
+  PhysicalDeviceDepthClipControlFeaturesEXT(const native_type &rhs)
+    : PhysicalDeviceDepthClipControlFeaturesEXT(std::bit_cast<PhysicalDeviceDepthClipControlFeaturesEXT>(rhs)) {}
+
+  PhysicalDeviceDepthClipControlFeaturesEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceDepthClipControlFeaturesEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceDepthClipControlFeaturesEXT &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -4230,6 +6740,16 @@ struct RayTracingPipelineInterfaceCreateInfoKHR {
     : max_pipeline_ray_hit_attribute_size_(max_pipeline_ray_hit_attribute_size),
       max_pipeline_ray_payload_size_(max_pipeline_ray_payload_size), p_next_(p_next) {}
 
+  RayTracingPipelineInterfaceCreateInfoKHR(const native_type &rhs)
+    : RayTracingPipelineInterfaceCreateInfoKHR(std::bit_cast<RayTracingPipelineInterfaceCreateInfoKHR>(rhs)) {}
+
+  RayTracingPipelineInterfaceCreateInfoKHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<RayTracingPipelineInterfaceCreateInfoKHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const RayTracingPipelineInterfaceCreateInfoKHR &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::RAY_TRACING_PIPELINE_INTERFACE_CREATE_INFO_KHR;
@@ -4245,6 +6765,16 @@ struct CopyAccelerationStructureToMemoryInfoKHR {
   CopyAccelerationStructureToMemoryInfoKHR(CopyAccelerationStructureMode mode = {}, VkAccelerationStructureKHR src = {},
                                            VkDeviceOrHostAddressKHR dst = {}, const void *p_next = {})
     : mode_(mode), src_(src), dst_(dst), p_next_(p_next) {}
+
+  CopyAccelerationStructureToMemoryInfoKHR(const native_type &rhs)
+    : CopyAccelerationStructureToMemoryInfoKHR(std::bit_cast<CopyAccelerationStructureToMemoryInfoKHR>(rhs)) {}
+
+  CopyAccelerationStructureToMemoryInfoKHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<CopyAccelerationStructureToMemoryInfoKHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const CopyAccelerationStructureToMemoryInfoKHR &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -4262,6 +6792,16 @@ struct AccelerationStructureVersionInfoKHR {
   AccelerationStructureVersionInfoKHR(const uint8_t *p_version_data = {}, const void *p_next = {})
     : p_version_data_(p_version_data), p_next_(p_next) {}
 
+  AccelerationStructureVersionInfoKHR(const native_type &rhs)
+    : AccelerationStructureVersionInfoKHR(std::bit_cast<AccelerationStructureVersionInfoKHR>(rhs)) {}
+
+  AccelerationStructureVersionInfoKHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<AccelerationStructureVersionInfoKHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const AccelerationStructureVersionInfoKHR &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::ACCELERATION_STRUCTURE_VERSION_INFO_KHR;
@@ -4275,6 +6815,15 @@ struct TransformMatrixKHR {
 
   TransformMatrixKHR(const std::array<std::array<float, 4>, 3> &matrix = {}) : matrix_(matrix) {}
 
+  TransformMatrixKHR(const native_type &rhs) : TransformMatrixKHR(std::bit_cast<TransformMatrixKHR>(rhs)) {}
+
+  TransformMatrixKHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<TransformMatrixKHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const TransformMatrixKHR &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   std::array<std::array<float, 4>, 3> matrix_;
@@ -4285,11 +6834,21 @@ struct AccelerationStructureInstanceKHR {
   using native_type = VkAccelerationStructureInstanceKHR;
 
   AccelerationStructureInstanceKHR(TransformMatrixKHR transform = {}, uint32_t instance_custom_index = {}, uint32_t mask = {},
-                                   uint32_t instance_shader_binding_table_record_offset = {}, VkGeometryInstanceFlagsKHR flags = {},
+                                   uint32_t instance_shader_binding_table_record_offset = {}, GeometryInstanceMask flags = {},
                                    uint64_t acceleration_structure_reference = {})
     : transform_(transform), instance_custom_index_(instance_custom_index), mask_(mask),
       instance_shader_binding_table_record_offset_(instance_shader_binding_table_record_offset), flags_(flags),
       acceleration_structure_reference_(acceleration_structure_reference) {}
+
+  AccelerationStructureInstanceKHR(const native_type &rhs)
+    : AccelerationStructureInstanceKHR(std::bit_cast<AccelerationStructureInstanceKHR>(rhs)) {}
+
+  AccelerationStructureInstanceKHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<AccelerationStructureInstanceKHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const AccelerationStructureInstanceKHR &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -4297,7 +6856,7 @@ struct AccelerationStructureInstanceKHR {
   uint32_t instance_custom_index_ : 24;
   uint32_t mask_ : 8;
   uint32_t instance_shader_binding_table_record_offset_ : 24;
-  VkGeometryInstanceFlagsKHR flags_ : 8;
+  GeometryInstanceMask flags_ : 8;
   uint64_t acceleration_structure_reference_;
 };
 
@@ -4307,6 +6866,15 @@ struct AabbPositionsKHR {
 
   AabbPositionsKHR(float min_x = {}, float min_y = {}, float min_z = {}, float max_x = {}, float max_y = {}, float max_z = {})
     : min_x_(min_x), min_y_(min_y), min_z_(min_z), max_x_(max_x), max_y_(max_y), max_z_(max_z) {}
+
+  AabbPositionsKHR(const native_type &rhs) : AabbPositionsKHR(std::bit_cast<AabbPositionsKHR>(rhs)) {}
+
+  AabbPositionsKHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<AabbPositionsKHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const AabbPositionsKHR &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -4327,6 +6895,16 @@ struct AccelerationStructureBuildRangeInfoKHR {
     : primitive_count_(primitive_count), primitive_offset_(primitive_offset), first_vertex_(first_vertex),
       transform_offset_(transform_offset) {}
 
+  AccelerationStructureBuildRangeInfoKHR(const native_type &rhs)
+    : AccelerationStructureBuildRangeInfoKHR(std::bit_cast<AccelerationStructureBuildRangeInfoKHR>(rhs)) {}
+
+  AccelerationStructureBuildRangeInfoKHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<AccelerationStructureBuildRangeInfoKHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const AccelerationStructureBuildRangeInfoKHR &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   uint32_t primitive_count_;
@@ -4342,6 +6920,16 @@ struct AccelerationStructureGeometryKHR {
   AccelerationStructureGeometryKHR(GeometryMask flags = {}, GeometryType geometry_type = {},
                                    VkAccelerationStructureGeometryDataKHR geometry = {}, const void *p_next = {})
     : flags_(flags), geometry_type_(geometry_type), geometry_(geometry), p_next_(p_next) {}
+
+  AccelerationStructureGeometryKHR(const native_type &rhs)
+    : AccelerationStructureGeometryKHR(std::bit_cast<AccelerationStructureGeometryKHR>(rhs)) {}
+
+  AccelerationStructureGeometryKHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<AccelerationStructureGeometryKHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const AccelerationStructureGeometryKHR &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -4359,6 +6947,16 @@ struct AccelerationStructureGeometryAabbsDataKHR {
   AccelerationStructureGeometryAabbsDataKHR(VkDeviceSize stride = {}, VkDeviceOrHostAddressConstKHR data = {}, const void *p_next = {})
     : stride_(stride), data_(data), p_next_(p_next) {}
 
+  AccelerationStructureGeometryAabbsDataKHR(const native_type &rhs)
+    : AccelerationStructureGeometryAabbsDataKHR(std::bit_cast<AccelerationStructureGeometryAabbsDataKHR>(rhs)) {}
+
+  AccelerationStructureGeometryAabbsDataKHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<AccelerationStructureGeometryAabbsDataKHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const AccelerationStructureGeometryAabbsDataKHR &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::ACCELERATION_STRUCTURE_GEOMETRY_AABBS_DATA_KHR;
@@ -4374,6 +6972,16 @@ struct PhysicalDeviceBorderColorSwizzleFeaturesEXT {
   PhysicalDeviceBorderColorSwizzleFeaturesEXT(VkBool32 border_color_swizzle_from_image = {}, VkBool32 border_color_swizzle = {},
                                               void *p_next = {})
     : border_color_swizzle_from_image_(border_color_swizzle_from_image), border_color_swizzle_(border_color_swizzle), p_next_(p_next) {}
+
+  PhysicalDeviceBorderColorSwizzleFeaturesEXT(const native_type &rhs)
+    : PhysicalDeviceBorderColorSwizzleFeaturesEXT(std::bit_cast<PhysicalDeviceBorderColorSwizzleFeaturesEXT>(rhs)) {}
+
+  PhysicalDeviceBorderColorSwizzleFeaturesEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceBorderColorSwizzleFeaturesEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceBorderColorSwizzleFeaturesEXT &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -4392,6 +7000,16 @@ struct PhysicalDeviceCustomBorderColorFeaturesEXT {
     : custom_border_color_without_format_(custom_border_color_without_format), custom_border_colors_(custom_border_colors),
       p_next_(p_next) {}
 
+  PhysicalDeviceCustomBorderColorFeaturesEXT(const native_type &rhs)
+    : PhysicalDeviceCustomBorderColorFeaturesEXT(std::bit_cast<PhysicalDeviceCustomBorderColorFeaturesEXT>(rhs)) {}
+
+  PhysicalDeviceCustomBorderColorFeaturesEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceCustomBorderColorFeaturesEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceCustomBorderColorFeaturesEXT &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PHYSICAL_DEVICE_CUSTOM_BORDER_COLOR_FEATURES_EXT;
@@ -4403,6 +7021,15 @@ struct PhysicalDeviceCustomBorderColorFeaturesEXT {
 struct PhysicalDeviceToolProperties {
 
   using native_type = VkPhysicalDeviceToolProperties;
+
+  PhysicalDeviceToolProperties(const native_type &rhs) : PhysicalDeviceToolProperties(std::bit_cast<PhysicalDeviceToolProperties>(rhs)) {}
+
+  PhysicalDeviceToolProperties &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceToolProperties>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceToolProperties &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -4422,6 +7049,16 @@ struct PipelineCompilerControlCreateInfoAMD {
   PipelineCompilerControlCreateInfoAMD(PipelineCompilerControlMask compiler_control_flags = {}, const void *p_next = {})
     : compiler_control_flags_(compiler_control_flags), p_next_(p_next) {}
 
+  PipelineCompilerControlCreateInfoAMD(const native_type &rhs)
+    : PipelineCompilerControlCreateInfoAMD(std::bit_cast<PipelineCompilerControlCreateInfoAMD>(rhs)) {}
+
+  PipelineCompilerControlCreateInfoAMD &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PipelineCompilerControlCreateInfoAMD>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PipelineCompilerControlCreateInfoAMD &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PIPELINE_COMPILER_CONTROL_CREATE_INFO_AMD;
@@ -4432,6 +7069,16 @@ struct PipelineCompilerControlCreateInfoAMD {
 struct PhysicalDeviceVulkan13Properties {
 
   using native_type = VkPhysicalDeviceVulkan13Properties;
+
+  PhysicalDeviceVulkan13Properties(const native_type &rhs)
+    : PhysicalDeviceVulkan13Properties(std::bit_cast<PhysicalDeviceVulkan13Properties>(rhs)) {}
+
+  PhysicalDeviceVulkan13Properties &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceVulkan13Properties>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceVulkan13Properties &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -4491,6 +7138,16 @@ struct DeviceQueueShaderCoreControlCreateInfoARM {
   DeviceQueueShaderCoreControlCreateInfoARM(uint32_t shader_core_count = {}, void *p_next = {})
     : shader_core_count_(shader_core_count), p_next_(p_next) {}
 
+  DeviceQueueShaderCoreControlCreateInfoARM(const native_type &rhs)
+    : DeviceQueueShaderCoreControlCreateInfoARM(std::bit_cast<DeviceQueueShaderCoreControlCreateInfoARM>(rhs)) {}
+
+  DeviceQueueShaderCoreControlCreateInfoARM &operator=(const native_type &rhs) {
+    *this = std::bit_cast<DeviceQueueShaderCoreControlCreateInfoARM>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const DeviceQueueShaderCoreControlCreateInfoARM &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::DEVICE_QUEUE_SHADER_CORE_CONTROL_CREATE_INFO_ARM;
@@ -4517,6 +7174,16 @@ struct PhysicalDeviceVulkan13Features {
       texture_compression_astc_hdr_(texture_compression_astc_hdr),
       shader_zero_initialize_workgroup_memory_(shader_zero_initialize_workgroup_memory), dynamic_rendering_(dynamic_rendering),
       shader_integer_dot_product_(shader_integer_dot_product), p_next_(p_next) {}
+
+  PhysicalDeviceVulkan13Features(const native_type &rhs)
+    : PhysicalDeviceVulkan13Features(std::bit_cast<PhysicalDeviceVulkan13Features>(rhs)) {}
+
+  PhysicalDeviceVulkan13Features &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceVulkan13Features>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceVulkan13Features &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -4550,6 +7217,16 @@ struct AccelerationStructureGeometryTrianglesDataKHR {
     : transform_data_(transform_data), vertex_format_(vertex_format), vertex_data_(vertex_data), vertex_stride_(vertex_stride),
       max_vertex_(max_vertex), index_type_(index_type), index_data_(index_data), p_next_(p_next) {}
 
+  AccelerationStructureGeometryTrianglesDataKHR(const native_type &rhs)
+    : AccelerationStructureGeometryTrianglesDataKHR(std::bit_cast<AccelerationStructureGeometryTrianglesDataKHR>(rhs)) {}
+
+  AccelerationStructureGeometryTrianglesDataKHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<AccelerationStructureGeometryTrianglesDataKHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const AccelerationStructureGeometryTrianglesDataKHR &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::ACCELERATION_STRUCTURE_GEOMETRY_TRIANGLES_DATA_KHR;
@@ -4580,6 +7257,16 @@ struct PhysicalDeviceVulkan11Features {
       variable_pointers_(variable_pointers), protected_memory_(protected_memory), sampler_ycbcr_conversion_(sampler_ycbcr_conversion),
       p_next_(p_next) {}
 
+  PhysicalDeviceVulkan11Features(const native_type &rhs)
+    : PhysicalDeviceVulkan11Features(std::bit_cast<PhysicalDeviceVulkan11Features>(rhs)) {}
+
+  PhysicalDeviceVulkan11Features &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceVulkan11Features>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceVulkan11Features &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PHYSICAL_DEVICE_VULKAN_1_1_FEATURES;
@@ -4608,6 +7295,16 @@ struct PipelineRasterizationLineStateCreateInfoKHR {
     : line_stipple_pattern_(line_stipple_pattern), line_rasterization_mode_(line_rasterization_mode),
       stippled_line_enable_(stippled_line_enable), line_stipple_factor_(line_stipple_factor), p_next_(p_next) {}
 
+  PipelineRasterizationLineStateCreateInfoKHR(const native_type &rhs)
+    : PipelineRasterizationLineStateCreateInfoKHR(std::bit_cast<PipelineRasterizationLineStateCreateInfoKHR>(rhs)) {}
+
+  PipelineRasterizationLineStateCreateInfoKHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PipelineRasterizationLineStateCreateInfoKHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PipelineRasterizationLineStateCreateInfoKHR &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PIPELINE_RASTERIZATION_LINE_STATE_CREATE_INFO_KHR;
@@ -4622,6 +7319,16 @@ struct PhysicalDeviceLineRasterizationPropertiesKHR {
 
   using native_type = VkPhysicalDeviceLineRasterizationPropertiesKHR;
 
+  PhysicalDeviceLineRasterizationPropertiesKHR(const native_type &rhs)
+    : PhysicalDeviceLineRasterizationPropertiesKHR(std::bit_cast<PhysicalDeviceLineRasterizationPropertiesKHR>(rhs)) {}
+
+  PhysicalDeviceLineRasterizationPropertiesKHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceLineRasterizationPropertiesKHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceLineRasterizationPropertiesKHR &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PHYSICAL_DEVICE_LINE_RASTERIZATION_PROPERTIES_KHR;
@@ -4635,6 +7342,16 @@ struct MemoryOpaqueCaptureAddressAllocateInfo {
 
   MemoryOpaqueCaptureAddressAllocateInfo(uint64_t opaque_capture_address = {}, const void *p_next = {})
     : opaque_capture_address_(opaque_capture_address), p_next_(p_next) {}
+
+  MemoryOpaqueCaptureAddressAllocateInfo(const native_type &rhs)
+    : MemoryOpaqueCaptureAddressAllocateInfo(std::bit_cast<MemoryOpaqueCaptureAddressAllocateInfo>(rhs)) {}
+
+  MemoryOpaqueCaptureAddressAllocateInfo &operator=(const native_type &rhs) {
+    *this = std::bit_cast<MemoryOpaqueCaptureAddressAllocateInfo>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const MemoryOpaqueCaptureAddressAllocateInfo &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -4654,6 +7371,16 @@ struct RenderingInputAttachmentIndexInfoKHR {
       p_color_attachment_input_indices_(p_color_attachment_input_indices), p_depth_input_attachment_index_(p_depth_input_attachment_index),
       p_next_(p_next) {}
 
+  RenderingInputAttachmentIndexInfoKHR(const native_type &rhs)
+    : RenderingInputAttachmentIndexInfoKHR(std::bit_cast<RenderingInputAttachmentIndexInfoKHR>(rhs)) {}
+
+  RenderingInputAttachmentIndexInfoKHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<RenderingInputAttachmentIndexInfoKHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const RenderingInputAttachmentIndexInfoKHR &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::RENDERING_INPUT_ATTACHMENT_INDEX_INFO_KHR;
@@ -4667,6 +7394,16 @@ struct RenderingInputAttachmentIndexInfoKHR {
 struct PhysicalDeviceClusterCullingShaderPropertiesHUAWEI {
 
   using native_type = VkPhysicalDeviceClusterCullingShaderPropertiesHUAWEI;
+
+  PhysicalDeviceClusterCullingShaderPropertiesHUAWEI(const native_type &rhs)
+    : PhysicalDeviceClusterCullingShaderPropertiesHUAWEI(std::bit_cast<PhysicalDeviceClusterCullingShaderPropertiesHUAWEI>(rhs)) {}
+
+  PhysicalDeviceClusterCullingShaderPropertiesHUAWEI &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceClusterCullingShaderPropertiesHUAWEI>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceClusterCullingShaderPropertiesHUAWEI &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -4685,6 +7422,16 @@ struct PhysicalDeviceShaderMaximalReconvergenceFeaturesKHR {
   PhysicalDeviceShaderMaximalReconvergenceFeaturesKHR(VkBool32 shader_maximal_reconvergence = {}, void *p_next = {})
     : shader_maximal_reconvergence_(shader_maximal_reconvergence), p_next_(p_next) {}
 
+  PhysicalDeviceShaderMaximalReconvergenceFeaturesKHR(const native_type &rhs)
+    : PhysicalDeviceShaderMaximalReconvergenceFeaturesKHR(std::bit_cast<PhysicalDeviceShaderMaximalReconvergenceFeaturesKHR>(rhs)) {}
+
+  PhysicalDeviceShaderMaximalReconvergenceFeaturesKHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceShaderMaximalReconvergenceFeaturesKHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceShaderMaximalReconvergenceFeaturesKHR &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PHYSICAL_DEVICE_SHADER_MAXIMAL_RECONVERGENCE_FEATURES_KHR;
@@ -4699,6 +7446,16 @@ struct ReleaseSwapchainImagesInfoEXT {
   ReleaseSwapchainImagesInfoEXT(const uint32_t *p_image_indices = {}, VkSwapchainKHR swapchain = {}, uint32_t image_index_count = {},
                                 const void *p_next = {})
     : p_image_indices_(p_image_indices), swapchain_(swapchain), image_index_count_(image_index_count), p_next_(p_next) {}
+
+  ReleaseSwapchainImagesInfoEXT(const native_type &rhs)
+    : ReleaseSwapchainImagesInfoEXT(std::bit_cast<ReleaseSwapchainImagesInfoEXT>(rhs)) {}
+
+  ReleaseSwapchainImagesInfoEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<ReleaseSwapchainImagesInfoEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const ReleaseSwapchainImagesInfoEXT &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -4716,6 +7473,16 @@ struct SubpassShadingPipelineCreateInfoHUAWEI {
   SubpassShadingPipelineCreateInfoHUAWEI(uint32_t subpass = {}, VkRenderPass render_pass = {}, void *p_next = {})
     : subpass_(subpass), render_pass_(render_pass), p_next_(p_next) {}
 
+  SubpassShadingPipelineCreateInfoHUAWEI(const native_type &rhs)
+    : SubpassShadingPipelineCreateInfoHUAWEI(std::bit_cast<SubpassShadingPipelineCreateInfoHUAWEI>(rhs)) {}
+
+  SubpassShadingPipelineCreateInfoHUAWEI &operator=(const native_type &rhs) {
+    *this = std::bit_cast<SubpassShadingPipelineCreateInfoHUAWEI>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const SubpassShadingPipelineCreateInfoHUAWEI &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::SUBPASS_SHADING_PIPELINE_CREATE_INFO_HUAWEI;
@@ -4731,6 +7498,16 @@ struct PhysicalDeviceSubgroupSizeControlFeatures {
   PhysicalDeviceSubgroupSizeControlFeatures(VkBool32 compute_full_subgroups = {}, VkBool32 subgroup_size_control = {}, void *p_next = {})
     : compute_full_subgroups_(compute_full_subgroups), subgroup_size_control_(subgroup_size_control), p_next_(p_next) {}
 
+  PhysicalDeviceSubgroupSizeControlFeatures(const native_type &rhs)
+    : PhysicalDeviceSubgroupSizeControlFeatures(std::bit_cast<PhysicalDeviceSubgroupSizeControlFeatures>(rhs)) {}
+
+  PhysicalDeviceSubgroupSizeControlFeatures &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceSubgroupSizeControlFeatures>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceSubgroupSizeControlFeatures &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PHYSICAL_DEVICE_SUBGROUP_SIZE_CONTROL_FEATURES;
@@ -4742,6 +7519,16 @@ struct PhysicalDeviceSubgroupSizeControlFeatures {
 struct PhysicalDeviceTexelBufferAlignmentProperties {
 
   using native_type = VkPhysicalDeviceTexelBufferAlignmentProperties;
+
+  PhysicalDeviceTexelBufferAlignmentProperties(const native_type &rhs)
+    : PhysicalDeviceTexelBufferAlignmentProperties(std::bit_cast<PhysicalDeviceTexelBufferAlignmentProperties>(rhs)) {}
+
+  PhysicalDeviceTexelBufferAlignmentProperties &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceTexelBufferAlignmentProperties>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceTexelBufferAlignmentProperties &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -4760,6 +7547,16 @@ struct PhysicalDeviceTexelBufferAlignmentFeaturesEXT {
   PhysicalDeviceTexelBufferAlignmentFeaturesEXT(VkBool32 texel_buffer_alignment = {}, void *p_next = {})
     : texel_buffer_alignment_(texel_buffer_alignment), p_next_(p_next) {}
 
+  PhysicalDeviceTexelBufferAlignmentFeaturesEXT(const native_type &rhs)
+    : PhysicalDeviceTexelBufferAlignmentFeaturesEXT(std::bit_cast<PhysicalDeviceTexelBufferAlignmentFeaturesEXT>(rhs)) {}
+
+  PhysicalDeviceTexelBufferAlignmentFeaturesEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceTexelBufferAlignmentFeaturesEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceTexelBufferAlignmentFeaturesEXT &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PHYSICAL_DEVICE_TEXEL_BUFFER_ALIGNMENT_FEATURES_EXT;
@@ -4770,6 +7567,16 @@ struct PhysicalDeviceTexelBufferAlignmentFeaturesEXT {
 struct PipelineExecutableInternalRepresentationKHR {
 
   using native_type = VkPipelineExecutableInternalRepresentationKHR;
+
+  PipelineExecutableInternalRepresentationKHR(const native_type &rhs)
+    : PipelineExecutableInternalRepresentationKHR(std::bit_cast<PipelineExecutableInternalRepresentationKHR>(rhs)) {}
+
+  PipelineExecutableInternalRepresentationKHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PipelineExecutableInternalRepresentationKHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PipelineExecutableInternalRepresentationKHR &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -4788,6 +7595,16 @@ struct DeviceMemoryOpaqueCaptureAddressInfo {
 
   DeviceMemoryOpaqueCaptureAddressInfo(VkDeviceMemory memory = {}, const void *p_next = {}) : memory_(memory), p_next_(p_next) {}
 
+  DeviceMemoryOpaqueCaptureAddressInfo(const native_type &rhs)
+    : DeviceMemoryOpaqueCaptureAddressInfo(std::bit_cast<DeviceMemoryOpaqueCaptureAddressInfo>(rhs)) {}
+
+  DeviceMemoryOpaqueCaptureAddressInfo &operator=(const native_type &rhs) {
+    *this = std::bit_cast<DeviceMemoryOpaqueCaptureAddressInfo>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const DeviceMemoryOpaqueCaptureAddressInfo &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::DEVICE_MEMORY_OPAQUE_CAPTURE_ADDRESS_INFO;
@@ -4798,6 +7615,16 @@ struct DeviceMemoryOpaqueCaptureAddressInfo {
 struct PipelineExecutableStatisticKHR {
 
   using native_type = VkPipelineExecutableStatisticKHR;
+
+  PipelineExecutableStatisticKHR(const native_type &rhs)
+    : PipelineExecutableStatisticKHR(std::bit_cast<PipelineExecutableStatisticKHR>(rhs)) {}
+
+  PipelineExecutableStatisticKHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PipelineExecutableStatisticKHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PipelineExecutableStatisticKHR &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -4812,6 +7639,16 @@ struct PipelineExecutableStatisticKHR {
 struct PipelineExecutablePropertiesKHR {
 
   using native_type = VkPipelineExecutablePropertiesKHR;
+
+  PipelineExecutablePropertiesKHR(const native_type &rhs)
+    : PipelineExecutablePropertiesKHR(std::bit_cast<PipelineExecutablePropertiesKHR>(rhs)) {}
+
+  PipelineExecutablePropertiesKHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PipelineExecutablePropertiesKHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PipelineExecutablePropertiesKHR &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -4830,6 +7667,16 @@ struct PhysicalDeviceVideoMaintenance1FeaturesKHR {
   PhysicalDeviceVideoMaintenance1FeaturesKHR(VkBool32 video_maintenance1 = {}, void *p_next = {})
     : video_maintenance1_(video_maintenance1), p_next_(p_next) {}
 
+  PhysicalDeviceVideoMaintenance1FeaturesKHR(const native_type &rhs)
+    : PhysicalDeviceVideoMaintenance1FeaturesKHR(std::bit_cast<PhysicalDeviceVideoMaintenance1FeaturesKHR>(rhs)) {}
+
+  PhysicalDeviceVideoMaintenance1FeaturesKHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceVideoMaintenance1FeaturesKHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceVideoMaintenance1FeaturesKHR &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PHYSICAL_DEVICE_VIDEO_MAINTENANCE_1_FEATURES_KHR;
@@ -4842,6 +7689,15 @@ struct PipelineInfoKHR {
   using native_type = VkPipelineInfoKHR;
 
   PipelineInfoKHR(VkPipeline pipeline = {}, const void *p_next = {}) : pipeline_(pipeline), p_next_(p_next) {}
+
+  PipelineInfoKHR(const native_type &rhs) : PipelineInfoKHR(std::bit_cast<PipelineInfoKHR>(rhs)) {}
+
+  PipelineInfoKHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PipelineInfoKHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PipelineInfoKHR &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -4857,6 +7713,16 @@ struct PhysicalDevicePipelineExecutablePropertiesFeaturesKHR {
   PhysicalDevicePipelineExecutablePropertiesFeaturesKHR(VkBool32 pipeline_executable_info = {}, void *p_next = {})
     : pipeline_executable_info_(pipeline_executable_info), p_next_(p_next) {}
 
+  PhysicalDevicePipelineExecutablePropertiesFeaturesKHR(const native_type &rhs)
+    : PhysicalDevicePipelineExecutablePropertiesFeaturesKHR(std::bit_cast<PhysicalDevicePipelineExecutablePropertiesFeaturesKHR>(rhs)) {}
+
+  PhysicalDevicePipelineExecutablePropertiesFeaturesKHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDevicePipelineExecutablePropertiesFeaturesKHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDevicePipelineExecutablePropertiesFeaturesKHR &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PHYSICAL_DEVICE_PIPELINE_EXECUTABLE_PROPERTIES_FEATURES_KHR;
@@ -4870,6 +7736,16 @@ struct AttachmentDescriptionStencilLayout {
 
   AttachmentDescriptionStencilLayout(ImageLayout stencil_final_layout = {}, ImageLayout stencil_initial_layout = {}, void *p_next = {})
     : stencil_final_layout_(stencil_final_layout), stencil_initial_layout_(stencil_initial_layout), p_next_(p_next) {}
+
+  AttachmentDescriptionStencilLayout(const native_type &rhs)
+    : AttachmentDescriptionStencilLayout(std::bit_cast<AttachmentDescriptionStencilLayout>(rhs)) {}
+
+  AttachmentDescriptionStencilLayout &operator=(const native_type &rhs) {
+    *this = std::bit_cast<AttachmentDescriptionStencilLayout>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const AttachmentDescriptionStencilLayout &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -4888,6 +7764,16 @@ struct PhysicalDeviceRayTracingMotionBlurFeaturesNV {
     : ray_tracing_motion_blur_pipeline_trace_rays_indirect_(ray_tracing_motion_blur_pipeline_trace_rays_indirect),
       ray_tracing_motion_blur_(ray_tracing_motion_blur), p_next_(p_next) {}
 
+  PhysicalDeviceRayTracingMotionBlurFeaturesNV(const native_type &rhs)
+    : PhysicalDeviceRayTracingMotionBlurFeaturesNV(std::bit_cast<PhysicalDeviceRayTracingMotionBlurFeaturesNV>(rhs)) {}
+
+  PhysicalDeviceRayTracingMotionBlurFeaturesNV &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceRayTracingMotionBlurFeaturesNV>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceRayTracingMotionBlurFeaturesNV &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PHYSICAL_DEVICE_RAY_TRACING_MOTION_BLUR_FEATURES_NV;
@@ -4905,6 +7791,16 @@ struct PhysicalDevicePrimitiveTopologyListRestartFeaturesEXT {
     : primitive_topology_patch_list_restart_(primitive_topology_patch_list_restart),
       primitive_topology_list_restart_(primitive_topology_list_restart), p_next_(p_next) {}
 
+  PhysicalDevicePrimitiveTopologyListRestartFeaturesEXT(const native_type &rhs)
+    : PhysicalDevicePrimitiveTopologyListRestartFeaturesEXT(std::bit_cast<PhysicalDevicePrimitiveTopologyListRestartFeaturesEXT>(rhs)) {}
+
+  PhysicalDevicePrimitiveTopologyListRestartFeaturesEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDevicePrimitiveTopologyListRestartFeaturesEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDevicePrimitiveTopologyListRestartFeaturesEXT &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PHYSICAL_DEVICE_PRIMITIVE_TOPOLOGY_LIST_RESTART_FEATURES_EXT;
@@ -4918,6 +7814,16 @@ struct AttachmentReferenceStencilLayout {
   using native_type = VkAttachmentReferenceStencilLayout;
 
   AttachmentReferenceStencilLayout(ImageLayout stencil_layout = {}, void *p_next = {}) : stencil_layout_(stencil_layout), p_next_(p_next) {}
+
+  AttachmentReferenceStencilLayout(const native_type &rhs)
+    : AttachmentReferenceStencilLayout(std::bit_cast<AttachmentReferenceStencilLayout>(rhs)) {}
+
+  AttachmentReferenceStencilLayout &operator=(const native_type &rhs) {
+    *this = std::bit_cast<AttachmentReferenceStencilLayout>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const AttachmentReferenceStencilLayout &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -4934,6 +7840,16 @@ struct PhysicalDeviceCooperativeMatrixFeaturesKHR {
                                              void *p_next = {})
     : cooperative_matrix_robust_buffer_access_(cooperative_matrix_robust_buffer_access), cooperative_matrix_(cooperative_matrix),
       p_next_(p_next) {}
+
+  PhysicalDeviceCooperativeMatrixFeaturesKHR(const native_type &rhs)
+    : PhysicalDeviceCooperativeMatrixFeaturesKHR(std::bit_cast<PhysicalDeviceCooperativeMatrixFeaturesKHR>(rhs)) {}
+
+  PhysicalDeviceCooperativeMatrixFeaturesKHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceCooperativeMatrixFeaturesKHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceCooperativeMatrixFeaturesKHR &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -4954,6 +7870,16 @@ struct PhysicalDeviceFragmentShaderInterlockFeaturesEXT {
       fragment_shader_sample_interlock_(fragment_shader_sample_interlock),
       fragment_shader_pixel_interlock_(fragment_shader_pixel_interlock), p_next_(p_next) {}
 
+  PhysicalDeviceFragmentShaderInterlockFeaturesEXT(const native_type &rhs)
+    : PhysicalDeviceFragmentShaderInterlockFeaturesEXT(std::bit_cast<PhysicalDeviceFragmentShaderInterlockFeaturesEXT>(rhs)) {}
+
+  PhysicalDeviceFragmentShaderInterlockFeaturesEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceFragmentShaderInterlockFeaturesEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceFragmentShaderInterlockFeaturesEXT &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PHYSICAL_DEVICE_FRAGMENT_SHADER_INTERLOCK_FEATURES_EXT;
@@ -4972,6 +7898,16 @@ struct VideoEncodeH265RateControlLayerInfoKHR {
                                          VkBool32 use_max_frame_size = {}, const void *p_next = {})
     : max_frame_size_(max_frame_size), use_min_qp_(use_min_qp), min_qp_(min_qp), use_max_qp_(use_max_qp), max_qp_(max_qp),
       use_max_frame_size_(use_max_frame_size), p_next_(p_next) {}
+
+  VideoEncodeH265RateControlLayerInfoKHR(const native_type &rhs)
+    : VideoEncodeH265RateControlLayerInfoKHR(std::bit_cast<VideoEncodeH265RateControlLayerInfoKHR>(rhs)) {}
+
+  VideoEncodeH265RateControlLayerInfoKHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<VideoEncodeH265RateControlLayerInfoKHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const VideoEncodeH265RateControlLayerInfoKHR &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -4992,6 +7928,16 @@ struct PhysicalDeviceShaderSMBuiltinsFeaturesNV {
   PhysicalDeviceShaderSMBuiltinsFeaturesNV(VkBool32 shader_smbuiltins = {}, void *p_next = {})
     : shader_smbuiltins_(shader_smbuiltins), p_next_(p_next) {}
 
+  PhysicalDeviceShaderSMBuiltinsFeaturesNV(const native_type &rhs)
+    : PhysicalDeviceShaderSMBuiltinsFeaturesNV(std::bit_cast<PhysicalDeviceShaderSMBuiltinsFeaturesNV>(rhs)) {}
+
+  PhysicalDeviceShaderSMBuiltinsFeaturesNV &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceShaderSMBuiltinsFeaturesNV>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceShaderSMBuiltinsFeaturesNV &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PHYSICAL_DEVICE_SHADER_SM_BUILTINS_FEATURES_NV;
@@ -5004,6 +7950,15 @@ struct OutOfBandQueueTypeInfoNV {
   using native_type = VkOutOfBandQueueTypeInfoNV;
 
   OutOfBandQueueTypeInfoNV(OutOfBandQueueType queue_type = {}, const void *p_next = {}) : queue_type_(queue_type), p_next_(p_next) {}
+
+  OutOfBandQueueTypeInfoNV(const native_type &rhs) : OutOfBandQueueTypeInfoNV(std::bit_cast<OutOfBandQueueTypeInfoNV>(rhs)) {}
+
+  OutOfBandQueueTypeInfoNV &operator=(const native_type &rhs) {
+    *this = std::bit_cast<OutOfBandQueueTypeInfoNV>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const OutOfBandQueueTypeInfoNV &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -5019,6 +7974,16 @@ struct PhysicalDeviceIndexTypeUint8FeaturesKHR {
   PhysicalDeviceIndexTypeUint8FeaturesKHR(VkBool32 index_type_uint8 = {}, void *p_next = {})
     : index_type_uint8_(index_type_uint8), p_next_(p_next) {}
 
+  PhysicalDeviceIndexTypeUint8FeaturesKHR(const native_type &rhs)
+    : PhysicalDeviceIndexTypeUint8FeaturesKHR(std::bit_cast<PhysicalDeviceIndexTypeUint8FeaturesKHR>(rhs)) {}
+
+  PhysicalDeviceIndexTypeUint8FeaturesKHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceIndexTypeUint8FeaturesKHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceIndexTypeUint8FeaturesKHR &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PHYSICAL_DEVICE_INDEX_TYPE_UINT8_FEATURES_KHR;
@@ -5032,6 +7997,15 @@ struct PerformanceOverrideInfoINTEL {
 
   PerformanceOverrideInfoINTEL(uint64_t parameter = {}, PerformanceOverrideType type = {}, VkBool32 enable = {}, const void *p_next = {})
     : parameter_(parameter), type_(type), enable_(enable), p_next_(p_next) {}
+
+  PerformanceOverrideInfoINTEL(const native_type &rhs) : PerformanceOverrideInfoINTEL(std::bit_cast<PerformanceOverrideInfoINTEL>(rhs)) {}
+
+  PerformanceOverrideInfoINTEL &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PerformanceOverrideInfoINTEL>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PerformanceOverrideInfoINTEL &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -5053,6 +8027,16 @@ struct VideoDecodeH265SessionParametersAddInfoKHR {
     : p_std_ppss_(p_std_ppss), std_vpscount_(std_vpscount), p_std_vpss_(p_std_vpss), std_spscount_(std_spscount), p_std_spss_(p_std_spss),
       std_ppscount_(std_ppscount), p_next_(p_next) {}
 
+  VideoDecodeH265SessionParametersAddInfoKHR(const native_type &rhs)
+    : VideoDecodeH265SessionParametersAddInfoKHR(std::bit_cast<VideoDecodeH265SessionParametersAddInfoKHR>(rhs)) {}
+
+  VideoDecodeH265SessionParametersAddInfoKHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<VideoDecodeH265SessionParametersAddInfoKHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const VideoDecodeH265SessionParametersAddInfoKHR &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::VIDEO_DECODE_H265_SESSION_PARAMETERS_ADD_INFO_KHR;
@@ -5071,6 +8055,16 @@ struct PerformanceStreamMarkerInfoINTEL {
 
   PerformanceStreamMarkerInfoINTEL(uint32_t marker = {}, const void *p_next = {}) : marker_(marker), p_next_(p_next) {}
 
+  PerformanceStreamMarkerInfoINTEL(const native_type &rhs)
+    : PerformanceStreamMarkerInfoINTEL(std::bit_cast<PerformanceStreamMarkerInfoINTEL>(rhs)) {}
+
+  PerformanceStreamMarkerInfoINTEL &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PerformanceStreamMarkerInfoINTEL>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PerformanceStreamMarkerInfoINTEL &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PERFORMANCE_STREAM_MARKER_INFO_INTEL;
@@ -5085,6 +8079,16 @@ struct SamplerBlockMatchWindowCreateInfoQCOM {
   SamplerBlockMatchWindowCreateInfoQCOM(BlockMatchWindowCompareMode window_compare_mode = {}, Extent2D window_extent = {},
                                         const void *p_next = {})
     : window_compare_mode_(window_compare_mode), window_extent_(window_extent), p_next_(p_next) {}
+
+  SamplerBlockMatchWindowCreateInfoQCOM(const native_type &rhs)
+    : SamplerBlockMatchWindowCreateInfoQCOM(std::bit_cast<SamplerBlockMatchWindowCreateInfoQCOM>(rhs)) {}
+
+  SamplerBlockMatchWindowCreateInfoQCOM &operator=(const native_type &rhs) {
+    *this = std::bit_cast<SamplerBlockMatchWindowCreateInfoQCOM>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const SamplerBlockMatchWindowCreateInfoQCOM &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -5101,6 +8105,16 @@ struct QueryPoolPerformanceQueryCreateInfoINTEL {
   QueryPoolPerformanceQueryCreateInfoINTEL(QueryPoolSamplingMode performance_counters_sampling = {}, const void *p_next = {})
     : performance_counters_sampling_(performance_counters_sampling), p_next_(p_next) {}
 
+  QueryPoolPerformanceQueryCreateInfoINTEL(const native_type &rhs)
+    : QueryPoolPerformanceQueryCreateInfoINTEL(std::bit_cast<QueryPoolPerformanceQueryCreateInfoINTEL>(rhs)) {}
+
+  QueryPoolPerformanceQueryCreateInfoINTEL &operator=(const native_type &rhs) {
+    *this = std::bit_cast<QueryPoolPerformanceQueryCreateInfoINTEL>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const QueryPoolPerformanceQueryCreateInfoINTEL &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::QUERY_POOL_PERFORMANCE_QUERY_CREATE_INFO_INTEL;
@@ -5113,6 +8127,16 @@ struct InitializePerformanceApiInfoINTEL {
   using native_type = VkInitializePerformanceApiInfoINTEL;
 
   InitializePerformanceApiInfoINTEL(void *p_user_data = {}, const void *p_next = {}) : p_user_data_(p_user_data), p_next_(p_next) {}
+
+  InitializePerformanceApiInfoINTEL(const native_type &rhs)
+    : InitializePerformanceApiInfoINTEL(std::bit_cast<InitializePerformanceApiInfoINTEL>(rhs)) {}
+
+  InitializePerformanceApiInfoINTEL &operator=(const native_type &rhs) {
+    *this = std::bit_cast<InitializePerformanceApiInfoINTEL>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const InitializePerformanceApiInfoINTEL &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -5128,6 +8152,15 @@ struct DeviceGroupPresentInfoKHR {
   DeviceGroupPresentInfoKHR(DeviceGroupPresentModeMaskBit mode = {}, uint32_t swapchain_count = {}, const uint32_t *p_device_masks = {},
                             const void *p_next = {})
     : mode_(mode), swapchain_count_(swapchain_count), p_device_masks_(p_device_masks), p_next_(p_next) {}
+
+  DeviceGroupPresentInfoKHR(const native_type &rhs) : DeviceGroupPresentInfoKHR(std::bit_cast<DeviceGroupPresentInfoKHR>(rhs)) {}
+
+  DeviceGroupPresentInfoKHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<DeviceGroupPresentInfoKHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const DeviceGroupPresentInfoKHR &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -5146,6 +8179,15 @@ struct AcquireNextImageInfoKHR {
                           VkFence fence = {}, const void *p_next = {})
     : device_mask_(device_mask), swapchain_(swapchain), timeout_(timeout), semaphore_(semaphore), fence_(fence), p_next_(p_next) {}
 
+  AcquireNextImageInfoKHR(const native_type &rhs) : AcquireNextImageInfoKHR(std::bit_cast<AcquireNextImageInfoKHR>(rhs)) {}
+
+  AcquireNextImageInfoKHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<AcquireNextImageInfoKHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const AcquireNextImageInfoKHR &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::ACQUIRE_NEXT_IMAGE_INFO_KHR;
@@ -5163,6 +8205,15 @@ struct ImageSwapchainCreateInfoKHR {
 
   ImageSwapchainCreateInfoKHR(VkSwapchainKHR swapchain = {}, const void *p_next = {}) : swapchain_(swapchain), p_next_(p_next) {}
 
+  ImageSwapchainCreateInfoKHR(const native_type &rhs) : ImageSwapchainCreateInfoKHR(std::bit_cast<ImageSwapchainCreateInfoKHR>(rhs)) {}
+
+  ImageSwapchainCreateInfoKHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<ImageSwapchainCreateInfoKHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const ImageSwapchainCreateInfoKHR &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::IMAGE_SWAPCHAIN_CREATE_INFO_KHR;
@@ -5176,6 +8227,15 @@ struct MemoryGetFdInfoKHR {
 
   MemoryGetFdInfoKHR(ExternalMemoryHandleTypeMaskBit handle_type = {}, VkDeviceMemory memory = {}, const void *p_next = {})
     : handle_type_(handle_type), memory_(memory), p_next_(p_next) {}
+
+  MemoryGetFdInfoKHR(const native_type &rhs) : MemoryGetFdInfoKHR(std::bit_cast<MemoryGetFdInfoKHR>(rhs)) {}
+
+  MemoryGetFdInfoKHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<MemoryGetFdInfoKHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const MemoryGetFdInfoKHR &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -5194,6 +8254,16 @@ struct AccelerationStructureMotionInstanceNV {
                                         VkAccelerationStructureMotionInstanceDataNV data = {})
     : type_(type), flags_(flags), data_(data) {}
 
+  AccelerationStructureMotionInstanceNV(const native_type &rhs)
+    : AccelerationStructureMotionInstanceNV(std::bit_cast<AccelerationStructureMotionInstanceNV>(rhs)) {}
+
+  AccelerationStructureMotionInstanceNV &operator=(const native_type &rhs) {
+    *this = std::bit_cast<AccelerationStructureMotionInstanceNV>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const AccelerationStructureMotionInstanceNV &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   AccelerationStructureMotionInstanceType type_;
@@ -5209,6 +8279,16 @@ struct QueryPoolPerformanceCreateInfoKHR {
                                     uint32_t counter_index_count = {}, const void *p_next = {})
     : p_counter_indices_(p_counter_indices), queue_family_index_(queue_family_index), counter_index_count_(counter_index_count),
       p_next_(p_next) {}
+
+  QueryPoolPerformanceCreateInfoKHR(const native_type &rhs)
+    : QueryPoolPerformanceCreateInfoKHR(std::bit_cast<QueryPoolPerformanceCreateInfoKHR>(rhs)) {}
+
+  QueryPoolPerformanceCreateInfoKHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<QueryPoolPerformanceCreateInfoKHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const QueryPoolPerformanceCreateInfoKHR &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -5226,6 +8306,15 @@ struct BindBufferMemoryInfo {
   BindBufferMemoryInfo(VkDeviceSize memory_offset = {}, VkBuffer buffer = {}, VkDeviceMemory memory = {}, const void *p_next = {})
     : memory_offset_(memory_offset), buffer_(buffer), memory_(memory), p_next_(p_next) {}
 
+  BindBufferMemoryInfo(const native_type &rhs) : BindBufferMemoryInfo(std::bit_cast<BindBufferMemoryInfo>(rhs)) {}
+
+  BindBufferMemoryInfo &operator=(const native_type &rhs) {
+    *this = std::bit_cast<BindBufferMemoryInfo>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const BindBufferMemoryInfo &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::BIND_BUFFER_MEMORY_INFO;
@@ -5242,6 +8331,15 @@ struct ImportFenceFdInfoKHR {
   ImportFenceFdInfoKHR(int fd = {}, VkFence fence = {}, FenceImportMask flags = {}, ExternalFenceHandleTypeMaskBit handle_type = {},
                        const void *p_next = {})
     : fd_(fd), fence_(fence), flags_(flags), handle_type_(handle_type), p_next_(p_next) {}
+
+  ImportFenceFdInfoKHR(const native_type &rhs) : ImportFenceFdInfoKHR(std::bit_cast<ImportFenceFdInfoKHR>(rhs)) {}
+
+  ImportFenceFdInfoKHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<ImportFenceFdInfoKHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const ImportFenceFdInfoKHR &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -5261,6 +8359,15 @@ struct LayerSettingEXT {
                   const void *p_values = {})
     : p_layer_name_(p_layer_name), p_setting_name_(p_setting_name), type_(type), value_count_(value_count), p_values_(p_values) {}
 
+  LayerSettingEXT(const native_type &rhs) : LayerSettingEXT(std::bit_cast<LayerSettingEXT>(rhs)) {}
+
+  LayerSettingEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<LayerSettingEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const LayerSettingEXT &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   const char *p_layer_name_;
@@ -5277,6 +8384,15 @@ struct LayerSettingsCreateInfoEXT {
   LayerSettingsCreateInfoEXT(const LayerSettingEXT *p_settings = {}, uint32_t setting_count = {}, const void *p_next = {})
     : p_settings_(p_settings), setting_count_(setting_count), p_next_(p_next) {}
 
+  LayerSettingsCreateInfoEXT(const native_type &rhs) : LayerSettingsCreateInfoEXT(std::bit_cast<LayerSettingsCreateInfoEXT>(rhs)) {}
+
+  LayerSettingsCreateInfoEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<LayerSettingsCreateInfoEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const LayerSettingsCreateInfoEXT &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::LAYER_SETTINGS_CREATE_INFO_EXT;
@@ -5291,6 +8407,15 @@ struct DisplayEventInfoEXT {
 
   DisplayEventInfoEXT(DisplayEventType display_event = {}, const void *p_next = {}) : display_event_(display_event), p_next_(p_next) {}
 
+  DisplayEventInfoEXT(const native_type &rhs) : DisplayEventInfoEXT(std::bit_cast<DisplayEventInfoEXT>(rhs)) {}
+
+  DisplayEventInfoEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<DisplayEventInfoEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const DisplayEventInfoEXT &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::DISPLAY_EVENT_INFO_EXT;
@@ -5301,6 +8426,16 @@ struct DisplayEventInfoEXT {
 struct PhysicalDeviceMultiviewProperties {
 
   using native_type = VkPhysicalDeviceMultiviewProperties;
+
+  PhysicalDeviceMultiviewProperties(const native_type &rhs)
+    : PhysicalDeviceMultiviewProperties(std::bit_cast<PhysicalDeviceMultiviewProperties>(rhs)) {}
+
+  PhysicalDeviceMultiviewProperties &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceMultiviewProperties>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceMultiviewProperties &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -5313,6 +8448,16 @@ struct PhysicalDeviceMultiviewProperties {
 struct PhysicalDeviceRenderPassStripedPropertiesARM {
 
   using native_type = VkPhysicalDeviceRenderPassStripedPropertiesARM;
+
+  PhysicalDeviceRenderPassStripedPropertiesARM(const native_type &rhs)
+    : PhysicalDeviceRenderPassStripedPropertiesARM(std::bit_cast<PhysicalDeviceRenderPassStripedPropertiesARM>(rhs)) {}
+
+  PhysicalDeviceRenderPassStripedPropertiesARM &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceRenderPassStripedPropertiesARM>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceRenderPassStripedPropertiesARM &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -5329,6 +8474,15 @@ struct AmigoProfilingSubmitInfoSEC {
   AmigoProfilingSubmitInfoSEC(uint64_t swap_buffer_timestamp = {}, uint64_t first_draw_timestamp = {}, const void *p_next = {})
     : swap_buffer_timestamp_(swap_buffer_timestamp), first_draw_timestamp_(first_draw_timestamp), p_next_(p_next) {}
 
+  AmigoProfilingSubmitInfoSEC(const native_type &rhs) : AmigoProfilingSubmitInfoSEC(std::bit_cast<AmigoProfilingSubmitInfoSEC>(rhs)) {}
+
+  AmigoProfilingSubmitInfoSEC &operator=(const native_type &rhs) {
+    *this = std::bit_cast<AmigoProfilingSubmitInfoSEC>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const AmigoProfilingSubmitInfoSEC &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::AMIGO_PROFILING_SUBMIT_INFO_SEC;
@@ -5344,6 +8498,16 @@ struct PhysicalDeviceShaderSubgroupExtendedTypesFeatures {
   PhysicalDeviceShaderSubgroupExtendedTypesFeatures(VkBool32 shader_subgroup_extended_types = {}, void *p_next = {})
     : shader_subgroup_extended_types_(shader_subgroup_extended_types), p_next_(p_next) {}
 
+  PhysicalDeviceShaderSubgroupExtendedTypesFeatures(const native_type &rhs)
+    : PhysicalDeviceShaderSubgroupExtendedTypesFeatures(std::bit_cast<PhysicalDeviceShaderSubgroupExtendedTypesFeatures>(rhs)) {}
+
+  PhysicalDeviceShaderSubgroupExtendedTypesFeatures &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceShaderSubgroupExtendedTypesFeatures>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceShaderSubgroupExtendedTypesFeatures &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PHYSICAL_DEVICE_SHADER_SUBGROUP_EXTENDED_TYPES_FEATURES;
@@ -5357,6 +8521,16 @@ struct PerformanceConfigurationAcquireInfoINTEL {
 
   PerformanceConfigurationAcquireInfoINTEL(PerformanceConfigurationType type = {}, const void *p_next = {})
     : type_(type), p_next_(p_next) {}
+
+  PerformanceConfigurationAcquireInfoINTEL(const native_type &rhs)
+    : PerformanceConfigurationAcquireInfoINTEL(std::bit_cast<PerformanceConfigurationAcquireInfoINTEL>(rhs)) {}
+
+  PerformanceConfigurationAcquireInfoINTEL &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PerformanceConfigurationAcquireInfoINTEL>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PerformanceConfigurationAcquireInfoINTEL &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -5372,6 +8546,16 @@ struct PipelineTessellationDomainOriginStateCreateInfo {
   PipelineTessellationDomainOriginStateCreateInfo(TessellationDomainOrigin domain_origin = {}, const void *p_next = {})
     : domain_origin_(domain_origin), p_next_(p_next) {}
 
+  PipelineTessellationDomainOriginStateCreateInfo(const native_type &rhs)
+    : PipelineTessellationDomainOriginStateCreateInfo(std::bit_cast<PipelineTessellationDomainOriginStateCreateInfo>(rhs)) {}
+
+  PipelineTessellationDomainOriginStateCreateInfo &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PipelineTessellationDomainOriginStateCreateInfo>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PipelineTessellationDomainOriginStateCreateInfo &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PIPELINE_TESSELLATION_DOMAIN_ORIGIN_STATE_CREATE_INFO;
@@ -5383,6 +8567,16 @@ struct PhysicalDeviceProtectedMemoryProperties {
 
   using native_type = VkPhysicalDeviceProtectedMemoryProperties;
 
+  PhysicalDeviceProtectedMemoryProperties(const native_type &rhs)
+    : PhysicalDeviceProtectedMemoryProperties(std::bit_cast<PhysicalDeviceProtectedMemoryProperties>(rhs)) {}
+
+  PhysicalDeviceProtectedMemoryProperties &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceProtectedMemoryProperties>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceProtectedMemoryProperties &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PHYSICAL_DEVICE_PROTECTED_MEMORY_PROPERTIES;
@@ -5393,6 +8587,15 @@ struct PhysicalDeviceProtectedMemoryProperties {
 struct ExternalFenceProperties {
 
   using native_type = VkExternalFenceProperties;
+
+  ExternalFenceProperties(const native_type &rhs) : ExternalFenceProperties(std::bit_cast<ExternalFenceProperties>(rhs)) {}
+
+  ExternalFenceProperties &operator=(const native_type &rhs) {
+    *this = std::bit_cast<ExternalFenceProperties>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const ExternalFenceProperties &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -5457,6 +8660,16 @@ struct PhysicalDeviceExtendedDynamicState3FeaturesEXT {
       extended_dynamic_state3representative_fragment_test_enable_(extended_dynamic_state3representative_fragment_test_enable),
       p_next_(p_next) {}
 
+  PhysicalDeviceExtendedDynamicState3FeaturesEXT(const native_type &rhs)
+    : PhysicalDeviceExtendedDynamicState3FeaturesEXT(std::bit_cast<PhysicalDeviceExtendedDynamicState3FeaturesEXT>(rhs)) {}
+
+  PhysicalDeviceExtendedDynamicState3FeaturesEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceExtendedDynamicState3FeaturesEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceExtendedDynamicState3FeaturesEXT &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PHYSICAL_DEVICE_EXTENDED_DYNAMIC_STATE_3_FEATURES_EXT;
@@ -5501,6 +8714,16 @@ struct PhysicalDeviceExternalFenceInfo {
   PhysicalDeviceExternalFenceInfo(ExternalFenceHandleTypeMaskBit handle_type = {}, const void *p_next = {})
     : handle_type_(handle_type), p_next_(p_next) {}
 
+  PhysicalDeviceExternalFenceInfo(const native_type &rhs)
+    : PhysicalDeviceExternalFenceInfo(std::bit_cast<PhysicalDeviceExternalFenceInfo>(rhs)) {}
+
+  PhysicalDeviceExternalFenceInfo &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceExternalFenceInfo>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceExternalFenceInfo &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PHYSICAL_DEVICE_EXTERNAL_FENCE_INFO;
@@ -5519,6 +8742,16 @@ struct PhysicalDeviceExtendedDynamicState2FeaturesEXT {
       extended_dynamic_state2_(extended_dynamic_state2), extended_dynamic_state2logic_op_(extended_dynamic_state2logic_op),
       p_next_(p_next) {}
 
+  PhysicalDeviceExtendedDynamicState2FeaturesEXT(const native_type &rhs)
+    : PhysicalDeviceExtendedDynamicState2FeaturesEXT(std::bit_cast<PhysicalDeviceExtendedDynamicState2FeaturesEXT>(rhs)) {}
+
+  PhysicalDeviceExtendedDynamicState2FeaturesEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceExtendedDynamicState2FeaturesEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceExtendedDynamicState2FeaturesEXT &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PHYSICAL_DEVICE_EXTENDED_DYNAMIC_STATE_2_FEATURES_EXT;
@@ -5534,6 +8767,15 @@ struct ViewportWScalingNV {
 
   ViewportWScalingNV(float xcoeff = {}, float ycoeff = {}) : xcoeff_(xcoeff), ycoeff_(ycoeff) {}
 
+  ViewportWScalingNV(const native_type &rhs) : ViewportWScalingNV(std::bit_cast<ViewportWScalingNV>(rhs)) {}
+
+  ViewportWScalingNV &operator=(const native_type &rhs) {
+    *this = std::bit_cast<ViewportWScalingNV>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const ViewportWScalingNV &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   float xcoeff_;
@@ -5548,6 +8790,16 @@ struct PipelineViewportWScalingStateCreateInfoNV {
                                             uint32_t viewport_count = {}, const void *p_next = {})
     : p_viewport_wscalings_(p_viewport_wscalings), viewport_wscaling_enable_(viewport_wscaling_enable), viewport_count_(viewport_count),
       p_next_(p_next) {}
+
+  PipelineViewportWScalingStateCreateInfoNV(const native_type &rhs)
+    : PipelineViewportWScalingStateCreateInfoNV(std::bit_cast<PipelineViewportWScalingStateCreateInfoNV>(rhs)) {}
+
+  PipelineViewportWScalingStateCreateInfoNV &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PipelineViewportWScalingStateCreateInfoNV>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PipelineViewportWScalingStateCreateInfoNV &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -5565,6 +8817,15 @@ struct CommandBufferSubmitInfo {
   CommandBufferSubmitInfo(uint32_t device_mask = {}, VkCommandBuffer command_buffer = {}, const void *p_next = {})
     : device_mask_(device_mask), command_buffer_(command_buffer), p_next_(p_next) {}
 
+  CommandBufferSubmitInfo(const native_type &rhs) : CommandBufferSubmitInfo(std::bit_cast<CommandBufferSubmitInfo>(rhs)) {}
+
+  CommandBufferSubmitInfo &operator=(const native_type &rhs) {
+    *this = std::bit_cast<CommandBufferSubmitInfo>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const CommandBufferSubmitInfo &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::COMMAND_BUFFER_SUBMIT_INFO;
@@ -5576,6 +8837,15 @@ struct CommandBufferSubmitInfo {
 struct MemoryFdPropertiesKHR {
 
   using native_type = VkMemoryFdPropertiesKHR;
+
+  MemoryFdPropertiesKHR(const native_type &rhs) : MemoryFdPropertiesKHR(std::bit_cast<MemoryFdPropertiesKHR>(rhs)) {}
+
+  MemoryFdPropertiesKHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<MemoryFdPropertiesKHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const MemoryFdPropertiesKHR &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -5591,6 +8861,16 @@ struct PhysicalDeviceShaderFloat16Int8Features {
   PhysicalDeviceShaderFloat16Int8Features(VkBool32 shader_int8 = {}, VkBool32 shader_float16 = {}, void *p_next = {})
     : shader_int8_(shader_int8), shader_float16_(shader_float16), p_next_(p_next) {}
 
+  PhysicalDeviceShaderFloat16Int8Features(const native_type &rhs)
+    : PhysicalDeviceShaderFloat16Int8Features(std::bit_cast<PhysicalDeviceShaderFloat16Int8Features>(rhs)) {}
+
+  PhysicalDeviceShaderFloat16Int8Features &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceShaderFloat16Int8Features>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceShaderFloat16Int8Features &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PHYSICAL_DEVICE_SHADER_FLOAT16_INT8_FEATURES;
@@ -5604,6 +8884,15 @@ struct SampleLocationEXT {
   using native_type = VkSampleLocationEXT;
 
   SampleLocationEXT(float x = {}, float y = {}) : x_(x), y_(y) {}
+
+  SampleLocationEXT(const native_type &rhs) : SampleLocationEXT(std::bit_cast<SampleLocationEXT>(rhs)) {}
+
+  SampleLocationEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<SampleLocationEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const SampleLocationEXT &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -5619,6 +8908,15 @@ struct SampleLocationsInfoEXT {
                          Extent2D sample_location_grid_size = {}, uint32_t sample_locations_count = {}, const void *p_next = {})
     : p_sample_locations_(p_sample_locations), sample_locations_per_pixel_(sample_locations_per_pixel),
       sample_location_grid_size_(sample_location_grid_size), sample_locations_count_(sample_locations_count), p_next_(p_next) {}
+
+  SampleLocationsInfoEXT(const native_type &rhs) : SampleLocationsInfoEXT(std::bit_cast<SampleLocationsInfoEXT>(rhs)) {}
+
+  SampleLocationsInfoEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<SampleLocationsInfoEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const SampleLocationsInfoEXT &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -5637,6 +8935,16 @@ struct ExternalMemoryAcquireUnmodifiedEXT {
   ExternalMemoryAcquireUnmodifiedEXT(VkBool32 acquire_unmodified_memory = {}, const void *p_next = {})
     : acquire_unmodified_memory_(acquire_unmodified_memory), p_next_(p_next) {}
 
+  ExternalMemoryAcquireUnmodifiedEXT(const native_type &rhs)
+    : ExternalMemoryAcquireUnmodifiedEXT(std::bit_cast<ExternalMemoryAcquireUnmodifiedEXT>(rhs)) {}
+
+  ExternalMemoryAcquireUnmodifiedEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<ExternalMemoryAcquireUnmodifiedEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const ExternalMemoryAcquireUnmodifiedEXT &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::EXTERNAL_MEMORY_ACQUIRE_UNMODIFIED_EXT;
@@ -5651,6 +8959,16 @@ struct PhysicalDeviceColorWriteEnableFeaturesEXT {
   PhysicalDeviceColorWriteEnableFeaturesEXT(VkBool32 color_write_enable = {}, void *p_next = {})
     : color_write_enable_(color_write_enable), p_next_(p_next) {}
 
+  PhysicalDeviceColorWriteEnableFeaturesEXT(const native_type &rhs)
+    : PhysicalDeviceColorWriteEnableFeaturesEXT(std::bit_cast<PhysicalDeviceColorWriteEnableFeaturesEXT>(rhs)) {}
+
+  PhysicalDeviceColorWriteEnableFeaturesEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceColorWriteEnableFeaturesEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceColorWriteEnableFeaturesEXT &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PHYSICAL_DEVICE_COLOR_WRITE_ENABLE_FEATURES_EXT;
@@ -5663,6 +8981,16 @@ struct BindShaderGroupIndirectCommandNV {
   using native_type = VkBindShaderGroupIndirectCommandNV;
 
   BindShaderGroupIndirectCommandNV(uint32_t group_index = {}) : group_index_(group_index) {}
+
+  BindShaderGroupIndirectCommandNV(const native_type &rhs)
+    : BindShaderGroupIndirectCommandNV(std::bit_cast<BindShaderGroupIndirectCommandNV>(rhs)) {}
+
+  BindShaderGroupIndirectCommandNV &operator=(const native_type &rhs) {
+    *this = std::bit_cast<BindShaderGroupIndirectCommandNV>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const BindShaderGroupIndirectCommandNV &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -5677,6 +9005,16 @@ struct RayTracingShaderGroupCreateInfoNV {
                                     uint32_t closest_hit_shader = {}, uint32_t any_hit_shader = {}, const void *p_next = {})
     : intersection_shader_(intersection_shader), type_(type), general_shader_(general_shader), closest_hit_shader_(closest_hit_shader),
       any_hit_shader_(any_hit_shader), p_next_(p_next) {}
+
+  RayTracingShaderGroupCreateInfoNV(const native_type &rhs)
+    : RayTracingShaderGroupCreateInfoNV(std::bit_cast<RayTracingShaderGroupCreateInfoNV>(rhs)) {}
+
+  RayTracingShaderGroupCreateInfoNV &operator=(const native_type &rhs) {
+    *this = std::bit_cast<RayTracingShaderGroupCreateInfoNV>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const RayTracingShaderGroupCreateInfoNV &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -5697,6 +9035,15 @@ struct ComputePipelineCreateInfo {
                             VkPipelineLayout layout = {}, VkPipeline base_pipeline_handle = {}, const void *p_next = {})
     : base_pipeline_index_(base_pipeline_index), flags_(flags), stage_(stage), layout_(layout), base_pipeline_handle_(base_pipeline_handle),
       p_next_(p_next) {}
+
+  ComputePipelineCreateInfo(const native_type &rhs) : ComputePipelineCreateInfo(std::bit_cast<ComputePipelineCreateInfo>(rhs)) {}
+
+  ComputePipelineCreateInfo &operator=(const native_type &rhs) {
+    *this = std::bit_cast<ComputePipelineCreateInfo>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const ComputePipelineCreateInfo &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -5720,6 +9067,15 @@ struct RenderingAttachmentInfo {
       resolve_image_view_(resolve_image_view), resolve_image_layout_(resolve_image_layout), load_op_(load_op), store_op_(store_op),
       p_next_(p_next) {}
 
+  RenderingAttachmentInfo(const native_type &rhs) : RenderingAttachmentInfo(std::bit_cast<RenderingAttachmentInfo>(rhs)) {}
+
+  RenderingAttachmentInfo &operator=(const native_type &rhs) {
+    *this = std::bit_cast<RenderingAttachmentInfo>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const RenderingAttachmentInfo &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::RENDERING_ATTACHMENT_INFO;
@@ -5740,6 +9096,15 @@ struct SemaphoreCreateInfo {
 
   SemaphoreCreateInfo(SemaphoreCreateMask flags = {}, const void *p_next = {}) : flags_(flags), p_next_(p_next) {}
 
+  SemaphoreCreateInfo(const native_type &rhs) : SemaphoreCreateInfo(std::bit_cast<SemaphoreCreateInfo>(rhs)) {}
+
+  SemaphoreCreateInfo &operator=(const native_type &rhs) {
+    *this = std::bit_cast<SemaphoreCreateInfo>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const SemaphoreCreateInfo &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::SEMAPHORE_CREATE_INFO;
@@ -5753,6 +9118,16 @@ struct PipelineColorWriteCreateInfoEXT {
 
   PipelineColorWriteCreateInfoEXT(const VkBool32 *p_color_write_enables = {}, uint32_t attachment_count = {}, const void *p_next = {})
     : p_color_write_enables_(p_color_write_enables), attachment_count_(attachment_count), p_next_(p_next) {}
+
+  PipelineColorWriteCreateInfoEXT(const native_type &rhs)
+    : PipelineColorWriteCreateInfoEXT(std::bit_cast<PipelineColorWriteCreateInfoEXT>(rhs)) {}
+
+  PipelineColorWriteCreateInfoEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PipelineColorWriteCreateInfoEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PipelineColorWriteCreateInfoEXT &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -5768,6 +9143,16 @@ struct ExternalMemoryBufferCreateInfo {
 
   ExternalMemoryBufferCreateInfo(ExternalMemoryHandleTypeMask handle_types = {}, const void *p_next = {})
     : handle_types_(handle_types), p_next_(p_next) {}
+
+  ExternalMemoryBufferCreateInfo(const native_type &rhs)
+    : ExternalMemoryBufferCreateInfo(std::bit_cast<ExternalMemoryBufferCreateInfo>(rhs)) {}
+
+  ExternalMemoryBufferCreateInfo &operator=(const native_type &rhs) {
+    *this = std::bit_cast<ExternalMemoryBufferCreateInfo>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const ExternalMemoryBufferCreateInfo &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -5785,6 +9170,15 @@ struct MicromapCreateInfoEXT {
     : device_address_(device_address), create_flags_(create_flags), buffer_(buffer), offset_(offset), size_(size), type_(type),
       p_next_(p_next) {}
 
+  MicromapCreateInfoEXT(const native_type &rhs) : MicromapCreateInfoEXT(std::bit_cast<MicromapCreateInfoEXT>(rhs)) {}
+
+  MicromapCreateInfoEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<MicromapCreateInfoEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const MicromapCreateInfoEXT &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::MICROMAP_CREATE_INFO_EXT;
@@ -5801,6 +9195,16 @@ struct DeviceGroupPresentCapabilitiesKHR {
 
   using native_type = VkDeviceGroupPresentCapabilitiesKHR;
 
+  DeviceGroupPresentCapabilitiesKHR(const native_type &rhs)
+    : DeviceGroupPresentCapabilitiesKHR(std::bit_cast<DeviceGroupPresentCapabilitiesKHR>(rhs)) {}
+
+  DeviceGroupPresentCapabilitiesKHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<DeviceGroupPresentCapabilitiesKHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const DeviceGroupPresentCapabilitiesKHR &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::DEVICE_GROUP_PRESENT_CAPABILITIES_KHR;
@@ -5813,6 +9217,15 @@ struct ExternalMemoryProperties {
 
   using native_type = VkExternalMemoryProperties;
 
+  ExternalMemoryProperties(const native_type &rhs) : ExternalMemoryProperties(std::bit_cast<ExternalMemoryProperties>(rhs)) {}
+
+  ExternalMemoryProperties &operator=(const native_type &rhs) {
+    *this = std::bit_cast<ExternalMemoryProperties>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const ExternalMemoryProperties &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   ExternalMemoryFeatureMask external_memory_features_;
@@ -5823,6 +9236,15 @@ struct ExternalMemoryProperties {
 struct ExternalBufferProperties {
 
   using native_type = VkExternalBufferProperties;
+
+  ExternalBufferProperties(const native_type &rhs) : ExternalBufferProperties(std::bit_cast<ExternalBufferProperties>(rhs)) {}
+
+  ExternalBufferProperties &operator=(const native_type &rhs) {
+    *this = std::bit_cast<ExternalBufferProperties>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const ExternalBufferProperties &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -5837,6 +9259,15 @@ struct RenderPassCreationControlEXT {
 
   RenderPassCreationControlEXT(VkBool32 disallow_merging = {}, const void *p_next = {})
     : disallow_merging_(disallow_merging), p_next_(p_next) {}
+
+  RenderPassCreationControlEXT(const native_type &rhs) : RenderPassCreationControlEXT(std::bit_cast<RenderPassCreationControlEXT>(rhs)) {}
+
+  RenderPassCreationControlEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<RenderPassCreationControlEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const RenderPassCreationControlEXT &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -5854,6 +9285,16 @@ struct VideoDecodeH264SessionParametersCreateInfoKHR {
     : p_parameters_add_info_(p_parameters_add_info), max_std_spscount_(max_std_spscount), max_std_ppscount_(max_std_ppscount),
       p_next_(p_next) {}
 
+  VideoDecodeH264SessionParametersCreateInfoKHR(const native_type &rhs)
+    : VideoDecodeH264SessionParametersCreateInfoKHR(std::bit_cast<VideoDecodeH264SessionParametersCreateInfoKHR>(rhs)) {}
+
+  VideoDecodeH264SessionParametersCreateInfoKHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<VideoDecodeH264SessionParametersCreateInfoKHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const VideoDecodeH264SessionParametersCreateInfoKHR &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::VIDEO_DECODE_H264_SESSION_PARAMETERS_CREATE_INFO_KHR;
@@ -5870,6 +9311,16 @@ struct PhysicalDeviceVariablePointersFeatures {
   PhysicalDeviceVariablePointersFeatures(VkBool32 variable_pointers = {}, VkBool32 variable_pointers_storage_buffer = {}, void *p_next = {})
     : variable_pointers_(variable_pointers), variable_pointers_storage_buffer_(variable_pointers_storage_buffer), p_next_(p_next) {}
 
+  PhysicalDeviceVariablePointersFeatures(const native_type &rhs)
+    : PhysicalDeviceVariablePointersFeatures(std::bit_cast<PhysicalDeviceVariablePointersFeatures>(rhs)) {}
+
+  PhysicalDeviceVariablePointersFeatures &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceVariablePointersFeatures>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceVariablePointersFeatures &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PHYSICAL_DEVICE_VARIABLE_POINTERS_FEATURES;
@@ -5881,6 +9332,15 @@ struct PhysicalDeviceVariablePointersFeatures {
 struct PhysicalDeviceIDProperties {
 
   using native_type = VkPhysicalDeviceIDProperties;
+
+  PhysicalDeviceIDProperties(const native_type &rhs) : PhysicalDeviceIDProperties(std::bit_cast<PhysicalDeviceIDProperties>(rhs)) {}
+
+  PhysicalDeviceIDProperties &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceIDProperties>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceIDProperties &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -5903,6 +9363,16 @@ struct PhysicalDeviceVulkanMemoryModelFeatures {
     : vulkan_memory_model_availability_visibility_chains_(vulkan_memory_model_availability_visibility_chains),
       vulkan_memory_model_(vulkan_memory_model), vulkan_memory_model_device_scope_(vulkan_memory_model_device_scope), p_next_(p_next) {}
 
+  PhysicalDeviceVulkanMemoryModelFeatures(const native_type &rhs)
+    : PhysicalDeviceVulkanMemoryModelFeatures(std::bit_cast<PhysicalDeviceVulkanMemoryModelFeatures>(rhs)) {}
+
+  PhysicalDeviceVulkanMemoryModelFeatures &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceVulkanMemoryModelFeatures>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceVulkanMemoryModelFeatures &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PHYSICAL_DEVICE_VULKAN_MEMORY_MODEL_FEATURES;
@@ -5921,6 +9391,15 @@ struct DrawIndexedIndirectCommand {
     : index_count_(index_count), instance_count_(instance_count), first_index_(first_index), vertex_offset_(vertex_offset),
       first_instance_(first_instance) {}
 
+  DrawIndexedIndirectCommand(const native_type &rhs) : DrawIndexedIndirectCommand(std::bit_cast<DrawIndexedIndirectCommand>(rhs)) {}
+
+  DrawIndexedIndirectCommand &operator=(const native_type &rhs) {
+    *this = std::bit_cast<DrawIndexedIndirectCommand>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const DrawIndexedIndirectCommand &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   uint32_t index_count_;
@@ -5937,6 +9416,15 @@ struct ConformanceVersion {
   ConformanceVersion(uint8_t major = {}, uint8_t minor = {}, uint8_t subminor = {}, uint8_t patch = {})
     : major_(major), minor_(minor), subminor_(subminor), patch_(patch) {}
 
+  ConformanceVersion(const native_type &rhs) : ConformanceVersion(std::bit_cast<ConformanceVersion>(rhs)) {}
+
+  ConformanceVersion &operator=(const native_type &rhs) {
+    *this = std::bit_cast<ConformanceVersion>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const ConformanceVersion &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   uint8_t major_;
@@ -5948,6 +9436,16 @@ struct ConformanceVersion {
 struct PhysicalDeviceDriverProperties {
 
   using native_type = VkPhysicalDeviceDriverProperties;
+
+  PhysicalDeviceDriverProperties(const native_type &rhs)
+    : PhysicalDeviceDriverProperties(std::bit_cast<PhysicalDeviceDriverProperties>(rhs)) {}
+
+  PhysicalDeviceDriverProperties &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceDriverProperties>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceDriverProperties &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -5969,6 +9467,16 @@ struct DebugUtilsMessengerCreateInfoEXT {
     : p_user_data_(p_user_data), flags_(flags), message_severity_(message_severity), message_type_(message_type),
       pfn_user_callback_(pfn_user_callback), p_next_(p_next) {}
 
+  DebugUtilsMessengerCreateInfoEXT(const native_type &rhs)
+    : DebugUtilsMessengerCreateInfoEXT(std::bit_cast<DebugUtilsMessengerCreateInfoEXT>(rhs)) {}
+
+  DebugUtilsMessengerCreateInfoEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<DebugUtilsMessengerCreateInfoEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const DebugUtilsMessengerCreateInfoEXT &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::DEBUG_UTILS_MESSENGER_CREATE_INFO_EXT;
@@ -5988,6 +9496,16 @@ struct PhysicalDeviceImageFormatInfo2 {
                                  ImageUsageMask usage = {}, const void *p_next = {})
     : flags_(flags), format_(format), type_(type), tiling_(tiling), usage_(usage), p_next_(p_next) {}
 
+  PhysicalDeviceImageFormatInfo2(const native_type &rhs)
+    : PhysicalDeviceImageFormatInfo2(std::bit_cast<PhysicalDeviceImageFormatInfo2>(rhs)) {}
+
+  PhysicalDeviceImageFormatInfo2 &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceImageFormatInfo2>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceImageFormatInfo2 &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PHYSICAL_DEVICE_IMAGE_FORMAT_INFO_2;
@@ -6003,6 +9521,15 @@ struct FormatProperties {
 
   using native_type = VkFormatProperties;
 
+  FormatProperties(const native_type &rhs) : FormatProperties(std::bit_cast<FormatProperties>(rhs)) {}
+
+  FormatProperties &operator=(const native_type &rhs) {
+    *this = std::bit_cast<FormatProperties>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const FormatProperties &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   FormatFeatureMask linear_tiling_features_;
@@ -6013,6 +9540,15 @@ struct FormatProperties {
 struct FormatProperties2 {
 
   using native_type = VkFormatProperties2;
+
+  FormatProperties2(const native_type &rhs) : FormatProperties2(std::bit_cast<FormatProperties2>(rhs)) {}
+
+  FormatProperties2 &operator=(const native_type &rhs) {
+    *this = std::bit_cast<FormatProperties2>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const FormatProperties2 &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -6027,6 +9563,16 @@ struct BindPipelineIndirectCommandNV {
 
   BindPipelineIndirectCommandNV(VkDeviceAddress pipeline_address = {}) : pipeline_address_(pipeline_address) {}
 
+  BindPipelineIndirectCommandNV(const native_type &rhs)
+    : BindPipelineIndirectCommandNV(std::bit_cast<BindPipelineIndirectCommandNV>(rhs)) {}
+
+  BindPipelineIndirectCommandNV &operator=(const native_type &rhs) {
+    *this = std::bit_cast<BindPipelineIndirectCommandNV>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const BindPipelineIndirectCommandNV &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   VkDeviceAddress pipeline_address_;
@@ -6038,6 +9584,17 @@ struct PhysicalDeviceShaderSubgroupUniformControlFlowFeaturesKHR {
 
   PhysicalDeviceShaderSubgroupUniformControlFlowFeaturesKHR(VkBool32 shader_subgroup_uniform_control_flow = {}, void *p_next = {})
     : shader_subgroup_uniform_control_flow_(shader_subgroup_uniform_control_flow), p_next_(p_next) {}
+
+  PhysicalDeviceShaderSubgroupUniformControlFlowFeaturesKHR(const native_type &rhs)
+    : PhysicalDeviceShaderSubgroupUniformControlFlowFeaturesKHR(
+        std::bit_cast<PhysicalDeviceShaderSubgroupUniformControlFlowFeaturesKHR>(rhs)) {}
+
+  PhysicalDeviceShaderSubgroupUniformControlFlowFeaturesKHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceShaderSubgroupUniformControlFlowFeaturesKHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceShaderSubgroupUniformControlFlowFeaturesKHR &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -6051,6 +9608,15 @@ struct IndirectCommandsStreamNV {
   using native_type = VkIndirectCommandsStreamNV;
 
   IndirectCommandsStreamNV(VkBuffer buffer = {}, VkDeviceSize offset = {}) : buffer_(buffer), offset_(offset) {}
+
+  IndirectCommandsStreamNV(const native_type &rhs) : IndirectCommandsStreamNV(std::bit_cast<IndirectCommandsStreamNV>(rhs)) {}
+
+  IndirectCommandsStreamNV &operator=(const native_type &rhs) {
+    *this = std::bit_cast<IndirectCommandsStreamNV>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const IndirectCommandsStreamNV &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -6072,6 +9638,15 @@ struct GeneratedCommandsInfoNV {
       sequences_count_(sequences_count), preprocess_buffer_(preprocess_buffer), preprocess_offset_(preprocess_offset),
       preprocess_size_(preprocess_size), sequences_count_buffer_(sequences_count_buffer), sequences_count_offset_(sequences_count_offset),
       sequences_index_buffer_(sequences_index_buffer), p_next_(p_next) {}
+
+  GeneratedCommandsInfoNV(const native_type &rhs) : GeneratedCommandsInfoNV(std::bit_cast<GeneratedCommandsInfoNV>(rhs)) {}
+
+  GeneratedCommandsInfoNV &operator=(const native_type &rhs) {
+    *this = std::bit_cast<GeneratedCommandsInfoNV>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const GeneratedCommandsInfoNV &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -6099,6 +9674,15 @@ struct MemoryUnmapInfoKHR {
   MemoryUnmapInfoKHR(VkDeviceMemory memory = {}, MemoryUnmapMask flags = {}, const void *p_next = {})
     : memory_(memory), flags_(flags), p_next_(p_next) {}
 
+  MemoryUnmapInfoKHR(const native_type &rhs) : MemoryUnmapInfoKHR(std::bit_cast<MemoryUnmapInfoKHR>(rhs)) {}
+
+  MemoryUnmapInfoKHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<MemoryUnmapInfoKHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const MemoryUnmapInfoKHR &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::MEMORY_UNMAP_INFO_KHR;
@@ -6114,6 +9698,16 @@ struct PhysicalDeviceTilePropertiesFeaturesQCOM {
   PhysicalDeviceTilePropertiesFeaturesQCOM(VkBool32 tile_properties = {}, void *p_next = {})
     : tile_properties_(tile_properties), p_next_(p_next) {}
 
+  PhysicalDeviceTilePropertiesFeaturesQCOM(const native_type &rhs)
+    : PhysicalDeviceTilePropertiesFeaturesQCOM(std::bit_cast<PhysicalDeviceTilePropertiesFeaturesQCOM>(rhs)) {}
+
+  PhysicalDeviceTilePropertiesFeaturesQCOM &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceTilePropertiesFeaturesQCOM>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceTilePropertiesFeaturesQCOM &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PHYSICAL_DEVICE_TILE_PROPERTIES_FEATURES_QCOM;
@@ -6127,6 +9721,16 @@ struct VideoDecodeH264DpbSlotInfoKHR {
 
   VideoDecodeH264DpbSlotInfoKHR(const StdVideoDecodeH264ReferenceInfo *p_std_reference_info = {}, const void *p_next = {})
     : p_std_reference_info_(p_std_reference_info), p_next_(p_next) {}
+
+  VideoDecodeH264DpbSlotInfoKHR(const native_type &rhs)
+    : VideoDecodeH264DpbSlotInfoKHR(std::bit_cast<VideoDecodeH264DpbSlotInfoKHR>(rhs)) {}
+
+  VideoDecodeH264DpbSlotInfoKHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<VideoDecodeH264DpbSlotInfoKHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const VideoDecodeH264DpbSlotInfoKHR &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -6143,6 +9747,15 @@ struct ViewportSwizzleNV {
                     ViewportCoordinateSwizzle w = {})
     : x_(x), y_(y), z_(z), w_(w) {}
 
+  ViewportSwizzleNV(const native_type &rhs) : ViewportSwizzleNV(std::bit_cast<ViewportSwizzleNV>(rhs)) {}
+
+  ViewportSwizzleNV &operator=(const native_type &rhs) {
+    *this = std::bit_cast<ViewportSwizzleNV>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const ViewportSwizzleNV &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   ViewportCoordinateSwizzle x_;
@@ -6154,6 +9767,16 @@ struct ViewportSwizzleNV {
 struct ExternalImageFormatProperties {
 
   using native_type = VkExternalImageFormatProperties;
+
+  ExternalImageFormatProperties(const native_type &rhs)
+    : ExternalImageFormatProperties(std::bit_cast<ExternalImageFormatProperties>(rhs)) {}
+
+  ExternalImageFormatProperties &operator=(const native_type &rhs) {
+    *this = std::bit_cast<ExternalImageFormatProperties>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const ExternalImageFormatProperties &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -6172,6 +9795,16 @@ struct SetDescriptorBufferOffsetsInfoEXT {
     : p_offsets_(p_offsets), stage_flags_(stage_flags), layout_(layout), first_set_(first_set), set_count_(set_count),
       p_buffer_indices_(p_buffer_indices), p_next_(p_next) {}
 
+  SetDescriptorBufferOffsetsInfoEXT(const native_type &rhs)
+    : SetDescriptorBufferOffsetsInfoEXT(std::bit_cast<SetDescriptorBufferOffsetsInfoEXT>(rhs)) {}
+
+  SetDescriptorBufferOffsetsInfoEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<SetDescriptorBufferOffsetsInfoEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const SetDescriptorBufferOffsetsInfoEXT &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::SET_DESCRIPTOR_BUFFER_OFFSETS_INFO_EXT;
@@ -6188,6 +9821,16 @@ struct PhysicalDeviceMemoryBudgetPropertiesEXT {
 
   using native_type = VkPhysicalDeviceMemoryBudgetPropertiesEXT;
 
+  PhysicalDeviceMemoryBudgetPropertiesEXT(const native_type &rhs)
+    : PhysicalDeviceMemoryBudgetPropertiesEXT(std::bit_cast<PhysicalDeviceMemoryBudgetPropertiesEXT>(rhs)) {}
+
+  PhysicalDeviceMemoryBudgetPropertiesEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceMemoryBudgetPropertiesEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceMemoryBudgetPropertiesEXT &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PHYSICAL_DEVICE_MEMORY_BUDGET_PROPERTIES_EXT;
@@ -6201,6 +9844,16 @@ struct SamplerCaptureDescriptorDataInfoEXT {
   using native_type = VkSamplerCaptureDescriptorDataInfoEXT;
 
   SamplerCaptureDescriptorDataInfoEXT(VkSampler sampler = {}, const void *p_next = {}) : sampler_(sampler), p_next_(p_next) {}
+
+  SamplerCaptureDescriptorDataInfoEXT(const native_type &rhs)
+    : SamplerCaptureDescriptorDataInfoEXT(std::bit_cast<SamplerCaptureDescriptorDataInfoEXT>(rhs)) {}
+
+  SamplerCaptureDescriptorDataInfoEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<SamplerCaptureDescriptorDataInfoEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const SamplerCaptureDescriptorDataInfoEXT &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -6224,6 +9877,16 @@ struct IndirectCommandsLayoutTokenNV {
       pushconstant_pipeline_layout_(pushconstant_pipeline_layout), pushconstant_shader_stage_flags_(pushconstant_shader_stage_flags),
       pushconstant_offset_(pushconstant_offset), pushconstant_size_(pushconstant_size), indirect_state_flags_(indirect_state_flags),
       index_type_count_(index_type_count), p_index_types_(p_index_types), p_next_(p_next) {}
+
+  IndirectCommandsLayoutTokenNV(const native_type &rhs)
+    : IndirectCommandsLayoutTokenNV(std::bit_cast<IndirectCommandsLayoutTokenNV>(rhs)) {}
+
+  IndirectCommandsLayoutTokenNV &operator=(const native_type &rhs) {
+    *this = std::bit_cast<IndirectCommandsLayoutTokenNV>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const IndirectCommandsLayoutTokenNV &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -6255,6 +9918,16 @@ struct IndirectCommandsLayoutCreateInfoNV {
     : p_stream_strides_(p_stream_strides), flags_(flags), pipeline_bind_point_(pipeline_bind_point), token_count_(token_count),
       p_tokens_(p_tokens), stream_count_(stream_count), p_next_(p_next) {}
 
+  IndirectCommandsLayoutCreateInfoNV(const native_type &rhs)
+    : IndirectCommandsLayoutCreateInfoNV(std::bit_cast<IndirectCommandsLayoutCreateInfoNV>(rhs)) {}
+
+  IndirectCommandsLayoutCreateInfoNV &operator=(const native_type &rhs) {
+    *this = std::bit_cast<IndirectCommandsLayoutCreateInfoNV>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const IndirectCommandsLayoutCreateInfoNV &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::INDIRECT_COMMANDS_LAYOUT_CREATE_INFO_NV;
@@ -6275,6 +9948,16 @@ struct PipelineInputAssemblyStateCreateInfo {
                                        PrimitiveTopology topology = {}, const void *p_next = {})
     : primitive_restart_enable_(primitive_restart_enable), flags_(flags), topology_(topology), p_next_(p_next) {}
 
+  PipelineInputAssemblyStateCreateInfo(const native_type &rhs)
+    : PipelineInputAssemblyStateCreateInfo(std::bit_cast<PipelineInputAssemblyStateCreateInfo>(rhs)) {}
+
+  PipelineInputAssemblyStateCreateInfo &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PipelineInputAssemblyStateCreateInfo>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PipelineInputAssemblyStateCreateInfo &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PIPELINE_INPUT_ASSEMBLY_STATE_CREATE_INFO;
@@ -6291,6 +9974,16 @@ struct InputAttachmentAspectReference {
   InputAttachmentAspectReference(uint32_t subpass = {}, uint32_t input_attachment_index = {}, ImageAspectMask aspect_mask = {})
     : subpass_(subpass), input_attachment_index_(input_attachment_index), aspect_mask_(aspect_mask) {}
 
+  InputAttachmentAspectReference(const native_type &rhs)
+    : InputAttachmentAspectReference(std::bit_cast<InputAttachmentAspectReference>(rhs)) {}
+
+  InputAttachmentAspectReference &operator=(const native_type &rhs) {
+    *this = std::bit_cast<InputAttachmentAspectReference>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const InputAttachmentAspectReference &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   uint32_t subpass_;
@@ -6305,6 +9998,16 @@ struct RenderPassInputAttachmentAspectCreateInfo {
   RenderPassInputAttachmentAspectCreateInfo(const InputAttachmentAspectReference *p_aspect_references = {},
                                             uint32_t aspect_reference_count = {}, const void *p_next = {})
     : p_aspect_references_(p_aspect_references), aspect_reference_count_(aspect_reference_count), p_next_(p_next) {}
+
+  RenderPassInputAttachmentAspectCreateInfo(const native_type &rhs)
+    : RenderPassInputAttachmentAspectCreateInfo(std::bit_cast<RenderPassInputAttachmentAspectCreateInfo>(rhs)) {}
+
+  RenderPassInputAttachmentAspectCreateInfo &operator=(const native_type &rhs) {
+    *this = std::bit_cast<RenderPassInputAttachmentAspectCreateInfo>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const RenderPassInputAttachmentAspectCreateInfo &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -6321,6 +10024,16 @@ struct PipelineCoverageReductionStateCreateInfoNV {
   PipelineCoverageReductionStateCreateInfoNV(CoverageReductionMode coverage_reduction_mode = {},
                                              PipelineCoverageReductionStateCreateMask flags = {}, const void *p_next = {})
     : coverage_reduction_mode_(coverage_reduction_mode), flags_(flags), p_next_(p_next) {}
+
+  PipelineCoverageReductionStateCreateInfoNV(const native_type &rhs)
+    : PipelineCoverageReductionStateCreateInfoNV(std::bit_cast<PipelineCoverageReductionStateCreateInfoNV>(rhs)) {}
+
+  PipelineCoverageReductionStateCreateInfoNV &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PipelineCoverageReductionStateCreateInfoNV>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PipelineCoverageReductionStateCreateInfoNV &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -6341,6 +10054,15 @@ struct SubmitInfo {
       p_wait_dst_stage_mask_(p_wait_dst_stage_mask), command_buffer_count_(command_buffer_count), p_command_buffers_(p_command_buffers),
       signal_semaphore_count_(signal_semaphore_count), p_next_(p_next) {}
 
+  SubmitInfo(const native_type &rhs) : SubmitInfo(std::bit_cast<SubmitInfo>(rhs)) {}
+
+  SubmitInfo &operator=(const native_type &rhs) {
+    *this = std::bit_cast<SubmitInfo>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const SubmitInfo &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::SUBMIT_INFO;
@@ -6357,6 +10079,15 @@ struct SubmitInfo {
 struct DisplayPlaneCapabilitiesKHR {
 
   using native_type = VkDisplayPlaneCapabilitiesKHR;
+
+  DisplayPlaneCapabilitiesKHR(const native_type &rhs) : DisplayPlaneCapabilitiesKHR(std::bit_cast<DisplayPlaneCapabilitiesKHR>(rhs)) {}
+
+  DisplayPlaneCapabilitiesKHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<DisplayPlaneCapabilitiesKHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const DisplayPlaneCapabilitiesKHR &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -6378,6 +10109,16 @@ struct VertexInputBindingDescription {
   VertexInputBindingDescription(uint32_t binding = {}, uint32_t stride = {}, VertexInputRate input_rate = {})
     : binding_(binding), stride_(stride), input_rate_(input_rate) {}
 
+  VertexInputBindingDescription(const native_type &rhs)
+    : VertexInputBindingDescription(std::bit_cast<VertexInputBindingDescription>(rhs)) {}
+
+  VertexInputBindingDescription &operator=(const native_type &rhs) {
+    *this = std::bit_cast<VertexInputBindingDescription>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const VertexInputBindingDescription &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   uint32_t binding_;
@@ -6391,6 +10132,16 @@ struct VertexInputAttributeDescription {
 
   VertexInputAttributeDescription(uint32_t location = {}, uint32_t binding = {}, Format format = {}, uint32_t offset = {})
     : location_(location), binding_(binding), format_(format), offset_(offset) {}
+
+  VertexInputAttributeDescription(const native_type &rhs)
+    : VertexInputAttributeDescription(std::bit_cast<VertexInputAttributeDescription>(rhs)) {}
+
+  VertexInputAttributeDescription &operator=(const native_type &rhs) {
+    *this = std::bit_cast<VertexInputAttributeDescription>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const VertexInputAttributeDescription &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -6412,6 +10163,16 @@ struct PipelineVertexInputStateCreateInfo {
       vertex_binding_description_count_(vertex_binding_description_count), p_vertex_binding_descriptions_(p_vertex_binding_descriptions),
       vertex_attribute_description_count_(vertex_attribute_description_count), p_next_(p_next) {}
 
+  PipelineVertexInputStateCreateInfo(const native_type &rhs)
+    : PipelineVertexInputStateCreateInfo(std::bit_cast<PipelineVertexInputStateCreateInfo>(rhs)) {}
+
+  PipelineVertexInputStateCreateInfo &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PipelineVertexInputStateCreateInfo>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PipelineVertexInputStateCreateInfo &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PIPELINE_VERTEX_INPUT_STATE_CREATE_INFO;
@@ -6431,6 +10192,16 @@ struct PipelineTessellationStateCreateInfo {
                                       const void *p_next = {})
     : patch_control_points_(patch_control_points), flags_(flags), p_next_(p_next) {}
 
+  PipelineTessellationStateCreateInfo(const native_type &rhs)
+    : PipelineTessellationStateCreateInfo(std::bit_cast<PipelineTessellationStateCreateInfo>(rhs)) {}
+
+  PipelineTessellationStateCreateInfo &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PipelineTessellationStateCreateInfo>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PipelineTessellationStateCreateInfo &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PIPELINE_TESSELLATION_STATE_CREATE_INFO;
@@ -6449,6 +10220,16 @@ struct GraphicsShaderGroupCreateInfoNV {
     : p_tessellation_state_(p_tessellation_state), stage_count_(stage_count), p_stages_(p_stages),
       p_vertex_input_state_(p_vertex_input_state), p_next_(p_next) {}
 
+  GraphicsShaderGroupCreateInfoNV(const native_type &rhs)
+    : GraphicsShaderGroupCreateInfoNV(std::bit_cast<GraphicsShaderGroupCreateInfoNV>(rhs)) {}
+
+  GraphicsShaderGroupCreateInfoNV &operator=(const native_type &rhs) {
+    *this = std::bit_cast<GraphicsShaderGroupCreateInfoNV>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const GraphicsShaderGroupCreateInfoNV &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::GRAPHICS_SHADER_GROUP_CREATE_INFO_NV;
@@ -6463,6 +10244,16 @@ struct PhysicalDeviceMultiDrawPropertiesEXT {
 
   using native_type = VkPhysicalDeviceMultiDrawPropertiesEXT;
 
+  PhysicalDeviceMultiDrawPropertiesEXT(const native_type &rhs)
+    : PhysicalDeviceMultiDrawPropertiesEXT(std::bit_cast<PhysicalDeviceMultiDrawPropertiesEXT>(rhs)) {}
+
+  PhysicalDeviceMultiDrawPropertiesEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceMultiDrawPropertiesEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceMultiDrawPropertiesEXT &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PHYSICAL_DEVICE_MULTI_DRAW_PROPERTIES_EXT;
@@ -6473,6 +10264,16 @@ struct PhysicalDeviceMultiDrawPropertiesEXT {
 struct PhysicalDeviceDeviceGeneratedCommandsPropertiesNV {
 
   using native_type = VkPhysicalDeviceDeviceGeneratedCommandsPropertiesNV;
+
+  PhysicalDeviceDeviceGeneratedCommandsPropertiesNV(const native_type &rhs)
+    : PhysicalDeviceDeviceGeneratedCommandsPropertiesNV(std::bit_cast<PhysicalDeviceDeviceGeneratedCommandsPropertiesNV>(rhs)) {}
+
+  PhysicalDeviceDeviceGeneratedCommandsPropertiesNV &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceDeviceGeneratedCommandsPropertiesNV>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceDeviceGeneratedCommandsPropertiesNV &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -6498,6 +10299,15 @@ struct DescriptorSetLayoutBinding {
     : binding_(binding), descriptor_type_(descriptor_type), descriptor_count_(descriptor_count), stage_flags_(stage_flags),
       p_immutable_samplers_(p_immutable_samplers) {}
 
+  DescriptorSetLayoutBinding(const native_type &rhs) : DescriptorSetLayoutBinding(std::bit_cast<DescriptorSetLayoutBinding>(rhs)) {}
+
+  DescriptorSetLayoutBinding &operator=(const native_type &rhs) {
+    *this = std::bit_cast<DescriptorSetLayoutBinding>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const DescriptorSetLayoutBinding &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   uint32_t binding_;
@@ -6515,6 +10325,16 @@ struct DescriptorSetLayoutCreateInfo {
                                 uint32_t binding_count = {}, const void *p_next = {})
     : p_bindings_(p_bindings), flags_(flags), binding_count_(binding_count), p_next_(p_next) {}
 
+  DescriptorSetLayoutCreateInfo(const native_type &rhs)
+    : DescriptorSetLayoutCreateInfo(std::bit_cast<DescriptorSetLayoutCreateInfo>(rhs)) {}
+
+  DescriptorSetLayoutCreateInfo &operator=(const native_type &rhs) {
+    *this = std::bit_cast<DescriptorSetLayoutCreateInfo>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const DescriptorSetLayoutCreateInfo &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::DESCRIPTOR_SET_LAYOUT_CREATE_INFO;
@@ -6530,6 +10350,15 @@ struct AttachmentReference2 {
 
   AttachmentReference2(ImageAspectMask aspect_mask = {}, uint32_t attachment = {}, ImageLayout layout = {}, const void *p_next = {})
     : aspect_mask_(aspect_mask), attachment_(attachment), layout_(layout), p_next_(p_next) {}
+
+  AttachmentReference2(const native_type &rhs) : AttachmentReference2(std::bit_cast<AttachmentReference2>(rhs)) {}
+
+  AttachmentReference2 &operator=(const native_type &rhs) {
+    *this = std::bit_cast<AttachmentReference2>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const AttachmentReference2 &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -6549,6 +10378,16 @@ struct FragmentShadingRateAttachmentInfoKHR {
     : shading_rate_attachment_texel_size_(shading_rate_attachment_texel_size),
       p_fragment_shading_rate_attachment_(p_fragment_shading_rate_attachment), p_next_(p_next) {}
 
+  FragmentShadingRateAttachmentInfoKHR(const native_type &rhs)
+    : FragmentShadingRateAttachmentInfoKHR(std::bit_cast<FragmentShadingRateAttachmentInfoKHR>(rhs)) {}
+
+  FragmentShadingRateAttachmentInfoKHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<FragmentShadingRateAttachmentInfoKHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const FragmentShadingRateAttachmentInfoKHR &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::FRAGMENT_SHADING_RATE_ATTACHMENT_INFO_KHR;
@@ -6563,6 +10402,15 @@ struct PrivateDataSlotCreateInfo {
 
   PrivateDataSlotCreateInfo(PrivateDataSlotCreateMask flags = {}, const void *p_next = {}) : flags_(flags), p_next_(p_next) {}
 
+  PrivateDataSlotCreateInfo(const native_type &rhs) : PrivateDataSlotCreateInfo(std::bit_cast<PrivateDataSlotCreateInfo>(rhs)) {}
+
+  PrivateDataSlotCreateInfo &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PrivateDataSlotCreateInfo>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PrivateDataSlotCreateInfo &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PRIVATE_DATA_SLOT_CREATE_INFO;
@@ -6575,6 +10423,16 @@ struct VertexInputBindingDivisorDescriptionKHR {
   using native_type = VkVertexInputBindingDivisorDescriptionKHR;
 
   VertexInputBindingDivisorDescriptionKHR(uint32_t binding = {}, uint32_t divisor = {}) : binding_(binding), divisor_(divisor) {}
+
+  VertexInputBindingDivisorDescriptionKHR(const native_type &rhs)
+    : VertexInputBindingDivisorDescriptionKHR(std::bit_cast<VertexInputBindingDivisorDescriptionKHR>(rhs)) {}
+
+  VertexInputBindingDivisorDescriptionKHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<VertexInputBindingDivisorDescriptionKHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const VertexInputBindingDivisorDescriptionKHR &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -6589,6 +10447,16 @@ struct PipelineVertexInputDivisorStateCreateInfoKHR {
   PipelineVertexInputDivisorStateCreateInfoKHR(const VertexInputBindingDivisorDescriptionKHR *p_vertex_binding_divisors = {},
                                                uint32_t vertex_binding_divisor_count = {}, const void *p_next = {})
     : p_vertex_binding_divisors_(p_vertex_binding_divisors), vertex_binding_divisor_count_(vertex_binding_divisor_count), p_next_(p_next) {}
+
+  PipelineVertexInputDivisorStateCreateInfoKHR(const native_type &rhs)
+    : PipelineVertexInputDivisorStateCreateInfoKHR(std::bit_cast<PipelineVertexInputDivisorStateCreateInfoKHR>(rhs)) {}
+
+  PipelineVertexInputDivisorStateCreateInfoKHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PipelineVertexInputDivisorStateCreateInfoKHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PipelineVertexInputDivisorStateCreateInfoKHR &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -6606,6 +10474,16 @@ struct VideoEncodeH264SessionParametersCreateInfoKHR {
                                                 uint32_t max_std_spscount = {}, uint32_t max_std_ppscount = {}, const void *p_next = {})
     : p_parameters_add_info_(p_parameters_add_info), max_std_spscount_(max_std_spscount), max_std_ppscount_(max_std_ppscount),
       p_next_(p_next) {}
+
+  VideoEncodeH264SessionParametersCreateInfoKHR(const native_type &rhs)
+    : VideoEncodeH264SessionParametersCreateInfoKHR(std::bit_cast<VideoEncodeH264SessionParametersCreateInfoKHR>(rhs)) {}
+
+  VideoEncodeH264SessionParametersCreateInfoKHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<VideoEncodeH264SessionParametersCreateInfoKHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const VideoEncodeH264SessionParametersCreateInfoKHR &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -6625,6 +10503,16 @@ struct GraphicsPipelineShaderGroupsCreateInfoNV {
                                            const void *p_next = {})
     : p_pipelines_(p_pipelines), group_count_(group_count), p_groups_(p_groups), pipeline_count_(pipeline_count), p_next_(p_next) {}
 
+  GraphicsPipelineShaderGroupsCreateInfoNV(const native_type &rhs)
+    : GraphicsPipelineShaderGroupsCreateInfoNV(std::bit_cast<GraphicsPipelineShaderGroupsCreateInfoNV>(rhs)) {}
+
+  GraphicsPipelineShaderGroupsCreateInfoNV &operator=(const native_type &rhs) {
+    *this = std::bit_cast<GraphicsPipelineShaderGroupsCreateInfoNV>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const GraphicsPipelineShaderGroupsCreateInfoNV &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::GRAPHICS_PIPELINE_SHADER_GROUPS_CREATE_INFO_NV;
@@ -6642,6 +10530,15 @@ struct DevicePrivateDataCreateInfo {
   DevicePrivateDataCreateInfo(uint32_t private_data_slot_request_count = {}, const void *p_next = {})
     : private_data_slot_request_count_(private_data_slot_request_count), p_next_(p_next) {}
 
+  DevicePrivateDataCreateInfo(const native_type &rhs) : DevicePrivateDataCreateInfo(std::bit_cast<DevicePrivateDataCreateInfo>(rhs)) {}
+
+  DevicePrivateDataCreateInfo &operator=(const native_type &rhs) {
+    *this = std::bit_cast<DevicePrivateDataCreateInfo>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const DevicePrivateDataCreateInfo &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::DEVICE_PRIVATE_DATA_CREATE_INFO;
@@ -6652,6 +10549,16 @@ struct DevicePrivateDataCreateInfo {
 struct PhysicalDeviceMemoryDecompressionPropertiesNV {
 
   using native_type = VkPhysicalDeviceMemoryDecompressionPropertiesNV;
+
+  PhysicalDeviceMemoryDecompressionPropertiesNV(const native_type &rhs)
+    : PhysicalDeviceMemoryDecompressionPropertiesNV(std::bit_cast<PhysicalDeviceMemoryDecompressionPropertiesNV>(rhs)) {}
+
+  PhysicalDeviceMemoryDecompressionPropertiesNV &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceMemoryDecompressionPropertiesNV>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceMemoryDecompressionPropertiesNV &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -6669,6 +10576,15 @@ struct DeviceQueueCreateInfo {
                         uint32_t queue_count = {}, const void *p_next = {})
     : p_queue_priorities_(p_queue_priorities), flags_(flags), queue_family_index_(queue_family_index), queue_count_(queue_count),
       p_next_(p_next) {}
+
+  DeviceQueueCreateInfo(const native_type &rhs) : DeviceQueueCreateInfo(std::bit_cast<DeviceQueueCreateInfo>(rhs)) {}
+
+  DeviceQueueCreateInfo &operator=(const native_type &rhs) {
+    *this = std::bit_cast<DeviceQueueCreateInfo>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const DeviceQueueCreateInfo &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -6732,6 +10648,15 @@ struct PhysicalDeviceFeatures {
       sparse_residency8samples_(sparse_residency8samples), sparse_residency16samples_(sparse_residency16samples),
       sparse_residency_aliased_(sparse_residency_aliased), variable_multisample_rate_(variable_multisample_rate),
       inherited_queries_(inherited_queries) {}
+
+  PhysicalDeviceFeatures(const native_type &rhs) : PhysicalDeviceFeatures(std::bit_cast<PhysicalDeviceFeatures>(rhs)) {}
+
+  PhysicalDeviceFeatures &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceFeatures>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceFeatures &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -6805,6 +10730,15 @@ struct DeviceCreateInfo {
       pp_enabled_layer_names_(pp_enabled_layer_names), enabled_extension_count_(enabled_extension_count),
       pp_enabled_extension_names_(pp_enabled_extension_names), p_next_(p_next) {}
 
+  DeviceCreateInfo(const native_type &rhs) : DeviceCreateInfo(std::bit_cast<DeviceCreateInfo>(rhs)) {}
+
+  DeviceCreateInfo &operator=(const native_type &rhs) {
+    *this = std::bit_cast<DeviceCreateInfo>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const DeviceCreateInfo &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::DEVICE_CREATE_INFO;
@@ -6839,6 +10773,15 @@ struct TraceRaysIndirectCommand2KHR {
       callable_shader_binding_table_size_(callable_shader_binding_table_size),
       callable_shader_binding_table_stride_(callable_shader_binding_table_stride), width_(width), height_(height), depth_(depth) {}
 
+  TraceRaysIndirectCommand2KHR(const native_type &rhs) : TraceRaysIndirectCommand2KHR(std::bit_cast<TraceRaysIndirectCommand2KHR>(rhs)) {}
+
+  TraceRaysIndirectCommand2KHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<TraceRaysIndirectCommand2KHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const TraceRaysIndirectCommand2KHR &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   VkDeviceAddress raygen_shader_record_address_;
@@ -6863,6 +10806,16 @@ struct PhysicalDeviceOpticalFlowFeaturesNV {
 
   PhysicalDeviceOpticalFlowFeaturesNV(VkBool32 optical_flow = {}, void *p_next = {}) : optical_flow_(optical_flow), p_next_(p_next) {}
 
+  PhysicalDeviceOpticalFlowFeaturesNV(const native_type &rhs)
+    : PhysicalDeviceOpticalFlowFeaturesNV(std::bit_cast<PhysicalDeviceOpticalFlowFeaturesNV>(rhs)) {}
+
+  PhysicalDeviceOpticalFlowFeaturesNV &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceOpticalFlowFeaturesNV>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceOpticalFlowFeaturesNV &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PHYSICAL_DEVICE_OPTICAL_FLOW_FEATURES_NV;
@@ -6875,6 +10828,15 @@ struct HeadlessSurfaceCreateInfoEXT {
   using native_type = VkHeadlessSurfaceCreateInfoEXT;
 
   HeadlessSurfaceCreateInfoEXT(HeadlessSurfaceCreateMask flags = {}, const void *p_next = {}) : flags_(flags), p_next_(p_next) {}
+
+  HeadlessSurfaceCreateInfoEXT(const native_type &rhs) : HeadlessSurfaceCreateInfoEXT(std::bit_cast<HeadlessSurfaceCreateInfoEXT>(rhs)) {}
+
+  HeadlessSurfaceCreateInfoEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<HeadlessSurfaceCreateInfoEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const HeadlessSurfaceCreateInfoEXT &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -6892,6 +10854,16 @@ struct PhysicalDeviceMapMemoryPlacedFeaturesEXT {
     : memory_unmap_reserve_(memory_unmap_reserve), memory_map_placed_(memory_map_placed), memory_map_range_placed_(memory_map_range_placed),
       p_next_(p_next) {}
 
+  PhysicalDeviceMapMemoryPlacedFeaturesEXT(const native_type &rhs)
+    : PhysicalDeviceMapMemoryPlacedFeaturesEXT(std::bit_cast<PhysicalDeviceMapMemoryPlacedFeaturesEXT>(rhs)) {}
+
+  PhysicalDeviceMapMemoryPlacedFeaturesEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceMapMemoryPlacedFeaturesEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceMapMemoryPlacedFeaturesEXT &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PHYSICAL_DEVICE_MAP_MEMORY_PLACED_FEATURES_EXT;
@@ -6907,6 +10879,16 @@ struct PhysicalDeviceYcbcrDegammaFeaturesQCOM {
 
   PhysicalDeviceYcbcrDegammaFeaturesQCOM(VkBool32 ycbcr_degamma = {}, void *p_next = {}) : ycbcr_degamma_(ycbcr_degamma), p_next_(p_next) {}
 
+  PhysicalDeviceYcbcrDegammaFeaturesQCOM(const native_type &rhs)
+    : PhysicalDeviceYcbcrDegammaFeaturesQCOM(std::bit_cast<PhysicalDeviceYcbcrDegammaFeaturesQCOM>(rhs)) {}
+
+  PhysicalDeviceYcbcrDegammaFeaturesQCOM &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceYcbcrDegammaFeaturesQCOM>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceYcbcrDegammaFeaturesQCOM &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PHYSICAL_DEVICE_YCBCR_DEGAMMA_FEATURES_QCOM;
@@ -6920,6 +10902,16 @@ struct PhysicalDeviceShaderModuleIdentifierFeaturesEXT {
 
   PhysicalDeviceShaderModuleIdentifierFeaturesEXT(VkBool32 shader_module_identifier = {}, void *p_next = {})
     : shader_module_identifier_(shader_module_identifier), p_next_(p_next) {}
+
+  PhysicalDeviceShaderModuleIdentifierFeaturesEXT(const native_type &rhs)
+    : PhysicalDeviceShaderModuleIdentifierFeaturesEXT(std::bit_cast<PhysicalDeviceShaderModuleIdentifierFeaturesEXT>(rhs)) {}
+
+  PhysicalDeviceShaderModuleIdentifierFeaturesEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceShaderModuleIdentifierFeaturesEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceShaderModuleIdentifierFeaturesEXT &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -6935,6 +10927,16 @@ struct PhysicalDeviceDynamicRenderingFeatures {
   PhysicalDeviceDynamicRenderingFeatures(VkBool32 dynamic_rendering = {}, void *p_next = {})
     : dynamic_rendering_(dynamic_rendering), p_next_(p_next) {}
 
+  PhysicalDeviceDynamicRenderingFeatures(const native_type &rhs)
+    : PhysicalDeviceDynamicRenderingFeatures(std::bit_cast<PhysicalDeviceDynamicRenderingFeatures>(rhs)) {}
+
+  PhysicalDeviceDynamicRenderingFeatures &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceDynamicRenderingFeatures>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceDynamicRenderingFeatures &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PHYSICAL_DEVICE_DYNAMIC_RENDERING_FEATURES;
@@ -6948,6 +10950,16 @@ struct PhysicalDevicePipelineCreationCacheControlFeatures {
 
   PhysicalDevicePipelineCreationCacheControlFeatures(VkBool32 pipeline_creation_cache_control = {}, void *p_next = {})
     : pipeline_creation_cache_control_(pipeline_creation_cache_control), p_next_(p_next) {}
+
+  PhysicalDevicePipelineCreationCacheControlFeatures(const native_type &rhs)
+    : PhysicalDevicePipelineCreationCacheControlFeatures(std::bit_cast<PhysicalDevicePipelineCreationCacheControlFeatures>(rhs)) {}
+
+  PhysicalDevicePipelineCreationCacheControlFeatures &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDevicePipelineCreationCacheControlFeatures>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDevicePipelineCreationCacheControlFeatures &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -6967,6 +10979,16 @@ struct PhysicalDeviceDeviceGeneratedCommandsComputeFeaturesNV {
       device_generated_compute_(device_generated_compute), device_generated_compute_pipelines_(device_generated_compute_pipelines),
       p_next_(p_next) {}
 
+  PhysicalDeviceDeviceGeneratedCommandsComputeFeaturesNV(const native_type &rhs)
+    : PhysicalDeviceDeviceGeneratedCommandsComputeFeaturesNV(std::bit_cast<PhysicalDeviceDeviceGeneratedCommandsComputeFeaturesNV>(rhs)) {}
+
+  PhysicalDeviceDeviceGeneratedCommandsComputeFeaturesNV &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceDeviceGeneratedCommandsComputeFeaturesNV>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceDeviceGeneratedCommandsComputeFeaturesNV &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PHYSICAL_DEVICE_DEVICE_GENERATED_COMMANDS_COMPUTE_FEATURES_NV;
@@ -6983,6 +11005,15 @@ struct PresentIdKHR {
   PresentIdKHR(const uint64_t *p_present_ids = {}, uint32_t swapchain_count = {}, const void *p_next = {})
     : p_present_ids_(p_present_ids), swapchain_count_(swapchain_count), p_next_(p_next) {}
 
+  PresentIdKHR(const native_type &rhs) : PresentIdKHR(std::bit_cast<PresentIdKHR>(rhs)) {}
+
+  PresentIdKHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PresentIdKHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PresentIdKHR &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PRESENT_ID_KHR;
@@ -6998,6 +11029,16 @@ struct PhysicalDeviceExternalImageFormatInfo {
   PhysicalDeviceExternalImageFormatInfo(ExternalMemoryHandleTypeMaskBit handle_type = {}, const void *p_next = {})
     : handle_type_(handle_type), p_next_(p_next) {}
 
+  PhysicalDeviceExternalImageFormatInfo(const native_type &rhs)
+    : PhysicalDeviceExternalImageFormatInfo(std::bit_cast<PhysicalDeviceExternalImageFormatInfo>(rhs)) {}
+
+  PhysicalDeviceExternalImageFormatInfo &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceExternalImageFormatInfo>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceExternalImageFormatInfo &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PHYSICAL_DEVICE_EXTERNAL_IMAGE_FORMAT_INFO;
@@ -7008,6 +11049,16 @@ struct PhysicalDeviceExternalImageFormatInfo {
 struct MemoryHostPointerPropertiesEXT {
 
   using native_type = VkMemoryHostPointerPropertiesEXT;
+
+  MemoryHostPointerPropertiesEXT(const native_type &rhs)
+    : MemoryHostPointerPropertiesEXT(std::bit_cast<MemoryHostPointerPropertiesEXT>(rhs)) {}
+
+  MemoryHostPointerPropertiesEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<MemoryHostPointerPropertiesEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const MemoryHostPointerPropertiesEXT &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -7022,6 +11073,16 @@ struct PhysicalDeviceSwapchainMaintenance1FeaturesEXT {
 
   PhysicalDeviceSwapchainMaintenance1FeaturesEXT(VkBool32 swapchain_maintenance1 = {}, void *p_next = {})
     : swapchain_maintenance1_(swapchain_maintenance1), p_next_(p_next) {}
+
+  PhysicalDeviceSwapchainMaintenance1FeaturesEXT(const native_type &rhs)
+    : PhysicalDeviceSwapchainMaintenance1FeaturesEXT(std::bit_cast<PhysicalDeviceSwapchainMaintenance1FeaturesEXT>(rhs)) {}
+
+  PhysicalDeviceSwapchainMaintenance1FeaturesEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceSwapchainMaintenance1FeaturesEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceSwapchainMaintenance1FeaturesEXT &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -7067,6 +11128,16 @@ struct PhysicalDeviceDescriptorIndexingFeatures {
       descriptor_binding_partially_bound_(descriptor_binding_partially_bound),
       descriptor_binding_variable_descriptor_count_(descriptor_binding_variable_descriptor_count), p_next_(p_next) {}
 
+  PhysicalDeviceDescriptorIndexingFeatures(const native_type &rhs)
+    : PhysicalDeviceDescriptorIndexingFeatures(std::bit_cast<PhysicalDeviceDescriptorIndexingFeatures>(rhs)) {}
+
+  PhysicalDeviceDescriptorIndexingFeatures &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceDescriptorIndexingFeatures>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceDescriptorIndexingFeatures &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PHYSICAL_DEVICE_DESCRIPTOR_INDEXING_FEATURES;
@@ -7097,6 +11168,16 @@ struct PhysicalDeviceFragmentDensityMapOffsetPropertiesQCOM {
 
   using native_type = VkPhysicalDeviceFragmentDensityMapOffsetPropertiesQCOM;
 
+  PhysicalDeviceFragmentDensityMapOffsetPropertiesQCOM(const native_type &rhs)
+    : PhysicalDeviceFragmentDensityMapOffsetPropertiesQCOM(std::bit_cast<PhysicalDeviceFragmentDensityMapOffsetPropertiesQCOM>(rhs)) {}
+
+  PhysicalDeviceFragmentDensityMapOffsetPropertiesQCOM &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceFragmentDensityMapOffsetPropertiesQCOM>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceFragmentDensityMapOffsetPropertiesQCOM &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PHYSICAL_DEVICE_FRAGMENT_DENSITY_MAP_OFFSET_PROPERTIES_QCOM;
@@ -7108,6 +11189,16 @@ struct PhysicalDeviceCooperativeMatrixPropertiesKHR {
 
   using native_type = VkPhysicalDeviceCooperativeMatrixPropertiesKHR;
 
+  PhysicalDeviceCooperativeMatrixPropertiesKHR(const native_type &rhs)
+    : PhysicalDeviceCooperativeMatrixPropertiesKHR(std::bit_cast<PhysicalDeviceCooperativeMatrixPropertiesKHR>(rhs)) {}
+
+  PhysicalDeviceCooperativeMatrixPropertiesKHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceCooperativeMatrixPropertiesKHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceCooperativeMatrixPropertiesKHR &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PHYSICAL_DEVICE_COOPERATIVE_MATRIX_PROPERTIES_KHR;
@@ -7118,6 +11209,15 @@ struct PhysicalDeviceCooperativeMatrixPropertiesKHR {
 struct SubresourceHostMemcpySizeEXT {
 
   using native_type = VkSubresourceHostMemcpySizeEXT;
+
+  SubresourceHostMemcpySizeEXT(const native_type &rhs) : SubresourceHostMemcpySizeEXT(std::bit_cast<SubresourceHostMemcpySizeEXT>(rhs)) {}
+
+  SubresourceHostMemcpySizeEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<SubresourceHostMemcpySizeEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const SubresourceHostMemcpySizeEXT &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -7133,6 +11233,15 @@ struct ExportMemoryAllocateInfoNV {
   ExportMemoryAllocateInfoNV(ExternalMemoryHandleTypeMask handle_types = {}, const void *p_next = {})
     : handle_types_(handle_types), p_next_(p_next) {}
 
+  ExportMemoryAllocateInfoNV(const native_type &rhs) : ExportMemoryAllocateInfoNV(std::bit_cast<ExportMemoryAllocateInfoNV>(rhs)) {}
+
+  ExportMemoryAllocateInfoNV &operator=(const native_type &rhs) {
+    *this = std::bit_cast<ExportMemoryAllocateInfoNV>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const ExportMemoryAllocateInfoNV &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::EXPORT_MEMORY_ALLOCATE_INFO_NV;
@@ -7143,6 +11252,15 @@ struct ExportMemoryAllocateInfoNV {
 struct ImageFormatProperties {
 
   using native_type = VkImageFormatProperties;
+
+  ImageFormatProperties(const native_type &rhs) : ImageFormatProperties(std::bit_cast<ImageFormatProperties>(rhs)) {}
+
+  ImageFormatProperties &operator=(const native_type &rhs) {
+    *this = std::bit_cast<ImageFormatProperties>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const ImageFormatProperties &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -7156,6 +11274,16 @@ struct ImageFormatProperties {
 struct ExternalImageFormatPropertiesNV {
 
   using native_type = VkExternalImageFormatPropertiesNV;
+
+  ExternalImageFormatPropertiesNV(const native_type &rhs)
+    : ExternalImageFormatPropertiesNV(std::bit_cast<ExternalImageFormatPropertiesNV>(rhs)) {}
+
+  ExternalImageFormatPropertiesNV &operator=(const native_type &rhs) {
+    *this = std::bit_cast<ExternalImageFormatPropertiesNV>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const ExternalImageFormatPropertiesNV &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -7172,6 +11300,16 @@ struct DedicatedAllocationBufferCreateInfoNV {
   DedicatedAllocationBufferCreateInfoNV(VkBool32 dedicated_allocation = {}, const void *p_next = {})
     : dedicated_allocation_(dedicated_allocation), p_next_(p_next) {}
 
+  DedicatedAllocationBufferCreateInfoNV(const native_type &rhs)
+    : DedicatedAllocationBufferCreateInfoNV(std::bit_cast<DedicatedAllocationBufferCreateInfoNV>(rhs)) {}
+
+  DedicatedAllocationBufferCreateInfoNV &operator=(const native_type &rhs) {
+    *this = std::bit_cast<DedicatedAllocationBufferCreateInfoNV>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const DedicatedAllocationBufferCreateInfoNV &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::DEDICATED_ALLOCATION_BUFFER_CREATE_INFO_NV;
@@ -7186,6 +11324,16 @@ struct DeviceDeviceMemoryReportCreateInfoEXT {
   DeviceDeviceMemoryReportCreateInfoEXT(void *p_user_data = {}, DeviceMemoryReportMask flags = {},
                                         PFN_vkDeviceMemoryReportCallbackEXT pfn_user_callback = {}, const void *p_next = {})
     : p_user_data_(p_user_data), flags_(flags), pfn_user_callback_(pfn_user_callback), p_next_(p_next) {}
+
+  DeviceDeviceMemoryReportCreateInfoEXT(const native_type &rhs)
+    : DeviceDeviceMemoryReportCreateInfoEXT(std::bit_cast<DeviceDeviceMemoryReportCreateInfoEXT>(rhs)) {}
+
+  DeviceDeviceMemoryReportCreateInfoEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<DeviceDeviceMemoryReportCreateInfoEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const DeviceDeviceMemoryReportCreateInfoEXT &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -7202,6 +11350,16 @@ struct OpticalFlowSessionCreatePrivateDataInfoNV {
 
   OpticalFlowSessionCreatePrivateDataInfoNV(const void *p_private_data = {}, uint32_t id = {}, uint32_t size = {}, void *p_next = {})
     : p_private_data_(p_private_data), id_(id), size_(size), p_next_(p_next) {}
+
+  OpticalFlowSessionCreatePrivateDataInfoNV(const native_type &rhs)
+    : OpticalFlowSessionCreatePrivateDataInfoNV(std::bit_cast<OpticalFlowSessionCreatePrivateDataInfoNV>(rhs)) {}
+
+  OpticalFlowSessionCreatePrivateDataInfoNV &operator=(const native_type &rhs) {
+    *this = std::bit_cast<OpticalFlowSessionCreatePrivateDataInfoNV>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const OpticalFlowSessionCreatePrivateDataInfoNV &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -7220,6 +11378,16 @@ struct AccelerationStructureGeometryInstancesDataKHR {
                                                 const void *p_next = {})
     : data_(data), array_of_pointers_(array_of_pointers), p_next_(p_next) {}
 
+  AccelerationStructureGeometryInstancesDataKHR(const native_type &rhs)
+    : AccelerationStructureGeometryInstancesDataKHR(std::bit_cast<AccelerationStructureGeometryInstancesDataKHR>(rhs)) {}
+
+  AccelerationStructureGeometryInstancesDataKHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<AccelerationStructureGeometryInstancesDataKHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const AccelerationStructureGeometryInstancesDataKHR &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::ACCELERATION_STRUCTURE_GEOMETRY_INSTANCES_DATA_KHR;
@@ -7235,6 +11403,16 @@ struct BindIndexBufferIndirectCommandNV {
   BindIndexBufferIndirectCommandNV(VkDeviceAddress buffer_address = {}, uint32_t size = {}, IndexType index_type = {})
     : buffer_address_(buffer_address), size_(size), index_type_(index_type) {}
 
+  BindIndexBufferIndirectCommandNV(const native_type &rhs)
+    : BindIndexBufferIndirectCommandNV(std::bit_cast<BindIndexBufferIndirectCommandNV>(rhs)) {}
+
+  BindIndexBufferIndirectCommandNV &operator=(const native_type &rhs) {
+    *this = std::bit_cast<BindIndexBufferIndirectCommandNV>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const BindIndexBufferIndirectCommandNV &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   VkDeviceAddress buffer_address_;
@@ -7249,6 +11427,16 @@ struct PhysicalDeviceShaderExpectAssumeFeaturesKHR {
   PhysicalDeviceShaderExpectAssumeFeaturesKHR(VkBool32 shader_expect_assume = {}, void *p_next = {})
     : shader_expect_assume_(shader_expect_assume), p_next_(p_next) {}
 
+  PhysicalDeviceShaderExpectAssumeFeaturesKHR(const native_type &rhs)
+    : PhysicalDeviceShaderExpectAssumeFeaturesKHR(std::bit_cast<PhysicalDeviceShaderExpectAssumeFeaturesKHR>(rhs)) {}
+
+  PhysicalDeviceShaderExpectAssumeFeaturesKHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceShaderExpectAssumeFeaturesKHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceShaderExpectAssumeFeaturesKHR &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PHYSICAL_DEVICE_SHADER_EXPECT_ASSUME_FEATURES_KHR;
@@ -7262,6 +11450,15 @@ struct CopyMicromapInfoEXT {
 
   CopyMicromapInfoEXT(CopyMicromapMode mode = {}, VkMicromapEXT src = {}, VkMicromapEXT dst = {}, const void *p_next = {})
     : mode_(mode), src_(src), dst_(dst), p_next_(p_next) {}
+
+  CopyMicromapInfoEXT(const native_type &rhs) : CopyMicromapInfoEXT(std::bit_cast<CopyMicromapInfoEXT>(rhs)) {}
+
+  CopyMicromapInfoEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<CopyMicromapInfoEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const CopyMicromapInfoEXT &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -7278,6 +11475,15 @@ struct ExportFenceCreateInfo {
 
   ExportFenceCreateInfo(ExternalFenceHandleTypeMask handle_types = {}, const void *p_next = {})
     : handle_types_(handle_types), p_next_(p_next) {}
+
+  ExportFenceCreateInfo(const native_type &rhs) : ExportFenceCreateInfo(std::bit_cast<ExportFenceCreateInfo>(rhs)) {}
+
+  ExportFenceCreateInfo &operator=(const native_type &rhs) {
+    *this = std::bit_cast<ExportFenceCreateInfo>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const ExportFenceCreateInfo &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -7302,6 +11508,15 @@ struct SwapchainCreateInfoKHR {
       image_usage_(image_usage), image_sharing_mode_(image_sharing_mode), queue_family_index_count_(queue_family_index_count),
       p_queue_family_indices_(p_queue_family_indices), pre_transform_(pre_transform), composite_alpha_(composite_alpha),
       present_mode_(present_mode), clipped_(clipped), p_next_(p_next) {}
+
+  SwapchainCreateInfoKHR(const native_type &rhs) : SwapchainCreateInfoKHR(std::bit_cast<SwapchainCreateInfoKHR>(rhs)) {}
+
+  SwapchainCreateInfoKHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<SwapchainCreateInfoKHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const SwapchainCreateInfoKHR &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -7334,6 +11549,16 @@ struct PhysicalDevicePerformanceQueryFeaturesKHR {
     : performance_counter_multiple_query_pools_(performance_counter_multiple_query_pools),
       performance_counter_query_pools_(performance_counter_query_pools), p_next_(p_next) {}
 
+  PhysicalDevicePerformanceQueryFeaturesKHR(const native_type &rhs)
+    : PhysicalDevicePerformanceQueryFeaturesKHR(std::bit_cast<PhysicalDevicePerformanceQueryFeaturesKHR>(rhs)) {}
+
+  PhysicalDevicePerformanceQueryFeaturesKHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDevicePerformanceQueryFeaturesKHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDevicePerformanceQueryFeaturesKHR &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PHYSICAL_DEVICE_PERFORMANCE_QUERY_FEATURES_KHR;
@@ -7345,6 +11570,15 @@ struct PhysicalDevicePerformanceQueryFeaturesKHR {
 struct SurfaceFormatKHR {
 
   using native_type = VkSurfaceFormatKHR;
+
+  SurfaceFormatKHR(const native_type &rhs) : SurfaceFormatKHR(std::bit_cast<SurfaceFormatKHR>(rhs)) {}
+
+  SurfaceFormatKHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<SurfaceFormatKHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const SurfaceFormatKHR &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -7359,6 +11593,15 @@ struct ImportSemaphoreFdInfoKHR {
   ImportSemaphoreFdInfoKHR(int fd = {}, VkSemaphore semaphore = {}, SemaphoreImportMask flags = {},
                            ExternalSemaphoreHandleTypeMaskBit handle_type = {}, const void *p_next = {})
     : fd_(fd), semaphore_(semaphore), flags_(flags), handle_type_(handle_type), p_next_(p_next) {}
+
+  ImportSemaphoreFdInfoKHR(const native_type &rhs) : ImportSemaphoreFdInfoKHR(std::bit_cast<ImportSemaphoreFdInfoKHR>(rhs)) {}
+
+  ImportSemaphoreFdInfoKHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<ImportSemaphoreFdInfoKHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const ImportSemaphoreFdInfoKHR &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -7377,6 +11620,16 @@ struct DescriptorBufferBindingInfoEXT {
   DescriptorBufferBindingInfoEXT(BufferUsageMask usage = {}, VkDeviceAddress address = {}, void *p_next = {})
     : usage_(usage), address_(address), p_next_(p_next) {}
 
+  DescriptorBufferBindingInfoEXT(const native_type &rhs)
+    : DescriptorBufferBindingInfoEXT(std::bit_cast<DescriptorBufferBindingInfoEXT>(rhs)) {}
+
+  DescriptorBufferBindingInfoEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<DescriptorBufferBindingInfoEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const DescriptorBufferBindingInfoEXT &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::DESCRIPTOR_BUFFER_BINDING_INFO_EXT;
@@ -7390,6 +11643,15 @@ struct RectLayerKHR {
   using native_type = VkRectLayerKHR;
 
   RectLayerKHR(Offset2D offset = {}, Extent2D extent = {}, uint32_t layer = {}) : offset_(offset), extent_(extent), layer_(layer) {}
+
+  RectLayerKHR(const native_type &rhs) : RectLayerKHR(std::bit_cast<RectLayerKHR>(rhs)) {}
+
+  RectLayerKHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<RectLayerKHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const RectLayerKHR &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -7405,6 +11667,15 @@ struct PresentRegionKHR {
   PresentRegionKHR(uint32_t rectangle_count = {}, const RectLayerKHR *p_rectangles = {})
     : rectangle_count_(rectangle_count), p_rectangles_(p_rectangles) {}
 
+  PresentRegionKHR(const native_type &rhs) : PresentRegionKHR(std::bit_cast<PresentRegionKHR>(rhs)) {}
+
+  PresentRegionKHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PresentRegionKHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PresentRegionKHR &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   uint32_t rectangle_count_;
@@ -7417,6 +11688,15 @@ struct PresentRegionsKHR {
 
   PresentRegionsKHR(const PresentRegionKHR *p_regions = {}, uint32_t swapchain_count = {}, const void *p_next = {})
     : p_regions_(p_regions), swapchain_count_(swapchain_count), p_next_(p_next) {}
+
+  PresentRegionsKHR(const native_type &rhs) : PresentRegionsKHR(std::bit_cast<PresentRegionsKHR>(rhs)) {}
+
+  PresentRegionsKHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PresentRegionsKHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PresentRegionsKHR &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -7432,6 +11712,15 @@ struct DebugMarkerMarkerInfoEXT {
 
   DebugMarkerMarkerInfoEXT(const std::array<float, 4> &color = {}, const char *p_marker_name = {}, const void *p_next = {})
     : color_(color), p_marker_name_(p_marker_name), p_next_(p_next) {}
+
+  DebugMarkerMarkerInfoEXT(const native_type &rhs) : DebugMarkerMarkerInfoEXT(std::bit_cast<DebugMarkerMarkerInfoEXT>(rhs)) {}
+
+  DebugMarkerMarkerInfoEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<DebugMarkerMarkerInfoEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const DebugMarkerMarkerInfoEXT &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -7450,6 +11739,16 @@ struct DeviceGroupRenderPassBeginInfo {
     : p_device_render_areas_(p_device_render_areas), device_mask_(device_mask), device_render_area_count_(device_render_area_count),
       p_next_(p_next) {}
 
+  DeviceGroupRenderPassBeginInfo(const native_type &rhs)
+    : DeviceGroupRenderPassBeginInfo(std::bit_cast<DeviceGroupRenderPassBeginInfo>(rhs)) {}
+
+  DeviceGroupRenderPassBeginInfo &operator=(const native_type &rhs) {
+    *this = std::bit_cast<DeviceGroupRenderPassBeginInfo>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const DeviceGroupRenderPassBeginInfo &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::DEVICE_GROUP_RENDER_PASS_BEGIN_INFO;
@@ -7466,6 +11765,15 @@ struct DebugMarkerObjectTagInfoEXT {
   DebugMarkerObjectTagInfoEXT(const void *p_tag = {}, DebugReportObjectType object_type = {}, uint64_t object = {}, uint64_t tag_name = {},
                               size_t tag_size = {}, const void *p_next = {})
     : p_tag_(p_tag), object_type_(object_type), object_(object), tag_name_(tag_name), tag_size_(tag_size), p_next_(p_next) {}
+
+  DebugMarkerObjectTagInfoEXT(const native_type &rhs) : DebugMarkerObjectTagInfoEXT(std::bit_cast<DebugMarkerObjectTagInfoEXT>(rhs)) {}
+
+  DebugMarkerObjectTagInfoEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<DebugMarkerObjectTagInfoEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const DebugMarkerObjectTagInfoEXT &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -7485,6 +11793,16 @@ struct PhysicalDeviceRenderPassStripedFeaturesARM {
   PhysicalDeviceRenderPassStripedFeaturesARM(VkBool32 render_pass_striped = {}, void *p_next = {})
     : render_pass_striped_(render_pass_striped), p_next_(p_next) {}
 
+  PhysicalDeviceRenderPassStripedFeaturesARM(const native_type &rhs)
+    : PhysicalDeviceRenderPassStripedFeaturesARM(std::bit_cast<PhysicalDeviceRenderPassStripedFeaturesARM>(rhs)) {}
+
+  PhysicalDeviceRenderPassStripedFeaturesARM &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceRenderPassStripedFeaturesARM>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceRenderPassStripedFeaturesARM &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PHYSICAL_DEVICE_RENDER_PASS_STRIPED_FEATURES_ARM;
@@ -7499,6 +11817,16 @@ struct PipelineViewportExclusiveScissorStateCreateInfoNV {
   PipelineViewportExclusiveScissorStateCreateInfoNV(const Rect2D *p_exclusive_scissors = {}, uint32_t exclusive_scissor_count = {},
                                                     const void *p_next = {})
     : p_exclusive_scissors_(p_exclusive_scissors), exclusive_scissor_count_(exclusive_scissor_count), p_next_(p_next) {}
+
+  PipelineViewportExclusiveScissorStateCreateInfoNV(const native_type &rhs)
+    : PipelineViewportExclusiveScissorStateCreateInfoNV(std::bit_cast<PipelineViewportExclusiveScissorStateCreateInfoNV>(rhs)) {}
+
+  PipelineViewportExclusiveScissorStateCreateInfoNV &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PipelineViewportExclusiveScissorStateCreateInfoNV>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PipelineViewportExclusiveScissorStateCreateInfoNV &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -7516,6 +11844,15 @@ struct DebugMarkerObjectNameInfoEXT {
                                const void *p_next = {})
     : p_object_name_(p_object_name), object_type_(object_type), object_(object), p_next_(p_next) {}
 
+  DebugMarkerObjectNameInfoEXT(const native_type &rhs) : DebugMarkerObjectNameInfoEXT(std::bit_cast<DebugMarkerObjectNameInfoEXT>(rhs)) {}
+
+  DebugMarkerObjectNameInfoEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<DebugMarkerObjectNameInfoEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const DebugMarkerObjectNameInfoEXT &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::DEBUG_MARKER_OBJECT_NAME_INFO_EXT;
@@ -7532,6 +11869,16 @@ struct PhysicalDeviceExternalBufferInfo {
   PhysicalDeviceExternalBufferInfo(ExternalMemoryHandleTypeMaskBit handle_type = {}, BufferCreateMask flags = {},
                                    BufferUsageMask usage = {}, const void *p_next = {})
     : handle_type_(handle_type), flags_(flags), usage_(usage), p_next_(p_next) {}
+
+  PhysicalDeviceExternalBufferInfo(const native_type &rhs)
+    : PhysicalDeviceExternalBufferInfo(std::bit_cast<PhysicalDeviceExternalBufferInfo>(rhs)) {}
+
+  PhysicalDeviceExternalBufferInfo &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceExternalBufferInfo>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceExternalBufferInfo &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -7551,6 +11898,16 @@ struct CopyMemoryToImageIndirectCommandNV {
     : src_address_(src_address), buffer_row_length_(buffer_row_length), buffer_image_height_(buffer_image_height),
       image_subresource_(image_subresource), image_offset_(image_offset), image_extent_(image_extent) {}
 
+  CopyMemoryToImageIndirectCommandNV(const native_type &rhs)
+    : CopyMemoryToImageIndirectCommandNV(std::bit_cast<CopyMemoryToImageIndirectCommandNV>(rhs)) {}
+
+  CopyMemoryToImageIndirectCommandNV &operator=(const native_type &rhs) {
+    *this = std::bit_cast<CopyMemoryToImageIndirectCommandNV>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const CopyMemoryToImageIndirectCommandNV &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   VkDeviceAddress src_address_;
@@ -7567,6 +11924,16 @@ struct PhysicalDeviceMaintenance4Features {
 
   PhysicalDeviceMaintenance4Features(VkBool32 maintenance4 = {}, void *p_next = {}) : maintenance4_(maintenance4), p_next_(p_next) {}
 
+  PhysicalDeviceMaintenance4Features(const native_type &rhs)
+    : PhysicalDeviceMaintenance4Features(std::bit_cast<PhysicalDeviceMaintenance4Features>(rhs)) {}
+
+  PhysicalDeviceMaintenance4Features &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceMaintenance4Features>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceMaintenance4Features &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PHYSICAL_DEVICE_MAINTENANCE_4_FEATURES;
@@ -7580,6 +11947,16 @@ struct PhysicalDeviceInvocationMaskFeaturesHUAWEI {
 
   PhysicalDeviceInvocationMaskFeaturesHUAWEI(VkBool32 invocation_mask = {}, void *p_next = {})
     : invocation_mask_(invocation_mask), p_next_(p_next) {}
+
+  PhysicalDeviceInvocationMaskFeaturesHUAWEI(const native_type &rhs)
+    : PhysicalDeviceInvocationMaskFeaturesHUAWEI(std::bit_cast<PhysicalDeviceInvocationMaskFeaturesHUAWEI>(rhs)) {}
+
+  PhysicalDeviceInvocationMaskFeaturesHUAWEI &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceInvocationMaskFeaturesHUAWEI>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceInvocationMaskFeaturesHUAWEI &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -7596,6 +11973,15 @@ struct BufferImageCopy {
                   ImageSubresourceLayers image_subresource = {}, Offset3D image_offset = {}, Extent3D image_extent = {})
     : buffer_offset_(buffer_offset), buffer_row_length_(buffer_row_length), buffer_image_height_(buffer_image_height),
       image_subresource_(image_subresource), image_offset_(image_offset), image_extent_(image_extent) {}
+
+  BufferImageCopy(const native_type &rhs) : BufferImageCopy(std::bit_cast<BufferImageCopy>(rhs)) {}
+
+  BufferImageCopy &operator=(const native_type &rhs) {
+    *this = std::bit_cast<BufferImageCopy>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const BufferImageCopy &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -7615,6 +12001,16 @@ struct CopyAccelerationStructureInfoKHR {
                                    VkAccelerationStructureKHR dst = {}, const void *p_next = {})
     : mode_(mode), src_(src), dst_(dst), p_next_(p_next) {}
 
+  CopyAccelerationStructureInfoKHR(const native_type &rhs)
+    : CopyAccelerationStructureInfoKHR(std::bit_cast<CopyAccelerationStructureInfoKHR>(rhs)) {}
+
+  CopyAccelerationStructureInfoKHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<CopyAccelerationStructureInfoKHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const CopyAccelerationStructureInfoKHR &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::COPY_ACCELERATION_STRUCTURE_INFO_KHR;
@@ -7627,6 +12023,16 @@ struct CopyAccelerationStructureInfoKHR {
 struct PhysicalDeviceShadingRateImagePropertiesNV {
 
   using native_type = VkPhysicalDeviceShadingRateImagePropertiesNV;
+
+  PhysicalDeviceShadingRateImagePropertiesNV(const native_type &rhs)
+    : PhysicalDeviceShadingRateImagePropertiesNV(std::bit_cast<PhysicalDeviceShadingRateImagePropertiesNV>(rhs)) {}
+
+  PhysicalDeviceShadingRateImagePropertiesNV &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceShadingRateImagePropertiesNV>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceShadingRateImagePropertiesNV &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -7645,6 +12051,15 @@ struct ImageBlit {
             ImageSubresourceLayers dst_subresource = {}, const std::array<Offset3D, 2> &dst_offsets = {})
     : src_subresource_(src_subresource), src_offsets_(src_offsets), dst_subresource_(dst_subresource), dst_offsets_(dst_offsets) {}
 
+  ImageBlit(const native_type &rhs) : ImageBlit(std::bit_cast<ImageBlit>(rhs)) {}
+
+  ImageBlit &operator=(const native_type &rhs) {
+    *this = std::bit_cast<ImageBlit>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const ImageBlit &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   ImageSubresourceLayers src_subresource_;
@@ -7661,6 +12076,16 @@ struct AccelerationStructureMemoryRequirementsInfoNV {
                                                 AccelerationStructureMemoryRequirementsType type = {}, const void *p_next = {})
     : acceleration_structure_(acceleration_structure), type_(type), p_next_(p_next) {}
 
+  AccelerationStructureMemoryRequirementsInfoNV(const native_type &rhs)
+    : AccelerationStructureMemoryRequirementsInfoNV(std::bit_cast<AccelerationStructureMemoryRequirementsInfoNV>(rhs)) {}
+
+  AccelerationStructureMemoryRequirementsInfoNV &operator=(const native_type &rhs) {
+    *this = std::bit_cast<AccelerationStructureMemoryRequirementsInfoNV>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const AccelerationStructureMemoryRequirementsInfoNV &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::ACCELERATION_STRUCTURE_MEMORY_REQUIREMENTS_INFO_NV;
@@ -7672,6 +12097,16 @@ struct AccelerationStructureMemoryRequirementsInfoNV {
 struct PhysicalDeviceVulkan11Properties {
 
   using native_type = VkPhysicalDeviceVulkan11Properties;
+
+  PhysicalDeviceVulkan11Properties(const native_type &rhs)
+    : PhysicalDeviceVulkan11Properties(std::bit_cast<PhysicalDeviceVulkan11Properties>(rhs)) {}
+
+  PhysicalDeviceVulkan11Properties &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceVulkan11Properties>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceVulkan11Properties &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -7700,6 +12135,16 @@ struct BufferUsageFlags2CreateInfoKHR {
 
   BufferUsageFlags2CreateInfoKHR(BufferUsageMask2 usage = {}, const void *p_next = {}) : usage_(usage), p_next_(p_next) {}
 
+  BufferUsageFlags2CreateInfoKHR(const native_type &rhs)
+    : BufferUsageFlags2CreateInfoKHR(std::bit_cast<BufferUsageFlags2CreateInfoKHR>(rhs)) {}
+
+  BufferUsageFlags2CreateInfoKHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<BufferUsageFlags2CreateInfoKHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const BufferUsageFlags2CreateInfoKHR &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::BUFFER_USAGE_FLAGS_2_CREATE_INFO_KHR;
@@ -7710,6 +12155,15 @@ struct BufferUsageFlags2CreateInfoKHR {
 struct SurfaceCapabilitiesKHR {
 
   using native_type = VkSurfaceCapabilitiesKHR;
+
+  SurfaceCapabilitiesKHR(const native_type &rhs) : SurfaceCapabilitiesKHR(std::bit_cast<SurfaceCapabilitiesKHR>(rhs)) {}
+
+  SurfaceCapabilitiesKHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<SurfaceCapabilitiesKHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const SurfaceCapabilitiesKHR &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -7733,6 +12187,16 @@ struct RenderingAttachmentLocationInfoKHR {
                                      const void *p_next = {})
     : p_color_attachment_locations_(p_color_attachment_locations), color_attachment_count_(color_attachment_count), p_next_(p_next) {}
 
+  RenderingAttachmentLocationInfoKHR(const native_type &rhs)
+    : RenderingAttachmentLocationInfoKHR(std::bit_cast<RenderingAttachmentLocationInfoKHR>(rhs)) {}
+
+  RenderingAttachmentLocationInfoKHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<RenderingAttachmentLocationInfoKHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const RenderingAttachmentLocationInfoKHR &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::RENDERING_ATTACHMENT_LOCATION_INFO_KHR;
@@ -7748,6 +12212,16 @@ struct PhysicalDeviceYcbcrImageArraysFeaturesEXT {
   PhysicalDeviceYcbcrImageArraysFeaturesEXT(VkBool32 ycbcr_image_arrays = {}, void *p_next = {})
     : ycbcr_image_arrays_(ycbcr_image_arrays), p_next_(p_next) {}
 
+  PhysicalDeviceYcbcrImageArraysFeaturesEXT(const native_type &rhs)
+    : PhysicalDeviceYcbcrImageArraysFeaturesEXT(std::bit_cast<PhysicalDeviceYcbcrImageArraysFeaturesEXT>(rhs)) {}
+
+  PhysicalDeviceYcbcrImageArraysFeaturesEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceYcbcrImageArraysFeaturesEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceYcbcrImageArraysFeaturesEXT &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PHYSICAL_DEVICE_YCBCR_IMAGE_ARRAYS_FEATURES_EXT;
@@ -7762,6 +12236,16 @@ struct PhysicalDeviceUniformBufferStandardLayoutFeatures {
   PhysicalDeviceUniformBufferStandardLayoutFeatures(VkBool32 uniform_buffer_standard_layout = {}, void *p_next = {})
     : uniform_buffer_standard_layout_(uniform_buffer_standard_layout), p_next_(p_next) {}
 
+  PhysicalDeviceUniformBufferStandardLayoutFeatures(const native_type &rhs)
+    : PhysicalDeviceUniformBufferStandardLayoutFeatures(std::bit_cast<PhysicalDeviceUniformBufferStandardLayoutFeatures>(rhs)) {}
+
+  PhysicalDeviceUniformBufferStandardLayoutFeatures &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceUniformBufferStandardLayoutFeatures>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceUniformBufferStandardLayoutFeatures &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PHYSICAL_DEVICE_UNIFORM_BUFFER_STANDARD_LAYOUT_FEATURES;
@@ -7775,6 +12259,15 @@ struct BufferCopy {
 
   BufferCopy(VkDeviceSize src_offset = {}, VkDeviceSize dst_offset = {}, VkDeviceSize size = {})
     : src_offset_(src_offset), dst_offset_(dst_offset), size_(size) {}
+
+  BufferCopy(const native_type &rhs) : BufferCopy(std::bit_cast<BufferCopy>(rhs)) {}
+
+  BufferCopy &operator=(const native_type &rhs) {
+    *this = std::bit_cast<BufferCopy>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const BufferCopy &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -7791,6 +12284,16 @@ struct PipelineSampleLocationsStateCreateInfoEXT {
                                             const void *p_next = {})
     : sample_locations_info_(sample_locations_info), sample_locations_enable_(sample_locations_enable), p_next_(p_next) {}
 
+  PipelineSampleLocationsStateCreateInfoEXT(const native_type &rhs)
+    : PipelineSampleLocationsStateCreateInfoEXT(std::bit_cast<PipelineSampleLocationsStateCreateInfoEXT>(rhs)) {}
+
+  PipelineSampleLocationsStateCreateInfoEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PipelineSampleLocationsStateCreateInfoEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PipelineSampleLocationsStateCreateInfoEXT &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PIPELINE_SAMPLE_LOCATIONS_STATE_CREATE_INFO_EXT;
@@ -7806,6 +12309,15 @@ struct AttachmentSampleLocationsEXT {
   AttachmentSampleLocationsEXT(uint32_t attachment_index = {}, SampleLocationsInfoEXT sample_locations_info = {})
     : attachment_index_(attachment_index), sample_locations_info_(sample_locations_info) {}
 
+  AttachmentSampleLocationsEXT(const native_type &rhs) : AttachmentSampleLocationsEXT(std::bit_cast<AttachmentSampleLocationsEXT>(rhs)) {}
+
+  AttachmentSampleLocationsEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<AttachmentSampleLocationsEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const AttachmentSampleLocationsEXT &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   uint32_t attachment_index_;
@@ -7815,6 +12327,16 @@ struct AttachmentSampleLocationsEXT {
 struct PhysicalDeviceShaderIntegerDotProductProperties {
 
   using native_type = VkPhysicalDeviceShaderIntegerDotProductProperties;
+
+  PhysicalDeviceShaderIntegerDotProductProperties(const native_type &rhs)
+    : PhysicalDeviceShaderIntegerDotProductProperties(std::bit_cast<PhysicalDeviceShaderIntegerDotProductProperties>(rhs)) {}
+
+  PhysicalDeviceShaderIntegerDotProductProperties &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceShaderIntegerDotProductProperties>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceShaderIntegerDotProductProperties &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -7859,6 +12381,16 @@ struct PhysicalDevicePageableDeviceLocalMemoryFeaturesEXT {
   PhysicalDevicePageableDeviceLocalMemoryFeaturesEXT(VkBool32 pageable_device_local_memory = {}, void *p_next = {})
     : pageable_device_local_memory_(pageable_device_local_memory), p_next_(p_next) {}
 
+  PhysicalDevicePageableDeviceLocalMemoryFeaturesEXT(const native_type &rhs)
+    : PhysicalDevicePageableDeviceLocalMemoryFeaturesEXT(std::bit_cast<PhysicalDevicePageableDeviceLocalMemoryFeaturesEXT>(rhs)) {}
+
+  PhysicalDevicePageableDeviceLocalMemoryFeaturesEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDevicePageableDeviceLocalMemoryFeaturesEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDevicePageableDeviceLocalMemoryFeaturesEXT &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PHYSICAL_DEVICE_PAGEABLE_DEVICE_LOCAL_MEMORY_FEATURES_EXT;
@@ -7873,6 +12405,16 @@ struct PipelineDynamicStateCreateInfo {
   PipelineDynamicStateCreateInfo(const DynamicState *p_dynamic_states = {}, PipelineDynamicStateCreateMask flags = {},
                                  uint32_t dynamic_state_count = {}, const void *p_next = {})
     : p_dynamic_states_(p_dynamic_states), flags_(flags), dynamic_state_count_(dynamic_state_count), p_next_(p_next) {}
+
+  PipelineDynamicStateCreateInfo(const native_type &rhs)
+    : PipelineDynamicStateCreateInfo(std::bit_cast<PipelineDynamicStateCreateInfo>(rhs)) {}
+
+  PipelineDynamicStateCreateInfo &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PipelineDynamicStateCreateInfo>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PipelineDynamicStateCreateInfo &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -7890,6 +12432,16 @@ struct ExternalMemoryImageCreateInfo {
   ExternalMemoryImageCreateInfo(ExternalMemoryHandleTypeMask handle_types = {}, const void *p_next = {})
     : handle_types_(handle_types), p_next_(p_next) {}
 
+  ExternalMemoryImageCreateInfo(const native_type &rhs)
+    : ExternalMemoryImageCreateInfo(std::bit_cast<ExternalMemoryImageCreateInfo>(rhs)) {}
+
+  ExternalMemoryImageCreateInfo &operator=(const native_type &rhs) {
+    *this = std::bit_cast<ExternalMemoryImageCreateInfo>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const ExternalMemoryImageCreateInfo &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::EXTERNAL_MEMORY_IMAGE_CREATE_INFO;
@@ -7902,6 +12454,15 @@ struct DeviceEventInfoEXT {
   using native_type = VkDeviceEventInfoEXT;
 
   DeviceEventInfoEXT(DeviceEventType device_event = {}, const void *p_next = {}) : device_event_(device_event), p_next_(p_next) {}
+
+  DeviceEventInfoEXT(const native_type &rhs) : DeviceEventInfoEXT(std::bit_cast<DeviceEventInfoEXT>(rhs)) {}
+
+  DeviceEventInfoEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<DeviceEventInfoEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const DeviceEventInfoEXT &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -7919,6 +12480,16 @@ struct PhysicalDeviceInlineUniformBlockFeatures {
     : descriptor_binding_inline_uniform_block_update_after_bind_(descriptor_binding_inline_uniform_block_update_after_bind),
       inline_uniform_block_(inline_uniform_block), p_next_(p_next) {}
 
+  PhysicalDeviceInlineUniformBlockFeatures(const native_type &rhs)
+    : PhysicalDeviceInlineUniformBlockFeatures(std::bit_cast<PhysicalDeviceInlineUniformBlockFeatures>(rhs)) {}
+
+  PhysicalDeviceInlineUniformBlockFeatures &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceInlineUniformBlockFeatures>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceInlineUniformBlockFeatures &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PHYSICAL_DEVICE_INLINE_UNIFORM_BLOCK_FEATURES;
@@ -7933,6 +12504,15 @@ struct CuModuleCreateInfoNVX {
 
   CuModuleCreateInfoNVX(const void *p_data = {}, size_t data_size = {}, const void *p_next = {})
     : p_data_(p_data), data_size_(data_size), p_next_(p_next) {}
+
+  CuModuleCreateInfoNVX(const native_type &rhs) : CuModuleCreateInfoNVX(std::bit_cast<CuModuleCreateInfoNVX>(rhs)) {}
+
+  CuModuleCreateInfoNVX &operator=(const native_type &rhs) {
+    *this = std::bit_cast<CuModuleCreateInfoNVX>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const CuModuleCreateInfoNVX &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -7951,6 +12531,16 @@ struct VideoDecodeH265PictureInfoKHR {
     : p_slice_segment_offsets_(p_slice_segment_offsets), p_std_picture_info_(p_std_picture_info), slice_segment_count_(slice_segment_count),
       p_next_(p_next) {}
 
+  VideoDecodeH265PictureInfoKHR(const native_type &rhs)
+    : VideoDecodeH265PictureInfoKHR(std::bit_cast<VideoDecodeH265PictureInfoKHR>(rhs)) {}
+
+  VideoDecodeH265PictureInfoKHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<VideoDecodeH265PictureInfoKHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const VideoDecodeH265PictureInfoKHR &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::VIDEO_DECODE_H265_PICTURE_INFO_KHR;
@@ -7968,6 +12558,15 @@ struct ImageViewCreateInfo {
                       ImageViewType view_type = {}, Format format = {}, ComponentMapping components = {}, const void *p_next = {})
     : subresource_range_(subresource_range), flags_(flags), image_(image), view_type_(view_type), format_(format), components_(components),
       p_next_(p_next) {}
+
+  ImageViewCreateInfo(const native_type &rhs) : ImageViewCreateInfo(std::bit_cast<ImageViewCreateInfo>(rhs)) {}
+
+  ImageViewCreateInfo &operator=(const native_type &rhs) {
+    *this = std::bit_cast<ImageViewCreateInfo>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const ImageViewCreateInfo &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -7991,6 +12590,16 @@ struct CommandBufferInheritanceRenderingInfo {
     : rasterization_samples_(rasterization_samples), flags_(flags), view_mask_(view_mask), color_attachment_count_(color_attachment_count),
       p_color_attachment_formats_(p_color_attachment_formats), depth_attachment_format_(depth_attachment_format),
       stencil_attachment_format_(stencil_attachment_format), p_next_(p_next) {}
+
+  CommandBufferInheritanceRenderingInfo(const native_type &rhs)
+    : CommandBufferInheritanceRenderingInfo(std::bit_cast<CommandBufferInheritanceRenderingInfo>(rhs)) {}
+
+  CommandBufferInheritanceRenderingInfo &operator=(const native_type &rhs) {
+    *this = std::bit_cast<CommandBufferInheritanceRenderingInfo>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const CommandBufferInheritanceRenderingInfo &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -8017,6 +12626,16 @@ struct PhysicalDeviceLineRasterizationFeaturesKHR {
       smooth_lines_(smooth_lines), stippled_rectangular_lines_(stippled_rectangular_lines),
       stippled_bresenham_lines_(stippled_bresenham_lines), p_next_(p_next) {}
 
+  PhysicalDeviceLineRasterizationFeaturesKHR(const native_type &rhs)
+    : PhysicalDeviceLineRasterizationFeaturesKHR(std::bit_cast<PhysicalDeviceLineRasterizationFeaturesKHR>(rhs)) {}
+
+  PhysicalDeviceLineRasterizationFeaturesKHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceLineRasterizationFeaturesKHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceLineRasterizationFeaturesKHR &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PHYSICAL_DEVICE_LINE_RASTERIZATION_FEATURES_KHR;
@@ -8033,6 +12652,16 @@ struct VideoDecodeH265CapabilitiesKHR {
 
   using native_type = VkVideoDecodeH265CapabilitiesKHR;
 
+  VideoDecodeH265CapabilitiesKHR(const native_type &rhs)
+    : VideoDecodeH265CapabilitiesKHR(std::bit_cast<VideoDecodeH265CapabilitiesKHR>(rhs)) {}
+
+  VideoDecodeH265CapabilitiesKHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<VideoDecodeH265CapabilitiesKHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const VideoDecodeH265CapabilitiesKHR &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::VIDEO_DECODE_H265_CAPABILITIES_KHR;
@@ -8045,6 +12674,15 @@ struct AttachmentReference {
   using native_type = VkAttachmentReference;
 
   AttachmentReference(uint32_t attachment = {}, ImageLayout layout = {}) : attachment_(attachment), layout_(layout) {}
+
+  AttachmentReference(const native_type &rhs) : AttachmentReference(std::bit_cast<AttachmentReference>(rhs)) {}
+
+  AttachmentReference &operator=(const native_type &rhs) {
+    *this = std::bit_cast<AttachmentReference>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const AttachmentReference &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -8066,6 +12704,15 @@ struct SubpassDescription {
       p_resolve_attachments_(p_resolve_attachments), p_depth_stencil_attachment_(p_depth_stencil_attachment),
       preserve_attachment_count_(preserve_attachment_count), p_preserve_attachments_(p_preserve_attachments) {}
 
+  SubpassDescription(const native_type &rhs) : SubpassDescription(std::bit_cast<SubpassDescription>(rhs)) {}
+
+  SubpassDescription &operator=(const native_type &rhs) {
+    *this = std::bit_cast<SubpassDescription>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const SubpassDescription &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   SubpassDescriptionMask flags_;
@@ -8084,6 +12731,16 @@ struct PhysicalDeviceSamplerFilterMinmaxProperties {
 
   using native_type = VkPhysicalDeviceSamplerFilterMinmaxProperties;
 
+  PhysicalDeviceSamplerFilterMinmaxProperties(const native_type &rhs)
+    : PhysicalDeviceSamplerFilterMinmaxProperties(std::bit_cast<PhysicalDeviceSamplerFilterMinmaxProperties>(rhs)) {}
+
+  PhysicalDeviceSamplerFilterMinmaxProperties &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceSamplerFilterMinmaxProperties>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceSamplerFilterMinmaxProperties &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PHYSICAL_DEVICE_SAMPLER_FILTER_MINMAX_PROPERTIES;
@@ -8098,6 +12755,15 @@ struct CudaFunctionCreateInfoNV {
 
   CudaFunctionCreateInfoNV(const char *p_name = {}, VkCudaModuleNV module = {}, const void *p_next = {})
     : p_name_(p_name), module_(module), p_next_(p_next) {}
+
+  CudaFunctionCreateInfoNV(const native_type &rhs) : CudaFunctionCreateInfoNV(std::bit_cast<CudaFunctionCreateInfoNV>(rhs)) {}
+
+  CudaFunctionCreateInfoNV &operator=(const native_type &rhs) {
+    *this = std::bit_cast<CudaFunctionCreateInfoNV>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const CudaFunctionCreateInfoNV &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -8114,6 +12780,16 @@ struct HostImageLayoutTransitionInfoEXT {
   HostImageLayoutTransitionInfoEXT(ImageSubresourceRange subresource_range = {}, VkImage image = {}, ImageLayout old_layout = {},
                                    ImageLayout new_layout = {}, const void *p_next = {})
     : subresource_range_(subresource_range), image_(image), old_layout_(old_layout), new_layout_(new_layout), p_next_(p_next) {}
+
+  HostImageLayoutTransitionInfoEXT(const native_type &rhs)
+    : HostImageLayoutTransitionInfoEXT(std::bit_cast<HostImageLayoutTransitionInfoEXT>(rhs)) {}
+
+  HostImageLayoutTransitionInfoEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<HostImageLayoutTransitionInfoEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const HostImageLayoutTransitionInfoEXT &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -8133,6 +12809,15 @@ struct ShadingRatePaletteNV {
     : shading_rate_palette_entry_count_(shading_rate_palette_entry_count), p_shading_rate_palette_entries_(p_shading_rate_palette_entries) {
   }
 
+  ShadingRatePaletteNV(const native_type &rhs) : ShadingRatePaletteNV(std::bit_cast<ShadingRatePaletteNV>(rhs)) {}
+
+  ShadingRatePaletteNV &operator=(const native_type &rhs) {
+    *this = std::bit_cast<ShadingRatePaletteNV>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const ShadingRatePaletteNV &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   uint32_t shading_rate_palette_entry_count_;
@@ -8145,6 +12830,16 @@ struct PhysicalDeviceExternalSemaphoreInfo {
 
   PhysicalDeviceExternalSemaphoreInfo(ExternalSemaphoreHandleTypeMaskBit handle_type = {}, const void *p_next = {})
     : handle_type_(handle_type), p_next_(p_next) {}
+
+  PhysicalDeviceExternalSemaphoreInfo(const native_type &rhs)
+    : PhysicalDeviceExternalSemaphoreInfo(std::bit_cast<PhysicalDeviceExternalSemaphoreInfo>(rhs)) {}
+
+  PhysicalDeviceExternalSemaphoreInfo &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceExternalSemaphoreInfo>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceExternalSemaphoreInfo &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -8160,6 +12855,15 @@ struct SparseMemoryBind {
   SparseMemoryBind(VkDeviceSize resource_offset = {}, VkDeviceSize size = {}, VkDeviceMemory memory = {}, VkDeviceSize memory_offset = {},
                    SparseMemoryBindMask flags = {})
     : resource_offset_(resource_offset), size_(size), memory_(memory), memory_offset_(memory_offset), flags_(flags) {}
+
+  SparseMemoryBind(const native_type &rhs) : SparseMemoryBind(std::bit_cast<SparseMemoryBind>(rhs)) {}
+
+  SparseMemoryBind &operator=(const native_type &rhs) {
+    *this = std::bit_cast<SparseMemoryBind>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const SparseMemoryBind &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -8177,6 +12881,15 @@ struct SparseBufferMemoryBindInfo {
   SparseBufferMemoryBindInfo(VkBuffer buffer = {}, uint32_t bind_count = {}, const SparseMemoryBind *p_binds = {})
     : buffer_(buffer), bind_count_(bind_count), p_binds_(p_binds) {}
 
+  SparseBufferMemoryBindInfo(const native_type &rhs) : SparseBufferMemoryBindInfo(std::bit_cast<SparseBufferMemoryBindInfo>(rhs)) {}
+
+  SparseBufferMemoryBindInfo &operator=(const native_type &rhs) {
+    *this = std::bit_cast<SparseBufferMemoryBindInfo>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const SparseBufferMemoryBindInfo &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   VkBuffer buffer_;
@@ -8187,6 +12900,16 @@ struct SparseBufferMemoryBindInfo {
 struct PhysicalDeviceMeshShaderPropertiesEXT {
 
   using native_type = VkPhysicalDeviceMeshShaderPropertiesEXT;
+
+  PhysicalDeviceMeshShaderPropertiesEXT(const native_type &rhs)
+    : PhysicalDeviceMeshShaderPropertiesEXT(std::bit_cast<PhysicalDeviceMeshShaderPropertiesEXT>(rhs)) {}
+
+  PhysicalDeviceMeshShaderPropertiesEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceMeshShaderPropertiesEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceMeshShaderPropertiesEXT &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -8231,6 +12954,16 @@ struct PhysicalDeviceNestedCommandBufferFeaturesEXT {
     : nested_command_buffer_simultaneous_use_(nested_command_buffer_simultaneous_use), nested_command_buffer_(nested_command_buffer),
       nested_command_buffer_rendering_(nested_command_buffer_rendering), p_next_(p_next) {}
 
+  PhysicalDeviceNestedCommandBufferFeaturesEXT(const native_type &rhs)
+    : PhysicalDeviceNestedCommandBufferFeaturesEXT(std::bit_cast<PhysicalDeviceNestedCommandBufferFeaturesEXT>(rhs)) {}
+
+  PhysicalDeviceNestedCommandBufferFeaturesEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceNestedCommandBufferFeaturesEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceNestedCommandBufferFeaturesEXT &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PHYSICAL_DEVICE_NESTED_COMMAND_BUFFER_FEATURES_EXT;
@@ -8243,6 +12976,16 @@ struct PhysicalDeviceNestedCommandBufferFeaturesEXT {
 struct PhysicalDeviceMaintenance3Properties {
 
   using native_type = VkPhysicalDeviceMaintenance3Properties;
+
+  PhysicalDeviceMaintenance3Properties(const native_type &rhs)
+    : PhysicalDeviceMaintenance3Properties(std::bit_cast<PhysicalDeviceMaintenance3Properties>(rhs)) {}
+
+  PhysicalDeviceMaintenance3Properties &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceMaintenance3Properties>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceMaintenance3Properties &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -8261,6 +13004,15 @@ struct BufferMemoryBarrier {
                       VkDeviceSize offset = {}, const void *p_next = {})
     : size_(size), src_access_mask_(src_access_mask), dst_access_mask_(dst_access_mask), src_queue_family_index_(src_queue_family_index),
       dst_queue_family_index_(dst_queue_family_index), buffer_(buffer), offset_(offset), p_next_(p_next) {}
+
+  BufferMemoryBarrier(const native_type &rhs) : BufferMemoryBarrier(std::bit_cast<BufferMemoryBarrier>(rhs)) {}
+
+  BufferMemoryBarrier &operator=(const native_type &rhs) {
+    *this = std::bit_cast<BufferMemoryBarrier>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const BufferMemoryBarrier &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -8282,6 +13034,15 @@ struct MemoryGetRemoteAddressInfoNV {
   MemoryGetRemoteAddressInfoNV(ExternalMemoryHandleTypeMaskBit handle_type = {}, VkDeviceMemory memory = {}, const void *p_next = {})
     : handle_type_(handle_type), memory_(memory), p_next_(p_next) {}
 
+  MemoryGetRemoteAddressInfoNV(const native_type &rhs) : MemoryGetRemoteAddressInfoNV(std::bit_cast<MemoryGetRemoteAddressInfoNV>(rhs)) {}
+
+  MemoryGetRemoteAddressInfoNV &operator=(const native_type &rhs) {
+    *this = std::bit_cast<MemoryGetRemoteAddressInfoNV>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const MemoryGetRemoteAddressInfoNV &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::MEMORY_GET_REMOTE_ADDRESS_INFO_NV;
@@ -8297,6 +13058,16 @@ struct BufferDeviceAddressCreateInfoEXT {
   BufferDeviceAddressCreateInfoEXT(VkDeviceAddress device_address = {}, const void *p_next = {})
     : device_address_(device_address), p_next_(p_next) {}
 
+  BufferDeviceAddressCreateInfoEXT(const native_type &rhs)
+    : BufferDeviceAddressCreateInfoEXT(std::bit_cast<BufferDeviceAddressCreateInfoEXT>(rhs)) {}
+
+  BufferDeviceAddressCreateInfoEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<BufferDeviceAddressCreateInfoEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const BufferDeviceAddressCreateInfoEXT &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::BUFFER_DEVICE_ADDRESS_CREATE_INFO_EXT;
@@ -8310,6 +13081,15 @@ struct OpticalFlowExecuteInfoNV {
 
   OpticalFlowExecuteInfoNV(const Rect2D *p_regions = {}, OpticalFlowExecuteMask flags = {}, uint32_t region_count = {}, void *p_next = {})
     : p_regions_(p_regions), flags_(flags), region_count_(region_count), p_next_(p_next) {}
+
+  OpticalFlowExecuteInfoNV(const native_type &rhs) : OpticalFlowExecuteInfoNV(std::bit_cast<OpticalFlowExecuteInfoNV>(rhs)) {}
+
+  OpticalFlowExecuteInfoNV &operator=(const native_type &rhs) {
+    *this = std::bit_cast<OpticalFlowExecuteInfoNV>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const OpticalFlowExecuteInfoNV &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -8327,6 +13107,15 @@ struct ClearRect {
   ClearRect(Rect2D rect = {}, uint32_t base_array_layer = {}, uint32_t layer_count = {})
     : rect_(rect), base_array_layer_(base_array_layer), layer_count_(layer_count) {}
 
+  ClearRect(const native_type &rhs) : ClearRect(std::bit_cast<ClearRect>(rhs)) {}
+
+  ClearRect &operator=(const native_type &rhs) {
+    *this = std::bit_cast<ClearRect>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const ClearRect &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   Rect2D rect_;
@@ -8343,6 +13132,16 @@ struct FramebufferAttachmentImageInfo {
                                  const void *p_next = {})
     : p_view_formats_(p_view_formats), flags_(flags), usage_(usage), width_(width), height_(height), layer_count_(layer_count),
       view_format_count_(view_format_count), p_next_(p_next) {}
+
+  FramebufferAttachmentImageInfo(const native_type &rhs)
+    : FramebufferAttachmentImageInfo(std::bit_cast<FramebufferAttachmentImageInfo>(rhs)) {}
+
+  FramebufferAttachmentImageInfo &operator=(const native_type &rhs) {
+    *this = std::bit_cast<FramebufferAttachmentImageInfo>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const FramebufferAttachmentImageInfo &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -8365,6 +13164,16 @@ struct FramebufferAttachmentsCreateInfo {
                                    uint32_t attachment_image_info_count = {}, const void *p_next = {})
     : p_attachment_image_infos_(p_attachment_image_infos), attachment_image_info_count_(attachment_image_info_count), p_next_(p_next) {}
 
+  FramebufferAttachmentsCreateInfo(const native_type &rhs)
+    : FramebufferAttachmentsCreateInfo(std::bit_cast<FramebufferAttachmentsCreateInfo>(rhs)) {}
+
+  FramebufferAttachmentsCreateInfo &operator=(const native_type &rhs) {
+    *this = std::bit_cast<FramebufferAttachmentsCreateInfo>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const FramebufferAttachmentsCreateInfo &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::FRAMEBUFFER_ATTACHMENTS_CREATE_INFO;
@@ -8376,6 +13185,16 @@ struct FramebufferAttachmentsCreateInfo {
 struct PhysicalDeviceFragmentShadingRatePropertiesKHR {
 
   using native_type = VkPhysicalDeviceFragmentShadingRatePropertiesKHR;
+
+  PhysicalDeviceFragmentShadingRatePropertiesKHR(const native_type &rhs)
+    : PhysicalDeviceFragmentShadingRatePropertiesKHR(std::bit_cast<PhysicalDeviceFragmentShadingRatePropertiesKHR>(rhs)) {}
+
+  PhysicalDeviceFragmentShadingRatePropertiesKHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceFragmentShadingRatePropertiesKHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceFragmentShadingRatePropertiesKHR &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -8407,6 +13226,16 @@ struct BindImageMemorySwapchainInfoKHR {
   BindImageMemorySwapchainInfoKHR(uint32_t image_index = {}, VkSwapchainKHR swapchain = {}, const void *p_next = {})
     : image_index_(image_index), swapchain_(swapchain), p_next_(p_next) {}
 
+  BindImageMemorySwapchainInfoKHR(const native_type &rhs)
+    : BindImageMemorySwapchainInfoKHR(std::bit_cast<BindImageMemorySwapchainInfoKHR>(rhs)) {}
+
+  BindImageMemorySwapchainInfoKHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<BindImageMemorySwapchainInfoKHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const BindImageMemorySwapchainInfoKHR &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::BIND_IMAGE_MEMORY_SWAPCHAIN_INFO_KHR;
@@ -8418,6 +13247,15 @@ struct BindImageMemorySwapchainInfoKHR {
 struct ShaderResourceUsageAMD {
 
   using native_type = VkShaderResourceUsageAMD;
+
+  ShaderResourceUsageAMD(const native_type &rhs) : ShaderResourceUsageAMD(std::bit_cast<ShaderResourceUsageAMD>(rhs)) {}
+
+  ShaderResourceUsageAMD &operator=(const native_type &rhs) {
+    *this = std::bit_cast<ShaderResourceUsageAMD>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const ShaderResourceUsageAMD &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -8431,6 +13269,15 @@ struct ShaderResourceUsageAMD {
 struct ShaderStatisticsInfoAMD {
 
   using native_type = VkShaderStatisticsInfoAMD;
+
+  ShaderStatisticsInfoAMD(const native_type &rhs) : ShaderStatisticsInfoAMD(std::bit_cast<ShaderStatisticsInfoAMD>(rhs)) {}
+
+  ShaderStatisticsInfoAMD &operator=(const native_type &rhs) {
+    *this = std::bit_cast<ShaderStatisticsInfoAMD>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const ShaderStatisticsInfoAMD &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -8446,6 +13293,16 @@ struct ShaderStatisticsInfoAMD {
 struct PhysicalDeviceGroupProperties {
 
   using native_type = VkPhysicalDeviceGroupProperties;
+
+  PhysicalDeviceGroupProperties(const native_type &rhs)
+    : PhysicalDeviceGroupProperties(std::bit_cast<PhysicalDeviceGroupProperties>(rhs)) {}
+
+  PhysicalDeviceGroupProperties &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceGroupProperties>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceGroupProperties &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -8465,6 +13322,15 @@ struct ImageCopy {
     : src_subresource_(src_subresource), src_offset_(src_offset), dst_subresource_(dst_subresource), dst_offset_(dst_offset),
       extent_(extent) {}
 
+  ImageCopy(const native_type &rhs) : ImageCopy(std::bit_cast<ImageCopy>(rhs)) {}
+
+  ImageCopy &operator=(const native_type &rhs) {
+    *this = std::bit_cast<ImageCopy>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const ImageCopy &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   ImageSubresourceLayers src_subresource_;
@@ -8481,6 +13347,16 @@ struct PhysicalDeviceLegacyDitheringFeaturesEXT {
   PhysicalDeviceLegacyDitheringFeaturesEXT(VkBool32 legacy_dithering = {}, void *p_next = {})
     : legacy_dithering_(legacy_dithering), p_next_(p_next) {}
 
+  PhysicalDeviceLegacyDitheringFeaturesEXT(const native_type &rhs)
+    : PhysicalDeviceLegacyDitheringFeaturesEXT(std::bit_cast<PhysicalDeviceLegacyDitheringFeaturesEXT>(rhs)) {}
+
+  PhysicalDeviceLegacyDitheringFeaturesEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceLegacyDitheringFeaturesEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceLegacyDitheringFeaturesEXT &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PHYSICAL_DEVICE_LEGACY_DITHERING_FEATURES_EXT;
@@ -8491,6 +13367,16 @@ struct PhysicalDeviceLegacyDitheringFeaturesEXT {
 struct PhysicalDeviceRayTracingPropertiesNV {
 
   using native_type = VkPhysicalDeviceRayTracingPropertiesNV;
+
+  PhysicalDeviceRayTracingPropertiesNV(const native_type &rhs)
+    : PhysicalDeviceRayTracingPropertiesNV(std::bit_cast<PhysicalDeviceRayTracingPropertiesNV>(rhs)) {}
+
+  PhysicalDeviceRayTracingPropertiesNV &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceRayTracingPropertiesNV>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceRayTracingPropertiesNV &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -8515,6 +13401,16 @@ struct PhysicalDeviceMultiviewFeatures {
     : multiview_tessellation_shader_(multiview_tessellation_shader), multiview_(multiview),
       multiview_geometry_shader_(multiview_geometry_shader), p_next_(p_next) {}
 
+  PhysicalDeviceMultiviewFeatures(const native_type &rhs)
+    : PhysicalDeviceMultiviewFeatures(std::bit_cast<PhysicalDeviceMultiviewFeatures>(rhs)) {}
+
+  PhysicalDeviceMultiviewFeatures &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceMultiviewFeatures>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceMultiviewFeatures &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PHYSICAL_DEVICE_MULTIVIEW_FEATURES;
@@ -8530,6 +13426,16 @@ struct DeviceGroupSwapchainCreateInfoKHR {
 
   DeviceGroupSwapchainCreateInfoKHR(DeviceGroupPresentModeMask modes = {}, const void *p_next = {}) : modes_(modes), p_next_(p_next) {}
 
+  DeviceGroupSwapchainCreateInfoKHR(const native_type &rhs)
+    : DeviceGroupSwapchainCreateInfoKHR(std::bit_cast<DeviceGroupSwapchainCreateInfoKHR>(rhs)) {}
+
+  DeviceGroupSwapchainCreateInfoKHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<DeviceGroupSwapchainCreateInfoKHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const DeviceGroupSwapchainCreateInfoKHR &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::DEVICE_GROUP_SWAPCHAIN_CREATE_INFO_KHR;
@@ -8542,6 +13448,16 @@ struct PipelineCreateFlags2CreateInfoKHR {
   using native_type = VkPipelineCreateFlags2CreateInfoKHR;
 
   PipelineCreateFlags2CreateInfoKHR(PipelineCreateMask2 flags = {}, const void *p_next = {}) : flags_(flags), p_next_(p_next) {}
+
+  PipelineCreateFlags2CreateInfoKHR(const native_type &rhs)
+    : PipelineCreateFlags2CreateInfoKHR(std::bit_cast<PipelineCreateFlags2CreateInfoKHR>(rhs)) {}
+
+  PipelineCreateFlags2CreateInfoKHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PipelineCreateFlags2CreateInfoKHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PipelineCreateFlags2CreateInfoKHR &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -8557,6 +13473,16 @@ struct DedicatedAllocationMemoryAllocateInfoNV {
   DedicatedAllocationMemoryAllocateInfoNV(VkBuffer buffer = {}, VkImage image = {}, const void *p_next = {})
     : buffer_(buffer), image_(image), p_next_(p_next) {}
 
+  DedicatedAllocationMemoryAllocateInfoNV(const native_type &rhs)
+    : DedicatedAllocationMemoryAllocateInfoNV(std::bit_cast<DedicatedAllocationMemoryAllocateInfoNV>(rhs)) {}
+
+  DedicatedAllocationMemoryAllocateInfoNV &operator=(const native_type &rhs) {
+    *this = std::bit_cast<DedicatedAllocationMemoryAllocateInfoNV>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const DedicatedAllocationMemoryAllocateInfoNV &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::DEDICATED_ALLOCATION_MEMORY_ALLOCATE_INFO_NV;
@@ -8568,6 +13494,16 @@ struct DedicatedAllocationMemoryAllocateInfoNV {
 struct PhysicalDeviceCustomBorderColorPropertiesEXT {
 
   using native_type = VkPhysicalDeviceCustomBorderColorPropertiesEXT;
+
+  PhysicalDeviceCustomBorderColorPropertiesEXT(const native_type &rhs)
+    : PhysicalDeviceCustomBorderColorPropertiesEXT(std::bit_cast<PhysicalDeviceCustomBorderColorPropertiesEXT>(rhs)) {}
+
+  PhysicalDeviceCustomBorderColorPropertiesEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceCustomBorderColorPropertiesEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceCustomBorderColorPropertiesEXT &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -8585,6 +13521,16 @@ struct ComputePipelineIndirectBufferInfoNV {
     : pipeline_device_address_capture_replay_(pipeline_device_address_capture_replay), device_address_(device_address), size_(size),
       p_next_(p_next) {}
 
+  ComputePipelineIndirectBufferInfoNV(const native_type &rhs)
+    : ComputePipelineIndirectBufferInfoNV(std::bit_cast<ComputePipelineIndirectBufferInfoNV>(rhs)) {}
+
+  ComputePipelineIndirectBufferInfoNV &operator=(const native_type &rhs) {
+    *this = std::bit_cast<ComputePipelineIndirectBufferInfoNV>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const ComputePipelineIndirectBufferInfoNV &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::COMPUTE_PIPELINE_INDIRECT_BUFFER_INFO_NV;
@@ -8600,6 +13546,15 @@ struct VideoCodingControlInfoKHR {
 
   VideoCodingControlInfoKHR(VideoCodingControlMask flags = {}, const void *p_next = {}) : flags_(flags), p_next_(p_next) {}
 
+  VideoCodingControlInfoKHR(const native_type &rhs) : VideoCodingControlInfoKHR(std::bit_cast<VideoCodingControlInfoKHR>(rhs)) {}
+
+  VideoCodingControlInfoKHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<VideoCodingControlInfoKHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const VideoCodingControlInfoKHR &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::VIDEO_CODING_CONTROL_INFO_KHR;
@@ -8610,6 +13565,15 @@ struct VideoCodingControlInfoKHR {
 struct QueueFamilyProperties {
 
   using native_type = VkQueueFamilyProperties;
+
+  QueueFamilyProperties(const native_type &rhs) : QueueFamilyProperties(std::bit_cast<QueueFamilyProperties>(rhs)) {}
+
+  QueueFamilyProperties &operator=(const native_type &rhs) {
+    *this = std::bit_cast<QueueFamilyProperties>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const QueueFamilyProperties &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -8626,6 +13590,16 @@ struct PhysicalDeviceDescriptorSetHostMappingFeaturesVALVE {
   PhysicalDeviceDescriptorSetHostMappingFeaturesVALVE(VkBool32 descriptor_set_host_mapping = {}, void *p_next = {})
     : descriptor_set_host_mapping_(descriptor_set_host_mapping), p_next_(p_next) {}
 
+  PhysicalDeviceDescriptorSetHostMappingFeaturesVALVE(const native_type &rhs)
+    : PhysicalDeviceDescriptorSetHostMappingFeaturesVALVE(std::bit_cast<PhysicalDeviceDescriptorSetHostMappingFeaturesVALVE>(rhs)) {}
+
+  PhysicalDeviceDescriptorSetHostMappingFeaturesVALVE &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceDescriptorSetHostMappingFeaturesVALVE>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceDescriptorSetHostMappingFeaturesVALVE &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PHYSICAL_DEVICE_DESCRIPTOR_SET_HOST_MAPPING_FEATURES_VALVE;
@@ -8639,11 +13613,21 @@ struct AccelerationStructureMatrixMotionInstanceNV {
 
   AccelerationStructureMatrixMotionInstanceNV(TransformMatrixKHR transform_t0 = {}, TransformMatrixKHR transform_t1 = {},
                                               uint32_t instance_custom_index = {}, uint32_t mask = {},
-                                              uint32_t instance_shader_binding_table_record_offset = {}, VkGeometryInstanceFlagsKHR flags = {},
+                                              uint32_t instance_shader_binding_table_record_offset = {}, GeometryInstanceMask flags = {},
                                               uint64_t acceleration_structure_reference = {})
     : transform_t0_(transform_t0), transform_t1_(transform_t1), instance_custom_index_(instance_custom_index), mask_(mask),
       instance_shader_binding_table_record_offset_(instance_shader_binding_table_record_offset), flags_(flags),
       acceleration_structure_reference_(acceleration_structure_reference) {}
+
+  AccelerationStructureMatrixMotionInstanceNV(const native_type &rhs)
+    : AccelerationStructureMatrixMotionInstanceNV(std::bit_cast<AccelerationStructureMatrixMotionInstanceNV>(rhs)) {}
+
+  AccelerationStructureMatrixMotionInstanceNV &operator=(const native_type &rhs) {
+    *this = std::bit_cast<AccelerationStructureMatrixMotionInstanceNV>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const AccelerationStructureMatrixMotionInstanceNV &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -8652,7 +13636,7 @@ struct AccelerationStructureMatrixMotionInstanceNV {
   uint32_t instance_custom_index_ : 24;
   uint32_t mask_ : 8;
   uint32_t instance_shader_binding_table_record_offset_ : 24;
-  VkGeometryInstanceFlagsKHR flags_ : 8;
+  GeometryInstanceMask flags_ : 8;
   uint64_t acceleration_structure_reference_;
 };
 
@@ -8664,6 +13648,16 @@ struct VideoEncodeH265PictureInfoKHR {
                                 const VideoEncodeH265NaluSliceSegmentInfoKHR *p_nalu_slice_segment_entries = {}, const void *p_next = {})
     : p_std_picture_info_(p_std_picture_info), nalu_slice_segment_entry_count_(nalu_slice_segment_entry_count),
       p_nalu_slice_segment_entries_(p_nalu_slice_segment_entries), p_next_(p_next) {}
+
+  VideoEncodeH265PictureInfoKHR(const native_type &rhs)
+    : VideoEncodeH265PictureInfoKHR(std::bit_cast<VideoEncodeH265PictureInfoKHR>(rhs)) {}
+
+  VideoEncodeH265PictureInfoKHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<VideoEncodeH265PictureInfoKHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const VideoEncodeH265PictureInfoKHR &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -8682,6 +13676,15 @@ struct BlitImageInfo2 {
                  ImageLayout dst_image_layout = {}, uint32_t region_count = {}, const ImageBlit2 *p_regions = {}, const void *p_next = {})
     : filter_(filter), src_image_(src_image), src_image_layout_(src_image_layout), dst_image_(dst_image),
       dst_image_layout_(dst_image_layout), region_count_(region_count), p_regions_(p_regions), p_next_(p_next) {}
+
+  BlitImageInfo2(const native_type &rhs) : BlitImageInfo2(std::bit_cast<BlitImageInfo2>(rhs)) {}
+
+  BlitImageInfo2 &operator=(const native_type &rhs) {
+    *this = std::bit_cast<BlitImageInfo2>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const BlitImageInfo2 &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -8703,6 +13706,15 @@ struct MemoryBarrier {
   MemoryBarrier(AccessMask dst_access_mask = {}, AccessMask src_access_mask = {}, const void *p_next = {})
     : dst_access_mask_(dst_access_mask), src_access_mask_(src_access_mask), p_next_(p_next) {}
 
+  MemoryBarrier(const native_type &rhs) : MemoryBarrier(std::bit_cast<MemoryBarrier>(rhs)) {}
+
+  MemoryBarrier &operator=(const native_type &rhs) {
+    *this = std::bit_cast<MemoryBarrier>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const MemoryBarrier &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::MEMORY_BARRIER;
@@ -8714,6 +13726,16 @@ struct MemoryBarrier {
 struct PhysicalDeviceSubpassShadingPropertiesHUAWEI {
 
   using native_type = VkPhysicalDeviceSubpassShadingPropertiesHUAWEI;
+
+  PhysicalDeviceSubpassShadingPropertiesHUAWEI(const native_type &rhs)
+    : PhysicalDeviceSubpassShadingPropertiesHUAWEI(std::bit_cast<PhysicalDeviceSubpassShadingPropertiesHUAWEI>(rhs)) {}
+
+  PhysicalDeviceSubpassShadingPropertiesHUAWEI &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceSubpassShadingPropertiesHUAWEI>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceSubpassShadingPropertiesHUAWEI &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -8729,6 +13751,16 @@ struct PhysicalDeviceSparseImageFormatInfo2 {
   PhysicalDeviceSparseImageFormatInfo2(ImageTiling tiling = {}, Format format = {}, ImageType type = {}, SampleCountMaskBit samples = {},
                                        ImageUsageMask usage = {}, const void *p_next = {})
     : tiling_(tiling), format_(format), type_(type), samples_(samples), usage_(usage), p_next_(p_next) {}
+
+  PhysicalDeviceSparseImageFormatInfo2(const native_type &rhs)
+    : PhysicalDeviceSparseImageFormatInfo2(std::bit_cast<PhysicalDeviceSparseImageFormatInfo2>(rhs)) {}
+
+  PhysicalDeviceSparseImageFormatInfo2 &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceSparseImageFormatInfo2>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceSparseImageFormatInfo2 &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -8748,6 +13780,16 @@ struct SparseImageOpaqueMemoryBindInfo {
   SparseImageOpaqueMemoryBindInfo(VkImage image = {}, uint32_t bind_count = {}, const SparseMemoryBind *p_binds = {})
     : image_(image), bind_count_(bind_count), p_binds_(p_binds) {}
 
+  SparseImageOpaqueMemoryBindInfo(const native_type &rhs)
+    : SparseImageOpaqueMemoryBindInfo(std::bit_cast<SparseImageOpaqueMemoryBindInfo>(rhs)) {}
+
+  SparseImageOpaqueMemoryBindInfo &operator=(const native_type &rhs) {
+    *this = std::bit_cast<SparseImageOpaqueMemoryBindInfo>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const SparseImageOpaqueMemoryBindInfo &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   VkImage image_;
@@ -8762,6 +13804,15 @@ struct SparseImageMemoryBind {
   SparseImageMemoryBind(ImageSubresource subresource = {}, Offset3D offset = {}, Extent3D extent = {}, VkDeviceMemory memory = {},
                         VkDeviceSize memory_offset = {}, SparseMemoryBindMask flags = {})
     : subresource_(subresource), offset_(offset), extent_(extent), memory_(memory), memory_offset_(memory_offset), flags_(flags) {}
+
+  SparseImageMemoryBind(const native_type &rhs) : SparseImageMemoryBind(std::bit_cast<SparseImageMemoryBind>(rhs)) {}
+
+  SparseImageMemoryBind &operator=(const native_type &rhs) {
+    *this = std::bit_cast<SparseImageMemoryBind>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const SparseImageMemoryBind &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -8779,6 +13830,15 @@ struct SparseImageMemoryBindInfo {
 
   SparseImageMemoryBindInfo(VkImage image = {}, uint32_t bind_count = {}, const SparseImageMemoryBind *p_binds = {})
     : image_(image), bind_count_(bind_count), p_binds_(p_binds) {}
+
+  SparseImageMemoryBindInfo(const native_type &rhs) : SparseImageMemoryBindInfo(std::bit_cast<SparseImageMemoryBindInfo>(rhs)) {}
+
+  SparseImageMemoryBindInfo &operator=(const native_type &rhs) {
+    *this = std::bit_cast<SparseImageMemoryBindInfo>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const SparseImageMemoryBindInfo &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -8800,6 +13860,15 @@ struct BindSparseInfo {
       buffer_bind_count_(buffer_bind_count), p_buffer_binds_(p_buffer_binds), image_opaque_bind_count_(image_opaque_bind_count),
       p_image_opaque_binds_(p_image_opaque_binds), image_bind_count_(image_bind_count), p_image_binds_(p_image_binds),
       signal_semaphore_count_(signal_semaphore_count), p_next_(p_next) {}
+
+  BindSparseInfo(const native_type &rhs) : BindSparseInfo(std::bit_cast<BindSparseInfo>(rhs)) {}
+
+  BindSparseInfo &operator=(const native_type &rhs) {
+    *this = std::bit_cast<BindSparseInfo>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const BindSparseInfo &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -8824,6 +13893,16 @@ struct PhysicalDevicePipelineRobustnessFeaturesEXT {
   PhysicalDevicePipelineRobustnessFeaturesEXT(VkBool32 pipeline_robustness = {}, void *p_next = {})
     : pipeline_robustness_(pipeline_robustness), p_next_(p_next) {}
 
+  PhysicalDevicePipelineRobustnessFeaturesEXT(const native_type &rhs)
+    : PhysicalDevicePipelineRobustnessFeaturesEXT(std::bit_cast<PhysicalDevicePipelineRobustnessFeaturesEXT>(rhs)) {}
+
+  PhysicalDevicePipelineRobustnessFeaturesEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDevicePipelineRobustnessFeaturesEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDevicePipelineRobustnessFeaturesEXT &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PHYSICAL_DEVICE_PIPELINE_ROBUSTNESS_FEATURES_EXT;
@@ -8838,6 +13917,15 @@ struct ShaderModuleCreateInfo {
   ShaderModuleCreateInfo(const uint32_t *p_code = {}, ShaderModuleCreateMask flags = {}, size_t code_size = {}, const void *p_next = {})
     : p_code_(p_code), flags_(flags), code_size_(code_size), p_next_(p_next) {}
 
+  ShaderModuleCreateInfo(const native_type &rhs) : ShaderModuleCreateInfo(std::bit_cast<ShaderModuleCreateInfo>(rhs)) {}
+
+  ShaderModuleCreateInfo &operator=(const native_type &rhs) {
+    *this = std::bit_cast<ShaderModuleCreateInfo>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const ShaderModuleCreateInfo &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::SHADER_MODULE_CREATE_INFO;
@@ -8850,6 +13938,16 @@ struct ShaderModuleCreateInfo {
 struct PhysicalDevicePCIBusInfoPropertiesEXT {
 
   using native_type = VkPhysicalDevicePCIBusInfoPropertiesEXT;
+
+  PhysicalDevicePCIBusInfoPropertiesEXT(const native_type &rhs)
+    : PhysicalDevicePCIBusInfoPropertiesEXT(std::bit_cast<PhysicalDevicePCIBusInfoPropertiesEXT>(rhs)) {}
+
+  PhysicalDevicePCIBusInfoPropertiesEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDevicePCIBusInfoPropertiesEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDevicePCIBusInfoPropertiesEXT &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -8868,6 +13966,16 @@ struct SwapchainCounterCreateInfoEXT {
   SwapchainCounterCreateInfoEXT(SurfaceCounterMask surface_counters = {}, const void *p_next = {})
     : surface_counters_(surface_counters), p_next_(p_next) {}
 
+  SwapchainCounterCreateInfoEXT(const native_type &rhs)
+    : SwapchainCounterCreateInfoEXT(std::bit_cast<SwapchainCounterCreateInfoEXT>(rhs)) {}
+
+  SwapchainCounterCreateInfoEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<SwapchainCounterCreateInfoEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const SwapchainCounterCreateInfoEXT &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::SWAPCHAIN_COUNTER_CREATE_INFO_EXT;
@@ -8880,6 +13988,15 @@ struct LatencySubmissionPresentIdNV {
   using native_type = VkLatencySubmissionPresentIdNV;
 
   LatencySubmissionPresentIdNV(uint64_t present_id = {}, const void *p_next = {}) : present_id_(present_id), p_next_(p_next) {}
+
+  LatencySubmissionPresentIdNV(const native_type &rhs) : LatencySubmissionPresentIdNV(std::bit_cast<LatencySubmissionPresentIdNV>(rhs)) {}
+
+  LatencySubmissionPresentIdNV &operator=(const native_type &rhs) {
+    *this = std::bit_cast<LatencySubmissionPresentIdNV>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const LatencySubmissionPresentIdNV &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -8895,6 +14012,15 @@ struct DescriptorSetAllocateInfo {
   DescriptorSetAllocateInfo(const VkDescriptorSetLayout *p_set_layouts = {}, VkDescriptorPool descriptor_pool = {},
                             uint32_t descriptor_set_count = {}, const void *p_next = {})
     : p_set_layouts_(p_set_layouts), descriptor_pool_(descriptor_pool), descriptor_set_count_(descriptor_set_count), p_next_(p_next) {}
+
+  DescriptorSetAllocateInfo(const native_type &rhs) : DescriptorSetAllocateInfo(std::bit_cast<DescriptorSetAllocateInfo>(rhs)) {}
+
+  DescriptorSetAllocateInfo &operator=(const native_type &rhs) {
+    *this = std::bit_cast<DescriptorSetAllocateInfo>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const DescriptorSetAllocateInfo &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -8913,6 +14039,16 @@ struct VideoSessionParametersCreateInfoKHR {
                                       VkVideoSessionParametersKHR video_session_parameters_template = {}, const void *p_next = {})
     : video_session_(video_session), flags_(flags), video_session_parameters_template_(video_session_parameters_template), p_next_(p_next) {
   }
+
+  VideoSessionParametersCreateInfoKHR(const native_type &rhs)
+    : VideoSessionParametersCreateInfoKHR(std::bit_cast<VideoSessionParametersCreateInfoKHR>(rhs)) {}
+
+  VideoSessionParametersCreateInfoKHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<VideoSessionParametersCreateInfoKHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const VideoSessionParametersCreateInfoKHR &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -8934,6 +14070,15 @@ struct GeometryTrianglesNV {
     : transform_offset_(transform_offset), vertex_data_(vertex_data), vertex_offset_(vertex_offset), vertex_count_(vertex_count),
       vertex_stride_(vertex_stride), vertex_format_(vertex_format), index_data_(index_data), index_offset_(index_offset),
       index_count_(index_count), index_type_(index_type), transform_data_(transform_data), p_next_(p_next) {}
+
+  GeometryTrianglesNV(const native_type &rhs) : GeometryTrianglesNV(std::bit_cast<GeometryTrianglesNV>(rhs)) {}
+
+  GeometryTrianglesNV &operator=(const native_type &rhs) {
+    *this = std::bit_cast<GeometryTrianglesNV>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const GeometryTrianglesNV &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -8959,6 +14104,15 @@ struct SubpassSampleLocationsEXT {
   SubpassSampleLocationsEXT(uint32_t subpass_index = {}, SampleLocationsInfoEXT sample_locations_info = {})
     : subpass_index_(subpass_index), sample_locations_info_(sample_locations_info) {}
 
+  SubpassSampleLocationsEXT(const native_type &rhs) : SubpassSampleLocationsEXT(std::bit_cast<SubpassSampleLocationsEXT>(rhs)) {}
+
+  SubpassSampleLocationsEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<SubpassSampleLocationsEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const SubpassSampleLocationsEXT &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   uint32_t subpass_index_;
@@ -8969,6 +14123,15 @@ struct DisplayPlanePropertiesKHR {
 
   using native_type = VkDisplayPlanePropertiesKHR;
 
+  DisplayPlanePropertiesKHR(const native_type &rhs) : DisplayPlanePropertiesKHR(std::bit_cast<DisplayPlanePropertiesKHR>(rhs)) {}
+
+  DisplayPlanePropertiesKHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<DisplayPlanePropertiesKHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const DisplayPlanePropertiesKHR &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   VkDisplayKHR current_display_;
@@ -8978,6 +14141,15 @@ struct DisplayPlanePropertiesKHR {
 struct DisplayPlaneProperties2KHR {
 
   using native_type = VkDisplayPlaneProperties2KHR;
+
+  DisplayPlaneProperties2KHR(const native_type &rhs) : DisplayPlaneProperties2KHR(std::bit_cast<DisplayPlaneProperties2KHR>(rhs)) {}
+
+  DisplayPlaneProperties2KHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<DisplayPlaneProperties2KHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const DisplayPlaneProperties2KHR &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -8993,6 +14165,16 @@ struct DescriptorSetBindingReferenceVALVE {
   DescriptorSetBindingReferenceVALVE(uint32_t binding = {}, VkDescriptorSetLayout descriptor_set_layout = {}, const void *p_next = {})
     : binding_(binding), descriptor_set_layout_(descriptor_set_layout), p_next_(p_next) {}
 
+  DescriptorSetBindingReferenceVALVE(const native_type &rhs)
+    : DescriptorSetBindingReferenceVALVE(std::bit_cast<DescriptorSetBindingReferenceVALVE>(rhs)) {}
+
+  DescriptorSetBindingReferenceVALVE &operator=(const native_type &rhs) {
+    *this = std::bit_cast<DescriptorSetBindingReferenceVALVE>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const DescriptorSetBindingReferenceVALVE &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::DESCRIPTOR_SET_BINDING_REFERENCE_VALVE;
@@ -9007,6 +14189,16 @@ struct SetStateFlagsIndirectCommandNV {
 
   SetStateFlagsIndirectCommandNV(uint32_t data = {}) : data_(data) {}
 
+  SetStateFlagsIndirectCommandNV(const native_type &rhs)
+    : SetStateFlagsIndirectCommandNV(std::bit_cast<SetStateFlagsIndirectCommandNV>(rhs)) {}
+
+  SetStateFlagsIndirectCommandNV &operator=(const native_type &rhs) {
+    *this = std::bit_cast<SetStateFlagsIndirectCommandNV>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const SetStateFlagsIndirectCommandNV &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   uint32_t data_;
@@ -9018,6 +14210,16 @@ struct RenderPassAttachmentBeginInfo {
 
   RenderPassAttachmentBeginInfo(const VkImageView *p_attachments = {}, uint32_t attachment_count = {}, const void *p_next = {})
     : p_attachments_(p_attachments), attachment_count_(attachment_count), p_next_(p_next) {}
+
+  RenderPassAttachmentBeginInfo(const native_type &rhs)
+    : RenderPassAttachmentBeginInfo(std::bit_cast<RenderPassAttachmentBeginInfo>(rhs)) {}
+
+  RenderPassAttachmentBeginInfo &operator=(const native_type &rhs) {
+    *this = std::bit_cast<RenderPassAttachmentBeginInfo>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const RenderPassAttachmentBeginInfo &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -9034,6 +14236,16 @@ struct PhysicalDeviceDeviceGeneratedCommandsFeaturesNV {
   PhysicalDeviceDeviceGeneratedCommandsFeaturesNV(VkBool32 device_generated_commands = {}, void *p_next = {})
     : device_generated_commands_(device_generated_commands), p_next_(p_next) {}
 
+  PhysicalDeviceDeviceGeneratedCommandsFeaturesNV(const native_type &rhs)
+    : PhysicalDeviceDeviceGeneratedCommandsFeaturesNV(std::bit_cast<PhysicalDeviceDeviceGeneratedCommandsFeaturesNV>(rhs)) {}
+
+  PhysicalDeviceDeviceGeneratedCommandsFeaturesNV &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceDeviceGeneratedCommandsFeaturesNV>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceDeviceGeneratedCommandsFeaturesNV &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PHYSICAL_DEVICE_DEVICE_GENERATED_COMMANDS_FEATURES_NV;
@@ -9044,6 +14256,16 @@ struct PhysicalDeviceDeviceGeneratedCommandsFeaturesNV {
 struct QueueFamilyGlobalPriorityPropertiesKHR {
 
   using native_type = VkQueueFamilyGlobalPriorityPropertiesKHR;
+
+  QueueFamilyGlobalPriorityPropertiesKHR(const native_type &rhs)
+    : QueueFamilyGlobalPriorityPropertiesKHR(std::bit_cast<QueueFamilyGlobalPriorityPropertiesKHR>(rhs)) {}
+
+  QueueFamilyGlobalPriorityPropertiesKHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<QueueFamilyGlobalPriorityPropertiesKHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const QueueFamilyGlobalPriorityPropertiesKHR &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -9060,6 +14282,16 @@ struct PhysicalDeviceImageCompressionControlFeaturesEXT {
   PhysicalDeviceImageCompressionControlFeaturesEXT(VkBool32 image_compression_control = {}, void *p_next = {})
     : image_compression_control_(image_compression_control), p_next_(p_next) {}
 
+  PhysicalDeviceImageCompressionControlFeaturesEXT(const native_type &rhs)
+    : PhysicalDeviceImageCompressionControlFeaturesEXT(std::bit_cast<PhysicalDeviceImageCompressionControlFeaturesEXT>(rhs)) {}
+
+  PhysicalDeviceImageCompressionControlFeaturesEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceImageCompressionControlFeaturesEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceImageCompressionControlFeaturesEXT &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PHYSICAL_DEVICE_IMAGE_COMPRESSION_CONTROL_FEATURES_EXT;
@@ -9071,6 +14303,15 @@ struct MemoryType {
 
   using native_type = VkMemoryType;
 
+  MemoryType(const native_type &rhs) : MemoryType(std::bit_cast<MemoryType>(rhs)) {}
+
+  MemoryType &operator=(const native_type &rhs) {
+    *this = std::bit_cast<MemoryType>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const MemoryType &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   MemoryPropertyMask property_flags_;
@@ -9081,6 +14322,15 @@ struct MemoryHeap {
 
   using native_type = VkMemoryHeap;
 
+  MemoryHeap(const native_type &rhs) : MemoryHeap(std::bit_cast<MemoryHeap>(rhs)) {}
+
+  MemoryHeap &operator=(const native_type &rhs) {
+    *this = std::bit_cast<MemoryHeap>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const MemoryHeap &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   VkDeviceSize size_;
@@ -9090,6 +14340,16 @@ struct MemoryHeap {
 struct PhysicalDeviceMemoryProperties {
 
   using native_type = VkPhysicalDeviceMemoryProperties;
+
+  PhysicalDeviceMemoryProperties(const native_type &rhs)
+    : PhysicalDeviceMemoryProperties(std::bit_cast<PhysicalDeviceMemoryProperties>(rhs)) {}
+
+  PhysicalDeviceMemoryProperties &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceMemoryProperties>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceMemoryProperties &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -9106,6 +14366,15 @@ struct PresentTimeGOOGLE {
   PresentTimeGOOGLE(uint32_t present_id = {}, uint64_t desired_present_time = {})
     : present_id_(present_id), desired_present_time_(desired_present_time) {}
 
+  PresentTimeGOOGLE(const native_type &rhs) : PresentTimeGOOGLE(std::bit_cast<PresentTimeGOOGLE>(rhs)) {}
+
+  PresentTimeGOOGLE &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PresentTimeGOOGLE>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PresentTimeGOOGLE &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   uint32_t present_id_;
@@ -9118,6 +14387,15 @@ struct PresentTimesInfoGOOGLE {
 
   PresentTimesInfoGOOGLE(const PresentTimeGOOGLE *p_times = {}, uint32_t swapchain_count = {}, const void *p_next = {})
     : p_times_(p_times), swapchain_count_(swapchain_count), p_next_(p_next) {}
+
+  PresentTimesInfoGOOGLE(const native_type &rhs) : PresentTimesInfoGOOGLE(std::bit_cast<PresentTimesInfoGOOGLE>(rhs)) {}
+
+  PresentTimesInfoGOOGLE &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PresentTimesInfoGOOGLE>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PresentTimesInfoGOOGLE &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -9134,6 +14412,15 @@ struct Viewport {
   Viewport(float x = {}, float y = {}, float width = {}, float height = {}, float min_depth = {}, float max_depth = {})
     : x_(x), y_(y), width_(width), height_(height), min_depth_(min_depth), max_depth_(max_depth) {}
 
+  Viewport(const native_type &rhs) : Viewport(std::bit_cast<Viewport>(rhs)) {}
+
+  Viewport &operator=(const native_type &rhs) {
+    *this = std::bit_cast<Viewport>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const Viewport &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   float x_;
@@ -9147,6 +14434,15 @@ struct Viewport {
 struct DisplayPropertiesKHR {
 
   using native_type = VkDisplayPropertiesKHR;
+
+  DisplayPropertiesKHR(const native_type &rhs) : DisplayPropertiesKHR(std::bit_cast<DisplayPropertiesKHR>(rhs)) {}
+
+  DisplayPropertiesKHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<DisplayPropertiesKHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const DisplayPropertiesKHR &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -9166,6 +14462,16 @@ struct ImagePlaneMemoryRequirementsInfo {
   ImagePlaneMemoryRequirementsInfo(ImageAspectMaskBit plane_aspect = {}, const void *p_next = {})
     : plane_aspect_(plane_aspect), p_next_(p_next) {}
 
+  ImagePlaneMemoryRequirementsInfo(const native_type &rhs)
+    : ImagePlaneMemoryRequirementsInfo(std::bit_cast<ImagePlaneMemoryRequirementsInfo>(rhs)) {}
+
+  ImagePlaneMemoryRequirementsInfo &operator=(const native_type &rhs) {
+    *this = std::bit_cast<ImagePlaneMemoryRequirementsInfo>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const ImagePlaneMemoryRequirementsInfo &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::IMAGE_PLANE_MEMORY_REQUIREMENTS_INFO;
@@ -9184,6 +14490,15 @@ struct AllocationCallbacks {
     : p_user_data_(p_user_data), pfn_allocation_(pfn_allocation), pfn_reallocation_(pfn_reallocation), pfn_free_(pfn_free),
       pfn_internal_allocation_(pfn_internal_allocation), pfn_internal_free_(pfn_internal_free) {}
 
+  AllocationCallbacks(const native_type &rhs) : AllocationCallbacks(std::bit_cast<AllocationCallbacks>(rhs)) {}
+
+  AllocationCallbacks &operator=(const native_type &rhs) {
+    *this = std::bit_cast<AllocationCallbacks>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const AllocationCallbacks &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   void *p_user_data_;
@@ -9197,6 +14512,16 @@ struct AllocationCallbacks {
 struct PhysicalDeviceDrmPropertiesEXT {
 
   using native_type = VkPhysicalDeviceDrmPropertiesEXT;
+
+  PhysicalDeviceDrmPropertiesEXT(const native_type &rhs)
+    : PhysicalDeviceDrmPropertiesEXT(std::bit_cast<PhysicalDeviceDrmPropertiesEXT>(rhs)) {}
+
+  PhysicalDeviceDrmPropertiesEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceDrmPropertiesEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceDrmPropertiesEXT &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -9213,6 +14538,16 @@ struct PhysicalDeviceDrmPropertiesEXT {
 struct PhysicalDeviceShaderCorePropertiesAMD {
 
   using native_type = VkPhysicalDeviceShaderCorePropertiesAMD;
+
+  PhysicalDeviceShaderCorePropertiesAMD(const native_type &rhs)
+    : PhysicalDeviceShaderCorePropertiesAMD(std::bit_cast<PhysicalDeviceShaderCorePropertiesAMD>(rhs)) {}
+
+  PhysicalDeviceShaderCorePropertiesAMD &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceShaderCorePropertiesAMD>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceShaderCorePropertiesAMD &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -9246,6 +14581,16 @@ struct PipelineMultisampleStateCreateInfo {
       sample_shading_enable_(sample_shading_enable), min_sample_shading_(min_sample_shading), p_sample_mask_(p_sample_mask),
       alpha_to_coverage_enable_(alpha_to_coverage_enable), p_next_(p_next) {}
 
+  PipelineMultisampleStateCreateInfo(const native_type &rhs)
+    : PipelineMultisampleStateCreateInfo(std::bit_cast<PipelineMultisampleStateCreateInfo>(rhs)) {}
+
+  PipelineMultisampleStateCreateInfo &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PipelineMultisampleStateCreateInfo>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PipelineMultisampleStateCreateInfo &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PIPELINE_MULTISAMPLE_STATE_CREATE_INFO;
@@ -9266,6 +14611,16 @@ struct PhysicalDeviceDescriptorPoolOverallocationFeaturesNV {
   PhysicalDeviceDescriptorPoolOverallocationFeaturesNV(VkBool32 descriptor_pool_overallocation = {}, void *p_next = {})
     : descriptor_pool_overallocation_(descriptor_pool_overallocation), p_next_(p_next) {}
 
+  PhysicalDeviceDescriptorPoolOverallocationFeaturesNV(const native_type &rhs)
+    : PhysicalDeviceDescriptorPoolOverallocationFeaturesNV(std::bit_cast<PhysicalDeviceDescriptorPoolOverallocationFeaturesNV>(rhs)) {}
+
+  PhysicalDeviceDescriptorPoolOverallocationFeaturesNV &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceDescriptorPoolOverallocationFeaturesNV>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceDescriptorPoolOverallocationFeaturesNV &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PHYSICAL_DEVICE_DESCRIPTOR_POOL_OVERALLOCATION_FEATURES_NV;
@@ -9276,6 +14631,16 @@ struct PhysicalDeviceDescriptorPoolOverallocationFeaturesNV {
 struct CooperativeMatrixPropertiesNV {
 
   using native_type = VkCooperativeMatrixPropertiesNV;
+
+  CooperativeMatrixPropertiesNV(const native_type &rhs)
+    : CooperativeMatrixPropertiesNV(std::bit_cast<CooperativeMatrixPropertiesNV>(rhs)) {}
+
+  CooperativeMatrixPropertiesNV &operator=(const native_type &rhs) {
+    *this = std::bit_cast<CooperativeMatrixPropertiesNV>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const CooperativeMatrixPropertiesNV &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -9297,6 +14662,15 @@ struct PhysicalDeviceFeatures2 {
 
   PhysicalDeviceFeatures2(PhysicalDeviceFeatures features = {}, void *p_next = {}) : features_(features), p_next_(p_next) {}
 
+  PhysicalDeviceFeatures2(const native_type &rhs) : PhysicalDeviceFeatures2(std::bit_cast<PhysicalDeviceFeatures2>(rhs)) {}
+
+  PhysicalDeviceFeatures2 &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceFeatures2>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceFeatures2 &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PHYSICAL_DEVICE_FEATURES_2;
@@ -9315,6 +14689,15 @@ struct RenderingInfo {
     : p_stencil_attachment_(p_stencil_attachment), flags_(flags), render_area_(render_area), layer_count_(layer_count),
       view_mask_(view_mask), color_attachment_count_(color_attachment_count), p_color_attachments_(p_color_attachments),
       p_depth_attachment_(p_depth_attachment), p_next_(p_next) {}
+
+  RenderingInfo(const native_type &rhs) : RenderingInfo(std::bit_cast<RenderingInfo>(rhs)) {}
+
+  RenderingInfo &operator=(const native_type &rhs) {
+    *this = std::bit_cast<RenderingInfo>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const RenderingInfo &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -9352,6 +14735,16 @@ struct PhysicalDeviceShaderAtomicFloat2FeaturesEXT {
       shader_shared_float64atomic_min_max_(shader_shared_float64atomic_min_max),
       shader_image_float32atomic_min_max_(shader_image_float32atomic_min_max), p_next_(p_next) {}
 
+  PhysicalDeviceShaderAtomicFloat2FeaturesEXT(const native_type &rhs)
+    : PhysicalDeviceShaderAtomicFloat2FeaturesEXT(std::bit_cast<PhysicalDeviceShaderAtomicFloat2FeaturesEXT>(rhs)) {}
+
+  PhysicalDeviceShaderAtomicFloat2FeaturesEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceShaderAtomicFloat2FeaturesEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceShaderAtomicFloat2FeaturesEXT &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PHYSICAL_DEVICE_SHADER_ATOMIC_FLOAT_2_FEATURES_EXT;
@@ -9378,6 +14771,16 @@ struct DebugReportCallbackCreateInfoEXT {
                                    const void *p_next = {})
     : p_user_data_(p_user_data), flags_(flags), pfn_callback_(pfn_callback), p_next_(p_next) {}
 
+  DebugReportCallbackCreateInfoEXT(const native_type &rhs)
+    : DebugReportCallbackCreateInfoEXT(std::bit_cast<DebugReportCallbackCreateInfoEXT>(rhs)) {}
+
+  DebugReportCallbackCreateInfoEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<DebugReportCallbackCreateInfoEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const DebugReportCallbackCreateInfoEXT &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::DEBUG_REPORT_CALLBACK_CREATE_INFO_EXT;
@@ -9390,6 +14793,16 @@ struct DebugReportCallbackCreateInfoEXT {
 struct PhysicalDeviceShaderObjectPropertiesEXT {
 
   using native_type = VkPhysicalDeviceShaderObjectPropertiesEXT;
+
+  PhysicalDeviceShaderObjectPropertiesEXT(const native_type &rhs)
+    : PhysicalDeviceShaderObjectPropertiesEXT(std::bit_cast<PhysicalDeviceShaderObjectPropertiesEXT>(rhs)) {}
+
+  PhysicalDeviceShaderObjectPropertiesEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceShaderObjectPropertiesEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceShaderObjectPropertiesEXT &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -9405,6 +14818,16 @@ struct PhysicalDeviceMaintenance7FeaturesKHR {
 
   PhysicalDeviceMaintenance7FeaturesKHR(VkBool32 maintenance7 = {}, void *p_next = {}) : maintenance7_(maintenance7), p_next_(p_next) {}
 
+  PhysicalDeviceMaintenance7FeaturesKHR(const native_type &rhs)
+    : PhysicalDeviceMaintenance7FeaturesKHR(std::bit_cast<PhysicalDeviceMaintenance7FeaturesKHR>(rhs)) {}
+
+  PhysicalDeviceMaintenance7FeaturesKHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceMaintenance7FeaturesKHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceMaintenance7FeaturesKHR &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PHYSICAL_DEVICE_MAINTENANCE_7_FEATURES_KHR;
@@ -9417,6 +14840,16 @@ struct DescriptorBufferBindingPushDescriptorBufferHandleEXT {
   using native_type = VkDescriptorBufferBindingPushDescriptorBufferHandleEXT;
 
   DescriptorBufferBindingPushDescriptorBufferHandleEXT(VkBuffer buffer = {}, void *p_next = {}) : buffer_(buffer), p_next_(p_next) {}
+
+  DescriptorBufferBindingPushDescriptorBufferHandleEXT(const native_type &rhs)
+    : DescriptorBufferBindingPushDescriptorBufferHandleEXT(std::bit_cast<DescriptorBufferBindingPushDescriptorBufferHandleEXT>(rhs)) {}
+
+  DescriptorBufferBindingPushDescriptorBufferHandleEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<DescriptorBufferBindingPushDescriptorBufferHandleEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const DescriptorBufferBindingPushDescriptorBufferHandleEXT &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -9432,6 +14865,15 @@ struct ExportSemaphoreCreateInfo {
   ExportSemaphoreCreateInfo(ExternalSemaphoreHandleTypeMask handle_types = {}, const void *p_next = {})
     : handle_types_(handle_types), p_next_(p_next) {}
 
+  ExportSemaphoreCreateInfo(const native_type &rhs) : ExportSemaphoreCreateInfo(std::bit_cast<ExportSemaphoreCreateInfo>(rhs)) {}
+
+  ExportSemaphoreCreateInfo &operator=(const native_type &rhs) {
+    *this = std::bit_cast<ExportSemaphoreCreateInfo>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const ExportSemaphoreCreateInfo &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::EXPORT_SEMAPHORE_CREATE_INFO;
@@ -9442,6 +14884,15 @@ struct ExportSemaphoreCreateInfo {
 struct MemoryRequirements {
 
   using native_type = VkMemoryRequirements;
+
+  MemoryRequirements(const native_type &rhs) : MemoryRequirements(std::bit_cast<MemoryRequirements>(rhs)) {}
+
+  MemoryRequirements &operator=(const native_type &rhs) {
+    *this = std::bit_cast<MemoryRequirements>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const MemoryRequirements &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -9461,6 +14912,15 @@ struct DeviceGroupSubmitInfo {
       p_wait_semaphore_device_indices_(p_wait_semaphore_device_indices), command_buffer_count_(command_buffer_count),
       p_command_buffer_device_masks_(p_command_buffer_device_masks), signal_semaphore_count_(signal_semaphore_count), p_next_(p_next) {}
 
+  DeviceGroupSubmitInfo(const native_type &rhs) : DeviceGroupSubmitInfo(std::bit_cast<DeviceGroupSubmitInfo>(rhs)) {}
+
+  DeviceGroupSubmitInfo &operator=(const native_type &rhs) {
+    *this = std::bit_cast<DeviceGroupSubmitInfo>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const DeviceGroupSubmitInfo &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::DEVICE_GROUP_SUBMIT_INFO;
@@ -9477,6 +14937,16 @@ struct VideoDecodeH264CapabilitiesKHR {
 
   using native_type = VkVideoDecodeH264CapabilitiesKHR;
 
+  VideoDecodeH264CapabilitiesKHR(const native_type &rhs)
+    : VideoDecodeH264CapabilitiesKHR(std::bit_cast<VideoDecodeH264CapabilitiesKHR>(rhs)) {}
+
+  VideoDecodeH264CapabilitiesKHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<VideoDecodeH264CapabilitiesKHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const VideoDecodeH264CapabilitiesKHR &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::VIDEO_DECODE_H264_CAPABILITIES_KHR;
@@ -9488,6 +14958,15 @@ struct VideoDecodeH264CapabilitiesKHR {
 struct PhysicalDeviceLimits {
 
   using native_type = VkPhysicalDeviceLimits;
+
+  PhysicalDeviceLimits(const native_type &rhs) : PhysicalDeviceLimits(std::bit_cast<PhysicalDeviceLimits>(rhs)) {}
+
+  PhysicalDeviceLimits &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceLimits>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceLimits &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -9603,6 +15082,16 @@ struct PhysicalDeviceSparseProperties {
 
   using native_type = VkPhysicalDeviceSparseProperties;
 
+  PhysicalDeviceSparseProperties(const native_type &rhs)
+    : PhysicalDeviceSparseProperties(std::bit_cast<PhysicalDeviceSparseProperties>(rhs)) {}
+
+  PhysicalDeviceSparseProperties &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceSparseProperties>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceSparseProperties &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   VkBool32 residency_standard2dblock_shape_;
@@ -9615,6 +15104,15 @@ struct PhysicalDeviceSparseProperties {
 struct PhysicalDeviceProperties {
 
   using native_type = VkPhysicalDeviceProperties;
+
+  PhysicalDeviceProperties(const native_type &rhs) : PhysicalDeviceProperties(std::bit_cast<PhysicalDeviceProperties>(rhs)) {}
+
+  PhysicalDeviceProperties &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceProperties>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceProperties &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -9633,6 +15131,15 @@ struct PhysicalDeviceProperties2 {
 
   using native_type = VkPhysicalDeviceProperties2;
 
+  PhysicalDeviceProperties2(const native_type &rhs) : PhysicalDeviceProperties2(std::bit_cast<PhysicalDeviceProperties2>(rhs)) {}
+
+  PhysicalDeviceProperties2 &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceProperties2>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceProperties2 &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PHYSICAL_DEVICE_PROPERTIES_2;
@@ -9643,6 +15150,16 @@ struct PhysicalDeviceProperties2 {
 struct PhysicalDeviceLayeredApiVulkanPropertiesKHR {
 
   using native_type = VkPhysicalDeviceLayeredApiVulkanPropertiesKHR;
+
+  PhysicalDeviceLayeredApiVulkanPropertiesKHR(const native_type &rhs)
+    : PhysicalDeviceLayeredApiVulkanPropertiesKHR(std::bit_cast<PhysicalDeviceLayeredApiVulkanPropertiesKHR>(rhs)) {}
+
+  PhysicalDeviceLayeredApiVulkanPropertiesKHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceLayeredApiVulkanPropertiesKHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceLayeredApiVulkanPropertiesKHR &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -9659,6 +15176,16 @@ struct PhysicalDevicePerStageDescriptorSetFeaturesNV {
                                                 void *p_next = {})
     : dynamic_pipeline_layout_(dynamic_pipeline_layout), per_stage_descriptor_set_(per_stage_descriptor_set), p_next_(p_next) {}
 
+  PhysicalDevicePerStageDescriptorSetFeaturesNV(const native_type &rhs)
+    : PhysicalDevicePerStageDescriptorSetFeaturesNV(std::bit_cast<PhysicalDevicePerStageDescriptorSetFeaturesNV>(rhs)) {}
+
+  PhysicalDevicePerStageDescriptorSetFeaturesNV &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDevicePerStageDescriptorSetFeaturesNV>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDevicePerStageDescriptorSetFeaturesNV &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PHYSICAL_DEVICE_PER_STAGE_DESCRIPTOR_SET_FEATURES_NV;
@@ -9673,6 +15200,15 @@ struct SemaphoreGetFdInfoKHR {
 
   SemaphoreGetFdInfoKHR(ExternalSemaphoreHandleTypeMaskBit handle_type = {}, VkSemaphore semaphore = {}, const void *p_next = {})
     : handle_type_(handle_type), semaphore_(semaphore), p_next_(p_next) {}
+
+  SemaphoreGetFdInfoKHR(const native_type &rhs) : SemaphoreGetFdInfoKHR(std::bit_cast<SemaphoreGetFdInfoKHR>(rhs)) {}
+
+  SemaphoreGetFdInfoKHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<SemaphoreGetFdInfoKHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const SemaphoreGetFdInfoKHR &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -9691,6 +15227,16 @@ struct BindAccelerationStructureMemoryInfoNV {
                                         const void *p_next = {})
     : p_device_indices_(p_device_indices), acceleration_structure_(acceleration_structure), memory_(memory), memory_offset_(memory_offset),
       device_index_count_(device_index_count), p_next_(p_next) {}
+
+  BindAccelerationStructureMemoryInfoNV(const native_type &rhs)
+    : BindAccelerationStructureMemoryInfoNV(std::bit_cast<BindAccelerationStructureMemoryInfoNV>(rhs)) {}
+
+  BindAccelerationStructureMemoryInfoNV &operator=(const native_type &rhs) {
+    *this = std::bit_cast<BindAccelerationStructureMemoryInfoNV>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const BindAccelerationStructureMemoryInfoNV &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -9713,6 +15259,16 @@ struct GeneratedCommandsMemoryRequirementsInfoNV {
     : max_sequences_count_(max_sequences_count), pipeline_bind_point_(pipeline_bind_point), pipeline_(pipeline),
       indirect_commands_layout_(indirect_commands_layout), p_next_(p_next) {}
 
+  GeneratedCommandsMemoryRequirementsInfoNV(const native_type &rhs)
+    : GeneratedCommandsMemoryRequirementsInfoNV(std::bit_cast<GeneratedCommandsMemoryRequirementsInfoNV>(rhs)) {}
+
+  GeneratedCommandsMemoryRequirementsInfoNV &operator=(const native_type &rhs) {
+    *this = std::bit_cast<GeneratedCommandsMemoryRequirementsInfoNV>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const GeneratedCommandsMemoryRequirementsInfoNV &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::GENERATED_COMMANDS_MEMORY_REQUIREMENTS_INFO_NV;
@@ -9731,6 +15287,16 @@ struct CopyMemoryToAccelerationStructureInfoKHR {
                                            VkAccelerationStructureKHR dst = {}, const void *p_next = {})
     : mode_(mode), src_(src), dst_(dst), p_next_(p_next) {}
 
+  CopyMemoryToAccelerationStructureInfoKHR(const native_type &rhs)
+    : CopyMemoryToAccelerationStructureInfoKHR(std::bit_cast<CopyMemoryToAccelerationStructureInfoKHR>(rhs)) {}
+
+  CopyMemoryToAccelerationStructureInfoKHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<CopyMemoryToAccelerationStructureInfoKHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const CopyMemoryToAccelerationStructureInfoKHR &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::COPY_MEMORY_TO_ACCELERATION_STRUCTURE_INFO_KHR;
@@ -9748,6 +15314,16 @@ struct DepthBiasRepresentationInfoEXT {
                                  const void *p_next = {})
     : depth_bias_exact_(depth_bias_exact), depth_bias_representation_(depth_bias_representation), p_next_(p_next) {}
 
+  DepthBiasRepresentationInfoEXT(const native_type &rhs)
+    : DepthBiasRepresentationInfoEXT(std::bit_cast<DepthBiasRepresentationInfoEXT>(rhs)) {}
+
+  DepthBiasRepresentationInfoEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<DepthBiasRepresentationInfoEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const DepthBiasRepresentationInfoEXT &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::DEPTH_BIAS_REPRESENTATION_INFO_EXT;
@@ -9760,6 +15336,15 @@ struct SparseImageFormatProperties {
 
   using native_type = VkSparseImageFormatProperties;
 
+  SparseImageFormatProperties(const native_type &rhs) : SparseImageFormatProperties(std::bit_cast<SparseImageFormatProperties>(rhs)) {}
+
+  SparseImageFormatProperties &operator=(const native_type &rhs) {
+    *this = std::bit_cast<SparseImageFormatProperties>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const SparseImageFormatProperties &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   ImageAspectMask aspect_mask_;
@@ -9770,6 +15355,16 @@ struct SparseImageFormatProperties {
 struct SparseImageMemoryRequirements {
 
   using native_type = VkSparseImageMemoryRequirements;
+
+  SparseImageMemoryRequirements(const native_type &rhs)
+    : SparseImageMemoryRequirements(std::bit_cast<SparseImageMemoryRequirements>(rhs)) {}
+
+  SparseImageMemoryRequirements &operator=(const native_type &rhs) {
+    *this = std::bit_cast<SparseImageMemoryRequirements>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const SparseImageMemoryRequirements &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -9787,6 +15382,15 @@ struct DeviceGroupBindSparseInfo {
   DeviceGroupBindSparseInfo(uint32_t memory_device_index = {}, uint32_t resource_device_index = {}, const void *p_next = {})
     : memory_device_index_(memory_device_index), resource_device_index_(resource_device_index), p_next_(p_next) {}
 
+  DeviceGroupBindSparseInfo(const native_type &rhs) : DeviceGroupBindSparseInfo(std::bit_cast<DeviceGroupBindSparseInfo>(rhs)) {}
+
+  DeviceGroupBindSparseInfo &operator=(const native_type &rhs) {
+    *this = std::bit_cast<DeviceGroupBindSparseInfo>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const DeviceGroupBindSparseInfo &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::DEVICE_GROUP_BIND_SPARSE_INFO;
@@ -9801,6 +15405,16 @@ struct DeviceBufferMemoryRequirements {
 
   DeviceBufferMemoryRequirements(const BufferCreateInfo *p_create_info = {}, const void *p_next = {})
     : p_create_info_(p_create_info), p_next_(p_next) {}
+
+  DeviceBufferMemoryRequirements(const native_type &rhs)
+    : DeviceBufferMemoryRequirements(std::bit_cast<DeviceBufferMemoryRequirements>(rhs)) {}
+
+  DeviceBufferMemoryRequirements &operator=(const native_type &rhs) {
+    *this = std::bit_cast<DeviceBufferMemoryRequirements>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const DeviceBufferMemoryRequirements &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -9818,6 +15432,16 @@ struct BindImageMemoryDeviceGroupInfo {
                                  const void *p_next = {})
     : p_split_instance_bind_regions_(p_split_instance_bind_regions), device_index_count_(device_index_count),
       p_device_indices_(p_device_indices), split_instance_bind_region_count_(split_instance_bind_region_count), p_next_(p_next) {}
+
+  BindImageMemoryDeviceGroupInfo(const native_type &rhs)
+    : BindImageMemoryDeviceGroupInfo(std::bit_cast<BindImageMemoryDeviceGroupInfo>(rhs)) {}
+
+  BindImageMemoryDeviceGroupInfo &operator=(const native_type &rhs) {
+    *this = std::bit_cast<BindImageMemoryDeviceGroupInfo>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const BindImageMemoryDeviceGroupInfo &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -9840,6 +15464,15 @@ struct SubpassDependency2 {
       dst_stage_mask_(dst_stage_mask), src_access_mask_(src_access_mask), dst_access_mask_(dst_access_mask),
       dependency_flags_(dependency_flags), p_next_(p_next) {}
 
+  SubpassDependency2(const native_type &rhs) : SubpassDependency2(std::bit_cast<SubpassDependency2>(rhs)) {}
+
+  SubpassDependency2 &operator=(const native_type &rhs) {
+    *this = std::bit_cast<SubpassDependency2>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const SubpassDependency2 &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::SUBPASS_DEPENDENCY_2;
@@ -9860,6 +15493,16 @@ struct DeviceGroupCommandBufferBeginInfo {
 
   DeviceGroupCommandBufferBeginInfo(uint32_t device_mask = {}, const void *p_next = {}) : device_mask_(device_mask), p_next_(p_next) {}
 
+  DeviceGroupCommandBufferBeginInfo(const native_type &rhs)
+    : DeviceGroupCommandBufferBeginInfo(std::bit_cast<DeviceGroupCommandBufferBeginInfo>(rhs)) {}
+
+  DeviceGroupCommandBufferBeginInfo &operator=(const native_type &rhs) {
+    *this = std::bit_cast<DeviceGroupCommandBufferBeginInfo>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const DeviceGroupCommandBufferBeginInfo &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::DEVICE_GROUP_COMMAND_BUFFER_BEGIN_INFO;
@@ -9873,6 +15516,16 @@ struct PhysicalDeviceImageRobustnessFeatures {
 
   PhysicalDeviceImageRobustnessFeatures(VkBool32 robust_image_access = {}, void *p_next = {})
     : robust_image_access_(robust_image_access), p_next_(p_next) {}
+
+  PhysicalDeviceImageRobustnessFeatures(const native_type &rhs)
+    : PhysicalDeviceImageRobustnessFeatures(std::bit_cast<PhysicalDeviceImageRobustnessFeatures>(rhs)) {}
+
+  PhysicalDeviceImageRobustnessFeatures &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceImageRobustnessFeatures>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceImageRobustnessFeatures &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -9894,6 +15547,16 @@ struct PipelineCoverageModulationStateCreateInfoNV {
       coverage_modulation_table_enable_(coverage_modulation_table_enable),
       coverage_modulation_table_count_(coverage_modulation_table_count), p_next_(p_next) {}
 
+  PipelineCoverageModulationStateCreateInfoNV(const native_type &rhs)
+    : PipelineCoverageModulationStateCreateInfoNV(std::bit_cast<PipelineCoverageModulationStateCreateInfoNV>(rhs)) {}
+
+  PipelineCoverageModulationStateCreateInfoNV &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PipelineCoverageModulationStateCreateInfoNV>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PipelineCoverageModulationStateCreateInfoNV &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PIPELINE_COVERAGE_MODULATION_STATE_CREATE_INFO_NV;
@@ -9912,6 +15575,17 @@ struct PhysicalDeviceShaderRelaxedExtendedInstructionFeaturesKHR {
   PhysicalDeviceShaderRelaxedExtendedInstructionFeaturesKHR(VkBool32 shader_relaxed_extended_instruction = {}, void *p_next = {})
     : shader_relaxed_extended_instruction_(shader_relaxed_extended_instruction), p_next_(p_next) {}
 
+  PhysicalDeviceShaderRelaxedExtendedInstructionFeaturesKHR(const native_type &rhs)
+    : PhysicalDeviceShaderRelaxedExtendedInstructionFeaturesKHR(
+        std::bit_cast<PhysicalDeviceShaderRelaxedExtendedInstructionFeaturesKHR>(rhs)) {}
+
+  PhysicalDeviceShaderRelaxedExtendedInstructionFeaturesKHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceShaderRelaxedExtendedInstructionFeaturesKHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceShaderRelaxedExtendedInstructionFeaturesKHR &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PHYSICAL_DEVICE_SHADER_RELAXED_EXTENDED_INSTRUCTION_FEATURES_KHR;
@@ -9926,6 +15600,15 @@ struct CommandBufferAllocateInfo {
   CommandBufferAllocateInfo(uint32_t command_buffer_count = {}, VkCommandPool command_pool = {}, CommandBufferLevel level = {},
                             const void *p_next = {})
     : command_buffer_count_(command_buffer_count), command_pool_(command_pool), level_(level), p_next_(p_next) {}
+
+  CommandBufferAllocateInfo(const native_type &rhs) : CommandBufferAllocateInfo(std::bit_cast<CommandBufferAllocateInfo>(rhs)) {}
+
+  CommandBufferAllocateInfo &operator=(const native_type &rhs) {
+    *this = std::bit_cast<CommandBufferAllocateInfo>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const CommandBufferAllocateInfo &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -9942,6 +15625,15 @@ struct BaseInStructure {
 
   BaseInStructure(StructureType s_type = {}, const struct BaseInStructure *p_next = {}) : s_type_(s_type), p_next_(p_next) {}
 
+  BaseInStructure(const native_type &rhs) : BaseInStructure(std::bit_cast<BaseInStructure>(rhs)) {}
+
+  BaseInStructure &operator=(const native_type &rhs) {
+    *this = std::bit_cast<BaseInStructure>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const BaseInStructure &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_;
@@ -9954,6 +15646,15 @@ struct FenceGetFdInfoKHR {
 
   FenceGetFdInfoKHR(ExternalFenceHandleTypeMaskBit handle_type = {}, VkFence fence = {}, const void *p_next = {})
     : handle_type_(handle_type), fence_(fence), p_next_(p_next) {}
+
+  FenceGetFdInfoKHR(const native_type &rhs) : FenceGetFdInfoKHR(std::bit_cast<FenceGetFdInfoKHR>(rhs)) {}
+
+  FenceGetFdInfoKHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<FenceGetFdInfoKHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const FenceGetFdInfoKHR &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -9977,6 +15678,16 @@ struct AccelerationStructureBuildGeometryInfoKHR {
       dst_acceleration_structure_(dst_acceleration_structure), geometry_count_(geometry_count), p_geometries_(p_geometries),
       pp_geometries_(pp_geometries), p_next_(p_next) {}
 
+  AccelerationStructureBuildGeometryInfoKHR(const native_type &rhs)
+    : AccelerationStructureBuildGeometryInfoKHR(std::bit_cast<AccelerationStructureBuildGeometryInfoKHR>(rhs)) {}
+
+  AccelerationStructureBuildGeometryInfoKHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<AccelerationStructureBuildGeometryInfoKHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const AccelerationStructureBuildGeometryInfoKHR &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::ACCELERATION_STRUCTURE_BUILD_GEOMETRY_INFO_KHR;
@@ -9999,6 +15710,15 @@ struct DisplayPresentInfoKHR {
   DisplayPresentInfoKHR(VkBool32 persistent = {}, Rect2D src_rect = {}, Rect2D dst_rect = {}, const void *p_next = {})
     : persistent_(persistent), src_rect_(src_rect), dst_rect_(dst_rect), p_next_(p_next) {}
 
+  DisplayPresentInfoKHR(const native_type &rhs) : DisplayPresentInfoKHR(std::bit_cast<DisplayPresentInfoKHR>(rhs)) {}
+
+  DisplayPresentInfoKHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<DisplayPresentInfoKHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const DisplayPresentInfoKHR &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::DISPLAY_PRESENT_INFO_KHR;
@@ -10016,6 +15736,16 @@ struct DescriptorSetVariableDescriptorCountAllocateInfo {
                                                    const void *p_next = {})
     : p_descriptor_counts_(p_descriptor_counts), descriptor_set_count_(descriptor_set_count), p_next_(p_next) {}
 
+  DescriptorSetVariableDescriptorCountAllocateInfo(const native_type &rhs)
+    : DescriptorSetVariableDescriptorCountAllocateInfo(std::bit_cast<DescriptorSetVariableDescriptorCountAllocateInfo>(rhs)) {}
+
+  DescriptorSetVariableDescriptorCountAllocateInfo &operator=(const native_type &rhs) {
+    *this = std::bit_cast<DescriptorSetVariableDescriptorCountAllocateInfo>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const DescriptorSetVariableDescriptorCountAllocateInfo &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::DESCRIPTOR_SET_VARIABLE_DESCRIPTOR_COUNT_ALLOCATE_INFO;
@@ -10032,6 +15762,15 @@ struct ApplicationInfo {
                   const char *p_engine_name = {}, uint32_t engine_version = {}, const void *p_next = {})
     : api_version_(api_version), p_application_name_(p_application_name), application_version_(application_version),
       p_engine_name_(p_engine_name), engine_version_(engine_version), p_next_(p_next) {}
+
+  ApplicationInfo(const native_type &rhs) : ApplicationInfo(std::bit_cast<ApplicationInfo>(rhs)) {}
+
+  ApplicationInfo &operator=(const native_type &rhs) {
+    *this = std::bit_cast<ApplicationInfo>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const ApplicationInfo &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -10055,6 +15794,15 @@ struct InstanceCreateInfo {
       enabled_layer_count_(enabled_layer_count), pp_enabled_layer_names_(pp_enabled_layer_names),
       enabled_extension_count_(enabled_extension_count), p_next_(p_next) {}
 
+  InstanceCreateInfo(const native_type &rhs) : InstanceCreateInfo(std::bit_cast<InstanceCreateInfo>(rhs)) {}
+
+  InstanceCreateInfo &operator=(const native_type &rhs) {
+    *this = std::bit_cast<InstanceCreateInfo>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const InstanceCreateInfo &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::INSTANCE_CREATE_INFO;
@@ -10070,6 +15818,16 @@ struct InstanceCreateInfo {
 struct PhysicalDeviceLayeredApiPropertiesKHR {
 
   using native_type = VkPhysicalDeviceLayeredApiPropertiesKHR;
+
+  PhysicalDeviceLayeredApiPropertiesKHR(const native_type &rhs)
+    : PhysicalDeviceLayeredApiPropertiesKHR(std::bit_cast<PhysicalDeviceLayeredApiPropertiesKHR>(rhs)) {}
+
+  PhysicalDeviceLayeredApiPropertiesKHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceLayeredApiPropertiesKHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceLayeredApiPropertiesKHR &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -10093,6 +15851,16 @@ struct PipelineColorBlendAttachmentState {
       color_blend_op_(color_blend_op), src_alpha_blend_factor_(src_alpha_blend_factor), dst_alpha_blend_factor_(dst_alpha_blend_factor),
       alpha_blend_op_(alpha_blend_op), color_write_mask_(color_write_mask) {}
 
+  PipelineColorBlendAttachmentState(const native_type &rhs)
+    : PipelineColorBlendAttachmentState(std::bit_cast<PipelineColorBlendAttachmentState>(rhs)) {}
+
+  PipelineColorBlendAttachmentState &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PipelineColorBlendAttachmentState>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PipelineColorBlendAttachmentState &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   VkBool32 blend_enable_;
@@ -10112,6 +15880,16 @@ struct PhysicalDeviceZeroInitializeWorkgroupMemoryFeatures {
   PhysicalDeviceZeroInitializeWorkgroupMemoryFeatures(VkBool32 shader_zero_initialize_workgroup_memory = {}, void *p_next = {})
     : shader_zero_initialize_workgroup_memory_(shader_zero_initialize_workgroup_memory), p_next_(p_next) {}
 
+  PhysicalDeviceZeroInitializeWorkgroupMemoryFeatures(const native_type &rhs)
+    : PhysicalDeviceZeroInitializeWorkgroupMemoryFeatures(std::bit_cast<PhysicalDeviceZeroInitializeWorkgroupMemoryFeatures>(rhs)) {}
+
+  PhysicalDeviceZeroInitializeWorkgroupMemoryFeatures &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceZeroInitializeWorkgroupMemoryFeatures>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceZeroInitializeWorkgroupMemoryFeatures &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PHYSICAL_DEVICE_ZERO_INITIALIZE_WORKGROUP_MEMORY_FEATURES;
@@ -10128,6 +15906,15 @@ struct FramebufferCreateInfo {
                         const void *p_next = {})
     : layers_(layers), flags_(flags), render_pass_(render_pass), attachment_count_(attachment_count), p_attachments_(p_attachments),
       width_(width), height_(height), p_next_(p_next) {}
+
+  FramebufferCreateInfo(const native_type &rhs) : FramebufferCreateInfo(std::bit_cast<FramebufferCreateInfo>(rhs)) {}
+
+  FramebufferCreateInfo &operator=(const native_type &rhs) {
+    *this = std::bit_cast<FramebufferCreateInfo>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const FramebufferCreateInfo &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -10155,6 +15942,16 @@ struct PhysicalDeviceAccelerationStructureFeaturesKHR {
       acceleration_structure_indirect_build_(acceleration_structure_indirect_build),
       acceleration_structure_host_commands_(acceleration_structure_host_commands), p_next_(p_next) {}
 
+  PhysicalDeviceAccelerationStructureFeaturesKHR(const native_type &rhs)
+    : PhysicalDeviceAccelerationStructureFeaturesKHR(std::bit_cast<PhysicalDeviceAccelerationStructureFeaturesKHR>(rhs)) {}
+
+  PhysicalDeviceAccelerationStructureFeaturesKHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceAccelerationStructureFeaturesKHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceAccelerationStructureFeaturesKHR &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PHYSICAL_DEVICE_ACCELERATION_STRUCTURE_FEATURES_KHR;
@@ -10177,6 +15974,16 @@ struct PhysicalDevicePrimitivesGeneratedQueryFeaturesEXT {
       primitives_generated_query_(primitives_generated_query),
       primitives_generated_query_with_rasterizer_discard_(primitives_generated_query_with_rasterizer_discard), p_next_(p_next) {}
 
+  PhysicalDevicePrimitivesGeneratedQueryFeaturesEXT(const native_type &rhs)
+    : PhysicalDevicePrimitivesGeneratedQueryFeaturesEXT(std::bit_cast<PhysicalDevicePrimitivesGeneratedQueryFeaturesEXT>(rhs)) {}
+
+  PhysicalDevicePrimitivesGeneratedQueryFeaturesEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDevicePrimitivesGeneratedQueryFeaturesEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDevicePrimitivesGeneratedQueryFeaturesEXT &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PHYSICAL_DEVICE_PRIMITIVES_GENERATED_QUERY_FEATURES_EXT;
@@ -10198,6 +16005,16 @@ struct SamplerYcbcrConversionCreateInfo {
       components_(components), x_chroma_offset_(x_chroma_offset), y_chroma_offset_(y_chroma_offset), chroma_filter_(chroma_filter),
       p_next_(p_next) {}
 
+  SamplerYcbcrConversionCreateInfo(const native_type &rhs)
+    : SamplerYcbcrConversionCreateInfo(std::bit_cast<SamplerYcbcrConversionCreateInfo>(rhs)) {}
+
+  SamplerYcbcrConversionCreateInfo &operator=(const native_type &rhs) {
+    *this = std::bit_cast<SamplerYcbcrConversionCreateInfo>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const SamplerYcbcrConversionCreateInfo &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::SAMPLER_YCBCR_CONVERSION_CREATE_INFO;
@@ -10216,6 +16033,16 @@ struct PhysicalDeviceShaderSMBuiltinsPropertiesNV {
 
   using native_type = VkPhysicalDeviceShaderSMBuiltinsPropertiesNV;
 
+  PhysicalDeviceShaderSMBuiltinsPropertiesNV(const native_type &rhs)
+    : PhysicalDeviceShaderSMBuiltinsPropertiesNV(std::bit_cast<PhysicalDeviceShaderSMBuiltinsPropertiesNV>(rhs)) {}
+
+  PhysicalDeviceShaderSMBuiltinsPropertiesNV &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceShaderSMBuiltinsPropertiesNV>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceShaderSMBuiltinsPropertiesNV &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PHYSICAL_DEVICE_SHADER_SM_BUILTINS_PROPERTIES_NV;
@@ -10231,6 +16058,15 @@ struct MultiDrawIndexedInfoEXT {
   MultiDrawIndexedInfoEXT(uint32_t first_index = {}, uint32_t index_count = {}, int32_t vertex_offset = {})
     : first_index_(first_index), index_count_(index_count), vertex_offset_(vertex_offset) {}
 
+  MultiDrawIndexedInfoEXT(const native_type &rhs) : MultiDrawIndexedInfoEXT(std::bit_cast<MultiDrawIndexedInfoEXT>(rhs)) {}
+
+  MultiDrawIndexedInfoEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<MultiDrawIndexedInfoEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const MultiDrawIndexedInfoEXT &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   uint32_t first_index_;
@@ -10241,6 +16077,15 @@ struct MultiDrawIndexedInfoEXT {
 struct ExternalSemaphoreProperties {
 
   using native_type = VkExternalSemaphoreProperties;
+
+  ExternalSemaphoreProperties(const native_type &rhs) : ExternalSemaphoreProperties(std::bit_cast<ExternalSemaphoreProperties>(rhs)) {}
+
+  ExternalSemaphoreProperties &operator=(const native_type &rhs) {
+    *this = std::bit_cast<ExternalSemaphoreProperties>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const ExternalSemaphoreProperties &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -10259,6 +16104,16 @@ struct DescriptorUpdateTemplateEntry {
                                 DescriptorType descriptor_type = {}, size_t offset = {}, size_t stride = {})
     : dst_binding_(dst_binding), dst_array_element_(dst_array_element), descriptor_count_(descriptor_count),
       descriptor_type_(descriptor_type), offset_(offset), stride_(stride) {}
+
+  DescriptorUpdateTemplateEntry(const native_type &rhs)
+    : DescriptorUpdateTemplateEntry(std::bit_cast<DescriptorUpdateTemplateEntry>(rhs)) {}
+
+  DescriptorUpdateTemplateEntry &operator=(const native_type &rhs) {
+    *this = std::bit_cast<DescriptorUpdateTemplateEntry>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const DescriptorUpdateTemplateEntry &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -10285,6 +16140,16 @@ struct DescriptorUpdateTemplateCreateInfo {
       descriptor_set_layout_(descriptor_set_layout), pipeline_bind_point_(pipeline_bind_point), pipeline_layout_(pipeline_layout),
       p_next_(p_next) {}
 
+  DescriptorUpdateTemplateCreateInfo(const native_type &rhs)
+    : DescriptorUpdateTemplateCreateInfo(std::bit_cast<DescriptorUpdateTemplateCreateInfo>(rhs)) {}
+
+  DescriptorUpdateTemplateCreateInfo &operator=(const native_type &rhs) {
+    *this = std::bit_cast<DescriptorUpdateTemplateCreateInfo>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const DescriptorUpdateTemplateCreateInfo &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::DESCRIPTOR_UPDATE_TEMPLATE_CREATE_INFO;
@@ -10307,6 +16172,16 @@ struct WriteDescriptorSetAccelerationStructureNV {
                                             uint32_t acceleration_structure_count = {}, const void *p_next = {})
     : p_acceleration_structures_(p_acceleration_structures), acceleration_structure_count_(acceleration_structure_count), p_next_(p_next) {}
 
+  WriteDescriptorSetAccelerationStructureNV(const native_type &rhs)
+    : WriteDescriptorSetAccelerationStructureNV(std::bit_cast<WriteDescriptorSetAccelerationStructureNV>(rhs)) {}
+
+  WriteDescriptorSetAccelerationStructureNV &operator=(const native_type &rhs) {
+    *this = std::bit_cast<WriteDescriptorSetAccelerationStructureNV>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const WriteDescriptorSetAccelerationStructureNV &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::WRITE_DESCRIPTOR_SET_ACCELERATION_STRUCTURE_NV;
@@ -10318,6 +16193,16 @@ struct WriteDescriptorSetAccelerationStructureNV {
 struct PhysicalDeviceTimelineSemaphoreProperties {
 
   using native_type = VkPhysicalDeviceTimelineSemaphoreProperties;
+
+  PhysicalDeviceTimelineSemaphoreProperties(const native_type &rhs)
+    : PhysicalDeviceTimelineSemaphoreProperties(std::bit_cast<PhysicalDeviceTimelineSemaphoreProperties>(rhs)) {}
+
+  PhysicalDeviceTimelineSemaphoreProperties &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceTimelineSemaphoreProperties>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceTimelineSemaphoreProperties &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -10335,6 +16220,15 @@ struct CommandBufferInheritanceInfo {
                                const void *p_next = {})
     : pipeline_statistics_(pipeline_statistics), render_pass_(render_pass), subpass_(subpass), framebuffer_(framebuffer),
       occlusion_query_enable_(occlusion_query_enable), query_flags_(query_flags), p_next_(p_next) {}
+
+  CommandBufferInheritanceInfo(const native_type &rhs) : CommandBufferInheritanceInfo(std::bit_cast<CommandBufferInheritanceInfo>(rhs)) {}
+
+  CommandBufferInheritanceInfo &operator=(const native_type &rhs) {
+    *this = std::bit_cast<CommandBufferInheritanceInfo>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const CommandBufferInheritanceInfo &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -10354,6 +16248,15 @@ struct MappedMemoryRange {
 
   MappedMemoryRange(VkDeviceSize size = {}, VkDeviceMemory memory = {}, VkDeviceSize offset = {}, const void *p_next = {})
     : size_(size), memory_(memory), offset_(offset), p_next_(p_next) {}
+
+  MappedMemoryRange(const native_type &rhs) : MappedMemoryRange(std::bit_cast<MappedMemoryRange>(rhs)) {}
+
+  MappedMemoryRange &operator=(const native_type &rhs) {
+    *this = std::bit_cast<MappedMemoryRange>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const MappedMemoryRange &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -10375,6 +16278,16 @@ struct RayTracingShaderGroupCreateInfoKHR {
       closest_hit_shader_(closest_hit_shader), any_hit_shader_(any_hit_shader), intersection_shader_(intersection_shader), p_next_(p_next) {
   }
 
+  RayTracingShaderGroupCreateInfoKHR(const native_type &rhs)
+    : RayTracingShaderGroupCreateInfoKHR(std::bit_cast<RayTracingShaderGroupCreateInfoKHR>(rhs)) {}
+
+  RayTracingShaderGroupCreateInfoKHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<RayTracingShaderGroupCreateInfoKHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const RayTracingShaderGroupCreateInfoKHR &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::RAY_TRACING_SHADER_GROUP_CREATE_INFO_KHR;
@@ -10395,6 +16308,16 @@ struct PipelineViewportStateCreateInfo {
                                   const Viewport *p_viewports = {}, uint32_t scissor_count = {}, const void *p_next = {})
     : p_scissors_(p_scissors), flags_(flags), viewport_count_(viewport_count), p_viewports_(p_viewports), scissor_count_(scissor_count),
       p_next_(p_next) {}
+
+  PipelineViewportStateCreateInfo(const native_type &rhs)
+    : PipelineViewportStateCreateInfo(std::bit_cast<PipelineViewportStateCreateInfo>(rhs)) {}
+
+  PipelineViewportStateCreateInfo &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PipelineViewportStateCreateInfo>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PipelineViewportStateCreateInfo &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -10420,6 +16343,16 @@ struct PipelineRasterizationStateCreateInfo {
       rasterizer_discard_enable_(rasterizer_discard_enable), polygon_mode_(polygon_mode), cull_mode_(cull_mode), front_face_(front_face),
       depth_bias_enable_(depth_bias_enable), depth_bias_constant_factor_(depth_bias_constant_factor), depth_bias_clamp_(depth_bias_clamp),
       depth_bias_slope_factor_(depth_bias_slope_factor), p_next_(p_next) {}
+
+  PipelineRasterizationStateCreateInfo(const native_type &rhs)
+    : PipelineRasterizationStateCreateInfo(std::bit_cast<PipelineRasterizationStateCreateInfo>(rhs)) {}
+
+  PipelineRasterizationStateCreateInfo &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PipelineRasterizationStateCreateInfo>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PipelineRasterizationStateCreateInfo &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -10447,6 +16380,15 @@ struct StencilOpState {
     : fail_op_(fail_op), pass_op_(pass_op), depth_fail_op_(depth_fail_op), compare_op_(compare_op), compare_mask_(compare_mask),
       write_mask_(write_mask), reference_(reference) {}
 
+  StencilOpState(const native_type &rhs) : StencilOpState(std::bit_cast<StencilOpState>(rhs)) {}
+
+  StencilOpState &operator=(const native_type &rhs) {
+    *this = std::bit_cast<StencilOpState>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const StencilOpState &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StencilOp fail_op_;
@@ -10469,6 +16411,16 @@ struct PipelineDepthStencilStateCreateInfo {
     : max_depth_bounds_(max_depth_bounds), flags_(flags), depth_test_enable_(depth_test_enable), depth_write_enable_(depth_write_enable),
       depth_compare_op_(depth_compare_op), depth_bounds_test_enable_(depth_bounds_test_enable), stencil_test_enable_(stencil_test_enable),
       front_(front), back_(back), min_depth_bounds_(min_depth_bounds), p_next_(p_next) {}
+
+  PipelineDepthStencilStateCreateInfo(const native_type &rhs)
+    : PipelineDepthStencilStateCreateInfo(std::bit_cast<PipelineDepthStencilStateCreateInfo>(rhs)) {}
+
+  PipelineDepthStencilStateCreateInfo &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PipelineDepthStencilStateCreateInfo>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PipelineDepthStencilStateCreateInfo &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -10495,6 +16447,16 @@ struct PipelineColorBlendStateCreateInfo {
                                     const PipelineColorBlendAttachmentState *p_attachments = {}, const void *p_next = {})
     : blend_constants_(blend_constants), flags_(flags), logic_op_enable_(logic_op_enable), logic_op_(logic_op),
       attachment_count_(attachment_count), p_attachments_(p_attachments), p_next_(p_next) {}
+
+  PipelineColorBlendStateCreateInfo(const native_type &rhs)
+    : PipelineColorBlendStateCreateInfo(std::bit_cast<PipelineColorBlendStateCreateInfo>(rhs)) {}
+
+  PipelineColorBlendStateCreateInfo &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PipelineColorBlendStateCreateInfo>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PipelineColorBlendStateCreateInfo &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -10532,6 +16494,15 @@ struct GraphicsPipelineCreateInfo {
       p_dynamic_state_(p_dynamic_state), layout_(layout), render_pass_(render_pass), subpass_(subpass),
       base_pipeline_handle_(base_pipeline_handle), p_next_(p_next) {}
 
+  GraphicsPipelineCreateInfo(const native_type &rhs) : GraphicsPipelineCreateInfo(std::bit_cast<GraphicsPipelineCreateInfo>(rhs)) {}
+
+  GraphicsPipelineCreateInfo &operator=(const native_type &rhs) {
+    *this = std::bit_cast<GraphicsPipelineCreateInfo>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const GraphicsPipelineCreateInfo &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::GRAPHICS_PIPELINE_CREATE_INFO;
@@ -10559,6 +16530,15 @@ struct SparseImageFormatProperties2 {
 
   using native_type = VkSparseImageFormatProperties2;
 
+  SparseImageFormatProperties2(const native_type &rhs) : SparseImageFormatProperties2(std::bit_cast<SparseImageFormatProperties2>(rhs)) {}
+
+  SparseImageFormatProperties2 &operator=(const native_type &rhs) {
+    *this = std::bit_cast<SparseImageFormatProperties2>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const SparseImageFormatProperties2 &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::SPARSE_IMAGE_FORMAT_PROPERTIES_2;
@@ -10575,6 +16555,15 @@ struct DisplaySurfaceCreateInfoKHR {
                               float global_alpha = {}, DisplayPlaneAlphaMaskBit alpha_mode = {}, const void *p_next = {})
     : image_extent_(image_extent), flags_(flags), display_mode_(display_mode), plane_index_(plane_index),
       plane_stack_index_(plane_stack_index), transform_(transform), global_alpha_(global_alpha), alpha_mode_(alpha_mode), p_next_(p_next) {}
+
+  DisplaySurfaceCreateInfoKHR(const native_type &rhs) : DisplaySurfaceCreateInfoKHR(std::bit_cast<DisplaySurfaceCreateInfoKHR>(rhs)) {}
+
+  DisplaySurfaceCreateInfoKHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<DisplaySurfaceCreateInfoKHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const DisplaySurfaceCreateInfoKHR &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -10596,6 +16585,16 @@ struct PhysicalDeviceRayQueryFeaturesKHR {
 
   PhysicalDeviceRayQueryFeaturesKHR(VkBool32 ray_query = {}, void *p_next = {}) : ray_query_(ray_query), p_next_(p_next) {}
 
+  PhysicalDeviceRayQueryFeaturesKHR(const native_type &rhs)
+    : PhysicalDeviceRayQueryFeaturesKHR(std::bit_cast<PhysicalDeviceRayQueryFeaturesKHR>(rhs)) {}
+
+  PhysicalDeviceRayQueryFeaturesKHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceRayQueryFeaturesKHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceRayQueryFeaturesKHR &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PHYSICAL_DEVICE_RAY_QUERY_FEATURES_KHR;
@@ -10609,6 +16608,16 @@ struct PipelineIndirectDeviceAddressInfoNV {
 
   PipelineIndirectDeviceAddressInfoNV(VkPipeline pipeline = {}, PipelineBindPoint pipeline_bind_point = {}, const void *p_next = {})
     : pipeline_(pipeline), pipeline_bind_point_(pipeline_bind_point), p_next_(p_next) {}
+
+  PipelineIndirectDeviceAddressInfoNV(const native_type &rhs)
+    : PipelineIndirectDeviceAddressInfoNV(std::bit_cast<PipelineIndirectDeviceAddressInfoNV>(rhs)) {}
+
+  PipelineIndirectDeviceAddressInfoNV &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PipelineIndirectDeviceAddressInfoNV>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PipelineIndirectDeviceAddressInfoNV &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -10627,6 +16636,16 @@ struct PipelineCacheHeaderVersionOne {
     : header_size_(header_size), header_version_(header_version), vendor_id_(vendor_id), device_id_(device_id),
       pipeline_cache_uuid_(pipeline_cache_uuid) {}
 
+  PipelineCacheHeaderVersionOne(const native_type &rhs)
+    : PipelineCacheHeaderVersionOne(std::bit_cast<PipelineCacheHeaderVersionOne>(rhs)) {}
+
+  PipelineCacheHeaderVersionOne &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PipelineCacheHeaderVersionOne>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PipelineCacheHeaderVersionOne &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   uint32_t header_size_;
@@ -10643,6 +16662,16 @@ struct PhysicalDeviceSeparateDepthStencilLayoutsFeatures {
   PhysicalDeviceSeparateDepthStencilLayoutsFeatures(VkBool32 separate_depth_stencil_layouts = {}, void *p_next = {})
     : separate_depth_stencil_layouts_(separate_depth_stencil_layouts), p_next_(p_next) {}
 
+  PhysicalDeviceSeparateDepthStencilLayoutsFeatures(const native_type &rhs)
+    : PhysicalDeviceSeparateDepthStencilLayoutsFeatures(std::bit_cast<PhysicalDeviceSeparateDepthStencilLayoutsFeatures>(rhs)) {}
+
+  PhysicalDeviceSeparateDepthStencilLayoutsFeatures &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceSeparateDepthStencilLayoutsFeatures>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceSeparateDepthStencilLayoutsFeatures &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PHYSICAL_DEVICE_SEPARATE_DEPTH_STENCIL_LAYOUTS_FEATURES;
@@ -10653,6 +16682,16 @@ struct PhysicalDeviceSeparateDepthStencilLayoutsFeatures {
 struct PhysicalDeviceCooperativeMatrixPropertiesNV {
 
   using native_type = VkPhysicalDeviceCooperativeMatrixPropertiesNV;
+
+  PhysicalDeviceCooperativeMatrixPropertiesNV(const native_type &rhs)
+    : PhysicalDeviceCooperativeMatrixPropertiesNV(std::bit_cast<PhysicalDeviceCooperativeMatrixPropertiesNV>(rhs)) {}
+
+  PhysicalDeviceCooperativeMatrixPropertiesNV &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceCooperativeMatrixPropertiesNV>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceCooperativeMatrixPropertiesNV &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -10667,6 +16706,15 @@ struct DescriptorPoolSize {
 
   DescriptorPoolSize(DescriptorType type = {}, uint32_t descriptor_count = {}) : type_(type), descriptor_count_(descriptor_count) {}
 
+  DescriptorPoolSize(const native_type &rhs) : DescriptorPoolSize(std::bit_cast<DescriptorPoolSize>(rhs)) {}
+
+  DescriptorPoolSize &operator=(const native_type &rhs) {
+    *this = std::bit_cast<DescriptorPoolSize>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const DescriptorPoolSize &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   DescriptorType type_;
@@ -10680,6 +16728,15 @@ struct DescriptorPoolCreateInfo {
   DescriptorPoolCreateInfo(const DescriptorPoolSize *p_pool_sizes = {}, DescriptorPoolCreateMask flags = {}, uint32_t max_sets = {},
                            uint32_t pool_size_count = {}, const void *p_next = {})
     : p_pool_sizes_(p_pool_sizes), flags_(flags), max_sets_(max_sets), pool_size_count_(pool_size_count), p_next_(p_next) {}
+
+  DescriptorPoolCreateInfo(const native_type &rhs) : DescriptorPoolCreateInfo(std::bit_cast<DescriptorPoolCreateInfo>(rhs)) {}
+
+  DescriptorPoolCreateInfo &operator=(const native_type &rhs) {
+    *this = std::bit_cast<DescriptorPoolCreateInfo>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const DescriptorPoolCreateInfo &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -10698,6 +16755,15 @@ struct ImportMemoryFdInfoKHR {
   ImportMemoryFdInfoKHR(int fd = {}, ExternalMemoryHandleTypeMaskBit handle_type = {}, const void *p_next = {})
     : fd_(fd), handle_type_(handle_type), p_next_(p_next) {}
 
+  ImportMemoryFdInfoKHR(const native_type &rhs) : ImportMemoryFdInfoKHR(std::bit_cast<ImportMemoryFdInfoKHR>(rhs)) {}
+
+  ImportMemoryFdInfoKHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<ImportMemoryFdInfoKHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const ImportMemoryFdInfoKHR &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::IMPORT_MEMORY_FD_INFO_KHR;
@@ -10709,6 +16775,16 @@ struct ImportMemoryFdInfoKHR {
 struct PhysicalDeviceExternalMemoryHostPropertiesEXT {
 
   using native_type = VkPhysicalDeviceExternalMemoryHostPropertiesEXT;
+
+  PhysicalDeviceExternalMemoryHostPropertiesEXT(const native_type &rhs)
+    : PhysicalDeviceExternalMemoryHostPropertiesEXT(std::bit_cast<PhysicalDeviceExternalMemoryHostPropertiesEXT>(rhs)) {}
+
+  PhysicalDeviceExternalMemoryHostPropertiesEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceExternalMemoryHostPropertiesEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceExternalMemoryHostPropertiesEXT &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -10723,6 +16799,16 @@ struct WriteDescriptorSetInlineUniformBlock {
 
   WriteDescriptorSetInlineUniformBlock(const void *p_data = {}, uint32_t data_size = {}, const void *p_next = {})
     : p_data_(p_data), data_size_(data_size), p_next_(p_next) {}
+
+  WriteDescriptorSetInlineUniformBlock(const native_type &rhs)
+    : WriteDescriptorSetInlineUniformBlock(std::bit_cast<WriteDescriptorSetInlineUniformBlock>(rhs)) {}
+
+  WriteDescriptorSetInlineUniformBlock &operator=(const native_type &rhs) {
+    *this = std::bit_cast<WriteDescriptorSetInlineUniformBlock>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const WriteDescriptorSetInlineUniformBlock &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -10741,6 +16827,16 @@ struct VideoEncodeH264GopRemainingFrameInfoKHR {
     : gop_remaining_b_(gop_remaining_b), use_gop_remaining_frames_(use_gop_remaining_frames), gop_remaining_i_(gop_remaining_i),
       gop_remaining_p_(gop_remaining_p), p_next_(p_next) {}
 
+  VideoEncodeH264GopRemainingFrameInfoKHR(const native_type &rhs)
+    : VideoEncodeH264GopRemainingFrameInfoKHR(std::bit_cast<VideoEncodeH264GopRemainingFrameInfoKHR>(rhs)) {}
+
+  VideoEncodeH264GopRemainingFrameInfoKHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<VideoEncodeH264GopRemainingFrameInfoKHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const VideoEncodeH264GopRemainingFrameInfoKHR &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::VIDEO_ENCODE_H264_GOP_REMAINING_FRAME_INFO_KHR;
@@ -10758,6 +16854,15 @@ struct GeometryAABBNV {
   GeometryAABBNV(VkDeviceSize offset = {}, VkBuffer aabb_data = {}, uint32_t num_aabbs = {}, uint32_t stride = {}, const void *p_next = {})
     : offset_(offset), aabb_data_(aabb_data), num_aabbs_(num_aabbs), stride_(stride), p_next_(p_next) {}
 
+  GeometryAABBNV(const native_type &rhs) : GeometryAABBNV(std::bit_cast<GeometryAABBNV>(rhs)) {}
+
+  GeometryAABBNV &operator=(const native_type &rhs) {
+    *this = std::bit_cast<GeometryAABBNV>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const GeometryAABBNV &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::GEOMETRY_AABB_NV;
@@ -10774,6 +16879,15 @@ struct GeometryDataNV {
 
   GeometryDataNV(GeometryTrianglesNV triangles = {}, GeometryAABBNV aabbs = {}) : triangles_(triangles), aabbs_(aabbs) {}
 
+  GeometryDataNV(const native_type &rhs) : GeometryDataNV(std::bit_cast<GeometryDataNV>(rhs)) {}
+
+  GeometryDataNV &operator=(const native_type &rhs) {
+    *this = std::bit_cast<GeometryDataNV>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const GeometryDataNV &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   GeometryTrianglesNV triangles_;
@@ -10786,6 +16900,15 @@ struct GeometryNV {
 
   GeometryNV(GeometryMask flags = {}, GeometryType geometry_type = {}, GeometryDataNV geometry = {}, const void *p_next = {})
     : flags_(flags), geometry_type_(geometry_type), geometry_(geometry), p_next_(p_next) {}
+
+  GeometryNV(const native_type &rhs) : GeometryNV(std::bit_cast<GeometryNV>(rhs)) {}
+
+  GeometryNV &operator=(const native_type &rhs) {
+    *this = std::bit_cast<GeometryNV>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const GeometryNV &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -10806,6 +16929,15 @@ struct AccelerationStructureInfoNV {
     : p_geometries_(p_geometries), type_(type), flags_(flags), instance_count_(instance_count), geometry_count_(geometry_count),
       p_next_(p_next) {}
 
+  AccelerationStructureInfoNV(const native_type &rhs) : AccelerationStructureInfoNV(std::bit_cast<AccelerationStructureInfoNV>(rhs)) {}
+
+  AccelerationStructureInfoNV &operator=(const native_type &rhs) {
+    *this = std::bit_cast<AccelerationStructureInfoNV>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const AccelerationStructureInfoNV &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::ACCELERATION_STRUCTURE_INFO_NV;
@@ -10824,6 +16956,16 @@ struct AccelerationStructureCreateInfoNV {
   AccelerationStructureCreateInfoNV(AccelerationStructureInfoNV info = {}, VkDeviceSize compacted_size = {}, const void *p_next = {})
     : info_(info), compacted_size_(compacted_size), p_next_(p_next) {}
 
+  AccelerationStructureCreateInfoNV(const native_type &rhs)
+    : AccelerationStructureCreateInfoNV(std::bit_cast<AccelerationStructureCreateInfoNV>(rhs)) {}
+
+  AccelerationStructureCreateInfoNV &operator=(const native_type &rhs) {
+    *this = std::bit_cast<AccelerationStructureCreateInfoNV>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const AccelerationStructureCreateInfoNV &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::ACCELERATION_STRUCTURE_CREATE_INFO_NV;
@@ -10838,6 +16980,16 @@ struct PhysicalDeviceFaultFeaturesEXT {
 
   PhysicalDeviceFaultFeaturesEXT(VkBool32 device_fault_vendor_binary = {}, VkBool32 device_fault = {}, void *p_next = {})
     : device_fault_vendor_binary_(device_fault_vendor_binary), device_fault_(device_fault), p_next_(p_next) {}
+
+  PhysicalDeviceFaultFeaturesEXT(const native_type &rhs)
+    : PhysicalDeviceFaultFeaturesEXT(std::bit_cast<PhysicalDeviceFaultFeaturesEXT>(rhs)) {}
+
+  PhysicalDeviceFaultFeaturesEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceFaultFeaturesEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceFaultFeaturesEXT &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -10855,6 +17007,16 @@ struct ImageDrmFormatModifierListCreateInfoEXT {
                                           const void *p_next = {})
     : p_drm_format_modifiers_(p_drm_format_modifiers), drm_format_modifier_count_(drm_format_modifier_count), p_next_(p_next) {}
 
+  ImageDrmFormatModifierListCreateInfoEXT(const native_type &rhs)
+    : ImageDrmFormatModifierListCreateInfoEXT(std::bit_cast<ImageDrmFormatModifierListCreateInfoEXT>(rhs)) {}
+
+  ImageDrmFormatModifierListCreateInfoEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<ImageDrmFormatModifierListCreateInfoEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const ImageDrmFormatModifierListCreateInfoEXT &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::IMAGE_DRM_FORMAT_MODIFIER_LIST_CREATE_INFO_EXT;
@@ -10870,6 +17032,16 @@ struct PhysicalDeviceTextureCompressionASTCHDRFeatures {
   PhysicalDeviceTextureCompressionASTCHDRFeatures(VkBool32 texture_compression_astc_hdr = {}, void *p_next = {})
     : texture_compression_astc_hdr_(texture_compression_astc_hdr), p_next_(p_next) {}
 
+  PhysicalDeviceTextureCompressionASTCHDRFeatures(const native_type &rhs)
+    : PhysicalDeviceTextureCompressionASTCHDRFeatures(std::bit_cast<PhysicalDeviceTextureCompressionASTCHDRFeatures>(rhs)) {}
+
+  PhysicalDeviceTextureCompressionASTCHDRFeatures &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceTextureCompressionASTCHDRFeatures>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceTextureCompressionASTCHDRFeatures &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PHYSICAL_DEVICE_TEXTURE_COMPRESSION_ASTC_HDR_FEATURES;
@@ -10882,6 +17054,15 @@ struct BaseOutStructure {
   using native_type = VkBaseOutStructure;
 
   BaseOutStructure(StructureType s_type = {}, struct BaseOutStructure *p_next = {}) : s_type_(s_type), p_next_(p_next) {}
+
+  BaseOutStructure(const native_type &rhs) : BaseOutStructure(std::bit_cast<BaseOutStructure>(rhs)) {}
+
+  BaseOutStructure &operator=(const native_type &rhs) {
+    *this = std::bit_cast<BaseOutStructure>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const BaseOutStructure &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -10898,6 +17079,15 @@ struct MemoryToImageCopyEXT {
                        const void *p_next = {})
     : image_extent_(image_extent), p_host_pointer_(p_host_pointer), memory_row_length_(memory_row_length),
       memory_image_height_(memory_image_height), image_subresource_(image_subresource), image_offset_(image_offset), p_next_(p_next) {}
+
+  MemoryToImageCopyEXT(const native_type &rhs) : MemoryToImageCopyEXT(std::bit_cast<MemoryToImageCopyEXT>(rhs)) {}
+
+  MemoryToImageCopyEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<MemoryToImageCopyEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const MemoryToImageCopyEXT &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -10918,6 +17108,16 @@ struct PhysicalDeviceRawAccessChainsFeaturesNV {
   PhysicalDeviceRawAccessChainsFeaturesNV(VkBool32 shader_raw_access_chains = {}, void *p_next = {})
     : shader_raw_access_chains_(shader_raw_access_chains), p_next_(p_next) {}
 
+  PhysicalDeviceRawAccessChainsFeaturesNV(const native_type &rhs)
+    : PhysicalDeviceRawAccessChainsFeaturesNV(std::bit_cast<PhysicalDeviceRawAccessChainsFeaturesNV>(rhs)) {}
+
+  PhysicalDeviceRawAccessChainsFeaturesNV &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceRawAccessChainsFeaturesNV>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceRawAccessChainsFeaturesNV &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PHYSICAL_DEVICE_RAW_ACCESS_CHAINS_FEATURES_NV;
@@ -10931,6 +17131,16 @@ struct PhysicalDeviceVideoFormatInfoKHR {
 
   PhysicalDeviceVideoFormatInfoKHR(ImageUsageMask image_usage = {}, const void *p_next = {}) : image_usage_(image_usage), p_next_(p_next) {}
 
+  PhysicalDeviceVideoFormatInfoKHR(const native_type &rhs)
+    : PhysicalDeviceVideoFormatInfoKHR(std::bit_cast<PhysicalDeviceVideoFormatInfoKHR>(rhs)) {}
+
+  PhysicalDeviceVideoFormatInfoKHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceVideoFormatInfoKHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceVideoFormatInfoKHR &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PHYSICAL_DEVICE_VIDEO_FORMAT_INFO_KHR;
@@ -10941,6 +17151,15 @@ struct PhysicalDeviceVideoFormatInfoKHR {
 struct SurfaceCapabilities2EXT {
 
   using native_type = VkSurfaceCapabilities2EXT;
+
+  SurfaceCapabilities2EXT(const native_type &rhs) : SurfaceCapabilities2EXT(std::bit_cast<SurfaceCapabilities2EXT>(rhs)) {}
+
+  SurfaceCapabilities2EXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<SurfaceCapabilities2EXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const SurfaceCapabilities2EXT &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -10963,6 +17182,15 @@ struct VideoDecodeCapabilitiesKHR {
 
   using native_type = VkVideoDecodeCapabilitiesKHR;
 
+  VideoDecodeCapabilitiesKHR(const native_type &rhs) : VideoDecodeCapabilitiesKHR(std::bit_cast<VideoDecodeCapabilitiesKHR>(rhs)) {}
+
+  VideoDecodeCapabilitiesKHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<VideoDecodeCapabilitiesKHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const VideoDecodeCapabilitiesKHR &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::VIDEO_DECODE_CAPABILITIES_KHR;
@@ -10976,6 +17204,15 @@ struct VideoProfileListInfoKHR {
 
   VideoProfileListInfoKHR(const VideoProfileInfoKHR *p_profiles = {}, uint32_t profile_count = {}, const void *p_next = {})
     : p_profiles_(p_profiles), profile_count_(profile_count), p_next_(p_next) {}
+
+  VideoProfileListInfoKHR(const native_type &rhs) : VideoProfileListInfoKHR(std::bit_cast<VideoProfileListInfoKHR>(rhs)) {}
+
+  VideoProfileListInfoKHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<VideoProfileListInfoKHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const VideoProfileListInfoKHR &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -10993,6 +17230,16 @@ struct BindVideoSessionMemoryInfoKHR {
                                 VkDeviceSize memory_offset = {}, const void *p_next = {})
     : memory_size_(memory_size), memory_bind_index_(memory_bind_index), memory_(memory), memory_offset_(memory_offset), p_next_(p_next) {}
 
+  BindVideoSessionMemoryInfoKHR(const native_type &rhs)
+    : BindVideoSessionMemoryInfoKHR(std::bit_cast<BindVideoSessionMemoryInfoKHR>(rhs)) {}
+
+  BindVideoSessionMemoryInfoKHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<BindVideoSessionMemoryInfoKHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const BindVideoSessionMemoryInfoKHR &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::BIND_VIDEO_SESSION_MEMORY_INFO_KHR;
@@ -11006,6 +17253,16 @@ struct BindVideoSessionMemoryInfoKHR {
 struct PhysicalDeviceConservativeRasterizationPropertiesEXT {
 
   using native_type = VkPhysicalDeviceConservativeRasterizationPropertiesEXT;
+
+  PhysicalDeviceConservativeRasterizationPropertiesEXT(const native_type &rhs)
+    : PhysicalDeviceConservativeRasterizationPropertiesEXT(std::bit_cast<PhysicalDeviceConservativeRasterizationPropertiesEXT>(rhs)) {}
+
+  PhysicalDeviceConservativeRasterizationPropertiesEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceConservativeRasterizationPropertiesEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceConservativeRasterizationPropertiesEXT &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -11026,6 +17283,16 @@ struct FilterCubicImageViewImageFormatPropertiesEXT {
 
   using native_type = VkFilterCubicImageViewImageFormatPropertiesEXT;
 
+  FilterCubicImageViewImageFormatPropertiesEXT(const native_type &rhs)
+    : FilterCubicImageViewImageFormatPropertiesEXT(std::bit_cast<FilterCubicImageViewImageFormatPropertiesEXT>(rhs)) {}
+
+  FilterCubicImageViewImageFormatPropertiesEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<FilterCubicImageViewImageFormatPropertiesEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const FilterCubicImageViewImageFormatPropertiesEXT &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::FILTER_CUBIC_IMAGE_VIEW_IMAGE_FORMAT_PROPERTIES_EXT;
@@ -11040,6 +17307,15 @@ struct DrawIndirectCommand {
 
   DrawIndirectCommand(uint32_t vertex_count = {}, uint32_t instance_count = {}, uint32_t first_vertex = {}, uint32_t first_instance = {})
     : vertex_count_(vertex_count), instance_count_(instance_count), first_vertex_(first_vertex), first_instance_(first_instance) {}
+
+  DrawIndirectCommand(const native_type &rhs) : DrawIndirectCommand(std::bit_cast<DrawIndirectCommand>(rhs)) {}
+
+  DrawIndirectCommand &operator=(const native_type &rhs) {
+    *this = std::bit_cast<DrawIndirectCommand>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const DrawIndirectCommand &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -11056,6 +17332,15 @@ struct ClearAttachment {
   ClearAttachment(ImageAspectMask aspect_mask = {}, uint32_t color_attachment = {}, VkClearValue clear_value = {})
     : aspect_mask_(aspect_mask), color_attachment_(color_attachment), clear_value_(clear_value) {}
 
+  ClearAttachment(const native_type &rhs) : ClearAttachment(std::bit_cast<ClearAttachment>(rhs)) {}
+
+  ClearAttachment &operator=(const native_type &rhs) {
+    *this = std::bit_cast<ClearAttachment>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const ClearAttachment &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   ImageAspectMask aspect_mask_;
@@ -11069,6 +17354,15 @@ struct GetLatencyMarkerInfoNV {
 
   GetLatencyMarkerInfoNV(LatencyTimingsFrameReportNV *p_timings = {}, uint32_t timing_count = {}, const void *p_next = {})
     : p_timings_(p_timings), timing_count_(timing_count), p_next_(p_next) {}
+
+  GetLatencyMarkerInfoNV(const native_type &rhs) : GetLatencyMarkerInfoNV(std::bit_cast<GetLatencyMarkerInfoNV>(rhs)) {}
+
+  GetLatencyMarkerInfoNV &operator=(const native_type &rhs) {
+    *this = std::bit_cast<GetLatencyMarkerInfoNV>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const GetLatencyMarkerInfoNV &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -11085,6 +17379,16 @@ struct DeviceMemoryOverallocationCreateInfoAMD {
   DeviceMemoryOverallocationCreateInfoAMD(MemoryOverallocationBehavior overallocation_behavior = {}, const void *p_next = {})
     : overallocation_behavior_(overallocation_behavior), p_next_(p_next) {}
 
+  DeviceMemoryOverallocationCreateInfoAMD(const native_type &rhs)
+    : DeviceMemoryOverallocationCreateInfoAMD(std::bit_cast<DeviceMemoryOverallocationCreateInfoAMD>(rhs)) {}
+
+  DeviceMemoryOverallocationCreateInfoAMD &operator=(const native_type &rhs) {
+    *this = std::bit_cast<DeviceMemoryOverallocationCreateInfoAMD>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const DeviceMemoryOverallocationCreateInfoAMD &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::DEVICE_MEMORY_OVERALLOCATION_CREATE_INFO_AMD;
@@ -11098,6 +17402,16 @@ struct OpaqueCaptureDescriptorDataCreateInfoEXT {
 
   OpaqueCaptureDescriptorDataCreateInfoEXT(const void *opaque_capture_descriptor_data = {}, const void *p_next = {})
     : opaque_capture_descriptor_data_(opaque_capture_descriptor_data), p_next_(p_next) {}
+
+  OpaqueCaptureDescriptorDataCreateInfoEXT(const native_type &rhs)
+    : OpaqueCaptureDescriptorDataCreateInfoEXT(std::bit_cast<OpaqueCaptureDescriptorDataCreateInfoEXT>(rhs)) {}
+
+  OpaqueCaptureDescriptorDataCreateInfoEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<OpaqueCaptureDescriptorDataCreateInfoEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const OpaqueCaptureDescriptorDataCreateInfoEXT &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -11113,6 +17427,16 @@ struct PipelineFragmentShadingRateStateCreateInfoKHR {
   PipelineFragmentShadingRateStateCreateInfoKHR(const std::array<FragmentShadingRateCombinerOp, 2> &combiner_ops = {},
                                                 Extent2D fragment_size = {}, const void *p_next = {})
     : combiner_ops_(combiner_ops), fragment_size_(fragment_size), p_next_(p_next) {}
+
+  PipelineFragmentShadingRateStateCreateInfoKHR(const native_type &rhs)
+    : PipelineFragmentShadingRateStateCreateInfoKHR(std::bit_cast<PipelineFragmentShadingRateStateCreateInfoKHR>(rhs)) {}
+
+  PipelineFragmentShadingRateStateCreateInfoKHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PipelineFragmentShadingRateStateCreateInfoKHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PipelineFragmentShadingRateStateCreateInfoKHR &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -11130,6 +17454,16 @@ struct PipelineRasterizationDepthClipStateCreateInfoEXT {
                                                    PipelineRasterizationDepthClipStateCreateMask flags = {}, const void *p_next = {})
     : depth_clip_enable_(depth_clip_enable), flags_(flags), p_next_(p_next) {}
 
+  PipelineRasterizationDepthClipStateCreateInfoEXT(const native_type &rhs)
+    : PipelineRasterizationDepthClipStateCreateInfoEXT(std::bit_cast<PipelineRasterizationDepthClipStateCreateInfoEXT>(rhs)) {}
+
+  PipelineRasterizationDepthClipStateCreateInfoEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PipelineRasterizationDepthClipStateCreateInfoEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PipelineRasterizationDepthClipStateCreateInfoEXT &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PIPELINE_RASTERIZATION_DEPTH_CLIP_STATE_CREATE_INFO_EXT;
@@ -11145,6 +17479,15 @@ struct SamplerYcbcrConversionInfo {
   SamplerYcbcrConversionInfo(VkSamplerYcbcrConversion conversion = {}, const void *p_next = {})
     : conversion_(conversion), p_next_(p_next) {}
 
+  SamplerYcbcrConversionInfo(const native_type &rhs) : SamplerYcbcrConversionInfo(std::bit_cast<SamplerYcbcrConversionInfo>(rhs)) {}
+
+  SamplerYcbcrConversionInfo &operator=(const native_type &rhs) {
+    *this = std::bit_cast<SamplerYcbcrConversionInfo>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const SamplerYcbcrConversionInfo &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::SAMPLER_YCBCR_CONVERSION_INFO;
@@ -11158,6 +17501,15 @@ struct ProtectedSubmitInfo {
 
   ProtectedSubmitInfo(VkBool32 protected_submit = {}, const void *p_next = {}) : protected_submit_(protected_submit), p_next_(p_next) {}
 
+  ProtectedSubmitInfo(const native_type &rhs) : ProtectedSubmitInfo(std::bit_cast<ProtectedSubmitInfo>(rhs)) {}
+
+  ProtectedSubmitInfo &operator=(const native_type &rhs) {
+    *this = std::bit_cast<ProtectedSubmitInfo>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const ProtectedSubmitInfo &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PROTECTED_SUBMIT_INFO;
@@ -11170,6 +17522,15 @@ struct DisplayPowerInfoEXT {
   using native_type = VkDisplayPowerInfoEXT;
 
   DisplayPowerInfoEXT(DisplayPowerState power_state = {}, const void *p_next = {}) : power_state_(power_state), p_next_(p_next) {}
+
+  DisplayPowerInfoEXT(const native_type &rhs) : DisplayPowerInfoEXT(std::bit_cast<DisplayPowerInfoEXT>(rhs)) {}
+
+  DisplayPowerInfoEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<DisplayPowerInfoEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const DisplayPowerInfoEXT &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -11189,6 +17550,15 @@ struct ValidationFeaturesEXT {
       p_enabled_validation_features_(p_enabled_validation_features), disabled_validation_feature_count_(disabled_validation_feature_count),
       p_next_(p_next) {}
 
+  ValidationFeaturesEXT(const native_type &rhs) : ValidationFeaturesEXT(std::bit_cast<ValidationFeaturesEXT>(rhs)) {}
+
+  ValidationFeaturesEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<ValidationFeaturesEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const ValidationFeaturesEXT &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::VALIDATION_FEATURES_EXT;
@@ -11202,6 +17572,16 @@ struct ValidationFeaturesEXT {
 struct PerformanceCounterDescriptionKHR {
 
   using native_type = VkPerformanceCounterDescriptionKHR;
+
+  PerformanceCounterDescriptionKHR(const native_type &rhs)
+    : PerformanceCounterDescriptionKHR(std::bit_cast<PerformanceCounterDescriptionKHR>(rhs)) {}
+
+  PerformanceCounterDescriptionKHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PerformanceCounterDescriptionKHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PerformanceCounterDescriptionKHR &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -11221,6 +17601,15 @@ struct PipelineCacheCreateInfo {
                           const void *p_next = {})
     : p_initial_data_(p_initial_data), flags_(flags), initial_data_size_(initial_data_size), p_next_(p_next) {}
 
+  PipelineCacheCreateInfo(const native_type &rhs) : PipelineCacheCreateInfo(std::bit_cast<PipelineCacheCreateInfo>(rhs)) {}
+
+  PipelineCacheCreateInfo &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PipelineCacheCreateInfo>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PipelineCacheCreateInfo &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PIPELINE_CACHE_CREATE_INFO;
@@ -11233,6 +17622,16 @@ struct PipelineCacheCreateInfo {
 struct PhysicalDeviceMemoryProperties2 {
 
   using native_type = VkPhysicalDeviceMemoryProperties2;
+
+  PhysicalDeviceMemoryProperties2(const native_type &rhs)
+    : PhysicalDeviceMemoryProperties2(std::bit_cast<PhysicalDeviceMemoryProperties2>(rhs)) {}
+
+  PhysicalDeviceMemoryProperties2 &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceMemoryProperties2>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceMemoryProperties2 &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -11250,6 +17649,15 @@ struct CopyDescriptorSet {
                     uint32_t dst_array_element = {}, const void *p_next = {})
     : descriptor_count_(descriptor_count), src_set_(src_set), src_binding_(src_binding), src_array_element_(src_array_element),
       dst_set_(dst_set), dst_binding_(dst_binding), dst_array_element_(dst_array_element), p_next_(p_next) {}
+
+  CopyDescriptorSet(const native_type &rhs) : CopyDescriptorSet(std::bit_cast<CopyDescriptorSet>(rhs)) {}
+
+  CopyDescriptorSet &operator=(const native_type &rhs) {
+    *this = std::bit_cast<CopyDescriptorSet>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const CopyDescriptorSet &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -11270,6 +17678,16 @@ struct ImageViewCaptureDescriptorDataInfoEXT {
 
   ImageViewCaptureDescriptorDataInfoEXT(VkImageView image_view = {}, const void *p_next = {}) : image_view_(image_view), p_next_(p_next) {}
 
+  ImageViewCaptureDescriptorDataInfoEXT(const native_type &rhs)
+    : ImageViewCaptureDescriptorDataInfoEXT(std::bit_cast<ImageViewCaptureDescriptorDataInfoEXT>(rhs)) {}
+
+  ImageViewCaptureDescriptorDataInfoEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<ImageViewCaptureDescriptorDataInfoEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const ImageViewCaptureDescriptorDataInfoEXT &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::IMAGE_VIEW_CAPTURE_DESCRIPTOR_DATA_INFO_EXT;
@@ -11282,6 +17700,15 @@ struct DispatchIndirectCommand {
   using native_type = VkDispatchIndirectCommand;
 
   DispatchIndirectCommand(uint32_t x = {}, uint32_t y = {}, uint32_t z = {}) : x_(x), y_(y), z_(z) {}
+
+  DispatchIndirectCommand(const native_type &rhs) : DispatchIndirectCommand(std::bit_cast<DispatchIndirectCommand>(rhs)) {}
+
+  DispatchIndirectCommand &operator=(const native_type &rhs) {
+    *this = std::bit_cast<DispatchIndirectCommand>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const DispatchIndirectCommand &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -11297,6 +17724,16 @@ struct PushDescriptorSetWithTemplateInfoKHR {
   PushDescriptorSetWithTemplateInfoKHR(const void *p_data = {}, VkDescriptorUpdateTemplate descriptor_update_template = {},
                                        VkPipelineLayout layout = {}, uint32_t set = {}, const void *p_next = {})
     : p_data_(p_data), descriptor_update_template_(descriptor_update_template), layout_(layout), set_(set), p_next_(p_next) {}
+
+  PushDescriptorSetWithTemplateInfoKHR(const native_type &rhs)
+    : PushDescriptorSetWithTemplateInfoKHR(std::bit_cast<PushDescriptorSetWithTemplateInfoKHR>(rhs)) {}
+
+  PushDescriptorSetWithTemplateInfoKHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PushDescriptorSetWithTemplateInfoKHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PushDescriptorSetWithTemplateInfoKHR &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -11315,6 +17752,16 @@ struct PhysicalDeviceShaderDemoteToHelperInvocationFeatures {
   PhysicalDeviceShaderDemoteToHelperInvocationFeatures(VkBool32 shader_demote_to_helper_invocation = {}, void *p_next = {})
     : shader_demote_to_helper_invocation_(shader_demote_to_helper_invocation), p_next_(p_next) {}
 
+  PhysicalDeviceShaderDemoteToHelperInvocationFeatures(const native_type &rhs)
+    : PhysicalDeviceShaderDemoteToHelperInvocationFeatures(std::bit_cast<PhysicalDeviceShaderDemoteToHelperInvocationFeatures>(rhs)) {}
+
+  PhysicalDeviceShaderDemoteToHelperInvocationFeatures &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceShaderDemoteToHelperInvocationFeatures>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceShaderDemoteToHelperInvocationFeatures &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PHYSICAL_DEVICE_SHADER_DEMOTE_TO_HELPER_INVOCATION_FEATURES;
@@ -11331,6 +17778,15 @@ struct PipelineLayoutCreateInfo {
                            uint32_t push_constant_range_count = {}, const void *p_next = {})
     : p_push_constant_ranges_(p_push_constant_ranges), flags_(flags), set_layout_count_(set_layout_count), p_set_layouts_(p_set_layouts),
       push_constant_range_count_(push_constant_range_count), p_next_(p_next) {}
+
+  PipelineLayoutCreateInfo(const native_type &rhs) : PipelineLayoutCreateInfo(std::bit_cast<PipelineLayoutCreateInfo>(rhs)) {}
+
+  PipelineLayoutCreateInfo &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PipelineLayoutCreateInfo>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PipelineLayoutCreateInfo &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -11356,6 +17812,15 @@ struct SamplerCreateInfo {
       mipmap_mode_(mipmap_mode), address_mode_u_(address_mode_u), address_mode_v_(address_mode_v), address_mode_w_(address_mode_w),
       mip_lod_bias_(mip_lod_bias), anisotropy_enable_(anisotropy_enable), max_anisotropy_(max_anisotropy), compare_enable_(compare_enable),
       compare_op_(compare_op), min_lod_(min_lod), max_lod_(max_lod), border_color_(border_color), p_next_(p_next) {}
+
+  SamplerCreateInfo(const native_type &rhs) : SamplerCreateInfo(std::bit_cast<SamplerCreateInfo>(rhs)) {}
+
+  SamplerCreateInfo &operator=(const native_type &rhs) {
+    *this = std::bit_cast<SamplerCreateInfo>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const SamplerCreateInfo &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -11383,6 +17848,16 @@ struct PhysicalDeviceSubgroupSizeControlProperties {
 
   using native_type = VkPhysicalDeviceSubgroupSizeControlProperties;
 
+  PhysicalDeviceSubgroupSizeControlProperties(const native_type &rhs)
+    : PhysicalDeviceSubgroupSizeControlProperties(std::bit_cast<PhysicalDeviceSubgroupSizeControlProperties>(rhs)) {}
+
+  PhysicalDeviceSubgroupSizeControlProperties &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceSubgroupSizeControlProperties>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceSubgroupSizeControlProperties &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PHYSICAL_DEVICE_SUBGROUP_SIZE_CONTROL_PROPERTIES;
@@ -11402,6 +17877,16 @@ struct PhysicalDeviceFragmentDensityMapFeaturesEXT {
     : fragment_density_map_non_subsampled_images_(fragment_density_map_non_subsampled_images), fragment_density_map_(fragment_density_map),
       fragment_density_map_dynamic_(fragment_density_map_dynamic), p_next_(p_next) {}
 
+  PhysicalDeviceFragmentDensityMapFeaturesEXT(const native_type &rhs)
+    : PhysicalDeviceFragmentDensityMapFeaturesEXT(std::bit_cast<PhysicalDeviceFragmentDensityMapFeaturesEXT>(rhs)) {}
+
+  PhysicalDeviceFragmentDensityMapFeaturesEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceFragmentDensityMapFeaturesEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceFragmentDensityMapFeaturesEXT &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PHYSICAL_DEVICE_FRAGMENT_DENSITY_MAP_FEATURES_EXT;
@@ -11418,6 +17903,16 @@ struct VertexInputBindingDescription2EXT {
   VertexInputBindingDescription2EXT(uint32_t divisor = {}, uint32_t binding = {}, uint32_t stride = {}, VertexInputRate input_rate = {},
                                     void *p_next = {})
     : divisor_(divisor), binding_(binding), stride_(stride), input_rate_(input_rate), p_next_(p_next) {}
+
+  VertexInputBindingDescription2EXT(const native_type &rhs)
+    : VertexInputBindingDescription2EXT(std::bit_cast<VertexInputBindingDescription2EXT>(rhs)) {}
+
+  VertexInputBindingDescription2EXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<VertexInputBindingDescription2EXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const VertexInputBindingDescription2EXT &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -11436,6 +17931,15 @@ struct CommandPoolCreateInfo {
   CommandPoolCreateInfo(uint32_t queue_family_index = {}, CommandPoolCreateMask flags = {}, const void *p_next = {})
     : queue_family_index_(queue_family_index), flags_(flags), p_next_(p_next) {}
 
+  CommandPoolCreateInfo(const native_type &rhs) : CommandPoolCreateInfo(std::bit_cast<CommandPoolCreateInfo>(rhs)) {}
+
+  CommandPoolCreateInfo &operator=(const native_type &rhs) {
+    *this = std::bit_cast<CommandPoolCreateInfo>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const CommandPoolCreateInfo &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::COMMAND_POOL_CREATE_INFO;
@@ -11452,6 +17956,15 @@ struct CommandBufferBeginInfo {
                          const void *p_next = {})
     : p_inheritance_info_(p_inheritance_info), flags_(flags), p_next_(p_next) {}
 
+  CommandBufferBeginInfo(const native_type &rhs) : CommandBufferBeginInfo(std::bit_cast<CommandBufferBeginInfo>(rhs)) {}
+
+  CommandBufferBeginInfo &operator=(const native_type &rhs) {
+    *this = std::bit_cast<CommandBufferBeginInfo>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const CommandBufferBeginInfo &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::COMMAND_BUFFER_BEGIN_INFO;
@@ -11467,6 +17980,16 @@ struct BindVertexBufferIndirectCommandNV {
   BindVertexBufferIndirectCommandNV(VkDeviceAddress buffer_address = {}, uint32_t size = {}, uint32_t stride = {})
     : buffer_address_(buffer_address), size_(size), stride_(stride) {}
 
+  BindVertexBufferIndirectCommandNV(const native_type &rhs)
+    : BindVertexBufferIndirectCommandNV(std::bit_cast<BindVertexBufferIndirectCommandNV>(rhs)) {}
+
+  BindVertexBufferIndirectCommandNV &operator=(const native_type &rhs) {
+    *this = std::bit_cast<BindVertexBufferIndirectCommandNV>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const BindVertexBufferIndirectCommandNV &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   VkDeviceAddress buffer_address_;
@@ -11477,6 +18000,16 @@ struct BindVertexBufferIndirectCommandNV {
 struct DrmFormatModifierPropertiesEXT {
 
   using native_type = VkDrmFormatModifierPropertiesEXT;
+
+  DrmFormatModifierPropertiesEXT(const native_type &rhs)
+    : DrmFormatModifierPropertiesEXT(std::bit_cast<DrmFormatModifierPropertiesEXT>(rhs)) {}
+
+  DrmFormatModifierPropertiesEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<DrmFormatModifierPropertiesEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const DrmFormatModifierPropertiesEXT &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -11494,6 +18027,16 @@ struct PhysicalDeviceShaderSubgroupRotateFeaturesKHR {
     : shader_subgroup_rotate_clustered_(shader_subgroup_rotate_clustered), shader_subgroup_rotate_(shader_subgroup_rotate),
       p_next_(p_next) {}
 
+  PhysicalDeviceShaderSubgroupRotateFeaturesKHR(const native_type &rhs)
+    : PhysicalDeviceShaderSubgroupRotateFeaturesKHR(std::bit_cast<PhysicalDeviceShaderSubgroupRotateFeaturesKHR>(rhs)) {}
+
+  PhysicalDeviceShaderSubgroupRotateFeaturesKHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceShaderSubgroupRotateFeaturesKHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceShaderSubgroupRotateFeaturesKHR &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PHYSICAL_DEVICE_SHADER_SUBGROUP_ROTATE_FEATURES_KHR;
@@ -11505,6 +18048,16 @@ struct PhysicalDeviceShaderSubgroupRotateFeaturesKHR {
 struct SurfaceCapabilitiesPresentBarrierNV {
 
   using native_type = VkSurfaceCapabilitiesPresentBarrierNV;
+
+  SurfaceCapabilitiesPresentBarrierNV(const native_type &rhs)
+    : SurfaceCapabilitiesPresentBarrierNV(std::bit_cast<SurfaceCapabilitiesPresentBarrierNV>(rhs)) {}
+
+  SurfaceCapabilitiesPresentBarrierNV &operator=(const native_type &rhs) {
+    *this = std::bit_cast<SurfaceCapabilitiesPresentBarrierNV>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const SurfaceCapabilitiesPresentBarrierNV &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -11519,6 +18072,16 @@ struct BindBufferMemoryDeviceGroupInfo {
 
   BindBufferMemoryDeviceGroupInfo(const uint32_t *p_device_indices = {}, uint32_t device_index_count = {}, const void *p_next = {})
     : p_device_indices_(p_device_indices), device_index_count_(device_index_count), p_next_(p_next) {}
+
+  BindBufferMemoryDeviceGroupInfo(const native_type &rhs)
+    : BindBufferMemoryDeviceGroupInfo(std::bit_cast<BindBufferMemoryDeviceGroupInfo>(rhs)) {}
+
+  BindBufferMemoryDeviceGroupInfo &operator=(const native_type &rhs) {
+    *this = std::bit_cast<BindBufferMemoryDeviceGroupInfo>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const BindBufferMemoryDeviceGroupInfo &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -11537,6 +18100,15 @@ struct AttachmentDescription {
                         AttachmentStoreOp stencil_store_op = {}, ImageLayout initial_layout = {}, ImageLayout final_layout = {})
     : flags_(flags), format_(format), samples_(samples), load_op_(load_op), store_op_(store_op), stencil_load_op_(stencil_load_op),
       stencil_store_op_(stencil_store_op), initial_layout_(initial_layout), final_layout_(final_layout) {}
+
+  AttachmentDescription(const native_type &rhs) : AttachmentDescription(std::bit_cast<AttachmentDescription>(rhs)) {}
+
+  AttachmentDescription &operator=(const native_type &rhs) {
+    *this = std::bit_cast<AttachmentDescription>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const AttachmentDescription &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -11558,6 +18130,16 @@ struct PhysicalDeviceRayTracingInvocationReorderFeaturesNV {
   PhysicalDeviceRayTracingInvocationReorderFeaturesNV(VkBool32 ray_tracing_invocation_reorder = {}, void *p_next = {})
     : ray_tracing_invocation_reorder_(ray_tracing_invocation_reorder), p_next_(p_next) {}
 
+  PhysicalDeviceRayTracingInvocationReorderFeaturesNV(const native_type &rhs)
+    : PhysicalDeviceRayTracingInvocationReorderFeaturesNV(std::bit_cast<PhysicalDeviceRayTracingInvocationReorderFeaturesNV>(rhs)) {}
+
+  PhysicalDeviceRayTracingInvocationReorderFeaturesNV &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceRayTracingInvocationReorderFeaturesNV>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceRayTracingInvocationReorderFeaturesNV &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PHYSICAL_DEVICE_RAY_TRACING_INVOCATION_REORDER_FEATURES_NV;
@@ -11568,6 +18150,16 @@ struct PhysicalDeviceRayTracingInvocationReorderFeaturesNV {
 struct AccelerationStructureBuildSizesInfoKHR {
 
   using native_type = VkAccelerationStructureBuildSizesInfoKHR;
+
+  AccelerationStructureBuildSizesInfoKHR(const native_type &rhs)
+    : AccelerationStructureBuildSizesInfoKHR(std::bit_cast<AccelerationStructureBuildSizesInfoKHR>(rhs)) {}
+
+  AccelerationStructureBuildSizesInfoKHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<AccelerationStructureBuildSizesInfoKHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const AccelerationStructureBuildSizesInfoKHR &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -11585,6 +18177,15 @@ struct CopyMemoryIndirectCommandNV {
   CopyMemoryIndirectCommandNV(VkDeviceAddress src_address = {}, VkDeviceAddress dst_address = {}, VkDeviceSize size = {})
     : src_address_(src_address), dst_address_(dst_address), size_(size) {}
 
+  CopyMemoryIndirectCommandNV(const native_type &rhs) : CopyMemoryIndirectCommandNV(std::bit_cast<CopyMemoryIndirectCommandNV>(rhs)) {}
+
+  CopyMemoryIndirectCommandNV &operator=(const native_type &rhs) {
+    *this = std::bit_cast<CopyMemoryIndirectCommandNV>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const CopyMemoryIndirectCommandNV &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   VkDeviceAddress src_address_;
@@ -11597,6 +18198,15 @@ struct CalibratedTimestampInfoKHR {
   using native_type = VkCalibratedTimestampInfoKHR;
 
   CalibratedTimestampInfoKHR(TimeDomain time_domain = {}, const void *p_next = {}) : time_domain_(time_domain), p_next_(p_next) {}
+
+  CalibratedTimestampInfoKHR(const native_type &rhs) : CalibratedTimestampInfoKHR(std::bit_cast<CalibratedTimestampInfoKHR>(rhs)) {}
+
+  CalibratedTimestampInfoKHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<CalibratedTimestampInfoKHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const CalibratedTimestampInfoKHR &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -11613,6 +18223,15 @@ struct RenderPassBeginInfo {
                       Rect2D render_area = {}, uint32_t clear_value_count = {}, const void *p_next = {})
     : p_clear_values_(p_clear_values), render_pass_(render_pass), framebuffer_(framebuffer), render_area_(render_area),
       clear_value_count_(clear_value_count), p_next_(p_next) {}
+
+  RenderPassBeginInfo(const native_type &rhs) : RenderPassBeginInfo(std::bit_cast<RenderPassBeginInfo>(rhs)) {}
+
+  RenderPassBeginInfo &operator=(const native_type &rhs) {
+    *this = std::bit_cast<RenderPassBeginInfo>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const RenderPassBeginInfo &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -11635,6 +18254,15 @@ struct SubpassDependency {
     : src_subpass_(src_subpass), dst_subpass_(dst_subpass), src_stage_mask_(src_stage_mask), dst_stage_mask_(dst_stage_mask),
       src_access_mask_(src_access_mask), dst_access_mask_(dst_access_mask), dependency_flags_(dependency_flags) {}
 
+  SubpassDependency(const native_type &rhs) : SubpassDependency(std::bit_cast<SubpassDependency>(rhs)) {}
+
+  SubpassDependency &operator=(const native_type &rhs) {
+    *this = std::bit_cast<SubpassDependency>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const SubpassDependency &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   uint32_t src_subpass_;
@@ -11656,6 +18284,15 @@ struct RenderPassCreateInfo {
     : p_dependencies_(p_dependencies), flags_(flags), attachment_count_(attachment_count), p_attachments_(p_attachments),
       subpass_count_(subpass_count), p_subpasses_(p_subpasses), dependency_count_(dependency_count), p_next_(p_next) {}
 
+  RenderPassCreateInfo(const native_type &rhs) : RenderPassCreateInfo(std::bit_cast<RenderPassCreateInfo>(rhs)) {}
+
+  RenderPassCreateInfo &operator=(const native_type &rhs) {
+    *this = std::bit_cast<RenderPassCreateInfo>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const RenderPassCreateInfo &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::RENDER_PASS_CREATE_INFO;
@@ -11676,6 +18313,15 @@ struct SetLatencyMarkerInfoNV {
   SetLatencyMarkerInfoNV(LatencyMarker marker = {}, uint64_t present_id = {}, const void *p_next = {})
     : marker_(marker), present_id_(present_id), p_next_(p_next) {}
 
+  SetLatencyMarkerInfoNV(const native_type &rhs) : SetLatencyMarkerInfoNV(std::bit_cast<SetLatencyMarkerInfoNV>(rhs)) {}
+
+  SetLatencyMarkerInfoNV &operator=(const native_type &rhs) {
+    *this = std::bit_cast<SetLatencyMarkerInfoNV>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const SetLatencyMarkerInfoNV &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::SET_LATENCY_MARKER_INFO_NV;
@@ -11691,6 +18337,16 @@ struct MultiviewPerViewAttributesInfoNVX {
   MultiviewPerViewAttributesInfoNVX(VkBool32 per_view_attributes_position_xonly = {}, VkBool32 per_view_attributes = {},
                                     const void *p_next = {})
     : per_view_attributes_position_xonly_(per_view_attributes_position_xonly), per_view_attributes_(per_view_attributes), p_next_(p_next) {}
+
+  MultiviewPerViewAttributesInfoNVX(const native_type &rhs)
+    : MultiviewPerViewAttributesInfoNVX(std::bit_cast<MultiviewPerViewAttributesInfoNVX>(rhs)) {}
+
+  MultiviewPerViewAttributesInfoNVX &operator=(const native_type &rhs) {
+    *this = std::bit_cast<MultiviewPerViewAttributesInfoNVX>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const MultiviewPerViewAttributesInfoNVX &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -11708,6 +18364,16 @@ struct PipelineRasterizationStateStreamCreateInfoEXT {
                                                 const void *p_next = {})
     : rasterization_stream_(rasterization_stream), flags_(flags), p_next_(p_next) {}
 
+  PipelineRasterizationStateStreamCreateInfoEXT(const native_type &rhs)
+    : PipelineRasterizationStateStreamCreateInfoEXT(std::bit_cast<PipelineRasterizationStateStreamCreateInfoEXT>(rhs)) {}
+
+  PipelineRasterizationStateStreamCreateInfoEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PipelineRasterizationStateStreamCreateInfoEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PipelineRasterizationStateStreamCreateInfoEXT &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PIPELINE_RASTERIZATION_STATE_STREAM_CREATE_INFO_EXT;
@@ -11723,6 +18389,15 @@ struct MemoryAllocateFlagsInfo {
   MemoryAllocateFlagsInfo(uint32_t device_mask = {}, MemoryAllocateMask flags = {}, const void *p_next = {})
     : device_mask_(device_mask), flags_(flags), p_next_(p_next) {}
 
+  MemoryAllocateFlagsInfo(const native_type &rhs) : MemoryAllocateFlagsInfo(std::bit_cast<MemoryAllocateFlagsInfo>(rhs)) {}
+
+  MemoryAllocateFlagsInfo &operator=(const native_type &rhs) {
+    *this = std::bit_cast<MemoryAllocateFlagsInfo>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const MemoryAllocateFlagsInfo &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::MEMORY_ALLOCATE_FLAGS_INFO;
@@ -11737,6 +18412,15 @@ struct EventCreateInfo {
 
   EventCreateInfo(EventCreateMask flags = {}, const void *p_next = {}) : flags_(flags), p_next_(p_next) {}
 
+  EventCreateInfo(const native_type &rhs) : EventCreateInfo(std::bit_cast<EventCreateInfo>(rhs)) {}
+
+  EventCreateInfo &operator=(const native_type &rhs) {
+    *this = std::bit_cast<EventCreateInfo>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const EventCreateInfo &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::EVENT_CREATE_INFO;
@@ -11747,6 +18431,16 @@ struct EventCreateInfo {
 struct PhysicalDeviceDiscardRectanglePropertiesEXT {
 
   using native_type = VkPhysicalDeviceDiscardRectanglePropertiesEXT;
+
+  PhysicalDeviceDiscardRectanglePropertiesEXT(const native_type &rhs)
+    : PhysicalDeviceDiscardRectanglePropertiesEXT(std::bit_cast<PhysicalDeviceDiscardRectanglePropertiesEXT>(rhs)) {}
+
+  PhysicalDeviceDiscardRectanglePropertiesEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceDiscardRectanglePropertiesEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceDiscardRectanglePropertiesEXT &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -11816,6 +18510,16 @@ struct PhysicalDeviceVulkan12Features {
       vulkan_memory_model_availability_visibility_chains_(vulkan_memory_model_availability_visibility_chains),
       shader_output_viewport_index_(shader_output_viewport_index), shader_output_layer_(shader_output_layer), p_next_(p_next) {}
 
+  PhysicalDeviceVulkan12Features(const native_type &rhs)
+    : PhysicalDeviceVulkan12Features(std::bit_cast<PhysicalDeviceVulkan12Features>(rhs)) {}
+
+  PhysicalDeviceVulkan12Features &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceVulkan12Features>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceVulkan12Features &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PHYSICAL_DEVICE_VULKAN_1_2_FEATURES;
@@ -11875,6 +18579,15 @@ struct FenceCreateInfo {
 
   FenceCreateInfo(FenceCreateMask flags = {}, const void *p_next = {}) : flags_(flags), p_next_(p_next) {}
 
+  FenceCreateInfo(const native_type &rhs) : FenceCreateInfo(std::bit_cast<FenceCreateInfo>(rhs)) {}
+
+  FenceCreateInfo &operator=(const native_type &rhs) {
+    *this = std::bit_cast<FenceCreateInfo>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const FenceCreateInfo &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::FENCE_CREATE_INFO;
@@ -11887,6 +18600,15 @@ struct BufferDeviceAddressInfo {
   using native_type = VkBufferDeviceAddressInfo;
 
   BufferDeviceAddressInfo(VkBuffer buffer = {}, const void *p_next = {}) : buffer_(buffer), p_next_(p_next) {}
+
+  BufferDeviceAddressInfo(const native_type &rhs) : BufferDeviceAddressInfo(std::bit_cast<BufferDeviceAddressInfo>(rhs)) {}
+
+  BufferDeviceAddressInfo &operator=(const native_type &rhs) {
+    *this = std::bit_cast<BufferDeviceAddressInfo>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const BufferDeviceAddressInfo &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -11902,6 +18624,15 @@ struct QueryPoolCreateInfo {
   QueryPoolCreateInfo(QueryPipelineStatisticMask pipeline_statistics = {}, QueryPoolCreateMask flags = {}, QueryType query_type = {},
                       uint32_t query_count = {}, const void *p_next = {})
     : pipeline_statistics_(pipeline_statistics), flags_(flags), query_type_(query_type), query_count_(query_count), p_next_(p_next) {}
+
+  QueryPoolCreateInfo(const native_type &rhs) : QueryPoolCreateInfo(std::bit_cast<QueryPoolCreateInfo>(rhs)) {}
+
+  QueryPoolCreateInfo &operator=(const native_type &rhs) {
+    *this = std::bit_cast<QueryPoolCreateInfo>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const QueryPoolCreateInfo &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -11919,6 +18650,15 @@ struct MultiDrawInfoEXT {
 
   MultiDrawInfoEXT(uint32_t first_vertex = {}, uint32_t vertex_count = {}) : first_vertex_(first_vertex), vertex_count_(vertex_count) {}
 
+  MultiDrawInfoEXT(const native_type &rhs) : MultiDrawInfoEXT(std::bit_cast<MultiDrawInfoEXT>(rhs)) {}
+
+  MultiDrawInfoEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<MultiDrawInfoEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const MultiDrawInfoEXT &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   uint32_t first_vertex_;
@@ -11931,6 +18671,15 @@ struct ExportMemoryAllocateInfo {
 
   ExportMemoryAllocateInfo(ExternalMemoryHandleTypeMask handle_types = {}, const void *p_next = {})
     : handle_types_(handle_types), p_next_(p_next) {}
+
+  ExportMemoryAllocateInfo(const native_type &rhs) : ExportMemoryAllocateInfo(std::bit_cast<ExportMemoryAllocateInfo>(rhs)) {}
+
+  ExportMemoryAllocateInfo &operator=(const native_type &rhs) {
+    *this = std::bit_cast<ExportMemoryAllocateInfo>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const ExportMemoryAllocateInfo &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -11945,10 +18694,20 @@ struct AccelerationStructureSRTMotionInstanceNV {
 
   AccelerationStructureSRTMotionInstanceNV(SRTDataNV transform_t0 = {}, SRTDataNV transform_t1 = {}, uint32_t instance_custom_index = {},
                                            uint32_t mask = {}, uint32_t instance_shader_binding_table_record_offset = {},
-                                           VkGeometryInstanceFlagsKHR flags = {}, uint64_t acceleration_structure_reference = {})
+                                           GeometryInstanceMask flags = {}, uint64_t acceleration_structure_reference = {})
     : transform_t0_(transform_t0), transform_t1_(transform_t1), instance_custom_index_(instance_custom_index), mask_(mask),
       instance_shader_binding_table_record_offset_(instance_shader_binding_table_record_offset), flags_(flags),
       acceleration_structure_reference_(acceleration_structure_reference) {}
+
+  AccelerationStructureSRTMotionInstanceNV(const native_type &rhs)
+    : AccelerationStructureSRTMotionInstanceNV(std::bit_cast<AccelerationStructureSRTMotionInstanceNV>(rhs)) {}
+
+  AccelerationStructureSRTMotionInstanceNV &operator=(const native_type &rhs) {
+    *this = std::bit_cast<AccelerationStructureSRTMotionInstanceNV>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const AccelerationStructureSRTMotionInstanceNV &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -11957,7 +18716,7 @@ struct AccelerationStructureSRTMotionInstanceNV {
   uint32_t instance_custom_index_ : 24;
   uint32_t mask_ : 8;
   uint32_t instance_shader_binding_table_record_offset_ : 24;
-  VkGeometryInstanceFlagsKHR flags_ : 8;
+  GeometryInstanceMask flags_ : 8;
   uint64_t acceleration_structure_reference_;
 };
 
@@ -11969,6 +18728,16 @@ struct PhysicalDeviceRobustness2FeaturesEXT {
                                        VkBool32 robust_image_access2 = {}, void *p_next = {})
     : null_descriptor_(null_descriptor), robust_buffer_access2_(robust_buffer_access2), robust_image_access2_(robust_image_access2),
       p_next_(p_next) {}
+
+  PhysicalDeviceRobustness2FeaturesEXT(const native_type &rhs)
+    : PhysicalDeviceRobustness2FeaturesEXT(std::bit_cast<PhysicalDeviceRobustness2FeaturesEXT>(rhs)) {}
+
+  PhysicalDeviceRobustness2FeaturesEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceRobustness2FeaturesEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceRobustness2FeaturesEXT &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -11986,6 +18755,16 @@ struct PipelineRasterizationStateRasterizationOrderAMD {
   PipelineRasterizationStateRasterizationOrderAMD(RasterizationOrder rasterization_order = {}, const void *p_next = {})
     : rasterization_order_(rasterization_order), p_next_(p_next) {}
 
+  PipelineRasterizationStateRasterizationOrderAMD(const native_type &rhs)
+    : PipelineRasterizationStateRasterizationOrderAMD(std::bit_cast<PipelineRasterizationStateRasterizationOrderAMD>(rhs)) {}
+
+  PipelineRasterizationStateRasterizationOrderAMD &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PipelineRasterizationStateRasterizationOrderAMD>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PipelineRasterizationStateRasterizationOrderAMD &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PIPELINE_RASTERIZATION_STATE_RASTERIZATION_ORDER_AMD;
@@ -11998,6 +18777,16 @@ struct VideoEncodeQualityLevelInfoKHR {
   using native_type = VkVideoEncodeQualityLevelInfoKHR;
 
   VideoEncodeQualityLevelInfoKHR(uint32_t quality_level = {}, const void *p_next = {}) : quality_level_(quality_level), p_next_(p_next) {}
+
+  VideoEncodeQualityLevelInfoKHR(const native_type &rhs)
+    : VideoEncodeQualityLevelInfoKHR(std::bit_cast<VideoEncodeQualityLevelInfoKHR>(rhs)) {}
+
+  VideoEncodeQualityLevelInfoKHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<VideoEncodeQualityLevelInfoKHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const VideoEncodeQualityLevelInfoKHR &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -12013,6 +18802,15 @@ struct DisplayModeParametersKHR {
   DisplayModeParametersKHR(Extent2D visible_region = {}, uint32_t refresh_rate = {})
     : visible_region_(visible_region), refresh_rate_(refresh_rate) {}
 
+  DisplayModeParametersKHR(const native_type &rhs) : DisplayModeParametersKHR(std::bit_cast<DisplayModeParametersKHR>(rhs)) {}
+
+  DisplayModeParametersKHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<DisplayModeParametersKHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const DisplayModeParametersKHR &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   Extent2D visible_region_;
@@ -12022,6 +18820,15 @@ struct DisplayModeParametersKHR {
 struct ShaderModuleIdentifierEXT {
 
   using native_type = VkShaderModuleIdentifierEXT;
+
+  ShaderModuleIdentifierEXT(const native_type &rhs) : ShaderModuleIdentifierEXT(std::bit_cast<ShaderModuleIdentifierEXT>(rhs)) {}
+
+  ShaderModuleIdentifierEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<ShaderModuleIdentifierEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const ShaderModuleIdentifierEXT &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -12037,6 +18844,15 @@ struct BindImageMemoryInfo {
 
   BindImageMemoryInfo(VkDeviceSize memory_offset = {}, VkImage image = {}, VkDeviceMemory memory = {}, const void *p_next = {})
     : memory_offset_(memory_offset), image_(image), memory_(memory), p_next_(p_next) {}
+
+  BindImageMemoryInfo(const native_type &rhs) : BindImageMemoryInfo(std::bit_cast<BindImageMemoryInfo>(rhs)) {}
+
+  BindImageMemoryInfo &operator=(const native_type &rhs) {
+    *this = std::bit_cast<BindImageMemoryInfo>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const BindImageMemoryInfo &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -12054,6 +18870,16 @@ struct ExternalMemoryImageCreateInfoNV {
   ExternalMemoryImageCreateInfoNV(ExternalMemoryHandleTypeMask handle_types = {}, const void *p_next = {})
     : handle_types_(handle_types), p_next_(p_next) {}
 
+  ExternalMemoryImageCreateInfoNV(const native_type &rhs)
+    : ExternalMemoryImageCreateInfoNV(std::bit_cast<ExternalMemoryImageCreateInfoNV>(rhs)) {}
+
+  ExternalMemoryImageCreateInfoNV &operator=(const native_type &rhs) {
+    *this = std::bit_cast<ExternalMemoryImageCreateInfoNV>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const ExternalMemoryImageCreateInfoNV &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::EXTERNAL_MEMORY_IMAGE_CREATE_INFO_NV;
@@ -12070,6 +18896,15 @@ struct ValidationFlagsEXT {
     : p_disabled_validation_checks_(p_disabled_validation_checks), disabled_validation_check_count_(disabled_validation_check_count),
       p_next_(p_next) {}
 
+  ValidationFlagsEXT(const native_type &rhs) : ValidationFlagsEXT(std::bit_cast<ValidationFlagsEXT>(rhs)) {}
+
+  ValidationFlagsEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<ValidationFlagsEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const ValidationFlagsEXT &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::VALIDATION_FLAGS_EXT;
@@ -12085,6 +18920,16 @@ struct SwapchainDisplayNativeHdrCreateInfoAMD {
   SwapchainDisplayNativeHdrCreateInfoAMD(VkBool32 local_dimming_enable = {}, const void *p_next = {})
     : local_dimming_enable_(local_dimming_enable), p_next_(p_next) {}
 
+  SwapchainDisplayNativeHdrCreateInfoAMD(const native_type &rhs)
+    : SwapchainDisplayNativeHdrCreateInfoAMD(std::bit_cast<SwapchainDisplayNativeHdrCreateInfoAMD>(rhs)) {}
+
+  SwapchainDisplayNativeHdrCreateInfoAMD &operator=(const native_type &rhs) {
+    *this = std::bit_cast<SwapchainDisplayNativeHdrCreateInfoAMD>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const SwapchainDisplayNativeHdrCreateInfoAMD &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::SWAPCHAIN_DISPLAY_NATIVE_HDR_CREATE_INFO_AMD;
@@ -12098,6 +18943,15 @@ struct XYColorEXT {
 
   XYColorEXT(float x = {}, float y = {}) : x_(x), y_(y) {}
 
+  XYColorEXT(const native_type &rhs) : XYColorEXT(std::bit_cast<XYColorEXT>(rhs)) {}
+
+  XYColorEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<XYColorEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const XYColorEXT &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   float x_;
@@ -12109,6 +18963,16 @@ struct PhysicalDevicePresentIdFeaturesKHR {
   using native_type = VkPhysicalDevicePresentIdFeaturesKHR;
 
   PhysicalDevicePresentIdFeaturesKHR(VkBool32 present_id = {}, void *p_next = {}) : present_id_(present_id), p_next_(p_next) {}
+
+  PhysicalDevicePresentIdFeaturesKHR(const native_type &rhs)
+    : PhysicalDevicePresentIdFeaturesKHR(std::bit_cast<PhysicalDevicePresentIdFeaturesKHR>(rhs)) {}
+
+  PhysicalDevicePresentIdFeaturesKHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDevicePresentIdFeaturesKHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDevicePresentIdFeaturesKHR &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -12123,6 +18987,16 @@ struct PhysicalDeviceShaderDrawParametersFeatures {
 
   PhysicalDeviceShaderDrawParametersFeatures(VkBool32 shader_draw_parameters = {}, void *p_next = {})
     : shader_draw_parameters_(shader_draw_parameters), p_next_(p_next) {}
+
+  PhysicalDeviceShaderDrawParametersFeatures(const native_type &rhs)
+    : PhysicalDeviceShaderDrawParametersFeatures(std::bit_cast<PhysicalDeviceShaderDrawParametersFeatures>(rhs)) {}
+
+  PhysicalDeviceShaderDrawParametersFeatures &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceShaderDrawParametersFeatures>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceShaderDrawParametersFeatures &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -12142,6 +19016,15 @@ struct HdrMetadataEXT {
       display_primary_green_(display_primary_green), display_primary_blue_(display_primary_blue), white_point_(white_point),
       max_luminance_(max_luminance), min_luminance_(min_luminance), max_content_light_level_(max_content_light_level), p_next_(p_next) {}
 
+  HdrMetadataEXT(const native_type &rhs) : HdrMetadataEXT(std::bit_cast<HdrMetadataEXT>(rhs)) {}
+
+  HdrMetadataEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<HdrMetadataEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const HdrMetadataEXT &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::HDR_METADATA_EXT;
@@ -12160,6 +19043,16 @@ struct PhysicalDeviceCopyMemoryIndirectPropertiesNV {
 
   using native_type = VkPhysicalDeviceCopyMemoryIndirectPropertiesNV;
 
+  PhysicalDeviceCopyMemoryIndirectPropertiesNV(const native_type &rhs)
+    : PhysicalDeviceCopyMemoryIndirectPropertiesNV(std::bit_cast<PhysicalDeviceCopyMemoryIndirectPropertiesNV>(rhs)) {}
+
+  PhysicalDeviceCopyMemoryIndirectPropertiesNV &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceCopyMemoryIndirectPropertiesNV>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceCopyMemoryIndirectPropertiesNV &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PHYSICAL_DEVICE_COPY_MEMORY_INDIRECT_PROPERTIES_NV;
@@ -12174,6 +19067,16 @@ struct PhysicalDeviceSubpassShadingFeaturesHUAWEI {
   PhysicalDeviceSubpassShadingFeaturesHUAWEI(VkBool32 subpass_shading = {}, void *p_next = {})
     : subpass_shading_(subpass_shading), p_next_(p_next) {}
 
+  PhysicalDeviceSubpassShadingFeaturesHUAWEI(const native_type &rhs)
+    : PhysicalDeviceSubpassShadingFeaturesHUAWEI(std::bit_cast<PhysicalDeviceSubpassShadingFeaturesHUAWEI>(rhs)) {}
+
+  PhysicalDeviceSubpassShadingFeaturesHUAWEI &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceSubpassShadingFeaturesHUAWEI>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceSubpassShadingFeaturesHUAWEI &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PHYSICAL_DEVICE_SUBPASS_SHADING_FEATURES_HUAWEI;
@@ -12187,6 +19090,16 @@ struct PhysicalDevicePresentWaitFeaturesKHR {
 
   PhysicalDevicePresentWaitFeaturesKHR(VkBool32 present_wait = {}, void *p_next = {}) : present_wait_(present_wait), p_next_(p_next) {}
 
+  PhysicalDevicePresentWaitFeaturesKHR(const native_type &rhs)
+    : PhysicalDevicePresentWaitFeaturesKHR(std::bit_cast<PhysicalDevicePresentWaitFeaturesKHR>(rhs)) {}
+
+  PhysicalDevicePresentWaitFeaturesKHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDevicePresentWaitFeaturesKHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDevicePresentWaitFeaturesKHR &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PHYSICAL_DEVICE_PRESENT_WAIT_FEATURES_KHR;
@@ -12198,6 +19111,15 @@ struct RefreshCycleDurationGOOGLE {
 
   using native_type = VkRefreshCycleDurationGOOGLE;
 
+  RefreshCycleDurationGOOGLE(const native_type &rhs) : RefreshCycleDurationGOOGLE(std::bit_cast<RefreshCycleDurationGOOGLE>(rhs)) {}
+
+  RefreshCycleDurationGOOGLE &operator=(const native_type &rhs) {
+    *this = std::bit_cast<RefreshCycleDurationGOOGLE>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const RefreshCycleDurationGOOGLE &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   uint64_t refresh_duration_;
@@ -12206,6 +19128,16 @@ struct RefreshCycleDurationGOOGLE {
 struct DisplayNativeHdrSurfaceCapabilitiesAMD {
 
   using native_type = VkDisplayNativeHdrSurfaceCapabilitiesAMD;
+
+  DisplayNativeHdrSurfaceCapabilitiesAMD(const native_type &rhs)
+    : DisplayNativeHdrSurfaceCapabilitiesAMD(std::bit_cast<DisplayNativeHdrSurfaceCapabilitiesAMD>(rhs)) {}
+
+  DisplayNativeHdrSurfaceCapabilitiesAMD &operator=(const native_type &rhs) {
+    *this = std::bit_cast<DisplayNativeHdrSurfaceCapabilitiesAMD>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const DisplayNativeHdrSurfaceCapabilitiesAMD &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -12217,6 +19149,16 @@ struct DisplayNativeHdrSurfaceCapabilitiesAMD {
 struct PhysicalDeviceDescriptorIndexingProperties {
 
   using native_type = VkPhysicalDeviceDescriptorIndexingProperties;
+
+  PhysicalDeviceDescriptorIndexingProperties(const native_type &rhs)
+    : PhysicalDeviceDescriptorIndexingProperties(std::bit_cast<PhysicalDeviceDescriptorIndexingProperties>(rhs)) {}
+
+  PhysicalDeviceDescriptorIndexingProperties &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceDescriptorIndexingProperties>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceDescriptorIndexingProperties &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -12251,6 +19193,15 @@ struct PastPresentationTimingGOOGLE {
 
   using native_type = VkPastPresentationTimingGOOGLE;
 
+  PastPresentationTimingGOOGLE(const native_type &rhs) : PastPresentationTimingGOOGLE(std::bit_cast<PastPresentationTimingGOOGLE>(rhs)) {}
+
+  PastPresentationTimingGOOGLE &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PastPresentationTimingGOOGLE>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PastPresentationTimingGOOGLE &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   uint32_t present_id_;
@@ -12266,6 +19217,16 @@ struct PhysicalDeviceImageAlignmentControlPropertiesMESA {
 
   PhysicalDeviceImageAlignmentControlPropertiesMESA(uint32_t supported_image_alignment_mask = {}, void *p_next = {})
     : supported_image_alignment_mask_(supported_image_alignment_mask), p_next_(p_next) {}
+
+  PhysicalDeviceImageAlignmentControlPropertiesMESA(const native_type &rhs)
+    : PhysicalDeviceImageAlignmentControlPropertiesMESA(std::bit_cast<PhysicalDeviceImageAlignmentControlPropertiesMESA>(rhs)) {}
+
+  PhysicalDeviceImageAlignmentControlPropertiesMESA &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceImageAlignmentControlPropertiesMESA>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceImageAlignmentControlPropertiesMESA &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -12285,6 +19246,15 @@ struct CudaLaunchInfoNV {
     : p_extras_(p_extras), function_(function), grid_dim_x_(grid_dim_x), grid_dim_y_(grid_dim_y), grid_dim_z_(grid_dim_z),
       block_dim_x_(block_dim_x), block_dim_y_(block_dim_y), block_dim_z_(block_dim_z), shared_mem_bytes_(shared_mem_bytes),
       param_count_(param_count), p_params_(p_params), extra_count_(extra_count), p_next_(p_next) {}
+
+  CudaLaunchInfoNV(const native_type &rhs) : CudaLaunchInfoNV(std::bit_cast<CudaLaunchInfoNV>(rhs)) {}
+
+  CudaLaunchInfoNV &operator=(const native_type &rhs) {
+    *this = std::bit_cast<CudaLaunchInfoNV>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const CudaLaunchInfoNV &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -12308,6 +19278,16 @@ struct SurfaceProtectedCapabilitiesKHR {
 
   using native_type = VkSurfaceProtectedCapabilitiesKHR;
 
+  SurfaceProtectedCapabilitiesKHR(const native_type &rhs)
+    : SurfaceProtectedCapabilitiesKHR(std::bit_cast<SurfaceProtectedCapabilitiesKHR>(rhs)) {}
+
+  SurfaceProtectedCapabilitiesKHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<SurfaceProtectedCapabilitiesKHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const SurfaceProtectedCapabilitiesKHR &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::SURFACE_PROTECTED_CAPABILITIES_KHR;
@@ -12321,6 +19301,15 @@ struct CuFunctionCreateInfoNVX {
 
   CuFunctionCreateInfoNVX(const char *p_name = {}, VkCuModuleNVX module = {}, const void *p_next = {})
     : p_name_(p_name), module_(module), p_next_(p_next) {}
+
+  CuFunctionCreateInfoNVX(const native_type &rhs) : CuFunctionCreateInfoNVX(std::bit_cast<CuFunctionCreateInfoNVX>(rhs)) {}
+
+  CuFunctionCreateInfoNVX &operator=(const native_type &rhs) {
+    *this = std::bit_cast<CuFunctionCreateInfoNVX>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const CuFunctionCreateInfoNVX &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -12336,6 +19325,16 @@ struct PhysicalDeviceCubicClampFeaturesQCOM {
 
   PhysicalDeviceCubicClampFeaturesQCOM(VkBool32 cubic_range_clamp = {}, void *p_next = {})
     : cubic_range_clamp_(cubic_range_clamp), p_next_(p_next) {}
+
+  PhysicalDeviceCubicClampFeaturesQCOM(const native_type &rhs)
+    : PhysicalDeviceCubicClampFeaturesQCOM(std::bit_cast<PhysicalDeviceCubicClampFeaturesQCOM>(rhs)) {}
+
+  PhysicalDeviceCubicClampFeaturesQCOM &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceCubicClampFeaturesQCOM>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceCubicClampFeaturesQCOM &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -12353,6 +19352,16 @@ struct AccelerationStructureCreateInfoKHR {
                                      AccelerationStructureType type = {}, const void *p_next = {})
     : device_address_(device_address), create_flags_(create_flags), buffer_(buffer), offset_(offset), size_(size), type_(type),
       p_next_(p_next) {}
+
+  AccelerationStructureCreateInfoKHR(const native_type &rhs)
+    : AccelerationStructureCreateInfoKHR(std::bit_cast<AccelerationStructureCreateInfoKHR>(rhs)) {}
+
+  AccelerationStructureCreateInfoKHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<AccelerationStructureCreateInfoKHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const AccelerationStructureCreateInfoKHR &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -12372,6 +19381,15 @@ struct BindImagePlaneMemoryInfo {
 
   BindImagePlaneMemoryInfo(ImageAspectMaskBit plane_aspect = {}, const void *p_next = {}) : plane_aspect_(plane_aspect), p_next_(p_next) {}
 
+  BindImagePlaneMemoryInfo(const native_type &rhs) : BindImagePlaneMemoryInfo(std::bit_cast<BindImagePlaneMemoryInfo>(rhs)) {}
+
+  BindImagePlaneMemoryInfo &operator=(const native_type &rhs) {
+    *this = std::bit_cast<BindImagePlaneMemoryInfo>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const BindImagePlaneMemoryInfo &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::BIND_IMAGE_PLANE_MEMORY_INFO;
@@ -12387,6 +19405,16 @@ struct PipelineViewportSwizzleStateCreateInfoNV {
                                            PipelineViewportSwizzleStateCreateMask flags = {}, uint32_t viewport_count = {},
                                            const void *p_next = {})
     : p_viewport_swizzles_(p_viewport_swizzles), flags_(flags), viewport_count_(viewport_count), p_next_(p_next) {}
+
+  PipelineViewportSwizzleStateCreateInfoNV(const native_type &rhs)
+    : PipelineViewportSwizzleStateCreateInfoNV(std::bit_cast<PipelineViewportSwizzleStateCreateInfoNV>(rhs)) {}
+
+  PipelineViewportSwizzleStateCreateInfoNV &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PipelineViewportSwizzleStateCreateInfoNV>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PipelineViewportSwizzleStateCreateInfoNV &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -12407,6 +19435,16 @@ struct PipelineDiscardRectangleStateCreateInfoEXT {
     : p_discard_rectangles_(p_discard_rectangles), flags_(flags), discard_rectangle_mode_(discard_rectangle_mode),
       discard_rectangle_count_(discard_rectangle_count), p_next_(p_next) {}
 
+  PipelineDiscardRectangleStateCreateInfoEXT(const native_type &rhs)
+    : PipelineDiscardRectangleStateCreateInfoEXT(std::bit_cast<PipelineDiscardRectangleStateCreateInfoEXT>(rhs)) {}
+
+  PipelineDiscardRectangleStateCreateInfoEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PipelineDiscardRectangleStateCreateInfoEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PipelineDiscardRectangleStateCreateInfoEXT &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PIPELINE_DISCARD_RECTANGLE_STATE_CREATE_INFO_EXT;
@@ -12420,6 +19458,15 @@ struct PipelineDiscardRectangleStateCreateInfoEXT {
 struct PipelineCreationFeedback {
 
   using native_type = VkPipelineCreationFeedback;
+
+  PipelineCreationFeedback(const native_type &rhs) : PipelineCreationFeedback(std::bit_cast<PipelineCreationFeedback>(rhs)) {}
+
+  PipelineCreationFeedback &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PipelineCreationFeedback>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PipelineCreationFeedback &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -12438,6 +19485,16 @@ struct PipelineCreationFeedbackCreateInfo {
       p_pipeline_creation_feedback_(p_pipeline_creation_feedback),
       pipeline_stage_creation_feedback_count_(pipeline_stage_creation_feedback_count), p_next_(p_next) {}
 
+  PipelineCreationFeedbackCreateInfo(const native_type &rhs)
+    : PipelineCreationFeedbackCreateInfo(std::bit_cast<PipelineCreationFeedbackCreateInfo>(rhs)) {}
+
+  PipelineCreationFeedbackCreateInfo &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PipelineCreationFeedbackCreateInfo>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PipelineCreationFeedbackCreateInfo &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PIPELINE_CREATION_FEEDBACK_CREATE_INFO;
@@ -12454,6 +19511,16 @@ struct BlitImageCubicWeightsInfoQCOM {
   BlitImageCubicWeightsInfoQCOM(CubicFilterWeights cubic_weights = {}, const void *p_next = {})
     : cubic_weights_(cubic_weights), p_next_(p_next) {}
 
+  BlitImageCubicWeightsInfoQCOM(const native_type &rhs)
+    : BlitImageCubicWeightsInfoQCOM(std::bit_cast<BlitImageCubicWeightsInfoQCOM>(rhs)) {}
+
+  BlitImageCubicWeightsInfoQCOM &operator=(const native_type &rhs) {
+    *this = std::bit_cast<BlitImageCubicWeightsInfoQCOM>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const BlitImageCubicWeightsInfoQCOM &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::BLIT_IMAGE_CUBIC_WEIGHTS_INFO_QCOM;
@@ -12464,6 +19531,16 @@ struct BlitImageCubicWeightsInfoQCOM {
 struct PhysicalDeviceMultiviewPerViewAttributesPropertiesNVX {
 
   using native_type = VkPhysicalDeviceMultiviewPerViewAttributesPropertiesNVX;
+
+  PhysicalDeviceMultiviewPerViewAttributesPropertiesNVX(const native_type &rhs)
+    : PhysicalDeviceMultiviewPerViewAttributesPropertiesNVX(std::bit_cast<PhysicalDeviceMultiviewPerViewAttributesPropertiesNVX>(rhs)) {}
+
+  PhysicalDeviceMultiviewPerViewAttributesPropertiesNVX &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceMultiviewPerViewAttributesPropertiesNVX>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceMultiviewPerViewAttributesPropertiesNVX &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -12478,6 +19555,16 @@ struct SamplerBorderColorComponentMappingCreateInfoEXT {
 
   SamplerBorderColorComponentMappingCreateInfoEXT(VkBool32 srgb = {}, ComponentMapping components = {}, const void *p_next = {})
     : srgb_(srgb), components_(components), p_next_(p_next) {}
+
+  SamplerBorderColorComponentMappingCreateInfoEXT(const native_type &rhs)
+    : SamplerBorderColorComponentMappingCreateInfoEXT(std::bit_cast<SamplerBorderColorComponentMappingCreateInfoEXT>(rhs)) {}
+
+  SamplerBorderColorComponentMappingCreateInfoEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<SamplerBorderColorComponentMappingCreateInfoEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const SamplerBorderColorComponentMappingCreateInfoEXT &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -12495,6 +19582,16 @@ struct PhysicalDeviceShadingRateImageFeaturesNV {
                                            void *p_next = {})
     : shading_rate_coarse_sample_order_(shading_rate_coarse_sample_order), shading_rate_image_(shading_rate_image), p_next_(p_next) {}
 
+  PhysicalDeviceShadingRateImageFeaturesNV(const native_type &rhs)
+    : PhysicalDeviceShadingRateImageFeaturesNV(std::bit_cast<PhysicalDeviceShadingRateImageFeaturesNV>(rhs)) {}
+
+  PhysicalDeviceShadingRateImageFeaturesNV &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceShadingRateImageFeaturesNV>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceShadingRateImageFeaturesNV &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PHYSICAL_DEVICE_SHADING_RATE_IMAGE_FEATURES_NV;
@@ -12509,6 +19606,16 @@ struct PhysicalDeviceSurfaceInfo2KHR {
 
   PhysicalDeviceSurfaceInfo2KHR(VkSurfaceKHR surface = {}, const void *p_next = {}) : surface_(surface), p_next_(p_next) {}
 
+  PhysicalDeviceSurfaceInfo2KHR(const native_type &rhs)
+    : PhysicalDeviceSurfaceInfo2KHR(std::bit_cast<PhysicalDeviceSurfaceInfo2KHR>(rhs)) {}
+
+  PhysicalDeviceSurfaceInfo2KHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceSurfaceInfo2KHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceSurfaceInfo2KHR &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PHYSICAL_DEVICE_SURFACE_INFO_2_KHR;
@@ -12519,6 +19626,15 @@ struct PhysicalDeviceSurfaceInfo2KHR {
 struct SurfaceCapabilities2KHR {
 
   using native_type = VkSurfaceCapabilities2KHR;
+
+  SurfaceCapabilities2KHR(const native_type &rhs) : SurfaceCapabilities2KHR(std::bit_cast<SurfaceCapabilities2KHR>(rhs)) {}
+
+  SurfaceCapabilities2KHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<SurfaceCapabilities2KHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const SurfaceCapabilities2KHR &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -12533,6 +19649,16 @@ struct AccelerationStructureGeometryMotionTrianglesDataNV {
 
   AccelerationStructureGeometryMotionTrianglesDataNV(VkDeviceOrHostAddressConstKHR vertex_data = {}, const void *p_next = {})
     : vertex_data_(vertex_data), p_next_(p_next) {}
+
+  AccelerationStructureGeometryMotionTrianglesDataNV(const native_type &rhs)
+    : AccelerationStructureGeometryMotionTrianglesDataNV(std::bit_cast<AccelerationStructureGeometryMotionTrianglesDataNV>(rhs)) {}
+
+  AccelerationStructureGeometryMotionTrianglesDataNV &operator=(const native_type &rhs) {
+    *this = std::bit_cast<AccelerationStructureGeometryMotionTrianglesDataNV>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const AccelerationStructureGeometryMotionTrianglesDataNV &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -12550,6 +19676,16 @@ struct PipelineCoverageToColorStateCreateInfoNV {
     : coverage_to_color_location_(coverage_to_color_location), flags_(flags), coverage_to_color_enable_(coverage_to_color_enable),
       p_next_(p_next) {}
 
+  PipelineCoverageToColorStateCreateInfoNV(const native_type &rhs)
+    : PipelineCoverageToColorStateCreateInfoNV(std::bit_cast<PipelineCoverageToColorStateCreateInfoNV>(rhs)) {}
+
+  PipelineCoverageToColorStateCreateInfoNV &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PipelineCoverageToColorStateCreateInfoNV>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PipelineCoverageToColorStateCreateInfoNV &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PIPELINE_COVERAGE_TO_COLOR_STATE_CREATE_INFO_NV;
@@ -12562,6 +19698,15 @@ struct PipelineCoverageToColorStateCreateInfoNV {
 struct SurfaceFormat2KHR {
 
   using native_type = VkSurfaceFormat2KHR;
+
+  SurfaceFormat2KHR(const native_type &rhs) : SurfaceFormat2KHR(std::bit_cast<SurfaceFormat2KHR>(rhs)) {}
+
+  SurfaceFormat2KHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<SurfaceFormat2KHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const SurfaceFormat2KHR &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -12580,6 +19725,15 @@ struct TimelineSemaphoreSubmitInfo {
     : p_signal_semaphore_values_(p_signal_semaphore_values), wait_semaphore_value_count_(wait_semaphore_value_count),
       p_wait_semaphore_values_(p_wait_semaphore_values), signal_semaphore_value_count_(signal_semaphore_value_count), p_next_(p_next) {}
 
+  TimelineSemaphoreSubmitInfo(const native_type &rhs) : TimelineSemaphoreSubmitInfo(std::bit_cast<TimelineSemaphoreSubmitInfo>(rhs)) {}
+
+  TimelineSemaphoreSubmitInfo &operator=(const native_type &rhs) {
+    *this = std::bit_cast<TimelineSemaphoreSubmitInfo>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const TimelineSemaphoreSubmitInfo &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::TIMELINE_SEMAPHORE_SUBMIT_INFO;
@@ -12597,6 +19751,15 @@ struct MemoryDedicatedAllocateInfo {
   MemoryDedicatedAllocateInfo(VkBuffer buffer = {}, VkImage image = {}, const void *p_next = {})
     : buffer_(buffer), image_(image), p_next_(p_next) {}
 
+  MemoryDedicatedAllocateInfo(const native_type &rhs) : MemoryDedicatedAllocateInfo(std::bit_cast<MemoryDedicatedAllocateInfo>(rhs)) {}
+
+  MemoryDedicatedAllocateInfo &operator=(const native_type &rhs) {
+    *this = std::bit_cast<MemoryDedicatedAllocateInfo>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const MemoryDedicatedAllocateInfo &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::MEMORY_DEDICATED_ALLOCATE_INFO;
@@ -12609,6 +19772,15 @@ struct DisplayModePropertiesKHR {
 
   using native_type = VkDisplayModePropertiesKHR;
 
+  DisplayModePropertiesKHR(const native_type &rhs) : DisplayModePropertiesKHR(std::bit_cast<DisplayModePropertiesKHR>(rhs)) {}
+
+  DisplayModePropertiesKHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<DisplayModePropertiesKHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const DisplayModePropertiesKHR &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   VkDisplayModeKHR display_mode_;
@@ -12618,6 +19790,15 @@ struct DisplayModePropertiesKHR {
 struct DisplayModeProperties2KHR {
 
   using native_type = VkDisplayModeProperties2KHR;
+
+  DisplayModeProperties2KHR(const native_type &rhs) : DisplayModeProperties2KHR(std::bit_cast<DisplayModeProperties2KHR>(rhs)) {}
+
+  DisplayModeProperties2KHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<DisplayModeProperties2KHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const DisplayModeProperties2KHR &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -12633,6 +19814,16 @@ struct PhysicalDeviceExclusiveScissorFeaturesNV {
   PhysicalDeviceExclusiveScissorFeaturesNV(VkBool32 exclusive_scissor = {}, void *p_next = {})
     : exclusive_scissor_(exclusive_scissor), p_next_(p_next) {}
 
+  PhysicalDeviceExclusiveScissorFeaturesNV(const native_type &rhs)
+    : PhysicalDeviceExclusiveScissorFeaturesNV(std::bit_cast<PhysicalDeviceExclusiveScissorFeaturesNV>(rhs)) {}
+
+  PhysicalDeviceExclusiveScissorFeaturesNV &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceExclusiveScissorFeaturesNV>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceExclusiveScissorFeaturesNV &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PHYSICAL_DEVICE_EXCLUSIVE_SCISSOR_FEATURES_NV;
@@ -12643,6 +19834,16 @@ struct PhysicalDeviceExclusiveScissorFeaturesNV {
 struct PhysicalDevicePushDescriptorPropertiesKHR {
 
   using native_type = VkPhysicalDevicePushDescriptorPropertiesKHR;
+
+  PhysicalDevicePushDescriptorPropertiesKHR(const native_type &rhs)
+    : PhysicalDevicePushDescriptorPropertiesKHR(std::bit_cast<PhysicalDevicePushDescriptorPropertiesKHR>(rhs)) {}
+
+  PhysicalDevicePushDescriptorPropertiesKHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDevicePushDescriptorPropertiesKHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDevicePushDescriptorPropertiesKHR &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -12658,6 +19859,16 @@ struct CommandBufferInheritanceConditionalRenderingInfoEXT {
   CommandBufferInheritanceConditionalRenderingInfoEXT(VkBool32 conditional_rendering_enable = {}, const void *p_next = {})
     : conditional_rendering_enable_(conditional_rendering_enable), p_next_(p_next) {}
 
+  CommandBufferInheritanceConditionalRenderingInfoEXT(const native_type &rhs)
+    : CommandBufferInheritanceConditionalRenderingInfoEXT(std::bit_cast<CommandBufferInheritanceConditionalRenderingInfoEXT>(rhs)) {}
+
+  CommandBufferInheritanceConditionalRenderingInfoEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<CommandBufferInheritanceConditionalRenderingInfoEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const CommandBufferInheritanceConditionalRenderingInfoEXT &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::COMMAND_BUFFER_INHERITANCE_CONDITIONAL_RENDERING_INFO_EXT;
@@ -12671,6 +19882,15 @@ struct DisplayPlaneInfo2KHR {
 
   DisplayPlaneInfo2KHR(uint32_t plane_index = {}, VkDisplayModeKHR mode = {}, const void *p_next = {})
     : plane_index_(plane_index), mode_(mode), p_next_(p_next) {}
+
+  DisplayPlaneInfo2KHR(const native_type &rhs) : DisplayPlaneInfo2KHR(std::bit_cast<DisplayPlaneInfo2KHR>(rhs)) {}
+
+  DisplayPlaneInfo2KHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<DisplayPlaneInfo2KHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const DisplayPlaneInfo2KHR &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -12689,6 +19909,15 @@ struct DepthBiasInfoEXT {
     : depth_bias_slope_factor_(depth_bias_slope_factor), depth_bias_constant_factor_(depth_bias_constant_factor),
       depth_bias_clamp_(depth_bias_clamp), p_next_(p_next) {}
 
+  DepthBiasInfoEXT(const native_type &rhs) : DepthBiasInfoEXT(std::bit_cast<DepthBiasInfoEXT>(rhs)) {}
+
+  DepthBiasInfoEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<DepthBiasInfoEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const DepthBiasInfoEXT &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::DEPTH_BIAS_INFO_EXT;
@@ -12704,6 +19933,16 @@ struct PhysicalDeviceDiagnosticsConfigFeaturesNV {
 
   PhysicalDeviceDiagnosticsConfigFeaturesNV(VkBool32 diagnostics_config = {}, void *p_next = {})
     : diagnostics_config_(diagnostics_config), p_next_(p_next) {}
+
+  PhysicalDeviceDiagnosticsConfigFeaturesNV(const native_type &rhs)
+    : PhysicalDeviceDiagnosticsConfigFeaturesNV(std::bit_cast<PhysicalDeviceDiagnosticsConfigFeaturesNV>(rhs)) {}
+
+  PhysicalDeviceDiagnosticsConfigFeaturesNV &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceDiagnosticsConfigFeaturesNV>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceDiagnosticsConfigFeaturesNV &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -12721,6 +19960,15 @@ struct ImageResolve {
     : src_subresource_(src_subresource), src_offset_(src_offset), dst_subresource_(dst_subresource), dst_offset_(dst_offset),
       extent_(extent) {}
 
+  ImageResolve(const native_type &rhs) : ImageResolve(std::bit_cast<ImageResolve>(rhs)) {}
+
+  ImageResolve &operator=(const native_type &rhs) {
+    *this = std::bit_cast<ImageResolve>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const ImageResolve &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   ImageSubresourceLayers src_subresource_;
@@ -12734,6 +19982,15 @@ struct DisplayPlaneCapabilities2KHR {
 
   using native_type = VkDisplayPlaneCapabilities2KHR;
 
+  DisplayPlaneCapabilities2KHR(const native_type &rhs) : DisplayPlaneCapabilities2KHR(std::bit_cast<DisplayPlaneCapabilities2KHR>(rhs)) {}
+
+  DisplayPlaneCapabilities2KHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<DisplayPlaneCapabilities2KHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const DisplayPlaneCapabilities2KHR &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::DISPLAY_PLANE_CAPABILITIES_2_KHR;
@@ -12744,6 +20001,16 @@ struct DisplayPlaneCapabilities2KHR {
 struct SharedPresentSurfaceCapabilitiesKHR {
 
   using native_type = VkSharedPresentSurfaceCapabilitiesKHR;
+
+  SharedPresentSurfaceCapabilitiesKHR(const native_type &rhs)
+    : SharedPresentSurfaceCapabilitiesKHR(std::bit_cast<SharedPresentSurfaceCapabilitiesKHR>(rhs)) {}
+
+  SharedPresentSurfaceCapabilitiesKHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<SharedPresentSurfaceCapabilitiesKHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const SharedPresentSurfaceCapabilitiesKHR &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -12763,6 +20030,16 @@ struct PhysicalDevice16BitStorageFeatures {
       uniform_and_storage_buffer16bit_access_(uniform_and_storage_buffer16bit_access), storage_push_constant16_(storage_push_constant16),
       p_next_(p_next) {}
 
+  PhysicalDevice16BitStorageFeatures(const native_type &rhs)
+    : PhysicalDevice16BitStorageFeatures(std::bit_cast<PhysicalDevice16BitStorageFeatures>(rhs)) {}
+
+  PhysicalDevice16BitStorageFeatures &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDevice16BitStorageFeatures>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDevice16BitStorageFeatures &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PHYSICAL_DEVICE_16BIT_STORAGE_FEATURES;
@@ -12780,6 +20057,16 @@ struct StridedDeviceAddressRegionKHR {
   StridedDeviceAddressRegionKHR(VkDeviceAddress device_address = {}, VkDeviceSize stride = {}, VkDeviceSize size = {})
     : device_address_(device_address), stride_(stride), size_(size) {}
 
+  StridedDeviceAddressRegionKHR(const native_type &rhs)
+    : StridedDeviceAddressRegionKHR(std::bit_cast<StridedDeviceAddressRegionKHR>(rhs)) {}
+
+  StridedDeviceAddressRegionKHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<StridedDeviceAddressRegionKHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const StridedDeviceAddressRegionKHR &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   VkDeviceAddress device_address_;
@@ -12793,6 +20080,16 @@ struct BufferMemoryRequirementsInfo2 {
 
   BufferMemoryRequirementsInfo2(VkBuffer buffer = {}, const void *p_next = {}) : buffer_(buffer), p_next_(p_next) {}
 
+  BufferMemoryRequirementsInfo2(const native_type &rhs)
+    : BufferMemoryRequirementsInfo2(std::bit_cast<BufferMemoryRequirementsInfo2>(rhs)) {}
+
+  BufferMemoryRequirementsInfo2 &operator=(const native_type &rhs) {
+    *this = std::bit_cast<BufferMemoryRequirementsInfo2>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const BufferMemoryRequirementsInfo2 &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::BUFFER_MEMORY_REQUIREMENTS_INFO_2;
@@ -12805,6 +20102,16 @@ struct ImageSparseMemoryRequirementsInfo2 {
   using native_type = VkImageSparseMemoryRequirementsInfo2;
 
   ImageSparseMemoryRequirementsInfo2(VkImage image = {}, const void *p_next = {}) : image_(image), p_next_(p_next) {}
+
+  ImageSparseMemoryRequirementsInfo2(const native_type &rhs)
+    : ImageSparseMemoryRequirementsInfo2(std::bit_cast<ImageSparseMemoryRequirementsInfo2>(rhs)) {}
+
+  ImageSparseMemoryRequirementsInfo2 &operator=(const native_type &rhs) {
+    *this = std::bit_cast<ImageSparseMemoryRequirementsInfo2>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const ImageSparseMemoryRequirementsInfo2 &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -12820,6 +20127,15 @@ struct VideoDecodeAV1DpbSlotInfoKHR {
   VideoDecodeAV1DpbSlotInfoKHR(const StdVideoDecodeAV1ReferenceInfo *p_std_reference_info = {}, const void *p_next = {})
     : p_std_reference_info_(p_std_reference_info), p_next_(p_next) {}
 
+  VideoDecodeAV1DpbSlotInfoKHR(const native_type &rhs) : VideoDecodeAV1DpbSlotInfoKHR(std::bit_cast<VideoDecodeAV1DpbSlotInfoKHR>(rhs)) {}
+
+  VideoDecodeAV1DpbSlotInfoKHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<VideoDecodeAV1DpbSlotInfoKHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const VideoDecodeAV1DpbSlotInfoKHR &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::VIDEO_DECODE_AV1_DPB_SLOT_INFO_KHR;
@@ -12830,6 +20146,16 @@ struct VideoDecodeAV1DpbSlotInfoKHR {
 struct SamplerYcbcrConversionImageFormatProperties {
 
   using native_type = VkSamplerYcbcrConversionImageFormatProperties;
+
+  SamplerYcbcrConversionImageFormatProperties(const native_type &rhs)
+    : SamplerYcbcrConversionImageFormatProperties(std::bit_cast<SamplerYcbcrConversionImageFormatProperties>(rhs)) {}
+
+  SamplerYcbcrConversionImageFormatProperties &operator=(const native_type &rhs) {
+    *this = std::bit_cast<SamplerYcbcrConversionImageFormatProperties>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const SamplerYcbcrConversionImageFormatProperties &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -12847,6 +20173,16 @@ struct PhysicalDeviceProvokingVertexFeaturesEXT {
     : transform_feedback_preserves_provoking_vertex_(transform_feedback_preserves_provoking_vertex),
       provoking_vertex_last_(provoking_vertex_last), p_next_(p_next) {}
 
+  PhysicalDeviceProvokingVertexFeaturesEXT(const native_type &rhs)
+    : PhysicalDeviceProvokingVertexFeaturesEXT(std::bit_cast<PhysicalDeviceProvokingVertexFeaturesEXT>(rhs)) {}
+
+  PhysicalDeviceProvokingVertexFeaturesEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceProvokingVertexFeaturesEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceProvokingVertexFeaturesEXT &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PHYSICAL_DEVICE_PROVOKING_VERTEX_FEATURES_EXT;
@@ -12858,6 +20194,16 @@ struct PhysicalDeviceProvokingVertexFeaturesEXT {
 struct PipelineShaderStageRequiredSubgroupSizeCreateInfo {
 
   using native_type = VkPipelineShaderStageRequiredSubgroupSizeCreateInfo;
+
+  PipelineShaderStageRequiredSubgroupSizeCreateInfo(const native_type &rhs)
+    : PipelineShaderStageRequiredSubgroupSizeCreateInfo(std::bit_cast<PipelineShaderStageRequiredSubgroupSizeCreateInfo>(rhs)) {}
+
+  PipelineShaderStageRequiredSubgroupSizeCreateInfo &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PipelineShaderStageRequiredSubgroupSizeCreateInfo>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PipelineShaderStageRequiredSubgroupSizeCreateInfo &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -12872,6 +20218,15 @@ struct DeviceGroupDeviceCreateInfo {
 
   DeviceGroupDeviceCreateInfo(const VkPhysicalDevice *p_physical_devices = {}, uint32_t physical_device_count = {}, const void *p_next = {})
     : p_physical_devices_(p_physical_devices), physical_device_count_(physical_device_count), p_next_(p_next) {}
+
+  DeviceGroupDeviceCreateInfo(const native_type &rhs) : DeviceGroupDeviceCreateInfo(std::bit_cast<DeviceGroupDeviceCreateInfo>(rhs)) {}
+
+  DeviceGroupDeviceCreateInfo &operator=(const native_type &rhs) {
+    *this = std::bit_cast<DeviceGroupDeviceCreateInfo>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const DeviceGroupDeviceCreateInfo &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -12888,6 +20243,16 @@ struct DeviceImageMemoryRequirements {
   DeviceImageMemoryRequirements(ImageAspectMaskBit plane_aspect = {}, const ImageCreateInfo *p_create_info = {}, const void *p_next = {})
     : plane_aspect_(plane_aspect), p_create_info_(p_create_info), p_next_(p_next) {}
 
+  DeviceImageMemoryRequirements(const native_type &rhs)
+    : DeviceImageMemoryRequirements(std::bit_cast<DeviceImageMemoryRequirements>(rhs)) {}
+
+  DeviceImageMemoryRequirements &operator=(const native_type &rhs) {
+    *this = std::bit_cast<DeviceImageMemoryRequirements>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const DeviceImageMemoryRequirements &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::DEVICE_IMAGE_MEMORY_REQUIREMENTS;
@@ -12900,6 +20265,16 @@ struct SparseImageMemoryRequirements2 {
 
   using native_type = VkSparseImageMemoryRequirements2;
 
+  SparseImageMemoryRequirements2(const native_type &rhs)
+    : SparseImageMemoryRequirements2(std::bit_cast<SparseImageMemoryRequirements2>(rhs)) {}
+
+  SparseImageMemoryRequirements2 &operator=(const native_type &rhs) {
+    *this = std::bit_cast<SparseImageMemoryRequirements2>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const SparseImageMemoryRequirements2 &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::SPARSE_IMAGE_MEMORY_REQUIREMENTS_2;
@@ -12910,6 +20285,16 @@ struct SparseImageMemoryRequirements2 {
 struct PhysicalDevicePointClippingProperties {
 
   using native_type = VkPhysicalDevicePointClippingProperties;
+
+  PhysicalDevicePointClippingProperties(const native_type &rhs)
+    : PhysicalDevicePointClippingProperties(std::bit_cast<PhysicalDevicePointClippingProperties>(rhs)) {}
+
+  PhysicalDevicePointClippingProperties &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDevicePointClippingProperties>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDevicePointClippingProperties &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -12922,6 +20307,15 @@ struct MemoryDedicatedRequirements {
 
   using native_type = VkMemoryDedicatedRequirements;
 
+  MemoryDedicatedRequirements(const native_type &rhs) : MemoryDedicatedRequirements(std::bit_cast<MemoryDedicatedRequirements>(rhs)) {}
+
+  MemoryDedicatedRequirements &operator=(const native_type &rhs) {
+    *this = std::bit_cast<MemoryDedicatedRequirements>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const MemoryDedicatedRequirements &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::MEMORY_DEDICATED_REQUIREMENTS;
@@ -12933,6 +20327,16 @@ struct MemoryDedicatedRequirements {
 struct PhysicalDeviceMeshShaderPropertiesNV {
 
   using native_type = VkPhysicalDeviceMeshShaderPropertiesNV;
+
+  PhysicalDeviceMeshShaderPropertiesNV(const native_type &rhs)
+    : PhysicalDeviceMeshShaderPropertiesNV(std::bit_cast<PhysicalDeviceMeshShaderPropertiesNV>(rhs)) {}
+
+  PhysicalDeviceMeshShaderPropertiesNV &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceMeshShaderPropertiesNV>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceMeshShaderPropertiesNV &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -12957,6 +20361,16 @@ struct PhysicalDeviceMaintenance5PropertiesKHR {
 
   using native_type = VkPhysicalDeviceMaintenance5PropertiesKHR;
 
+  PhysicalDeviceMaintenance5PropertiesKHR(const native_type &rhs)
+    : PhysicalDeviceMaintenance5PropertiesKHR(std::bit_cast<PhysicalDeviceMaintenance5PropertiesKHR>(rhs)) {}
+
+  PhysicalDeviceMaintenance5PropertiesKHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceMaintenance5PropertiesKHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceMaintenance5PropertiesKHR &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PHYSICAL_DEVICE_MAINTENANCE_5_PROPERTIES_KHR;
@@ -12976,6 +20390,15 @@ struct ImageViewSlicedCreateInfoEXT {
   ImageViewSlicedCreateInfoEXT(uint32_t slice_count = {}, uint32_t slice_offset = {}, const void *p_next = {})
     : slice_count_(slice_count), slice_offset_(slice_offset), p_next_(p_next) {}
 
+  ImageViewSlicedCreateInfoEXT(const native_type &rhs) : ImageViewSlicedCreateInfoEXT(std::bit_cast<ImageViewSlicedCreateInfoEXT>(rhs)) {}
+
+  ImageViewSlicedCreateInfoEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<ImageViewSlicedCreateInfoEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const ImageViewSlicedCreateInfoEXT &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::IMAGE_VIEW_SLICED_CREATE_INFO_EXT;
@@ -12993,6 +20416,16 @@ struct VideoEncodeH265GopRemainingFrameInfoKHR {
     : gop_remaining_b_(gop_remaining_b), use_gop_remaining_frames_(use_gop_remaining_frames), gop_remaining_i_(gop_remaining_i),
       gop_remaining_p_(gop_remaining_p), p_next_(p_next) {}
 
+  VideoEncodeH265GopRemainingFrameInfoKHR(const native_type &rhs)
+    : VideoEncodeH265GopRemainingFrameInfoKHR(std::bit_cast<VideoEncodeH265GopRemainingFrameInfoKHR>(rhs)) {}
+
+  VideoEncodeH265GopRemainingFrameInfoKHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<VideoEncodeH265GopRemainingFrameInfoKHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const VideoEncodeH265GopRemainingFrameInfoKHR &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::VIDEO_ENCODE_H265_GOP_REMAINING_FRAME_INFO_KHR;
@@ -13006,6 +20439,16 @@ struct VideoEncodeH265GopRemainingFrameInfoKHR {
 struct PhysicalDeviceMaintenance7PropertiesKHR {
 
   using native_type = VkPhysicalDeviceMaintenance7PropertiesKHR;
+
+  PhysicalDeviceMaintenance7PropertiesKHR(const native_type &rhs)
+    : PhysicalDeviceMaintenance7PropertiesKHR(std::bit_cast<PhysicalDeviceMaintenance7PropertiesKHR>(rhs)) {}
+
+  PhysicalDeviceMaintenance7PropertiesKHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceMaintenance7PropertiesKHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceMaintenance7PropertiesKHR &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -13029,6 +20472,16 @@ struct PhysicalDeviceShaderAtomicInt64Features {
                                           void *p_next = {})
     : shader_shared_int64atomics_(shader_shared_int64atomics), shader_buffer_int64atomics_(shader_buffer_int64atomics), p_next_(p_next) {}
 
+  PhysicalDeviceShaderAtomicInt64Features(const native_type &rhs)
+    : PhysicalDeviceShaderAtomicInt64Features(std::bit_cast<PhysicalDeviceShaderAtomicInt64Features>(rhs)) {}
+
+  PhysicalDeviceShaderAtomicInt64Features &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceShaderAtomicInt64Features>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceShaderAtomicInt64Features &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PHYSICAL_DEVICE_SHADER_ATOMIC_INT64_FEATURES;
@@ -13044,6 +20497,16 @@ struct PhysicalDeviceSamplerYcbcrConversionFeatures {
   PhysicalDeviceSamplerYcbcrConversionFeatures(VkBool32 sampler_ycbcr_conversion = {}, void *p_next = {})
     : sampler_ycbcr_conversion_(sampler_ycbcr_conversion), p_next_(p_next) {}
 
+  PhysicalDeviceSamplerYcbcrConversionFeatures(const native_type &rhs)
+    : PhysicalDeviceSamplerYcbcrConversionFeatures(std::bit_cast<PhysicalDeviceSamplerYcbcrConversionFeatures>(rhs)) {}
+
+  PhysicalDeviceSamplerYcbcrConversionFeatures &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceSamplerYcbcrConversionFeatures>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceSamplerYcbcrConversionFeatures &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PHYSICAL_DEVICE_SAMPLER_YCBCR_CONVERSION_FEATURES;
@@ -13057,6 +20520,15 @@ struct VideoDecodeAV1ProfileInfoKHR {
 
   VideoDecodeAV1ProfileInfoKHR(VkBool32 film_grain_support = {}, StdVideoAV1Profile std_profile = {}, const void *p_next = {})
     : film_grain_support_(film_grain_support), std_profile_(std_profile), p_next_(p_next) {}
+
+  VideoDecodeAV1ProfileInfoKHR(const native_type &rhs) : VideoDecodeAV1ProfileInfoKHR(std::bit_cast<VideoDecodeAV1ProfileInfoKHR>(rhs)) {}
+
+  VideoDecodeAV1ProfileInfoKHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<VideoDecodeAV1ProfileInfoKHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const VideoDecodeAV1ProfileInfoKHR &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -13077,6 +20549,15 @@ struct AttachmentDescription2 {
     : final_layout_(final_layout), flags_(flags), format_(format), samples_(samples), load_op_(load_op), store_op_(store_op),
       stencil_load_op_(stencil_load_op), stencil_store_op_(stencil_store_op), initial_layout_(initial_layout), p_next_(p_next) {}
 
+  AttachmentDescription2(const native_type &rhs) : AttachmentDescription2(std::bit_cast<AttachmentDescription2>(rhs)) {}
+
+  AttachmentDescription2 &operator=(const native_type &rhs) {
+    *this = std::bit_cast<AttachmentDescription2>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const AttachmentDescription2 &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::ATTACHMENT_DESCRIPTION_2;
@@ -13096,6 +20577,15 @@ struct VideoEncodeCapabilitiesKHR {
 
   using native_type = VkVideoEncodeCapabilitiesKHR;
 
+  VideoEncodeCapabilitiesKHR(const native_type &rhs) : VideoEncodeCapabilitiesKHR(std::bit_cast<VideoEncodeCapabilitiesKHR>(rhs)) {}
+
+  VideoEncodeCapabilitiesKHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<VideoEncodeCapabilitiesKHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const VideoEncodeCapabilitiesKHR &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::VIDEO_ENCODE_CAPABILITIES_KHR;
@@ -13113,6 +20603,16 @@ struct TextureLODGatherFormatPropertiesAMD {
 
   using native_type = VkTextureLODGatherFormatPropertiesAMD;
 
+  TextureLODGatherFormatPropertiesAMD(const native_type &rhs)
+    : TextureLODGatherFormatPropertiesAMD(std::bit_cast<TextureLODGatherFormatPropertiesAMD>(rhs)) {}
+
+  TextureLODGatherFormatPropertiesAMD &operator=(const native_type &rhs) {
+    *this = std::bit_cast<TextureLODGatherFormatPropertiesAMD>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const TextureLODGatherFormatPropertiesAMD &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::TEXTURE_LOD_GATHER_FORMAT_PROPERTIES_AMD;
@@ -13126,6 +20626,16 @@ struct SamplerCustomBorderColorCreateInfoEXT {
 
   SamplerCustomBorderColorCreateInfoEXT(Format format = {}, VkClearColorValue custom_border_color = {}, const void *p_next = {})
     : format_(format), custom_border_color_(custom_border_color), p_next_(p_next) {}
+
+  SamplerCustomBorderColorCreateInfoEXT(const native_type &rhs)
+    : SamplerCustomBorderColorCreateInfoEXT(std::bit_cast<SamplerCustomBorderColorCreateInfoEXT>(rhs)) {}
+
+  SamplerCustomBorderColorCreateInfoEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<SamplerCustomBorderColorCreateInfoEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const SamplerCustomBorderColorCreateInfoEXT &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -13143,6 +20653,16 @@ struct ConditionalRenderingBeginInfoEXT {
                                    const void *p_next = {})
     : flags_(flags), buffer_(buffer), offset_(offset), p_next_(p_next) {}
 
+  ConditionalRenderingBeginInfoEXT(const native_type &rhs)
+    : ConditionalRenderingBeginInfoEXT(std::bit_cast<ConditionalRenderingBeginInfoEXT>(rhs)) {}
+
+  ConditionalRenderingBeginInfoEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<ConditionalRenderingBeginInfoEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const ConditionalRenderingBeginInfoEXT &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::CONDITIONAL_RENDERING_BEGIN_INFO_EXT;
@@ -13159,6 +20679,16 @@ struct PhysicalDeviceProtectedMemoryFeatures {
   PhysicalDeviceProtectedMemoryFeatures(VkBool32 protected_memory = {}, void *p_next = {})
     : protected_memory_(protected_memory), p_next_(p_next) {}
 
+  PhysicalDeviceProtectedMemoryFeatures(const native_type &rhs)
+    : PhysicalDeviceProtectedMemoryFeatures(std::bit_cast<PhysicalDeviceProtectedMemoryFeatures>(rhs)) {}
+
+  PhysicalDeviceProtectedMemoryFeatures &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceProtectedMemoryFeatures>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceProtectedMemoryFeatures &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PHYSICAL_DEVICE_PROTECTED_MEMORY_FEATURES;
@@ -13172,6 +20702,16 @@ struct PhysicalDeviceShaderClockFeaturesKHR {
 
   PhysicalDeviceShaderClockFeaturesKHR(VkBool32 shader_device_clock = {}, VkBool32 shader_subgroup_clock = {}, void *p_next = {})
     : shader_device_clock_(shader_device_clock), shader_subgroup_clock_(shader_subgroup_clock), p_next_(p_next) {}
+
+  PhysicalDeviceShaderClockFeaturesKHR(const native_type &rhs)
+    : PhysicalDeviceShaderClockFeaturesKHR(std::bit_cast<PhysicalDeviceShaderClockFeaturesKHR>(rhs)) {}
+
+  PhysicalDeviceShaderClockFeaturesKHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceShaderClockFeaturesKHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceShaderClockFeaturesKHR &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -13188,6 +20728,15 @@ struct SemaphoreWaitInfo {
   SemaphoreWaitInfo(const uint64_t *p_values = {}, SemaphoreWaitMask flags = {}, uint32_t semaphore_count = {},
                     const VkSemaphore *p_semaphores = {}, const void *p_next = {})
     : p_values_(p_values), flags_(flags), semaphore_count_(semaphore_count), p_semaphores_(p_semaphores), p_next_(p_next) {}
+
+  SemaphoreWaitInfo(const native_type &rhs) : SemaphoreWaitInfo(std::bit_cast<SemaphoreWaitInfo>(rhs)) {}
+
+  SemaphoreWaitInfo &operator=(const native_type &rhs) {
+    *this = std::bit_cast<SemaphoreWaitInfo>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const SemaphoreWaitInfo &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -13211,6 +20760,15 @@ struct SubmitInfo2 {
       p_wait_semaphore_infos_(p_wait_semaphore_infos), command_buffer_info_count_(command_buffer_info_count),
       p_command_buffer_infos_(p_command_buffer_infos), signal_semaphore_info_count_(signal_semaphore_info_count), p_next_(p_next) {}
 
+  SubmitInfo2(const native_type &rhs) : SubmitInfo2(std::bit_cast<SubmitInfo2>(rhs)) {}
+
+  SubmitInfo2 &operator=(const native_type &rhs) {
+    *this = std::bit_cast<SubmitInfo2>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const SubmitInfo2 &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::SUBMIT_INFO_2;
@@ -13228,6 +20786,15 @@ struct MemoryRequirements2 {
 
   using native_type = VkMemoryRequirements2;
 
+  MemoryRequirements2(const native_type &rhs) : MemoryRequirements2(std::bit_cast<MemoryRequirements2>(rhs)) {}
+
+  MemoryRequirements2 &operator=(const native_type &rhs) {
+    *this = std::bit_cast<MemoryRequirements2>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const MemoryRequirements2 &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::MEMORY_REQUIREMENTS_2;
@@ -13244,6 +20811,16 @@ struct PhysicalDeviceComputeShaderDerivativesFeaturesNV {
     : compute_derivative_group_linear_(compute_derivative_group_linear), compute_derivative_group_quads_(compute_derivative_group_quads),
       p_next_(p_next) {}
 
+  PhysicalDeviceComputeShaderDerivativesFeaturesNV(const native_type &rhs)
+    : PhysicalDeviceComputeShaderDerivativesFeaturesNV(std::bit_cast<PhysicalDeviceComputeShaderDerivativesFeaturesNV>(rhs)) {}
+
+  PhysicalDeviceComputeShaderDerivativesFeaturesNV &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceComputeShaderDerivativesFeaturesNV>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceComputeShaderDerivativesFeaturesNV &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PHYSICAL_DEVICE_COMPUTE_SHADER_DERIVATIVES_FEATURES_NV;
@@ -13255,6 +20832,16 @@ struct PhysicalDeviceComputeShaderDerivativesFeaturesNV {
 struct PhysicalDeviceSampleLocationsPropertiesEXT {
 
   using native_type = VkPhysicalDeviceSampleLocationsPropertiesEXT;
+
+  PhysicalDeviceSampleLocationsPropertiesEXT(const native_type &rhs)
+    : PhysicalDeviceSampleLocationsPropertiesEXT(std::bit_cast<PhysicalDeviceSampleLocationsPropertiesEXT>(rhs)) {}
+
+  PhysicalDeviceSampleLocationsPropertiesEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceSampleLocationsPropertiesEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceSampleLocationsPropertiesEXT &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -13274,6 +20861,15 @@ struct PipelineExecutableInfoKHR {
   PipelineExecutableInfoKHR(uint32_t executable_index = {}, VkPipeline pipeline = {}, const void *p_next = {})
     : executable_index_(executable_index), pipeline_(pipeline), p_next_(p_next) {}
 
+  PipelineExecutableInfoKHR(const native_type &rhs) : PipelineExecutableInfoKHR(std::bit_cast<PipelineExecutableInfoKHR>(rhs)) {}
+
+  PipelineExecutableInfoKHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PipelineExecutableInfoKHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PipelineExecutableInfoKHR &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PIPELINE_EXECUTABLE_INFO_KHR;
@@ -13285,6 +20881,15 @@ struct PipelineExecutableInfoKHR {
 struct MultisamplePropertiesEXT {
 
   using native_type = VkMultisamplePropertiesEXT;
+
+  MultisamplePropertiesEXT(const native_type &rhs) : MultisamplePropertiesEXT(std::bit_cast<MultisamplePropertiesEXT>(rhs)) {}
+
+  MultisamplePropertiesEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<MultisamplePropertiesEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const MultisamplePropertiesEXT &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -13300,6 +20905,15 @@ struct BufferViewCreateInfo {
   BufferViewCreateInfo(VkDeviceSize range = {}, BufferViewCreateMask flags = {}, VkBuffer buffer = {}, Format format = {},
                        VkDeviceSize offset = {}, const void *p_next = {})
     : range_(range), flags_(flags), buffer_(buffer), format_(format), offset_(offset), p_next_(p_next) {}
+
+  BufferViewCreateInfo(const native_type &rhs) : BufferViewCreateInfo(std::bit_cast<BufferViewCreateInfo>(rhs)) {}
+
+  BufferViewCreateInfo &operator=(const native_type &rhs) {
+    *this = std::bit_cast<BufferViewCreateInfo>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const BufferViewCreateInfo &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -13319,6 +20933,16 @@ struct SamplerReductionModeCreateInfo {
   SamplerReductionModeCreateInfo(SamplerReductionMode reduction_mode = {}, const void *p_next = {})
     : reduction_mode_(reduction_mode), p_next_(p_next) {}
 
+  SamplerReductionModeCreateInfo(const native_type &rhs)
+    : SamplerReductionModeCreateInfo(std::bit_cast<SamplerReductionModeCreateInfo>(rhs)) {}
+
+  SamplerReductionModeCreateInfo &operator=(const native_type &rhs) {
+    *this = std::bit_cast<SamplerReductionModeCreateInfo>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const SamplerReductionModeCreateInfo &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::SAMPLER_REDUCTION_MODE_CREATE_INFO;
@@ -13332,6 +20956,16 @@ struct PhysicalDeviceBlendOperationAdvancedFeaturesEXT {
 
   PhysicalDeviceBlendOperationAdvancedFeaturesEXT(VkBool32 advanced_blend_coherent_operations = {}, void *p_next = {})
     : advanced_blend_coherent_operations_(advanced_blend_coherent_operations), p_next_(p_next) {}
+
+  PhysicalDeviceBlendOperationAdvancedFeaturesEXT(const native_type &rhs)
+    : PhysicalDeviceBlendOperationAdvancedFeaturesEXT(std::bit_cast<PhysicalDeviceBlendOperationAdvancedFeaturesEXT>(rhs)) {}
+
+  PhysicalDeviceBlendOperationAdvancedFeaturesEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceBlendOperationAdvancedFeaturesEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceBlendOperationAdvancedFeaturesEXT &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -13347,6 +20981,15 @@ struct MemoryAllocateInfo {
   MemoryAllocateInfo(uint32_t memory_type_index = {}, VkDeviceSize allocation_size = {}, const void *p_next = {})
     : memory_type_index_(memory_type_index), allocation_size_(allocation_size), p_next_(p_next) {}
 
+  MemoryAllocateInfo(const native_type &rhs) : MemoryAllocateInfo(std::bit_cast<MemoryAllocateInfo>(rhs)) {}
+
+  MemoryAllocateInfo &operator=(const native_type &rhs) {
+    *this = std::bit_cast<MemoryAllocateInfo>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const MemoryAllocateInfo &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::MEMORY_ALLOCATE_INFO;
@@ -13358,6 +21001,15 @@ struct MemoryAllocateInfo {
 struct ImageFormatProperties2 {
 
   using native_type = VkImageFormatProperties2;
+
+  ImageFormatProperties2(const native_type &rhs) : ImageFormatProperties2(std::bit_cast<ImageFormatProperties2>(rhs)) {}
+
+  ImageFormatProperties2 &operator=(const native_type &rhs) {
+    *this = std::bit_cast<ImageFormatProperties2>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const ImageFormatProperties2 &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -13379,6 +21031,16 @@ struct RenderPassSampleLocationsBeginInfoEXT {
       p_attachment_initial_sample_locations_(p_attachment_initial_sample_locations),
       post_subpass_sample_locations_count_(post_subpass_sample_locations_count), p_next_(p_next) {}
 
+  RenderPassSampleLocationsBeginInfoEXT(const native_type &rhs)
+    : RenderPassSampleLocationsBeginInfoEXT(std::bit_cast<RenderPassSampleLocationsBeginInfoEXT>(rhs)) {}
+
+  RenderPassSampleLocationsBeginInfoEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<RenderPassSampleLocationsBeginInfoEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const RenderPassSampleLocationsBeginInfoEXT &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::RENDER_PASS_SAMPLE_LOCATIONS_BEGIN_INFO_EXT;
@@ -13395,6 +21057,16 @@ struct PhysicalDeviceMultiDrawFeaturesEXT {
 
   PhysicalDeviceMultiDrawFeaturesEXT(VkBool32 multi_draw = {}, void *p_next = {}) : multi_draw_(multi_draw), p_next_(p_next) {}
 
+  PhysicalDeviceMultiDrawFeaturesEXT(const native_type &rhs)
+    : PhysicalDeviceMultiDrawFeaturesEXT(std::bit_cast<PhysicalDeviceMultiDrawFeaturesEXT>(rhs)) {}
+
+  PhysicalDeviceMultiDrawFeaturesEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceMultiDrawFeaturesEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceMultiDrawFeaturesEXT &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PHYSICAL_DEVICE_MULTI_DRAW_FEATURES_EXT;
@@ -13405,6 +21077,16 @@ struct PhysicalDeviceMultiDrawFeaturesEXT {
 struct PhysicalDeviceBlendOperationAdvancedPropertiesEXT {
 
   using native_type = VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT;
+
+  PhysicalDeviceBlendOperationAdvancedPropertiesEXT(const native_type &rhs)
+    : PhysicalDeviceBlendOperationAdvancedPropertiesEXT(std::bit_cast<PhysicalDeviceBlendOperationAdvancedPropertiesEXT>(rhs)) {}
+
+  PhysicalDeviceBlendOperationAdvancedPropertiesEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceBlendOperationAdvancedPropertiesEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceBlendOperationAdvancedPropertiesEXT &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -13425,6 +21107,16 @@ struct PhysicalDeviceDepthClipEnableFeaturesEXT {
   PhysicalDeviceDepthClipEnableFeaturesEXT(VkBool32 depth_clip_enable = {}, void *p_next = {})
     : depth_clip_enable_(depth_clip_enable), p_next_(p_next) {}
 
+  PhysicalDeviceDepthClipEnableFeaturesEXT(const native_type &rhs)
+    : PhysicalDeviceDepthClipEnableFeaturesEXT(std::bit_cast<PhysicalDeviceDepthClipEnableFeaturesEXT>(rhs)) {}
+
+  PhysicalDeviceDepthClipEnableFeaturesEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceDepthClipEnableFeaturesEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceDepthClipEnableFeaturesEXT &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PHYSICAL_DEVICE_DEPTH_CLIP_ENABLE_FEATURES_EXT;
@@ -13435,6 +21127,16 @@ struct PhysicalDeviceDepthClipEnableFeaturesEXT {
 struct RenderPassSubpassFeedbackInfoEXT {
 
   using native_type = VkRenderPassSubpassFeedbackInfoEXT;
+
+  RenderPassSubpassFeedbackInfoEXT(const native_type &rhs)
+    : RenderPassSubpassFeedbackInfoEXT(std::bit_cast<RenderPassSubpassFeedbackInfoEXT>(rhs)) {}
+
+  RenderPassSubpassFeedbackInfoEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<RenderPassSubpassFeedbackInfoEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const RenderPassSubpassFeedbackInfoEXT &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -13450,6 +21152,16 @@ struct PipelineColorBlendAdvancedStateCreateInfoEXT {
   PipelineColorBlendAdvancedStateCreateInfoEXT(BlendOverlap blend_overlap = {}, VkBool32 src_premultiplied = {},
                                                VkBool32 dst_premultiplied = {}, const void *p_next = {})
     : blend_overlap_(blend_overlap), src_premultiplied_(src_premultiplied), dst_premultiplied_(dst_premultiplied), p_next_(p_next) {}
+
+  PipelineColorBlendAdvancedStateCreateInfoEXT(const native_type &rhs)
+    : PipelineColorBlendAdvancedStateCreateInfoEXT(std::bit_cast<PipelineColorBlendAdvancedStateCreateInfoEXT>(rhs)) {}
+
+  PipelineColorBlendAdvancedStateCreateInfoEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PipelineColorBlendAdvancedStateCreateInfoEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PipelineColorBlendAdvancedStateCreateInfoEXT &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -13467,6 +21179,15 @@ struct DeviceQueueInfo2 {
   DeviceQueueInfo2(uint32_t queue_index = {}, DeviceQueueCreateMask flags = {}, uint32_t queue_family_index = {}, const void *p_next = {})
     : queue_index_(queue_index), flags_(flags), queue_family_index_(queue_family_index), p_next_(p_next) {}
 
+  DeviceQueueInfo2(const native_type &rhs) : DeviceQueueInfo2(std::bit_cast<DeviceQueueInfo2>(rhs)) {}
+
+  DeviceQueueInfo2 &operator=(const native_type &rhs) {
+    *this = std::bit_cast<DeviceQueueInfo2>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const DeviceQueueInfo2 &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::DEVICE_QUEUE_INFO_2;
@@ -13479,6 +21200,16 @@ struct DeviceQueueInfo2 {
 struct PhysicalDeviceInlineUniformBlockProperties {
 
   using native_type = VkPhysicalDeviceInlineUniformBlockProperties;
+
+  PhysicalDeviceInlineUniformBlockProperties(const native_type &rhs)
+    : PhysicalDeviceInlineUniformBlockProperties(std::bit_cast<PhysicalDeviceInlineUniformBlockProperties>(rhs)) {}
+
+  PhysicalDeviceInlineUniformBlockProperties &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceInlineUniformBlockProperties>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceInlineUniformBlockProperties &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -13498,6 +21229,15 @@ struct SemaphoreTypeCreateInfo {
   SemaphoreTypeCreateInfo(uint64_t initial_value = {}, SemaphoreType semaphore_type = {}, const void *p_next = {})
     : initial_value_(initial_value), semaphore_type_(semaphore_type), p_next_(p_next) {}
 
+  SemaphoreTypeCreateInfo(const native_type &rhs) : SemaphoreTypeCreateInfo(std::bit_cast<SemaphoreTypeCreateInfo>(rhs)) {}
+
+  SemaphoreTypeCreateInfo &operator=(const native_type &rhs) {
+    *this = std::bit_cast<SemaphoreTypeCreateInfo>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const SemaphoreTypeCreateInfo &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::SEMAPHORE_TYPE_CREATE_INFO;
@@ -13513,6 +21253,16 @@ struct DescriptorPoolInlineUniformBlockCreateInfo {
   DescriptorPoolInlineUniformBlockCreateInfo(uint32_t max_inline_uniform_block_bindings = {}, const void *p_next = {})
     : max_inline_uniform_block_bindings_(max_inline_uniform_block_bindings), p_next_(p_next) {}
 
+  DescriptorPoolInlineUniformBlockCreateInfo(const native_type &rhs)
+    : DescriptorPoolInlineUniformBlockCreateInfo(std::bit_cast<DescriptorPoolInlineUniformBlockCreateInfo>(rhs)) {}
+
+  DescriptorPoolInlineUniformBlockCreateInfo &operator=(const native_type &rhs) {
+    *this = std::bit_cast<DescriptorPoolInlineUniformBlockCreateInfo>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const DescriptorPoolInlineUniformBlockCreateInfo &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::DESCRIPTOR_POOL_INLINE_UNIFORM_BLOCK_CREATE_INFO;
@@ -13527,6 +21277,15 @@ struct ValidationCacheCreateInfoEXT {
   ValidationCacheCreateInfoEXT(const void *p_initial_data = {}, ValidationCacheCreateMask flags = {}, size_t initial_data_size = {},
                                const void *p_next = {})
     : p_initial_data_(p_initial_data), flags_(flags), initial_data_size_(initial_data_size), p_next_(p_next) {}
+
+  ValidationCacheCreateInfoEXT(const native_type &rhs) : ValidationCacheCreateInfoEXT(std::bit_cast<ValidationCacheCreateInfoEXT>(rhs)) {}
+
+  ValidationCacheCreateInfoEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<ValidationCacheCreateInfoEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const ValidationCacheCreateInfoEXT &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -13544,6 +21303,16 @@ struct ShaderModuleValidationCacheCreateInfoEXT {
   ShaderModuleValidationCacheCreateInfoEXT(VkValidationCacheEXT validation_cache = {}, const void *p_next = {})
     : validation_cache_(validation_cache), p_next_(p_next) {}
 
+  ShaderModuleValidationCacheCreateInfoEXT(const native_type &rhs)
+    : ShaderModuleValidationCacheCreateInfoEXT(std::bit_cast<ShaderModuleValidationCacheCreateInfoEXT>(rhs)) {}
+
+  ShaderModuleValidationCacheCreateInfoEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<ShaderModuleValidationCacheCreateInfoEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const ShaderModuleValidationCacheCreateInfoEXT &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::SHADER_MODULE_VALIDATION_CACHE_CREATE_INFO_EXT;
@@ -13554,6 +21323,16 @@ struct ShaderModuleValidationCacheCreateInfoEXT {
 struct PhysicalDeviceVulkan12Properties {
 
   using native_type = VkPhysicalDeviceVulkan12Properties;
+
+  PhysicalDeviceVulkan12Properties(const native_type &rhs)
+    : PhysicalDeviceVulkan12Properties(std::bit_cast<PhysicalDeviceVulkan12Properties>(rhs)) {}
+
+  PhysicalDeviceVulkan12Properties &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceVulkan12Properties>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceVulkan12Properties &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -13617,6 +21396,15 @@ struct LayerProperties {
 
   using native_type = VkLayerProperties;
 
+  LayerProperties(const native_type &rhs) : LayerProperties(std::bit_cast<LayerProperties>(rhs)) {}
+
+  LayerProperties &operator=(const native_type &rhs) {
+    *this = std::bit_cast<LayerProperties>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const LayerProperties &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   std::array<char, VK_MAX_EXTENSION_NAME_SIZE> layer_name_;
@@ -13632,6 +21420,16 @@ struct ImportMemoryHostPointerInfoEXT {
   ImportMemoryHostPointerInfoEXT(void *p_host_pointer = {}, ExternalMemoryHandleTypeMaskBit handle_type = {}, const void *p_next = {})
     : p_host_pointer_(p_host_pointer), handle_type_(handle_type), p_next_(p_next) {}
 
+  ImportMemoryHostPointerInfoEXT(const native_type &rhs)
+    : ImportMemoryHostPointerInfoEXT(std::bit_cast<ImportMemoryHostPointerInfoEXT>(rhs)) {}
+
+  ImportMemoryHostPointerInfoEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<ImportMemoryHostPointerInfoEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const ImportMemoryHostPointerInfoEXT &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::IMPORT_MEMORY_HOST_POINTER_INFO_EXT;
@@ -13644,6 +21442,16 @@ struct QueueFamilyCheckpointPropertiesNV {
 
   using native_type = VkQueueFamilyCheckpointPropertiesNV;
 
+  QueueFamilyCheckpointPropertiesNV(const native_type &rhs)
+    : QueueFamilyCheckpointPropertiesNV(std::bit_cast<QueueFamilyCheckpointPropertiesNV>(rhs)) {}
+
+  QueueFamilyCheckpointPropertiesNV &operator=(const native_type &rhs) {
+    *this = std::bit_cast<QueueFamilyCheckpointPropertiesNV>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const QueueFamilyCheckpointPropertiesNV &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::QUEUE_FAMILY_CHECKPOINT_PROPERTIES_NV;
@@ -13654,6 +21462,16 @@ struct QueueFamilyCheckpointPropertiesNV {
 struct PhysicalDeviceMaintenance4Properties {
 
   using native_type = VkPhysicalDeviceMaintenance4Properties;
+
+  PhysicalDeviceMaintenance4Properties(const native_type &rhs)
+    : PhysicalDeviceMaintenance4Properties(std::bit_cast<PhysicalDeviceMaintenance4Properties>(rhs)) {}
+
+  PhysicalDeviceMaintenance4Properties &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceMaintenance4Properties>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceMaintenance4Properties &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -13668,6 +21486,16 @@ struct PhysicalDeviceMaintenance5FeaturesKHR {
 
   PhysicalDeviceMaintenance5FeaturesKHR(VkBool32 maintenance5 = {}, void *p_next = {}) : maintenance5_(maintenance5), p_next_(p_next) {}
 
+  PhysicalDeviceMaintenance5FeaturesKHR(const native_type &rhs)
+    : PhysicalDeviceMaintenance5FeaturesKHR(std::bit_cast<PhysicalDeviceMaintenance5FeaturesKHR>(rhs)) {}
+
+  PhysicalDeviceMaintenance5FeaturesKHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceMaintenance5FeaturesKHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceMaintenance5FeaturesKHR &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PHYSICAL_DEVICE_MAINTENANCE_5_FEATURES_KHR;
@@ -13680,6 +21508,16 @@ struct PhysicalDeviceMaintenance6FeaturesKHR {
   using native_type = VkPhysicalDeviceMaintenance6FeaturesKHR;
 
   PhysicalDeviceMaintenance6FeaturesKHR(VkBool32 maintenance6 = {}, void *p_next = {}) : maintenance6_(maintenance6), p_next_(p_next) {}
+
+  PhysicalDeviceMaintenance6FeaturesKHR(const native_type &rhs)
+    : PhysicalDeviceMaintenance6FeaturesKHR(std::bit_cast<PhysicalDeviceMaintenance6FeaturesKHR>(rhs)) {}
+
+  PhysicalDeviceMaintenance6FeaturesKHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceMaintenance6FeaturesKHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceMaintenance6FeaturesKHR &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -13695,6 +21533,15 @@ struct CopyMicromapToMemoryInfoEXT {
   CopyMicromapToMemoryInfoEXT(CopyMicromapMode mode = {}, VkMicromapEXT src = {}, VkDeviceOrHostAddressKHR dst = {},
                               const void *p_next = {})
     : mode_(mode), src_(src), dst_(dst), p_next_(p_next) {}
+
+  CopyMicromapToMemoryInfoEXT(const native_type &rhs) : CopyMicromapToMemoryInfoEXT(std::bit_cast<CopyMicromapToMemoryInfoEXT>(rhs)) {}
+
+  CopyMicromapToMemoryInfoEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<CopyMicromapToMemoryInfoEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const CopyMicromapToMemoryInfoEXT &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -13712,6 +21559,16 @@ struct PhysicalDeviceMultiviewPerViewViewportsFeaturesQCOM {
   PhysicalDeviceMultiviewPerViewViewportsFeaturesQCOM(VkBool32 multiview_per_view_viewports = {}, void *p_next = {})
     : multiview_per_view_viewports_(multiview_per_view_viewports), p_next_(p_next) {}
 
+  PhysicalDeviceMultiviewPerViewViewportsFeaturesQCOM(const native_type &rhs)
+    : PhysicalDeviceMultiviewPerViewViewportsFeaturesQCOM(std::bit_cast<PhysicalDeviceMultiviewPerViewViewportsFeaturesQCOM>(rhs)) {}
+
+  PhysicalDeviceMultiviewPerViewViewportsFeaturesQCOM &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceMultiviewPerViewViewportsFeaturesQCOM>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceMultiviewPerViewViewportsFeaturesQCOM &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PHYSICAL_DEVICE_MULTIVIEW_PER_VIEW_VIEWPORTS_FEATURES_QCOM;
@@ -13726,6 +21583,16 @@ struct PhysicalDeviceNonSeamlessCubeMapFeaturesEXT {
   PhysicalDeviceNonSeamlessCubeMapFeaturesEXT(VkBool32 non_seamless_cube_map = {}, void *p_next = {})
     : non_seamless_cube_map_(non_seamless_cube_map), p_next_(p_next) {}
 
+  PhysicalDeviceNonSeamlessCubeMapFeaturesEXT(const native_type &rhs)
+    : PhysicalDeviceNonSeamlessCubeMapFeaturesEXT(std::bit_cast<PhysicalDeviceNonSeamlessCubeMapFeaturesEXT>(rhs)) {}
+
+  PhysicalDeviceNonSeamlessCubeMapFeaturesEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceNonSeamlessCubeMapFeaturesEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceNonSeamlessCubeMapFeaturesEXT &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PHYSICAL_DEVICE_NON_SEAMLESS_CUBE_MAP_FEATURES_EXT;
@@ -13736,6 +21603,16 @@ struct PhysicalDeviceNonSeamlessCubeMapFeaturesEXT {
 struct PhysicalDeviceMaintenance6PropertiesKHR {
 
   using native_type = VkPhysicalDeviceMaintenance6PropertiesKHR;
+
+  PhysicalDeviceMaintenance6PropertiesKHR(const native_type &rhs)
+    : PhysicalDeviceMaintenance6PropertiesKHR(std::bit_cast<PhysicalDeviceMaintenance6PropertiesKHR>(rhs)) {}
+
+  PhysicalDeviceMaintenance6PropertiesKHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceMaintenance6PropertiesKHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceMaintenance6PropertiesKHR &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -13754,6 +21631,16 @@ struct PhysicalDeviceLayeredApiPropertiesListKHR {
                                             void *p_next = {})
     : p_layered_apis_(p_layered_apis), layered_api_count_(layered_api_count), p_next_(p_next) {}
 
+  PhysicalDeviceLayeredApiPropertiesListKHR(const native_type &rhs)
+    : PhysicalDeviceLayeredApiPropertiesListKHR(std::bit_cast<PhysicalDeviceLayeredApiPropertiesListKHR>(rhs)) {}
+
+  PhysicalDeviceLayeredApiPropertiesListKHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceLayeredApiPropertiesListKHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceLayeredApiPropertiesListKHR &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PHYSICAL_DEVICE_LAYERED_API_PROPERTIES_LIST_KHR;
@@ -13770,6 +21657,15 @@ struct RenderingAreaInfoKHR {
                        const Format *p_color_attachment_formats = {}, Format depth_attachment_format = {}, const void *p_next = {})
     : stencil_attachment_format_(stencil_attachment_format), view_mask_(view_mask), color_attachment_count_(color_attachment_count),
       p_color_attachment_formats_(p_color_attachment_formats), depth_attachment_format_(depth_attachment_format), p_next_(p_next) {}
+
+  RenderingAreaInfoKHR(const native_type &rhs) : RenderingAreaInfoKHR(std::bit_cast<RenderingAreaInfoKHR>(rhs)) {}
+
+  RenderingAreaInfoKHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<RenderingAreaInfoKHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const RenderingAreaInfoKHR &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -13791,6 +21687,15 @@ struct ColorBlendEquationEXT {
     : src_color_blend_factor_(src_color_blend_factor), dst_color_blend_factor_(dst_color_blend_factor), color_blend_op_(color_blend_op),
       src_alpha_blend_factor_(src_alpha_blend_factor), dst_alpha_blend_factor_(dst_alpha_blend_factor), alpha_blend_op_(alpha_blend_op) {}
 
+  ColorBlendEquationEXT(const native_type &rhs) : ColorBlendEquationEXT(std::bit_cast<ColorBlendEquationEXT>(rhs)) {}
+
+  ColorBlendEquationEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<ColorBlendEquationEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const ColorBlendEquationEXT &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   BlendFactor src_color_blend_factor_;
@@ -13805,6 +21710,15 @@ struct PerformanceValueINTEL {
 
   using native_type = VkPerformanceValueINTEL;
 
+  PerformanceValueINTEL(const native_type &rhs) : PerformanceValueINTEL(std::bit_cast<PerformanceValueINTEL>(rhs)) {}
+
+  PerformanceValueINTEL &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PerformanceValueINTEL>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PerformanceValueINTEL &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   PerformanceValueType type_;
@@ -13814,6 +21728,15 @@ struct PerformanceValueINTEL {
 struct DescriptorSetLayoutSupport {
 
   using native_type = VkDescriptorSetLayoutSupport;
+
+  DescriptorSetLayoutSupport(const native_type &rhs) : DescriptorSetLayoutSupport(std::bit_cast<DescriptorSetLayoutSupport>(rhs)) {}
+
+  DescriptorSetLayoutSupport &operator=(const native_type &rhs) {
+    *this = std::bit_cast<DescriptorSetLayoutSupport>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const DescriptorSetLayoutSupport &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -13825,6 +21748,16 @@ struct DescriptorSetLayoutSupport {
 struct PhysicalDeviceFloatControlsProperties {
 
   using native_type = VkPhysicalDeviceFloatControlsProperties;
+
+  PhysicalDeviceFloatControlsProperties(const native_type &rhs)
+    : PhysicalDeviceFloatControlsProperties(std::bit_cast<PhysicalDeviceFloatControlsProperties>(rhs)) {}
+
+  PhysicalDeviceFloatControlsProperties &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceFloatControlsProperties>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceFloatControlsProperties &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -13853,6 +21786,16 @@ struct PhysicalDeviceDescriptorBufferDensityMapPropertiesEXT {
 
   using native_type = VkPhysicalDeviceDescriptorBufferDensityMapPropertiesEXT;
 
+  PhysicalDeviceDescriptorBufferDensityMapPropertiesEXT(const native_type &rhs)
+    : PhysicalDeviceDescriptorBufferDensityMapPropertiesEXT(std::bit_cast<PhysicalDeviceDescriptorBufferDensityMapPropertiesEXT>(rhs)) {}
+
+  PhysicalDeviceDescriptorBufferDensityMapPropertiesEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceDescriptorBufferDensityMapPropertiesEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceDescriptorBufferDensityMapPropertiesEXT &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PHYSICAL_DEVICE_DESCRIPTOR_BUFFER_DENSITY_MAP_PROPERTIES_EXT;
@@ -13867,6 +21810,16 @@ struct DeviceQueueGlobalPriorityCreateInfoKHR {
   DeviceQueueGlobalPriorityCreateInfoKHR(QueueGlobalPriority global_priority = {}, const void *p_next = {})
     : global_priority_(global_priority), p_next_(p_next) {}
 
+  DeviceQueueGlobalPriorityCreateInfoKHR(const native_type &rhs)
+    : DeviceQueueGlobalPriorityCreateInfoKHR(std::bit_cast<DeviceQueueGlobalPriorityCreateInfoKHR>(rhs)) {}
+
+  DeviceQueueGlobalPriorityCreateInfoKHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<DeviceQueueGlobalPriorityCreateInfoKHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const DeviceQueueGlobalPriorityCreateInfoKHR &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::DEVICE_QUEUE_GLOBAL_PRIORITY_CREATE_INFO_KHR;
@@ -13880,6 +21833,16 @@ struct PhysicalDeviceHostQueryResetFeatures {
 
   PhysicalDeviceHostQueryResetFeatures(VkBool32 host_query_reset = {}, void *p_next = {})
     : host_query_reset_(host_query_reset), p_next_(p_next) {}
+
+  PhysicalDeviceHostQueryResetFeatures(const native_type &rhs)
+    : PhysicalDeviceHostQueryResetFeatures(std::bit_cast<PhysicalDeviceHostQueryResetFeatures>(rhs)) {}
+
+  PhysicalDeviceHostQueryResetFeatures &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceHostQueryResetFeatures>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceHostQueryResetFeatures &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -13897,6 +21860,16 @@ struct CommandBufferInheritanceViewportScissorInfoNV {
     : p_viewport_depths_(p_viewport_depths), viewport_scissor2d_(viewport_scissor2d), viewport_depth_count_(viewport_depth_count),
       p_next_(p_next) {}
 
+  CommandBufferInheritanceViewportScissorInfoNV(const native_type &rhs)
+    : CommandBufferInheritanceViewportScissorInfoNV(std::bit_cast<CommandBufferInheritanceViewportScissorInfoNV>(rhs)) {}
+
+  CommandBufferInheritanceViewportScissorInfoNV &operator=(const native_type &rhs) {
+    *this = std::bit_cast<CommandBufferInheritanceViewportScissorInfoNV>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const CommandBufferInheritanceViewportScissorInfoNV &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::COMMAND_BUFFER_INHERITANCE_VIEWPORT_SCISSOR_INFO_NV;
@@ -13913,6 +21886,16 @@ struct PhysicalDeviceGlobalPriorityQueryFeaturesKHR {
   PhysicalDeviceGlobalPriorityQueryFeaturesKHR(VkBool32 global_priority_query = {}, void *p_next = {})
     : global_priority_query_(global_priority_query), p_next_(p_next) {}
 
+  PhysicalDeviceGlobalPriorityQueryFeaturesKHR(const native_type &rhs)
+    : PhysicalDeviceGlobalPriorityQueryFeaturesKHR(std::bit_cast<PhysicalDeviceGlobalPriorityQueryFeaturesKHR>(rhs)) {}
+
+  PhysicalDeviceGlobalPriorityQueryFeaturesKHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceGlobalPriorityQueryFeaturesKHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceGlobalPriorityQueryFeaturesKHR &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PHYSICAL_DEVICE_GLOBAL_PRIORITY_QUERY_FEATURES_KHR;
@@ -13926,6 +21909,16 @@ struct PhysicalDeviceShaderIntegerFunctions2FeaturesINTEL {
 
   PhysicalDeviceShaderIntegerFunctions2FeaturesINTEL(VkBool32 shader_integer_functions2 = {}, void *p_next = {})
     : shader_integer_functions2_(shader_integer_functions2), p_next_(p_next) {}
+
+  PhysicalDeviceShaderIntegerFunctions2FeaturesINTEL(const native_type &rhs)
+    : PhysicalDeviceShaderIntegerFunctions2FeaturesINTEL(std::bit_cast<PhysicalDeviceShaderIntegerFunctions2FeaturesINTEL>(rhs)) {}
+
+  PhysicalDeviceShaderIntegerFunctions2FeaturesINTEL &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceShaderIntegerFunctions2FeaturesINTEL>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceShaderIntegerFunctions2FeaturesINTEL &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -13941,6 +21934,15 @@ struct DebugUtilsObjectTagInfoEXT {
   DebugUtilsObjectTagInfoEXT(const void *p_tag = {}, ObjectType object_type = {}, uint64_t object_handle = {}, uint64_t tag_name = {},
                              size_t tag_size = {}, const void *p_next = {})
     : p_tag_(p_tag), object_type_(object_type), object_handle_(object_handle), tag_name_(tag_name), tag_size_(tag_size), p_next_(p_next) {}
+
+  DebugUtilsObjectTagInfoEXT(const native_type &rhs) : DebugUtilsObjectTagInfoEXT(std::bit_cast<DebugUtilsObjectTagInfoEXT>(rhs)) {}
+
+  DebugUtilsObjectTagInfoEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<DebugUtilsObjectTagInfoEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const DebugUtilsObjectTagInfoEXT &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -13961,6 +21963,16 @@ struct MultiviewPerViewRenderAreasRenderPassBeginInfoQCOM {
                                                      const void *p_next = {})
     : p_per_view_render_areas_(p_per_view_render_areas), per_view_render_area_count_(per_view_render_area_count), p_next_(p_next) {}
 
+  MultiviewPerViewRenderAreasRenderPassBeginInfoQCOM(const native_type &rhs)
+    : MultiviewPerViewRenderAreasRenderPassBeginInfoQCOM(std::bit_cast<MultiviewPerViewRenderAreasRenderPassBeginInfoQCOM>(rhs)) {}
+
+  MultiviewPerViewRenderAreasRenderPassBeginInfoQCOM &operator=(const native_type &rhs) {
+    *this = std::bit_cast<MultiviewPerViewRenderAreasRenderPassBeginInfoQCOM>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const MultiviewPerViewRenderAreasRenderPassBeginInfoQCOM &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::MULTIVIEW_PER_VIEW_RENDER_AREAS_RENDER_PASS_BEGIN_INFO_QCOM;
@@ -13976,6 +21988,15 @@ struct DebugUtilsLabelEXT {
   DebugUtilsLabelEXT(const std::array<float, 4> &color = {}, const char *p_label_name = {}, const void *p_next = {})
     : color_(color), p_label_name_(p_label_name), p_next_(p_next) {}
 
+  DebugUtilsLabelEXT(const native_type &rhs) : DebugUtilsLabelEXT(std::bit_cast<DebugUtilsLabelEXT>(rhs)) {}
+
+  DebugUtilsLabelEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<DebugUtilsLabelEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const DebugUtilsLabelEXT &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::DEBUG_UTILS_LABEL_EXT;
@@ -13987,6 +22008,16 @@ struct DebugUtilsLabelEXT {
 struct PhysicalDeviceFragmentShadingRateKHR {
 
   using native_type = VkPhysicalDeviceFragmentShadingRateKHR;
+
+  PhysicalDeviceFragmentShadingRateKHR(const native_type &rhs)
+    : PhysicalDeviceFragmentShadingRateKHR(std::bit_cast<PhysicalDeviceFragmentShadingRateKHR>(rhs)) {}
+
+  PhysicalDeviceFragmentShadingRateKHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceFragmentShadingRateKHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceFragmentShadingRateKHR &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -14003,6 +22034,15 @@ struct DebugUtilsObjectNameInfoEXT {
   DebugUtilsObjectNameInfoEXT(const char *p_object_name = {}, ObjectType object_type = {}, uint64_t object_handle = {},
                               const void *p_next = {})
     : p_object_name_(p_object_name), object_type_(object_type), object_handle_(object_handle), p_next_(p_next) {}
+
+  DebugUtilsObjectNameInfoEXT(const native_type &rhs) : DebugUtilsObjectNameInfoEXT(std::bit_cast<DebugUtilsObjectNameInfoEXT>(rhs)) {}
+
+  DebugUtilsObjectNameInfoEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<DebugUtilsObjectNameInfoEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const DebugUtilsObjectNameInfoEXT &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -14025,6 +22065,16 @@ struct DebugUtilsMessengerCallbackDataEXT {
     : p_objects_(p_objects), flags_(flags), p_message_id_name_(p_message_id_name), message_id_number_(message_id_number),
       p_message_(p_message), queue_label_count_(queue_label_count), p_queue_labels_(p_queue_labels),
       cmd_buf_label_count_(cmd_buf_label_count), p_cmd_buf_labels_(p_cmd_buf_labels), object_count_(object_count), p_next_(p_next) {}
+
+  DebugUtilsMessengerCallbackDataEXT(const native_type &rhs)
+    : DebugUtilsMessengerCallbackDataEXT(std::bit_cast<DebugUtilsMessengerCallbackDataEXT>(rhs)) {}
+
+  DebugUtilsMessengerCallbackDataEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<DebugUtilsMessengerCallbackDataEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const DebugUtilsMessengerCallbackDataEXT &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -14049,6 +22099,16 @@ struct PhysicalDeviceShaderFloatControls2FeaturesKHR {
   PhysicalDeviceShaderFloatControls2FeaturesKHR(VkBool32 shader_float_controls2 = {}, void *p_next = {})
     : shader_float_controls2_(shader_float_controls2), p_next_(p_next) {}
 
+  PhysicalDeviceShaderFloatControls2FeaturesKHR(const native_type &rhs)
+    : PhysicalDeviceShaderFloatControls2FeaturesKHR(std::bit_cast<PhysicalDeviceShaderFloatControls2FeaturesKHR>(rhs)) {}
+
+  PhysicalDeviceShaderFloatControls2FeaturesKHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceShaderFloatControls2FeaturesKHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceShaderFloatControls2FeaturesKHR &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PHYSICAL_DEVICE_SHADER_FLOAT_CONTROLS_2_FEATURES_KHR;
@@ -14059,6 +22119,15 @@ struct PhysicalDeviceShaderFloatControls2FeaturesKHR {
 struct DisplayProperties2KHR {
 
   using native_type = VkDisplayProperties2KHR;
+
+  DisplayProperties2KHR(const native_type &rhs) : DisplayProperties2KHR(std::bit_cast<DisplayProperties2KHR>(rhs)) {}
+
+  DisplayProperties2KHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<DisplayProperties2KHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const DisplayProperties2KHR &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -14074,6 +22143,16 @@ struct PhysicalDeviceTransformFeedbackFeaturesEXT {
   PhysicalDeviceTransformFeedbackFeaturesEXT(VkBool32 geometry_streams = {}, VkBool32 transform_feedback = {}, void *p_next = {})
     : geometry_streams_(geometry_streams), transform_feedback_(transform_feedback), p_next_(p_next) {}
 
+  PhysicalDeviceTransformFeedbackFeaturesEXT(const native_type &rhs)
+    : PhysicalDeviceTransformFeedbackFeaturesEXT(std::bit_cast<PhysicalDeviceTransformFeedbackFeaturesEXT>(rhs)) {}
+
+  PhysicalDeviceTransformFeedbackFeaturesEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceTransformFeedbackFeaturesEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceTransformFeedbackFeaturesEXT &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PHYSICAL_DEVICE_TRANSFORM_FEEDBACK_FEATURES_EXT;
@@ -14086,6 +22165,16 @@ struct VideoSessionMemoryRequirementsKHR {
 
   using native_type = VkVideoSessionMemoryRequirementsKHR;
 
+  VideoSessionMemoryRequirementsKHR(const native_type &rhs)
+    : VideoSessionMemoryRequirementsKHR(std::bit_cast<VideoSessionMemoryRequirementsKHR>(rhs)) {}
+
+  VideoSessionMemoryRequirementsKHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<VideoSessionMemoryRequirementsKHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const VideoSessionMemoryRequirementsKHR &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::VIDEO_SESSION_MEMORY_REQUIREMENTS_KHR;
@@ -14097,6 +22186,16 @@ struct VideoSessionMemoryRequirementsKHR {
 struct DeviceMemoryReportCallbackDataEXT {
 
   using native_type = VkDeviceMemoryReportCallbackDataEXT;
+
+  DeviceMemoryReportCallbackDataEXT(const native_type &rhs)
+    : DeviceMemoryReportCallbackDataEXT(std::bit_cast<DeviceMemoryReportCallbackDataEXT>(rhs)) {}
+
+  DeviceMemoryReportCallbackDataEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<DeviceMemoryReportCallbackDataEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const DeviceMemoryReportCallbackDataEXT &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -14127,6 +22226,15 @@ struct SubpassDescription2 {
       p_resolve_attachments_(p_resolve_attachments), p_depth_stencil_attachment_(p_depth_stencil_attachment),
       preserve_attachment_count_(preserve_attachment_count), p_next_(p_next) {}
 
+  SubpassDescription2(const native_type &rhs) : SubpassDescription2(std::bit_cast<SubpassDescription2>(rhs)) {}
+
+  SubpassDescription2 &operator=(const native_type &rhs) {
+    *this = std::bit_cast<SubpassDescription2>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const SubpassDescription2 &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::SUBPASS_DESCRIPTION_2;
@@ -14156,6 +22264,15 @@ struct RenderPassCreateInfo2 {
       subpass_count_(subpass_count), p_subpasses_(p_subpasses), dependency_count_(dependency_count), p_dependencies_(p_dependencies),
       correlated_view_mask_count_(correlated_view_mask_count), p_next_(p_next) {}
 
+  RenderPassCreateInfo2(const native_type &rhs) : RenderPassCreateInfo2(std::bit_cast<RenderPassCreateInfo2>(rhs)) {}
+
+  RenderPassCreateInfo2 &operator=(const native_type &rhs) {
+    *this = std::bit_cast<RenderPassCreateInfo2>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const RenderPassCreateInfo2 &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::RENDER_PASS_CREATE_INFO_2;
@@ -14181,6 +22298,16 @@ struct VideoDecodeH265SessionParametersCreateInfoKHR {
     : p_parameters_add_info_(p_parameters_add_info), max_std_vpscount_(max_std_vpscount), max_std_spscount_(max_std_spscount),
       max_std_ppscount_(max_std_ppscount), p_next_(p_next) {}
 
+  VideoDecodeH265SessionParametersCreateInfoKHR(const native_type &rhs)
+    : VideoDecodeH265SessionParametersCreateInfoKHR(std::bit_cast<VideoDecodeH265SessionParametersCreateInfoKHR>(rhs)) {}
+
+  VideoDecodeH265SessionParametersCreateInfoKHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<VideoDecodeH265SessionParametersCreateInfoKHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const VideoDecodeH265SessionParametersCreateInfoKHR &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::VIDEO_DECODE_H265_SESSION_PARAMETERS_CREATE_INFO_KHR;
@@ -14194,6 +22321,16 @@ struct VideoDecodeH265SessionParametersCreateInfoKHR {
 struct PhysicalDeviceShaderCoreProperties2AMD {
 
   using native_type = VkPhysicalDeviceShaderCoreProperties2AMD;
+
+  PhysicalDeviceShaderCoreProperties2AMD(const native_type &rhs)
+    : PhysicalDeviceShaderCoreProperties2AMD(std::bit_cast<PhysicalDeviceShaderCoreProperties2AMD>(rhs)) {}
+
+  PhysicalDeviceShaderCoreProperties2AMD &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceShaderCoreProperties2AMD>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceShaderCoreProperties2AMD &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -14214,6 +22351,16 @@ struct PipelineRasterizationConservativeStateCreateInfoEXT {
     : extra_primitive_overestimation_size_(extra_primitive_overestimation_size), flags_(flags),
       conservative_rasterization_mode_(conservative_rasterization_mode), p_next_(p_next) {}
 
+  PipelineRasterizationConservativeStateCreateInfoEXT(const native_type &rhs)
+    : PipelineRasterizationConservativeStateCreateInfoEXT(std::bit_cast<PipelineRasterizationConservativeStateCreateInfoEXT>(rhs)) {}
+
+  PipelineRasterizationConservativeStateCreateInfoEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PipelineRasterizationConservativeStateCreateInfoEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PipelineRasterizationConservativeStateCreateInfoEXT &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PIPELINE_RASTERIZATION_CONSERVATIVE_STATE_CREATE_INFO_EXT;
@@ -14226,6 +22373,16 @@ struct PipelineRasterizationConservativeStateCreateInfoEXT {
 struct PhysicalDeviceVertexAttributeDivisorPropertiesEXT {
 
   using native_type = VkPhysicalDeviceVertexAttributeDivisorPropertiesEXT;
+
+  PhysicalDeviceVertexAttributeDivisorPropertiesEXT(const native_type &rhs)
+    : PhysicalDeviceVertexAttributeDivisorPropertiesEXT(std::bit_cast<PhysicalDeviceVertexAttributeDivisorPropertiesEXT>(rhs)) {}
+
+  PhysicalDeviceVertexAttributeDivisorPropertiesEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceVertexAttributeDivisorPropertiesEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceVertexAttributeDivisorPropertiesEXT &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -14243,6 +22400,16 @@ struct PhysicalDeviceImageDrmFormatModifierInfoEXT {
                                               const void *p_next = {})
     : p_queue_family_indices_(p_queue_family_indices), drm_format_modifier_(drm_format_modifier), sharing_mode_(sharing_mode),
       queue_family_index_count_(queue_family_index_count), p_next_(p_next) {}
+
+  PhysicalDeviceImageDrmFormatModifierInfoEXT(const native_type &rhs)
+    : PhysicalDeviceImageDrmFormatModifierInfoEXT(std::bit_cast<PhysicalDeviceImageDrmFormatModifierInfoEXT>(rhs)) {}
+
+  PhysicalDeviceImageDrmFormatModifierInfoEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceImageDrmFormatModifierInfoEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceImageDrmFormatModifierInfoEXT &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -14262,6 +22429,16 @@ struct DescriptorSetLayoutBindingFlagsCreateInfo {
                                             const void *p_next = {})
     : p_binding_flags_(p_binding_flags), binding_count_(binding_count), p_next_(p_next) {}
 
+  DescriptorSetLayoutBindingFlagsCreateInfo(const native_type &rhs)
+    : DescriptorSetLayoutBindingFlagsCreateInfo(std::bit_cast<DescriptorSetLayoutBindingFlagsCreateInfo>(rhs)) {}
+
+  DescriptorSetLayoutBindingFlagsCreateInfo &operator=(const native_type &rhs) {
+    *this = std::bit_cast<DescriptorSetLayoutBindingFlagsCreateInfo>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const DescriptorSetLayoutBindingFlagsCreateInfo &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::DESCRIPTOR_SET_LAYOUT_BINDING_FLAGS_CREATE_INFO;
@@ -14273,6 +22450,16 @@ struct DescriptorSetLayoutBindingFlagsCreateInfo {
 struct DescriptorSetVariableDescriptorCountLayoutSupport {
 
   using native_type = VkDescriptorSetVariableDescriptorCountLayoutSupport;
+
+  DescriptorSetVariableDescriptorCountLayoutSupport(const native_type &rhs)
+    : DescriptorSetVariableDescriptorCountLayoutSupport(std::bit_cast<DescriptorSetVariableDescriptorCountLayoutSupport>(rhs)) {}
+
+  DescriptorSetVariableDescriptorCountLayoutSupport &operator=(const native_type &rhs) {
+    *this = std::bit_cast<DescriptorSetVariableDescriptorCountLayoutSupport>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const DescriptorSetVariableDescriptorCountLayoutSupport &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -14287,6 +22474,15 @@ struct ImageViewHandleInfoNVX {
 
   ImageViewHandleInfoNVX(VkSampler sampler = {}, VkImageView image_view = {}, DescriptorType descriptor_type = {}, const void *p_next = {})
     : sampler_(sampler), image_view_(image_view), descriptor_type_(descriptor_type), p_next_(p_next) {}
+
+  ImageViewHandleInfoNVX(const native_type &rhs) : ImageViewHandleInfoNVX(std::bit_cast<ImageViewHandleInfoNVX>(rhs)) {}
+
+  ImageViewHandleInfoNVX &operator=(const native_type &rhs) {
+    *this = std::bit_cast<ImageViewHandleInfoNVX>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const ImageViewHandleInfoNVX &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -14303,6 +22499,15 @@ struct SubpassBeginInfo {
 
   SubpassBeginInfo(SubpassContents contents = {}, const void *p_next = {}) : contents_(contents), p_next_(p_next) {}
 
+  SubpassBeginInfo(const native_type &rhs) : SubpassBeginInfo(std::bit_cast<SubpassBeginInfo>(rhs)) {}
+
+  SubpassBeginInfo &operator=(const native_type &rhs) {
+    *this = std::bit_cast<SubpassBeginInfo>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const SubpassBeginInfo &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::SUBPASS_BEGIN_INFO;
@@ -14316,6 +22521,16 @@ struct PhysicalDeviceCornerSampledImageFeaturesNV {
 
   PhysicalDeviceCornerSampledImageFeaturesNV(VkBool32 corner_sampled_image = {}, void *p_next = {})
     : corner_sampled_image_(corner_sampled_image), p_next_(p_next) {}
+
+  PhysicalDeviceCornerSampledImageFeaturesNV(const native_type &rhs)
+    : PhysicalDeviceCornerSampledImageFeaturesNV(std::bit_cast<PhysicalDeviceCornerSampledImageFeaturesNV>(rhs)) {}
+
+  PhysicalDeviceCornerSampledImageFeaturesNV &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceCornerSampledImageFeaturesNV>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceCornerSampledImageFeaturesNV &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -14331,6 +22546,16 @@ struct PhysicalDeviceFragmentDensityMapOffsetFeaturesQCOM {
   PhysicalDeviceFragmentDensityMapOffsetFeaturesQCOM(VkBool32 fragment_density_map_offset = {}, void *p_next = {})
     : fragment_density_map_offset_(fragment_density_map_offset), p_next_(p_next) {}
 
+  PhysicalDeviceFragmentDensityMapOffsetFeaturesQCOM(const native_type &rhs)
+    : PhysicalDeviceFragmentDensityMapOffsetFeaturesQCOM(std::bit_cast<PhysicalDeviceFragmentDensityMapOffsetFeaturesQCOM>(rhs)) {}
+
+  PhysicalDeviceFragmentDensityMapOffsetFeaturesQCOM &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceFragmentDensityMapOffsetFeaturesQCOM>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceFragmentDensityMapOffsetFeaturesQCOM &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PHYSICAL_DEVICE_FRAGMENT_DENSITY_MAP_OFFSET_FEATURES_QCOM;
@@ -14345,6 +22570,16 @@ struct PhysicalDeviceTimelineSemaphoreFeatures {
   PhysicalDeviceTimelineSemaphoreFeatures(VkBool32 timeline_semaphore = {}, void *p_next = {})
     : timeline_semaphore_(timeline_semaphore), p_next_(p_next) {}
 
+  PhysicalDeviceTimelineSemaphoreFeatures(const native_type &rhs)
+    : PhysicalDeviceTimelineSemaphoreFeatures(std::bit_cast<PhysicalDeviceTimelineSemaphoreFeatures>(rhs)) {}
+
+  PhysicalDeviceTimelineSemaphoreFeatures &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceTimelineSemaphoreFeatures>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceTimelineSemaphoreFeatures &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PHYSICAL_DEVICE_TIMELINE_SEMAPHORE_FEATURES;
@@ -14358,6 +22593,15 @@ struct SemaphoreSignalInfo {
 
   SemaphoreSignalInfo(uint64_t value = {}, VkSemaphore semaphore = {}, const void *p_next = {})
     : value_(value), semaphore_(semaphore), p_next_(p_next) {}
+
+  SemaphoreSignalInfo(const native_type &rhs) : SemaphoreSignalInfo(std::bit_cast<SemaphoreSignalInfo>(rhs)) {}
+
+  SemaphoreSignalInfo &operator=(const native_type &rhs) {
+    *this = std::bit_cast<SemaphoreSignalInfo>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const SemaphoreSignalInfo &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -14374,6 +22618,16 @@ struct PhysicalDevicePresentBarrierFeaturesNV {
   PhysicalDevicePresentBarrierFeaturesNV(VkBool32 present_barrier = {}, void *p_next = {})
     : present_barrier_(present_barrier), p_next_(p_next) {}
 
+  PhysicalDevicePresentBarrierFeaturesNV(const native_type &rhs)
+    : PhysicalDevicePresentBarrierFeaturesNV(std::bit_cast<PhysicalDevicePresentBarrierFeaturesNV>(rhs)) {}
+
+  PhysicalDevicePresentBarrierFeaturesNV &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDevicePresentBarrierFeaturesNV>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDevicePresentBarrierFeaturesNV &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PHYSICAL_DEVICE_PRESENT_BARRIER_FEATURES_NV;
@@ -14387,6 +22641,16 @@ struct DescriptorSetLayoutHostMappingInfoVALVE {
 
   DescriptorSetLayoutHostMappingInfoVALVE(uint32_t descriptor_size = {}, size_t descriptor_offset = {}, void *p_next = {})
     : descriptor_size_(descriptor_size), descriptor_offset_(descriptor_offset), p_next_(p_next) {}
+
+  DescriptorSetLayoutHostMappingInfoVALVE(const native_type &rhs)
+    : DescriptorSetLayoutHostMappingInfoVALVE(std::bit_cast<DescriptorSetLayoutHostMappingInfoVALVE>(rhs)) {}
+
+  DescriptorSetLayoutHostMappingInfoVALVE &operator=(const native_type &rhs) {
+    *this = std::bit_cast<DescriptorSetLayoutHostMappingInfoVALVE>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const DescriptorSetLayoutHostMappingInfoVALVE &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -14406,6 +22670,15 @@ struct CopyImageToImageInfoEXT {
     : p_regions_(p_regions), flags_(flags), src_image_(src_image), src_image_layout_(src_image_layout), dst_image_(dst_image),
       dst_image_layout_(dst_image_layout), region_count_(region_count), p_next_(p_next) {}
 
+  CopyImageToImageInfoEXT(const native_type &rhs) : CopyImageToImageInfoEXT(std::bit_cast<CopyImageToImageInfoEXT>(rhs)) {}
+
+  CopyImageToImageInfoEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<CopyImageToImageInfoEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const CopyImageToImageInfoEXT &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::COPY_IMAGE_TO_IMAGE_INFO_EXT;
@@ -14423,6 +22696,16 @@ struct PhysicalDeviceVertexAttributeDivisorPropertiesKHR {
 
   using native_type = VkPhysicalDeviceVertexAttributeDivisorPropertiesKHR;
 
+  PhysicalDeviceVertexAttributeDivisorPropertiesKHR(const native_type &rhs)
+    : PhysicalDeviceVertexAttributeDivisorPropertiesKHR(std::bit_cast<PhysicalDeviceVertexAttributeDivisorPropertiesKHR>(rhs)) {}
+
+  PhysicalDeviceVertexAttributeDivisorPropertiesKHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceVertexAttributeDivisorPropertiesKHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceVertexAttributeDivisorPropertiesKHR &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PHYSICAL_DEVICE_VERTEX_ATTRIBUTE_DIVISOR_PROPERTIES_KHR;
@@ -14438,6 +22721,16 @@ struct PhysicalDeviceImageViewImageFormatInfoEXT {
   PhysicalDeviceImageViewImageFormatInfoEXT(ImageViewType image_view_type = {}, void *p_next = {})
     : image_view_type_(image_view_type), p_next_(p_next) {}
 
+  PhysicalDeviceImageViewImageFormatInfoEXT(const native_type &rhs)
+    : PhysicalDeviceImageViewImageFormatInfoEXT(std::bit_cast<PhysicalDeviceImageViewImageFormatInfoEXT>(rhs)) {}
+
+  PhysicalDeviceImageViewImageFormatInfoEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceImageViewImageFormatInfoEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceImageViewImageFormatInfoEXT &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PHYSICAL_DEVICE_IMAGE_VIEW_IMAGE_FORMAT_INFO_EXT;
@@ -14451,6 +22744,16 @@ struct PhysicalDeviceCoherentMemoryFeaturesAMD {
 
   PhysicalDeviceCoherentMemoryFeaturesAMD(VkBool32 device_coherent_memory = {}, void *p_next = {})
     : device_coherent_memory_(device_coherent_memory), p_next_(p_next) {}
+
+  PhysicalDeviceCoherentMemoryFeaturesAMD(const native_type &rhs)
+    : PhysicalDeviceCoherentMemoryFeaturesAMD(std::bit_cast<PhysicalDeviceCoherentMemoryFeaturesAMD>(rhs)) {}
+
+  PhysicalDeviceCoherentMemoryFeaturesAMD &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceCoherentMemoryFeaturesAMD>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceCoherentMemoryFeaturesAMD &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -14466,6 +22769,15 @@ struct ImageFormatListCreateInfo {
   ImageFormatListCreateInfo(const Format *p_view_formats = {}, uint32_t view_format_count = {}, const void *p_next = {})
     : p_view_formats_(p_view_formats), view_format_count_(view_format_count), p_next_(p_next) {}
 
+  ImageFormatListCreateInfo(const native_type &rhs) : ImageFormatListCreateInfo(std::bit_cast<ImageFormatListCreateInfo>(rhs)) {}
+
+  ImageFormatListCreateInfo &operator=(const native_type &rhs) {
+    *this = std::bit_cast<ImageFormatListCreateInfo>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const ImageFormatListCreateInfo &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::IMAGE_FORMAT_LIST_CREATE_INFO;
@@ -14479,6 +22791,15 @@ struct ImageViewUsageCreateInfo {
   using native_type = VkImageViewUsageCreateInfo;
 
   ImageViewUsageCreateInfo(ImageUsageMask usage = {}, const void *p_next = {}) : usage_(usage), p_next_(p_next) {}
+
+  ImageViewUsageCreateInfo(const native_type &rhs) : ImageViewUsageCreateInfo(std::bit_cast<ImageViewUsageCreateInfo>(rhs)) {}
+
+  ImageViewUsageCreateInfo &operator=(const native_type &rhs) {
+    *this = std::bit_cast<ImageViewUsageCreateInfo>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const ImageViewUsageCreateInfo &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -14495,6 +22816,16 @@ struct PhysicalDevice8BitStorageFeatures {
                                     VkBool32 uniform_and_storage_buffer8bit_access = {}, void *p_next = {})
     : storage_push_constant8_(storage_push_constant8), storage_buffer8bit_access_(storage_buffer8bit_access),
       uniform_and_storage_buffer8bit_access_(uniform_and_storage_buffer8bit_access), p_next_(p_next) {}
+
+  PhysicalDevice8BitStorageFeatures(const native_type &rhs)
+    : PhysicalDevice8BitStorageFeatures(std::bit_cast<PhysicalDevice8BitStorageFeatures>(rhs)) {}
+
+  PhysicalDevice8BitStorageFeatures &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDevice8BitStorageFeatures>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDevice8BitStorageFeatures &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -14513,6 +22844,15 @@ struct CopyImageInfo2 {
                  ImageLayout dst_image_layout = {}, uint32_t region_count = {}, const void *p_next = {})
     : p_regions_(p_regions), src_image_(src_image), src_image_layout_(src_image_layout), dst_image_(dst_image),
       dst_image_layout_(dst_image_layout), region_count_(region_count), p_next_(p_next) {}
+
+  CopyImageInfo2(const native_type &rhs) : CopyImageInfo2(std::bit_cast<CopyImageInfo2>(rhs)) {}
+
+  CopyImageInfo2 &operator=(const native_type &rhs) {
+    *this = std::bit_cast<CopyImageInfo2>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const CopyImageInfo2 &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -14534,6 +22874,16 @@ struct PhysicalDeviceConditionalRenderingFeaturesEXT {
                                                 void *p_next = {})
     : inherited_conditional_rendering_(inherited_conditional_rendering), conditional_rendering_(conditional_rendering), p_next_(p_next) {}
 
+  PhysicalDeviceConditionalRenderingFeaturesEXT(const native_type &rhs)
+    : PhysicalDeviceConditionalRenderingFeaturesEXT(std::bit_cast<PhysicalDeviceConditionalRenderingFeaturesEXT>(rhs)) {}
+
+  PhysicalDeviceConditionalRenderingFeaturesEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceConditionalRenderingFeaturesEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceConditionalRenderingFeaturesEXT &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PHYSICAL_DEVICE_CONDITIONAL_RENDERING_FEATURES_EXT;
@@ -14549,6 +22899,16 @@ struct SwapchainPresentModesCreateInfoEXT {
   SwapchainPresentModesCreateInfoEXT(const PresentMode *p_present_modes = {}, uint32_t present_mode_count = {}, const void *p_next = {})
     : p_present_modes_(p_present_modes), present_mode_count_(present_mode_count), p_next_(p_next) {}
 
+  SwapchainPresentModesCreateInfoEXT(const native_type &rhs)
+    : SwapchainPresentModesCreateInfoEXT(std::bit_cast<SwapchainPresentModesCreateInfoEXT>(rhs)) {}
+
+  SwapchainPresentModesCreateInfoEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<SwapchainPresentModesCreateInfoEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const SwapchainPresentModesCreateInfoEXT &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::SWAPCHAIN_PRESENT_MODES_CREATE_INFO_EXT;
@@ -14563,6 +22923,16 @@ struct PhysicalDeviceDeviceMemoryReportFeaturesEXT {
 
   PhysicalDeviceDeviceMemoryReportFeaturesEXT(VkBool32 device_memory_report = {}, void *p_next = {})
     : device_memory_report_(device_memory_report), p_next_(p_next) {}
+
+  PhysicalDeviceDeviceMemoryReportFeaturesEXT(const native_type &rhs)
+    : PhysicalDeviceDeviceMemoryReportFeaturesEXT(std::bit_cast<PhysicalDeviceDeviceMemoryReportFeaturesEXT>(rhs)) {}
+
+  PhysicalDeviceDeviceMemoryReportFeaturesEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceDeviceMemoryReportFeaturesEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceDeviceMemoryReportFeaturesEXT &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -14582,6 +22952,16 @@ struct PhysicalDeviceMeshShaderFeaturesEXT {
       multiview_mesh_shader_(multiview_mesh_shader),
       primitive_fragment_shading_rate_mesh_shader_(primitive_fragment_shading_rate_mesh_shader), p_next_(p_next) {}
 
+  PhysicalDeviceMeshShaderFeaturesEXT(const native_type &rhs)
+    : PhysicalDeviceMeshShaderFeaturesEXT(std::bit_cast<PhysicalDeviceMeshShaderFeaturesEXT>(rhs)) {}
+
+  PhysicalDeviceMeshShaderFeaturesEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceMeshShaderFeaturesEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceMeshShaderFeaturesEXT &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PHYSICAL_DEVICE_MESH_SHADER_FEATURES_EXT;
@@ -14599,6 +22979,15 @@ struct PerformanceMarkerInfoINTEL {
 
   PerformanceMarkerInfoINTEL(uint64_t marker = {}, const void *p_next = {}) : marker_(marker), p_next_(p_next) {}
 
+  PerformanceMarkerInfoINTEL(const native_type &rhs) : PerformanceMarkerInfoINTEL(std::bit_cast<PerformanceMarkerInfoINTEL>(rhs)) {}
+
+  PerformanceMarkerInfoINTEL &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PerformanceMarkerInfoINTEL>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PerformanceMarkerInfoINTEL &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PERFORMANCE_MARKER_INFO_INTEL;
@@ -14609,6 +22998,16 @@ struct PerformanceMarkerInfoINTEL {
 struct PhysicalDeviceSubgroupProperties {
 
   using native_type = VkPhysicalDeviceSubgroupProperties;
+
+  PhysicalDeviceSubgroupProperties(const native_type &rhs)
+    : PhysicalDeviceSubgroupProperties(std::bit_cast<PhysicalDeviceSubgroupProperties>(rhs)) {}
+
+  PhysicalDeviceSubgroupProperties &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceSubgroupProperties>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceSubgroupProperties &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -14639,6 +23038,16 @@ struct PhysicalDeviceShaderAtomicFloatFeaturesEXT {
       shader_image_float32atomic_add_(shader_image_float32atomic_add), sparse_image_float32atomics_(sparse_image_float32atomics),
       p_next_(p_next) {}
 
+  PhysicalDeviceShaderAtomicFloatFeaturesEXT(const native_type &rhs)
+    : PhysicalDeviceShaderAtomicFloatFeaturesEXT(std::bit_cast<PhysicalDeviceShaderAtomicFloatFeaturesEXT>(rhs)) {}
+
+  PhysicalDeviceShaderAtomicFloatFeaturesEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceShaderAtomicFloatFeaturesEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceShaderAtomicFloatFeaturesEXT &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PHYSICAL_DEVICE_SHADER_ATOMIC_FLOAT_FEATURES_EXT;
@@ -14664,6 +23073,16 @@ struct DedicatedAllocationImageCreateInfoNV {
   DedicatedAllocationImageCreateInfoNV(VkBool32 dedicated_allocation = {}, const void *p_next = {})
     : dedicated_allocation_(dedicated_allocation), p_next_(p_next) {}
 
+  DedicatedAllocationImageCreateInfoNV(const native_type &rhs)
+    : DedicatedAllocationImageCreateInfoNV(std::bit_cast<DedicatedAllocationImageCreateInfoNV>(rhs)) {}
+
+  DedicatedAllocationImageCreateInfoNV &operator=(const native_type &rhs) {
+    *this = std::bit_cast<DedicatedAllocationImageCreateInfoNV>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const DedicatedAllocationImageCreateInfoNV &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::DEDICATED_ALLOCATION_IMAGE_CREATE_INFO_NV;
@@ -14680,6 +23099,16 @@ struct PhysicalDeviceVertexAttributeDivisorFeaturesKHR {
     : vertex_attribute_instance_rate_zero_divisor_(vertex_attribute_instance_rate_zero_divisor),
       vertex_attribute_instance_rate_divisor_(vertex_attribute_instance_rate_divisor), p_next_(p_next) {}
 
+  PhysicalDeviceVertexAttributeDivisorFeaturesKHR(const native_type &rhs)
+    : PhysicalDeviceVertexAttributeDivisorFeaturesKHR(std::bit_cast<PhysicalDeviceVertexAttributeDivisorFeaturesKHR>(rhs)) {}
+
+  PhysicalDeviceVertexAttributeDivisorFeaturesKHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceVertexAttributeDivisorFeaturesKHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceVertexAttributeDivisorFeaturesKHR &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PHYSICAL_DEVICE_VERTEX_ATTRIBUTE_DIVISOR_FEATURES_KHR;
@@ -14691,6 +23120,15 @@ struct PhysicalDeviceVertexAttributeDivisorFeaturesKHR {
 struct CheckpointDataNV {
 
   using native_type = VkCheckpointDataNV;
+
+  CheckpointDataNV(const native_type &rhs) : CheckpointDataNV(std::bit_cast<CheckpointDataNV>(rhs)) {}
+
+  CheckpointDataNV &operator=(const native_type &rhs) {
+    *this = std::bit_cast<CheckpointDataNV>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const CheckpointDataNV &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -14709,6 +23147,15 @@ struct FrameBoundaryEXT {
                    size_t tag_size = {}, const void *p_next = {})
     : p_tag_(p_tag), flags_(flags), frame_id_(frame_id), image_count_(image_count), p_images_(p_images), buffer_count_(buffer_count),
       p_buffers_(p_buffers), tag_name_(tag_name), tag_size_(tag_size), p_next_(p_next) {}
+
+  FrameBoundaryEXT(const native_type &rhs) : FrameBoundaryEXT(std::bit_cast<FrameBoundaryEXT>(rhs)) {}
+
+  FrameBoundaryEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<FrameBoundaryEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const FrameBoundaryEXT &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -14729,6 +23176,16 @@ struct PhysicalDeviceDepthStencilResolveProperties {
 
   using native_type = VkPhysicalDeviceDepthStencilResolveProperties;
 
+  PhysicalDeviceDepthStencilResolveProperties(const native_type &rhs)
+    : PhysicalDeviceDepthStencilResolveProperties(std::bit_cast<PhysicalDeviceDepthStencilResolveProperties>(rhs)) {}
+
+  PhysicalDeviceDepthStencilResolveProperties &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceDepthStencilResolveProperties>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceDepthStencilResolveProperties &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PHYSICAL_DEVICE_DEPTH_STENCIL_RESOLVE_PROPERTIES;
@@ -14745,6 +23202,16 @@ struct RenderPassSubpassFeedbackCreateInfoEXT {
 
   RenderPassSubpassFeedbackCreateInfoEXT(RenderPassSubpassFeedbackInfoEXT *p_subpass_feedback = {}, const void *p_next = {})
     : p_subpass_feedback_(p_subpass_feedback), p_next_(p_next) {}
+
+  RenderPassSubpassFeedbackCreateInfoEXT(const native_type &rhs)
+    : RenderPassSubpassFeedbackCreateInfoEXT(std::bit_cast<RenderPassSubpassFeedbackCreateInfoEXT>(rhs)) {}
+
+  RenderPassSubpassFeedbackCreateInfoEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<RenderPassSubpassFeedbackCreateInfoEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const RenderPassSubpassFeedbackCreateInfoEXT &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -14763,6 +23230,16 @@ struct SubpassDescriptionDepthStencilResolve {
     : p_depth_stencil_resolve_attachment_(p_depth_stencil_resolve_attachment), depth_resolve_mode_(depth_resolve_mode),
       stencil_resolve_mode_(stencil_resolve_mode), p_next_(p_next) {}
 
+  SubpassDescriptionDepthStencilResolve(const native_type &rhs)
+    : SubpassDescriptionDepthStencilResolve(std::bit_cast<SubpassDescriptionDepthStencilResolve>(rhs)) {}
+
+  SubpassDescriptionDepthStencilResolve &operator=(const native_type &rhs) {
+    *this = std::bit_cast<SubpassDescriptionDepthStencilResolve>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const SubpassDescriptionDepthStencilResolve &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::SUBPASS_DESCRIPTION_DEPTH_STENCIL_RESOLVE;
@@ -14779,6 +23256,15 @@ struct SwapchainPresentFenceInfoEXT {
   SwapchainPresentFenceInfoEXT(const VkFence *p_fences = {}, uint32_t swapchain_count = {}, const void *p_next = {})
     : p_fences_(p_fences), swapchain_count_(swapchain_count), p_next_(p_next) {}
 
+  SwapchainPresentFenceInfoEXT(const native_type &rhs) : SwapchainPresentFenceInfoEXT(std::bit_cast<SwapchainPresentFenceInfoEXT>(rhs)) {}
+
+  SwapchainPresentFenceInfoEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<SwapchainPresentFenceInfoEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const SwapchainPresentFenceInfoEXT &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::SWAPCHAIN_PRESENT_FENCE_INFO_EXT;
@@ -14794,6 +23280,15 @@ struct AcquireProfilingLockInfoKHR {
   AcquireProfilingLockInfoKHR(uint64_t timeout = {}, AcquireProfilingLockMask flags = {}, const void *p_next = {})
     : timeout_(timeout), flags_(flags), p_next_(p_next) {}
 
+  AcquireProfilingLockInfoKHR(const native_type &rhs) : AcquireProfilingLockInfoKHR(std::bit_cast<AcquireProfilingLockInfoKHR>(rhs)) {}
+
+  AcquireProfilingLockInfoKHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<AcquireProfilingLockInfoKHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const AcquireProfilingLockInfoKHR &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::ACQUIRE_PROFILING_LOCK_INFO_KHR;
@@ -14805,6 +23300,16 @@ struct AcquireProfilingLockInfoKHR {
 struct PhysicalDeviceRayTracingInvocationReorderPropertiesNV {
 
   using native_type = VkPhysicalDeviceRayTracingInvocationReorderPropertiesNV;
+
+  PhysicalDeviceRayTracingInvocationReorderPropertiesNV(const native_type &rhs)
+    : PhysicalDeviceRayTracingInvocationReorderPropertiesNV(std::bit_cast<PhysicalDeviceRayTracingInvocationReorderPropertiesNV>(rhs)) {}
+
+  PhysicalDeviceRayTracingInvocationReorderPropertiesNV &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceRayTracingInvocationReorderPropertiesNV>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceRayTracingInvocationReorderPropertiesNV &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -14819,6 +23324,15 @@ struct SubpassEndInfo {
 
   SubpassEndInfo(const void *p_next = {}) : p_next_(p_next) {}
 
+  SubpassEndInfo(const native_type &rhs) : SubpassEndInfo(std::bit_cast<SubpassEndInfo>(rhs)) {}
+
+  SubpassEndInfo &operator=(const native_type &rhs) {
+    *this = std::bit_cast<SubpassEndInfo>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const SubpassEndInfo &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::SUBPASS_END_INFO;
@@ -14830,6 +23344,15 @@ struct ImageViewASTCDecodeModeEXT {
   using native_type = VkImageViewASTCDecodeModeEXT;
 
   ImageViewASTCDecodeModeEXT(Format decode_mode = {}, const void *p_next = {}) : decode_mode_(decode_mode), p_next_(p_next) {}
+
+  ImageViewASTCDecodeModeEXT(const native_type &rhs) : ImageViewASTCDecodeModeEXT(std::bit_cast<ImageViewASTCDecodeModeEXT>(rhs)) {}
+
+  ImageViewASTCDecodeModeEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<ImageViewASTCDecodeModeEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const ImageViewASTCDecodeModeEXT &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -14845,6 +23368,16 @@ struct PhysicalDeviceASTCDecodeFeaturesEXT {
   PhysicalDeviceASTCDecodeFeaturesEXT(VkBool32 decode_mode_shared_exponent = {}, void *p_next = {})
     : decode_mode_shared_exponent_(decode_mode_shared_exponent), p_next_(p_next) {}
 
+  PhysicalDeviceASTCDecodeFeaturesEXT(const native_type &rhs)
+    : PhysicalDeviceASTCDecodeFeaturesEXT(std::bit_cast<PhysicalDeviceASTCDecodeFeaturesEXT>(rhs)) {}
+
+  PhysicalDeviceASTCDecodeFeaturesEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceASTCDecodeFeaturesEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceASTCDecodeFeaturesEXT &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PHYSICAL_DEVICE_ASTC_DECODE_FEATURES_EXT;
@@ -14855,6 +23388,16 @@ struct PhysicalDeviceASTCDecodeFeaturesEXT {
 struct PhysicalDeviceTransformFeedbackPropertiesEXT {
 
   using native_type = VkPhysicalDeviceTransformFeedbackPropertiesEXT;
+
+  PhysicalDeviceTransformFeedbackPropertiesEXT(const native_type &rhs)
+    : PhysicalDeviceTransformFeedbackPropertiesEXT(std::bit_cast<PhysicalDeviceTransformFeedbackPropertiesEXT>(rhs)) {}
+
+  PhysicalDeviceTransformFeedbackPropertiesEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceTransformFeedbackPropertiesEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceTransformFeedbackPropertiesEXT &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -14881,6 +23424,16 @@ struct PhysicalDeviceRayTracingMaintenance1FeaturesKHR {
     : ray_tracing_pipeline_trace_rays_indirect2_(ray_tracing_pipeline_trace_rays_indirect2),
       ray_tracing_maintenance1_(ray_tracing_maintenance1), p_next_(p_next) {}
 
+  PhysicalDeviceRayTracingMaintenance1FeaturesKHR(const native_type &rhs)
+    : PhysicalDeviceRayTracingMaintenance1FeaturesKHR(std::bit_cast<PhysicalDeviceRayTracingMaintenance1FeaturesKHR>(rhs)) {}
+
+  PhysicalDeviceRayTracingMaintenance1FeaturesKHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceRayTracingMaintenance1FeaturesKHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceRayTracingMaintenance1FeaturesKHR &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PHYSICAL_DEVICE_RAY_TRACING_MAINTENANCE_1_FEATURES_KHR;
@@ -14896,6 +23449,16 @@ struct PhysicalDeviceRepresentativeFragmentTestFeaturesNV {
   PhysicalDeviceRepresentativeFragmentTestFeaturesNV(VkBool32 representative_fragment_test = {}, void *p_next = {})
     : representative_fragment_test_(representative_fragment_test), p_next_(p_next) {}
 
+  PhysicalDeviceRepresentativeFragmentTestFeaturesNV(const native_type &rhs)
+    : PhysicalDeviceRepresentativeFragmentTestFeaturesNV(std::bit_cast<PhysicalDeviceRepresentativeFragmentTestFeaturesNV>(rhs)) {}
+
+  PhysicalDeviceRepresentativeFragmentTestFeaturesNV &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceRepresentativeFragmentTestFeaturesNV>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceRepresentativeFragmentTestFeaturesNV &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PHYSICAL_DEVICE_REPRESENTATIVE_FRAGMENT_TEST_FEATURES_NV;
@@ -14910,6 +23473,16 @@ struct PipelineRepresentativeFragmentTestStateCreateInfoNV {
   PipelineRepresentativeFragmentTestStateCreateInfoNV(VkBool32 representative_fragment_test_enable = {}, const void *p_next = {})
     : representative_fragment_test_enable_(representative_fragment_test_enable), p_next_(p_next) {}
 
+  PipelineRepresentativeFragmentTestStateCreateInfoNV(const native_type &rhs)
+    : PipelineRepresentativeFragmentTestStateCreateInfoNV(std::bit_cast<PipelineRepresentativeFragmentTestStateCreateInfoNV>(rhs)) {}
+
+  PipelineRepresentativeFragmentTestStateCreateInfoNV &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PipelineRepresentativeFragmentTestStateCreateInfoNV>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PipelineRepresentativeFragmentTestStateCreateInfoNV &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PIPELINE_REPRESENTATIVE_FRAGMENT_TEST_STATE_CREATE_INFO_NV;
@@ -14923,6 +23496,16 @@ struct PhysicalDeviceShaderImageFootprintFeaturesNV {
 
   PhysicalDeviceShaderImageFootprintFeaturesNV(VkBool32 image_footprint = {}, void *p_next = {})
     : image_footprint_(image_footprint), p_next_(p_next) {}
+
+  PhysicalDeviceShaderImageFootprintFeaturesNV(const native_type &rhs)
+    : PhysicalDeviceShaderImageFootprintFeaturesNV(std::bit_cast<PhysicalDeviceShaderImageFootprintFeaturesNV>(rhs)) {}
+
+  PhysicalDeviceShaderImageFootprintFeaturesNV &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceShaderImageFootprintFeaturesNV>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceShaderImageFootprintFeaturesNV &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -14941,6 +23524,15 @@ struct ImageMemoryBarrier {
     : subresource_range_(subresource_range), src_access_mask_(src_access_mask), dst_access_mask_(dst_access_mask), old_layout_(old_layout),
       new_layout_(new_layout), src_queue_family_index_(src_queue_family_index), dst_queue_family_index_(dst_queue_family_index),
       image_(image), p_next_(p_next) {}
+
+  ImageMemoryBarrier(const native_type &rhs) : ImageMemoryBarrier(std::bit_cast<ImageMemoryBarrier>(rhs)) {}
+
+  ImageMemoryBarrier &operator=(const native_type &rhs) {
+    *this = std::bit_cast<ImageMemoryBarrier>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const ImageMemoryBarrier &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -14963,6 +23555,15 @@ struct DisplayModeCreateInfoKHR {
   DisplayModeCreateInfoKHR(DisplayModeParametersKHR parameters = {}, DisplayModeCreateMask flags = {}, const void *p_next = {})
     : parameters_(parameters), flags_(flags), p_next_(p_next) {}
 
+  DisplayModeCreateInfoKHR(const native_type &rhs) : DisplayModeCreateInfoKHR(std::bit_cast<DisplayModeCreateInfoKHR>(rhs)) {}
+
+  DisplayModeCreateInfoKHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<DisplayModeCreateInfoKHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const DisplayModeCreateInfoKHR &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::DISPLAY_MODE_CREATE_INFO_KHR;
@@ -14978,6 +23579,15 @@ struct ImageStencilUsageCreateInfo {
   ImageStencilUsageCreateInfo(ImageUsageMask stencil_usage = {}, const void *p_next = {})
     : stencil_usage_(stencil_usage), p_next_(p_next) {}
 
+  ImageStencilUsageCreateInfo(const native_type &rhs) : ImageStencilUsageCreateInfo(std::bit_cast<ImageStencilUsageCreateInfo>(rhs)) {}
+
+  ImageStencilUsageCreateInfo &operator=(const native_type &rhs) {
+    *this = std::bit_cast<ImageStencilUsageCreateInfo>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const ImageStencilUsageCreateInfo &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::IMAGE_STENCIL_USAGE_CREATE_INFO;
@@ -14991,6 +23601,17 @@ struct PhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV {
 
   PhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV(VkBool32 dedicated_allocation_image_aliasing = {}, void *p_next = {})
     : dedicated_allocation_image_aliasing_(dedicated_allocation_image_aliasing), p_next_(p_next) {}
+
+  PhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV(const native_type &rhs)
+    : PhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV(
+        std::bit_cast<PhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV>(rhs)) {}
+
+  PhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -15007,6 +23628,15 @@ struct CopyMemoryToImageInfoEXT {
                            ImageLayout dst_image_layout = {}, uint32_t region_count = {}, const void *p_next = {})
     : p_regions_(p_regions), flags_(flags), dst_image_(dst_image), dst_image_layout_(dst_image_layout), region_count_(region_count),
       p_next_(p_next) {}
+
+  CopyMemoryToImageInfoEXT(const native_type &rhs) : CopyMemoryToImageInfoEXT(std::bit_cast<CopyMemoryToImageInfoEXT>(rhs)) {}
+
+  CopyMemoryToImageInfoEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<CopyMemoryToImageInfoEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const CopyMemoryToImageInfoEXT &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -15026,6 +23656,16 @@ struct PhysicalDeviceCopyMemoryIndirectFeaturesNV {
   PhysicalDeviceCopyMemoryIndirectFeaturesNV(VkBool32 indirect_copy = {}, void *p_next = {})
     : indirect_copy_(indirect_copy), p_next_(p_next) {}
 
+  PhysicalDeviceCopyMemoryIndirectFeaturesNV(const native_type &rhs)
+    : PhysicalDeviceCopyMemoryIndirectFeaturesNV(std::bit_cast<PhysicalDeviceCopyMemoryIndirectFeaturesNV>(rhs)) {}
+
+  PhysicalDeviceCopyMemoryIndirectFeaturesNV &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceCopyMemoryIndirectFeaturesNV>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceCopyMemoryIndirectFeaturesNV &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PHYSICAL_DEVICE_COPY_MEMORY_INDIRECT_FEATURES_NV;
@@ -15039,6 +23679,16 @@ struct PhysicalDeviceMemoryDecompressionFeaturesNV {
 
   PhysicalDeviceMemoryDecompressionFeaturesNV(VkBool32 memory_decompression = {}, void *p_next = {})
     : memory_decompression_(memory_decompression), p_next_(p_next) {}
+
+  PhysicalDeviceMemoryDecompressionFeaturesNV(const native_type &rhs)
+    : PhysicalDeviceMemoryDecompressionFeaturesNV(std::bit_cast<PhysicalDeviceMemoryDecompressionFeaturesNV>(rhs)) {}
+
+  PhysicalDeviceMemoryDecompressionFeaturesNV &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceMemoryDecompressionFeaturesNV>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceMemoryDecompressionFeaturesNV &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -15054,6 +23704,16 @@ struct PhysicalDeviceRayTracingValidationFeaturesNV {
   PhysicalDeviceRayTracingValidationFeaturesNV(VkBool32 ray_tracing_validation = {}, void *p_next = {})
     : ray_tracing_validation_(ray_tracing_validation), p_next_(p_next) {}
 
+  PhysicalDeviceRayTracingValidationFeaturesNV(const native_type &rhs)
+    : PhysicalDeviceRayTracingValidationFeaturesNV(std::bit_cast<PhysicalDeviceRayTracingValidationFeaturesNV>(rhs)) {}
+
+  PhysicalDeviceRayTracingValidationFeaturesNV &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceRayTracingValidationFeaturesNV>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceRayTracingValidationFeaturesNV &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PHYSICAL_DEVICE_RAY_TRACING_VALIDATION_FEATURES_NV;
@@ -15067,6 +23727,16 @@ struct PhysicalDeviceCoverageReductionModeFeaturesNV {
 
   PhysicalDeviceCoverageReductionModeFeaturesNV(VkBool32 coverage_reduction_mode = {}, void *p_next = {})
     : coverage_reduction_mode_(coverage_reduction_mode), p_next_(p_next) {}
+
+  PhysicalDeviceCoverageReductionModeFeaturesNV(const native_type &rhs)
+    : PhysicalDeviceCoverageReductionModeFeaturesNV(std::bit_cast<PhysicalDeviceCoverageReductionModeFeaturesNV>(rhs)) {}
+
+  PhysicalDeviceCoverageReductionModeFeaturesNV &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceCoverageReductionModeFeaturesNV>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceCoverageReductionModeFeaturesNV &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -15085,6 +23755,16 @@ struct PipelineViewportShadingRateImageStateCreateInfoNV {
     : p_shading_rate_palettes_(p_shading_rate_palettes), shading_rate_image_enable_(shading_rate_image_enable),
       viewport_count_(viewport_count), p_next_(p_next) {}
 
+  PipelineViewportShadingRateImageStateCreateInfoNV(const native_type &rhs)
+    : PipelineViewportShadingRateImageStateCreateInfoNV(std::bit_cast<PipelineViewportShadingRateImageStateCreateInfoNV>(rhs)) {}
+
+  PipelineViewportShadingRateImageStateCreateInfoNV &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PipelineViewportShadingRateImageStateCreateInfoNV>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PipelineViewportShadingRateImageStateCreateInfoNV &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PIPELINE_VIEWPORT_SHADING_RATE_IMAGE_STATE_CREATE_INFO_NV;
@@ -15101,6 +23781,16 @@ struct PhysicalDeviceShaderAtomicFloat16VectorFeaturesNV {
   PhysicalDeviceShaderAtomicFloat16VectorFeaturesNV(VkBool32 shader_float16vector_atomics = {}, void *p_next = {})
     : shader_float16vector_atomics_(shader_float16vector_atomics), p_next_(p_next) {}
 
+  PhysicalDeviceShaderAtomicFloat16VectorFeaturesNV(const native_type &rhs)
+    : PhysicalDeviceShaderAtomicFloat16VectorFeaturesNV(std::bit_cast<PhysicalDeviceShaderAtomicFloat16VectorFeaturesNV>(rhs)) {}
+
+  PhysicalDeviceShaderAtomicFloat16VectorFeaturesNV &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceShaderAtomicFloat16VectorFeaturesNV>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceShaderAtomicFloat16VectorFeaturesNV &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PHYSICAL_DEVICE_SHADER_ATOMIC_FLOAT16_VECTOR_FEATURES_NV;
@@ -15114,6 +23804,15 @@ struct CoarseSampleLocationNV {
 
   CoarseSampleLocationNV(uint32_t pixel_x = {}, uint32_t pixel_y = {}, uint32_t sample = {})
     : pixel_x_(pixel_x), pixel_y_(pixel_y), sample_(sample) {}
+
+  CoarseSampleLocationNV(const native_type &rhs) : CoarseSampleLocationNV(std::bit_cast<CoarseSampleLocationNV>(rhs)) {}
+
+  CoarseSampleLocationNV &operator=(const native_type &rhs) {
+    *this = std::bit_cast<CoarseSampleLocationNV>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const CoarseSampleLocationNV &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -15133,6 +23832,16 @@ struct PhysicalDeviceDepthBiasControlFeaturesEXT {
       least_representable_value_force_unorm_representation_(least_representable_value_force_unorm_representation),
       float_representation_(float_representation), p_next_(p_next) {}
 
+  PhysicalDeviceDepthBiasControlFeaturesEXT(const native_type &rhs)
+    : PhysicalDeviceDepthBiasControlFeaturesEXT(std::bit_cast<PhysicalDeviceDepthBiasControlFeaturesEXT>(rhs)) {}
+
+  PhysicalDeviceDepthBiasControlFeaturesEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceDepthBiasControlFeaturesEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceDepthBiasControlFeaturesEXT &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PHYSICAL_DEVICE_DEPTH_BIAS_CONTROL_FEATURES_EXT;
@@ -15146,6 +23855,15 @@ struct PhysicalDeviceDepthBiasControlFeaturesEXT {
 struct CheckpointData2NV {
 
   using native_type = VkCheckpointData2NV;
+
+  CheckpointData2NV(const native_type &rhs) : CheckpointData2NV(std::bit_cast<CheckpointData2NV>(rhs)) {}
+
+  CheckpointData2NV &operator=(const native_type &rhs) {
+    *this = std::bit_cast<CheckpointData2NV>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const CheckpointData2NV &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -15164,6 +23882,15 @@ struct CoarseSampleOrderCustomNV {
     : shading_rate_(shading_rate), sample_count_(sample_count), sample_location_count_(sample_location_count),
       p_sample_locations_(p_sample_locations) {}
 
+  CoarseSampleOrderCustomNV(const native_type &rhs) : CoarseSampleOrderCustomNV(std::bit_cast<CoarseSampleOrderCustomNV>(rhs)) {}
+
+  CoarseSampleOrderCustomNV &operator=(const native_type &rhs) {
+    *this = std::bit_cast<CoarseSampleOrderCustomNV>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const CoarseSampleOrderCustomNV &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   ShadingRatePaletteEntry shading_rate_;
@@ -15177,6 +23904,15 @@ struct ImageMemoryRequirementsInfo2 {
   using native_type = VkImageMemoryRequirementsInfo2;
 
   ImageMemoryRequirementsInfo2(VkImage image = {}, const void *p_next = {}) : image_(image), p_next_(p_next) {}
+
+  ImageMemoryRequirementsInfo2(const native_type &rhs) : ImageMemoryRequirementsInfo2(std::bit_cast<ImageMemoryRequirementsInfo2>(rhs)) {}
+
+  ImageMemoryRequirementsInfo2 &operator=(const native_type &rhs) {
+    *this = std::bit_cast<ImageMemoryRequirementsInfo2>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const ImageMemoryRequirementsInfo2 &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -15195,6 +23931,16 @@ struct PipelineViewportCoarseSampleOrderStateCreateInfoNV {
     : p_custom_sample_orders_(p_custom_sample_orders), sample_order_type_(sample_order_type),
       custom_sample_order_count_(custom_sample_order_count), p_next_(p_next) {}
 
+  PipelineViewportCoarseSampleOrderStateCreateInfoNV(const native_type &rhs)
+    : PipelineViewportCoarseSampleOrderStateCreateInfoNV(std::bit_cast<PipelineViewportCoarseSampleOrderStateCreateInfoNV>(rhs)) {}
+
+  PipelineViewportCoarseSampleOrderStateCreateInfoNV &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PipelineViewportCoarseSampleOrderStateCreateInfoNV>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PipelineViewportCoarseSampleOrderStateCreateInfoNV &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PIPELINE_VIEWPORT_COARSE_SAMPLE_ORDER_STATE_CREATE_INFO_NV;
@@ -15210,6 +23956,16 @@ struct DrawMeshTasksIndirectCommandNV {
 
   DrawMeshTasksIndirectCommandNV(uint32_t task_count = {}, uint32_t first_task = {}) : task_count_(task_count), first_task_(first_task) {}
 
+  DrawMeshTasksIndirectCommandNV(const native_type &rhs)
+    : DrawMeshTasksIndirectCommandNV(std::bit_cast<DrawMeshTasksIndirectCommandNV>(rhs)) {}
+
+  DrawMeshTasksIndirectCommandNV &operator=(const native_type &rhs) {
+    *this = std::bit_cast<DrawMeshTasksIndirectCommandNV>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const DrawMeshTasksIndirectCommandNV &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   uint32_t task_count_;
@@ -15223,6 +23979,16 @@ struct DrawMeshTasksIndirectCommandEXT {
   DrawMeshTasksIndirectCommandEXT(uint32_t group_count_x = {}, uint32_t group_count_y = {}, uint32_t group_count_z = {})
     : group_count_x_(group_count_x), group_count_y_(group_count_y), group_count_z_(group_count_z) {}
 
+  DrawMeshTasksIndirectCommandEXT(const native_type &rhs)
+    : DrawMeshTasksIndirectCommandEXT(std::bit_cast<DrawMeshTasksIndirectCommandEXT>(rhs)) {}
+
+  DrawMeshTasksIndirectCommandEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<DrawMeshTasksIndirectCommandEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const DrawMeshTasksIndirectCommandEXT &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   uint32_t group_count_x_;
@@ -15233,6 +23999,16 @@ struct DrawMeshTasksIndirectCommandEXT {
 struct ImageDrmFormatModifierPropertiesEXT {
 
   using native_type = VkImageDrmFormatModifierPropertiesEXT;
+
+  ImageDrmFormatModifierPropertiesEXT(const native_type &rhs)
+    : ImageDrmFormatModifierPropertiesEXT(std::bit_cast<ImageDrmFormatModifierPropertiesEXT>(rhs)) {}
+
+  ImageDrmFormatModifierPropertiesEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<ImageDrmFormatModifierPropertiesEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const ImageDrmFormatModifierPropertiesEXT &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -15253,6 +24029,16 @@ struct RayTracingPipelineCreateInfoNV {
       p_groups_(p_groups), max_recursion_depth_(max_recursion_depth), layout_(layout), base_pipeline_handle_(base_pipeline_handle),
       p_next_(p_next) {}
 
+  RayTracingPipelineCreateInfoNV(const native_type &rhs)
+    : RayTracingPipelineCreateInfoNV(std::bit_cast<RayTracingPipelineCreateInfoNV>(rhs)) {}
+
+  RayTracingPipelineCreateInfoNV &operator=(const native_type &rhs) {
+    *this = std::bit_cast<RayTracingPipelineCreateInfoNV>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const RayTracingPipelineCreateInfoNV &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::RAY_TRACING_PIPELINE_CREATE_INFO_NV;
@@ -15271,6 +24057,16 @@ struct RayTracingPipelineCreateInfoNV {
 struct CooperativeMatrixPropertiesKHR {
 
   using native_type = VkCooperativeMatrixPropertiesKHR;
+
+  CooperativeMatrixPropertiesKHR(const native_type &rhs)
+    : CooperativeMatrixPropertiesKHR(std::bit_cast<CooperativeMatrixPropertiesKHR>(rhs)) {}
+
+  CooperativeMatrixPropertiesKHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<CooperativeMatrixPropertiesKHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const CooperativeMatrixPropertiesKHR &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -15295,6 +24091,16 @@ struct WriteDescriptorSetAccelerationStructureKHR {
                                              uint32_t acceleration_structure_count = {}, const void *p_next = {})
     : p_acceleration_structures_(p_acceleration_structures), acceleration_structure_count_(acceleration_structure_count), p_next_(p_next) {}
 
+  WriteDescriptorSetAccelerationStructureKHR(const native_type &rhs)
+    : WriteDescriptorSetAccelerationStructureKHR(std::bit_cast<WriteDescriptorSetAccelerationStructureKHR>(rhs)) {}
+
+  WriteDescriptorSetAccelerationStructureKHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<WriteDescriptorSetAccelerationStructureKHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const WriteDescriptorSetAccelerationStructureKHR &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::WRITE_DESCRIPTOR_SET_ACCELERATION_STRUCTURE_KHR;
@@ -15318,6 +24124,16 @@ struct RayTracingPipelineCreateInfoKHR {
       p_groups_(p_groups), max_pipeline_ray_recursion_depth_(max_pipeline_ray_recursion_depth), p_library_info_(p_library_info),
       p_library_interface_(p_library_interface), p_dynamic_state_(p_dynamic_state), layout_(layout),
       base_pipeline_handle_(base_pipeline_handle), p_next_(p_next) {}
+
+  RayTracingPipelineCreateInfoKHR(const native_type &rhs)
+    : RayTracingPipelineCreateInfoKHR(std::bit_cast<RayTracingPipelineCreateInfoKHR>(rhs)) {}
+
+  RayTracingPipelineCreateInfoKHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<RayTracingPipelineCreateInfoKHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const RayTracingPipelineCreateInfoKHR &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -15346,6 +24162,15 @@ struct CopyImageToBufferInfo2 {
     : p_regions_(p_regions), src_image_(src_image), src_image_layout_(src_image_layout), dst_buffer_(dst_buffer),
       region_count_(region_count), p_next_(p_next) {}
 
+  CopyImageToBufferInfo2(const native_type &rhs) : CopyImageToBufferInfo2(std::bit_cast<CopyImageToBufferInfo2>(rhs)) {}
+
+  CopyImageToBufferInfo2 &operator=(const native_type &rhs) {
+    *this = std::bit_cast<CopyImageToBufferInfo2>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const CopyImageToBufferInfo2 &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::COPY_IMAGE_TO_BUFFER_INFO_2;
@@ -15370,6 +24195,16 @@ struct PhysicalDeviceRayTracingPipelineFeaturesKHR {
       ray_tracing_pipeline_shader_group_handle_capture_replay_mixed_(ray_tracing_pipeline_shader_group_handle_capture_replay_mixed),
       ray_tracing_pipeline_trace_rays_indirect_(ray_tracing_pipeline_trace_rays_indirect), p_next_(p_next) {}
 
+  PhysicalDeviceRayTracingPipelineFeaturesKHR(const native_type &rhs)
+    : PhysicalDeviceRayTracingPipelineFeaturesKHR(std::bit_cast<PhysicalDeviceRayTracingPipelineFeaturesKHR>(rhs)) {}
+
+  PhysicalDeviceRayTracingPipelineFeaturesKHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceRayTracingPipelineFeaturesKHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceRayTracingPipelineFeaturesKHR &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PHYSICAL_DEVICE_RAY_TRACING_PIPELINE_FEATURES_KHR;
@@ -15392,6 +24227,15 @@ struct VideoDecodeInfoKHR {
     : p_reference_slots_(p_reference_slots), flags_(flags), src_buffer_(src_buffer), src_buffer_offset_(src_buffer_offset),
       src_buffer_range_(src_buffer_range), dst_picture_resource_(dst_picture_resource), p_setup_reference_slot_(p_setup_reference_slot),
       reference_slot_count_(reference_slot_count), p_next_(p_next) {}
+
+  VideoDecodeInfoKHR(const native_type &rhs) : VideoDecodeInfoKHR(std::bit_cast<VideoDecodeInfoKHR>(rhs)) {}
+
+  VideoDecodeInfoKHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<VideoDecodeInfoKHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const VideoDecodeInfoKHR &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -15416,6 +24260,16 @@ struct PhysicalDeviceBufferDeviceAddressFeatures {
     : buffer_device_address_multi_device_(buffer_device_address_multi_device), buffer_device_address_(buffer_device_address),
       buffer_device_address_capture_replay_(buffer_device_address_capture_replay), p_next_(p_next) {}
 
+  PhysicalDeviceBufferDeviceAddressFeatures(const native_type &rhs)
+    : PhysicalDeviceBufferDeviceAddressFeatures(std::bit_cast<PhysicalDeviceBufferDeviceAddressFeatures>(rhs)) {}
+
+  PhysicalDeviceBufferDeviceAddressFeatures &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceBufferDeviceAddressFeatures>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceBufferDeviceAddressFeatures &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PHYSICAL_DEVICE_BUFFER_DEVICE_ADDRESS_FEATURES;
@@ -15428,6 +24282,16 @@ struct PhysicalDeviceBufferDeviceAddressFeatures {
 struct PhysicalDeviceRayTracingPipelinePropertiesKHR {
 
   using native_type = VkPhysicalDeviceRayTracingPipelinePropertiesKHR;
+
+  PhysicalDeviceRayTracingPipelinePropertiesKHR(const native_type &rhs)
+    : PhysicalDeviceRayTracingPipelinePropertiesKHR(std::bit_cast<PhysicalDeviceRayTracingPipelinePropertiesKHR>(rhs)) {}
+
+  PhysicalDeviceRayTracingPipelinePropertiesKHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceRayTracingPipelinePropertiesKHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceRayTracingPipelinePropertiesKHR &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -15450,6 +24314,15 @@ struct TraceRaysIndirectCommandKHR {
   TraceRaysIndirectCommandKHR(uint32_t width = {}, uint32_t height = {}, uint32_t depth = {})
     : width_(width), height_(height), depth_(depth) {}
 
+  TraceRaysIndirectCommandKHR(const native_type &rhs) : TraceRaysIndirectCommandKHR(std::bit_cast<TraceRaysIndirectCommandKHR>(rhs)) {}
+
+  TraceRaysIndirectCommandKHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<TraceRaysIndirectCommandKHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const TraceRaysIndirectCommandKHR &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   uint32_t width_;
@@ -15464,6 +24337,16 @@ struct PhysicalDeviceShaderQuadControlFeaturesKHR {
   PhysicalDeviceShaderQuadControlFeaturesKHR(VkBool32 shader_quad_control = {}, void *p_next = {})
     : shader_quad_control_(shader_quad_control), p_next_(p_next) {}
 
+  PhysicalDeviceShaderQuadControlFeaturesKHR(const native_type &rhs)
+    : PhysicalDeviceShaderQuadControlFeaturesKHR(std::bit_cast<PhysicalDeviceShaderQuadControlFeaturesKHR>(rhs)) {}
+
+  PhysicalDeviceShaderQuadControlFeaturesKHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceShaderQuadControlFeaturesKHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceShaderQuadControlFeaturesKHR &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PHYSICAL_DEVICE_SHADER_QUAD_CONTROL_FEATURES_KHR;
@@ -15477,6 +24360,16 @@ struct GraphicsPipelineLibraryCreateInfoEXT {
 
   GraphicsPipelineLibraryCreateInfoEXT(GraphicsPipelineLibraryMask flags = {}, const void *p_next = {}) : flags_(flags), p_next_(p_next) {}
 
+  GraphicsPipelineLibraryCreateInfoEXT(const native_type &rhs)
+    : GraphicsPipelineLibraryCreateInfoEXT(std::bit_cast<GraphicsPipelineLibraryCreateInfoEXT>(rhs)) {}
+
+  GraphicsPipelineLibraryCreateInfoEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<GraphicsPipelineLibraryCreateInfoEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const GraphicsPipelineLibraryCreateInfoEXT &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::GRAPHICS_PIPELINE_LIBRARY_CREATE_INFO_EXT;
@@ -15487,6 +24380,16 @@ struct GraphicsPipelineLibraryCreateInfoEXT {
 struct DrmFormatModifierPropertiesListEXT {
 
   using native_type = VkDrmFormatModifierPropertiesListEXT;
+
+  DrmFormatModifierPropertiesListEXT(const native_type &rhs)
+    : DrmFormatModifierPropertiesListEXT(std::bit_cast<DrmFormatModifierPropertiesListEXT>(rhs)) {}
+
+  DrmFormatModifierPropertiesListEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<DrmFormatModifierPropertiesListEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const DrmFormatModifierPropertiesListEXT &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -15503,6 +24406,16 @@ struct PhysicalDeviceFragmentDensityMap2FeaturesEXT {
   PhysicalDeviceFragmentDensityMap2FeaturesEXT(VkBool32 fragment_density_map_deferred = {}, void *p_next = {})
     : fragment_density_map_deferred_(fragment_density_map_deferred), p_next_(p_next) {}
 
+  PhysicalDeviceFragmentDensityMap2FeaturesEXT(const native_type &rhs)
+    : PhysicalDeviceFragmentDensityMap2FeaturesEXT(std::bit_cast<PhysicalDeviceFragmentDensityMap2FeaturesEXT>(rhs)) {}
+
+  PhysicalDeviceFragmentDensityMap2FeaturesEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceFragmentDensityMap2FeaturesEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceFragmentDensityMap2FeaturesEXT &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PHYSICAL_DEVICE_FRAGMENT_DENSITY_MAP_2_FEATURES_EXT;
@@ -15513,6 +24426,16 @@ struct PhysicalDeviceFragmentDensityMap2FeaturesEXT {
 struct PhysicalDeviceFragmentDensityMapPropertiesEXT {
 
   using native_type = VkPhysicalDeviceFragmentDensityMapPropertiesEXT;
+
+  PhysicalDeviceFragmentDensityMapPropertiesEXT(const native_type &rhs)
+    : PhysicalDeviceFragmentDensityMapPropertiesEXT(std::bit_cast<PhysicalDeviceFragmentDensityMapPropertiesEXT>(rhs)) {}
+
+  PhysicalDeviceFragmentDensityMapPropertiesEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceFragmentDensityMapPropertiesEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceFragmentDensityMapPropertiesEXT &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -15526,6 +24449,16 @@ struct PhysicalDeviceFragmentDensityMapPropertiesEXT {
 struct PhysicalDeviceFragmentDensityMap2PropertiesEXT {
 
   using native_type = VkPhysicalDeviceFragmentDensityMap2PropertiesEXT;
+
+  PhysicalDeviceFragmentDensityMap2PropertiesEXT(const native_type &rhs)
+    : PhysicalDeviceFragmentDensityMap2PropertiesEXT(std::bit_cast<PhysicalDeviceFragmentDensityMap2PropertiesEXT>(rhs)) {}
+
+  PhysicalDeviceFragmentDensityMap2PropertiesEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceFragmentDensityMap2PropertiesEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceFragmentDensityMap2PropertiesEXT &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -15543,6 +24476,16 @@ struct PhysicalDevicePrivateDataFeatures {
 
   PhysicalDevicePrivateDataFeatures(VkBool32 private_data = {}, void *p_next = {}) : private_data_(private_data), p_next_(p_next) {}
 
+  PhysicalDevicePrivateDataFeatures(const native_type &rhs)
+    : PhysicalDevicePrivateDataFeatures(std::bit_cast<PhysicalDevicePrivateDataFeatures>(rhs)) {}
+
+  PhysicalDevicePrivateDataFeatures &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDevicePrivateDataFeatures>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDevicePrivateDataFeatures &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PHYSICAL_DEVICE_PRIVATE_DATA_FEATURES;
@@ -15556,6 +24499,16 @@ struct RenderPassFragmentDensityMapCreateInfoEXT {
 
   RenderPassFragmentDensityMapCreateInfoEXT(AttachmentReference fragment_density_map_attachment = {}, const void *p_next = {})
     : fragment_density_map_attachment_(fragment_density_map_attachment), p_next_(p_next) {}
+
+  RenderPassFragmentDensityMapCreateInfoEXT(const native_type &rhs)
+    : RenderPassFragmentDensityMapCreateInfoEXT(std::bit_cast<RenderPassFragmentDensityMapCreateInfoEXT>(rhs)) {}
+
+  RenderPassFragmentDensityMapCreateInfoEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<RenderPassFragmentDensityMapCreateInfoEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const RenderPassFragmentDensityMapCreateInfoEXT &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -15574,6 +24527,15 @@ struct PresentInfoKHR {
     : p_results_(p_results), wait_semaphore_count_(wait_semaphore_count), p_wait_semaphores_(p_wait_semaphores),
       swapchain_count_(swapchain_count), p_swapchains_(p_swapchains), p_image_indices_(p_image_indices), p_next_(p_next) {}
 
+  PresentInfoKHR(const native_type &rhs) : PresentInfoKHR(std::bit_cast<PresentInfoKHR>(rhs)) {}
+
+  PresentInfoKHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PresentInfoKHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PresentInfoKHR &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PRESENT_INFO_KHR;
@@ -15589,6 +24551,15 @@ struct PresentInfoKHR {
 struct QueueFamilyProperties2 {
 
   using native_type = VkQueueFamilyProperties2;
+
+  QueueFamilyProperties2(const native_type &rhs) : QueueFamilyProperties2(std::bit_cast<QueueFamilyProperties2>(rhs)) {}
+
+  QueueFamilyProperties2 &operator=(const native_type &rhs) {
+    *this = std::bit_cast<QueueFamilyProperties2>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const QueueFamilyProperties2 &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -15606,6 +24577,16 @@ struct SubpassFragmentDensityMapOffsetEndInfoQCOM {
     : p_fragment_density_offsets_(p_fragment_density_offsets), fragment_density_offset_count_(fragment_density_offset_count),
       p_next_(p_next) {}
 
+  SubpassFragmentDensityMapOffsetEndInfoQCOM(const native_type &rhs)
+    : SubpassFragmentDensityMapOffsetEndInfoQCOM(std::bit_cast<SubpassFragmentDensityMapOffsetEndInfoQCOM>(rhs)) {}
+
+  SubpassFragmentDensityMapOffsetEndInfoQCOM &operator=(const native_type &rhs) {
+    *this = std::bit_cast<SubpassFragmentDensityMapOffsetEndInfoQCOM>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const SubpassFragmentDensityMapOffsetEndInfoQCOM &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::SUBPASS_FRAGMENT_DENSITY_MAP_OFFSET_END_INFO_QCOM;
@@ -15621,6 +24602,16 @@ struct PhysicalDeviceScalarBlockLayoutFeatures {
   PhysicalDeviceScalarBlockLayoutFeatures(VkBool32 scalar_block_layout = {}, void *p_next = {})
     : scalar_block_layout_(scalar_block_layout), p_next_(p_next) {}
 
+  PhysicalDeviceScalarBlockLayoutFeatures(const native_type &rhs)
+    : PhysicalDeviceScalarBlockLayoutFeatures(std::bit_cast<PhysicalDeviceScalarBlockLayoutFeatures>(rhs)) {}
+
+  PhysicalDeviceScalarBlockLayoutFeatures &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceScalarBlockLayoutFeatures>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceScalarBlockLayoutFeatures &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PHYSICAL_DEVICE_SCALAR_BLOCK_LAYOUT_FEATURES;
@@ -15631,6 +24622,16 @@ struct PhysicalDeviceScalarBlockLayoutFeatures {
 struct VideoEncodeH264QualityLevelPropertiesKHR {
 
   using native_type = VkVideoEncodeH264QualityLevelPropertiesKHR;
+
+  VideoEncodeH264QualityLevelPropertiesKHR(const native_type &rhs)
+    : VideoEncodeH264QualityLevelPropertiesKHR(std::bit_cast<VideoEncodeH264QualityLevelPropertiesKHR>(rhs)) {}
+
+  VideoEncodeH264QualityLevelPropertiesKHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<VideoEncodeH264QualityLevelPropertiesKHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const VideoEncodeH264QualityLevelPropertiesKHR &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -15654,6 +24655,16 @@ struct PhysicalDeviceMemoryPriorityFeaturesEXT {
   PhysicalDeviceMemoryPriorityFeaturesEXT(VkBool32 memory_priority = {}, void *p_next = {})
     : memory_priority_(memory_priority), p_next_(p_next) {}
 
+  PhysicalDeviceMemoryPriorityFeaturesEXT(const native_type &rhs)
+    : PhysicalDeviceMemoryPriorityFeaturesEXT(std::bit_cast<PhysicalDeviceMemoryPriorityFeaturesEXT>(rhs)) {}
+
+  PhysicalDeviceMemoryPriorityFeaturesEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceMemoryPriorityFeaturesEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceMemoryPriorityFeaturesEXT &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PHYSICAL_DEVICE_MEMORY_PRIORITY_FEATURES_EXT;
@@ -15669,6 +24680,16 @@ struct ImageDrmFormatModifierExplicitCreateInfoEXT {
                                               uint32_t drm_format_modifier_plane_count = {}, const void *p_next = {})
     : p_plane_layouts_(p_plane_layouts), drm_format_modifier_(drm_format_modifier),
       drm_format_modifier_plane_count_(drm_format_modifier_plane_count), p_next_(p_next) {}
+
+  ImageDrmFormatModifierExplicitCreateInfoEXT(const native_type &rhs)
+    : ImageDrmFormatModifierExplicitCreateInfoEXT(std::bit_cast<ImageDrmFormatModifierExplicitCreateInfoEXT>(rhs)) {}
+
+  ImageDrmFormatModifierExplicitCreateInfoEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<ImageDrmFormatModifierExplicitCreateInfoEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const ImageDrmFormatModifierExplicitCreateInfoEXT &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -15686,6 +24707,16 @@ struct PerformanceQuerySubmitInfoKHR {
   PerformanceQuerySubmitInfoKHR(uint32_t counter_pass_index = {}, const void *p_next = {})
     : counter_pass_index_(counter_pass_index), p_next_(p_next) {}
 
+  PerformanceQuerySubmitInfoKHR(const native_type &rhs)
+    : PerformanceQuerySubmitInfoKHR(std::bit_cast<PerformanceQuerySubmitInfoKHR>(rhs)) {}
+
+  PerformanceQuerySubmitInfoKHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PerformanceQuerySubmitInfoKHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PerformanceQuerySubmitInfoKHR &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PERFORMANCE_QUERY_SUBMIT_INFO_KHR;
@@ -15702,6 +24733,16 @@ struct RenderingFragmentShadingRateAttachmentInfoKHR {
     : shading_rate_attachment_texel_size_(shading_rate_attachment_texel_size), image_view_(image_view), image_layout_(image_layout),
       p_next_(p_next) {}
 
+  RenderingFragmentShadingRateAttachmentInfoKHR(const native_type &rhs)
+    : RenderingFragmentShadingRateAttachmentInfoKHR(std::bit_cast<RenderingFragmentShadingRateAttachmentInfoKHR>(rhs)) {}
+
+  RenderingFragmentShadingRateAttachmentInfoKHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<RenderingFragmentShadingRateAttachmentInfoKHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const RenderingFragmentShadingRateAttachmentInfoKHR &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::RENDERING_FRAGMENT_SHADING_RATE_ATTACHMENT_INFO_KHR;
@@ -15716,6 +24757,16 @@ struct MemoryPriorityAllocateInfoEXT {
   using native_type = VkMemoryPriorityAllocateInfoEXT;
 
   MemoryPriorityAllocateInfoEXT(float priority = {}, const void *p_next = {}) : priority_(priority), p_next_(p_next) {}
+
+  MemoryPriorityAllocateInfoEXT(const native_type &rhs)
+    : MemoryPriorityAllocateInfoEXT(std::bit_cast<MemoryPriorityAllocateInfoEXT>(rhs)) {}
+
+  MemoryPriorityAllocateInfoEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<MemoryPriorityAllocateInfoEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const MemoryPriorityAllocateInfoEXT &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -15732,6 +24783,16 @@ struct PhysicalDeviceBufferDeviceAddressFeaturesEXT {
                                                VkBool32 buffer_device_address_capture_replay = {}, void *p_next = {})
     : buffer_device_address_multi_device_(buffer_device_address_multi_device), buffer_device_address_(buffer_device_address),
       buffer_device_address_capture_replay_(buffer_device_address_capture_replay), p_next_(p_next) {}
+
+  PhysicalDeviceBufferDeviceAddressFeaturesEXT(const native_type &rhs)
+    : PhysicalDeviceBufferDeviceAddressFeaturesEXT(std::bit_cast<PhysicalDeviceBufferDeviceAddressFeaturesEXT>(rhs)) {}
+
+  PhysicalDeviceBufferDeviceAddressFeaturesEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceBufferDeviceAddressFeaturesEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceBufferDeviceAddressFeaturesEXT &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -15753,6 +24814,16 @@ struct RenderPassMultiviewCreateInfo {
       dependency_count_(dependency_count), p_view_offsets_(p_view_offsets), correlation_mask_count_(correlation_mask_count),
       p_next_(p_next) {}
 
+  RenderPassMultiviewCreateInfo(const native_type &rhs)
+    : RenderPassMultiviewCreateInfo(std::bit_cast<RenderPassMultiviewCreateInfo>(rhs)) {}
+
+  RenderPassMultiviewCreateInfo &operator=(const native_type &rhs) {
+    *this = std::bit_cast<RenderPassMultiviewCreateInfo>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const RenderPassMultiviewCreateInfo &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::RENDER_PASS_MULTIVIEW_CREATE_INFO;
@@ -15772,6 +24843,16 @@ struct BufferOpaqueCaptureAddressCreateInfo {
   BufferOpaqueCaptureAddressCreateInfo(uint64_t opaque_capture_address = {}, const void *p_next = {})
     : opaque_capture_address_(opaque_capture_address), p_next_(p_next) {}
 
+  BufferOpaqueCaptureAddressCreateInfo(const native_type &rhs)
+    : BufferOpaqueCaptureAddressCreateInfo(std::bit_cast<BufferOpaqueCaptureAddressCreateInfo>(rhs)) {}
+
+  BufferOpaqueCaptureAddressCreateInfo &operator=(const native_type &rhs) {
+    *this = std::bit_cast<BufferOpaqueCaptureAddressCreateInfo>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const BufferOpaqueCaptureAddressCreateInfo &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::BUFFER_OPAQUE_CAPTURE_ADDRESS_CREATE_INFO;
@@ -15786,6 +24867,16 @@ struct PhysicalDeviceImagelessFramebufferFeatures {
   PhysicalDeviceImagelessFramebufferFeatures(VkBool32 imageless_framebuffer = {}, void *p_next = {})
     : imageless_framebuffer_(imageless_framebuffer), p_next_(p_next) {}
 
+  PhysicalDeviceImagelessFramebufferFeatures(const native_type &rhs)
+    : PhysicalDeviceImagelessFramebufferFeatures(std::bit_cast<PhysicalDeviceImagelessFramebufferFeatures>(rhs)) {}
+
+  PhysicalDeviceImagelessFramebufferFeatures &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceImagelessFramebufferFeatures>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceImagelessFramebufferFeatures &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PHYSICAL_DEVICE_IMAGELESS_FRAMEBUFFER_FEATURES;
@@ -15799,6 +24890,15 @@ struct ClearDepthStencilValue {
 
   ClearDepthStencilValue(float depth = {}, uint32_t stencil = {}) : depth_(depth), stencil_(stencil) {}
 
+  ClearDepthStencilValue(const native_type &rhs) : ClearDepthStencilValue(std::bit_cast<ClearDepthStencilValue>(rhs)) {}
+
+  ClearDepthStencilValue &operator=(const native_type &rhs) {
+    *this = std::bit_cast<ClearDepthStencilValue>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const ClearDepthStencilValue &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   float depth_;
@@ -15811,6 +24911,16 @@ struct SwapchainPresentBarrierCreateInfoNV {
 
   SwapchainPresentBarrierCreateInfoNV(VkBool32 present_barrier_enable = {}, void *p_next = {})
     : present_barrier_enable_(present_barrier_enable), p_next_(p_next) {}
+
+  SwapchainPresentBarrierCreateInfoNV(const native_type &rhs)
+    : SwapchainPresentBarrierCreateInfoNV(std::bit_cast<SwapchainPresentBarrierCreateInfoNV>(rhs)) {}
+
+  SwapchainPresentBarrierCreateInfoNV &operator=(const native_type &rhs) {
+    *this = std::bit_cast<SwapchainPresentBarrierCreateInfoNV>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const SwapchainPresentBarrierCreateInfoNV &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -15828,6 +24938,16 @@ struct PhysicalDeviceCooperativeMatrixFeaturesNV {
     : cooperative_matrix_robust_buffer_access_(cooperative_matrix_robust_buffer_access), cooperative_matrix_(cooperative_matrix),
       p_next_(p_next) {}
 
+  PhysicalDeviceCooperativeMatrixFeaturesNV(const native_type &rhs)
+    : PhysicalDeviceCooperativeMatrixFeaturesNV(std::bit_cast<PhysicalDeviceCooperativeMatrixFeaturesNV>(rhs)) {}
+
+  PhysicalDeviceCooperativeMatrixFeaturesNV &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceCooperativeMatrixFeaturesNV>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceCooperativeMatrixFeaturesNV &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PHYSICAL_DEVICE_COOPERATIVE_MATRIX_FEATURES_NV;
@@ -15839,6 +24959,16 @@ struct PhysicalDeviceCooperativeMatrixFeaturesNV {
 struct ImageViewAddressPropertiesNVX {
 
   using native_type = VkImageViewAddressPropertiesNVX;
+
+  ImageViewAddressPropertiesNVX(const native_type &rhs)
+    : ImageViewAddressPropertiesNVX(std::bit_cast<ImageViewAddressPropertiesNVX>(rhs)) {}
+
+  ImageViewAddressPropertiesNVX &operator=(const native_type &rhs) {
+    *this = std::bit_cast<ImageViewAddressPropertiesNVX>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const ImageViewAddressPropertiesNVX &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -15855,6 +24985,16 @@ struct AccelerationStructureDeviceAddressInfoKHR {
   AccelerationStructureDeviceAddressInfoKHR(VkAccelerationStructureKHR acceleration_structure = {}, const void *p_next = {})
     : acceleration_structure_(acceleration_structure), p_next_(p_next) {}
 
+  AccelerationStructureDeviceAddressInfoKHR(const native_type &rhs)
+    : AccelerationStructureDeviceAddressInfoKHR(std::bit_cast<AccelerationStructureDeviceAddressInfoKHR>(rhs)) {}
+
+  AccelerationStructureDeviceAddressInfoKHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<AccelerationStructureDeviceAddressInfoKHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const AccelerationStructureDeviceAddressInfoKHR &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::ACCELERATION_STRUCTURE_DEVICE_ADDRESS_INFO_KHR;
@@ -15865,6 +25005,16 @@ struct AccelerationStructureDeviceAddressInfoKHR {
 struct PhysicalDeviceAccelerationStructurePropertiesKHR {
 
   using native_type = VkPhysicalDeviceAccelerationStructurePropertiesKHR;
+
+  PhysicalDeviceAccelerationStructurePropertiesKHR(const native_type &rhs)
+    : PhysicalDeviceAccelerationStructurePropertiesKHR(std::bit_cast<PhysicalDeviceAccelerationStructurePropertiesKHR>(rhs)) {}
+
+  PhysicalDeviceAccelerationStructurePropertiesKHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceAccelerationStructurePropertiesKHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceAccelerationStructurePropertiesKHR &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -15884,6 +25034,16 @@ struct PhysicalDevicePerformanceQueryPropertiesKHR {
 
   using native_type = VkPhysicalDevicePerformanceQueryPropertiesKHR;
 
+  PhysicalDevicePerformanceQueryPropertiesKHR(const native_type &rhs)
+    : PhysicalDevicePerformanceQueryPropertiesKHR(std::bit_cast<PhysicalDevicePerformanceQueryPropertiesKHR>(rhs)) {}
+
+  PhysicalDevicePerformanceQueryPropertiesKHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDevicePerformanceQueryPropertiesKHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDevicePerformanceQueryPropertiesKHR &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PHYSICAL_DEVICE_PERFORMANCE_QUERY_PROPERTIES_KHR;
@@ -15898,6 +25058,15 @@ struct DescriptorGetInfoEXT {
   DescriptorGetInfoEXT(VkDescriptorDataEXT data = {}, DescriptorType type = {}, const void *p_next = {})
     : data_(data), type_(type), p_next_(p_next) {}
 
+  DescriptorGetInfoEXT(const native_type &rhs) : DescriptorGetInfoEXT(std::bit_cast<DescriptorGetInfoEXT>(rhs)) {}
+
+  DescriptorGetInfoEXT &operator=(const native_type &rhs) {
+    *this = std::bit_cast<DescriptorGetInfoEXT>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const DescriptorGetInfoEXT &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::DESCRIPTOR_GET_INFO_EXT;
@@ -15909,6 +25078,15 @@ struct DescriptorGetInfoEXT {
 struct PerformanceCounterKHR {
 
   using native_type = VkPerformanceCounterKHR;
+
+  PerformanceCounterKHR(const native_type &rhs) : PerformanceCounterKHR(std::bit_cast<PerformanceCounterKHR>(rhs)) {}
+
+  PerformanceCounterKHR &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PerformanceCounterKHR>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PerformanceCounterKHR &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
@@ -15927,6 +25105,16 @@ struct PhysicalDeviceMeshShaderFeaturesNV {
   PhysicalDeviceMeshShaderFeaturesNV(VkBool32 mesh_shader = {}, VkBool32 task_shader = {}, void *p_next = {})
     : mesh_shader_(mesh_shader), task_shader_(task_shader), p_next_(p_next) {}
 
+  PhysicalDeviceMeshShaderFeaturesNV(const native_type &rhs)
+    : PhysicalDeviceMeshShaderFeaturesNV(std::bit_cast<PhysicalDeviceMeshShaderFeaturesNV>(rhs)) {}
+
+  PhysicalDeviceMeshShaderFeaturesNV &operator=(const native_type &rhs) {
+    *this = std::bit_cast<PhysicalDeviceMeshShaderFeaturesNV>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const PhysicalDeviceMeshShaderFeaturesNV &other) const = default;
+
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
   StructureType s_type_ = StructureType::PHYSICAL_DEVICE_MESH_SHADER_FEATURES_NV;
@@ -15938,6 +25126,16 @@ struct PhysicalDeviceMeshShaderFeaturesNV {
 struct FramebufferMixedSamplesCombinationNV {
 
   using native_type = VkFramebufferMixedSamplesCombinationNV;
+
+  FramebufferMixedSamplesCombinationNV(const native_type &rhs)
+    : FramebufferMixedSamplesCombinationNV(std::bit_cast<FramebufferMixedSamplesCombinationNV>(rhs)) {}
+
+  FramebufferMixedSamplesCombinationNV &operator=(const native_type &rhs) {
+    *this = std::bit_cast<FramebufferMixedSamplesCombinationNV>(rhs);
+    return *this;
+  }
+
+  auto operator<=>(const FramebufferMixedSamplesCombinationNV &other) const = default;
 
   auto *get() { return reinterpret_cast<native_type *>(this); }
 
