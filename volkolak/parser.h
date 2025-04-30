@@ -13,12 +13,15 @@ namespace Volkolak {
 
 // ENUMS
 struct EnumRecordData {
+  std::string GetName() const { return "E" + std::string(class_name); }
+
   std::string_view class_name;
   std::string_view source_name;
-  std::string_view extend_enum;
+  std::string_view parent_enum;
 };
 
 struct EnumData {
+  std::string_view zero_record;
   std::vector<EnumRecordData> records;
 };
 
@@ -34,15 +37,18 @@ struct FeatureData {
 struct StructureMemberData {
   bool IsArray() const { return status.test(0); }
   bool IsField() const { return status.test(1); }
+  bool IsPointer() const { return status.test(2); }
 
   void SetArray(bool f) { status.set(0, f); }
   void SetField(bool f) { status.set(1, f); }
+  void SetPointer(bool f) { status.set(2, f); }
  
-  std::bitset<2> status;
+  std::bitset<3> status;
   std::string signature;
   std::string name;
   std::string type;
   std::string_view value;
+  std::string_view zero_record;
 };
 // clang-format on
 
@@ -86,6 +92,7 @@ public:
   void GenerateStructureFile();
   void GenerateMaskFile();
   void GenerateFormatFile();
+  void GenerateStringToolsFile();
 
 private:
   // MAIN PARSE

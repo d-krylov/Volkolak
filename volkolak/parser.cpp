@@ -10,6 +10,7 @@ namespace Volkolak {
 auto Api = [](const pugi::xml_node &node) -> std::string_view { return node.attribute("api").as_string(); };
 auto Name = [](const pugi::xml_node &node) -> std::string_view { return node.attribute("name").as_string(); };
 auto Type = [](const pugi::xml_node &node) -> std::string_view { return node.attribute("type").as_string(); };
+auto Value = [](const pugi::xml_node &node) -> std::string_view { return node.attribute("value").as_string(); };
 auto Values = [](const pugi::xml_node &node) -> std::string_view { return node.attribute("values").as_string(); };
 auto Extends = [](const pugi::xml_node &node) -> std::string_view { return node.attribute("extends").as_string(); };
 auto Protect = [](const pugi::xml_node &node) -> std::string_view { return node.attribute("protect").as_string(); };
@@ -19,27 +20,20 @@ auto Bitvalues = [](const pugi::xml_node &node) -> std::string_view { return nod
 auto Supported = [](const pugi::xml_node &node) -> std::string_view { return node.attribute("supported").as_string(); };
 
 auto Compressed = [](const pugi::xml_node &node) -> std::string_view { return node.attribute("compressed").as_string(); };
-auto Bits = [](const pugi::xml_node &node) { return node.attribute("bits").as_int(); };
 auto BlockSize = [](const pugi::xml_node &node) { return node.attribute("blockSize").as_int(); };
 auto Texels = [](const pugi::xml_node &node) { return node.attribute("texelsPerBlock").as_int(); };
 auto Packed = [](const pugi::xml_node &node) { return node.attribute("packed").as_int(); };
+auto Bits = [](const pugi::xml_node &node) { return node.attribute("bits").as_int(); };
 
 auto NAME = [](const pugi::xml_node &node) -> std::string_view { return node.child("name").child_value(); };
 auto TYPE = [](const pugi::xml_node &node) -> std::string_view { return node.child("type").child_value(); };
 auto ENUM = [](const pugi::xml_node &node) -> std::string_view { return node.child("enum").child_value(); };
 
 // TOOLS
-std::string Parser::GetEnumRecordPrefix(std::string_view source_enum) const {
-  if (source_enum == "VkResult") return std::string(VULKAN_PREFIX).append("_");
-  const auto &enum_name = type_enums_.at(source_enum);
-  auto screaming = ToScreamingSnakeCase(enum_name.GetPrefix());
-  return screaming.append("_");
-}
-
 std::size_t Parser::GetEnumRecordPrefixSize(std::string_view source_enum) const {
-  if (source_enum == "VkResult") return 1 + VULKAN_PREFIX_SIZE;
+  if (source_enum == "VkResult") return VULKAN_PREFIX_SIZE;
   const auto &enum_name = type_enums_.at(source_enum);
-  return 1 + GetPrefixSize(enum_name.GetPrefix());
+  return GetPrefixSize(enum_name.GetPrefix());
 }
 
 std::string_view Parser::GetTag(std::string_view source_name) const {
@@ -119,6 +113,10 @@ void Parser::ParseStructures() {
         member.value = Values(member_node);
         member.SetArray(member.signature.contains("["));
         member.SetField(member.signature.contains(":"));
+        member.SetPointer(member.signature.contains("*"));
+        if (parsed_enums_.contains(TYPE(member_node))) {
+          member.zero_record = parsed_enums_[TYPE(member_node)].zero_record;
+        }
       }
     }
   }
@@ -127,14 +125,16 @@ void Parser::ParseStructures() {
 void Parser::ParseEnums() {
   auto registry = document_.child("registry");
   for (const auto &enum_node : registry.children("enums")) {
-    if (Type(enum_node) == "constants") continue;
     auto enum_name = Name(enum_node);
+    if (Type(enum_node) == "constants" || disabled_types_.contains(enum_name)) continue;
     auto &enum_data = parsed_enums_[enum_name];
     auto size = GetEnumRecordPrefixSize(enum_name);
     for (const auto &enum_record_node : enum_node.children("enum")) {
       if (enum_record_node.attribute("deprecated").empty()) {
         auto name = Name(enum_record_node);
-        enum_data.records.emplace_back(name.substr(size), name);
+        auto enum_value = Value(enum_record_node);
+        enum_data.records.emplace_back(name.substr(size), name, enum_name);
+        if (enum_value == "0") enum_data.zero_record = name.substr(size);
       }
     }
   }
@@ -150,7 +150,7 @@ void Parser::ParseFeatures() {
       for (const auto &enum_node : require_node.children("enum")) {
         auto extend_name = Extends(enum_node);
         auto record_name = Name(enum_node);
-        if (extend_name.empty()) continue;
+        if (extend_name.empty() || disabled_types_.contains(extend_name)) continue;
         auto size = GetEnumRecordPrefixSize(extend_name);
         feature.enum_records.emplace_back(record_name.substr(size), record_name, extend_name);
       }
@@ -167,8 +167,9 @@ void Parser::ParseExtensions() {
     auto &extension = parsed_extensions_[extension_name];
     for (const auto &require_node : extension_node.children("require")) {
       for (const auto &enum_node : require_node.children("enum")) {
-        if (enum_node.attribute("alias") && options_.generate_alias_enums_records == false) continue;
         auto extend_name = Extends(enum_node);
+        if (disabled_types_.contains(extend_name)) continue;
+        if (enum_node.attribute("alias") && options_.generate_alias_enums_records == false) continue;
         auto record_name = Name(enum_node);
         if ((extend_name.empty() == false) && (Api(enum_node).empty() || Api(enum_node) == "vulkan")) {
           auto size = GetEnumRecordPrefixSize(extend_name);
@@ -262,17 +263,20 @@ void Parser::ParseBegin() {
     type_enums_.emplace(name, GetNameString(name, FLAG_BITS_SUFFIX));
   }
 
+  disabled_types_.erase("VkPipelineCacheCreateFlagBits");
+
   ParseBeginMasks();
   ParseBeginExtensions();
 }
 
 // GENERATE STRUCTURES
 
+constexpr std::string_view STRUCTURE_TYPE_PREFIX = "VK_STRUCTURE_TYPE";
+
 std::string GetStructureType(std::string_view source_type) {
-  constexpr std::string_view prefix = "VK_STRUCTURE_TYPE_";
-  constexpr std::string_view format = "StructureType::{}";
-  source_type.remove_prefix(prefix.size());
-  return std::format(format, source_type);
+  constexpr std::string_view format = "StructureType::E{}";
+  constexpr auto prefix_size = STRUCTURE_TYPE_PREFIX.size();
+  return std::format(format, source_type.substr(prefix_size));
 }
 
 auto GenerateSignature(const StructureMemberData &member) {
@@ -287,11 +291,18 @@ auto GenerateArgument(const StructureMemberData &member) {
   std::string_view signature = member.signature;
   std::string_view name = member.name;
   constexpr auto basic_format = "      {0}      = {{}}";
+  constexpr auto enums_format = "      {0}      = {1}::E{2}";
   constexpr auto const_format = "const {0} &{1} = {{}}";
   auto prune = signature.substr(0, signature.find(":"));
   prune.remove_suffix(1), name.remove_suffix(1);
+  std::string base;
+  if (member.zero_record.empty() || member.IsPointer()) {
+    base = std::format(basic_format, prune);
+  } else {
+    base = std::format(enums_format, prune, member.type, member.zero_record);
+  }
   auto type = member.IsArray() ? GetRandomTypeAsArray(member.signature, member.type) : member.type;
-  return member.IsArray() ? std::format(const_format, type, name) : std::format(basic_format, prune);
+  return member.IsArray() ? std::format(const_format, type, name) : base;
 }
 
 auto GenerateInitializer(const StructureMemberData &member) {
@@ -325,8 +336,10 @@ void Parser::GenerateStructureFile() {
 
     constexpr auto constructor_template = "{0}({1}): {2} {{}}";
     auto constuctor = (structure.returned == false) ? std::format(constructor_template, name, arguments, initializer) : "";
-    auto structure_definition = std::format(structure_template, name, members, constuctor);
-
+    auto first_member = structure.members.front();
+    auto prefix_size = STRUCTURE_TYPE_PREFIX.size();
+    auto structure_type = first_member.value.empty() ? "" : std::format(structure_type_template, first_member.value.substr(prefix_size));
+    auto structure_definition = std::format(structure_template, name, members, constuctor, structure_type);
     if (protected_structures_.contains(structure.name)) {
       if (options_.generate_protected_structure) {
         result += std::format(ifdef_template, protected_structures_[structure.name], structure_definition);
@@ -341,16 +354,11 @@ void Parser::GenerateStructureFile() {
 
 // GENERATE ENUMS
 
-constexpr std::string_view ENTER = "\n";
-
-auto get_enum_record = [](const EnumRecordData &record) {
-  return std::isdigit(record.class_name.front()) ? std::format("E_{} = {},\n", record.class_name, record.source_name)
-                                                 : std::format("  {} = {},\n", record.class_name, record.source_name);
-};
+auto get_enum_record = [](const EnumRecordData &record) { return std::format("{} = {},\n", record.GetName(), record.source_name); };
 
 // clang-format off
 std::string GetEnumRecords(std::span<const EnumRecordData> records, std::string_view enum_name) {
-  auto is_good_enum = [&](const EnumRecordData &enum_record) { return enum_record.extend_enum == enum_name; };
+  auto is_good_enum = [&](const EnumRecordData &enum_record) { return enum_record.parent_enum == enum_name; };
   auto records_view = records
     | std::views::filter(is_good_enum)
     | std::views::transform(get_enum_record)
@@ -389,10 +397,26 @@ void Parser::GenerateEnumFile() {
     GenerateEnumRecordsFromFeatures(enum_records_string, enum_name);
     GenerateEnumRecordsFromExtensions(enum_records_string, enum_name);
     if (auto comma = enum_records_string.find_last_of(','); comma != std::string::npos) enum_records_string.erase(comma, 1);
-    result += std::format(enum_template, type_enums_[enum_name].GetName(), enum_records_string);
+    const auto &enum_string = type_enums_[enum_name];
+    if (enum_string.IsMaskBit()) {
+      result += std::format(mask_template, enum_string.GetName(), enum_records_string, enum_string.GetFlags());
+    } else {
+      result += std::format(enum_template, enum_string.GetName(), enum_records_string);
+    }
   }
 
   std::cout << result << std::endl;
+}
+
+void Parser::GenerateStringToolsFile() {
+  for (const auto &[enum_name, enum_data] : parsed_enums_) {
+    const auto &enum_class_name = type_enums_[enum_name].GetName();
+
+    auto get_enum_case = [](const EnumRecordData &record) { return std::format(enum_case_template, record.GetName(), record.source_name); };
+
+    for (const auto enum_record : enum_data.records) {
+    }
+  }
 }
 
 void Parser::GenerateMaskFile() {

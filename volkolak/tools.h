@@ -23,16 +23,20 @@ inline constexpr std::string_view MASK_SUFFIX = "Mask";
 inline constexpr auto VULKAN_PREFIX_SIZE = VULKAN_PREFIX.size();
 
 struct String {
-  std::string Get() const;
   std::string GetName() const;
+  std::string GetNameWithTag() const;
   std::string GetPrefix() const;
+  std::string GetFlags() const;
 
-  bool IsMask() const { return center == FLAG_BITS_SUFFIX; }
+  bool IsMaskBit() const { return center == FLAG_BITS_SUFFIX; }
 
   std::string_view prefix; // all string without tag or string before FlagBits
   std::string_view center; // empty or FlagBits
   std::string_view suffix; // between FlagBits and tag or empty
   std::string_view tag;
+
+private:
+  std::string Get() const;
 };
 
 } // namespace Volkolak

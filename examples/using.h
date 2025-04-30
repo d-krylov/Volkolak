@@ -142,7 +142,6 @@ using FormatFeatureMask2 = Mask<FormatFeatureMaskBit2>;
 using SamplerCreateMask = Mask<SamplerCreateMaskBit>;
 using DeviceDiagnosticsConfigMask = Mask<DeviceDiagnosticsConfigMaskBit>;
 using BufferViewCreateMask = Mask<Flags>;
-using RefreshObjectMask = Mask<RefreshObjectMaskBit>;
 using PipelineShaderStageCreateMask = Mask<PipelineShaderStageCreateMaskBit>;
 using PipelineStageMask2 = Mask<PipelineStageMaskBit2>;
 using AccelerationStructureMotionInstanceMask = Mask<Flags>;

@@ -3,12 +3,24 @@
 
 namespace Volkolak {
 
+inline constexpr auto enum_to_string_template = R"(
+std::string_view ToString({0} input) {{
+  switch (input) {{
+    {1}
+    default: std::unreachable();
+  }}
+}}
+)";
+
+inline constexpr auto enum_case_template = "case {0}::{1}: return \"{0}::{1}\";\n";
+
 // 0 - structure name is vulkan name without prefix
 // 1 - members
 // 2 - constructor
 inline constexpr auto structure_template = R"(
 struct {0} {{
 
+  {3}
   using native_type = Vk{0};
 
   {2}
@@ -27,6 +39,8 @@ struct {0} {{
   {1}
 }};
 )";
+
+inline constexpr auto structure_type_template = "static constexpr StructureType structure_type = StructureType::E{};\n";
 
 inline constexpr auto format_table_template = R"(
 std::unordered_map<Format, FormatData> format_information = {{

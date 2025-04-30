@@ -5,21 +5,6 @@
 
 namespace Volkolak {
 
-std::string ToScreamingSnakeCase(std::string_view name) {
-  std::string converted_name;
-  auto previous_is_lower = false;
-  auto previous_is_digit = false;
-  for (auto Char : name) {
-    if ((std::isupper(Char) && (previous_is_lower || previous_is_digit)) || (std::isdigit(Char) && previous_is_lower)) {
-      converted_name.push_back('_');
-    }
-    converted_name.push_back(std::toupper(Char));
-    previous_is_lower = std::islower(Char);
-    previous_is_digit = std::isdigit(Char);
-  }
-  return converted_name;
-}
-
 std::size_t GetPrefixSize(std::string_view name) {
   auto result = 0;
   auto previous_is_lower = false;
@@ -38,8 +23,8 @@ std::string HungarianToSnakeCase(std::string_view name) {
   std::string result;
   auto previous_is_lower = false;
   for (auto symbol : name) {
-    if (std::isupper(symbol) && previous_is_lower) result.push_back('_');
-    result.push_back(std::tolower(symbol));
+    result += (std::isupper(symbol) && previous_is_lower) ? "_" : "";
+    result += (std::tolower(symbol));
     previous_is_lower = std::islower(symbol);
   }
   return result;
@@ -89,9 +74,17 @@ std::string String::GetPrefix() const {
   return data;
 }
 
-std::string String::GetName() const {
-  auto name = Get();
-  return name.substr(VULKAN_PREFIX_SIZE);
+std::string String::GetFlags() const {
+  std::string result;
+  result.reserve(prefix.size() + center.size() + suffix.size() + tag.size());
+  result.append(prefix);
+  result.append(center == FLAG_BITS_SUFFIX ? FLAG_SUFFIX : center);
+  result.append(suffix);
+  result.append(tag);
+  return result;
 }
+
+std::string String::GetName() const { return Get().substr(VULKAN_PREFIX_SIZE); }
+std::string String::GetNameWithTag() const { return GetName().append(tag); }
 
 } // namespace Volkolak
