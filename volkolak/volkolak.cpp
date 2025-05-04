@@ -14,10 +14,11 @@ int main(int argc, char **argv) {
 
   Parser parser(specification_path);
 
-  parser.GenerateStructureFile();
-  // parser.GenerateEnumFile();
-  //   parser.GenerateMaskFile();
-  //  parser.GenerateFormatFile();
+  // parser.GenerateStructureFile();
+  //  parser.GenerateEnumFile();
+  //    parser.GenerateMaskFile();
+  //   parser.GenerateFormatFile();
+  parser.GenerateStringToolsFile();
 
   return 0;
 }

@@ -357,11 +357,12 @@ void Parser::GenerateStructureFile() {
 auto get_enum_record = [](const EnumRecordData &record) { return std::format("{} = {},\n", record.GetName(), record.source_name); };
 
 // clang-format off
-std::string GetEnumRecords(std::span<const EnumRecordData> records, std::string_view enum_name) {
+template <typename F>
+std::string GetEnumRecords(F &&functor, std::span<const EnumRecordData> records, std::string_view enum_name) {
   auto is_good_enum = [&](const EnumRecordData &enum_record) { return enum_record.parent_enum == enum_name; };
   auto records_view = records
     | std::views::filter(is_good_enum)
-    | std::views::transform(get_enum_record)
+    | std::views::transform(functor)
     | std::views::join;
   return std::ranges::to<std::string>(records_view);
 }
@@ -370,7 +371,7 @@ std::string GetEnumRecords(std::span<const EnumRecordData> records, std::string_
 void Parser::GenerateEnumRecordsFromExtensions(std::string &records_result, std::string_view enum_name) {
   for (const auto &[extension_name, extension_data] : parsed_extensions_) {
     if (protected_extensions_.contains(extension_name) && options_.generate_protected_enums_records == false) continue;
-    auto records_string = GetEnumRecords(extension_data.enum_records, enum_name);
+    auto records_string = GetEnumRecords(get_enum_record, extension_data.enum_records, enum_name);
     if (records_string.empty()) continue;
     if (auto enum_protected = protected_extensions_.find(extension_name); enum_protected != protected_extensions_.end()) {
       records_result += std::format(ifdef_template, enum_protected->second, records_string);
@@ -382,7 +383,7 @@ void Parser::GenerateEnumRecordsFromExtensions(std::string &records_result, std:
 
 void Parser::GenerateEnumRecordsFromFeatures(std::string &records_result, std::string_view enum_name) {
   for (const auto &[feature_name, feature_data] : parsed_features_) {
-    auto records_string = GetEnumRecords(feature_data.enum_records, enum_name);
+    auto records_string = GetEnumRecords(get_enum_record, feature_data.enum_records, enum_name);
     if (records_string.empty()) continue;
     records_result += records_string;
   }
@@ -411,11 +412,28 @@ void Parser::GenerateEnumFile() {
 void Parser::GenerateStringToolsFile() {
   for (const auto &[enum_name, enum_data] : parsed_enums_) {
     const auto &enum_class_name = type_enums_[enum_name].GetName();
+    auto get_enum_case = [&](const EnumRecordData &record) { return std::format(enum_case_template, enum_class_name, record.GetName()); };
+    auto enum_records_view = enum_data.records | std::views::transform(get_enum_case) | std::views::join;
+    auto enum_records_string = std::ranges::to<std::string>(enum_records_view);
 
-    auto get_enum_case = [](const EnumRecordData &record) { return std::format(enum_case_template, record.GetName(), record.source_name); };
-
-    for (const auto enum_record : enum_data.records) {
+    for (const auto &[extension_name, extension_data] : parsed_extensions_) {
+      if (protected_extensions_.contains(extension_name) && options_.generate_protected_enums_records == false) continue;
+      auto records_string = GetEnumRecords(get_enum_case, extension_data.enum_records, enum_name);
+      if (records_string.empty()) continue;
+      if (auto enum_protected = protected_extensions_.find(extension_name); enum_protected != protected_extensions_.end()) {
+        enum_records_string += std::format(ifdef_template, enum_protected->second, records_string);
+      } else {
+        enum_records_string += records_string;
+      }
     }
+
+    for (const auto &[feature_name, feature_data] : parsed_features_) {
+      auto records_string = GetEnumRecords(get_enum_case, feature_data.enum_records, enum_name);
+      if (records_string.empty()) continue;
+      enum_records_string += records_string;
+    }
+
+    std::cout << std::format(enum_to_string_template, enum_class_name, enum_records_string) << std::endl;
   }
 }
 
